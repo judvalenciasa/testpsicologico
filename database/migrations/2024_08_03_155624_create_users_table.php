@@ -34,7 +34,7 @@ return new class extends Migration
             $table->integer('hora_sueno')->nullable();
             $table->boolean('grasas')->nullable();
             $table->integer('pensamiento_critico')->nullable();
-
+            $table->boolean('es_administrador');
 
             $table->foreign('id_pin')->references('id_pin')->on('pines');
 
