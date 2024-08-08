@@ -1,0 +1,33 @@
+.banner_section {
+    background-color: black;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+.banner_section .banner_ctn {
+    display: flex;
+    gap: 4vw;
+    flex-direction: column;
+    color: white;
+}
+
+.banner_section .banner_ctn .title h1 {
+    font-size: 4vw;
+    position: relative;
+}
+
+.banner_section .banner_ctn .title h1::before {
+    position: absolute;
+    content: '';
+    width: 25%;
+    height: 4px;
+    background-color: white;
+    bottom: -10%;
+    left: 0;
+    border-radius: 10px;
+}
+
+.banner_section .banner_ctn .text {
+    width: 35vw;
+}
