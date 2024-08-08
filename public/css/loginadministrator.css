@@ -1,0 +1,22 @@
+.container {
+    text-align: center;
+    background: linear-gradient(to bottom, #141e30, #243b55);
+    height: 100vh;
+    color: white;
+}
+
+h1 {
+    font-size: 48px;
+    margin: 0;
+}
+
+.underline {
+    width: 50px;
+    height: 4px;
+    background-color: #1e73be;
+    margin: 20px auto;
+}
+
+p {
+    font-size: 20px;
+}

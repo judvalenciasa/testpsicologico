@@ -3,11 +3,24 @@
     height: 100vh;
     display: flex;
     align-items: center;
+    position: relative;
+}
+
+.banner_section::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    left: 0;
+    height: 100%;
+    /** se crea un background gradiente **/
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.8) 0%, rgba(0, 0, 0, 0.5) 100%);
 }
 
 .banner_section .banner_ctn {
     display: flex;
     gap: 4vw;
+    z-index: 99;
+    position: relative;
     flex-direction: column;
     color: white;
 }
