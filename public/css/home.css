@@ -1,6 +1,8 @@
 .banner_section {
-    background-color: black;
+    background-image: url('../images/jpg/home_backg.jpg');  ;
     height: 100vh;
+    background-size: cover;
+    background-attachment: fixed;
     display: flex;
     align-items: center;
     position: relative;
@@ -22,7 +24,8 @@
     z-index: 99;
     position: relative;
     flex-direction: column;
-    color: white;
+    color: black;
+    text-shadow: 1px 1px 1px black;
 }
 
 .banner_section .banner_ctn .title h1 {
@@ -35,7 +38,7 @@
     content: '';
     width: 25%;
     height: 4px;
-    background-color: white;
+    background-color: #2271b3;
     bottom: -10%;
     left: 0;
     border-radius: 10px;

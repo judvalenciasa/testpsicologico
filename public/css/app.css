@@ -40,7 +40,11 @@ header {
 }
 
 .navbar .logo_ctn svg {
-    width: 10vw;
+    width: 9vw;
+}
+
+.Logo_Marista_Blanco {
+    width: 5vw;
 }
 
 .navbar .menu_ctn ul {

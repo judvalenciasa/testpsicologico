@@ -1,7 +1,7 @@
 .container {
     text-align: center;
     background: linear-gradient(to bottom, #141e30, #243b55);
-    height: 100vh;
+    height: fit-content;
     color: white;
 }
 
@@ -78,6 +78,7 @@ input:valid ~ label {
     color: #2196f3;
 }
 
+
 .span_mostrar_pin {
     color: black;
     font-weight: 500;
@@ -146,4 +147,12 @@ button:hover span {
     100% {
         transform: scale(1);
     }
+}
+
+
+.error-message {
+    font-size: 0.875em;
+    margin-top: 0.25em;
+    display: block;
+    color: red;
 }
