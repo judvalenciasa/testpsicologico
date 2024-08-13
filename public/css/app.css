@@ -4,6 +4,10 @@
     box-sizing: border-box;
 }
 
+section {
+    height: fit-content;
+}
+
 body {
     font-family: "Poppins", sans-serif;
 }

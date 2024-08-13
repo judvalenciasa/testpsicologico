@@ -1,0 +1,78 @@
+/** caracterizacion section **/
+
+.caracterizacion_section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2vw;
+    background-color: #f8f9fa;
+}
+
+.caracterizacion_section h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #343a40;
+    margin-bottom: 1.5rem;
+}
+
+.caracterizacion_section .title {
+    position: relative;
+}
+
+.caracterizacion_section .title::before {
+    position: absolute;
+    content: "";
+    width: 25%;
+    height: 4px;
+    background-color: #2271b3;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 10px;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+/* Estilos para los inputs y selects */
+form input[type="number"],
+form select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+}
+
+/* Efecto hover y foco */
+form input[type="number"]:hover,
+form select:hover,
+form input[type="number"]:focus,
+form select:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+/* Estilos para el botón de envío */
+form button[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Efecto hover en el botón de envío */
+form button[type="submit"]:hover {
+    background-color: #0056b3;
+}

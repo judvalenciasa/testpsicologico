@@ -24,3 +24,8 @@ Route::get('/login', function () {
 Route::get('/register', function () {
     return view('auth.register');
 });
+
+Route::get('/caracterizacion', function () {
+    return view('caracterizacion');
+});
+
