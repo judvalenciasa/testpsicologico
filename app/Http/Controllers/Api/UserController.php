@@ -73,6 +73,7 @@ class UserController extends Controller
                 
                 $token = $user->createToken("auth_token")->plainTextToken;
 
+                //Retorno la vista de login
                 return response()->json([
                     "status" => 0,
                     "msg" => "Exito logeado",
