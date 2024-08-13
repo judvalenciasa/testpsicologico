@@ -91,7 +91,7 @@
                     <li><a href="{{ url('/') }}">Inicio</a></li>
                     <li><a href="{{ url('/login') }}">Ingresar como administrador</a></li>
                     <li><a href="{{ url('/register') }}">Presentar prueba</a></li>
-                    <li><a href="">Más</a></li>
+                    <li><a href="{{ url('/caracterizacion') }}">Caracterización</a></li>
                     <li><a href=""></a></li>
                 </ul>
             </div>
