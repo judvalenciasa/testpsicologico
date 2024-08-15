@@ -19,19 +19,22 @@
             <div class="underline"></div>
             <p>Si deseas presentar la prueba</p>
         </div>
-        <div class="form_ctn">
+
+        <form class="form_ctn" action="{{ route('registrar') }}" method="POST">
+            @csrf <!-- Esto es necesario para proteger tu formulario contra ataques CSRF -->
+
             <div class="input-group">
-                <input required="" type="text" name="nombre" id="nombre" autocomplete="off" class="input">
+                <input required type="text" name="name" id="nombre" autocomplete="off" class="input">
                 <label class="user-label">Nombre Completo</label>
                 <span class="error-message" id="nombre-error"></span>
             </div>
             <div class="input-group">
-                <input required="" type="email" name="email" id="email" autocomplete="off" class="input">
+                <input required type="email" name="email" id="email" autocomplete="off" class="input">
                 <label class="user-label">Correo Electrónico</label>
                 <span class="error-message" id="email-error"></span>
             </div>
             <div class="input-group">
-                <input required="" type="password" name="pin" id="pin" autocomplete="off" class="input">
+                <input required type="password" name="password" id="pin" autocomplete="off" class="input">
                 <label class="user-label">Pin</label>
                 <span class="error-message" id="pin-error"></span>
             </div>
@@ -39,14 +42,15 @@
                 <input type="checkbox" id="show-pin">
                 <span class="span_mostrar_pin" for="show-pin">Mostrar Pin</span>
             </div>
-            <button id="submit-btn">
+            <button type="submit" id="submit-btn">
                 <span>Registrarse</span>
             </button>
-        </div>
+        </form>
+
     </section>
 
     <script>
-        document.getElementById('show-pin').addEventListener('change', function () {
+        document.getElementById('show-pin').addEventListener('change', function() {
             var passwordInput = document.getElementById('pin');
             if (this.checked) {
                 passwordInput.type = 'text';
@@ -55,7 +59,7 @@
             }
         });
 
-        document.getElementById('submit-btn').addEventListener('click', function (event) {
+        document.getElementById('submit-btn').addEventListener('click', function(event) {
             event.preventDefault(); // Evitar que el formulario se envíe
 
             // Obtener los campos del formulario
@@ -100,12 +104,12 @@
 
         function clearErrors() {
             var inputs = document.querySelectorAll('.input');
-            inputs.forEach(function (input) {
+            inputs.forEach(function(input) {
                 input.style.borderColor = ''; // Restablecer el color del borde
             });
 
             var errorMessages = document.querySelectorAll('.error-message');
-            errorMessages.forEach(function (error) {
+            errorMessages.forEach(function(error) {
                 error.textContent = ''; // Limpiar mensajes de error
             });
         }

@@ -14,10 +14,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('home');
-});
+    return view('home'); // o cualquier otra vista que sea tu página principal
+})->name('home');
 
-Route::get('/login', function () {
+Route::get('/ingreso', function () {
     return view('auth.login_as_administrator');
 });
 
@@ -25,7 +25,7 @@ Route::get('/register', function () {
     return view('auth.register');
 });
 
-Route::get('/caracterizacion', function () {
-    return view('caracterizacion');
-});
 
+Route::get('/administrator', function () {
+    return view('private.administrator-page');
+})->name('administrator')->middleware('auth:sanctum');

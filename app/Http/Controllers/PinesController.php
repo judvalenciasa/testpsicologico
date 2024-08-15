@@ -9,7 +9,7 @@ use Illuminate\Support\Carbon;
 
 class PinesController extends Controller
 {
-    
+
     private $CANTIDAD_DE_INTENTOS = 2;
 
     /**
@@ -51,11 +51,17 @@ class PinesController extends Controller
      * algún usuario.
      * retorna: mensaje los pines fueron creados y almacenados correctamente.
      */
-    public function generar_pines($cantidad)
+    public function generar_pines(Request $request)
     {
+        $cantidad = $request->input('cantidad'); // Recibe el parámetro cantidad de la query string
+
+
+        if ($cantidad === null) {
+            return response()->json(['error' => 'Cantidad no proporcionada'], 400);
+        }
         $usuario = auth()->user();
-        if($usuario){
-            if($usuario->es_administrador == 1){
+        if ($usuario) {
+            if ($usuario->es_administrador == 1) {
                 $caracteres = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
                 $pines_generados = [];
 
@@ -72,19 +78,17 @@ class PinesController extends Controller
                     for ($i = 0; $i < count($pines_generados); $i++) {
                         $this->almacenar_pines($pines_generados[$i]);
                     }
-    
-                    return $pines_generados;
+
+                    return redirect()->back()->with('pines_generados', $pines_generados);
                 } else {
                     return "uno de los pines ya esta en la lista de generados vuelva a generar los códigos";
                 }
-            }else{
+            } else {
                 return "no eres usuario administrador";
             }
-
-        }else{
+        } else {
             return "Es imposible que este aquí y no esté logeado, fallo en el middleware";
         }
-        
     }
 
 

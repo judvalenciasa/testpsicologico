@@ -7,6 +7,9 @@ use App\Models\Pines;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
+
 
 class UserController extends Controller
 {
@@ -14,10 +17,10 @@ class UserController extends Controller
     public function pin_valido(Request $request)
     {
         $id_pin = pines::where('pin', $request->pin)->value('id_pin');
-       
-        if($id_pin){
+
+        if ($id_pin) {
             return $id_pin;
-        }else{
+        } else {
             return Null;
         }
     }
@@ -25,92 +28,100 @@ class UserController extends Controller
     {
 
         //vamos a verificar el pin si existe
-        
+
         $id_pin = $this->pin_valido($request);
-        
-        if($id_pin != Null){
-            
+
+        if ($id_pin != Null) {
+
             $request->merge(['id_pin' => $id_pin]);
 
             $request->validate([
                 'name' => 'required',
                 'email' => 'required',
                 'password' => 'required',
-                'id_pin'=> 'required'
+                'id_pin' => 'required'
             ]);
-    
+
             $user = new User();
             $user->name = $request->name;
             $user->email = $request->email;
             $user->password = Hash::make($request->password);
             $user->id_pin = $request->id_pin;
             $user->es_administrador = 0;
-            
+
             $user->save();
-    
+
             return response()->json([
                 "status" => 1,
                 "msg" => "Registro exitoso"
             ]);
-        }else{
+        } else {
             return "pin invalido";
         }
-
     }
+
 
     public function login(Request $request)
     {
+        // Validar la entrada
         $request->validate([
-            'email' => 'required',
+            'email' => 'required|email',
             'password' => 'required',
         ]);
 
-        $user = User::where("email", "=", $request->email)->first();
-        
-        if (isset($user->id_usuario)) {
+        // Buscar al usuario por email
+        $user = User::where('email', $request->email)->first();
 
-            if (Hash::check($request->password, $user->password)) {
-                
-                $token = $user->createToken("auth_token")->plainTextToken;
+        // Verificar las credenciales y autenticar al usuario
+        if ($user && Hash::check($request->password, $user->password)) {
 
-                //Retorno la vista de login
-                return response()->json([
-                    "status" => 0,
-                    "msg" => "Exito logeado",
-                    "acess_token" => $token
-                ]);
+            // Autenticar al usuario en la sesión de Laravel
+            Auth::login($user);
+
+            // Generar el token de acceso
+            $token = $user->createToken("auth_token")->plainTextToken;
+
+            if ($user->es_administrador) {
+                return view('private.administrator-page')->with('access_token', $token);
             } else {
-                return response()->json([
-                    "status" => 0,
-                ], 404);
+                // Redirigir a una página para usuarios normales
+                return view('home')->with('access_token', $token);
             }
-        }else{
+        } else {
+            // Respuesta en caso de credenciales incorrectas
             return response()->json([
-                "status" => 0,
-                "msg" => "Usuario no registrado",
-            ], 404);
+                'status' => 0,
+                'msg' => 'Credenciales incorrectas',
+            ], 401);
         }
-
-
     }
+
+
+
     public function perfil_usuario(Request $request)
     {
-        
+
         return response()->json([
             "status" => 0,
             "msg" => "Acerca del perfil de usuario",
-            "data"=> auth()->user()
+            "data" => auth()->user()
         ], 404);
-        
     }
     public function logout(Request $request)
     {
-        auth()->user()->tokens()->delete();
-        return response()->json([
-            "status" => 0,
-            "msg" => "Cierre de session"
-        ], 404);
+
+
+        // Invalidar la sesión actual
+        $request->session()->invalidate();
+
+        // Regenerar el token CSRF
+        $request->session()->regenerateToken();
+
+        // Redirigir al usuario a la página de inicio con un mensaje de estado
+        return redirect()->route('home')->with('status', 'Sesión cerrada');
     }
+
+
 
     /**
      * Update the specified resource in storage.
@@ -156,5 +167,4 @@ class UserController extends Controller
 
         return $user;
     }
-
 }

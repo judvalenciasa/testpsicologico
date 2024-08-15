@@ -19,14 +19,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::post("registrar", [UserController::class, 'registrar']);
-Route::post("login", [UserController::class, 'login']);
+Route::post("registrar", [UserController::class, 'registrar'])->name('registrar');
+Route::post("login", [UserController::class, 'login'])->name('login');
 
-Route::middleware('auth:sanctum')->group(function (){
-    Route::get("perfil_usuario", [UserController::class,"perfil_usuario"]);
-    Route::get("logout", [UserController::class,"logout"]);
+Route::middleware('auth:sanctum')->group(function () {
+    Route::get("perfil_usuario", [UserController::class, "perfil_usuario"]);
+    Route::get("logout", [UserController::class, "logout"]);
 
     Route::get('generar_pin/{cantidad?}', [PinesController::class, 'generar_pines'])->name('pines.aletarios');
+    //Route::get('ver_informes', [InformesController::class, 'ver_informes'])->name('ver.informes');
     Route::post('registrar_datos', [UserController::class, 'update'])->name('registar.datos');
     Route::post('registrar_encuesta', [RespuestasController::class, 'guardar_respuestas'])->name('guardar.respuestas');
 });
