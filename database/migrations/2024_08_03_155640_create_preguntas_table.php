@@ -14,10 +14,12 @@ return new class extends Migration
         Schema::create('preguntas', function (Blueprint $table) {
             $table->id('id_pregunta');
             $table->unsignedBigInteger('id_prueba')->nullable(true);
+            $table->unsignedBigInteger('id_contexto')->nullable(true);
             $table->string('texto', 300);
             $table->timestamps();
             
             $table->foreign('id_prueba')->references('id_prueba')->on('pruebas');
+            $table->foreign('id_contexto')->references('id_contexto')->on('contextos');
         });
     }
 

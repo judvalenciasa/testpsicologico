@@ -11,12 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('administradores', function (Blueprint $table) {
-            $table->id('id_admin');
-            $table->string('nombre', 80);
-            $table->string('correo', 120);
-            $table->string('contrasena', 120);
+        Schema::create('subhabilidads', function (Blueprint $table) {
+            
+            $table->id('id_subhabilidad');
+            $table->unsignedBigInteger('id_habilidad');
+            $table->string('nombre');
             $table->timestamps();
+            $table->foreign('id_habilidad')->references('id_habilidad')->on('habilidades');
         });
     }
 
@@ -25,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('administradores');
+        Schema::dropIfExists('subhabilidads');
     }
 };
