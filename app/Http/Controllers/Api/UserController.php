@@ -133,7 +133,6 @@ class UserController extends Controller
             'hora_sueno' => 'required|int',
             'grasas' => 'required|int',
             'pensamiento_critico' => 'required|int',
-
         ]);
 
         $user->update([
