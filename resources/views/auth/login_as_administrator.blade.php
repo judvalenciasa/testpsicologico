@@ -19,14 +19,16 @@
             <div class="underline"></div>
             <p>Si eres usuario administrador</p>
         </div>
-        <div class="form_ctn">
+        <form class="form_ctn" action="{{ route('login') }}" method="POST">
+            @csrf <!-- Esto es necesario para proteger tu formulario contra ataques CSRF -->
+
             <div class="input-group">
-                <input required="" type="text" name="email" id="email" autocomplete="off" class="input">
+                <input required type="text" name="email" id="email" autocomplete="off" class="input">
                 <label class="user-label">Correo electrónico</label>
                 <span class="error-message" id="email-error"></span>
             </div>
             <div class="input-group">
-                <input required="" type="password" name="password" id="password" autocomplete="off" class="input">
+                <input required type="password" name="password" id="password" autocomplete="off" class="input">
                 <label class="user-label">Contraseña</label>
                 <span class="error-message" id="password-error"></span>
             </div>
@@ -34,14 +36,15 @@
                 <input type="checkbox" id="show-password">
                 <span class="span_mostrar_pin" for="show-password">Mostrar contraseña</span>
             </div>
-            <button id="login-btn">
+            <button type="submit" id="login-btn">
                 <span>Iniciar Sesión</span>
             </button>
-        </div>
+        </form>
+
     </section>
 
     <script>
-        document.getElementById('show-password').addEventListener('change', function () {
+        document.getElementById('show-password').addEventListener('change', function() {
             var passwordInput = document.getElementById('password');
             if (this.checked) {
                 passwordInput.type = 'text';
@@ -50,17 +53,13 @@
             }
         });
 
-        document.getElementById('login-btn').addEventListener('click', function (event) {
-            event.preventDefault(); // Evitar que el formulario se envíe
+            document.getElementById('login-btn').addEventListener('click', function(event) {
+            // event.preventDefault(); // Comenta o elimina esta línea para permitir que el formulario se envíe
 
-            // Obtener los campos del formulario
+            // Validación de campos (puedes mantener esta lógica para mostrar errores)
             var email = document.getElementById('email');
             var password = document.getElementById('password');
-
-            // Limpiar mensajes de error previos
             clearErrors();
-
-            // Validar cada campo
             var isValid = true;
 
             if (!validateEmail(email.value)) {
@@ -74,11 +73,9 @@
             }
 
             if (isValid) {
-                // Si todo es válido, envía el formulario
-                alert('Inicio de sesión exitoso');
-                // Aquí puedes enviar el formulario
             }
         });
+
 
         function showError(input, message) {
             input.style.borderColor = 'red';
@@ -89,12 +86,12 @@
 
         function clearErrors() {
             var inputs = document.querySelectorAll('.input');
-            inputs.forEach(function (input) {
+            inputs.forEach(function(input) {
                 input.style.borderColor = ''; // Restablecer el color del borde
             });
 
             var errorMessages = document.querySelectorAll('.error-message');
-            errorMessages.forEach(function (error) {
+            errorMessages.forEach(function(error) {
                 error.textContent = ''; // Limpiar mensajes de error
             });
         }

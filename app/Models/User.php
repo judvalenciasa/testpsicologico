@@ -38,8 +38,4 @@ class User extends Authenticatable
         'grasas',
         'pensamiento_critico'
     ];
-
-
-
-
 }

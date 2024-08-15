@@ -89,10 +89,20 @@
             <div class="menu_ctn">
                 <ul>
                     <li><a href="{{ url('/') }}">Inicio</a></li>
-                    <li><a href="{{ url('/login') }}">Ingresar como administrador</a></li>
+                    <li><a href="{{ url('/ingreso') }}">Ingresar como administrador</a></li>
                     <li><a href="{{ url('/register') }}">Presentar prueba</a></li>
                     <li><a href="{{ url('/caracterizacion') }}">Caracterización</a></li>
-                    <li><a href=""></a></li>
+                    @if (Auth::check())
+                    <li><button onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</button></li>
+                    <form id="logout-form" action="{{ url('/api/logout') }}" method="GET" style="display: none;">
+                        @csrf
+                    </form>
+
+                    @else
+                    <li><a href="#">Usuario no autenticado</a></li>
+                    @endif
+
+
                 </ul>
             </div>
             <div class="logo_Marista_ctn">
