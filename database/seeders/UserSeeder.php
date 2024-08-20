@@ -7,6 +7,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
+
 class UserSeeder extends Seeder
 {
     /**
@@ -21,19 +22,16 @@ class UserSeeder extends Seeder
                 'name' => 'Yorman Valencia',
                 'email' => 'yormanvale@outlook.com',
                 'edad' => 20,
-                'genero' => 'Masculino',
                 'estrato' => 3,
-                'escolaridad_madre' => 'Tecnico',
-                'escolaridad_padre' => 'Tecnico',
                 'horas_lectura' => 2,
                 'horas_redes_sociales' => 3,
                 'horas_entretenimiento' => 4,
-                'promedio_segundo_idioma' => 4,
-                'promedio_deporte' => 4,
-                'promedio_arte' => 4,
                 'hora_sueno' => 8,
-                'grasas' => false,
-                'pensamiento_critico' => 4,
+                'genero' => 1,
+                'promedio_deporte' => 1,
+                'promedio_arte' => 0,
+                'grasas' => 1,
+                'alimentos_saludables' => 1,
                 'es_administrador' => 1
             ],
         ]);

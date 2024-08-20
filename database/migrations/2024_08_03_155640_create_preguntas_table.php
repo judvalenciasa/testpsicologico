@@ -15,11 +15,16 @@ return new class extends Migration
             $table->id('id_pregunta');
             $table->unsignedBigInteger('id_prueba')->nullable(true);
             $table->unsignedBigInteger('id_contexto')->nullable(true);
-            $table->string('texto', 300);
+            $table->unsignedBigInteger('id_subhabilidad')->nullable(true);
+            $table->unsignedBigInteger('id_categoria')->nullable(true);
+            $table->string('texto', 500);
+            $table->string('tipo_pregunta', 10)->nullable();
             $table->timestamps();
             
             $table->foreign('id_prueba')->references('id_prueba')->on('pruebas');
             $table->foreign('id_contexto')->references('id_contexto')->on('contextos');
+            $table->foreign('id_subhabilidad')->references('id_subhabilidad')->on('subhabilidads');
+            $table->foreign('id_categoria')->references('id_categoria')->on('categorias');
         });
     }
 

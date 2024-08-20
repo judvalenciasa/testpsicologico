@@ -11,14 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('opciones', function (Blueprint $table) {
-            $table->id('id_opcion');
-            $table->unsignedBigInteger('id_pregunta');
-            $table->string('texto', 5000);
-            $table->integer('valor_opcion')->nullable();
+        Schema::create('categorias', function (Blueprint $table) {
+            $table->id('id_categoria');
+            $table->string('nombre');
             $table->timestamps();
-            
-            $table->foreign('id_pregunta')->references('id_pregunta')->on('preguntas');
         });
     }
 
@@ -27,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('opciones');
+        Schema::dropIfExists('categorias');
     }
 };

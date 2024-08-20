@@ -126,7 +126,7 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, User $user)
+    public function llenar_encuesta_caracterizacion(Request $request, User $user)
     {
         $user = User::where("email", "=", auth()->user()->email)->first();
 

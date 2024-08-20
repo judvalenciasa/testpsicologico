@@ -28,8 +28,8 @@ Route::middleware('auth:sanctum')->group(function () {
 
     Route::get('generar_pin/{cantidad?}', [PinesController::class, 'generar_pines'])->name('pines.aletarios');
     //Route::get('ver_informes', [InformesController::class, 'ver_informes'])->name('ver.informes');
-    Route::post('registrar_datos', [UserController::class, 'update'])->name('registar.datos');
-    Route::post('registrar_encuesta', [RespuestasController::class, 'guardar_respuestas'])->name('guardar.respuestas');
+    Route::post('registrar_datos', [UserController::class, 'llenar_encuesta_caracterizacion'])->name('registar.encuesta.caraterizacion');
+    Route::post('registrar_encuesta', [RespuestasController::class, 'registrar_respuesta_encuesta'])->name('guardar.respuestas');
 });
 
 

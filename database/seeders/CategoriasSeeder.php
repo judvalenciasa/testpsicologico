@@ -6,22 +6,22 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class RespuestasSeeder extends Seeder
+class CategoriasSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
-    {/*
-        DB::table('respuestas')->insert([
-        
+    {
+        DB::table('Categorias')->insert([
+        	[
+				'id_categoria' => 1,	
+                'nombre' => 'caracterización'
+            ],
             [
-				'id_usuario' => 1,
-	        	'id_pregunta' => 1,
-                'respuesta' => '',
-                'calificacion' => 5,
+				'id_categoria' => 2,	
+                'nombre' => 'test psicologico'
             ],
         ]);
-        */
     }
 }
