@@ -217,7 +217,7 @@ input:valid ~ label {
 /** Button style */
 
 /* From Uiverse.io by abrahamcalsin */
-button {
+.form_ctn button {
     position: relative;
     display: flex;
     width: 10vw;
@@ -232,7 +232,7 @@ button {
     border: none;
 }
 
-button:after {
+.form_ctn button:after {
     content: " ";
     width: 0%;
     height: 100%;
@@ -242,13 +242,13 @@ button:after {
     right: 0;
 }
 
-button:hover::after {
+.form_ctn button:hover::after {
     right: auto;
     left: 0;
     width: 100%;
 }
 
-button span {
+.form_ctn button span {
     text-align: center;
     text-decoration: none;
     width: 100%;
@@ -261,7 +261,7 @@ button span {
     transition: all 0.3s ease-in-out;
 }
 
-button:hover span {
+.form_ctn button:hover span {
     color: #183153;
     animation: scaleUp 0.3s ease-in-out;
 }

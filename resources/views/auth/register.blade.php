@@ -4,6 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
     <title>Cognitive Sparks | Registro</title>
 
     <!-- Styles -->
@@ -21,10 +23,10 @@
         </div>
 
         <form class="form_ctn" action="{{ route('registrar') }}" method="POST">
-            @csrf <!-- Esto es necesario para proteger tu formulario contra ataques CSRF -->
+            @csrf
 
             <div class="input-group">
-                <input required type="text" name="name" id="nombre" autocomplete="off" class="input">
+                <input required type="text" name="nombre" id="nombre" autocomplete="off" class="input">
                 <label class="user-label">Nombre Completo</label>
                 <span class="error-message" id="nombre-error"></span>
             </div>
@@ -34,13 +36,19 @@
                 <span class="error-message" id="email-error"></span>
             </div>
             <div class="input-group">
-                <input required type="password" name="password" id="pin" autocomplete="off" class="input">
+                <input required type="password" name="password" id="password" autocomplete="off" class="input">
+                <label class="user-label">Contraseña</label>
+                <span class="error-message" id="password-error"></span>
+            </div>
+
+            <div class="input-group">
+                <input required type="text" name="pin" id="pin" autocomplete="off" class="input">
                 <label class="user-label">Pin</label>
                 <span class="error-message" id="pin-error"></span>
             </div>
             <div class="input-group">
                 <input type="checkbox" id="show-pin">
-                <span class="span_mostrar_pin" for="show-pin">Mostrar Pin</span>
+                <span class="span_mostrar_pin" for="show-pin">Mostrar Contraseña</span>
             </div>
             <button type="submit" id="submit-btn">
                 <span>Registrarse</span>
@@ -50,22 +58,15 @@
     </section>
 
     <script>
-        document.getElementById('show-pin').addEventListener('change', function() {
-            var passwordInput = document.getElementById('pin');
-            if (this.checked) {
-                passwordInput.type = 'text';
-            } else {
-                passwordInput.type = 'password';
-            }
-        });
-
         document.getElementById('submit-btn').addEventListener('click', function(event) {
-            event.preventDefault(); // Evitar que el formulario se envíe
+            event.preventDefault(); // Evitar que el formulario se envíe de manera tradicional
 
-            // Obtener los campos del formulario
-            var nombre = document.getElementById('nombre');
-            var email = document.getElementById('email');
-            var pin = document.getElementById('pin');
+            // Obtener los valores de los campos del formulario
+            var nombre = document.getElementById('nombre').value.trim();
+            var email = document.getElementById('email').value.trim();
+            var pin = document.getElementById('pin').value.trim();
+            var password = document.getElementById('password').value.trim();
+
 
             // Limpiar mensajes de error previos
             clearErrors();
@@ -73,27 +74,76 @@
             // Validar cada campo
             var isValid = true;
 
-            if (nombre.value.trim() === '') {
-                showError(nombre, 'El nombre completo es obligatorio.');
+            if (nombre === '') {
+                showError('nombre', 'El nombre completo es obligatorio.');
                 isValid = false;
             }
 
-            if (!validateEmail(email.value)) {
-                showError(email, 'El correo electrónico no es válido.');
+            if (!validateEmail(email)) {
+                showError('email', 'El correo electrónico no es válido.');
                 isValid = false;
             }
 
-            if (pin.value.length < 4) {
-                showError(pin, 'El pin debe tener al menos 4 caracteres.');
+            if (pin.length < 4) {
+                showError('pin', 'El pin debe tener al menos 4 caracteres.');
                 isValid = false;
             }
+
+            if (password.length < 6) { // Validar longitud de la contraseña
+                showError('password', 'La contraseña debe tener al menos 6 caracteres.');
+                isValid = false;
+            }
+
+            document.getElementById('show-pin').addEventListener('change', function() {
+                var passwordInput = document.getElementById('password');
+                if (this.checked) {
+                    passwordInput.type = 'text';
+                } else {
+                    passwordInput.type = 'password';
+                }
+            });
+
 
             if (isValid) {
-                // Si todo es válido, envía el formulario
-                alert('Formulario enviado correctamente');
-                // Aquí puedes enviar el formulario
+                // Hacer la solicitud a la API
+                fetch('/api/registrar', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                        },
+                        body: JSON.stringify({
+                            name: nombre,
+                            email: email,
+                            pin: pin,
+                            password: password
+
+                        })
+                    })
+                    .then(response => {
+                        if (!response.ok) {
+                            return response.text().then(text => {
+                                throw new Error(text);
+                            });
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        console.log('response data:', data);
+                        if (data.status === 1) {
+                            alert('Registro exitoso');
+                            window.location.href = '/';
+                        } else {
+                            alert(data.msg || 'Error en el registro');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        alert('Ocurrió un error en el servidor. Verifique la consola para más detalles.');
+                    });
             }
         });
+
 
         function showError(input, message) {
             input.style.borderColor = 'red';

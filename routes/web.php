@@ -21,6 +21,11 @@ Route::get('/ingreso', function () {
     return view('auth.login_as_administrator');
 });
 
+Route::get('/caracterizacion', function () {
+    return view('private.caracterizacion');
+})->name('caracterizacion')->middleware('auth:sanctum');
+
+
 Route::get('/register', function () {
     return view('auth.register');
 });
@@ -29,3 +34,4 @@ Route::get('/register', function () {
 Route::get('/administrator', function () {
     return view('private.administrator-page');
 })->name('administrator')->middleware('auth:sanctum');
+

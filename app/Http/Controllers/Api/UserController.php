@@ -26,39 +26,48 @@ class UserController extends Controller
     }
     public function registrar(Request $request)
     {
+        try {
+            $id_pin = $this->pin_valido($request);
 
-        //vamos a verificar el pin si existe
+            if ($id_pin != null) {
+                $request->merge(['id_pin' => $id_pin]);
 
-        $id_pin = $this->pin_valido($request);
+                $request->validate([
+                    'name' => 'required',
+                    'email' => 'required',
+                    'id_pin' => 'required',
+                    'password' => 'required|string|min:6',
 
-        if ($id_pin != Null) {
+                ]);
 
-            $request->merge(['id_pin' => $id_pin]);
+                $user = new User();
+                $user->name = $request->name;
+                $user->email = $request->email;
+                $user->id_pin = $request->id_pin;
+                $user->password = Hash::make($request->password); // Hashear la contraseña
+                $user->es_administrador = 0;
 
-            $request->validate([
-                'name' => 'required',
-                'email' => 'required',
-                'password' => 'required',
-                'id_pin' => 'required'
-            ]);
+                $user->save();
 
-            $user = new User();
-            $user->name = $request->name;
-            $user->email = $request->email;
-            $user->password = Hash::make($request->password);
-            $user->id_pin = $request->id_pin;
-            $user->es_administrador = 0;
-
-            $user->save();
-
+                return response()->json([
+                    "status" => 1,
+                    "msg" => "Registro exitoso"
+                ]);
+            } else {
+                return response()->json([
+                    "status" => 0,
+                    "msg" => "Pin inválido"
+                ], 400);
+            }
+        } catch (\Exception $e) {
             return response()->json([
-                "status" => 1,
-                "msg" => "Registro exitoso"
-            ]);
-        } else {
-            return "pin invalido";
+                "status" => 0,
+                "msg" => "Ocurrió un error en el servidor.",
+                "error" => $e->getMessage()
+            ], 500);
         }
     }
+
 
 
     public function login(Request $request)
@@ -81,22 +90,56 @@ class UserController extends Controller
             // Generar el token de acceso
             $token = $user->createToken("auth_token")->plainTextToken;
 
+            // Verificar si el usuario es administrador
             if ($user->es_administrador) {
-                return $token;
-                //return view('private.administrator-page')->with('access_token', $token);
+                return response()->json([
+                    'status' => 1,
+                    'msg' => 'Login exitoso',
+                    'access_token' => $token,
+                    'is_admin' => true
+                ])->header('Location', route('administrator'));
             } else {
-                return $token;
-                // Redirigir a una página para usuarios normales
-                //return view('home')->with('access_token', $token);
+                // Verificar si los campos de caracterización están llenos
+                if (
+                    is_null($user->edad) ||
+                    is_null($user->genero) ||
+                    is_null($user->estrato) ||
+                    is_null($user->escolaridad_madre) ||
+                    is_null($user->escolaridad_padre) ||
+                    is_null($user->horas_lectura) ||
+                    is_null($user->horas_redes_sociales) ||
+                    is_null($user->horas_entretenimiento) ||
+                    is_null($user->promedio_segundo_idioma) ||
+                    is_null($user->promedio_deporte) ||
+                    is_null($user->promedio_arte) ||
+                    is_null($user->hora_sueno) ||
+                    is_null($user->grasas) ||
+                    is_null($user->pensamiento_critico)
+                ) {
+                    return response()->json([
+                        'status' => 1,
+                        'msg' => 'Debe completar la encuesta de caracterización.',
+                        'access_token' => $token,
+                        'is_admin' => false
+                    ])->header('Location', route('caracterizacion'));
+                } else {
+                    // Si todos los campos están completos, redirigir a la página principal
+                    return response()->json([
+                        'status' => 1,
+                        'msg' => 'Login exitoso',
+                        'access_token' => $token,
+                        'is_admin' => false
+                    ])->header('Location', route('home'));
+                }
             }
         } else {
-            // Respuesta en caso de credenciales incorrectas
             return response()->json([
                 'status' => 0,
                 'msg' => 'Credenciales incorrectas',
             ], 401);
         }
     }
+
 
 
 
