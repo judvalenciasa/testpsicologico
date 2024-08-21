@@ -20,7 +20,11 @@ class CategoriasSeeder extends Seeder
             ],
             [
 				'id_categoria' => 2,	
-                'nombre' => 'test psicologico'
+                'nombre' => 'test psicológico'
+            ],
+            [
+				'id_categoria' => 3,	
+                'nombre' => 'metacognicion'
             ],
         ]);
     }

@@ -161,7 +161,7 @@ class PreguntasSeeder extends Seeder
                 'tipo_pregunta' => 'abierta'
             ],
 
-            //pregunta 5 - item 5
+            //Item 5
             [
                 'id_pregunta' => 16,
                 'id_prueba' => 1,
@@ -169,6 +169,16 @@ class PreguntasSeeder extends Seeder
                 'id_subhabilidad' => 1,
                 'id_categoria' => 2,
 				'texto' => '¿En qué crees que falló Mariana para que la profesora tenga que darle algunas recomendaciones y bajarle un punto en la nota?',	
+                'tipo_pregunta' => 'cerrada'
+            ],
+             //Item 1_metacognicion
+             [
+                'id_pregunta' => 17,
+                'id_prueba' => 1,
+                'id_contexto' => 1,
+                'id_subhabilidad' => null,
+                'id_categoria' => 3,
+				'texto' => 'Soy consciente de la habilidad del pensamiento crítico que empleé para responder a los anteriores dos (2) ítems.',	
                 'tipo_pregunta' => 'cerrada'
             ],
            

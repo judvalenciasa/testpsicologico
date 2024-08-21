@@ -26,10 +26,10 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get("perfil_usuario", [UserController::class, "perfil_usuario"]);
     Route::get("logout", [UserController::class, "logout"]);
 
-    Route::get('generar_pin/{cantidad?}', [PinesController::class, 'generar_pines'])->name('pines.aletarios');
+    Route::post('generar_pin/{cantidad?}', [PinesController::class, 'generar_pines'])->name('pines.aletarios');
     //Route::get('ver_informes', [InformesController::class, 'ver_informes'])->name('ver.informes');
     Route::post('registrar_datos', [UserController::class, 'llenar_encuesta_caracterizacion'])->name('registar.encuesta.caraterizacion');
-    Route::post('registrar_encuesta', [RespuestasController::class, 'registrar_respuesta_encuesta'])->name('guardar.respuestas');
+    Route::post('registrar_encuesta', [RespuestasController::class, 'registrar_respuesta_test'])->name('guardar.respuestas');
 });
 
 

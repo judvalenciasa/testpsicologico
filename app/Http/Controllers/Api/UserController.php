@@ -82,10 +82,12 @@ class UserController extends Controller
             $token = $user->createToken("auth_token")->plainTextToken;
 
             if ($user->es_administrador) {
-                return view('private.administrator-page')->with('access_token', $token);
+                return $token;
+                //return view('private.administrator-page')->with('access_token', $token);
             } else {
+                return $token;
                 // Redirigir a una página para usuarios normales
-                return view('home')->with('access_token', $token);
+                //return view('home')->with('access_token', $token);
             }
         } else {
             // Respuesta en caso de credenciales incorrectas

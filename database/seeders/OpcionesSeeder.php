@@ -128,8 +128,39 @@ class OpcionesSeeder extends Seeder
                 'valor_opcion'=> 0
             ],
             
-            //Item 6
+            //Item 1_Metacognición
+            [
+                'id_opcion' => 18,
+                'id_pregunta' => 17,
+                'texto'=> 'Completamente en desacuerdo',
+                'valor_opcion'=> 1
+            ],
+            [
+                'id_opcion' => 19,
+                'id_pregunta' => 17,
+                'texto'=> 'En desacuerdo',
+                'valor_opcion'=> 2
+            ],
+            [
+                'id_opcion' => 20,
+                'id_pregunta' => 17,
+                'texto'=> 'Ni en desacuerdo Ni de acuerdo',
+                'valor_opcion'=> 3
+            ],
+            [
+                'id_opcion' => 21,
+                'id_pregunta' => 17,
+                'texto'=> 'De acuerdo',
+                'valor_opcion'=> 4
+            ],
+            [
+                'id_opcion' => 22,
+                'id_pregunta' => 17,
+                'texto'=> 'Completamente de acuerdo',
+                'valor_opcion'=> 5
+            ],
            
+
 
         ]);
     
