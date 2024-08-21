@@ -2,6 +2,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    background: linear-gradient(to bottom, #141e30, #243b55);
     height: 100vh;
 }
 
@@ -16,6 +17,10 @@
     width: 45%;
 }
 
+.section h2{
+    color: white;
+}
+
 .card {
     border: 1px solid #ccc;
     padding: 20px;
@@ -23,6 +28,7 @@
 }
 
 .input-group {
+    color: white;
     margin-bottom: 15px;
 }
 
@@ -44,13 +50,14 @@
     padding: 10px 20px;
     font-size: 16px;
     color: #fff;
-    background-color: #ccc;
+    background-color: green;
     border: none;
     border-radius: 4px;
+    transition: all 0.3s;
     cursor: pointer;
     text-transform: uppercase;
 }
 
 .btn:hover {
-    background-color: #bbb;
+    background-color: rgb(4, 217, 4);
 }

@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Cognitive Sparks | Inicio de sesión</title>
 
     <!-- Styles -->
@@ -19,9 +20,8 @@
             <div class="underline"></div>
             <p>Si eres usuario administrador</p>
         </div>
-        <form class="form_ctn" action="{{ route('login') }}" method="POST">
-            @csrf <!-- Esto es necesario para proteger tu formulario contra ataques CSRF -->
-
+        <form class="form_ctn">
+            @csrf
             <div class="input-group">
                 <input required type="text" name="email" id="email" autocomplete="off" class="input">
                 <label class="user-label">Correo electrónico</label>
@@ -36,50 +36,71 @@
                 <input type="checkbox" id="show-password">
                 <span class="span_mostrar_pin" for="show-password">Mostrar contraseña</span>
             </div>
-            <button type="submit" id="login-btn">
+            <button class="btn_login" id="login-btn">
                 <span>Iniciar Sesión</span>
             </button>
         </form>
-
     </section>
 
     <script>
-        document.getElementById('show-password').addEventListener('change', function() {
-            var passwordInput = document.getElementById('password');
-            if (this.checked) {
-                passwordInput.type = 'text';
-            } else {
-                passwordInput.type = 'password';
-            }
-        });
+        document.getElementById('login-btn').addEventListener('click', function(event) {
+            event.preventDefault();
 
-            document.getElementById('login-btn').addEventListener('click', function(event) {
-            // event.preventDefault(); // Comenta o elimina esta línea para permitir que el formulario se envíe
-
-            // Validación de campos (puedes mantener esta lógica para mostrar errores)
-            var email = document.getElementById('email');
-            var password = document.getElementById('password');
+            var email = document.getElementById('email').value.trim();
+            var password = document.getElementById('password').value.trim();
             clearErrors();
             var isValid = true;
 
-            if (!validateEmail(email.value)) {
-                showError(email, 'El correo electrónico no es válido.');
+            if (!validateEmail(email)) {
+                showError('email', 'El correo electrónico no es válido.');
                 isValid = false;
             }
 
-            if (password.value.trim() === '') {
-                showError(password, 'La contraseña es obligatoria.');
+            if (password === '') {
+                showError('password', 'La contraseña es obligatoria.');
                 isValid = false;
             }
 
             if (isValid) {
+                fetch('/api/login', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                        },
+                        body: JSON.stringify({
+                            email: email,
+                            password: password
+                        })
+                    })
+                    .then(response => {
+                        return response.json().then(data => ({
+                            data: data,
+                            status: response.status,
+                            headers: response.headers
+                        }));
+                    })
+                    .then(result => {
+                        const {
+                            data,
+                            headers
+                        } = result;
+                        if (data.status === 1) {
+                            // Redirigir según el header 'Location' devuelto por el servidor
+                            window.location.href = headers.get('Location');
+                        } else {
+                            alert(data.msg);
+                        }
+                    })
+                    .catch(error => console.error('Error:', error));
             }
         });
 
 
-        function showError(input, message) {
+        function showError(inputId, message) {
+            var input = document.getElementById(inputId);
             input.style.borderColor = 'red';
-            var errorElement = document.getElementById(input.id + '-error');
+            var errorElement = document.getElementById(inputId + '-error');
             errorElement.textContent = message;
             errorElement.style.color = 'red';
         }
