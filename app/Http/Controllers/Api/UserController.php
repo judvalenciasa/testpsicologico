@@ -104,17 +104,13 @@ class UserController extends Controller
                     is_null($user->edad) ||
                     is_null($user->genero) ||
                     is_null($user->estrato) ||
-                    is_null($user->escolaridad_madre) ||
-                    is_null($user->escolaridad_padre) ||
                     is_null($user->horas_lectura) ||
                     is_null($user->horas_redes_sociales) ||
                     is_null($user->horas_entretenimiento) ||
-                    is_null($user->promedio_segundo_idioma) ||
                     is_null($user->promedio_deporte) ||
                     is_null($user->promedio_arte) ||
                     is_null($user->hora_sueno) ||
-                    is_null($user->grasas) ||
-                    is_null($user->pensamiento_critico)
+                    is_null($user->grasas) 
                 ) {
                     return response()->json([
                         'status' => 1,
@@ -129,7 +125,7 @@ class UserController extends Controller
                         'msg' => 'Login exitoso',
                         'access_token' => $token,
                         'is_admin' => false
-                    ])->header('Location', route('home'));
+                    ])->header('Location', route('/'));
                 }
             }
         } else {
@@ -171,44 +167,45 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function llenar_encuesta_caracterizacion(Request $request, User $user)
+    public function llenar_encuesta_caracterizacion(Request $request)
     {
         $user = User::where("email", "=", auth()->user()->email)->first();
 
         $request->validate([
-            'edad' => 'required|int',
+            'edad' => 'required|integer|min:15|max:18',
             'genero' => 'required|string|max:9',
-            'estrato' => 'required|int',
-            'escolaridad_madre' => 'required|string',
-            'escolaridad_padre' => 'required|string',
-            'horas_lectura' => 'required|int',
-            'horas_redes_sociales' => 'required|int',
-            'horas_entretenimiento' => 'required|int',
-            'promedio_segundo_idioma' => 'required|int',
-            'promedio_deporte' => 'required|int',
-            'promedio_arte' => 'required|int',
-            'hora_sueno' => 'required|int',
-            'grasas' => 'required|int',
-            'pensamiento_critico' => 'required|int',
+            'estrato' => 'required|integer|min:1|max:6',
+            //'escolaridad_madre' => 'required|string',
+            //'escolaridad_padre' => 'required|string',
+            'horas_lectura' => 'required|string',
+            'horas_redes_sociales' => 'required|string',
+            'horas_entretenimiento' => 'required|string',
+            'promedio_deporte' => 'required|string',
+            'promedio_arte' => 'required|string',
+            'hora_sueno' => 'required|string',
+            'grasas' => 'required|string',
+            'alimentos_saludables' => 'required|string',
+            //'pensamiento_critico' => 'required|int',
         ]);
 
         $user->update([
-            'edad' => $user->edad,
-            'genero' => $user->genero,
-            'estrato' => $user->estrato,
-            'escolaridad_madre' => $user->escolaridad_madre,
-            'escolaridad_padre' => $user->escolaridad_padre,
-            'horas_lectura' => $user->horas_lectura,
-            'horas_redes_sociales' => $user->horas_redes_sociales,
-            'horas_entretenimiento' => $user->horas_entretenimiento,
-            'promedio_segundo_idioma' => $user->promedio_segundo_idioma,
-            'promedio_deporte' => $user->promedio_deporte,
-            'promedio_arte' => $user->promedio_arte,
-            'hora_sueno' => $user->hora_sueno,
-            'grasas' => $user->grasas,
-            'pensamiento_critico' => $user->pensamiento_critico,
+            'edad' => $request->edad,
+            'genero' => $request->genero,
+            'estrato' => $request->estrato,
+            //'escolaridad_madre' => $request->escolaridad_madre,
+            //'escolaridad_padre' => $request->escolaridad_padre,
+            'horas_lectura' => $request->horas_lectura,
+            'horas_redes_sociales' => $request->horas_redes_sociales,
+            'horas_entretenimiento' => $request->horas_entretenimiento,
+            //'promedio_segundo_idioma' => $request->promedio_segundo_idioma,
+            'promedio_deporte' => $request->promedio_deporte,
+            'promedio_arte' => $request->promedio_arte,
+            'hora_sueno' => $request->hora_sueno,
+            'grasas' => $request->grasas,
+            'alimentos_saludables' => $request->alimentos_saludables,
+            //'pensamiento_critico' => $request->pensamiento_critico,
         ]);
 
-        return $user;
+        return redirect()->back()->with('success', 'Encuesta guardada correctamente');
     }
 }

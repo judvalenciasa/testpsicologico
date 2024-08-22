@@ -21,11 +21,11 @@ return new class extends Migration
             $table->rememberToken();
             $table->integer('edad')->nullable();
             $table->integer('estrato')->nullable();
-            $table->integer('horas_lectura')->nullable();
-            $table->integer('horas_redes_sociales')->nullable();
-            $table->integer('horas_entretenimiento')->nullable();
-            $table->integer('hora_sueno')->nullable();
-            $table->boolean('genero')->nullable();
+            $table->string('horas_lectura')->nullable(); // Cambiado de integer a string
+            $table->string('horas_redes_sociales')->nullable(); // Cambiado de integer a string
+            $table->string('horas_entretenimiento')->nullable(); // Cambiado de integer a string
+            $table->string('hora_sueno')->nullable(); // Cambiado de integer a string
+            $table->string('genero')->nullable(); // Cambiado de boolean a string
             $table->boolean('promedio_deporte')->nullable();
             $table->boolean('promedio_arte')->nullable();
             $table->boolean('grasas')->nullable();
@@ -34,7 +34,6 @@ return new class extends Migration
 
             $table->foreign('id_pin')->references('id_pin')->on('pines');
             $table->timestamps();
-
         });
     }
 

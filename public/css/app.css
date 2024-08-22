@@ -151,3 +151,39 @@ header {
   .btn_logout:active {
     transform: translate(2px ,2px);
   }
+
+  /** FOOTER **/
+
+  .footer_section{
+    display: flex;
+    padding: 3vw 2vw;
+  }
+
+  .first_column {
+    display: flex;
+    flex-direction: column;
+    gap: 1vw;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .first_column .logo_ctn svg {
+    width: 15vw;
+  }
+
+  .first_column .social_icon_ctn {
+    display: flex;
+    gap: 3vw;
+  }
+
+  .first_column .social_icon_ctn a {
+    width: 3vw;
+  }
+
+  .first_column .social_icon_ctn a svg {
+    transition: all 0.3s;
+  }
+
+  .first_column .social_icon_ctn a:hover svg {
+    fill: rgb(183, 183, 183);
+  }

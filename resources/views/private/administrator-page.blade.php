@@ -18,7 +18,7 @@
             <div class="section">
                 <h2>Generar Pin</h2>
                 <div class="card">
-                    <form action="{{ route('pines.aletarios') }}" method="GET">
+                    <form action="{{ route('pines.aletarios') }}" method="POST">
                         @csrf
                         <div class="input-group">
                             <label for="cantidad">Cantidad de pines a generar</label>
