@@ -23,7 +23,6 @@ class PreguntasSeeder extends Seeder
 				'texto' => 'Edad',
                 'tipo_pregunta' => 'cerrada'
             ],
-            
             [
                 'id_pregunta' => 2,
                 'id_prueba' => 1,

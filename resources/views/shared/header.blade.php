@@ -91,7 +91,6 @@
                     <li><a href="{{ url('/') }}">Inicio</a></li>
                     <li><a href="{{ url('/ingreso') }}">Ingresar </a></li>
                     <li><a href="{{ url('/register') }}">Registrarse</a></li>
-                    <li><a href="{{ url('/caracterizacion') }}">Caracterización</a></li>
                     @if (Auth::check())
                     <li><button class="btn_logout" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                             <div class="sign"><svg viewBox="0 0 512 512">

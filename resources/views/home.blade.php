@@ -104,7 +104,7 @@
                     </div>
                     <div class="input-group">
                         <input required="" type="text" name="message" id="message" autocomplete="off" class="input">
-                        <label class="user-label" >Mensaje</label>
+                        <label class="user-label">Mensaje</label>
                         <span class="error-message" id="message-error"></span>
                     </div>
                     <button type="submit" id="send-btn">
@@ -115,6 +115,9 @@
             </div>
         </div>
     </section>
+
+    @include('shared.footer')
+
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
@@ -132,8 +135,6 @@
         });
     </script>
     <script>
-        
-
         document.getElementById('send-btn').addEventListener('click', function(event) {
 
 
@@ -158,7 +159,7 @@
             if (nombre.value.trim() === '') {
                 showError(nombre, 'este campo es obligatorio.');
                 isValid = false;
-            } 
+            }
 
             if (message.value.trim() === '') {
                 showError(message, 'este campo es obligatorio.');
@@ -196,6 +197,8 @@
             return re.test(email);
         }
     </script>
+
+
 
 </body>
 
