@@ -14,107 +14,107 @@ class PreguntasSeeder extends Seeder
     public function run(): void
     {
         DB::table('preguntas')->insert([
-            [
-                'id_pregunta' => 1,
-                'id_prueba' => 1,
-                'id_contexto' => null,
-                'id_subhabilidad' => null,
-                'id_categoria' => 1,
-				'texto' => 'Edad',
-                'tipo_pregunta' => 'cerrada'
-            ],
-            [
-                'id_pregunta' => 2,
-                'id_prueba' => 1,
-                'id_contexto' => null,
-                'id_subhabilidad' => null,
-                'id_categoria' => 1,
-				'texto' => 'Estrato socioeconómico en el que vive según la metodología del Departamento Administrativo Nacional de Estadística (DANE)',	
-                'tipo_pregunta' => 'cerrada'
-            ],
+            // [
+            //     'id_pregunta' => 1,
+            //     'id_prueba' => 1,
+            //     'id_contexto' => null,
+            //     'id_subhabilidad' => null,
+            //     'id_categoria' => 1,
+			// 	'texto' => 'Edad',
+            //     'tipo_pregunta' => 'cerrada'
+            // ],
+            // [
+            //     'id_pregunta' => 2,
+            //     'id_prueba' => 1,
+            //     'id_contexto' => null,
+            //     'id_subhabilidad' => null,
+            //     'id_categoria' => 1,
+			// 	'texto' => 'Estrato socioeconómico en el que vive según la metodología del Departamento Administrativo Nacional de Estadística (DANE)',	
+            //     'tipo_pregunta' => 'cerrada'
+            // ],
 
-            [
-                'id_pregunta' => 3,
-                'id_prueba' => 1,
-                'id_contexto' => null,
-                'id_subhabilidad' => null,
-                'id_categoria' => 1,
-				'texto' => 'Cantidad de horas en promedio de lectura que dedica durante la semana',	
-                'tipo_pregunta' => 'cerrada'
-            ],
-            [
-                'id_pregunta' => 4,
-                'id_prueba' => 1,
-                'id_contexto' => null,
-                'id_subhabilidad' => null,
-                'id_categoria' => 1,
-				'texto' => 'Cantidad promedio de horas que dedica a estar en redes sociales durante la semana',
-                'tipo_pregunta' => 'cerrada'	
-            ],
-            [
-                'id_pregunta' => 5,
-                'id_prueba' => 1,
-                'id_contexto' => null,
-                'id_subhabilidad' => null,
-                'id_categoria' => 1,
-				'texto' => 'Cuál es la cantidad promedio de horas que dedica al entretenimiento con videojuegos en consolas o a través de internet',	
-                'tipo_pregunta' => 'cerrada'
-            ],
-            [
-                'id_pregunta' => 6,
-                'id_prueba' => 1,
-                'id_contexto' => null,
-                'id_subhabilidad' => null,
-                'id_categoria' => 1,
-				'texto' => 'Cuántas horas suele dormir en las noches',	
-                'tipo_pregunta' => 'cerrada'
-            ],
-            [
-                'id_pregunta' => 7,
-                'id_prueba' => 1,
-                'id_contexto' => null,
-                'id_subhabilidad' => null,
-                'id_categoria' => 1,
-				'texto' => 'Género',	
-                'tipo_pregunta' => 'cerrada'
-            ],
-            [
-                'id_pregunta' => 8,
-                'id_prueba' => 1,
-                'id_contexto' => null,
-                'id_subhabilidad' => null,
-                'id_categoria' => 1,
-				'texto' => 'Práctica algún deporte de manera recurrente',	
-                'tipo_pregunta' => 'cerrada'
-            ],
-            [
-                'id_pregunta' => 9,
-                'id_prueba' => 1,
-                'id_contexto' => null,
-                'id_subhabilidad' => null,
-                'id_categoria' => 1,
-				'texto' => 'Practica algún arte como música, pintura o danza de manera recurrente',
-                'tipo_pregunta' => 'cerrada'	
-            ],
-            [
-                'id_pregunta' => 10,
-                'id_prueba' => 1,
-                'id_contexto' => null,
-                'id_subhabilidad' => null,
-                'id_categoria' => 1,
-				'texto' => 'En su dieta están siempre presentes grasas saturadas como salsas, o papas y/o carnes fritas o procesadas',	
-                'tipo_pregunta' => 'cerrada'
-            ],
+            // [
+            //     'id_pregunta' => 3,
+            //     'id_prueba' => 1,
+            //     'id_contexto' => null,
+            //     'id_subhabilidad' => null,
+            //     'id_categoria' => 1,
+			// 	'texto' => 'Cantidad de horas en promedio de lectura que dedica durante la semana',	
+            //     'tipo_pregunta' => 'cerrada'
+            // ],
+            // [
+            //     'id_pregunta' => 4,
+            //     'id_prueba' => 1,
+            //     'id_contexto' => null,
+            //     'id_subhabilidad' => null,
+            //     'id_categoria' => 1,
+			// 	'texto' => 'Cantidad promedio de horas que dedica a estar en redes sociales durante la semana',
+            //     'tipo_pregunta' => 'cerrada'	
+            // ],
+            // [
+            //     'id_pregunta' => 5,
+            //     'id_prueba' => 1,
+            //     'id_contexto' => null,
+            //     'id_subhabilidad' => null,
+            //     'id_categoria' => 1,
+			// 	'texto' => 'Cuál es la cantidad promedio de horas que dedica al entretenimiento con videojuegos en consolas o a través de internet',	
+            //     'tipo_pregunta' => 'cerrada'
+            // ],
+            // [
+            //     'id_pregunta' => 6,
+            //     'id_prueba' => 1,
+            //     'id_contexto' => null,
+            //     'id_subhabilidad' => null,
+            //     'id_categoria' => 1,
+			// 	'texto' => 'Cuántas horas suele dormir en las noches',	
+            //     'tipo_pregunta' => 'cerrada'
+            // ],
+            // [
+            //     'id_pregunta' => 7,
+            //     'id_prueba' => 1,
+            //     'id_contexto' => null,
+            //     'id_subhabilidad' => null,
+            //     'id_categoria' => 1,
+			// 	'texto' => 'Género',	
+            //     'tipo_pregunta' => 'cerrada'
+            // ],
+            // [
+            //     'id_pregunta' => 8,
+            //     'id_prueba' => 1,
+            //     'id_contexto' => null,
+            //     'id_subhabilidad' => null,
+            //     'id_categoria' => 1,
+			// 	'texto' => 'Práctica algún deporte de manera recurrente',	
+            //     'tipo_pregunta' => 'cerrada'
+            // ],
+            // [
+            //     'id_pregunta' => 9,
+            //     'id_prueba' => 1,
+            //     'id_contexto' => null,
+            //     'id_subhabilidad' => null,
+            //     'id_categoria' => 1,
+			// 	'texto' => 'Practica algún arte como música, pintura o danza de manera recurrente',
+            //     'tipo_pregunta' => 'cerrada'	
+            // ],
+            // [
+            //     'id_pregunta' => 10,
+            //     'id_prueba' => 1,
+            //     'id_contexto' => null,
+            //     'id_subhabilidad' => null,
+            //     'id_categoria' => 1,
+			// 	'texto' => 'En su dieta están siempre presentes grasas saturadas como salsas, o papas y/o carnes fritas o procesadas',	
+            //     'tipo_pregunta' => 'cerrada'
+            // ],
             
-            [
-                'id_pregunta' => 11,
-                'id_prueba' => 1,
-                'id_contexto' => null,
-                'id_subhabilidad' => null,
-                'id_categoria' => 1,
-				'texto' => 'En su dieta incluye alimentos saludables como carnes blancas, verduras/vegetales, frutas y frutos secos',	
-                'tipo_pregunta' => 'cerrada'
-            ],
+            // [
+            //     'id_pregunta' => 11,
+            //     'id_prueba' => 1,
+            //     'id_contexto' => null,
+            //     'id_subhabilidad' => null,
+            //     'id_categoria' => 1,
+			// 	'texto' => 'En su dieta incluye alimentos saludables como carnes blancas, verduras/vegetales, frutas y frutos secos',	
+            //     'tipo_pregunta' => 'cerrada'
+            // ],
 
             //Item 1
             [

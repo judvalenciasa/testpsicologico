@@ -2,64 +2,86 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Tests;
+use App\Models\Preguntas;
+use App\Models\Pruebas;
+use App\Models\Respuestas;
+use App\Services\OpenAIService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TestsController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+    protected $openAIService;
+
+    public function __construct(OpenAIService $openAIService)
     {
-        //
+        $this->openAIService = $openAIService;
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function mostrarPrueba()
     {
-        //
+        $prueba = Pruebas::first();
+
+        if (!$prueba) {
+            return redirect()->back()->with('error', 'No hay pruebas disponibles.');
+        }
+
+        return view('private.mostrarTest', compact('prueba'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
+    public function cargarPreguntas(Request $request)
     {
-        //
-    }
+        if (!Auth::check()) {
+            return redirect()->route('login')->with('error', 'Debes iniciar sesión para continuar.');
+        }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Tests $tests)
-    {
-        //
-    }
+        $user = Auth::user();
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Tests $tests)
-    {
-        //
-    }
+        // Procesar la respuesta anterior antes de cargar la siguiente pregunta
+        if ($request->has('respuesta_abierta')) {
+            $respuesta_abierta = $request->input('respuesta_abierta');
+            $pregunta_id = $request->input('pregunta_id'); // Asegúrate de que este campo esté en el formulario
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Tests $tests)
-    {
-        //
-    }
+            // Guardar la respuesta abierta
+            $respuesta_chatgpt = $this->openAIService->enviarRespuestaAChatGPT($respuesta_abierta);
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Tests $tests)
-    {
-        //
+            // Validar lo que devuelve ChatGPT
+            dd($respuesta_chatgpt); // Esto mostrará la respuesta en pantalla y detendrá la ejecución
+
+
+
+            Respuestas::create([
+                'id_usuario' => $user->id_usuario,
+                'id_pregunta' => $pregunta_id,
+                'respuesta' => $respuesta_abierta,
+                'calificacion_respuesta' => $respuesta_chatgpt, // Usa el valor devuelto por ChatGPT como calificación
+            ]);
+        } elseif ($request->has('respuestas')) {
+            foreach ($request->input('respuestas') as $pregunta_id => $respuesta) {
+                // Obtén la opción seleccionada y su valor
+                $opcion = Preguntas::find($pregunta_id)->opciones->where('valor_opcion', $respuesta)->first();
+
+                Respuestas::create([
+                    'id_usuario' => $user->id_usuario,
+                    'id_pregunta' => $pregunta_id,
+                    'respuesta' => $respuesta,
+                    'calificacion_respuesta' => $opcion->valor_opcion, // Aquí guardas el valor de la opción seleccionada
+                ]);
+            }
+        }
+
+        // Obtener el ID de la prueba desde el request
+        $prueba_id = $request->input('prueba_id');
+
+        // Cargar las preguntas y opciones para la prueba seleccionada
+        $preguntas = Preguntas::with('opciones')
+            ->where('id_prueba', $prueba_id)
+            ->get();
+
+        $pregunta_index = $request->input('pregunta_index', 0);
+        $pregunta_actual = $preguntas->get($pregunta_index);
+        $total_preguntas = $preguntas->count();
+
+        return view('private.prueba_page', compact('pregunta_actual', 'pregunta_index', 'total_preguntas', 'prueba_id'));
     }
 }

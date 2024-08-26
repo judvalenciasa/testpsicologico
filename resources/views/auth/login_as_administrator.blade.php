@@ -73,26 +73,17 @@
                             password: password
                         })
                     })
-                    .then(response => {
-                        return response.json().then(data => ({
-                            data: data,
-                            status: response.status,
-                            headers: response.headers
-                        }));
-                    })
-                    .then(result => {
-                        const {
-                            data,
-                            headers
-                        } = result;
+                    .then(response => response.json())
+                    .then(data => {
                         if (data.status === 1) {
-                            // Redirigir según el header 'Location' devuelto por el servidor
-                            window.location.href = headers.get('Location');
+                            // Redirigir según la URL devuelta por el servidor
+                            window.location.href = data.redirect_url;
                         } else {
                             alert(data.msg);
                         }
                     })
                     .catch(error => console.error('Error:', error));
+
             }
         });
 

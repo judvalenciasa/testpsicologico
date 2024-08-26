@@ -9,10 +9,22 @@ class Pines extends Model
 {
     use HasFactory;
 
-    protected $fillable=[
+    protected $fillable = [
         'pin',
         'intentos',
+        'id_prueba',
         'creacion_fecha',
         'fecha_expiracion',
+        'estado'
     ];
+
+    public function usuarios()
+    {
+        return $this->hasMany(User::class, 'id_pin');
+    }
+
+    public function prueba()
+    {
+        return $this->belongsTo(Tests::class, 'id_prueba');
+    }
 }

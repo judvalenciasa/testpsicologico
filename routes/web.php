@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TestsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,17 +22,26 @@ Route::get('/ingreso', function () {
     return view('auth.login_as_administrator');
 });
 
-Route::get('/caracterizacion', function () {
-    return view('private.caracterizacion');
-})->name('caracterizacion')->middleware('auth:sanctum');
-
-
 Route::get('/register', function () {
     return view('auth.register');
 });
 
+// Agrupar las rutas que requieren autenticación
+Route::middleware('auth:sanctum')->group(function () {
 
-Route::get('/administrator', function () {
-    return view('private.administrator-page');
-})->name('administrator')->middleware('auth:sanctum');
+    Route::get('/caracterizacion', function () {
+        return view('private.caracterizacion');
+    })->name('caracterizacion');
 
+    Route::get('mostrarTest', [TestsController::class, 'mostrarPrueba'])->name('mostrar.prueba');
+
+
+    Route::get('/pruebaPage', function () {
+        return view('private.prueba_page');
+    })->name('pruebaPage');
+
+
+    Route::get('/administrator', function () {
+        return view('private.administrator-page');
+    })->name('administrator');
+});

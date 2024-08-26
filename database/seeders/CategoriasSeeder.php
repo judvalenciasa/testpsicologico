@@ -15,15 +15,12 @@ class CategoriasSeeder extends Seeder
     {
         DB::table('Categorias')->insert([
         	[
-				'id_categoria' => 1,	
                 'nombre' => 'caracterización'
             ],
             [
-				'id_categoria' => 2,	
                 'nombre' => 'test psicológico'
             ],
             [
-				'id_categoria' => 3,	
                 'nombre' => 'metacognicion'
             ],
         ]);

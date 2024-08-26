@@ -9,7 +9,17 @@ class Opciones extends Model
 {
     use HasFactory;
 
-    protected $fillable=[
-        'text',
+    protected $table = 'opciones';
+    protected $primaryKey = 'id_opcion';
+
+    protected $fillable = [
+        'id_pregunta',
+        'texto',
+        'valor_opcion'
     ];
+
+    public function pregunta()
+    {
+        return $this->belongsTo(Preguntas::class, 'id_pregunta');
+    }
 }

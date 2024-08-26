@@ -21,6 +21,13 @@ class PinesSeeder extends Seeder
                 'fecha_expiracion'=> Carbon::now(),
                 'intentos' => 3,
             ],
+            [
+                'pin' => 'codPr13',
+                'id_prueba' => 1,
+                'creacion_fecha'=> Carbon::now(),
+                'fecha_expiracion'=> Carbon::now(),
+                'intentos' => 3,
+            ]
         ]);
     }
 }

@@ -8,6 +8,8 @@ use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
+
 
 
 
@@ -81,8 +83,14 @@ class UserController extends Controller
         // Buscar al usuario por email
         $user = User::where('email', $request->email)->first();
 
+        Log::info('Usuario encontrado: ', ['user' => $user]);
+
+
         // Verificar las credenciales y autenticar al usuario
         if ($user && Hash::check($request->password, $user->password)) {
+
+            Log::info('Usuario autenticado: ', ['user' => $user]);
+
 
             // Autenticar al usuario en la sesión de Laravel
             Auth::login($user);
@@ -96,8 +104,9 @@ class UserController extends Controller
                     'status' => 1,
                     'msg' => 'Login exitoso',
                     'access_token' => $token,
-                    'is_admin' => true
-                ])->header('Location', route('administrator'));
+                    'is_admin' => true,
+                    'redirect_url' => route('administrator')
+                    ]);
             } else {
                 // Verificar si los campos de caracterización están llenos
                 if (
@@ -110,22 +119,25 @@ class UserController extends Controller
                     is_null($user->promedio_deporte) ||
                     is_null($user->promedio_arte) ||
                     is_null($user->hora_sueno) ||
-                    is_null($user->grasas) 
+                    is_null($user->alimentos_saludables) ||
+                    is_null($user->grasas)
                 ) {
                     return response()->json([
                         'status' => 1,
                         'msg' => 'Debe completar la encuesta de caracterización.',
                         'access_token' => $token,
-                        'is_admin' => false
-                    ])->header('Location', route('caracterizacion'));
+                        'is_admin' => false,
+                        'redirect_url' => route('caracterizacion')
+                    ]);
                 } else {
-                    // Si todos los campos están completos, redirigir a la página principal
+                    // Si todos los campos están completos, redirigir a la página de la prueba
                     return response()->json([
                         'status' => 1,
                         'msg' => 'Login exitoso',
                         'access_token' => $token,
-                        'is_admin' => false
-                    ])->header('Location', route('/'));
+                        'is_admin' => false,
+                        'redirect_url' => route('mostrar.prueba')
+                    ]);
                 }
             }
         } else {

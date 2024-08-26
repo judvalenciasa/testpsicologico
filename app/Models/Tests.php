@@ -9,10 +9,22 @@ class Tests extends Model
 {
     use HasFactory;
 
-    protected $fillable=[
-        'id_prueba',
-        'text',
-        'created_at',
-        'updated_at'
+    protected $table = 'pruebas';
+    protected $primaryKey = 'id_prueba';
+
+    protected $fillable = [
+        'titulo',
+        'descripcion',
+        'fecha_creacion'
     ];
+
+    public function pines()
+    {
+        return $this->hasMany(Pines::class, 'id_prueba');
+    }
+
+    public function preguntas()
+    {
+        return $this->hasMany(Preguntas::class, 'id_prueba');
+    }
 }
