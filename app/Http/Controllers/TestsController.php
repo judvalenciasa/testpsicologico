@@ -40,48 +40,42 @@ class TestsController extends Controller
         // Procesar la respuesta anterior antes de cargar la siguiente pregunta
         if ($request->has('respuesta_abierta')) {
             $respuesta_abierta = $request->input('respuesta_abierta');
-            $pregunta_id = $request->input('pregunta_id'); // Asegúrate de que este campo esté en el formulario
+            $pregunta_id = $request->input('pregunta_id');
 
             // Guardar la respuesta abierta
             $respuesta_chatgpt = $this->openAIService->enviarRespuestaAChatGPT($respuesta_abierta);
-
-            // Validar lo que devuelve ChatGPT
-            dd($respuesta_chatgpt); // Esto mostrará la respuesta en pantalla y detendrá la ejecución
-
-
 
             Respuestas::create([
                 'id_usuario' => $user->id_usuario,
                 'id_pregunta' => $pregunta_id,
                 'respuesta' => $respuesta_abierta,
-                'calificacion_respuesta' => $respuesta_chatgpt, // Usa el valor devuelto por ChatGPT como calificación
+                'calificacion_respuesta' => $respuesta_chatgpt,
             ]);
         } elseif ($request->has('respuestas')) {
             foreach ($request->input('respuestas') as $pregunta_id => $respuesta) {
-                // Obtén la opción seleccionada y su valor
                 $opcion = Preguntas::find($pregunta_id)->opciones->where('valor_opcion', $respuesta)->first();
 
                 Respuestas::create([
                     'id_usuario' => $user->id_usuario,
                     'id_pregunta' => $pregunta_id,
                     'respuesta' => $respuesta,
-                    'calificacion_respuesta' => $opcion->valor_opcion, // Aquí guardas el valor de la opción seleccionada
+                    'calificacion_respuesta' => $opcion->valor_opcion,
                 ]);
             }
         }
 
-        // Obtener el ID de la prueba desde el request
         $prueba_id = $request->input('prueba_id');
+        $pregunta_index = $request->input('pregunta_index', 0);
 
-        // Cargar las preguntas y opciones para la prueba seleccionada
+        // Cargar dos preguntas relacionadas con el mismo contexto
         $preguntas = Preguntas::with('opciones')
             ->where('id_prueba', $prueba_id)
+            ->skip($pregunta_index)
+            ->take(2)
             ->get();
 
-        $pregunta_index = $request->input('pregunta_index', 0);
-        $pregunta_actual = $preguntas->get($pregunta_index);
-        $total_preguntas = $preguntas->count();
+        $total_preguntas = Preguntas::where('id_prueba', $prueba_id)->count();
 
-        return view('private.prueba_page', compact('pregunta_actual', 'pregunta_index', 'total_preguntas', 'prueba_id'));
+        return view('private.prueba_page', compact('preguntas', 'pregunta_index', 'total_preguntas', 'prueba_id'));
     }
 }

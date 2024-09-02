@@ -1,17 +1,10 @@
 .pregunta_section {
-    /* background: linear-gradient(
-        to right,
-        rgba(255, 255, 255, 1) 70%,
-        rgba(255, 255, 255, 0.5) 70%
-    ); */
     background-color: rgb(252, 245, 223);
     backdrop-filter: blur(3px);
-
     display: grid;
-    grid-template-columns: 45% 50%;
+    grid-template-columns: 100%;
     gap: 1vw;
     align-items: center;
-
     justify-content: space-between;
 }
 
@@ -19,6 +12,12 @@
     font-size: 1.5rem;
     color: #000;
     margin-bottom: 20px;
+}
+
+.pregunta_ctn {
+    display: flex;
+    flex-direction: column;
+    gap: 2vw;
 }
 
 .pregunta_ctn p {
@@ -58,8 +57,10 @@
     color: white;
     border: none;
     padding: 1vw;
+    width: 20%;
     border-radius: 1vw;
     cursor: pointer;
+    align-self: flex-end;
 }
 
 .form_ctn .opcion label {
