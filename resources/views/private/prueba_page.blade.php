@@ -17,6 +17,7 @@
 
         <div class="pregunta_ctn">
             <div class="title">
+                <h2>Contexto </h2>
             </div>
 
             @if(isset($preguntas) && count($preguntas) > 0)

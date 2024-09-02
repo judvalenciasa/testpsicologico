@@ -16,6 +16,12 @@ class OpenAIService
 
     public function enviarRespuestaAChatGPT($prompt)
     {
+        // Verificar que $prompt sea una cadena válida
+        if (!is_string($prompt) || empty(trim($prompt))) {
+            Log::error('El prompt proporcionado no es una cadena válida o está vacío.');
+            return null;
+        }
+
         try {
             $response = $this->client->post('https://api.openai.com/v1/chat/completions', [
                 'headers' => [
@@ -23,7 +29,7 @@ class OpenAIService
                     'Content-Type' => 'application/json',
                 ],
                 'json' => [
-                    'model' => 'gpt-3.5-turbo-0125', 
+                    'model' => 'gpt-3.5-turbo-0125',
                     'messages' => [
                         [
                             'role' => 'system',

@@ -38,29 +38,67 @@ class TestsController extends Controller
         $user = Auth::user();
 
         // Procesar la respuesta anterior antes de cargar la siguiente pregunta
-        if ($request->has('respuesta_abierta')) {
-            $respuesta_abierta = $request->input('respuesta_abierta');
-            $pregunta_id = $request->input('pregunta_id');
+        if ($request->has('respuestas_abiertas')) {
+            $respuestas_abiertas = $request->input('respuestas_abiertas');
+            $pregunta_id = key($respuestas_abiertas);  // Obtiene la clave (id de la pregunta)
+            $respuesta_abierta = $respuestas_abiertas[$pregunta_id];  // Obtiene la respuesta correspondiente
 
-            // Guardar la respuesta abierta
+            // Verificar que $respuesta_abierta es una cadena válida
+            if (!is_string($respuesta_abierta) || empty(trim($respuesta_abierta))) {
+                return redirect()->back()->with('error', 'Por favor ingrese una respuesta válida.');
+            }
+
+            // Llamar a la IA para obtener la calificación
             $respuesta_chatgpt = $this->openAIService->enviarRespuestaAChatGPT($respuesta_abierta);
 
-            Respuestas::create([
-                'id_usuario' => $user->id_usuario,
-                'id_pregunta' => $pregunta_id,
-                'respuesta' => $respuesta_abierta,
-                'calificacion_respuesta' => $respuesta_chatgpt,
-            ]);
-        } elseif ($request->has('respuestas')) {
-            foreach ($request->input('respuestas') as $pregunta_id => $respuesta) {
-                $opcion = Preguntas::find($pregunta_id)->opciones->where('valor_opcion', $respuesta)->first();
+            // Mostrar la respuesta de ChatGPT en pantalla para depuración
+            dd($respuesta_chatgpt);
 
+            // Verificar si la respuesta ya existe para este usuario y pregunta
+            $respuestaExistente = Respuestas::where('id_usuario', $user->id_usuario)
+                ->where('id_pregunta', $pregunta_id)
+                ->first();
+
+            if ($respuestaExistente) {
+                // Actualizar la respuesta existente
+                $respuestaExistente->update([
+                    'respuesta' => $respuesta_abierta,
+                    'calificacion_respuesta' => $respuesta_chatgpt,
+                ]);
+            } else {
+                // Crear una nueva respuesta
                 Respuestas::create([
                     'id_usuario' => $user->id_usuario,
                     'id_pregunta' => $pregunta_id,
-                    'respuesta' => $respuesta,
-                    'calificacion_respuesta' => $opcion->valor_opcion,
+                    'respuesta' => $respuesta_abierta,
+                    'calificacion_respuesta' => $respuesta_chatgpt,
                 ]);
+            }
+        } elseif ($request->has('respuestas')) {
+            foreach ($request->input('respuestas') as $pregunta_id => $respuesta) {
+                // Obtener la opción seleccionada
+                $opcion = Preguntas::find($pregunta_id)->opciones->where('valor_opcion', $respuesta)->first();
+
+                // Verificar si la respuesta ya existe para este usuario y pregunta
+                $respuestaExistente = Respuestas::where('id_usuario', $user->id_usuario)
+                    ->where('id_pregunta', $pregunta_id)
+                    ->first();
+
+                if ($respuestaExistente) {
+                    // Actualizar la respuesta existente
+                    $respuestaExistente->update([
+                        'respuesta' => $respuesta,
+                        'calificacion_respuesta' => $opcion->valor_opcion,
+                    ]);
+                } else {
+                    // Crear una nueva respuesta
+                    Respuestas::create([
+                        'id_usuario' => $user->id_usuario,
+                        'id_pregunta' => $pregunta_id,
+                        'respuesta' => $respuesta,
+                        'calificacion_respuesta' => $opcion->valor_opcion,
+                    ]);
+                }
             }
         }
 
