@@ -93,12 +93,45 @@ class PinesController extends Controller
 
 
     /**
+     * Cambiar el estado de un pin.
+     */
+    public function toggleEstado(Request $request, $id)
+    {
+
+        dd('Hello'); // Coloca esto al inicio para asegurarte de que el método se llama
+
+        // 1. Verifica si el método se está llamando y qué datos llegan
+        dd('Método llamado', $request->all(), $id);
+
+        $pin = Pines::findOrFail($id);
+
+        // 2. Verifica si el pin fue encontrado correctamente
+        dd('Pin encontrado', $pin);
+
+        $pin->estado = $request->input('estado');
+
+        // 3. Verifica el nuevo estado antes de guardarlo
+        dd('Nuevo estado', $pin->estado);
+
+        $pin->save();
+
+        return response()->json(['success' => true]);
+    }
+
+
+
+
+
+
+    /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        $pines = Pines::with('usuario')->get();
+        return view('pines.index', compact('pines'));
     }
+
 
     /**
      * Show the form for creating a new resource.

@@ -32,8 +32,8 @@
             <div class="title">
                 <h1>¿Qué es <br> Cognitive Spark?</h1>
             </div>
-            <div class="text">
-                <p>Es una prueba de pensamiento crítico diseñada específicamente para adolescentes. Esta herramienta evaluativa se centra en medir el nivel de desempeño del pensamiento crítico. CognitiveSpark busca no solo evaluar, sino también inspirar y activar el potencial mental de los jóvenes, preparando a la próxima generación para enfrentar desafíos complejos con agudeza y creatividad.
+            <div class="banner_text">
+                <p>Es una prueba de pensamiento crítico diseñada específicamente para adolescentes. Esta herramienta evaluativa se centra en medir el nivel de desempeño del pensamiento crítico. CognitiveSpark busca no solo evaluar, sino también inspirar y activar el potencial mental de los jóvenes, preparando a las próximas generaciones para afrontar los complejos desafíos y aportar a la transformación de las realidades complejas.
                 </p>
             </div>
         </div>

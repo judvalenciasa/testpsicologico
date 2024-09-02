@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TestsController;
+use App\Http\Controllers\PinesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,6 +35,8 @@ Route::middleware('auth:sanctum')->group(function () {
     })->name('caracterizacion');
 
     Route::get('mostrarTest', [TestsController::class, 'mostrarPrueba'])->name('mostrar.prueba');
+
+    Route::get('/pines', [PinesController::class, 'index'])->name('pines.index');
 
 
     Route::get('/pruebaPage', function () {

@@ -14,19 +14,22 @@ class PinesSeeder extends Seeder
     public function run(): void
     {
         DB::table('pines')->insert([
-            [   
+            [
                 'pin' => 'codPr12',
                 'id_prueba' => 1,
-                'creacion_fecha'=> Carbon::now(),
-                'fecha_expiracion'=> Carbon::now(),
+                'creacion_fecha' => Carbon::now(),
+                'fecha_expiracion' => Carbon::now(),
                 'intentos' => 3,
+                'estado' => true,
             ],
             [
                 'pin' => 'codPr13',
                 'id_prueba' => 1,
-                'creacion_fecha'=> Carbon::now(),
-                'fecha_expiracion'=> Carbon::now(),
+                'creacion_fecha' => Carbon::now(),
+                'fecha_expiracion' => Carbon::now(),
                 'intentos' => 3,
+                'estado' => true,
+
             ]
         ]);
     }

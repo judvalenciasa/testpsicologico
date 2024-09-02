@@ -18,9 +18,9 @@ class Pines extends Model
         'estado'
     ];
 
-    public function usuarios()
+    public function usuario()
     {
-        return $this->hasMany(User::class, 'id_pin');
+        return $this->belongsTo(User::class, 'id_pin', 'id_pin');
     }
 
     public function prueba()

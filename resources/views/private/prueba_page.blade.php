@@ -7,28 +7,31 @@
     <title>Cognitive Sparks | Responde las Preguntas</title>
 
     <!-- Styles -->
-    <link href="{{ asset('css/caracterizacion.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    <link href="{{ asset('css/pregunta.css') }}" rel="stylesheet">
 </head>
 
 <body class="antialiased">
-    @include('shared.header')
 
-    <section class="caracterizacion_section">
+    <section class="pregunta_section">
 
-        <div class="title">
-            <h1>Responde las siguientes preguntas</h1>
+        <div class="pregunta_ctn">
+            <div class="title">
+                <!-- Aquí se muestra el contador de preguntas -->
+                <h2>Contexto {{ $pregunta_index + 1 }} </h2>
+            </div>
+
+            @if(isset($pregunta_actual))
+            <div class="contexto">
+                <p>{{ $pregunta_actual->contexto->texto }}</p>
+            </div>
         </div>
-
-        @if(isset($pregunta_actual))
-        <div class="contexto">
-            <p>{{ $pregunta_actual->contexto->texto }}</p>
-        </div>
-
         <form class="form_ctn" action="{{ route('cargar.preguntas') }}" method="POST">
             @csrf
 
             <!-- Mostrar el texto de la pregunta -->
-            <p>{{ $pregunta_actual->texto }}</p>
+            <p class="pregunta_texto">{{ $pregunta_actual->texto }}</p>
 
             <!-- Verificar si la pregunta es abierta -->
             @if($pregunta_actual->opciones->contains('texto', 'abierta'))
@@ -42,7 +45,7 @@
             <div class="opcion">
                 <label>
                     <input type="radio" name="respuestas[{{ $pregunta_actual->id_pregunta }}]" value="{{ $opcion->valor_opcion }}">
-                    {{ $opcion->texto }}
+                    <p>{{ $opcion->texto }}</p>
                 </label>
             </div>
             @endforeach
@@ -64,7 +67,7 @@
         @endif
     </section>
 
-    @include('shared.footer')
+
 
 </body>
 

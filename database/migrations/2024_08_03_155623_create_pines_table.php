@@ -18,6 +18,7 @@ return new class extends Migration
             $table->date('creacion_fecha');
             $table->date('fecha_expiracion');
             $table->integer('intentos');
+            $table->boolean('estado')->default(true);
             $table->timestamps();
             
             $table->foreign('id_prueba')->references('id_prueba')->on('pruebas');

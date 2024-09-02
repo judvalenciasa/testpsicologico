@@ -39,7 +39,7 @@ class User extends Authenticatable
 
     public function pin()
     {
-        return $this->belongsTo(Pines::class, 'id_pin');
+        return $this->hasOne(Pines::class, 'id_pin', 'id_pin');
     }
 
     public function reportes()

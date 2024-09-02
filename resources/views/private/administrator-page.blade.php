@@ -26,20 +26,8 @@
                         </div>
                         <button type="submit" class="btn">Generar</button>
                     </form>
-
-
                 </div>
             </div>
-            @if(session('pines_generados'))
-            <div class="section">
-                <h3>Pines Generados:</h3>
-                <ul>
-                    @foreach(session('pines_generados') as $pin)
-                    <li>{{ $pin }}</li>
-                    @endforeach
-                </ul>
-            </div>
-            @endif
 
             @if(session('error'))
             <div class="section">
@@ -47,8 +35,14 @@
             </div>
             @endif
 
+            <!-- Botón para ver los pines -->
+            <div class="section">
+                <a href="{{ route('pines.index') }}" class="btn">Ver Pines</a>
+            </div>
+
         </div>
     </section>
+
 </body>
 
 </html>
