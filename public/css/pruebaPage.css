@@ -28,6 +28,16 @@
     font-size: 1.2vw;
 }
 
+/** button deshabilitado **/
+.form_ctn button:disabled{
+    background-color: gray;
+}
+
+.form_ctn button:disabled:hover{
+    background-color: none;
+    opacity: none;
+}
+
 .form_ctn button:hover {
     opacity: 0.8;
 }
