@@ -15,6 +15,7 @@ class Pruebas extends Model
     protected $fillable = [
         'titulo',
         'descripcion',
+        'estado'
     ];
 
     public function pines()
