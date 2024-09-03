@@ -103,6 +103,7 @@ class PinesController extends Controller
         // 1. Verifica si el método se está llamando y qué datos llegan
         dd('Método llamado', $request->all(), $id);
 
+        /*
         $pin = Pines::findOrFail($id);
 
         // 2. Verifica si el pin fue encontrado correctamente
@@ -115,7 +116,7 @@ class PinesController extends Controller
 
         $pin->save();
 
-        return response()->json(['success' => true]);
+        return response()->json(['success' => true]);*/
     }
 
 

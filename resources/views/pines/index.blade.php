@@ -49,7 +49,7 @@
     });
 
     function togglePinState(pinId, state) {
-        fetch(`/api/pines/${pinId}/toggle`, {
+        fetch(`/api/pines/cambiar/${pinId}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

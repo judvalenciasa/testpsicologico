@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id('id_prueba');
             $table->string('titulo', 80);
             $table->string('descripcion', 150);
+            $table->boolean('estado')->default(false);
             $table->timestamps();
         });
     }

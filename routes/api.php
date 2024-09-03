@@ -25,7 +25,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get("perfil_usuario", [UserController::class, "perfil_usuario"]);
     Route::get("logout", [UserController::class, "logout"]);
 
-    Route::post('/pines/{id}/toggle', [PinesController::class, 'toggleEstado'])->name('pines.toggle');
+    Route::post('api/pines/cambiar/{id}', [PinesController::class, 'toggleEstado'])->name('pines.toggle');
 
 
     Route::get('generar_pin/{cantidad?}', [PinesController::class, 'generar_pines'])->name('pines.aletarios');
