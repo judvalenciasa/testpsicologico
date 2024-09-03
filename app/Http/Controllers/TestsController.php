@@ -46,12 +46,10 @@ class TestsController extends Controller
             // Verificar que $respuesta_abierta es una cadena válida
             if (!is_string($respuesta_abierta) || empty(trim($respuesta_abierta))) {
                 return redirect()->back()->with('error', 'Por favor ingrese una respuesta válida.');
-            }  
+            }
             // Llamar a la IA para obtener la calificación
             $respuesta_chatgpt = $this->openAIService->enviarRespuestaAChatGPT($respuesta_abierta);
 
-            // Mostrar la respuesta de ChatGPT en pantalla para depuración
-            dd($respuesta_chatgpt);
 
             // Verificar si la respuesta ya existe para este usuario y pregunta
             $respuestaExistente = Respuestas::where('id_usuario', $user->id_usuario)
@@ -73,12 +71,16 @@ class TestsController extends Controller
                     'calificacion_respuesta' => $respuesta_chatgpt,
                 ]);
             }
-        } elseif ($request->has('respuestas')) {
+        }
+
+        if ($request->has('respuestas')) {
+
+
             foreach ($request->input('respuestas') as $pregunta_id => $respuesta) {
                 // Obtener la opción seleccionada
 
-                dd($respuesta);
                 $opcion = Preguntas::find($pregunta_id)->opciones->where('valor_opcion', $respuesta)->first();
+
 
                 // Verificar si la respuesta ya existe para este usuario y pregunta
                 $respuestaExistente = Respuestas::where('id_usuario', $user->id_usuario)
@@ -88,16 +90,16 @@ class TestsController extends Controller
                 if ($respuestaExistente) {
                     // Actualizar la respuesta existente
                     $respuestaExistente->update([
-                        'respuesta' => $respuesta,
-                        'calificacion_respuesta' => $opcion->valor_opcion,
+                        'respuesta' => null,
+                        'calificacion_respuesta' => $respuesta,
                     ]);
                 } else {
                     // Crear una nueva respuesta
                     Respuestas::create([
                         'id_usuario' => $user->id_usuario,
                         'id_pregunta' => $pregunta_id,
-                        'respuesta' => $respuesta,
-                        'calificacion_respuesta' => $opcion->valor_opcion,
+                        'respuesta' => null,
+                        'calificacion_respuesta' => $respuesta,
                     ]);
                 }
             }

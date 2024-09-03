@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id('id_respuesta');
             $table->unsignedBigInteger('id_usuario');
             $table->unsignedBigInteger('id_pregunta');
-            $table->string('respuesta', 200);
+            $table->string('respuesta', 200)->nullable();
             $table->integer('calificacion_respuesta');
             $table->timestamps();
             
