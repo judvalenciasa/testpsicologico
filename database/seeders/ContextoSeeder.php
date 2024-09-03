@@ -14,7 +14,7 @@ class ContextoSeeder extends Seeder
     public function run(): void
     {
         DB::table('contextos')->insert([
-        	[
+            [
                 'id_contexto' => 1,
                 'texto' => 'Gilberto es un joven que no se pierde participación en un torneo de videojuegos que se lleva a cabo en su ciudad en los últimos 5 años. Recientemente se dio a conocer a los participantes usuales que el gobierno local destinará recursos económicos para que el certamen de este año cuente con mejores instalaciones y equipos de última generación, bajo la condición de contar con la participación de mujeres en al menos un 50%. En la primera hora de las tres jornadas diarias de inscripción, que se llevarán a cabo durante una semana meses antes del evento, Gilberto observó que coincidió con cuatro participantes al momento de llenar los formularios y que tres de esos eran mujeres. Basado en esta observación Gilberto declara en uno de los medios de comunicación que este año las consolas, pantallas, sonido, asientos e instalaciones en general serán mejores que las de los anteriores eventos.'
             ],
