@@ -19,19 +19,25 @@
         <tbody>
             @foreach($pines as $pin)
             <tr>
-                <td><input type="checkbox" class="pin-checkbox" data-pin-id="{{ $pin->id_pin }}" {{ $pin->estado == 1 ? 'checked' : '' }}></td>
+                <td>
+                    <form action="{{ url('/api/pines/toggle') }}" method="POST">
+                        @csrf
+                        @method('PUT')
+                        <input type="checkbox" value="{{ $pines }}" name="estado" onchange="this.form.submit()" {{ $pin->estado == 1 ? 'checked' : '' }}>
+                    </form>
+                </td>
                 <td>{{ $pin->pin }}</td>
                 <td>{{ $pin->creacion_fecha }}</td>
                 <td>{{ $pin->fecha_expiracion }}</td>
-                <td>
-                    {{ $pin->estado == 1 ? 'Activo' : 'Inactivo' }}
-                </td>
+                <td>{{ $pin->estado == 1 ? 'Activo' : 'Inactivo' }}</td>
                 <td>{{ $pin->usuario->email ?? 'Sin asignar' }}</td>
             </tr>
             @endforeach
         </tbody>
     </table>
 </div>
+@endsection
+
 
 <script>
     document.getElementById('selectAll').addEventListener('click', function(event) {
@@ -48,23 +54,10 @@
         });
     });
 
+    //funcion para cambiar el estado de la lista de pines dependiendo del estado
     function togglePinState(pinId, state) {
-        fetch(`/api/pines/${pinId}/toggle`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                estado: state ? 1 : 0
-            })
-        }).then(response => response.json())
-          .then(data => {
-              if (data.success) {
-                  console.log('Estado actualizado');
-              } else {
-                  console.error('Error al actualizar el estado');
-              }
-          });
+
+
+
     }
 </script>
-@endsection

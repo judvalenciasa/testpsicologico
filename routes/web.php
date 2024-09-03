@@ -38,7 +38,6 @@ Route::middleware('auth:sanctum')->group(function () {
 
     Route::get('/pines', [PinesController::class, 'index'])->name('pines.index');
 
-
     Route::get('/pruebaPage', function () {
         return view('private.prueba_page');
     })->name('pruebaPage');

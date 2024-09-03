@@ -9,7 +9,10 @@ class Pines extends Model
 {
     use HasFactory;
 
+    protected $primaryKey = 'id_pin';
+
     protected $fillable = [
+        'id_pin',
         'pin',
         'intentos',
         'id_prueba',

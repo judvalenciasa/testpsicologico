@@ -6,6 +6,7 @@ use App\Models\Administradores;
 use App\Models\Pines;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Log;
 
 class PinesController extends Controller
 {
@@ -95,27 +96,20 @@ class PinesController extends Controller
     /**
      * Cambiar el estado de un pin.
      */
-    public function toggleEstado(Request $request, $id)
+    public function toggleEstado(Request $request)
     {
-
-        dd('Hello'); // Coloca esto al inicio para asegurarte de que el método se llama
+        //Log para imprimir el request
+        Log::info($request);
 
         // 1. Verifica si el método se está llamando y qué datos llegan
-        dd('Método llamado', $request->all(), $id);
+        //$pin = Pines::findOrFail($id_pin);
 
-        $pin = Pines::findOrFail($id);
 
-        // 2. Verifica si el pin fue encontrado correctamente
-        dd('Pin encontrado', $pin);
+        //$pin->estado = $request->input('estado');
 
-        $pin->estado = $request->input('estado');
+        //$pin->save();
 
-        // 3. Verifica el nuevo estado antes de guardarlo
-        dd('Nuevo estado', $pin->estado);
-
-        $pin->save();
-
-        return response()->json(['success' => true]);
+        //return response()->json(['success' => true]);
     }
 
 
@@ -129,6 +123,7 @@ class PinesController extends Controller
     public function index()
     {
         $pines = Pines::with('usuario')->get();
+        
         return view('pines.index', compact('pines'));
     }
 
