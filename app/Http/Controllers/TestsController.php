@@ -8,7 +8,6 @@ use App\Models\Respuestas;
 use App\Services\OpenAIService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Log;
 
 class TestsController extends Controller
 {
@@ -32,7 +31,6 @@ class TestsController extends Controller
 
     public function cargarPreguntas(Request $request)
     {
-
         if (!Auth::check()) {
             return redirect()->route('login')->with('error', 'Debes iniciar sesión para continuar.');
         }
@@ -41,8 +39,6 @@ class TestsController extends Controller
 
         // Procesar la respuesta anterior antes de cargar la siguiente pregunta
         if ($request->has('respuestas_abiertas')) {
-
-
             $respuestas_abiertas = $request->input('respuestas_abiertas');
             $pregunta_id = key($respuestas_abiertas);  // Obtiene la clave (id de la pregunta)
             $respuesta_abierta = $respuestas_abiertas[$pregunta_id];  // Obtiene la respuesta correspondiente
@@ -50,11 +46,12 @@ class TestsController extends Controller
             // Verificar que $respuesta_abierta es una cadena válida
             if (!is_string($respuesta_abierta) || empty(trim($respuesta_abierta))) {
                 return redirect()->back()->with('error', 'Por favor ingrese una respuesta válida.');
-            }
-
+            }  
             // Llamar a la IA para obtener la calificación
             $respuesta_chatgpt = $this->openAIService->enviarRespuestaAChatGPT($respuesta_abierta);
 
+            // Mostrar la respuesta de ChatGPT en pantalla para depuración
+            dd($respuesta_chatgpt);
 
             // Verificar si la respuesta ya existe para este usuario y pregunta
             $respuestaExistente = Respuestas::where('id_usuario', $user->id_usuario)
@@ -78,8 +75,9 @@ class TestsController extends Controller
             }
         } elseif ($request->has('respuestas')) {
             foreach ($request->input('respuestas') as $pregunta_id => $respuesta) {
-
                 // Obtener la opción seleccionada
+
+                dd($respuesta);
                 $opcion = Preguntas::find($pregunta_id)->opciones->where('valor_opcion', $respuesta)->first();
 
                 // Verificar si la respuesta ya existe para este usuario y pregunta
@@ -105,7 +103,6 @@ class TestsController extends Controller
             }
         }
 
-
         $prueba_id = $request->input('prueba_id');
         $pregunta_index = $request->input('pregunta_index', 0);
 
@@ -115,7 +112,6 @@ class TestsController extends Controller
             ->skip($pregunta_index)
             ->take(2)
             ->get();
-
 
         $total_preguntas = Preguntas::where('id_prueba', $prueba_id)->count();
 
