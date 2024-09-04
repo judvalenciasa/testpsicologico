@@ -29,7 +29,7 @@ class OpenAIService
                     'Content-Type' => 'application/json',
                 ],
                 'json' => [
-                    'model' => 'gpt-3.5-turbo-0125',
+                    'model' => 'gpt-4o',
                     'messages' => [
                         [
                             'role' => 'system',
