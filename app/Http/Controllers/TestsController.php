@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Contexto;
+use App\Models\Criterios;
 use App\Models\Preguntas;
 use App\Models\Pruebas;
 use App\Models\Respuestas;
 use App\Services\OpenAIService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Log;
 
 class TestsController extends Controller
 {
@@ -47,9 +50,19 @@ class TestsController extends Controller
             if (!is_string($respuesta_abierta) || empty(trim($respuesta_abierta))) {
                 return redirect()->back()->with('error', 'Por favor ingrese una respuesta válida.');
             }
-            // Llamar a la IA para obtener la calificación
-            $respuesta_chatgpt = $this->openAIService->enviarRespuestaAChatGPT($respuesta_abierta);
 
+
+            $id_contexto = Preguntas::where('id_pregunta', $pregunta_id)->pluck('id_contexto')->first();
+            
+            $contexto = Contexto::where('id_contexto', $id_contexto)->pluck('texto')->first();
+            $criterio = Criterios::where('id_pregunta', $pregunta_id)->pluck('texto');
+            
+            //concatenar contexto,criterio "con lo anterior devuelveme el numero de la calificación, sin ninguna otra letra", respuesta ($respuesta_abierta)
+            $promt =  "Contexto: " . $contexto . " fin contexto. " . "Criterio: " . $criterio . " fin criterio. ". "Con lo anterior devuelveme el numero de la calificación, sin ninguna otra letra con la siguiente respuesta: " . $respuesta_abierta;
+            
+            // Llamar a la IA para obtener la calificación
+            $respuesta_chatgpt = $this->openAIService->enviarRespuestaAChatGPT($promt);
+            
 
             // Verificar si la respuesta ya existe para este usuario y pregunta
             $respuestaExistente = Respuestas::where('id_usuario', $user->id_usuario)
@@ -77,10 +90,7 @@ class TestsController extends Controller
 
 
             foreach ($request->input('respuestas') as $pregunta_id => $respuesta) {
-                // Obtener la opción seleccionada
-
-                $opcion = Preguntas::find($pregunta_id)->opciones->where('valor_opcion', $respuesta)->first();
-
+                
 
                 // Verificar si la respuesta ya existe para este usuario y pregunta
                 $respuestaExistente = Respuestas::where('id_usuario', $user->id_usuario)
