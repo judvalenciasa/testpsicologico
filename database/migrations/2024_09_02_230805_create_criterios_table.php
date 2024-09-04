@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('criterios', function (Blueprint $table) {
             $table->id('id_criterio');
             $table->unsignedBigInteger('id_pregunta');
-            $table->string('texto', 5000);
+            $table->string('texto', 10000);
             $table->integer('valor_opcion')->nullable();
             $table->timestamps();
             

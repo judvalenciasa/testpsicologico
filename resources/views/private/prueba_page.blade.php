@@ -43,7 +43,7 @@
                 @foreach($pregunta_actual->opciones as $opcion)
                 <div class="opcion">
                     <label>
-                        <input type="radio" name="respuestas[{{ $pregunta_actual->id_pregunta }}]" value="{{ $opcion->valor_opcion }}">
+                        <input type="radio" name="respuestas[{{ $pregunta_actual->id_pregunta }}]" value="{{ $opcion->id_opcion }}">
                         <p>{{ $opcion->texto }}</p>
                     </label>
                 </div>
