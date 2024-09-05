@@ -41,7 +41,6 @@ Route::middleware('auth:sanctum')->group(function () {
         return redirect('mostrartest');
     })->name('pruebapage');
 
-
     Route::get('/administrator', function () {
         return view('private.administrator-page');
     })->name('pagina-administrador');

@@ -18,8 +18,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::post("registrar", [UserController::class, 'registrar'])->name('registrar');
-Route::post("login", [UserController::class, 'login'])->name('login');
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::get("perfil_usuario", [UserController::class, "perfil_usuario"]);
@@ -30,7 +28,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/pines', [PinesController::class, 'index'])->name('pines.index');
 
 
-    Route::get('generar_pin/{cantidad?}', [PinesController::class, 'generar_pines'])->name('pines.aletarios');
+    Route::post('generar_pin/{cantidad?}', [PinesController::class, 'generar_pines'])->name('pines.aletarios');
 
     Route::post('cargar_preguntas', [TestsController::class, 'cargarPreguntas'])->name('cargar.preguntas');
 
@@ -44,3 +42,7 @@ Route::middleware('auth:sanctum')->group(function () {
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
+Route::post("registrar", [UserController::class, 'registrar'])->name('registrar');
+Route::post("login", [UserController::class, 'login'])->name('login');

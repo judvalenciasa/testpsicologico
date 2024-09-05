@@ -80,18 +80,15 @@ class UserController extends Controller
         ]);
 
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
+            Log::info('Autenticación exitosa para el usuario: ' . $request->email);
 
             $user = Auth::user();
 
             if ($user->es_administrador) {
-
-                //log para comprobar que el usuario está autenticado
-                Log::info('Usuario autenticado: ' . $user);
-                
-                    return redirect()->route('pagina-administrador');
+                return view('private.administrator-page');
             } else {
                 if (is_null($user->edad) || is_null($user->genero) || is_null($user->estrato || is_null($user->horas_lectura) || is_null($user->horas_redes_sociales) || is_null($user->horas_entretenimiento) || is_null($user->promedio_deporte) || is_null($user->promedio_arte) || is_null($user->hora_sueno) || is_null($user->grasas) || is_null($user->alimentos_saludables))) {
-                    return redirect()->route('caracterizacion');
+                    return view('private.caracterizacion');
                 } else {
                     return redirect()->route('mostrartest');
                 }
@@ -116,14 +113,14 @@ class UserController extends Controller
 
     public function logout(Request $request)
     {
-        // Invalidar la sesión actual y eliminar tokens
-        $request->user()->tokens()->delete();
 
-        // Respuesta de logout exitoso
-        return response()->json([
-            "status" => 1,
-            "msg" => "Sesión cerrada exitosamente"
-        ]);
+
+        // Si estás utilizando cookies para gestionar la sesión (para SPA), puedes regenerar la sesión:
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        // Redirigir a la página de inicio o enviar una respuesta JSON
+        return redirect()->route('home');
     }
 
 
@@ -135,11 +132,13 @@ class UserController extends Controller
         $user = User::where("email", "=", auth()->user()->email)->first();
 
         $request->validate([
+            'documento_identificacion' => 'required|string',
             'edad' => 'required|integer|min:15|max:18',
             'genero' => 'required|string|max:9',
             'estrato' => 'required|integer|min:1|max:6',
-            //'escolaridad_madre' => 'required|string',
-            //'escolaridad_padre' => 'required|string',
+            'nivel_escolaridad' => 'required|string',
+            'escolaridad_madre' => 'required|string',
+            'escolaridad_padre' => 'required|string',
             'horas_lectura' => 'required|string',
             'horas_redes_sociales' => 'required|string',
             'horas_entretenimiento' => 'required|string',
@@ -148,25 +147,26 @@ class UserController extends Controller
             'hora_sueno' => 'required|string',
             'grasas' => 'required|string',
             'alimentos_saludables' => 'required|string',
-            //'pensamiento_critico' => 'required|int',
+            'litro_agua' => 'required|string',
         ]);
 
         $user->update([
+            'documento_identificacion' => $request->documento_identificacion,
             'edad' => $request->edad,
             'genero' => $request->genero,
             'estrato' => $request->estrato,
-            //'escolaridad_madre' => $request->escolaridad_madre,
-            //'escolaridad_padre' => $request->escolaridad_padre,
+            'nivel_escolaridad' => $request->nivel_escolaridad,
+            'escolaridad_madre' => $request->escolaridad_madre,
+            'escolaridad_padre' => $request->escolaridad_padre,
             'horas_lectura' => $request->horas_lectura,
             'horas_redes_sociales' => $request->horas_redes_sociales,
             'horas_entretenimiento' => $request->horas_entretenimiento,
-            //'promedio_segundo_idioma' => $request->promedio_segundo_idioma,
             'promedio_deporte' => $request->promedio_deporte,
             'promedio_arte' => $request->promedio_arte,
             'hora_sueno' => $request->hora_sueno,
             'grasas' => $request->grasas,
             'alimentos_saludables' => $request->alimentos_saludables,
-            //'pensamiento_critico' => $request->pensamiento_critico,
+            'litro_agua' => $request->litro_agua,
         ]);
 
         return redirect()->back()->with('success', 'Encuesta guardada correctamente');

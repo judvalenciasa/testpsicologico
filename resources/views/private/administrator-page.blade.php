@@ -18,13 +18,13 @@
             <div class="section">
                 <h2>Generar Pin</h2>
                 <div class="card">
-                    <form action="{{ route('pines.aletarios') }}" method="GET">
+                    <form action="{{ route('pines.aletarios') }}" method="POST">
                         @csrf
                         <div class="input-group">
                             <label for="cantidad">Cantidad de pines a generar</label>
                             <input type="number" id="cantidad" name="cantidad" class="input" min="1" required>
                         </div>
-                        <button type="submit" class="btn">Generar</button>
+                        <button id="generar-pines-btn" type="submit" method="POST" class="btn">Generar</button>
                     </form>
                 </div>
             </div>
@@ -44,5 +44,38 @@
     </section>
 
 </body>
+
+<script>
+    // Supongamos que tienes un botón para generar pines
+    document.getElementById('generar-pines-btn').addEventListener('click', function(event) {
+        event.preventDefault();
+
+        const cantidad = document.getElementById('cantidad').value;
+
+        fetch('/api/generar_pines', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content') // CSRF token
+                },
+                body: JSON.stringify({
+                    cantidad: cantidad
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert(data.msg); // Mostramos el mensaje de éxito
+                } else {
+                    alert(data.msg); // Mostramos el mensaje de error
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Ocurrió un error al generar los pines.');
+            });
+    });
+</script>
+
 
 </html>

@@ -19,7 +19,7 @@ return [
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => ['*', 'https://testpsicologico.conaldefa.org/'],
+    'allowed_origins' => ['*', 'https://testpsicologico.conaldefa.org/', 'http://testpsicologico.test'],
 
     'allowed_origins_patterns' => [],
 

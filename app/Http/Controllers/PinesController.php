@@ -80,15 +80,31 @@ class PinesController extends Controller
                         $this->almacenar_pines($pines_generados[$i]);
                     }
 
-                    return redirect()->back()->with('pines_generados', $pines_generados);
+                    // Respuesta de éxito en JSON
+                    return response()->json([
+                        'success' => true,
+                        'msg' => 'Los pines fueron creados y almacenados correctamente'
+                    ]);
                 } else {
-                    return "uno de los pines ya esta en la lista de generados vuelva a generar los códigos";
+                    // Respuesta de error en JSON
+                    return response()->json([
+                        'success' => false,
+                        'msg' => 'Uno de los pines ya está en la lista de generados. Vuelva a generar los códigos.'
+                    ]);
                 }
             } else {
-                return "no eres usuario administrador";
+                // Respuesta de no autorizado en JSON
+                return response()->json([
+                    'success' => false,
+                    'msg' => 'No eres usuario administrador.'
+                ], 403);
             }
         } else {
-            return "Es imposible que este aquí y no esté logeado, fallo en el middleware";
+            // Respuesta de error por no estar autenticado
+            return response()->json([
+                'success' => false,
+                'msg' => 'Es imposible que estés aquí sin estar logueado. Error en el middleware.'
+            ], 401);
         }
     }
 
@@ -124,7 +140,7 @@ class PinesController extends Controller
     {
         Log::info('PinesController@index');
         $pines = Pines::with('usuario')->get();
-        
+
         return view('pines.index', compact('pines'));
     }
 
