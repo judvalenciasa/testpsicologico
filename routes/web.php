@@ -37,9 +37,8 @@ Route::middleware('auth:sanctum')->group(function () {
 
     Route::get('mostrartest', [TestsController::class, 'mostrarPrueba'])->name('mostrartest');
 
-
     Route::get('pruebapage', function () {
-        return redirect()->route('mostrartest');
+        return redirect('mostrartest');
     })->name('pruebapage');
 
 

@@ -109,6 +109,7 @@ class UserController extends Controller
                 ) {
                     return view('private.caracterizacion');
                 } else {
+                    // Redirigir a la ruta del test si todo está completo
                     return redirect()->route('mostrartest');
                 }
             }

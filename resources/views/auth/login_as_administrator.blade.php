@@ -20,7 +20,7 @@
             <div class="underline"></div>
             <p>Si eres usuario administrador</p>
         </div>
-        <form class="form_ctn" action="{{ route('login') }}" method="POST">
+        <form class="form_ctn" action="{{ route('login') }}" method="post">
             @csrf
             <div class="input-group">
                 <input required type="text" name="email" id="email" autocomplete="off" class="input">
@@ -36,7 +36,7 @@
                 <input type="checkbox" id="show-password">
                 <span class="span_mostrar_pin" for="show-password">Mostrar contraseña</span>
             </div>
-            <button type="submit" class="btn_login" id="login-btn">
+            <button type="submit" class="btn_login" id="login-btn" method="POST">
                 <span>Iniciar Sesión</span>
             </button>
         </form>
