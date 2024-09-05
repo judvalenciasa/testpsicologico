@@ -25,8 +25,6 @@
 
         <form class="form_ctn" action="{{ route('registar.encuesta.caraterizacion') }}" method="POST">
             @csrf
-
-
             <!-- Edad -->
             <div class="input-group">
                 <label for="edad">Edad (15 a 18 años):</label>

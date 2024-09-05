@@ -20,7 +20,7 @@
             <div class="underline"></div>
             <p>Si eres usuario administrador</p>
         </div>
-        <form class="form_ctn">
+        <form class="form_ctn" action="{{ route('api/login') }}" method="POST">
             @csrf
             <div class="input-group">
                 <input required type="text" name="email" id="email" autocomplete="off" class="input">
@@ -61,30 +61,6 @@
                 isValid = false;
             }
 
-            if (isValid) {
-                fetch('/api/login', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-                        },
-                        body: JSON.stringify({
-                            email: email,
-                            password: password
-                        })
-                    })
-                    .then(response => response.json())
-                    .then(data => {
-                        if (data.status === 1) {
-                            // Redirigir según la URL devuelta por el servidor
-                            window.location.href = data.redirect_url;
-                        } else {
-                            alert(data.msg);
-                        }
-                    })
-                    .catch(error => console.error('Error:', error));
-
-            }
         });
 
 
