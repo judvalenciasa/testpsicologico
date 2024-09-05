@@ -20,7 +20,7 @@
             <div class="underline"></div>
             <p>Si eres usuario administrador</p>
         </div>
-        <form class="form_ctn" action="{{ route('api/login') }}" method="POST">
+        <form class="form_ctn" action="{{ route('login') }}" method="POST">
             @csrf
             <div class="input-group">
                 <input required type="text" name="email" id="email" autocomplete="off" class="input">
@@ -36,7 +36,7 @@
                 <input type="checkbox" id="show-password">
                 <span class="span_mostrar_pin" for="show-password">Mostrar contraseña</span>
             </div>
-            <button class="btn_login" id="login-btn">
+            <button type="submit" class="btn_login" id="login-btn">
                 <span>Iniciar Sesión</span>
             </button>
         </form>
@@ -44,7 +44,6 @@
 
     <script>
         document.getElementById('login-btn').addEventListener('click', function(event) {
-            event.preventDefault();
 
             var email = document.getElementById('email').value.trim();
             var password = document.getElementById('password').value.trim();

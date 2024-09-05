@@ -23,9 +23,12 @@ Route::post("login", [UserController::class, 'login'])->name('login');
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::get("perfil_usuario", [UserController::class, "perfil_usuario"]);
-    Route::get("logout", [UserController::class, "logout"]);
 
     Route::put('/pines/toggle', [PinesController::class, 'toggleEstado'])->name('pines.toggle');
+    Route::post("logout", [UserController::class, "logout"])->name('logout');
+
+    Route::get('/pines', [PinesController::class, 'index'])->name('pines.index');
+
 
     Route::get('generar_pin/{cantidad?}', [PinesController::class, 'generar_pines'])->name('pines.aletarios');
 
@@ -35,7 +38,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('registrar_datos', [UserController::class, 'llenar_encuesta_caracterizacion'])->name('registar.encuesta.caraterizacion');
 
     // Ruta para registrar las respuestas de la encuesta de metacognición
-   
+
 });
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {

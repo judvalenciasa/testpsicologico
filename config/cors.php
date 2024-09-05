@@ -19,7 +19,7 @@ return [
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => ['http://127.0.0.1:8000', 'http://testpsicologico.test'],
+    'allowed_origins' => ['*', 'https://testpsicologico.conaldefa.org/'],
 
     'allowed_origins_patterns' => [],
 

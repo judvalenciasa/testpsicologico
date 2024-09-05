@@ -83,30 +83,15 @@ class UserController extends Controller
         // Buscar al usuario por email
         $user = User::where('email', $request->email)->first();
 
-        Log::info('Usuario encontrado: ', ['user' => $user]);
-
-
         // Verificar las credenciales y autenticar al usuario
         if ($user && Hash::check($request->password, $user->password)) {
-
-            Log::info('Usuario autenticado: ', ['user' => $user]);
-
 
             // Autenticar al usuario en la sesión de Laravel
             Auth::login($user);
 
-            // Generar el token de acceso
-            $token = $user->createToken("auth_token")->plainTextToken;
-
             // Verificar si el usuario es administrador
             if ($user->es_administrador) {
-                return response()->json([
-                    'status' => 1,
-                    'msg' => 'Login exitoso',
-                    'access_token' => $token,
-                    'is_admin' => true,
-                    'redirect_url' => route('administrator')
-                    ]);
+                return view('private.administrator-page');
             } else {
                 // Verificar si los campos de caracterización están llenos
                 if (
@@ -122,22 +107,9 @@ class UserController extends Controller
                     is_null($user->alimentos_saludables) ||
                     is_null($user->grasas)
                 ) {
-                    return response()->json([
-                        'status' => 1,
-                        'msg' => 'Debe completar la encuesta de caracterización.',
-                        'access_token' => $token,
-                        'is_admin' => false,
-                        'redirect_url' => route('caracterizacion')
-                    ]);
+                    return view('private.caracterizacion');
                 } else {
-                    // Si todos los campos están completos, redirigir a la página de la prueba
-                    return response()->json([
-                        'status' => 1,
-                        'msg' => 'Login exitoso',
-                        'access_token' => $token,
-                        'is_admin' => false,
-                        'redirect_url' => route('mostrar.prueba')
-                    ]);
+                    return redirect()->route('mostrartest');
                 }
             }
         } else {
@@ -147,9 +119,6 @@ class UserController extends Controller
             ], 401);
         }
     }
-
-
-
 
     public function perfil_usuario(Request $request)
     {
@@ -170,8 +139,11 @@ class UserController extends Controller
         // Regenerar el token CSRF
         $request->session()->regenerateToken();
 
+        // Revocar todos los tokens de acceso del usuario
+        $request->user()->tokens()->delete();
+
         // Redirigir al usuario a la página de inicio con un mensaje de estado
-        return redirect()->route('home')->with('status', 'Sesión cerrada');
+        return view('home');
     }
 
 

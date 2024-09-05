@@ -34,13 +34,13 @@ Route::middleware('auth:sanctum')->group(function () {
         return view('private.caracterizacion');
     })->name('caracterizacion');
 
-    Route::get('mostrarTest', [TestsController::class, 'mostrarPrueba'])->name('mostrar.prueba');
 
-    Route::get('/pines', [PinesController::class, 'index'])->name('pines.index');
+    Route::get('mostrartest', [TestsController::class, 'mostrarPrueba'])->name('mostrartest');
 
-    Route::get('/pruebaPage', function () {
-        return view('private.prueba_page');
-    })->name('pruebaPage');
+
+    Route::get('pruebapage', function () {
+        return redirect()->route('mostrartest');
+    })->name('pruebapage');
 
 
     Route::get('/administrator', function () {

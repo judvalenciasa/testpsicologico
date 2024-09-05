@@ -122,6 +122,7 @@ class PinesController extends Controller
      */
     public function index()
     {
+        Log::info('PinesController@index');
         $pines = Pines::with('usuario')->get();
         
         return view('pines.index', compact('pines'));

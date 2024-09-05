@@ -25,13 +25,14 @@ class TestsController extends Controller
 
     public function mostrarPrueba()
     {
+        Log::info('Mostrando prueba');
         $prueba = Pruebas::first();
 
         if (!$prueba) {
             return redirect()->back()->with('error', 'No hay pruebas disponibles.');
         }
 
-        return view('private.mostrarTest', compact('prueba'));
+        return view('mostrarTest', compact('prueba'));
     }
 
     public function cargarPreguntas(Request $request)
