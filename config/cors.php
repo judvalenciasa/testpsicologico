@@ -15,11 +15,11 @@ return [
     |
     */
 
-    'paths' => ['api/*', 'sanctum/csrf-cookie'],
+    'paths' => ['api/*', 'sanctum/csrf-cookie', '*'], // Puedes ajustar las rutas según sea necesario
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => ['*', 'https://testpsicologico.conaldefa.org/', 'http://testpsicologico.test'],
+    'allowed_origins' => ['http://127.0.0.1:8000','https://testpsicologico.conaldefa.org/', 'http://testpsicologico.test'],
 
     'allowed_origins_patterns' => [],
 

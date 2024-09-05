@@ -23,6 +23,8 @@ class TestsController extends Controller
         $this->openAIService = $openAIService;
     }
 
+   
+
     public function mostrarPrueba()
     {
         Log::info('Mostrando prueba');

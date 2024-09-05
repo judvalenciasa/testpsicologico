@@ -24,7 +24,7 @@
             @csrf
             <input type="hidden" name="prueba_id" value="{{ $prueba->id_prueba }}">
             <div>
-                <button type="submit" {{ $prueba->estado == 1 ? '' : 'disabled' }}>Iniciar Prueba</button>
+                <button class="prueba_btn" type="submit" {{ $prueba->estado == 1 ? '' : 'disabled' }}>Iniciar Prueba</button>
             </div>
         </form>
     </section>

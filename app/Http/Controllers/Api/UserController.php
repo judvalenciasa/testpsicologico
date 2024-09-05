@@ -9,12 +9,53 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
-
-
-
+//import el controlador de test
+use App\Http\Controllers\TestsController;
+use PHPUnit\Event\Code\Test;
 
 class UserController extends Controller
 {
+    protected $testsController;
+
+    public function __construct(TestsController $testsController)
+    {
+        $this->testsController = $testsController;
+    }
+
+    public function indexAdministrador(Request $request)
+    {
+        $user = $request->user();
+
+        if ($user) {
+            Log::info('Usuario administrador' . $user);
+            return view('private.administrator-page');
+        } else {
+            return redirect()->route('login');
+        }
+    }
+
+    public function indexCaracterizacion(Request $request)
+    {
+        $user = $request->user();
+
+        if ($user) {
+            return view('private.caracterizacion');
+        } else {
+            return redirect()->route('login');
+        }
+    }
+
+    public function indexMostrarTest(Request $request)
+    {
+        $user = $request->user();
+
+        if ($user) {
+            return $this->testsController->mostrarPrueba();
+        } else {
+            return redirect()->route('login');
+        }
+    }
+
 
     public function pin_valido(Request $request)
     {
@@ -71,35 +112,50 @@ class UserController extends Controller
     }
 
 
-
     public function login(Request $request)
     {
+
+
         $request->validate([
-            'email' => 'required|email',
-            'password' => 'required',
+            'email' => 'required|string',
+            'password' => 'required|string',
         ]);
 
-        if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
-            Log::info('Autenticación exitosa para el usuario: ' . $request->email);
 
-            $user = Auth::user();
+        $credentials = $request->only('email', 'password');
 
-            if ($user->es_administrador) {
-                return view('private.administrator-page');
-            } else {
-                if (is_null($user->edad) || is_null($user->genero) || is_null($user->estrato || is_null($user->horas_lectura) || is_null($user->horas_redes_sociales) || is_null($user->horas_entretenimiento) || is_null($user->promedio_deporte) || is_null($user->promedio_arte) || is_null($user->hora_sueno) || is_null($user->grasas) || is_null($user->alimentos_saludables))) {
-                    return view('private.caracterizacion');
-                } else {
-                    return redirect()->route('mostrartest');
-                }
-            }
+        if (!Auth::attempt($credentials)) {
+            return response()->json([
+                "status" => 0,
+                "msg" => "Credenciales incorrectas"
+            ], 401);
+        }
+
+        Log::info('Usuario autenticado' . Auth::user());
+
+        $user = Auth::user();
+
+
+        return $this->authenticated($request, $user);
+    }
+
+
+    protected function authenticated(Request $request, $user)
+    {
+
+        if ($user->es_administrador) {
+            return $this->indexAdministrador($request);
         } else {
-            // Si las credenciales son incorrectas
-            return back()->withErrors([
-                'email' => 'Las credenciales no coinciden con nuestros registros.',
-            ]);
+            if ($user->documento_identificacion == null) {
+                Log::info('Usuario sin caracterización' . $user);
+                return $this->indexCaracterizacion($request);
+            } else {
+                return $this->indexMostrarTest($request);
+            }
         }
     }
+
+
 
     public function perfil_usuario(Request $request)
     {
@@ -129,6 +185,8 @@ class UserController extends Controller
      */
     public function llenar_encuesta_caracterizacion(Request $request)
     {
+        Log::info('llegue a encuesta' . $request);
+
         $user = User::where("email", "=", auth()->user()->email)->first();
 
         $request->validate([
@@ -169,6 +227,9 @@ class UserController extends Controller
             'litro_agua' => $request->litro_agua,
         ]);
 
-        return redirect()->back()->with('success', 'Encuesta guardada correctamente');
+        return response()->json([
+            "status" => 1,
+            "msg" => "Encuesta de caracterización completada"
+        ]);
     }
 }

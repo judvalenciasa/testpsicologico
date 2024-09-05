@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Cognitive Sparks | Encuesta de caracterización</title>
 
     <!-- Styles -->
@@ -23,8 +24,8 @@
         </div>
         @endif
 
-        <form class="form_ctn" action="{{ route('registar.encuesta.caraterizacion') }}" method="POST">
-            @csrf
+        <form class="form_ctn" action="{{ url('api/registrar_datos') }}" method="POST">
+            <input type="hidden" name="_token" value="{{ csrf_token() }}" />
 
             <!-- Documento Identificacion -->
             <div class="input-group">

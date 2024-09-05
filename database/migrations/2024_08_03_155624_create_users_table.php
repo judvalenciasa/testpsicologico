@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->rememberToken();
+            $table->rememberToken()->nullable();
             $table->string('documento_identificacion')->nullable();
             $table->integer('edad')->nullable();
             $table->integer('estrato')->nullable();
@@ -30,11 +30,11 @@ return new class extends Migration
             $table->string('horas_entretenimiento')->nullable(); 
             $table->string('hora_sueno')->nullable(); 
             $table->string('genero')->nullable(); 
-            $table->boolean('promedio_deporte')->nullable();
-            $table->boolean('promedio_arte')->nullable();
-            $table->boolean('grasas')->nullable();
-            $table->boolean('alimentos_saludables')->nullable();
-            $table->boolean('litro_agua')->nullable();
+            $table->string('promedio_deporte')->nullable();
+            $table->string('promedio_arte')->nullable();
+            $table->string('grasas')->nullable();
+            $table->string('alimentos_saludables')->nullable();
+            $table->string('litro_agua')->nullable();
             $table->boolean('es_administrador');
 
             $table->foreign('id_pin')->references('id_pin')->on('pines');

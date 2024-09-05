@@ -14,7 +14,7 @@
     align-items: center;
 }
 
-.form_ctn button {
+.form_ctn .prueba_btn {
     background-color: #4CAF50;
     color: white;
     font-weight: 600;
@@ -29,15 +29,15 @@
 }
 
 /** button deshabilitado **/
-.form_ctn button:disabled{
+.form_ctn .prueba_btn:disabled{
     background-color: gray;
 }
 
-.form_ctn button:disabled:hover{
+.form_ctn .prueba_btn:disabled:hover{
     background-color: none;
     opacity: none;
 }
 
-.form_ctn button:hover {
+.form_ctn .prueba_btn:hover {
     opacity: 0.8;
 }

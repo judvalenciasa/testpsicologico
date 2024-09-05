@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cognitive Sparks | Inicio administrador</title>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
 
     <!-- Styles -->
     <link href="{{ asset('css/inicio_administrador.css') }}" rel="stylesheet">
@@ -19,13 +21,14 @@
                 <h2>Generar Pin</h2>
                 <div class="card">
                     <form action="{{ route('pines.aletarios') }}" method="POST">
-                        @csrf
+                        <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                         <div class="input-group">
                             <label for="cantidad">Cantidad de pines a generar</label>
                             <input type="number" id="cantidad" name="cantidad" class="input" min="1" required>
                         </div>
                         <button id="generar-pines-btn" type="submit" method="POST" class="btn">Generar</button>
                     </form>
+
                 </div>
             </div>
 
@@ -36,9 +39,13 @@
             @endif
 
             <!-- Botón para ver los pines -->
-            <div class="section">
-                <a href="{{ route('pines.index') }}" class="btn">Ver Pines</a>
-            </div>
+            <form action="{{ route('pines.index') }}" method="get">
+                <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+
+                <div class="section">
+                    <button type="submit" class="btn">Ver Pines</button>
+                </div>
+            </form>
 
         </div>
     </section>
