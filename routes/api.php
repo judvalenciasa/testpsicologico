@@ -33,6 +33,9 @@ Route::middleware('auth:sanctum')->group(function () {
 
     // Ruta para registrar la encuesta de caracterización
     Route::post('registrar_datos', [UserController::class, 'llenar_encuesta_caracterizacion'])->name('registar.encuesta.caraterizacion');
+
+    // Ruta para registrar las respuestas de la encuesta de metacognición
+   
 });
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
