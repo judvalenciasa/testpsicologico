@@ -14,7 +14,7 @@ class HabilidadesSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('Habilidades')->insert([
+        DB::table('habilidades')->insert([
         	[
 				'id_habilidad' => 1,	
                 'nombre' => 'RAZONAMIENTO INDUCTIVO'

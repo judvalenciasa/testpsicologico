@@ -13,7 +13,7 @@ class CriteriosSeeders extends Seeder
      */
     public function run(): void
     {
-        DB::table('Criterios')->insert([
+        DB::table('criterios')->insert([
 
             //Item 2
             [
