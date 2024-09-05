@@ -19,27 +19,21 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
-
             $table->integer('edad')->nullable();
-            $table->string('genero', 9)->nullable();
             $table->integer('estrato')->nullable();
-            $table->string('escolaridad_madre', 120)->nullable();
-            $table->string('escolaridad_padre', 120)->nullable();
-            $table->integer('horas_lectura')->nullable();
-            $table->integer('horas_redes_sociales')->nullable();
-            $table->integer('horas_entretenimiento')->nullable();
-            $table->integer('promedio_segundo_idioma')->nullable();
-            $table->integer('promedio_deporte')->nullable();
-            $table->integer('promedio_arte')->nullable();
-            $table->integer('hora_sueno')->nullable();
+            $table->string('horas_lectura')->nullable(); // Cambiado de integer a string
+            $table->string('horas_redes_sociales')->nullable(); // Cambiado de integer a string
+            $table->string('horas_entretenimiento')->nullable(); // Cambiado de integer a string
+            $table->string('hora_sueno')->nullable(); // Cambiado de integer a string
+            $table->string('genero')->nullable(); // Cambiado de boolean a string
+            $table->boolean('promedio_deporte')->nullable();
+            $table->boolean('promedio_arte')->nullable();
             $table->boolean('grasas')->nullable();
-            $table->integer('pensamiento_critico')->nullable();
+            $table->boolean('alimentos_saludables')->nullable();
             $table->boolean('es_administrador');
 
             $table->foreign('id_pin')->references('id_pin')->on('pines');
-
             $table->timestamps();
-
         });
     }
 

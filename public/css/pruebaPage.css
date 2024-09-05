@@ -1,0 +1,43 @@
+.prueba_section{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: fit-content;
+    gap: 2vw;
+    background-color: #f1f1f1;
+}
+
+.prueba_section .title{
+    display: flex;
+    flex-direction: column ;
+    align-items: center;
+}
+
+.form_ctn button {
+    background-color: #4CAF50;
+    color: white;
+    font-weight: 600;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 1vw;
+    cursor: pointer;
+    width: 100%;
+    transition: all 0.3s ease;
+    font-size: 1.2vw;
+}
+
+/** button deshabilitado **/
+.form_ctn button:disabled{
+    background-color: gray;
+}
+
+.form_ctn button:disabled:hover{
+    background-color: none;
+    opacity: none;
+}
+
+.form_ctn button:hover {
+    opacity: 0.8;
+}

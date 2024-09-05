@@ -7,6 +7,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
+
 class UserSeeder extends Seeder
 {
     /**
@@ -16,26 +17,43 @@ class UserSeeder extends Seeder
     {
         DB::table('users')->insert([
             [
+                
                 'id_pin' => 1,
                 'password' => Hash::make(1234),
                 'name' => 'Yorman Valencia',
                 'email' => 'yormanvale@outlook.com',
                 'edad' => 20,
-                'genero' => 'Masculino',
                 'estrato' => 3,
-                'escolaridad_madre' => 'Tecnico',
-                'escolaridad_padre' => 'Tecnico',
-                'horas_lectura' => 2,
-                'horas_redes_sociales' => 3,
-                'horas_entretenimiento' => 4,
-                'promedio_segundo_idioma' => 4,
-                'promedio_deporte' => 4,
-                'promedio_arte' => 4,
-                'hora_sueno' => 8,
+                'horas_lectura' => "1-10",
+                'horas_redes_sociales' => ">10",
+                'horas_entretenimiento' => "1-10",
+                'hora_sueno' => "4-6",
+                'genero' => "Masculino",
+                'promedio_deporte' => true,
+                'promedio_arte' => false,
                 'grasas' => false,
-                'pensamiento_critico' => 4,
+                'alimentos_saludables' => true,
                 'es_administrador' => 1
             ],
+            [
+                'id_pin' => 2,
+                'password' => Hash::make(1234),
+                'name' => 'Juan Perez',
+                'email' => 'jua@gmail.com',
+                'edad' => 20,
+                'estrato' => 3,
+                'horas_lectura' => "1-10",
+                'horas_redes_sociales' => ">10",
+                'horas_entretenimiento' => "1-10",
+                'hora_sueno' => "4-6",
+                'genero' => "Masculino",
+                'promedio_deporte' => true,
+                'promedio_arte' => false,
+                'grasas' => false,
+                'alimentos_saludables' => true,
+                'es_administrador' => 0
+            ],
+
         ]);
     }
 }

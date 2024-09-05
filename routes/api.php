@@ -3,7 +3,7 @@
 use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\PinesController;
 use App\Http\Controllers\RespuestasController;
-use GuzzleHttp\Middleware;
+use App\Http\Controllers\TestsController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -18,19 +18,25 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::post("registrar", [UserController::class, 'registrar'])->name('registrar');
+Route::post("login", [UserController::class, 'login'])->name('login');
 
-Route::post("registrar", [UserController::class, 'registrar']);
-Route::post("login", [UserController::class, 'login']);
+Route::middleware('auth:sanctum')->group(function () {
+    Route::get("perfil_usuario", [UserController::class, "perfil_usuario"]);
+    Route::get("logout", [UserController::class, "logout"]);
 
-Route::middleware('auth:sanctum')->group(function (){
-    Route::get("perfil_usuario", [UserController::class,"perfil_usuario"]);
-    Route::get("logout", [UserController::class,"logout"]);
+    Route::put('/pines/toggle', [PinesController::class, 'toggleEstado'])->name('pines.toggle');
 
     Route::get('generar_pin/{cantidad?}', [PinesController::class, 'generar_pines'])->name('pines.aletarios');
-    Route::post('registrar_datos', [UserController::class, 'update'])->name('registar.datos');
-    Route::post('registrar_encuesta', [RespuestasController::class, 'guardar_respuestas'])->name('guardar.respuestas');
-});
 
+    Route::post('cargar_preguntas', [TestsController::class, 'cargarPreguntas'])->name('cargar.preguntas');
+
+    // Ruta para registrar la encuesta de caracterización
+    Route::post('registrar_datos', [UserController::class, 'llenar_encuesta_caracterizacion'])->name('registar.encuesta.caraterizacion');
+
+    // Ruta para registrar las respuestas de la encuesta de metacognición
+   
+});
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();

@@ -9,10 +9,44 @@ class Preguntas extends Model
 {
     use HasFactory;
 
-    protected $fillable=[
+    protected $table = 'preguntas';
+    protected $primaryKey = 'id_pregunta';
+
+    protected $fillable = [
         'id_prueba',
-        'texto',
-        'created_at',
-        'updated_at'
+        'id_contexto',
+        'id_subhabilidad',
+        'id_categoria',
+        'texto'
     ];
+
+    public function prueba()
+    {
+        return $this->belongsTo(Tests::class, 'id_prueba');
+    }
+
+    public function contexto()
+    {
+        return $this->belongsTo(Contexto::class, 'id_contexto');
+    }
+
+    public function subhabilidad()
+    {
+        return $this->belongsTo(Subhabilidad::class, 'id_subhabilidad');
+    }
+
+    public function categoria()
+    {
+        return $this->belongsTo(Habilidades::class, 'id_categoria');
+    }
+
+    public function opciones()
+    {
+        return $this->hasMany(Opciones::class, 'id_pregunta');
+    }
+
+    public function respuestas()
+    {
+        return $this->hasMany(Respuestas::class, 'id_pregunta');
+    }
 }

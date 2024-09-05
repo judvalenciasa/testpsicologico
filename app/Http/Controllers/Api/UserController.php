@@ -5,8 +5,13 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\Pines;
 use App\Models\User;
-use Hash;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
+
+
+
 
 class UserController extends Controller
 {
@@ -14,146 +19,205 @@ class UserController extends Controller
     public function pin_valido(Request $request)
     {
         $id_pin = pines::where('pin', $request->pin)->value('id_pin');
-       
-        if($id_pin){
+
+        if ($id_pin) {
             return $id_pin;
-        }else{
+        } else {
             return Null;
         }
     }
     public function registrar(Request $request)
     {
+        try {
+            $id_pin = $this->pin_valido($request);
 
-        //vamos a verificar el pin si existe
-        
-        $id_pin = $this->pin_valido($request);
-        
-        if($id_pin != Null){
-            
-            $request->merge(['id_pin' => $id_pin]);
+            if ($id_pin != null) {
+                $request->merge(['id_pin' => $id_pin]);
 
-            $request->validate([
-                'name' => 'required',
-                'email' => 'required',
-                'password' => 'required',
-                'id_pin'=> 'required'
-            ]);
-    
-            $user = new User();
-            $user->name = $request->name;
-            $user->email = $request->email;
-            $user->password = Hash::make($request->password);
-            $user->id_pin = $request->id_pin;
-            $user->es_administrador = 0;
-            
-            $user->save();
-    
-            return response()->json([
-                "status" => 1,
-                "msg" => "Registro exitoso"
-            ]);
-        }else{
-            return "pin invalido";
-        }
+                $request->validate([
+                    'name' => 'required',
+                    'email' => 'required',
+                    'id_pin' => 'required',
+                    'password' => 'required|string|min:6',
 
-    }
+                ]);
 
-    public function login(Request $request)
-    {
-        $request->validate([
-            'email' => 'required',
-            'password' => 'required',
-        ]);
+                $user = new User();
+                $user->name = $request->name;
+                $user->email = $request->email;
+                $user->id_pin = $request->id_pin;
+                $user->password = Hash::make($request->password); // Hashear la contraseña
+                $user->es_administrador = 0;
 
-        $user = User::where("email", "=", $request->email)->first();
-        
-        if (isset($user->id_usuario)) {
-
-            if (Hash::check($request->password, $user->password)) {
-                
-                $token = $user->createToken("auth_token")->plainTextToken;
+                $user->save();
 
                 return response()->json([
-                    "status" => 0,
-                    "msg" => "Exito logeado",
-                    "acess_token" => $token
+                    "status" => 1,
+                    "msg" => "Registro exitoso"
                 ]);
             } else {
                 return response()->json([
                     "status" => 0,
-                ], 404);
+                    "msg" => "Pin inválido"
+                ], 400);
             }
-        }else{
+        } catch (\Exception $e) {
             return response()->json([
                 "status" => 0,
-                "msg" => "Usuario no registrado",
-            ], 404);
+                "msg" => "Ocurrió un error en el servidor.",
+                "error" => $e->getMessage()
+            ], 500);
         }
-
-
     }
+
+
+
+    public function login(Request $request)
+    {
+        // Validar la entrada
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required',
+        ]);
+
+        // Buscar al usuario por email
+        $user = User::where('email', $request->email)->first();
+
+        Log::info('Usuario encontrado: ', ['user' => $user]);
+
+
+        // Verificar las credenciales y autenticar al usuario
+        if ($user && Hash::check($request->password, $user->password)) {
+
+            Log::info('Usuario autenticado: ', ['user' => $user]);
+
+
+            // Autenticar al usuario en la sesión de Laravel
+            Auth::login($user);
+
+            // Generar el token de acceso
+            $token = $user->createToken("auth_token")->plainTextToken;
+
+            // Verificar si el usuario es administrador
+            if ($user->es_administrador) {
+                return response()->json([
+                    'status' => 1,
+                    'msg' => 'Login exitoso',
+                    'access_token' => $token,
+                    'is_admin' => true,
+                    'redirect_url' => route('administrator')
+                    ]);
+            } else {
+                // Verificar si los campos de caracterización están llenos
+                if (
+                    is_null($user->edad) ||
+                    is_null($user->genero) ||
+                    is_null($user->estrato) ||
+                    is_null($user->horas_lectura) ||
+                    is_null($user->horas_redes_sociales) ||
+                    is_null($user->horas_entretenimiento) ||
+                    is_null($user->promedio_deporte) ||
+                    is_null($user->promedio_arte) ||
+                    is_null($user->hora_sueno) ||
+                    is_null($user->alimentos_saludables) ||
+                    is_null($user->grasas)
+                ) {
+                    return response()->json([
+                        'status' => 1,
+                        'msg' => 'Debe completar la encuesta de caracterización.',
+                        'access_token' => $token,
+                        'is_admin' => false,
+                        'redirect_url' => route('caracterizacion')
+                    ]);
+                } else {
+                    // Si todos los campos están completos, redirigir a la página de la prueba
+                    return response()->json([
+                        'status' => 1,
+                        'msg' => 'Login exitoso',
+                        'access_token' => $token,
+                        'is_admin' => false,
+                        'redirect_url' => route('mostrar.prueba')
+                    ]);
+                }
+            }
+        } else {
+            return response()->json([
+                'status' => 0,
+                'msg' => 'Credenciales incorrectas',
+            ], 401);
+        }
+    }
+
+
+
+
     public function perfil_usuario(Request $request)
     {
-        
+
         return response()->json([
             "status" => 0,
             "msg" => "Acerca del perfil de usuario",
-            "data"=> auth()->user()
+            "data" => auth()->user()
         ], 404);
-        
     }
     public function logout(Request $request)
     {
-        auth()->user()->tokens()->delete();
-        return response()->json([
-            "status" => 0,
-            "msg" => "Cierre de session"
-        ], 404);
+
+
+        // Invalidar la sesión actual
+        $request->session()->invalidate();
+
+        // Regenerar el token CSRF
+        $request->session()->regenerateToken();
+
+        // Redirigir al usuario a la página de inicio con un mensaje de estado
+        return redirect()->route('home')->with('status', 'Sesión cerrada');
     }
+
+
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, User $user)
+    public function llenar_encuesta_caracterizacion(Request $request)
     {
         $user = User::where("email", "=", auth()->user()->email)->first();
 
         $request->validate([
-            'edad' => 'required|int',
+            'edad' => 'required|integer|min:15|max:18',
             'genero' => 'required|string|max:9',
-            'estrato' => 'required|int',
-            'escolaridad_madre' => 'required|string',
-            'escolaridad_padre' => 'required|string',
-            'horas_lectura' => 'required|int',
-            'horas_redes_sociales' => 'required|int',
-            'horas_entretenimiento' => 'required|int',
-            'promedio_segundo_idioma' => 'required|int',
-            'promedio_deporte' => 'required|int',
-            'promedio_arte' => 'required|int',
-            'hora_sueno' => 'required|int',
-            'grasas' => 'required|int',
-            'pensamiento_critico' => 'required|int',
-
+            'estrato' => 'required|integer|min:1|max:6',
+            //'escolaridad_madre' => 'required|string',
+            //'escolaridad_padre' => 'required|string',
+            'horas_lectura' => 'required|string',
+            'horas_redes_sociales' => 'required|string',
+            'horas_entretenimiento' => 'required|string',
+            'promedio_deporte' => 'required|string',
+            'promedio_arte' => 'required|string',
+            'hora_sueno' => 'required|string',
+            'grasas' => 'required|string',
+            'alimentos_saludables' => 'required|string',
+            //'pensamiento_critico' => 'required|int',
         ]);
 
         $user->update([
-            'edad' => $user->edad,
-            'genero' => $user->genero,
-            'estrato' => $user->estrato,
-            'escolaridad_madre' => $user->escolaridad_madre,
-            'escolaridad_padre' => $user->escolaridad_padre,
-            'horas_lectura' => $user->horas_lectura,
-            'horas_redes_sociales' => $user->horas_redes_sociales,
-            'horas_entretenimiento' => $user->horas_entretenimiento,
-            'promedio_segundo_idioma' => $user->promedio_segundo_idioma,
-            'promedio_deporte' => $user->promedio_deporte,
-            'promedio_arte' => $user->promedio_arte,
-            'hora_sueno' => $user->hora_sueno,
-            'grasas' => $user->grasas,
-            'pensamiento_critico' => $user->pensamiento_critico,
+            'edad' => $request->edad,
+            'genero' => $request->genero,
+            'estrato' => $request->estrato,
+            //'escolaridad_madre' => $request->escolaridad_madre,
+            //'escolaridad_padre' => $request->escolaridad_padre,
+            'horas_lectura' => $request->horas_lectura,
+            'horas_redes_sociales' => $request->horas_redes_sociales,
+            'horas_entretenimiento' => $request->horas_entretenimiento,
+            //'promedio_segundo_idioma' => $request->promedio_segundo_idioma,
+            'promedio_deporte' => $request->promedio_deporte,
+            'promedio_arte' => $request->promedio_arte,
+            'hora_sueno' => $request->hora_sueno,
+            'grasas' => $request->grasas,
+            'alimentos_saludables' => $request->alimentos_saludables,
+            //'pensamiento_critico' => $request->pensamiento_critico,
         ]);
 
-        return $user;
+        return redirect()->back()->with('success', 'Encuesta guardada correctamente');
     }
-
 }

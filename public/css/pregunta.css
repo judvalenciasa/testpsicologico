@@ -1,0 +1,76 @@
+.pregunta_section {
+    background-color: rgb(252, 245, 223);
+    backdrop-filter: blur(3px);
+    display: grid;
+    grid-template-columns: 100%;
+    gap: 1vw;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.title h2 {
+    font-size: 1.5rem;
+    color: #000;
+    margin-bottom: 20px;
+}
+
+.pregunta_ctn {
+    display: flex;
+    flex-direction: column;
+    gap: 2vw;
+}
+
+.pregunta_ctn p {
+    font-size: 19px;
+    color: #000;
+    line-height: 1.4;
+    text-align: justify;
+}
+
+.form_ctn {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 2vw;
+    display: flex;
+    background-color: white;
+    flex-direction: column;
+    gap: 2vw;
+    border-radius: 1vw;
+}
+
+.form_ctn .pregunta_texto {
+    font-weight: 700;
+}
+
+.form_ctn textarea {
+    width: 100%;
+    border-radius: 1vw;
+    padding: 1vw;
+}
+
+.form_ctn textarea::placeholder {
+    font-weight: 700;
+    font-size: 1vw;
+}
+
+.form_ctn button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 1vw;
+    width: 20%;
+    border-radius: 1vw;
+    cursor: pointer;
+    align-self: flex-end;
+}
+
+.form_ctn .opcion label {
+    display: flex;
+    gap: 1vw;
+}
+
+.form_ctn .opcion p {
+    font-size: 16px;
+    color: #000;
+    line-height: 1.4;
+    text-align: justify;
+}

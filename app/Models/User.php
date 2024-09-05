@@ -12,7 +12,7 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
-    protected $able = "users"; 
+    protected $able = "users";
     protected $primaryKey = 'id_usuario';
     /**
      * The attributes that are mass assignable.
@@ -20,26 +20,35 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
+        'id_pin',
         'name',
         'email',
         'password',
         'edad',
         'genero',
         'estrato',
-        'escolaridad_madre',
-        'escolaridad_padre',
         'horas_lectura',
         'horas_redes_sociales',
         'horas_entretenimiento',
-        'promedio_segundo_idioma',
         'promedio_deporte',
         'promedio_arte',
         'hora_sueno',
         'grasas',
-        'pensamiento_critico'
+        'alimentos_saludables',
     ];
 
+    public function pin()
+    {
+        return $this->hasOne(Pines::class, 'id_pin', 'id_pin');
+    }
 
+    public function reportes()
+    {
+        return $this->hasMany(Reportes::class, 'id_usuario');
+    }
 
-
+    public function respuestas()
+    {
+        return $this->hasMany(Respuestas::class, 'id_usuario');
+    }
 }

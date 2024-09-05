@@ -9,8 +9,23 @@ class Respuestas extends Model
 {
     use HasFactory;
 
-    protected $fillable=[
+    protected $table = 'respuestas';
+    protected $primaryKey = 'id_respuesta';
+
+    protected $fillable = [
+        'id_usuario',
+        'id_pregunta',
         'respuesta',
-        'calificacion',
+        'calificacion_respuesta'
     ];
+
+    public function usuario()
+    {
+        return $this->belongsTo(User::class, 'id_usuario');
+    }
+
+    public function pregunta()
+    {
+        return $this->belongsTo(Preguntas::class, 'id_pregunta');
+    }
 }

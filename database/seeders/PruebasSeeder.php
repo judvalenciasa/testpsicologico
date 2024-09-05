@@ -17,7 +17,8 @@ class PruebasSeeder extends Seeder
         DB::table('pruebas')->insert([
         	[
 				'titulo' => 'Prueba psicotécnica',
-	        	'descripcion' => 'Pruebas para el desarrollo psicotécnico'
+	        	'descripcion' => 'Pruebas para el desarrollo psicotécnico',
+                'estado' => 1
             ],
         ]);
     }

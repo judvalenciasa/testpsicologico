@@ -4,9 +4,37 @@ namespace App\Http\Controllers;
 
 use App\Models\Respuestas;
 use Illuminate\Http\Request;
+use SebastianBergmann\Environment\Console;
 
 class RespuestasController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     */
+    public function registrar_respuesta_test(Request $request)
+    {
+
+
+        $contador = 0;
+        foreach ($request->all() as $key => $value) {
+            
+            print_r($key);
+        }
+    
+     
+        return $contador;
+    }
+
+    /**
+     * Display a listing of the resource.
+     */
+    public function registrar_respuesta($respuesta)
+    {
+
+
+        return $respuesta;
+    }
+
     /**
      * Display a listing of the resource.
      */

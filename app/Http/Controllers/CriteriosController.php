@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Administradores;
+use App\Models\Criterios;
 use Illuminate\Http\Request;
 
-class AdministradoresController extends Controller
+class CriteriosController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -34,7 +34,7 @@ class AdministradoresController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Administradores $administradores)
+    public function show(Criterios $criterios)
     {
         //
     }
@@ -42,7 +42,7 @@ class AdministradoresController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Administradores $administradores)
+    public function edit(Criterios $criterios)
     {
         //
     }
@@ -50,7 +50,7 @@ class AdministradoresController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Administradores $administradores)
+    public function update(Request $request, Criterios $criterios)
     {
         //
     }
@@ -58,7 +58,7 @@ class AdministradoresController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Administradores $administradores)
+    public function destroy(Criterios $criterios)
     {
         //
     }

@@ -14,7 +14,8 @@ return new class extends Migration
         Schema::create('opciones', function (Blueprint $table) {
             $table->id('id_opcion');
             $table->unsignedBigInteger('id_pregunta');
-            $table->string('text', 120);
+            $table->string('texto', 5000);
+            $table->integer('valor_opcion')->nullable();
             $table->timestamps();
             
             $table->foreign('id_pregunta')->references('id_pregunta')->on('preguntas');
