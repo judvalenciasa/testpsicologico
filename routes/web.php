@@ -35,14 +35,14 @@ Route::middleware('auth:sanctum')->group(function () {
     })->name('caracterizacion');
 
 
-    Route::get('mostrartest', [TestsController::class, 'mostrarPrueba'])->name('mostrartest');
+    Route::get('/mostrartest', [TestsController::class, 'mostrarPrueba'])->name('mostrartest');
 
-    Route::get('pruebapage', function () {
+    Route::get('/pruebapage', function () {
         return redirect('mostrartest');
     })->name('pruebapage');
 
 
     Route::get('/administrator', function () {
         return view('private.administrator-page');
-    })->name('administrator');
+    })->name('pagina-administrador');
 });

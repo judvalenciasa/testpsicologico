@@ -37,7 +37,7 @@
 
             <!-- Botón para ver los pines -->
             <div class="section">
-                <a href="{{ url('/pines') }}" class="btn">Ver Pines</a>
+                <a href="{{ route('pines.index') }}" class="btn">Ver Pines</a>
             </div>
 
         </div>

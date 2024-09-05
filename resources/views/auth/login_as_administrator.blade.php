@@ -20,7 +20,7 @@
             <div class="underline"></div>
             <p>Si eres usuario administrador</p>
         </div>
-        <form class="form_ctn" action="{{ route('login') }}" method="post">
+        <form class="form_ctn" action="{{ url('/api/login') }}" method="POST">
             @csrf
             <div class="input-group">
                 <input required type="text" name="email" id="email" autocomplete="off" class="input">

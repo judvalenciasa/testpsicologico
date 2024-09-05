@@ -74,50 +74,33 @@ class UserController extends Controller
 
     public function login(Request $request)
     {
-        // Validar la entrada
         $request->validate([
             'email' => 'required|email',
             'password' => 'required',
         ]);
 
-        // Buscar al usuario por email
-        $user = User::where('email', $request->email)->first();
+        if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
 
-        // Verificar las credenciales y autenticar al usuario
-        if ($user && Hash::check($request->password, $user->password)) {
+            $user = Auth::user();
 
-            // Autenticar al usuario en la sesión de Laravel
-            Auth::login($user);
-
-            // Verificar si el usuario es administrador
             if ($user->es_administrador) {
-                return view('private.administrator-page');
+
+                //log para comprobar que el usuario está autenticado
+                Log::info('Usuario autenticado: ' . $user);
+                
+                    return redirect()->route('pagina-administrador');
             } else {
-                // Verificar si los campos de caracterización están llenos
-                if (
-                    is_null($user->edad) ||
-                    is_null($user->genero) ||
-                    is_null($user->estrato) ||
-                    is_null($user->horas_lectura) ||
-                    is_null($user->horas_redes_sociales) ||
-                    is_null($user->horas_entretenimiento) ||
-                    is_null($user->promedio_deporte) ||
-                    is_null($user->promedio_arte) ||
-                    is_null($user->hora_sueno) ||
-                    is_null($user->alimentos_saludables) ||
-                    is_null($user->grasas)
-                ) {
-                    return view('private.caracterizacion');
+                if (is_null($user->edad) || is_null($user->genero) || is_null($user->estrato || is_null($user->horas_lectura) || is_null($user->horas_redes_sociales) || is_null($user->horas_entretenimiento) || is_null($user->promedio_deporte) || is_null($user->promedio_arte) || is_null($user->hora_sueno) || is_null($user->grasas) || is_null($user->alimentos_saludables))) {
+                    return redirect()->route('caracterizacion');
                 } else {
-                    // Redirigir a la ruta del test si todo está completo
                     return redirect()->route('mostrartest');
                 }
             }
         } else {
-            return response()->json([
-                'status' => 0,
-                'msg' => 'Credenciales incorrectas',
-            ], 401);
+            // Si las credenciales son incorrectas
+            return back()->withErrors([
+                'email' => 'Las credenciales no coinciden con nuestros registros.',
+            ]);
         }
     }
 
@@ -130,23 +113,18 @@ class UserController extends Controller
             "data" => auth()->user()
         ], 404);
     }
+
     public function logout(Request $request)
     {
-
-
-        // Invalidar la sesión actual
-        $request->session()->invalidate();
-
-        // Regenerar el token CSRF
-        $request->session()->regenerateToken();
-
-        // Revocar todos los tokens de acceso del usuario
+        // Invalidar la sesión actual y eliminar tokens
         $request->user()->tokens()->delete();
 
-        // Redirigir al usuario a la página de inicio con un mensaje de estado
-        return view('home');
+        // Respuesta de logout exitoso
+        return response()->json([
+            "status" => 1,
+            "msg" => "Sesión cerrada exitosamente"
+        ]);
     }
-
 
 
     /**
