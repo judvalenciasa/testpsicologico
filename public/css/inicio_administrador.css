@@ -7,9 +7,37 @@
 }
 
 .container {
+    flex-direction: column !important;
     display: flex;
     justify-content: space-between;
     width: 60%;
+    gap: 2vw;
+    align-items: center;
+
+}
+
+.container .ctn_admin {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    gap: 2vw;
+    align-items: center;
+}
+
+.container .title {
+    color: white;
+    text-align: center;
+}
+
+.container .admin_btns_ctn {
+    display: flex;
+    flex-direction: column;
+    gap: 2vw;
+    align-items: center;
+}
+
+.container .admin_btns_ctn .section {
+    width: 100%;
 }
 
 .section {
@@ -17,7 +45,7 @@
     width: 45%;
 }
 
-.section h2{
+.section h2 {
     color: white;
 }
 
