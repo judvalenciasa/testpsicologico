@@ -59,7 +59,7 @@ form select:focus {
 }
 
 /* Estilos para el botón de envío */
-form button[type="submit"] {
+form .send_btn[type="submit"] {
     width: 100%;
     padding: 10px;
     background-color: #007bff;
@@ -73,6 +73,6 @@ form button[type="submit"] {
 }
 
 /* Efecto hover en el botón de envío */
-form button[type="submit"]:hover {
+form .send_btn[type="submit"]:hover {
     background-color: #0056b3;
 }

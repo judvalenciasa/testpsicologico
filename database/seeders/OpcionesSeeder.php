@@ -131,7 +131,7 @@ class OpcionesSeeder extends Seeder
                 'valor_opcion' => 0
             ],
 
-            //Item 1_Metacognición
+            /* //Item 1_Metacognición
             [
                 'id_opcion' => 18,
                 'id_pregunta' => 17,
@@ -161,7 +161,7 @@ class OpcionesSeeder extends Seeder
                 'id_pregunta' => 17,
                 'texto' => 'Completamente de acuerdo',
                 'valor_opcion' => 5
-            ],
+            ], */
 
             //Item 7
             [
@@ -204,7 +204,7 @@ class OpcionesSeeder extends Seeder
                 diversifican los productos y se fabrican en poco tiempo.',
                 'valor_opcion' => 0
             ],
-            //Item 1_Metacognición
+           /*  //Item 1_Metacognición
             [
                 'id_opcion' => 28,
                 'id_pregunta' => 17,
@@ -234,10 +234,10 @@ class OpcionesSeeder extends Seeder
                 'id_pregunta' => 17,
                 'texto' => 'Completamente de acuerdo',
                 'valor_opcion' => 5
-            ],
+            ], */
 
             //Contexto4_Metacognición
-            //pregunta 1_Metacognición
+            /* //pregunta 1_Metacognición
             [
                 'id_opcion' => 33,
                 'id_pregunta' => 21,
@@ -329,7 +329,7 @@ class OpcionesSeeder extends Seeder
                 'id_pregunta' => 23,
                 'texto' => 'Completamente de acuerdo',
                 'valor_opcion' => 5
-            ],
+            ], */
 
             //Item 9
             [
@@ -363,7 +363,7 @@ class OpcionesSeeder extends Seeder
                 'valor_opcion' => 0
             ],
             //Contexto5_Metacognición
-            //pregunta 1_Metacognición
+            /* //pregunta 1_Metacognición
             [
                 'id_opcion' => 53,
                 'id_pregunta' => 26,
@@ -455,7 +455,7 @@ class OpcionesSeeder extends Seeder
                 'id_pregunta' => 28,
                 'texto' => 'Completamente de acuerdo',
                 'valor_opcion' => 5
-            ],
+            ], */
 
             //Item 11
             [
@@ -489,7 +489,7 @@ class OpcionesSeeder extends Seeder
                 'valor_opcion' => 0
             ],
             //Contexto6_Metacognición
-            //pregunta 1_Metacognición
+            /* //pregunta 1_Metacognición
             [
                 'id_opcion' => 73,
                 'id_pregunta' => 31,
@@ -581,7 +581,7 @@ class OpcionesSeeder extends Seeder
                 'id_pregunta' => 33,
                 'texto' => 'Completamente de acuerdo',
                 'valor_opcion' => 5
-            ],
+            ], */
             //Item 13
             [
                 'id_opcion' => 88,
@@ -614,7 +614,7 @@ class OpcionesSeeder extends Seeder
                 'valor_opcion' => 0
             ],
             //Contexto7_Metacognición
-            //pregunta 1_Metacognición
+            /* //pregunta 1_Metacognición
             [
                 'id_opcion' => 93,
                 'id_pregunta' => 36,
@@ -706,7 +706,7 @@ class OpcionesSeeder extends Seeder
                 'id_pregunta' => 38,
                 'texto' => 'Completamente de acuerdo',
                 'valor_opcion' => 5
-            ],
+            ], */
             //Item 15
             [
                 'id_opcion' => 108,
@@ -739,7 +739,7 @@ class OpcionesSeeder extends Seeder
                 'valor_opcion' => 0
             ],
             //Contexto8_Metacognición
-            //pregunta 1_Metacognición
+            /* //pregunta 1_Metacognición
             [
                 'id_opcion' => 113,
                 'id_pregunta' => 41,
@@ -831,7 +831,7 @@ class OpcionesSeeder extends Seeder
                 'id_pregunta' => 43,
                 'texto' => 'Completamente de acuerdo',
                 'valor_opcion' => 5
-            ],
+            ], */
 
             //Item 17
             [
@@ -866,7 +866,7 @@ class OpcionesSeeder extends Seeder
             ],
 
             //Contexto9_Metacognición
-            //pregunta 1_Metacognición
+            /* //pregunta 1_Metacognición
             [
                 'id_opcion' => 133,
                 'id_pregunta' => 46,
@@ -958,7 +958,7 @@ class OpcionesSeeder extends Seeder
                 'id_pregunta' => 48,
                 'texto' => 'Completamente de acuerdo',
                 'valor_opcion' => 5
-            ],
+            ], */
 
             //Item 19 
             [
@@ -993,7 +993,7 @@ class OpcionesSeeder extends Seeder
             ],
 
             //Contexto10_Metacognición
-            //pregunta 1_Metacognición
+            /* //pregunta 1_Metacognición
             [
                 'id_opcion' => 153,
                 'id_pregunta' => 51,
@@ -1085,7 +1085,7 @@ class OpcionesSeeder extends Seeder
                 'id_pregunta' => 53,
                 'texto' => 'Completamente de acuerdo',
                 'valor_opcion' => 5
-            ],
+            ], */
 
             //Item 21
             [
@@ -1120,7 +1120,7 @@ class OpcionesSeeder extends Seeder
             ],
 
             //Contexto11_Metacognición
-            //pregunta 1_Metacognición
+            /* //pregunta 1_Metacognición
             [
                 'id_opcion' => 173,
                 'id_pregunta' => 56,
@@ -1212,7 +1212,7 @@ class OpcionesSeeder extends Seeder
                 'id_pregunta' => 58,
                 'texto' => 'Completamente de acuerdo',
                 'valor_opcion' => 5
-            ],
+            ], */
 
             //Item 23
             [
@@ -1259,7 +1259,7 @@ class OpcionesSeeder extends Seeder
             ],
 
             //Contexto12_Metacognición
-            //pregunta 1_Metacognición
+            /* //pregunta 1_Metacognición
             [
                 'id_opcion' => 195,
                 'id_pregunta' => 61,
@@ -1351,7 +1351,7 @@ class OpcionesSeeder extends Seeder
                 'id_pregunta' => 63,
                 'texto' => 'Completamente de acuerdo',
                 'valor_opcion' => 5
-            ],
+            ], */
 
             //Item 25
             [
@@ -1386,7 +1386,7 @@ class OpcionesSeeder extends Seeder
             ],
 
             //Contexto13_Metacognición
-            //pregunta 1_Metacognición
+            /* //pregunta 1_Metacognición
             [
                 'id_opcion' => 215,
                 'id_pregunta' => 66,
@@ -1478,7 +1478,7 @@ class OpcionesSeeder extends Seeder
                 'id_pregunta' => 68,
                 'texto' => 'Completamente de acuerdo',
                 'valor_opcion' => 5
-            ],
+            ], */
 
             //Item 27
             [
@@ -1519,7 +1519,7 @@ class OpcionesSeeder extends Seeder
             ],
 
             //Contexto14_Metacognición
-            //pregunta 1_Metacognición
+            /* //pregunta 1_Metacognición
             [
                 'id_opcion' => 236,
                 'id_pregunta' => 71,
@@ -1611,7 +1611,7 @@ class OpcionesSeeder extends Seeder
                 'id_pregunta' => 73,
                 'texto' => 'Completamente de acuerdo',
                 'valor_opcion' => 5
-            ],
+            ], */
 
             //Item 29
             [
@@ -1646,7 +1646,7 @@ class OpcionesSeeder extends Seeder
             ],
 
             //Contexto15_Metacognición
-            //pregunta 1_Metacognición
+            /* //pregunta 1_Metacognición
             [
                 'id_opcion' => 256,
                 'id_pregunta' => 76,
@@ -1738,7 +1738,7 @@ class OpcionesSeeder extends Seeder
                 'id_pregunta' => 78,
                 'texto' => 'Completamente de acuerdo',
                 'valor_opcion' => 5
-            ],
+            ], */
 
         ]);
     }

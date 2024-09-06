@@ -20,8 +20,11 @@
             <div class="underline"></div>
             <p>Si eres usuario administrador</p>
         </div>
-        <form class="form_ctn">
-            @csrf
+        <!-- Aquí el formulario no necesita acción porque la manejas con JavaScript -->
+        <form class="form_ctn" method="post" action="{{ route('login') }}">
+            
+            <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+
             <div class="input-group">
                 <input required type="text" name="email" id="email" autocomplete="off" class="input">
                 <label class="user-label">Correo electrónico</label>
@@ -36,15 +39,15 @@
                 <input type="checkbox" id="show-password">
                 <span class="span_mostrar_pin" for="show-password">Mostrar contraseña</span>
             </div>
-            <button class="btn_login" id="login-btn">
+            <button type="submit" class="btn_login" id="login-btn">
                 <span>Iniciar Sesión</span>
             </button>
         </form>
     </section>
 
     <script>
-        document.getElementById('login-btn').addEventListener('click', function(event) {
-            event.preventDefault();
+        document.getElementById('login-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevenir el envío del formulario tradicional
 
             var email = document.getElementById('email').value.trim();
             var password = document.getElementById('password').value.trim();
@@ -61,36 +64,10 @@
                 isValid = false;
             }
 
-            if (isValid) {
-                /*
-                fetch('/api/login', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-                        },
-                        body: JSON.stringify({
-                            email: email,
-                            password: password
-                        })
-                    })
-                    .then(response => response.json())
-                    .then(data => {
-                        if (data.status === 1) {
-                            // Redirigir según la URL devuelta por el servidor
-                            window.location.href = data.redirect_url;
-                        } else {
-                            alert(data.msg);
-                        }
-                    })
-                    .catch(error => console.error('Error:', error));
-*/
 
 
 
-            }
         });
-
 
         function showError(inputId, message) {
             var input = document.getElementById(inputId);

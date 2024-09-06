@@ -9,12 +9,60 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
-
-
-
+//import el controlador de test
+use App\Http\Controllers\TestsController;
+use PHPUnit\Event\Code\Test;
+use App\Models\Pruebas;
 
 class UserController extends Controller
 {
+    protected $testsController;
+
+    public function __construct(TestsController $testsController)
+    {
+        $this->testsController = $testsController;
+    }
+
+    public function indexAdministrador(Request $request)
+    {
+        $user = $request->user();
+
+        if ($user) {
+
+            // Obtener la prueba para pasarla a la vista
+            $prueba = Pruebas::first(); // O busca la prueba específica que desees
+
+            Log::info('Prueba: ' . $prueba);
+
+            return view('private.administrator-page', compact('prueba'));; // Pasar la variable 'prueba' a la vista
+        } else {
+            return redirect()->route('login');
+        }
+    }
+
+
+    public function indexCaracterizacion(Request $request)
+    {
+        $user = $request->user();
+
+        if ($user) {
+            return view('private.caracterizacion')->with('user', $user);
+        } else {
+            return redirect()->route('login');
+        }
+    }
+
+    public function indexMostrarTest(Request $request)
+    {
+        $user = $request->user();
+
+        if ($user) {
+            return $this->testsController->mostrarPrueba();
+        } else {
+            return redirect()->route('login');
+        }
+    }
+
 
     public function pin_valido(Request $request)
     {
@@ -71,83 +119,52 @@ class UserController extends Controller
     }
 
 
-
     public function login(Request $request)
     {
-        // Validar la entrada
+        // Validar los datos del formulario de login
         $request->validate([
-            'email' => 'required|email',
-            'password' => 'required',
+            'email' => 'required|string',
+            'password' => 'required|string',
         ]);
 
-        // Buscar al usuario por email
-        $user = User::where('email', $request->email)->first();
+        // Obtener las credenciales (email y password) del request
+        $credentials = $request->only('email', 'password');
 
-        Log::info('Usuario encontrado: ', ['user' => $user]);
+        // Intentar autenticar al usuario usando Auth::attempt
+        if (Auth::attempt($credentials)) {
+            // Regenerar la sesión después de autenticación exitosa
+            $request->session()->regenerate();
 
+            // Registrar en los logs al usuario autenticado
+            Log::info('Usuario autenticado: ' . $request->user());
 
-        // Verificar las credenciales y autenticar al usuario
-        if ($user && Hash::check($request->password, $user->password)) {
-
-            Log::info('Usuario autenticado: ', ['user' => $user]);
-
-
-            // Autenticar al usuario en la sesión de Laravel
-            Auth::login($user);
-
-            // Generar el token de acceso
-            $token = $user->createToken("auth_token")->plainTextToken;
-
-            // Verificar si el usuario es administrador
-            if ($user->es_administrador) {
-                return response()->json([
-                    'status' => 1,
-                    'msg' => 'Login exitoso',
-                    'access_token' => $token,
-                    'is_admin' => true,
-                    'redirect_url' => route('administrator')
-                    ]);
-            } else {
-                // Verificar si los campos de caracterización están llenos
-                if (
-                    is_null($user->edad) ||
-                    is_null($user->genero) ||
-                    is_null($user->estrato) ||
-                    is_null($user->horas_lectura) ||
-                    is_null($user->horas_redes_sociales) ||
-                    is_null($user->horas_entretenimiento) ||
-                    is_null($user->promedio_deporte) ||
-                    is_null($user->promedio_arte) ||
-                    is_null($user->hora_sueno) ||
-                    is_null($user->alimentos_saludables) ||
-                    is_null($user->grasas)
-                ) {
-                    return response()->json([
-                        'status' => 1,
-                        'msg' => 'Debe completar la encuesta de caracterización.',
-                        'access_token' => $token,
-                        'is_admin' => false,
-                        'redirect_url' => route('caracterizacion')
-                    ]);
-                } else {
-                    // Si todos los campos están completos, redirigir a la página de la prueba
-                    return response()->json([
-                        'status' => 1,
-                        'msg' => 'Login exitoso',
-                        'access_token' => $token,
-                        'is_admin' => false,
-                        'redirect_url' => route('mostrar.prueba')
-                    ]);
-                }
-            }
-        } else {
-            return response()->json([
-                'status' => 0,
-                'msg' => 'Credenciales incorrectas',
-            ], 401);
+            // Llamar al método authenticated para redirigir dependiendo del usuario
+            return $this->authenticated($request, Auth::user());
         }
+
+        // Si la autenticación falla, redirigir de vuelta al formulario de login con un mensaje de error
+        return back()->withErrors([
+            'email' => 'Las credenciales no coinciden con nuestros registros.',
+        ])->onlyInput('email');
     }
 
+
+
+
+    protected function authenticated(Request $request, $user)
+    {
+
+        if ($user->es_administrador) {
+            return $this->indexAdministrador($request);
+        } else {
+            if ($user->documento_identificacion == null) {
+                Log::info('Usuario sin caracterización' . $user);
+                return $this->indexCaracterizacion($request);
+            } else {
+                return $this->indexMostrarTest($request);
+            }
+        }
+    }
 
 
 
@@ -160,19 +177,21 @@ class UserController extends Controller
             "data" => auth()->user()
         ], 404);
     }
+
     public function logout(Request $request)
     {
+        // Cerrar la sesión del usuario
+        Auth::logout();
 
-
-        // Invalidar la sesión actual
+        // Invalidar la sesión y regenerar el token CSRF
         $request->session()->invalidate();
-
-        // Regenerar el token CSRF
         $request->session()->regenerateToken();
 
-        // Redirigir al usuario a la página de inicio con un mensaje de estado
-        return redirect()->route('home')->with('status', 'Sesión cerrada');
+        // Redirigir al usuario a la página principal después de cerrar sesión
+        Log::info('Usuario cerró sesión');
+        return redirect()->route('home');
     }
+
 
 
 
@@ -181,14 +200,24 @@ class UserController extends Controller
      */
     public function llenar_encuesta_caracterizacion(Request $request)
     {
-        $user = User::where("email", "=", auth()->user()->email)->first();
+
+        $user = $request->user();
+
+        if (!$user) {
+            return response()->json([
+                "status" => 0,
+                "msg" => "Usuario no autenticado"
+            ], 401);
+        }
 
         $request->validate([
+            'documento_identificacion' => 'required|string',
             'edad' => 'required|integer|min:15|max:18',
             'genero' => 'required|string|max:9',
             'estrato' => 'required|integer|min:1|max:6',
-            //'escolaridad_madre' => 'required|string',
-            //'escolaridad_padre' => 'required|string',
+            'nivel_escolaridad' => 'required|string',
+            'escolaridad_madre' => 'required|string',
+            'escolaridad_padre' => 'required|string',
             'horas_lectura' => 'required|string',
             'horas_redes_sociales' => 'required|string',
             'horas_entretenimiento' => 'required|string',
@@ -197,27 +226,31 @@ class UserController extends Controller
             'hora_sueno' => 'required|string',
             'grasas' => 'required|string',
             'alimentos_saludables' => 'required|string',
-            //'pensamiento_critico' => 'required|int',
+            'litro_agua' => 'required|string',
         ]);
 
         $user->update([
+            'documento_identificacion' => $request->documento_identificacion,
             'edad' => $request->edad,
             'genero' => $request->genero,
             'estrato' => $request->estrato,
-            //'escolaridad_madre' => $request->escolaridad_madre,
-            //'escolaridad_padre' => $request->escolaridad_padre,
+            'nivel_escolaridad' => $request->nivel_escolaridad,
+            'escolaridad_madre' => $request->escolaridad_madre,
+            'escolaridad_padre' => $request->escolaridad_padre,
             'horas_lectura' => $request->horas_lectura,
             'horas_redes_sociales' => $request->horas_redes_sociales,
             'horas_entretenimiento' => $request->horas_entretenimiento,
-            //'promedio_segundo_idioma' => $request->promedio_segundo_idioma,
             'promedio_deporte' => $request->promedio_deporte,
             'promedio_arte' => $request->promedio_arte,
             'hora_sueno' => $request->hora_sueno,
             'grasas' => $request->grasas,
             'alimentos_saludables' => $request->alimentos_saludables,
-            //'pensamiento_critico' => $request->pensamiento_critico,
+            'litro_agua' => $request->litro_agua,
         ]);
 
-        return redirect()->back()->with('success', 'Encuesta guardada correctamente');
+        return response()->json([
+            "status" => 1,
+            "msg" => "Encuesta de caracterización completada"
+        ]);
     }
 }

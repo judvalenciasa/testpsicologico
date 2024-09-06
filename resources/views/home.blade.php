@@ -107,7 +107,7 @@
                         <label class="user-label">Mensaje</label>
                         <span class="error-message" id="message-error"></span>
                     </div>
-                    <button type="submit" id="send-btn">
+                    <button class="send_btn" type="submit" id="send-btn">
                         <span>Enviar</span>
                     </button>
                 </form>

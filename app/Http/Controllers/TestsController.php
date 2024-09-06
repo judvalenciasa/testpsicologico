@@ -10,7 +10,9 @@ use App\Models\Respuestas;
 use App\Services\OpenAIService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Log;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\DB;
+
 
 class TestsController extends Controller
 {
@@ -21,15 +23,18 @@ class TestsController extends Controller
         $this->openAIService = $openAIService;
     }
 
+   
+
     public function mostrarPrueba()
     {
+        Log::info('Mostrando prueba');
         $prueba = Pruebas::first();
 
         if (!$prueba) {
             return redirect()->back()->with('error', 'No hay pruebas disponibles.');
         }
 
-        return view('private.mostrarTest', compact('prueba'));
+        return view('private.mostrartest', compact('prueba'));
     }
 
     public function cargarPreguntas(Request $request)
@@ -51,18 +56,17 @@ class TestsController extends Controller
                 return redirect()->back()->with('error', 'Por favor ingrese una respuesta válida.');
             }
 
-
             $id_contexto = Preguntas::where('id_pregunta', $pregunta_id)->pluck('id_contexto')->first();
-            
+
             $contexto = Contexto::where('id_contexto', $id_contexto)->pluck('texto')->first();
             $criterio = Criterios::where('id_pregunta', $pregunta_id)->pluck('texto');
-            
+
             //concatenar contexto,criterio "con lo anterior devuelveme el numero de la calificación, sin ninguna otra letra", respuesta ($respuesta_abierta)
-            $promt =  "Contexto: " . $contexto . " fin contexto. " . "Criterio: " . $criterio . " fin criterio. ". "Con lo anterior devuelveme el numero de la calificación, sin ninguna otra letra con la siguiente respuesta: " . $respuesta_abierta;
-            
+            $promt =  "Contexto: " . $contexto . " fin contexto. " . "Estos son los criterios para la calificacion: " . $criterio . " fin criterio. " . "Con lo anterior devuelveme el numero de la calificación, sin ninguna otra letra con la siguiente respuesta: " . $respuesta_abierta;
+
             // Llamar a la IA para obtener la calificación
             $respuesta_chatgpt = $this->openAIService->enviarRespuestaAChatGPT($promt);
-            
+
 
             // Verificar si la respuesta ya existe para este usuario y pregunta
             $respuestaExistente = Respuestas::where('id_usuario', $user->id_usuario)
@@ -90,26 +94,36 @@ class TestsController extends Controller
 
 
             foreach ($request->input('respuestas') as $pregunta_id => $respuesta) {
-                
+
+                // Obtener el texto de la opción seleccionada
+                $opcionSeleccionada = DB::table('opciones')
+                    ->where('id_pregunta', $pregunta_id)
+                    ->where('id_opcion', $respuesta)
+                    ->first();
 
                 // Verificar si la respuesta ya existe para este usuario y pregunta
                 $respuestaExistente = Respuestas::where('id_usuario', $user->id_usuario)
                     ->where('id_pregunta', $pregunta_id)
                     ->first();
 
+                // Verificar si la opción existe
+                if (!$opcionSeleccionada) {
+                    return redirect()->back()->with('error', 'Opción seleccionada no válida.');
+                }
+
                 if ($respuestaExistente) {
                     // Actualizar la respuesta existente
                     $respuestaExistente->update([
-                        'respuesta' => null,
-                        'calificacion_respuesta' => $respuesta,
+                        'respuesta' => $opcionSeleccionada->texto,
+                        'calificacion_respuesta' => $opcionSeleccionada->valor_opcion,
                     ]);
                 } else {
                     // Crear una nueva respuesta
                     Respuestas::create([
                         'id_usuario' => $user->id_usuario,
                         'id_pregunta' => $pregunta_id,
-                        'respuesta' => null,
-                        'calificacion_respuesta' => $respuesta,
+                        'respuesta' => $opcionSeleccionada->texto,
+                        'calificacion_respuesta' => $opcionSeleccionada->valor_opcion,
                     ]);
                 }
             }

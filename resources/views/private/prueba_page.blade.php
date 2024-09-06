@@ -33,7 +33,7 @@
                 <p class="pregunta_texto">{{ $pregunta_actual->texto }}</p>
 
                 <!-- Verificar si la pregunta es abierta -->
-                @if($pregunta_actual->opciones->contains('texto', 'abierta'))
+                @if($pregunta_actual->tipo_pregunta == 'abierta')
                 <!-- Campo para la respuesta abierta -->
                 <div class="opcion">
                     <textarea name="respuestas_abiertas[{{ $pregunta_actual->id_pregunta }}]" id="respuesta_abierta_{{ $pregunta_actual->id_pregunta }}" rows="4" placeholder="Escribe tu respuesta aquí..."></textarea>
@@ -43,7 +43,7 @@
                 @foreach($pregunta_actual->opciones as $opcion)
                 <div class="opcion">
                     <label>
-                        <input type="radio" name="respuestas[{{ $pregunta_actual->id_pregunta }}]" value="{{ $opcion->valor_opcion }}">
+                        <input type="radio" name="respuestas[{{ $pregunta_actual->id_pregunta }}]" value="{{ $opcion->id_opcion }}">
                         <p>{{ $opcion->texto }}</p>
                     </label>
                 </div>
@@ -58,9 +58,9 @@
 
                 @if($pregunta_index + 2 < $total_preguntas)
                     <button type="submit">Siguiente</button>
-                @else
+                    @else
                     <button class="send_btn" type="submit">Enviar Respuestas</button>
-                @endif
+                    @endif
             </form>
             @else
             <p>No hay más preguntas.</p>

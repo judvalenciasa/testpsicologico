@@ -6,13 +6,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
+use Laravel\Sanctum\HasApiTokens; // Asegúrate de agregar este trait
 
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
-    protected $able = "users";
+    protected $table = "users";
     protected $primaryKey = 'id_usuario';
     /**
      * The attributes that are mass assignable.
@@ -24,17 +24,22 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'documento_identificacion',
         'edad',
         'genero',
         'estrato',
+        'nivel_escolaridad',
+        'nivel_educativo_padre',
+        'nivel_educativo_madre',
         'horas_lectura',
         'horas_redes_sociales',
         'horas_entretenimiento',
-        'promedio_deporte',
-        'promedio_arte',
         'hora_sueno',
+        'promedio_arte',
+        'promedio_deporte',
         'grasas',
         'alimentos_saludables',
+        'litro_agua'
     ];
 
     public function pin()

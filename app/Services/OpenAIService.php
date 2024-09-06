@@ -29,11 +29,11 @@ class OpenAIService
                     'Content-Type' => 'application/json',
                 ],
                 'json' => [
-                    'model' => 'gpt-3.5-turbo-0125',
+                    'model' => 'gpt-4o-mini-2024-07-18',
                     'messages' => [
                         [
                             'role' => 'system',
-                            'content' => 'You are a helpful assistant.',
+                            'content' => 'Eres un psicólogo profesional. Tu objetivo es ayudar al usuario a enfrentar sus desafíos personales y ofrecer respuestas reflexivas y empáticas basadas en principios psicológicos.',
                         ],
                         [
                             'role' => 'user',
