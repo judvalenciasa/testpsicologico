@@ -28,5 +28,8 @@ class DatabaseSeeder extends Seeder
         $this->call(UserSeeder::class);
         $this->call(CriteriosSeeders::class);
 
+        $this->call(SubpreguntasSeeder::class);
+        $this->call(OpcionesSeeder::class);
+
     }
 }
