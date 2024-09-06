@@ -121,6 +121,7 @@ class UserController extends Controller
 
     public function login(Request $request)
     {
+        Log::info('Usuario intenta autenticarse: ' . $request->email);
         // Validar los datos del formulario de login
         $request->validate([
             'email' => 'required|string',

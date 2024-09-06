@@ -22,7 +22,6 @@
         </div>
         <!-- Aquí el formulario no necesita acción porque la manejas con JavaScript -->
         <form class="form_ctn" id="login-form" method="post" action="{{ route('login') }}">
-
             @csrf
             <div class="input-group">
                 <input required type="text" name="email" id="email" autocomplete="off" class="input">
