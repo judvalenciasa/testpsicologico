@@ -44,27 +44,6 @@
         </form>
     </section>
 
-    <script>
-        document.getElementById('login-form').addEventListener('submit', function(event) {
-            event.preventDefault(); // Prevenir el envío del formulario tradicional
-
-            var email = document.getElementById('email').value.trim();
-            var password = document.getElementById('password').value.trim();
-
-            var isValid = true;
-
-            if (!validateEmail(email)) {
-                showError('email', 'El correo electrónico no es válido.');
-                isValid = false;
-            }
-
-            if (password === '') {
-                showError('password', 'La contraseña es obligatoria.');
-                isValid = false;
-            }
-
-        });
-    </script>
 </body>
 
 </html>
