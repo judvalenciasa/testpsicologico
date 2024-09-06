@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id('id_informe');
             $table->unsignedBigInteger('id_usuario');
             $table->integer('calificacion_total');
+            $table->integer('calificacion_metacognicion');
             $table->date('fecha_calificacion');
             $table->timestamps();
             

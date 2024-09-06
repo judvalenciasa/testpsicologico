@@ -30,7 +30,7 @@ Route::get('/register', function () {
 // Agrupar las rutas que requieren autenticación
 Route::middleware('auth:sanctum')->group(function () {
 
-    Route::get('/caracterizacion', function () {
+    Route::get('caracterizacion', function () {
         return view('private.caracterizacion');
     })->name('caracterizacion');
 

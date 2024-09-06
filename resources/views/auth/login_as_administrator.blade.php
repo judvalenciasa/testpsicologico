@@ -62,6 +62,7 @@
             }
 
             if (isValid) {
+                /*
                 fetch('/api/login', {
                         method: 'POST',
                         headers: {
@@ -83,6 +84,9 @@
                         }
                     })
                     .catch(error => console.error('Error:', error));
+*/
+
+
 
             }
         });
