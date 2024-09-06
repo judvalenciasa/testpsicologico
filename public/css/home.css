@@ -216,7 +216,7 @@ input:valid ~ label {
 /** Button style */
 
 /* From Uiverse.io by abrahamcalsin */
-.form_ctn button {
+.form_ctn .send_btn {
     position: relative;
     display: flex;
     width: 10vw;
@@ -231,7 +231,7 @@ input:valid ~ label {
     border: none;
 }
 
-.form_ctn button:after {
+.form_ctn .send_btn:after {
     content: " ";
     width: 0%;
     height: 100%;
@@ -241,13 +241,13 @@ input:valid ~ label {
     right: 0;
 }
 
-.form_ctn button:hover::after {
+.form_ctn .send_btn:hover::after {
     right: auto;
     left: 0;
     width: 100%;
 }
 
-.form_ctn button span {
+.form_ctn .send_btn span {
     text-align: center;
     text-decoration: none;
     width: 100%;
@@ -260,7 +260,7 @@ input:valid ~ label {
     transition: all 0.3s ease-in-out;
 }
 
-.form_ctn button:hover span {
+.form_ctn .send_btn:hover span {
     color: #183153;
     animation: scaleUp 0.3s ease-in-out;
 }

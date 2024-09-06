@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Log;
 //import el controlador de test
 use App\Http\Controllers\TestsController;
 use PHPUnit\Event\Code\Test;
+use App\Models\Pruebas;
 
 class UserController extends Controller
 {
@@ -27,12 +28,18 @@ class UserController extends Controller
         $user = $request->user();
 
         if ($user) {
-            Log::info('Usuario administrador' . $user);
-            return view('private.administrator-page');
+
+            // Obtener la prueba para pasarla a la vista
+            $prueba = Pruebas::first(); // O busca la prueba específica que desees
+
+            Log::info('Prueba: ' . $prueba);
+
+            return view('private.administrator-page', compact('prueba'));; // Pasar la variable 'prueba' a la vista
         } else {
             return redirect()->route('login');
         }
     }
+
 
     public function indexCaracterizacion(Request $request)
     {
@@ -131,7 +138,7 @@ class UserController extends Controller
             // Registrar en los logs al usuario autenticado
             Log::info('Usuario autenticado: ' . $request->user());
 
-            // Redirigir al usuario a su página correspondiente
+            // Llamar al método authenticated para redirigir dependiendo del usuario
             return $this->authenticated($request, Auth::user());
         }
 
@@ -140,6 +147,8 @@ class UserController extends Controller
             'email' => 'Las credenciales no coinciden con nuestros registros.',
         ])->onlyInput('email');
     }
+
+
 
 
     protected function authenticated(Request $request, $user)

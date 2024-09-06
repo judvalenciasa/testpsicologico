@@ -14,107 +14,6 @@ class PreguntasSeeder extends Seeder
     public function run(): void
     {
         DB::table('preguntas')->insert([
-            // [
-            //     'id_pregunta' => 1,
-            //     'id_prueba' => 1,
-            //     'id_contexto' => null,
-            //     'id_subhabilidad' => null,
-            //     'id_categoria' => 1,
-			// 	'texto' => 'Edad',
-            //     'tipo_pregunta' => 'cerrada'
-            // ],
-            // [
-            //     'id_pregunta' => 2,
-            //     'id_prueba' => 1,
-            //     'id_contexto' => null,
-            //     'id_subhabilidad' => null,
-            //     'id_categoria' => 1,
-			// 	'texto' => 'Estrato socioeconómico en el que vive según la metodología del Departamento Administrativo Nacional de Estadística (DANE)',	
-            //     'tipo_pregunta' => 'cerrada'
-            // ],
-
-            // [
-            //     'id_pregunta' => 3,
-            //     'id_prueba' => 1,
-            //     'id_contexto' => null,
-            //     'id_subhabilidad' => null,
-            //     'id_categoria' => 1,
-			// 	'texto' => 'Cantidad de horas en promedio de lectura que dedica durante la semana',	
-            //     'tipo_pregunta' => 'cerrada'
-            // ],
-            // [
-            //     'id_pregunta' => 4,
-            //     'id_prueba' => 1,
-            //     'id_contexto' => null,
-            //     'id_subhabilidad' => null,
-            //     'id_categoria' => 1,
-			// 	'texto' => 'Cantidad promedio de horas que dedica a estar en redes sociales durante la semana',
-            //     'tipo_pregunta' => 'cerrada'	
-            // ],
-            // [
-            //     'id_pregunta' => 5,
-            //     'id_prueba' => 1,
-            //     'id_contexto' => null,
-            //     'id_subhabilidad' => null,
-            //     'id_categoria' => 1,
-			// 	'texto' => 'Cuál es la cantidad promedio de horas que dedica al entretenimiento con videojuegos en consolas o a través de internet',	
-            //     'tipo_pregunta' => 'cerrada'
-            // ],
-            // [
-            //     'id_pregunta' => 6,
-            //     'id_prueba' => 1,
-            //     'id_contexto' => null,
-            //     'id_subhabilidad' => null,
-            //     'id_categoria' => 1,
-			// 	'texto' => 'Cuántas horas suele dormir en las noches',	
-            //     'tipo_pregunta' => 'cerrada'
-            // ],
-            // [
-            //     'id_pregunta' => 7,
-            //     'id_prueba' => 1,
-            //     'id_contexto' => null,
-            //     'id_subhabilidad' => null,
-            //     'id_categoria' => 1,
-			// 	'texto' => 'Género',	
-            //     'tipo_pregunta' => 'cerrada'
-            // ],
-            // [
-            //     'id_pregunta' => 8,
-            //     'id_prueba' => 1,
-            //     'id_contexto' => null,
-            //     'id_subhabilidad' => null,
-            //     'id_categoria' => 1,
-			// 	'texto' => 'Práctica algún deporte de manera recurrente',	
-            //     'tipo_pregunta' => 'cerrada'
-            // ],
-            // [
-            //     'id_pregunta' => 9,
-            //     'id_prueba' => 1,
-            //     'id_contexto' => null,
-            //     'id_subhabilidad' => null,
-            //     'id_categoria' => 1,
-			// 	'texto' => 'Practica algún arte como música, pintura o danza de manera recurrente',
-            //     'tipo_pregunta' => 'cerrada'	
-            // ],
-            // [
-            //     'id_pregunta' => 10,
-            //     'id_prueba' => 1,
-            //     'id_contexto' => null,
-            //     'id_subhabilidad' => null,
-            //     'id_categoria' => 1,
-			// 	'texto' => 'En su dieta están siempre presentes grasas saturadas como salsas, o papas y/o carnes fritas o procesadas',	
-            //     'tipo_pregunta' => 'cerrada'
-            // ],
-            
-            // [
-            //     'id_pregunta' => 11,
-            //     'id_prueba' => 1,
-            //     'id_contexto' => null,
-            //     'id_subhabilidad' => null,
-            //     'id_categoria' => 1,
-			// 	'texto' => 'En su dieta incluye alimentos saludables como carnes blancas, verduras/vegetales, frutas y frutos secos',	
-            //     'tipo_pregunta' => 'cerrada'
-            // ],
 
             //Item 1
             [
@@ -123,7 +22,7 @@ class PreguntasSeeder extends Seeder
                 'id_contexto' => 1,
                 'id_subhabilidad' => 1,
                 'id_categoria' => 2,
-				'texto' => 'Con base en lo anterior, ¿con qué escenario crees que se encontrará Gilberto en el torneo de gamers de este año?',	
+                'texto' => 'Con base en lo anterior, ¿con qué escenario crees que se encontrará Gilberto en el torneo de gamers de este año?',
                 'tipo_pregunta' => 'cerrada'
             ],
 
@@ -134,7 +33,7 @@ class PreguntasSeeder extends Seeder
                 'id_contexto' => 1,
                 'id_subhabilidad' => 1,
                 'id_categoria' => 2,
-				'texto' => 'En no más de 100 palabras explica por qué seleccionaste esa alternativa.',	
+                'texto' => 'En no más de 100 palabras explica por qué seleccionaste esa alternativa.',
                 'tipo_pregunta' => 'abierta'
             ],
 
@@ -145,7 +44,7 @@ class PreguntasSeeder extends Seeder
                 'id_contexto' => 2,
                 'id_subhabilidad' => 1,
                 'id_categoria' => 2,
-				'texto' => 'Basándote en la veracidad de los postulados a partir de la observación y experiencia, y no desde la ciencia o la teoría, cuál de las siguientes alternativas contiene dos premisas válidas para convencerte de que el planeta Tierra es una circunferencia.',	
+                'texto' => 'Basándote en la veracidad de los postulados a partir de la observación y experiencia, y no desde la ciencia o la teoría, cuál de las siguientes alternativas contiene dos premisas válidas para convencerte de que el planeta Tierra es una circunferencia.',
                 'tipo_pregunta' => 'cerrada'
             ],
 
@@ -156,7 +55,7 @@ class PreguntasSeeder extends Seeder
                 'id_contexto' => 2,
                 'id_subhabilidad' => 1,
                 'id_categoria' => 2,
-				'texto' => 'En no más de 100 palabras explica por qué seleccionaste esa alternativa.',	
+                'texto' => 'En no más de 100 palabras explica por qué seleccionaste esa alternativa.',
                 'tipo_pregunta' => 'abierta'
             ],
 
@@ -167,7 +66,7 @@ class PreguntasSeeder extends Seeder
                 'id_contexto' => 3,
                 'id_subhabilidad' => 1,
                 'id_categoria' => 2,
-				'texto' => '¿En qué crees que falló Mariana para que la profesora tenga que darle algunas recomendaciones y bajarle un punto en la nota?',	
+                'texto' => '¿En qué crees que falló Mariana para que la profesora tenga que darle algunas recomendaciones y bajarle un punto en la nota?',
                 'tipo_pregunta' => 'cerrada'
             ],
 
@@ -178,20 +77,20 @@ class PreguntasSeeder extends Seeder
                 'id_contexto' => 3,
                 'id_subhabilidad' => 3,
                 'id_categoria' => 2,
-				'texto' => 'En no más de 100 palabras explica por qué seleccionaste esa alternativa.',	
+                'texto' => 'En no más de 100 palabras explica por qué seleccionaste esa alternativa.',
                 'tipo_pregunta' => 'abierta'
             ],
 
-             //Item 1_metacognicion
-             [
+            /* //Item 1_metacognicion
+            [
                 'id_pregunta' => 18,
                 'id_prueba' => 1,
                 'id_contexto' => 1,
                 'id_subhabilidad' => null,
                 'id_categoria' => 3,
-				'texto' => 'Soy consciente de la habilidad del pensamiento crítico que empleé para responder a los anteriores dos (2) ítems.',	
+                'texto' => 'Soy consciente de la habilidad del pensamiento crítico que empleé para responder a los anteriores dos (2) ítems.',
                 'tipo_pregunta' => 'cerrada'
-            ],
+            ], */
 
             //Item 7
             [
@@ -200,7 +99,7 @@ class PreguntasSeeder extends Seeder
                 'id_contexto' => 4,
                 'id_subhabilidad' => 3,
                 'id_categoria' => 2,
-				'texto' => 'Cuál de las siguientes opciones representa la respuesta que darías a la empresa:',	
+                'texto' => 'Cuál de las siguientes opciones representa la respuesta que darías a la empresa:',
                 'tipo_pregunta' => 'cerrada'
             ],
 
@@ -211,19 +110,19 @@ class PreguntasSeeder extends Seeder
                 'id_contexto' => 4,
                 'id_subhabilidad' => 3,
                 'id_categoria' => 2,
-				'texto' => 'En no más de 100 palabras explica por qué seleccionaste esa alternativa.',	
+                'texto' => 'En no más de 100 palabras explica por qué seleccionaste esa alternativa.',
                 'tipo_pregunta' => 'abierta'
             ],
 
             //Contexto4_Metacognición
-            //pregunta 1
+            /* //pregunta 1
             [
                 'id_pregunta' => 21,
                 'id_prueba' => 1,
                 'id_contexto' => 4,
                 'id_subhabilidad' => null,
                 'id_categoria' => 3,
-				'texto' => 'Soy consciente de la habilidad del pensamiento crítico que empleé para responder a los s dos (2) ítems anteriores.',	
+                'texto' => 'Soy consciente de la habilidad del pensamiento crítico que empleé para responder a los s dos (2) ítems anteriores.',
                 'tipo_pregunta' => 'cerrada'
             ],
             //pregunta 2 metacognición
@@ -233,7 +132,7 @@ class PreguntasSeeder extends Seeder
                 'id_contexto' => 4,
                 'id_subhabilidad' => null,
                 'id_categoria' => 3,
-				'texto' => '¿Cuál de las siguientes habilidades de pensamiento crítico utilicé principalmente?',	
+                'texto' => '¿Cuál de las siguientes habilidades de pensamiento crítico utilicé principalmente?',
                 'tipo_pregunta' => 'cerrada'
             ],
             //pregunta 3 metacognición
@@ -243,10 +142,10 @@ class PreguntasSeeder extends Seeder
                 'id_contexto' => 4,
                 'id_subhabilidad' => null,
                 'id_categoria' => 3,
-				'texto' => 'Al responder a este tipo de tareas mentales procuro avanzar y/o tomar una pausa
-                cuando no entiendo algo',	
+                'texto' => 'Al responder a este tipo de tareas mentales procuro avanzar y/o tomar una pausa
+                cuando no entiendo algo',
                 'tipo_pregunta' => 'cerrada'
-            ],
+            ], */
 
             //Item 9
             [
@@ -255,7 +154,7 @@ class PreguntasSeeder extends Seeder
                 'id_contexto' => 5,
                 'id_subhabilidad' => 3,
                 'id_categoria' => 2,
-				'texto' => '¿Cuál crees que sería la respuesta más razonable que debe darle el jefe al experto delegado?',	
+                'texto' => '¿Cuál crees que sería la respuesta más razonable que debe darle el jefe al experto delegado?',
                 'tipo_pregunta' => 'cerrada'
             ],
 
@@ -266,18 +165,18 @@ class PreguntasSeeder extends Seeder
                 'id_contexto' => 5,
                 'id_subhabilidad' => 3,
                 'id_categoria' => 2,
-				'texto' => 'En no más de 100 palabras explica por qué seleccionaste esa alternativa.',	
+                'texto' => 'En no más de 100 palabras explica por qué seleccionaste esa alternativa.',
                 'tipo_pregunta' => 'abierta'
             ],
             //Contexto5_Metacognición
-            //pregunta 1
+            /* //pregunta 1
             [
                 'id_pregunta' => 26,
                 'id_prueba' => 1,
                 'id_contexto' => 5,
                 'id_subhabilidad' => null,
                 'id_categoria' => 3,
-				'texto' => 'Soy consciente de la habilidad del pensamiento crítico que empleé para responder a los s dos (2) ítems anteriores.',	
+                'texto' => 'Soy consciente de la habilidad del pensamiento crítico que empleé para responder a los s dos (2) ítems anteriores.',
                 'tipo_pregunta' => 'cerrada'
             ],
             //pregunta 2 metacognición
@@ -287,7 +186,7 @@ class PreguntasSeeder extends Seeder
                 'id_contexto' => 5,
                 'id_subhabilidad' => null,
                 'id_categoria' => 3,
-				'texto' => '¿Cuál de las siguientes habilidades de pensamiento crítico utilicé principalmente?',	
+                'texto' => '¿Cuál de las siguientes habilidades de pensamiento crítico utilicé principalmente?',
                 'tipo_pregunta' => 'cerrada'
             ],
             //pregunta 3 metacognición
@@ -297,9 +196,9 @@ class PreguntasSeeder extends Seeder
                 'id_contexto' => 5,
                 'id_subhabilidad' => null,
                 'id_categoria' => 3,
-				'texto' => 'Cuando terminé de responder al ítem supe cómo me había ido',	
+                'texto' => 'Cuando terminé de responder al ítem supe cómo me había ido',
                 'tipo_pregunta' => 'cerrada'
-            ],
+            ], */
             //Item 11
             [
                 'id_pregunta' => 29,
@@ -307,7 +206,7 @@ class PreguntasSeeder extends Seeder
                 'id_contexto' => 6,
                 'id_subhabilidad' => 2,
                 'id_categoria' => 2,
-				'texto' => 'A partir de la anterior información, a través de cuál de los siguientes postulados darías tu opinión al padre de familia respecto de su convencimiento acerca de la causa de su depresión y la medida que ha tomado.',	
+                'texto' => 'A partir de la anterior información, a través de cuál de los siguientes postulados darías tu opinión al padre de familia respecto de su convencimiento acerca de la causa de su depresión y la medida que ha tomado.',
                 'tipo_pregunta' => 'cerrada'
             ],
             //Item 12
@@ -317,18 +216,18 @@ class PreguntasSeeder extends Seeder
                 'id_contexto' => 6,
                 'id_subhabilidad' => 2,
                 'id_categoria' => 2,
-				'texto' => 'En no más de 100 palabras explica por qué seleccionaste esa alternativa.',	
+                'texto' => 'En no más de 100 palabras explica por qué seleccionaste esa alternativa.',
                 'tipo_pregunta' => 'abierta'
             ],
             //Contexto6_Metacognición
-            //pregunta 1
+            /* //pregunta 1
             [
                 'id_pregunta' => 31,
                 'id_prueba' => 1,
                 'id_contexto' => 6,
                 'id_subhabilidad' => null,
                 'id_categoria' => 3,
-				'texto' => 'Soy consciente de la habilidad del pensamiento crítico que empleé para responder a los s dos (2) ítems anteriores.',	
+                'texto' => 'Soy consciente de la habilidad del pensamiento crítico que empleé para responder a los s dos (2) ítems anteriores.',
                 'tipo_pregunta' => 'cerrada'
             ],
             //pregunta 2 metacognición
@@ -338,7 +237,7 @@ class PreguntasSeeder extends Seeder
                 'id_contexto' => 6,
                 'id_subhabilidad' => null,
                 'id_categoria' => 3,
-				'texto' => '¿Cuál de las siguientes habilidades de pensamiento crítico utilicé principalmente?',	
+                'texto' => '¿Cuál de las siguientes habilidades de pensamiento crítico utilicé principalmente?',
                 'tipo_pregunta' => 'cerrada'
             ],
             //pregunta 3 metacognición
@@ -348,9 +247,9 @@ class PreguntasSeeder extends Seeder
                 'id_contexto' => 6,
                 'id_subhabilidad' => null,
                 'id_categoria' => 3,
-				'texto' => 'Me propuse el objetivo de pensar críticamente antes de responder al ítem',	
+                'texto' => 'Me propuse el objetivo de pensar críticamente antes de responder al ítem',
                 'tipo_pregunta' => 'cerrada'
-            ],
+            ], */
             //Item 13
             [
                 'id_pregunta' => 34,
@@ -358,7 +257,7 @@ class PreguntasSeeder extends Seeder
                 'id_contexto' => 7,
                 'id_subhabilidad' => 2,
                 'id_categoria' => 2,
-				'texto' => 'Si se aproxima el día en que los ciudadanos participan con el voto a favor o en contra de los cambios en la Ley, cuál de la siguiente información acerca de los estudios realizados por la institución y el rol de las acciones del Consejo Nacional de Música necesitarías para apoyar tu decisión y ejercer el derecho al voto.',	
+                'texto' => 'Si se aproxima el día en que los ciudadanos participan con el voto a favor o en contra de los cambios en la Ley, cuál de la siguiente información acerca de los estudios realizados por la institución y el rol de las acciones del Consejo Nacional de Música necesitarías para apoyar tu decisión y ejercer el derecho al voto.',
                 'tipo_pregunta' => 'cerrada'
             ],
             //Item 14
@@ -368,18 +267,18 @@ class PreguntasSeeder extends Seeder
                 'id_contexto' => 7,
                 'id_subhabilidad' => 2,
                 'id_categoria' => 2,
-				'texto' => 'En no más de 100 palabras explica por qué seleccionaste esa alternativa.',	
+                'texto' => 'En no más de 100 palabras explica por qué seleccionaste esa alternativa.',
                 'tipo_pregunta' => 'abierta'
             ],
             //Contexto7_Metacognición
-            //pregunta 1
+            /* //pregunta 1
             [
                 'id_pregunta' => 36,
                 'id_prueba' => 1,
                 'id_contexto' => 7,
                 'id_subhabilidad' => null,
                 'id_categoria' => 3,
-				'texto' => 'Soy consciente de la habilidad del pensamiento crítico que empleé para responder a los s dos (2) ítems anteriores.',	
+                'texto' => 'Soy consciente de la habilidad del pensamiento crítico que empleé para responder a los s dos (2) ítems anteriores.',
                 'tipo_pregunta' => 'cerrada'
             ],
             //pregunta 2 metacognición
@@ -389,7 +288,7 @@ class PreguntasSeeder extends Seeder
                 'id_contexto' => 7,
                 'id_subhabilidad' => null,
                 'id_categoria' => 3,
-				'texto' => '¿Cuál de las siguientes habilidades de pensamiento crítico utilicé principalmente?',	
+                'texto' => '¿Cuál de las siguientes habilidades de pensamiento crítico utilicé principalmente?',
                 'tipo_pregunta' => 'cerrada'
             ],
             //pregunta 3 metacognición
@@ -399,9 +298,9 @@ class PreguntasSeeder extends Seeder
                 'id_contexto' => 7,
                 'id_subhabilidad' => null,
                 'id_categoria' => 3,
-				'texto' => 'Una estrategia que puedo utilizar para responder a este tipo de tareas cognitivas es inventarme mis propios ejemplos para poder entender mejor la información',	
+                'texto' => 'Una estrategia que puedo utilizar para responder a este tipo de tareas cognitivas es inventarme mis propios ejemplos para poder entender mejor la información',
                 'tipo_pregunta' => 'cerrada'
-            ],
+            ], */
             //Item 15
             [
                 'id_pregunta' => 39,
@@ -409,7 +308,7 @@ class PreguntasSeeder extends Seeder
                 'id_contexto' => 8,
                 'id_subhabilidad' => 2,
                 'id_categoria' => 2,
-				'texto' => '¿Cuál de la siguiente información suministrada por los representantes del programa universitario sería de mayor utilidad para decidir qué programa recomendar a tu amiga?',	
+                'texto' => '¿Cuál de la siguiente información suministrada por los representantes del programa universitario sería de mayor utilidad para decidir qué programa recomendar a tu amiga?',
                 'tipo_pregunta' => 'cerrada'
             ],
 
@@ -420,18 +319,18 @@ class PreguntasSeeder extends Seeder
                 'id_contexto' => 8,
                 'id_subhabilidad' => 2,
                 'id_categoria' => 2,
-				'texto' => 'En no más de 100 palabras explica por qué seleccionaste esa alternativa.',	
+                'texto' => 'En no más de 100 palabras explica por qué seleccionaste esa alternativa.',
                 'tipo_pregunta' => 'abierta'
             ],
             //Contexto8_Metacognición
-            //pregunta 1
+            /* //pregunta 1
             [
                 'id_pregunta' => 41,
                 'id_prueba' => 1,
                 'id_contexto' => 8,
                 'id_subhabilidad' => null,
                 'id_categoria' => 3,
-				'texto' => 'Soy consciente de la habilidad del pensamiento crítico que empleé para responder a los s dos (2) ítems anteriores.',	
+                'texto' => 'Soy consciente de la habilidad del pensamiento crítico que empleé para responder a los s dos (2) ítems anteriores.',
                 'tipo_pregunta' => 'cerrada'
             ],
             //pregunta 2 metacognición
@@ -441,7 +340,7 @@ class PreguntasSeeder extends Seeder
                 'id_contexto' => 8,
                 'id_subhabilidad' => null,
                 'id_categoria' => 3,
-				'texto' => '¿Cuál de las siguientes habilidades de pensamiento crítico utilicé principalmente?',	
+                'texto' => '¿Cuál de las siguientes habilidades de pensamiento crítico utilicé principalmente?',
                 'tipo_pregunta' => 'cerrada'
             ],
             //pregunta 3 metacognición
@@ -451,9 +350,9 @@ class PreguntasSeeder extends Seeder
                 'id_contexto' => 8,
                 'id_subhabilidad' => null,
                 'id_categoria' => 3,
-				'texto' => 'Pensé en distintas alternativas de respuesta al ítem',	
+                'texto' => 'Pensé en distintas alternativas de respuesta al ítem',
                 'tipo_pregunta' => 'cerrada'
-            ],
+            ], */
 
             //Item 17
             [
@@ -462,7 +361,7 @@ class PreguntasSeeder extends Seeder
                 'id_contexto' => 9,
                 'id_subhabilidad' => 2,
                 'id_categoria' => 2,
-				'texto' => 'Teniendo en cuenta sólo esta información sobre Jesús David ¿Cuál es la probabilidad de que Jesús David se convierta en un astronauta de la NASA?',	
+                'texto' => 'Teniendo en cuenta sólo esta información sobre Jesús David ¿Cuál es la probabilidad de que Jesús David se convierta en un astronauta de la NASA?',
                 'tipo_pregunta' => 'cerrada'
             ],
 
@@ -473,19 +372,19 @@ class PreguntasSeeder extends Seeder
                 'id_contexto' => 9,
                 'id_subhabilidad' => 2,
                 'id_categoria' => 2,
-				'texto' => 'En no más de 100 palabras explica por qué seleccionaste esa alternativa.',	
+                'texto' => 'En no más de 100 palabras explica por qué seleccionaste esa alternativa.',
                 'tipo_pregunta' => 'abierta'
             ],
 
             //Contexto9_Metacognición
-            //pregunta 1
+            /* //pregunta 1
             [
                 'id_pregunta' => 46,
                 'id_prueba' => 1,
                 'id_contexto' => 9,
                 'id_subhabilidad' => null,
                 'id_categoria' => 3,
-				'texto' => 'Soy consciente de la habilidad del pensamiento crítico que empleé para responder a los s dos (2) ítems anteriores.',	
+                'texto' => 'Soy consciente de la habilidad del pensamiento crítico que empleé para responder a los s dos (2) ítems anteriores.',
                 'tipo_pregunta' => 'cerrada'
             ],
             //pregunta 2 metacognición
@@ -495,7 +394,7 @@ class PreguntasSeeder extends Seeder
                 'id_contexto' => 9,
                 'id_subhabilidad' => null,
                 'id_categoria' => 3,
-				'texto' => '¿Cuál de las siguientes habilidades de pensamiento crítico utilicé principalmente?',	
+                'texto' => '¿Cuál de las siguientes habilidades de pensamiento crítico utilicé principalmente?',
                 'tipo_pregunta' => 'cerrada'
             ],
             //pregunta 3 metacognición
@@ -505,9 +404,9 @@ class PreguntasSeeder extends Seeder
                 'id_contexto' => 9,
                 'id_subhabilidad' => null,
                 'id_categoria' => 3,
-				'texto' => 'Cuando no logro entender un problema o situación como el anterior cambio de estrategias',	
+                'texto' => 'Cuando no logro entender un problema o situación como el anterior cambio de estrategias',
                 'tipo_pregunta' => 'cerrada'
-            ],
+            ], */
 
             //Item 19
             [
@@ -516,7 +415,7 @@ class PreguntasSeeder extends Seeder
                 'id_contexto' => 10,
                 'id_subhabilidad' => 2,
                 'id_categoria' => 2,
-				'texto' => '¿Cuáles de los siguientes son los dos posibles defectos de predicción?',	
+                'texto' => '¿Cuáles de los siguientes son los dos posibles defectos de predicción?',
                 'tipo_pregunta' => 'cerrada'
             ],
 
@@ -527,19 +426,19 @@ class PreguntasSeeder extends Seeder
                 'id_contexto' => 10,
                 'id_subhabilidad' => 2,
                 'id_categoria' => 2,
-				'texto' => 'En no más de 100 palabras explica por qué seleccionaste esa alternativa.',	
+                'texto' => 'En no más de 100 palabras explica por qué seleccionaste esa alternativa.',
                 'tipo_pregunta' => 'abierta'
             ],
-           
+
             //Contexto10_Metacognición
-            //pregunta 1
+            /* //pregunta 1
             [
                 'id_pregunta' => 51,
                 'id_prueba' => 1,
                 'id_contexto' => 10,
                 'id_subhabilidad' => null,
                 'id_categoria' => 3,
-				'texto' => 'Soy consciente de la habilidad del pensamiento crítico que empleé para responder a los s dos (2) ítems anteriores.',	
+                'texto' => 'Soy consciente de la habilidad del pensamiento crítico que empleé para responder a los s dos (2) ítems anteriores.',
                 'tipo_pregunta' => 'cerrada'
             ],
             //pregunta 2 metacognición
@@ -549,7 +448,7 @@ class PreguntasSeeder extends Seeder
                 'id_contexto' => 10,
                 'id_subhabilidad' => null,
                 'id_categoria' => 3,
-				'texto' => '¿Cuál de las siguientes habilidades de pensamiento crítico utilicé principalmente?',	
+                'texto' => '¿Cuál de las siguientes habilidades de pensamiento crítico utilicé principalmente?',
                 'tipo_pregunta' => 'cerrada'
             ],
             //pregunta 3 metacognición
@@ -559,9 +458,9 @@ class PreguntasSeeder extends Seeder
                 'id_contexto' => 10,
                 'id_subhabilidad' => null,
                 'id_categoria' => 3,
-				'texto' => 'Cuando terminé de responder al ítem me pregunté si había una alternativa o respuesta más acertada',	
+                'texto' => 'Cuando terminé de responder al ítem me pregunté si había una alternativa o respuesta más acertada',
                 'tipo_pregunta' => 'cerrada'
-            ],
+            ], */
 
             //Item 21
             [
@@ -570,7 +469,7 @@ class PreguntasSeeder extends Seeder
                 'id_contexto' => 11,
                 'id_subhabilidad' => 3,  //preguntar porque no dice en el documento
                 'id_categoria' => 2,
-				'texto' => '¿Cuál de las siguientes es la mejor crítica al mensaje del rector?',	
+                'texto' => '¿Cuál de las siguientes es la mejor crítica al mensaje del rector?',
                 'tipo_pregunta' => 'cerrada'
             ],
 
@@ -581,19 +480,19 @@ class PreguntasSeeder extends Seeder
                 'id_contexto' => 11,
                 'id_subhabilidad' => 3,  //preguntar porque no dice en el documento
                 'id_categoria' => 2,
-				'texto' => 'En no más de 100 palabras explica por qué seleccionaste esa alternativa.',	
+                'texto' => 'En no más de 100 palabras explica por qué seleccionaste esa alternativa.',
                 'tipo_pregunta' => 'abierta'
             ],
 
             //Contexto11_Metacognición
-            //pregunta 1
+            /* //pregunta 1
             [
                 'id_pregunta' => 56,
                 'id_prueba' => 1,
                 'id_contexto' => 11,
                 'id_subhabilidad' => null,
                 'id_categoria' => 3,
-				'texto' => 'Soy consciente de la habilidad del pensamiento crítico que empleé para responder a los s dos (2) ítems anteriores.',	
+                'texto' => 'Soy consciente de la habilidad del pensamiento crítico que empleé para responder a los s dos (2) ítems anteriores.',
                 'tipo_pregunta' => 'cerrada'
             ],
             //pregunta 2 metacognición
@@ -603,7 +502,7 @@ class PreguntasSeeder extends Seeder
                 'id_contexto' => 11,
                 'id_subhabilidad' => null,
                 'id_categoria' => 3,
-				'texto' => '¿Cuál de las siguientes habilidades de pensamiento crítico utilicé principalmente?',	
+                'texto' => '¿Cuál de las siguientes habilidades de pensamiento crítico utilicé principalmente?',
                 'tipo_pregunta' => 'cerrada'
             ],
             //pregunta 3 metacognición
@@ -613,18 +512,18 @@ class PreguntasSeeder extends Seeder
                 'id_contexto' => 11,
                 'id_subhabilidad' => null,
                 'id_categoria' => 3,
-				'texto' => 'Me hice preguntas sobre el tema antes de responder al ítem',	
+                'texto' => 'Me hice preguntas sobre el tema antes de responder al ítem',
                 'tipo_pregunta' => 'cerrada'
-            ],
+            ], */
 
             //Item 23
             [
                 'id_pregunta' => 59,
                 'id_prueba' => 1,
                 'id_contexto' => 12,
-                'id_subhabilidad' => 3, 
+                'id_subhabilidad' => 3,
                 'id_categoria' => 2,
-				'texto' => 'Seleccionando una de las siguientes alternativas califica el razonamiento del gobernador sobre este tema utilizando una escala de 7 puntos.',	
+                'texto' => 'Seleccionando una de las siguientes alternativas califica el razonamiento del gobernador sobre este tema utilizando una escala de 7 puntos.',
                 'tipo_pregunta' => 'cerrada'
             ],
 
@@ -633,21 +532,21 @@ class PreguntasSeeder extends Seeder
                 'id_pregunta' => 60,
                 'id_prueba' => 1,
                 'id_contexto' => 12,
-                'id_subhabilidad' => 3, 
+                'id_subhabilidad' => 3,
                 'id_categoria' => 2,
-				'texto' => 'En no más de 100 palabras explica por qué seleccionaste esa alternativa.',	
+                'texto' => 'En no más de 100 palabras explica por qué seleccionaste esa alternativa.',
                 'tipo_pregunta' => 'abierta'
             ],
 
             //Contexto12_Metacognición
-            //pregunta 1
+            /* //pregunta 1
             [
                 'id_pregunta' => 61,
                 'id_prueba' => 1,
                 'id_contexto' => 12,
                 'id_subhabilidad' => null,
                 'id_categoria' => 3,
-				'texto' => 'Soy consciente de la habilidad del pensamiento crítico que empleé para responder a los s dos (2) ítems anteriores.',	
+                'texto' => 'Soy consciente de la habilidad del pensamiento crítico que empleé para responder a los s dos (2) ítems anteriores.',
                 'tipo_pregunta' => 'cerrada'
             ],
             //pregunta 2 metacognición
@@ -657,7 +556,7 @@ class PreguntasSeeder extends Seeder
                 'id_contexto' => 12,
                 'id_subhabilidad' => null,
                 'id_categoria' => 3,
-				'texto' => '¿Cuál de las siguientes habilidades de pensamiento crítico utilicé principalmente?',	
+                'texto' => '¿Cuál de las siguientes habilidades de pensamiento crítico utilicé principalmente?',
                 'tipo_pregunta' => 'cerrada'
             ],
             //pregunta 3 metacognición
@@ -667,9 +566,9 @@ class PreguntasSeeder extends Seeder
                 'id_contexto' => 12,
                 'id_subhabilidad' => null,
                 'id_categoria' => 3,
-				'texto' => 'Utilicé la estructura y la organización del texto para comprender mejor el ítem',	
+                'texto' => 'Utilicé la estructura y la organización del texto para comprender mejor el ítem',
                 'tipo_pregunta' => 'cerrada'
-            ],
+            ], */
 
             //Item 25
             [
@@ -678,30 +577,30 @@ class PreguntasSeeder extends Seeder
                 'id_contexto' => 13,
                 'id_subhabilidad' => 3,
                 'id_categoria' => 2,
-				'texto' => 'De los siguientes enunciados ¿Cuál propuesta respaldarías?',	
+                'texto' => 'De los siguientes enunciados ¿Cuál propuesta respaldarías?',
                 'tipo_pregunta' => 'cerrada'
             ],
 
-             //Item 26
-             [
+            //Item 26
+            [
                 'id_pregunta' => 65,
                 'id_prueba' => 1,
                 'id_contexto' => 13,
                 'id_subhabilidad' => 3,
                 'id_categoria' => 2,
-				'texto' => 'En no más de 100 palabras explica por qué seleccionaste esa alternativa.',	
+                'texto' => 'En no más de 100 palabras explica por qué seleccionaste esa alternativa.',
                 'tipo_pregunta' => 'abierta'
             ],
 
             //Contexto13_Metacognición
-            //pregunta 1
+            /* //pregunta 1
             [
                 'id_pregunta' => 66,
                 'id_prueba' => 1,
                 'id_contexto' => 13,
                 'id_subhabilidad' => null,
                 'id_categoria' => 3,
-				'texto' => 'Soy consciente de la habilidad del pensamiento crítico que empleé para responder a los s dos (2) ítems anteriores.',	
+                'texto' => 'Soy consciente de la habilidad del pensamiento crítico que empleé para responder a los s dos (2) ítems anteriores.',
                 'tipo_pregunta' => 'cerrada'
             ],
             //pregunta 2 metacognición
@@ -711,7 +610,7 @@ class PreguntasSeeder extends Seeder
                 'id_contexto' => 13,
                 'id_subhabilidad' => null,
                 'id_categoria' => 3,
-				'texto' => '¿Cuál de las siguientes habilidades de pensamiento crítico utilicé principalmente?',	
+                'texto' => '¿Cuál de las siguientes habilidades de pensamiento crítico utilicé principalmente?',
                 'tipo_pregunta' => 'cerrada'
             ],
             //pregunta 3 metacognición
@@ -721,9 +620,9 @@ class PreguntasSeeder extends Seeder
                 'id_contexto' => 13,
                 'id_subhabilidad' => null,
                 'id_categoria' => 3,
-				'texto' => 'Cuando estaba respondiendo al ítem, me detuve en algún momento para saber si estaba entendiendo',	
+                'texto' => 'Cuando estaba respondiendo al ítem, me detuve en algún momento para saber si estaba entendiendo',
                 'tipo_pregunta' => 'cerrada'
-            ],
+            ], */
 
             //Item 27
             [
@@ -732,7 +631,7 @@ class PreguntasSeeder extends Seeder
                 'id_contexto' => 14,
                 'id_subhabilidad' => 3,
                 'id_categoria' => 2,
-                'texto' => '¿Cómo crees que desde la Unidad de Gestión del Riesgo se puedan resolver las inquietudes de las personas para que tengan mayor claridad al respecto, y así poder actuar con prontitud?',	
+                'texto' => '¿Cómo crees que desde la Unidad de Gestión del Riesgo se puedan resolver las inquietudes de las personas para que tengan mayor claridad al respecto, y así poder actuar con prontitud?',
                 'tipo_pregunta' => 'cerrada'
             ],
 
@@ -743,19 +642,19 @@ class PreguntasSeeder extends Seeder
                 'id_contexto' => 14,
                 'id_subhabilidad' => 3,
                 'id_categoria' => 2,
-                'texto' => 'En no más de 100 palabras explica por qué seleccionaste esa alternativa.',	
+                'texto' => 'En no más de 100 palabras explica por qué seleccionaste esa alternativa.',
                 'tipo_pregunta' => 'abierta'
             ],
 
             //Contexto14_Metacognición
-            //pregunta 1
+            /* //pregunta 1
             [
                 'id_pregunta' => 71,
                 'id_prueba' => 1,
                 'id_contexto' => 14,
                 'id_subhabilidad' => null,
                 'id_categoria' => 3,
-				'texto' => 'Soy consciente de la habilidad del pensamiento crítico que empleé para responder a los s dos (2) ítems anteriores.',	
+                'texto' => 'Soy consciente de la habilidad del pensamiento crítico que empleé para responder a los s dos (2) ítems anteriores.',
                 'tipo_pregunta' => 'cerrada'
             ],
             //pregunta 2 metacognición
@@ -765,7 +664,7 @@ class PreguntasSeeder extends Seeder
                 'id_contexto' => 14,
                 'id_subhabilidad' => null,
                 'id_categoria' => 3,
-				'texto' => '¿Cuál de las siguientes habilidades de pensamiento crítico utilicé principalmente?',	
+                'texto' => '¿Cuál de las siguientes habilidades de pensamiento crítico utilicé principalmente?',
                 'tipo_pregunta' => 'cerrada'
             ],
             //pregunta 3 metacognición
@@ -775,9 +674,9 @@ class PreguntasSeeder extends Seeder
                 'id_contexto' => 14,
                 'id_subhabilidad' => null,
                 'id_categoria' => 3,
-				'texto' => 'Al responder a este tipo de tareas cognitivas y me encuentro confundido me pregunto si lo que suponía era correcto o no',	
+                'texto' => 'Al responder a este tipo de tareas cognitivas y me encuentro confundido me pregunto si lo que suponía era correcto o no',
                 'tipo_pregunta' => 'cerrada'
-            ],
+            ], */
 
             //Item 29
             [
@@ -786,7 +685,7 @@ class PreguntasSeeder extends Seeder
                 'id_contexto' => 15,
                 'id_subhabilidad' => 3,
                 'id_categoria' => 2,
-                'texto' => '¿Más allá de las opiniones, por qué crees que la decisión del gobierno es irracional?',	
+                'texto' => '¿Más allá de las opiniones, por qué crees que la decisión del gobierno es irracional?',
                 'tipo_pregunta' => 'cerrada'
             ],
 
@@ -797,19 +696,19 @@ class PreguntasSeeder extends Seeder
                 'id_contexto' => 15,
                 'id_subhabilidad' => 3,
                 'id_categoria' => 2,
-                'texto' => 'En no más de 100 palabras explica por qué seleccionaste esa alternativa.',	
+                'texto' => 'En no más de 100 palabras explica por qué seleccionaste esa alternativa.',
                 'tipo_pregunta' => 'abierta'
             ],
 
             //Contexto15_Metacognición
-            //pregunta 1
+            /* //pregunta 1
             [
                 'id_pregunta' => 76,
                 'id_prueba' => 1,
                 'id_contexto' => 15,
                 'id_subhabilidad' => null,
                 'id_categoria' => 3,
-				'texto' => 'Soy consciente de la habilidad del pensamiento crítico que empleé para responder a los s dos (2) ítems anteriores.',	
+                'texto' => 'Soy consciente de la habilidad del pensamiento crítico que empleé para responder a los s dos (2) ítems anteriores.',
                 'tipo_pregunta' => 'cerrada'
             ],
             //pregunta 2 metacognición
@@ -819,7 +718,7 @@ class PreguntasSeeder extends Seeder
                 'id_contexto' => 15,
                 'id_subhabilidad' => null,
                 'id_categoria' => 3,
-				'texto' => '¿Cuál de las siguientes habilidades de pensamiento crítico utilicé principalmente?',	
+                'texto' => '¿Cuál de las siguientes habilidades de pensamiento crítico utilicé principalmente?',
                 'tipo_pregunta' => 'cerrada'
             ],
             //pregunta 3 metacognición
@@ -829,21 +728,11 @@ class PreguntasSeeder extends Seeder
                 'id_contexto' => 15,
                 'id_subhabilidad' => null,
                 'id_categoria' => 3,
-				'texto' => 'Cuando terminé de responder el ítem me pregunté si había pensado críticamente',	
+                'texto' => 'Cuando terminé de responder el ítem me pregunté si había pensado críticamente',
                 'tipo_pregunta' => 'cerrada'
-            ],
+            ], */
 
             //Item 31
-            [
-                'id_pregunta' => 79,
-                'id_prueba' => 1,
-                'id_contexto' => 16,
-                'id_subhabilidad' => 4,
-                'id_categoria' => 2,
-                'texto' => 'Para cada una de las siguientes afirmaciones, indica si se trata de una conclusión (C), una razón (R) o un contraargumento (CA). Escribe C, R o CA en el espacio en blanco junto a cada instrucción (ten en cuenta que hay dos (2) o más razones entre las afirmaciones).',	
-                'tipo_pregunta' => 'cerrada'
-            ],
-
 
         ]);
     }
