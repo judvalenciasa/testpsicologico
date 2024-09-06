@@ -24,7 +24,7 @@
         </div>
         @endif
 
-        <form class="form_ctn" action="{{ url('api/registrar_datos') }}" method="POST">
+        <form class="form_ctn" action="{{ route('registar.encuesta.caraterizacion') }}" method="POST">
             <input type="hidden" name="_token" value="{{ csrf_token() }}" />
 
             <!-- Documento Identificacion -->

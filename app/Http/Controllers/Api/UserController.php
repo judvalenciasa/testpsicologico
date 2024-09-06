@@ -39,7 +39,7 @@ class UserController extends Controller
         $user = $request->user();
 
         if ($user) {
-            return view('private.caracterizacion');
+            return view('private.caracterizacion')->with('user', $user);
         } else {
             return redirect()->route('login');
         }
@@ -114,29 +114,31 @@ class UserController extends Controller
 
     public function login(Request $request)
     {
-
-
+        // Validar los datos del formulario de login
         $request->validate([
             'email' => 'required|string',
             'password' => 'required|string',
         ]);
 
-
+        // Obtener las credenciales (email y password) del request
         $credentials = $request->only('email', 'password');
 
-        if (!Auth::attempt($credentials)) {
-            return response()->json([
-                "status" => 0,
-                "msg" => "Credenciales incorrectas"
-            ], 401);
+        // Intentar autenticar al usuario usando Auth::attempt
+        if (Auth::attempt($credentials)) {
+            // Regenerar la sesión después de autenticación exitosa
+            $request->session()->regenerate();
+
+            // Registrar en los logs al usuario autenticado
+            Log::info('Usuario autenticado: ' . $request->user());
+
+            // Redirigir al usuario a su página correspondiente
+            return $this->authenticated($request, Auth::user());
         }
 
-        Log::info('Usuario autenticado' . Auth::user());
-
-        $user = Auth::user();
-
-
-        return $this->authenticated($request, $user);
+        // Si la autenticación falla, redirigir de vuelta al formulario de login con un mensaje de error
+        return back()->withErrors([
+            'email' => 'Las credenciales no coinciden con nuestros registros.',
+        ])->onlyInput('email');
     }
 
 
@@ -169,15 +171,19 @@ class UserController extends Controller
 
     public function logout(Request $request)
     {
+        // Cerrar la sesión del usuario
+        Auth::logout();
 
-
-        // Si estás utilizando cookies para gestionar la sesión (para SPA), puedes regenerar la sesión:
+        // Invalidar la sesión y regenerar el token CSRF
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        // Redirigir a la página de inicio o enviar una respuesta JSON
+        // Redirigir al usuario a la página principal después de cerrar sesión
+        Log::info('Usuario cerró sesión');
         return redirect()->route('home');
     }
+
+
 
 
     /**
@@ -185,9 +191,15 @@ class UserController extends Controller
      */
     public function llenar_encuesta_caracterizacion(Request $request)
     {
-        Log::info('llegue a encuesta' . $request);
 
-        $user = User::where("email", "=", auth()->user()->email)->first();
+        $user = $request->user();
+
+        if (!$user) {
+            return response()->json([
+                "status" => 0,
+                "msg" => "Usuario no autenticado"
+            ], 401);
+        }
 
         $request->validate([
             'documento_identificacion' => 'required|string',

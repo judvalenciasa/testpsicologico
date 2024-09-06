@@ -16,28 +16,38 @@ use App\Http\Controllers\Api\UserController; // Asegúrate de importar el contro
 |
 */
 
-Route::group(['middleware' => ['guest']], function () {
-    Route::get('/', function () {
-        return view('home'); // Vista principal
-    })->name('home');
+Route::get('/', function () {
+    return view('home'); // Vista principal
+})->name('home');
 
-    Route::get('/ingreso', function () {
-        return view('auth.login_as_administrator');
-    });
+Route::get('/ingreso', function () {
+    return view('auth.login_as_administrator');
+});
 
-    Route::get('/register', function () {
-        return view('auth.register');
-    });
-
+Route::get('/register', function () {
+    return view('auth.register');
 });
 
 // Agrupar las rutas que requieren autenticación
-Route::group(['middleware' => ['auth:sanctum']], function () {
+Route::group(['middleware' => ['auth']], function () {
     Route::get('/caracterizacion', function () {
         return view('private.caracterizacion');
     })->name('caracterizacion');
 
     Route::get('/mostrartest', [TestsController::class, 'mostrarPrueba'])->name('mostrartest');
-    
-    Route::post('/logout', [UserController::class, 'logout'])->name('logout'); // Ruta para el cierre de sesión
 });
+
+// Grupo de rutas protegidas por autenticación
+Route::group(['middleware' => ['auth']], function () {
+    Route::get("perfil_usuario", [UserController::class, "perfil_usuario"]);
+    Route::put('/pines/toggle', [PinesController::class, 'toggleEstado'])->name('pines.toggle');
+    Route::get('/pines', [PinesController::class, 'index'])->name('pines.index');
+    Route::post('/generar_pin/{cantidad?}', [PinesController::class, 'generar_pines'])->name('pines.aletarios');
+    Route::post('/cargar_preguntas', [TestsController::class, 'cargarPreguntas'])->name('cargar.preguntas');
+    Route::post('/registrar_datos', [UserController::class, 'llenar_encuesta_caracterizacion'])->name('registar.encuesta.caraterizacion');
+});
+
+// Grupo de rutas accesibles solo para invitados (usuarios no autenticados)
+Route::post("registrar", [UserController::class, 'registrar'])->name('registrar');
+Route::post("login", [UserController::class, 'login'])->name('login');
+Route::post("logout", [UserController::class, "logout"])->name('logout');

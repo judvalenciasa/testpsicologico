@@ -78,8 +78,8 @@
             </div>
             <div class="menu_ctn">
                 <ul>
-                    <li><a href="{{ url('/') }}">Inicio</a></li>
                     @if (Auth::guest())
+                    <li><a href="{{ url('/') }}">Inicio</a></li>
                     <li><a href="{{ url('/ingreso') }}">Ingresar </a></li>
                     <li><a href="{{ url('/register') }}">Registrarse</a></li>
                     @endif
