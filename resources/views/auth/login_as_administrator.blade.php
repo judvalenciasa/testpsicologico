@@ -22,9 +22,8 @@
         </div>
         <!-- Aquí el formulario no necesita acción porque la manejas con JavaScript -->
         <form class="form_ctn" method="post" action="{{ route('login') }}">
-            
-            <input type="hidden" name="_token" value="{{ csrf_token() }}" />
 
+            @csrf
             <div class="input-group">
                 <input required type="text" name="email" id="email" autocomplete="off" class="input">
                 <label class="user-label">Correo electrónico</label>
@@ -64,35 +63,11 @@
                 isValid = false;
             }
 
-
-
-
+            if (isValid) {
+                // Enviar el formulario si es válido
+                this.submit(); // Envía el formulario
+            }
         });
-
-        function showError(inputId, message) {
-            var input = document.getElementById(inputId);
-            input.style.borderColor = 'red';
-            var errorElement = document.getElementById(inputId + '-error');
-            errorElement.textContent = message;
-            errorElement.style.color = 'red';
-        }
-
-        function clearErrors() {
-            var inputs = document.querySelectorAll('.input');
-            inputs.forEach(function(input) {
-                input.style.borderColor = ''; // Restablecer el color del borde
-            });
-
-            var errorMessages = document.querySelectorAll('.error-message');
-            errorMessages.forEach(function(error) {
-                error.textContent = ''; // Limpiar mensajes de error
-            });
-        }
-
-        function validateEmail(email) {
-            var re = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-            return re.test(email);
-        }
     </script>
 </body>
 

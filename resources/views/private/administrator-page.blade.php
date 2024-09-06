@@ -85,69 +85,69 @@
             </div>
         </div>
     </section>
+</body>
 
-    <script>
-        $('#form-generar-pines').on('submit', function(e) {
-            e.preventDefault(); // Evitar la recarga de la página
+</html>
 
-            var cantidad = $('#cantidad').val();
-            var _token = $('input[name="_token"]').val();
+<script>
+    $('#form-generar-pines').on('submit', function(e) {
+        e.preventDefault(); // Evitar la recarga de la página
 
-            $.ajax({
-                url: "{{ route('pines.aletarios') }}",
-                method: "POST",
-                data: {
-                    _token: _token,
-                    cantidad: cantidad
-                },
-                success: function(response) {
-                    if (response.success) {
-                        $('#mensaje').text(response.msg).css('color', 'green').show();
-                    } else {
-                        $('#mensaje').text(response.msg).css('color', 'red').show();
-                    }
-                },
-                error: function(response) {
-                    $('#mensaje').text('Error al generar los pines.').css('color', 'red').show();
+        var cantidad = $('#cantidad').val();
+        var _token = $('meta[name="csrf-token"]').attr('content'); // Obtener el token CSRF del meta tag
+
+        $.ajax({
+            url: "{{ route('pines.aletarios') }}",
+            method: "POST",
+            data: {
+                _token: _token,
+                cantidad: cantidad
+            },
+            success: function(response) {
+                if (response.success) {
+                    $('#mensaje').text(response.msg).css('color', 'green').show();
+                } else {
+                    $('#mensaje').text(response.msg).css('color', 'red').show();
                 }
-            });
+            },
+            error: function(response) {
+                $('#mensaje').text('Error al generar los pines.').css('color', 'red').show();
+            }
         });
-    </script>
+    });
+</script>
 
 
-    <!-- Script de AJAX -->
-    <script>
-        $('#btn-deshabilitar').on('click', function() {
-            // Obtener el id de la prueba
-            var pruebaId = $('#id_prueba').val();
+<!-- Script de AJAX -->
+<!-- Script de AJAX -->
+<script>
+    $('#btn-deshabilitar').on('click', function() {
+        // Obtener el id de la prueba
+        var pruebaId = $('#id_prueba').val();
 
-            // Realizar la solicitud AJAX
-            $.ajax({
-                url: "{{ route('pruebas.deshabilitar') }}",
-                method: "POST",
-                data: {
-                    _token: '{{ csrf_token() }}',
-                    id_prueba: pruebaId
-                },
-                success: function(response) {
-                    if (response.success) {
-                        // Cambiar el texto y el color del estado según el nuevo estado
-                        var nuevoEstado = response.nuevoEstado == 1 ? 'Habilitada' : 'Deshabilitada';
-                        var colorEstado = response.nuevoEstado == 1 ? 'green' : 'red';
+        // Realizar la solicitud AJAX
+        $.ajax({
+            url: "{{ route('pruebas.deshabilitar') }}",
+            method: "POST",
+            data: {
+                _token: '{{ csrf_token() }}',
+                id_prueba: pruebaId
+            },
+            success: function(response) {
+                if (response.success) {
+                    // Cambiar el texto y el color del estado según el nuevo estado
+                    var nuevoEstado = response.nuevoEstado == 1 ? 'Habilitada' : 'Deshabilitada';
+                    var colorEstado = response.nuevoEstado == 1 ? 'green' : 'red';
 
-                        $('#estado-prueba').text(nuevoEstado).css('color', colorEstado);
+                    $('#estado-prueba').text(nuevoEstado).css('color', colorEstado);
 
-                        // Cambiar el texto del botón
-                        $('#btn-deshabilitar').text(nuevoEstado == 'Habilitada' ? 'Deshabilitar Prueba' : 'Habilitar Prueba');
-                    }
-                },
-                error: function(response) {
-                    alert('Error al cambiar el estado de la prueba.');
+                    // Cambiar el texto del botón
+                    $('#btn-deshabilitar').text(nuevoEstado == 'Habilitada' ? 'Deshabilitar Prueba' : 'Habilitar Prueba');
                 }
-            });
-        }); <
-        /> <
-        /body>
-
-        <
-        /html>
+            },
+            error: function(response) {
+                alert('Error al cambiar el estado de la prueba.');
+            }
+        });
+    });
+</script>
