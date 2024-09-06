@@ -21,7 +21,7 @@
             <p>Si eres usuario administrador</p>
         </div>
         <!-- Aquí el formulario no necesita acción porque la manejas con JavaScript -->
-        <form class="form_ctn" method="post" action="{{ route('login') }}">
+        <form class="form_ctn" id="login-form" method="post" action="{{ route('login') }}">
 
             @csrf
             <div class="input-group">
@@ -63,10 +63,6 @@
                 isValid = false;
             }
 
-            if (isValid) {
-                // Enviar el formulario si es válido
-                this.submit(); // Envía el formulario
-            }
         });
     </script>
 </body>
