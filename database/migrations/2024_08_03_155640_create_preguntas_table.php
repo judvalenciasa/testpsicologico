@@ -17,8 +17,8 @@ return new class extends Migration
             $table->unsignedBigInteger('id_contexto')->nullable(true);
             $table->unsignedBigInteger('id_subhabilidad')->nullable(true);
             $table->unsignedBigInteger('id_categoria')->nullable(true);
-            $table->string('texto', 500);
-            $table->string('tipo_pregunta', 10)->nullable();
+            $table->string('texto', 1500);
+            $table->string('tipo_pregunta', 50)->nullable();
             $table->timestamps();
             
             $table->foreign('id_prueba')->references('id_prueba')->on('pruebas');

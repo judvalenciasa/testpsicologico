@@ -33,7 +33,7 @@ class PreguntasSeeder extends Seeder
                 'id_contexto' => 1,
                 'id_subhabilidad' => 1,
                 'id_categoria' => 2,
-                'texto' => 'En no más de 100 palabras explica por qué seleccionaste esa alternativa.',
+                'texto' => 'En no más de 100 palabras explica por qué crees que la alternativa que marcaste en el anterior ítem es la más razonable.',
                 'tipo_pregunta' => 'abierta'
             ],
 
@@ -44,7 +44,7 @@ class PreguntasSeeder extends Seeder
                 'id_contexto' => 2,
                 'id_subhabilidad' => 1,
                 'id_categoria' => 2,
-                'texto' => 'Basándote en la veracidad de los postulados a partir de la observación y experiencia, y no desde la ciencia o la teoría, cuál de las siguientes alternativas contiene dos premisas válidas para convencerte de que el planeta Tierra es una circunferencia.',
+                'texto' => 'De acuerdo con lo justificables que puedan ser las afirmaciones a partir de la observación y la experiencia, y no desde la ciencia o la teoría, cuál de las siguientes alternativas contiene dos afirmaciones justificables que logran convencerte de que el planeta Tierra es una circunferencia.',
                 'tipo_pregunta' => 'cerrada'
             ],
 
@@ -55,7 +55,7 @@ class PreguntasSeeder extends Seeder
                 'id_contexto' => 2,
                 'id_subhabilidad' => 1,
                 'id_categoria' => 2,
-                'texto' => 'En no más de 100 palabras explica por qué seleccionaste esa alternativa.',
+                'texto' => 'En no más de 100 palabras explica por qué piensas que la alternativa que seleccionaste en el ítem anterior contiene dos afirmaciones justificables a partir de la observación y la experiencia que te convencen de que el Planeta Tierra es una circunferencia.',
                 'tipo_pregunta' => 'abierta'
             ],
 
@@ -77,7 +77,7 @@ class PreguntasSeeder extends Seeder
                 'id_contexto' => 3,
                 'id_subhabilidad' => 1,
                 'id_categoria' => 2,
-                'texto' => 'En no más de 100 palabras explica por qué seleccionaste esa alternativa.',
+                'texto' => 'En no más de 100 palabras explica por qué en el anterior ítem marcaste esa alternativa como la respuesta que contiene los errores cometidos por Mariana.',
                 'tipo_pregunta' => 'abierta'
             ],
 
@@ -99,7 +99,7 @@ class PreguntasSeeder extends Seeder
                 'id_contexto' => 4,
                 'id_subhabilidad' => 2,
                 'id_categoria' => 2,
-                'texto' => 'Cuál de las siguientes opciones representa la respuesta que darías a la empresa:',
+                'texto' => 'Con base en la pregunta ¿Crees que al realizar importaciones de la materia prima y/o al producirla, se garantiza que la empresa obtenga resultados similares a los de las demás empresas?, cuál de las siguientes opciones representa la respuesta que darías a la empresa:',
                 'tipo_pregunta' => 'cerrada'
             ],
 
@@ -110,7 +110,7 @@ class PreguntasSeeder extends Seeder
                 'id_contexto' => 4,
                 'id_subhabilidad' => 2,
                 'id_categoria' => 2,
-                'texto' => 'En no más de 100 palabras explica por qué seleccionaste esa alternativa.',
+                'texto' => 'En no más de 100 palabras explica por qué seleccionaste esa alternativa como la respuesta que darías a la empresa respecto de la pregunta ¿Crees que al realizar importaciones de la materia prima y/o al producirla, se garantiza que la empresa obtenga resultados similares a los de las demás empresas?',
                 'tipo_pregunta' => 'abierta'
             ],
 
@@ -154,7 +154,7 @@ class PreguntasSeeder extends Seeder
                 'id_contexto' => 5,
                 'id_subhabilidad' => 2,
                 'id_categoria' => 2,
-                'texto' => '¿Cuál crees que sería la respuesta más razonable que debe darle el jefe al experto delegado?',
+                'texto' => 'De las siguientes alternativas de respuesta ¿Cuál crees que sería la respuesta más razonable que debe darle el jefe al experto delegado?',
                 'tipo_pregunta' => 'cerrada'
             ],
 
@@ -165,7 +165,7 @@ class PreguntasSeeder extends Seeder
                 'id_contexto' => 5,
                 'id_subhabilidad' => 2,
                 'id_categoria' => 2,
-                'texto' => 'En no más de 100 palabras explica por qué seleccionaste esa alternativa.',
+                'texto' => 'En no más de 100 palabras explica por qué seleccionaste esa alternativa como la respuesta razonable que debe darle el jefe al experto.',
                 'tipo_pregunta' => 'abierta'
             ],
             //Contexto5_Metacognición
@@ -206,7 +206,7 @@ class PreguntasSeeder extends Seeder
                 'id_contexto' => 6,
                 'id_subhabilidad' => 3,
                 'id_categoria' => 2,
-                'texto' => 'A partir de la anterior información, a través de cuál de los siguientes postulados darías tu opinión al padre de familia respecto de su convencimiento acerca de la causa de su depresión y la medida que ha tomado.',
+                'texto' => 'A partir de la anterior información, a través de cuál de los siguientes postulados darías una opinión razonada al padre de familia respecto de su convencimiento acerca de la causa de la depresión de su hija y la medida que ha tomado.',
                 'tipo_pregunta' => 'cerrada'
             ],
             //Item 12
@@ -216,7 +216,7 @@ class PreguntasSeeder extends Seeder
                 'id_contexto' => 6,
                 'id_subhabilidad' => 3,
                 'id_categoria' => 2,
-                'texto' => 'En no más de 100 palabras explica por qué seleccionaste esa alternativa.',
+                'texto' => 'En no más de 100 palabras explica por qué seleccionaste esa alternativa como la opinión razonada que darías al padre de familia respecto de su convencimiento acerca de la causa de la depresión de su hija y la medida que ha tomado.',
                 'tipo_pregunta' => 'abierta'
             ],
             //Contexto6_Metacognición
@@ -257,7 +257,7 @@ class PreguntasSeeder extends Seeder
                 'id_contexto' => 7,
                 'id_subhabilidad' => 3,
                 'id_categoria' => 2,
-                'texto' => 'Si se aproxima el día en que los ciudadanos participan con el voto a favor o en contra de los cambios en la Ley, cuál de la siguiente información acerca de los estudios realizados por la institución y el rol de las acciones del Consejo Nacional de Música necesitarías para apoyar tu decisión y ejercer el derecho al voto.',
+                'texto' => 'Si se aproxima el día en que los ciudadanos participarán con el voto a favor o en contra de los cambios en la Ley, ¿cuál de la siguiente información acerca de los estudios realizados por la institución necesitarías para apoyar tu decisión y ejercer el derecho al voto de forma razonada?',
                 'tipo_pregunta' => 'cerrada'
             ],
             //Item 14
@@ -267,7 +267,7 @@ class PreguntasSeeder extends Seeder
                 'id_contexto' => 7,
                 'id_subhabilidad' => 3,
                 'id_categoria' => 2,
-                'texto' => 'En no más de 100 palabras explica por qué seleccionaste esa alternativa.',
+                'texto' => 'En no más de 100 palabras explica por qué seleccionaste esa alternativa como la que contiene información acerca de los estudios realizados por la institución necesitaría para apoyar tu decisión y ejercer el derecho al voto de forma razonada.',
                 'tipo_pregunta' => 'abierta'
             ],
             //Contexto7_Metacognición
@@ -319,7 +319,7 @@ class PreguntasSeeder extends Seeder
                 'id_contexto' => 8,
                 'id_subhabilidad' => 3,
                 'id_categoria' => 2,
-                'texto' => 'En no más de 100 palabras explica por qué seleccionaste esa alternativa.',
+                'texto' => 'En no más de 100 palabras explica por qué seleccionaste esa alternativa como la información, suministrada por los representantes del programa universitario, de mayor utilidad para decidir qué programa recomendar a tu amiga.',
                 'tipo_pregunta' => 'abierta'
             ],
             //Contexto8_Metacognición
@@ -361,7 +361,7 @@ class PreguntasSeeder extends Seeder
                 'id_contexto' => 9,
                 'id_subhabilidad' => 4,
                 'id_categoria' => 2,
-                'texto' => 'Teniendo en cuenta sólo esta información sobre Jesús David ¿Cuál es la probabilidad de que Jesús David se convierta en un astronauta de la NASA?',
+                'texto' => 'Teniendo en cuenta la información suministrada en el anterior contexto ¿Cuál es la probabilidad de que Jesús David se convierta en un astronauta de la NASA?',
                 'tipo_pregunta' => 'cerrada'
             ],
 
@@ -372,7 +372,7 @@ class PreguntasSeeder extends Seeder
                 'id_contexto' => 9,
                 'id_subhabilidad' => 4,
                 'id_categoria' => 2,
-                'texto' => 'En no más de 100 palabras explica por qué seleccionaste esa alternativa.',
+                'texto' => 'En no más de 100 palabras explica por qué seleccionaste esa alternativa como la probabilidad de que Jesús David se convierta en un astronauta de la NASA.',
                 'tipo_pregunta' => 'abierta'
             ],
 
@@ -415,7 +415,7 @@ class PreguntasSeeder extends Seeder
                 'id_contexto' => 10,
                 'id_subhabilidad' => 4,
                 'id_categoria' => 2,
-                'texto' => '¿Cuáles de los siguientes son los dos posibles defectos de predicción?',
+                'texto' => 'De acuerdo con la información de la publicación electrónica ¿Cuáles de los siguientes enunciados son los más razonables y que ponen en entredicho la predicción o probabilidad de que suceda lo indicado con el empleo y las máquinas?',
                 'tipo_pregunta' => 'cerrada'
             ],
 
@@ -426,7 +426,7 @@ class PreguntasSeeder extends Seeder
                 'id_contexto' => 10,
                 'id_subhabilidad' => 4,
                 'id_categoria' => 2,
-                'texto' => 'En no más de 100 palabras explica por qué seleccionaste esa alternativa.',
+                'texto' => 'En no más de 100 palabras explica por qué seleccionaste esa alternativa que contiene los enunciados más razonables y que ponen en entredicho la predicción o probabilidad de que suceda lo indicado con el empleo y las máquinas.',
                 'tipo_pregunta' => 'abierta'
             ],
 
@@ -469,7 +469,7 @@ class PreguntasSeeder extends Seeder
                 'id_contexto' => 11,
                 'id_subhabilidad' => 6,  //preguntar porque no dice en el documento
                 'id_categoria' => 2,
-                'texto' => '¿Cuál de las siguientes es la mejor crítica al mensaje del rector?',
+                'texto' => '¿Cuál de las siguientes opciones de respuesta es la mejor crítica al mensaje del rector?',
                 'tipo_pregunta' => 'cerrada'
             ],
 
@@ -480,7 +480,7 @@ class PreguntasSeeder extends Seeder
                 'id_contexto' => 11,
                 'id_subhabilidad' => 6,  //preguntar porque no dice en el documento
                 'id_categoria' => 2,
-                'texto' => 'En no más de 100 palabras explica por qué seleccionaste esa alternativa.',
+                'texto' => 'En no más de 100 palabras explica por qué seleccionaste esa alternativa como la mejor crítica al mensaje del rector.',
                 'tipo_pregunta' => 'abierta'
             ],
 
@@ -534,7 +534,7 @@ class PreguntasSeeder extends Seeder
                 'id_contexto' => 12,
                 'id_subhabilidad' => 5,
                 'id_categoria' => 2,
-                'texto' => 'En no más de 100 palabras explica por qué seleccionaste esa alternativa.',
+                'texto' => 'En no más de 100 palabras explica por qué seleccionaste esa alternativa como calificación del razonamiento del gobernador.',
                 'tipo_pregunta' => 'abierta'
             ],
 
@@ -577,7 +577,7 @@ class PreguntasSeeder extends Seeder
                 'id_contexto' => 13,
                 'id_subhabilidad' => 5,
                 'id_categoria' => 2,
-                'texto' => 'De los siguientes enunciados ¿Cuál propuesta respaldarías?',
+                'texto' => 'Con base en los anteriores acontecimientos, de los siguientes enunciados ¿Cuál de las siguientes propuestas presentadas por los estudiantes de bachillerato respaldarías?',
                 'tipo_pregunta' => 'cerrada'
             ],
 
@@ -588,7 +588,7 @@ class PreguntasSeeder extends Seeder
                 'id_contexto' => 13,
                 'id_subhabilidad' => 5,
                 'id_categoria' => 2,
-                'texto' => 'En no más de 100 palabras explica por qué seleccionaste esa alternativa.',
+                'texto' => 'En no más de 100 palabras explica por qué seleccionaste esa alternativa como la propuesta que respaldarías.',
                 'tipo_pregunta' => 'abierta'
             ],
 
@@ -631,7 +631,7 @@ class PreguntasSeeder extends Seeder
                 'id_contexto' => 14,
                 'id_subhabilidad' => 6,
                 'id_categoria' => 2,
-                'texto' => '¿Cómo crees que desde la Unidad de Gestión del Riesgo se puedan resolver las inquietudes de las personas para que tengan mayor claridad al respecto, y así poder actuar con prontitud?',
+                'texto' => 'De acuerdo con lo anterior ¿Cuál de los siguientes enunciados representa los motivos por los que el director de la Unidad de Gestión del Riesgo puedo haber confundido a las comunidades con la información suministrada?',
                 'tipo_pregunta' => 'cerrada'
             ],
 
@@ -642,7 +642,7 @@ class PreguntasSeeder extends Seeder
                 'id_contexto' => 14,
                 'id_subhabilidad' => 6,
                 'id_categoria' => 2,
-                'texto' => 'En no más de 100 palabras explica por qué seleccionaste esa alternativa.',
+                'texto' => 'En no más de 100 palabras explica por qué seleccionaste esa alternativa como el enunciado que contiene los motivos por los que el director de la Unidad de Gestión del Riesgo puedo haber confundido a las comunidades con la información suministrada.',
                 'tipo_pregunta' => 'abierta'
             ],
 
@@ -685,7 +685,7 @@ class PreguntasSeeder extends Seeder
                 'id_contexto' => 15,
                 'id_subhabilidad' => 6,
                 'id_categoria' => 2,
-                'texto' => '¿Más allá de las opiniones, por qué crees que la decisión del gobierno es irracional?',
+                'texto' => 'Sin centrarte en opiniones sobre el tema, ¿por qué crees que la decisión del gobierno es irracional?',
                 'tipo_pregunta' => 'cerrada'
             ],
 
@@ -696,7 +696,7 @@ class PreguntasSeeder extends Seeder
                 'id_contexto' => 15,
                 'id_subhabilidad' => 6,
                 'id_categoria' => 2,
-                'texto' => 'En no más de 100 palabras explica por qué seleccionaste esa alternativa.',
+                'texto' => 'En no más de 100 palabras explica por qué seleccionaste esa alternativa por ser la que, sin centrate en opiniones sobre el tema, representa la decisión irracional del gobierno.',
                 'tipo_pregunta' => 'abierta'
             ],
 
@@ -733,6 +733,91 @@ class PreguntasSeeder extends Seeder
             ], */
 
             //Item 31
+            [
+                'id_pregunta' => 79,
+                'id_prueba' => 1,
+                'id_contexto' => 16,
+                'id_subhabilidad' => 7,
+                'id_categoria' => 2,
+                'texto' => 'Teniendo presente que: las razones son las ideas, premisas, indicios, señales o proposiciones iniciales que dan origen, credibilidad, respaldo, sustento o viabilidad al objeto, sentido o conclusión de la información o del mensaje que se quiere transmitir; que una conclusión es el propósito, objetivo, intencionalidad, creencia o el porqué del texto, mensaje, comunicado, es a lo que se llega o la finalidad del mensaje trasmitido o que se transmite; y, que un contrargumento es lo que contradice, opone o refuta la conclusión, propósito u objeto del enunciado, texto o mensaje. Para cada una de los siguientes cinco (5) enunciados que componen el contexto anterior, indica si se trata de una conclusión, una razón o un contraargumento seleccionando la alternativa de respuesta correcta que se encuentra en la parte inferior del enunciado: ',
+                'tipo_pregunta' => 'subpregunta'
+            ],
+            //Item 32
+            [
+                'id_pregunta' => 80,
+                'id_prueba' => 1,
+                'id_contexto' => 16,
+                'id_subhabilidad' => 7,
+                'id_categoria' => 2,
+                'texto' => 'Sin responder exactamente con las definiciones que te hemos suministrado de lo que es una razón, una conclusión y un contrargumento, explica tus respuestas anteriores. ',
+                'tipo_pregunta' => 'subpregunta'
+            ],
+
+            //Item 33
+            [
+                'id_pregunta' => 81,
+                'id_prueba' => 1,
+                'id_contexto' => 17,
+                'id_subhabilidad' => 7,
+                'id_categoria' => 2,
+                'texto' => 'Teniendo presente que: las razones son las ideas, premisas, indicios, señales o proposiciones iniciales que dan origen, credibilidad, respaldo, sustento o viabilidad al objeto, sentido o conclusión de la información o del mensaje que se quiere transmitir. Que una conclusión es el propósito, objetivo, intencionalidad, creencia o el porqué del texto, mensaje, comunicado, es a lo que se llega o la finalidad del mensaje trasmitido o que se transmite. Y, que un contrargumento es lo que contradice, opone o refuta la conclusión, propósito u objeto del enunciado, texto o mensaje. Para cada una de los siguientes cinco (5) enunciados que componen el contexto anterior, indica si se trata de una conclusión, una razón o un contraargumento seleccionando la alternativa de respuesta correcta que se encuentra en la parte inferior del enunciado: ',
+                'tipo_pregunta' => 'subpregunta'
+            ],
+
+            //Item 34
+            [
+                'id_pregunta' => 82,
+                'id_prueba' => 1,
+                'id_contexto' => 17,
+                'id_subhabilidad' => 7,
+                'id_categoria' => 2,
+                'texto' => 'Sin responder exactamente con las definiciones que te hemos suministrado de lo que es una razón, una conclusión y un contrargumento, explica tus respuestas anteriores. ',
+                'tipo_pregunta' => 'subpregunta'
+            ],
+
+            //Item 35
+            [
+                'id_pregunta' => 83,
+                'id_prueba' => 1,
+                'id_contexto' => 18,
+                'id_subhabilidad' => 7,
+                'id_categoria' => 2,
+                'texto' => 'Sin responder exactamente con las definiciones que te hemos suministrado de lo que es una razón, una conclusión y un contrargumento, explica tus respuestas anteriores. ',
+                'tipo_pregunta' => 'subpregunta'
+            ],
+
+            //Item 36
+            [
+                'id_pregunta' => 84,
+                'id_prueba' => 1,
+                'id_contexto' => 18,
+                'id_subhabilidad' => 7,
+                'id_categoria' => 2,
+                'texto' => 'Sin responder exactamente con las definiciones que te hemos suministrado de lo que es una opinión, un hecho y un argumento razonado, explica tus respuestas anteriores en los cuadros de texto. ',
+                'tipo_pregunta' => 'subpregunta'
+            ],
+
+            //Item 37
+            [
+                'id_pregunta' => 85,
+                'id_prueba' => 1,
+                'id_contexto' => 19,
+                'id_subhabilidad' => 8,
+                'id_categoria' => 2,
+                'texto' => 'Con base en la sugerencia del gurú ¿Qué conclusión crees que se deriva de tu observación? ',
+                'tipo_pregunta' => 'cerrada'
+            ],
+
+            //Item 38
+            [
+                'id_pregunta' => 86,
+                'id_prueba' => 1,
+                'id_contexto' => 19,
+                'id_subhabilidad' => 8,
+                'id_categoria' => 2,
+                'texto' => 'En no más de 100 palabras explica por qué seleccionaste esa alternativa como la conclusión que se deriva de tu observación a sabiendas de la sugerencia del gurú. ',
+                'tipo_pregunta' => 'abierta'
+            ],
 
         ]);
     }
