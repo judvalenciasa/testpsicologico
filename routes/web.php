@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ReportesController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TestsController;
 use App\Http\Controllers\PinesController;
@@ -62,6 +63,10 @@ Route::group(['middleware' => ['auth']], function () {
 
     // Ruta para deshabilitar pruebas
     Route::post('/pruebas/deshabilitar', [PruebasController::class, 'deshabilitarPrueba'])->name('pruebas.deshabilitar');
+
+    // Crear informe
+    Route::post('/informe/crear_reporte', [ReportesController::class, 'crear_reporte'])->name('reporte.crear');
+
 });
 
 // Rutas accesibles solo para invitados (usuarios no autenticados)

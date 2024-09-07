@@ -140,7 +140,9 @@ class UserController extends Controller
             Log::info('Usuario autenticado: ' . $request->user());
 
             // Llamar al método authenticated para redirigir dependiendo del usuario
-            return $this->authenticated($request, Auth::user());
+            //return $this->authenticated($request, Auth::user());
+            $this->authenticated($request, Auth::user());
+            return   $request->session()->token();
         }
 
         // Si la autenticación falla, redirigir de vuelta al formulario de login con un mensaje de error

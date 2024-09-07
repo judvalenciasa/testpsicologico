@@ -23,7 +23,7 @@ return new class extends Migration
             
             $table->foreign('id_prueba')->references('id_prueba')->on('pruebas');
             $table->foreign('id_contexto')->references('id_contexto')->on('contextos');
-            $table->foreign('id_subhabilidad')->references('id_subhabilidad')->on('subhabilidads');
+            $table->foreign('id_subhabilidad')->references('id_subhabilidad')->on('subhabilidades');
             $table->foreign('id_categoria')->references('id_categoria')->on('categorias');
         });
     }
