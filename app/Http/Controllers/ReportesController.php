@@ -132,7 +132,7 @@ class ReportesController extends Controller
 
         ];
 
-        return $respuesta;
+        return view('reporte.index', compact($respuesta));
     }
 
 
