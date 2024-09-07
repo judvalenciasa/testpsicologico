@@ -41,7 +41,7 @@ Route::group(['middleware' => ['auth']], function () {
     })->name('caracterizacion');
 
     // Ruta para mostrar las pruebas
-    Route::get('/mostrartest', [TestsController::class, 'mostrarPrueba'])->name('mostrartest');
+    Route::get('/test/iniciar', [TestsController::class, 'mostrarPrueba'])->name('test.iniciar');
 
     // Ruta para ver el perfil de usuario
     Route::get('/perfil_usuario', [UserController::class, 'perfil_usuario']);

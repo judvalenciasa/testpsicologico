@@ -201,7 +201,7 @@ class UserController extends Controller
      */
     public function llenar_encuesta_caracterizacion(Request $request)
     {
-
+        Log::info('Usuario intenta llenar encuesta de caracterización: ' . $request->user());
         $user = $request->user();
 
         if (!$user) {
@@ -211,14 +211,15 @@ class UserController extends Controller
             ], 401);
         }
 
+        // Validar la información del formulario
         $request->validate([
             'documento_identificacion' => 'required|string',
             'edad' => 'required|integer|min:15|max:18',
             'genero' => 'required|string|max:9',
             'estrato' => 'required|integer|min:1|max:6',
             'nivel_escolaridad' => 'required|string',
-            'escolaridad_madre' => 'required|string',
-            'escolaridad_padre' => 'required|string',
+            'nivel_educativo_madre' => 'required|string',
+            'nivel_educativo_padre' => 'required|string',
             'horas_lectura' => 'required|string',
             'horas_redes_sociales' => 'required|string',
             'horas_entretenimiento' => 'required|string',
@@ -230,28 +231,36 @@ class UserController extends Controller
             'litro_agua' => 'required|string',
         ]);
 
-        $user->update([
-            'documento_identificacion' => $request->documento_identificacion,
-            'edad' => $request->edad,
-            'genero' => $request->genero,
-            'estrato' => $request->estrato,
-            'nivel_escolaridad' => $request->nivel_escolaridad,
-            'escolaridad_madre' => $request->escolaridad_madre,
-            'escolaridad_padre' => $request->escolaridad_padre,
-            'horas_lectura' => $request->horas_lectura,
-            'horas_redes_sociales' => $request->horas_redes_sociales,
-            'horas_entretenimiento' => $request->horas_entretenimiento,
-            'promedio_deporte' => $request->promedio_deporte,
-            'promedio_arte' => $request->promedio_arte,
-            'hora_sueno' => $request->hora_sueno,
-            'grasas' => $request->grasas,
-            'alimentos_saludables' => $request->alimentos_saludables,
-            'litro_agua' => $request->litro_agua,
-        ]);
 
-        return response()->json([
-            "status" => 1,
-            "msg" => "Encuesta de caracterización completada"
-        ]);
+        try {
+            // Intentar actualizar los datos del usuario
+            $user->update([
+                'documento_identificacion' => $request->documento_identificacion,
+                'edad' => $request->edad,
+                'genero' => $request->genero,
+                'estrato' => $request->estrato,
+                'nivel_escolaridad' => $request->nivel_escolaridad,
+                'nivel_educativo_madre' => $request->nivel_educativo_madre, 
+                'nivel_educativo_padre' => $request->nivel_educativo_padre, 
+                'horas_lectura' => $request->horas_lectura,
+                'horas_redes_sociales' => $request->horas_redes_sociales,
+                'horas_entretenimiento' => $request->horas_entretenimiento,
+                'promedio_deporte' => $request->promedio_deporte,
+                'promedio_arte' => $request->promedio_arte,
+                'hora_sueno' => $request->hora_sueno,
+                'grasas' => $request->grasas,
+                'alimentos_saludables' => $request->alimentos_saludables,
+                'litro_agua' => $request->litro_agua,
+            ]);
+
+            Log::info('Encuesta de caracterización completada por: ' . $user);
+
+            // Redirigir al usuario a la página del test después de guardar la encuesta
+            return redirect()->route('test.iniciar')->with('success', 'Encuesta completada con éxito, ahora puedes iniciar el test.');
+        } catch (\Exception $e) {
+            // Si ocurre algún error durante la actualización, loguéalo y muestra un mensaje
+            Log::error('Error al actualizar la encuesta de caracterización: ' . $e->getMessage());
+            return redirect()->back()->withErrors(['msg' => 'Ocurrió un error al guardar la encuesta.']);
+        }
     }
 }
