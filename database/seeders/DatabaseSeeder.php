@@ -29,7 +29,7 @@ class DatabaseSeeder extends Seeder
         $this->call(CriteriosSeeders::class);
 
         $this->call(SubpreguntasSeeder::class);
-        $this->call(OpcionesSeeder::class);
+        $this->call(Opcionessubpreguntas::class);
 
     }
 }
