@@ -14,7 +14,8 @@ class ReportesController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function buscar_total_subhabilidad($nombre_habilidad){
+    public function buscar_total_subhabilidad($nombre_habilidad)
+    {
 
         $id_subhabilidad = Subhabilidad::where('nombre', $nombre_habilidad)
             ->pluck('id_subhabilidad')
@@ -75,7 +76,7 @@ class ReportesController extends Controller
                 ]
             ],
 
-            "macrohabilidad inductiva" => [
+            "macrohabilidad_inductiva" => [
                 [
                     "induccion_general" => $this->buscar_total_subhabilidad("INDUCCIÓN GENERAL"),
                     "induccion_especifica" => $this->buscar_total_subhabilidad("INDUCCIÓN ESPECÍFICA"),
@@ -83,13 +84,49 @@ class ReportesController extends Controller
                 ]
             ],
 
-            "macrohabilidad abductiva" => [
+            "macrohabilidad_abductiva" => [
                 [
-                    "comprobacion_hpótesis" => $this->buscar_total_subhabilidad("COMPROBACIÓN DE HIPÓTESIS"),
+                    "comprobacion_hipotesis" => $this->buscar_total_subhabilidad("COMPROBACIÓN DE HIPÓTESIS"),
                     "uso_probabilidad_incertidumbre" => $this->buscar_total_subhabilidad("USO DE PROBABILIDAD E INCERTIDUMBRE"),
                     "total" => $this->buscar_total_subhabilidad("COMPROBACIÓN DE HIPÓTESIS") + $this->buscar_total_subhabilidad("USO DE PROBABILIDAD E INCERTIDUMBRE"),
                 ]
             ],
+
+            "macrohabilidad_deductivo_y_verbal" => [
+                [
+                    "identificacion_analogia" => $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE FALLO POR ANALOGÍA"),
+                    "identificacion_por_fallo_vaguedad" => $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE FALLO POR VAGUEDAD"),
+                    "total" => $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE FALLO POR ANALOGÍA") + $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE FALLO POR VAGUEDAD"),
+                ]
+            ],
+
+            "macrohabilidad_analisis_de_argumentos" => [
+                [
+                    "identificacion_estructura_argumentativa" => $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE ESTRUCTURA ARGUMENTATIVA"),
+                    "identificacion_de_suposicion" => $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE SUPOSICIÓN"),
+                    "identificacion_de_falacia" => $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE FALACIA"),
+                    "total" => $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE ESTRUCTURA ARGUMENTATIVA") + $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE SUPOSICIÓN") + $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE FALACIA"),
+                ]
+            ],
+            "macrohabilidad_toma_desiciones_y_resolucion_problemas" => [
+                [
+                    "toma_desiciones_informadas" => $this->buscar_total_subhabilidad("TOMA DE DECISIONES INFORMADAS"),
+                    "conciencia_situacion_acciones_razonables" => $this->buscar_total_subhabilidad("CONCIENCIA DE SITUACIÓN Y ACCIONES RAZONABLES"),
+                    "pensamiento_estrategico" => $this->buscar_total_subhabilidad("PENSAMIENTO ESTRATÉGICO"),
+                    "pensamiento_creativo" => $this->buscar_total_subhabilidad("PENSAMIENTO CREATIVO"),
+                ],
+                "metacognicion_conocimiento_procedimental" => [
+                    [
+                        "conocimiento_procedimental" => $request->conocimiento_procedimental,
+                        "depuracion" => $request->depuracion,
+                        "evaluacion" => $request->evaluacion,
+                        "monitoreo" => $request->monitoreo,
+                        "organizacion" => $request->organizacion,
+                        "planificacion" => $request->planificacion,
+                        "total"=>  $request->conocimiento_procedimental + $request->depuracion + $request->evaluacion + $request->monitoreo + $request->organizacion + $request->planificacion
+                    ]
+                ],
+            ]
 
 
 

@@ -6,7 +6,6 @@ use App\Http\Controllers\TestsController;
 use App\Http\Controllers\PinesController;
 use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\PruebasController;
-use App\Http\Controllers\ReportesController;
 
 /*
 |--------------------------------------------------------------------------
