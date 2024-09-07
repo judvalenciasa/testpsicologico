@@ -62,6 +62,9 @@ Route::group(['middleware' => ['auth']], function () {
 
     // Ruta para deshabilitar pruebas
     Route::post('/pruebas/deshabilitar', [PruebasController::class, 'deshabilitarPrueba'])->name('pruebas.deshabilitar');
+
+    //Ruta para cargar la vista de metacognicion
+    Route::get('/metacognicion', [TestsController::class, 'metacognicion'])->name('metacognicion.encuesta');
 });
 
 // Rutas accesibles solo para invitados (usuarios no autenticados)
