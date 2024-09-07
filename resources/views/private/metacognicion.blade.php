@@ -8,14 +8,19 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/caracterizacion.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/metacognicion.css') }}" rel="stylesheet">
+
 </head>
 
 <body class="antialiased">
     @include('shared.header')
 
     <section class="caracterizacion_section">
-        <div class="title">
-            <h1>Encuesta de metacognición</h1>
+        <div class="encabezado_ctn">
+            <h3>Felicitaciones, has terminado las preguntas de pensamiento crítico. Para finalizar, en relación con la prueba que acabas de culminar, te invitamos a responder de la manera más honesta a las siguientes afirmaciones.
+            </h3>
+            <h3> <span>Indicaciones:</span> Lee cuidadosamente cada una de las afirmaciones y usa la escala de 1 a 5 en donde 1 es completamente en desacuerdo; 2 es en desacuerdo; 3 es Ni de acuerdo ni en desacuerdo; 4 de acuerdo y 5 completamente de acuerdo.
+            </h3>
         </div>
         @if(session('success'))
         <div class="alert alert-success">
@@ -23,9 +28,9 @@
         </div>
         @endif
 
-        <form id="metacognicionForm">
+        <form id="metacognicionForm" class="metacognicionForm">
             <!-- Categoria: Conocimiento Procedimental -->
-            <div data-category="Conocimiento Procedimental">
+            <div class="category_ctn" data-category="Conocimiento Procedimental">
                 <div class="pregunta_ctn">
                     <p>Soy consciente de las estrategias que utilicé para responder la anterior prueba.</p>
 
@@ -75,7 +80,7 @@
             </div>
 
             <!-- Categoria: Planificación -->
-            <div data-category="Planificación">
+            <div class="category_ctn" data-category="Planificación">
 
                 <div class="pregunta_ctn">
                     <p>Pensé en lo que realmente necesitaba comprender antes de responder al ítem.</p>
@@ -321,7 +326,7 @@
             </div>
 
             <!-- Categoria: Organización -->
-            <div data-category="Organización">
+            <div class="category_ctn" data-category="Organización">
 
                 <!-- Septima pregunta -->
                 <div class="pregunta_ctn">
@@ -566,7 +571,7 @@
             </div>
 
             <!-- Categoria: Conocimiento Monitoreo -->
-            <div data-category="Monitoreo">
+            <div class="category_ctn" data-category="Monitoreo">
 
                 <!-- Doce pregunta -->
                 <div class="pregunta_ctn">
@@ -811,7 +816,7 @@
             </div>
 
             <!-- Categoria: Conocimiento Monitoreo -->
-            <div data-category="Depuración">
+            <div class="category_ctn" data-category="Depuración">
 
                 <!-- Diescisiete pregunta -->
                 <div class="pregunta_ctn">
@@ -1056,7 +1061,7 @@
             </div>
 
             <!-- Categoria: Conocimiento Monitoreo -->
-            <div data-category="Evaluación">
+            <div class="category_ctn" data-category="Evaluación">
 
                 <!-- Veintidos pregunta -->
                 <div class="pregunta_ctn">
@@ -1202,9 +1207,105 @@
                     </table>
                 </div>
 
+                <!-- Veinticinco pregunta -->
+                <div class="pregunta_ctn">
+                    <p>Después de responder a cada pregunta me pregunté si tuve en cuenta todas las opciones</p>
+
+                    <!-- Tabla para las opciones -->
+                    <table border="1" cellspacing="0" cellpadding="10">
+                        <tr>
+                            <th>1</th>
+                            <th>2</th>
+                            <th>3</th>
+                            <th>4</th>
+                            <th>5</th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label>
+                                    <input type="radio" name="pregunta25" value="1">
+                                    Completamente en desacuerdo
+                                </label>
+                            </td>
+                            <td>
+                                <label>
+                                    <input type="radio" name="pregunta25" value="2">
+                                    En desacuerdo
+                                </label>
+                            </td>
+                            <td>
+                                <label>
+                                    <input type="radio" name="pregunta25" value="3">
+                                    Ni en desacuerdo ni de acuerdo
+                                </label>
+                            </td>
+                            <td>
+                                <label>
+                                    <input type="radio" name="pregunta25" value="4">
+                                    De acuerdo
+                                </label>
+                            </td>
+                            <td>
+                                <label>
+                                    <input type="radio" name="pregunta25" value="5">
+                                    Completamente de acuerdo
+                                </label>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+                <!-- Veintiseis pregunta -->
+                <div class="pregunta_ctn">
+                    <p>Cuando terminé de responder al ítem me pregunté si había empleado mis habilidades al máximo posible</p>
+
+                    <!-- Tabla para las opciones -->
+                    <table border="1" cellspacing="0" cellpadding="10">
+                        <tr>
+                            <th>1</th>
+                            <th>2</th>
+                            <th>3</th>
+                            <th>4</th>
+                            <th>5</th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label>
+                                    <input type="radio" name="pregunta26" value="1">
+                                    Completamente en desacuerdo
+                                </label>
+                            </td>
+                            <td>
+                                <label>
+                                    <input type="radio" name="pregunta26" value="2">
+                                    En desacuerdo
+                                </label>
+                            </td>
+                            <td>
+                                <label>
+                                    <input type="radio" name="pregunta26" value="3">
+                                    Ni en desacuerdo ni de acuerdo
+                                </label>
+                            </td>
+                            <td>
+                                <label>
+                                    <input type="radio" name="pregunta26" value="4">
+                                    De acuerdo
+                                </label>
+                            </td>
+                            <td>
+                                <label>
+                                    <input type="radio" name="pregunta26" value="5">
+                                    Completamente de acuerdo
+                                </label>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
             </div>
 
-            <button type="submit">Enviar</button>
+            <button class="send_btn" type="submit">Terminar</button>
         </form>
     </section>
 
@@ -1235,12 +1336,15 @@
             }
         });
 
+        // Mostrar los datos recogidos en la consola antes de enviarlos
+        console.log('Datos recogidos:', categories);
+
         // Enviar los datos al servidor
         const dataToSend = {
             categories: categories
         };
 
-        fetch('/guardar-puntajes', {
+        fetch('/informe/crear_reporte', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -1253,7 +1357,7 @@
             })
             .catch(error => {
                 console.error('Error al guardar puntajes:', error);
-            });
+            }); 
     });
 </script>
 
