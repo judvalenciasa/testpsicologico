@@ -5,6 +5,7 @@ use App\Http\Controllers\TestsController;
 use App\Http\Controllers\PinesController;
 use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\PruebasController;
+use App\Http\Controllers\ReportesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -65,6 +66,8 @@ Route::group(['middleware' => ['auth']], function () {
 
     //Ruta para cargar la vista de metacognicion
     Route::get('/metacognicion', [TestsController::class, 'metacognicion'])->name('metacognicion.encuesta');
+
+    Route::post('/informe/crear_reporte', [ReportesController::class, 'crear_reporte'])->name('reporte.crear');
 });
 
 // Rutas accesibles solo para invitados (usuarios no autenticados)
