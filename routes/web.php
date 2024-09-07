@@ -42,7 +42,7 @@ Route::group(['middleware' => ['auth']], function () {
     })->name('caracterizacion');
 
     // Ruta para mostrar las pruebas
-    Route::get('/mostrartest', [TestsController::class, 'mostrarPrueba'])->name('mostrartest');
+    Route::get('/test/iniciar', [TestsController::class, 'mostrarPrueba'])->name('test.iniciar');
 
     // Ruta para ver el perfil de usuario
     Route::get('/perfil_usuario', [UserController::class, 'perfil_usuario']);
@@ -67,6 +67,8 @@ Route::group(['middleware' => ['auth']], function () {
     // Crear informe
     Route::post('/informe/crear_reporte', [ReportesController::class, 'crear_reporte'])->name('reporte.crear');
 
+    //Ruta para cargar la vista de metacognicion
+    Route::get('/metacognicion', [TestsController::class, 'metacognicion'])->name('metacognicion.encuesta');
 });
 
 // Rutas accesibles solo para invitados (usuarios no autenticados)

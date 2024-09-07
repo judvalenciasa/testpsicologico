@@ -59,11 +59,13 @@
                 @if($pregunta_index + 2 < $total_preguntas)
                     <button type="submit">Siguiente</button>
                     @else
-                    <button class="send_btn" type="submit">Enviar Respuestas</button>
-                    @endif
+                 
+                     <button class="send_btn" type="submit">Continuar con encuesta de metacognición</button>
+                @endif
+           
             </form>
             @else
-            <p>No hay más preguntas.</p>
+            <p>Felicidades terminaste la prueba.</p>
             @endif
         </div>
     </section>
