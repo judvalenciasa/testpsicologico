@@ -61,31 +61,31 @@ class OpcionesSeeder extends Seeder
             [
                 'id_opcion' => 7,
                 'id_pregunta' => 14,
-                'texto' => 'En cartografía siempre se nos ha mostrado a través de los mapamundis que el Planeta Tierra es una esfera. Distintos textos religiosos han determinado históricamente que la Tierra es redonda.',
+                'texto' => 'a)	En cartografía siempre se nos ha mostrado a través de los mapamundis que el Planeta Tierra es una esfera, eso indica que la representación gráfica es infalible. Distintos textos sagrados de algunas de las religiones del mundo han determinado históricamente que la Tierra es redonda.',
                 'valor_opcion' => 0
             ],
             [
                 'id_opcion' => 8,
                 'id_pregunta' => 14,
-                'texto' => 'Si la tierra fuera plana, cómo se explica que el agua de los mares no se derrama en algún punto. Los miles de satélites que orbitan alrededor del planeta han tomado imágenes en las que se observa que el planeta Tierra es redondo.',
+                'texto' => 'b)	Si la tierra fuera plana, cómo se explica que el agua de los mares no se derrama en algún punto, bien sea en el Norte, Sur, Oeste o Este. Los miles de satélites que actualmente orbitan alrededor del planeta han tomado imágenes en las que se observa que el planeta Tierra es redondo.',
                 'valor_opcion' => 0
             ],
             [
                 'id_opcion' => 9,
                 'id_pregunta' => 14,
-                'texto' => 'La luz del sol no puede reflejar la misma sombra al mismo tiempo sobre distintos objetos distribuidos a distancias significativas en el espacio terrestre. La rotación del Planeta es otra evidencia de su forma.',
+                'texto' => 'c)	Por más que se quisiera la luz del sol no puede reflejar la misma sombra al mismo tiempo sobre distintos objetos distribuidos a distancias significativas en el espacio terrestre. La rotación es otra evidencia que no deja dudas respecto de la circunferencia del Planeta Tierra.',
                 'valor_opcion' => 0
             ],
             [
                 'id_opcion' => 10,
                 'id_pregunta' => 14,
-                'texto' => 'Los aviones no viajan en línea recta en aquellos vuelos de largas horas. Si el Planeta tierra fuera plano la gravedad funcionaría con atracciones desordenadas y no de manera uniforme hacia el centro de la masa. ',
+                'texto' => 'd)	Los pilotos de aerolíneas comerciales afirman que los aviones no viajan en línea recta en aquellos vuelos de largas horas. Además, la Física nos dice que si el Planeta tierra fuera plano la gravedad funcionaría con atracciones desordenadas y no de manera uniforme hacia el centro de la masa. ',
                 'valor_opcion' => 0
             ],
             [
                 'id_opcion' => 11,
                 'id_pregunta' => 14,
-                'texto' => 'La evidencia nos dice que al ubicarnos en un lugar alto podemos ver hacia nuestro alrededor, pero en cierto punto la vista se pierde en el firmamento y ni siquiera con un telescopio potente podremos observar ciudades de otros continentes debido a la curvatura del Plantea. La hora en la que sale y se pone el sol es distinta en cada lugar del mundo.',
+                'texto' => 'e)	Si nos ubicamos en un lugar alto visualizamos nuestro alrededor, pero en cierto punto la vista se pierde en el firmamento y ni con un telescopio potente observaríamos ciudades de otros continentes debido a la curvatura del Plantea. La hora en la que sale y se pone el sol es distinta en cada lugar del mundo. ',
                 'valor_opcion' => 1
             ],
 
@@ -101,13 +101,13 @@ class OpcionesSeeder extends Seeder
             [
                 'id_opcion' => 13,
                 'id_pregunta' => 16,
-                'texto' => 'Mariana se apresuró en las generalizaciones sin tener en cuenta otros países y otras leyes del continente.',
+                'texto' => 'a)	Mariana se apresuró en las generalizaciones, de modo que concluye de manera general sin tener en la cuenta que no en todas las culturas y países del continente se aprueba el matrimonio infantil ni se quebrantan las leyes.',
                 'valor_opcion' => 1
             ],
             [
                 'id_opcion' => 14,
                 'id_pregunta' => 16,
-                'texto' => 'Mariana no explicó nada acerca de la vestimenta, los sistemas políticos, la gastronomía o la música del continente asiático',
+                'texto' => 'Mariana no explicó nada acerca de la vestimenta, los sistemas políticos, la gastronomía (tipo de comida) o la música del continente asiático, y esos son aspectos importantes de la cultura.',
                 'valor_opcion' => 0
             ],
             [
@@ -192,8 +192,7 @@ class OpcionesSeeder extends Seeder
             [
                 'id_opcion' => 26,
                 'id_pregunta' => 19,
-                'texto' => 'No. Con la situación actual de la economía es difícil ofrecer empaques
-                plásticos a excelentes precios.',
+                'texto' => 'd)	No. Con la situación actual de la economía es difícil ofrecer empaques plásticos a excelentes precios, debido a que los precios del mercado no son estables y posiblemente se llegue a producir pérdidas en insumos demasiado costosos.',
                 'valor_opcion' => 0
             ],
             [
@@ -335,31 +334,31 @@ class OpcionesSeeder extends Seeder
             [
                 'id_opcion' => 48,
                 'id_pregunta' => 24,
-                'texto' => 'Que la experiencia no se improvisa y que tal como se lo había indicado los jóvenes no emiten tanto CO₂ como lo hacen los adultos.',
+                'texto' => 'Que la experiencia no se improvisa y que tal como había previsto en conversaciones anteriores a la visita de los colegios, los jóvenes no emiten tanto CO₂ al año como lo hacen los adultos, incluso si los adolescentes se encuentran en el colegio y los adultos laborando.',
                 'valor_opcion' => 0
             ],
             [
                 'id_opcion' => 49,
                 'id_pregunta' => 24,
-                'texto' => 'Que por más seguro que esté de los promedios del próximo colegio las ordenes son claras y deben cumplirse, especialmente si se trata de un experto que trabaja para un organismo multilateral.',
+                'texto' => 'Que por más que piense o intuya los resultados de los promedios del próximo colegio, las ordenes son claras y deben cumplirse, especialmente si se trata de un experto que trabaja para un organismo multilateral que viene desarrollando estudios de altas responsabilidades.',
                 'valor_opcion' => 0
             ],
             [
                 'id_opcion' => 50,
                 'id_pregunta' => 24,
-                'texto' => 'Que no importa si no realiza el promedio en el siguiente colegio, es más importante ser eficientes, ahorrar gastos de viáticos y no caer en sobrecostos cuando se sabe cuál es la tendencia.',
+                'texto' => 'Que no importa si no realiza el promedio en el siguiente colegio, es más importante ser eficientes, ahorrar gastos de viáticos, no caer en sobrecostos y continuar contaminando con sus desplazamientos cuando se sabe cuál es la tendencia de emisiones de CO₂ de los adolescentes.',
                 'valor_opcion' => 0
             ],
             [
                 'id_opcion' => 51,
                 'id_pregunta' => 24,
-                'texto' => 'QQue debe visitar el próximo colegio y promediar la huella de carbono de los adolescentes, puesto que, aunque las probabilidades de no superar la emisión de 1 tonelada de CO₂ al año por adolescentes sean altas para ese colegio, nadie puede asegurar que así sea sin antes verificarlo.',
+                'texto' => 'Que debe visitar el próximo colegio y promediar la huella de carbono de los adolescentes, puesto que, aunque las probabilidades de no superar la emisión de 1 tonelada de CO₂ al año sean altas para ese colegio, nadie puede asegurar que así sea sin antes verificarlo.',
                 'valor_opcion' => 1
             ],
             [
                 'id_opcion' => 52,
                 'id_pregunta' => 24,
-                'texto' => 'Que replantee los promedios anteriores y los realice nuevamente, pues no es posible que, en una de las ciudades más contaminantes del continente, en donde existen tantos desplazamientos al día en vehículos propulsados por motores de combustibles fósiles para movilizarse hasta el colegio y regresar a casa, con tanto consumo de energía y servicios, los adolescentes no superen 1 tonelada de CO₂ emitida al año.',
+                'texto' => 'Que realice nuevamente los promedios anteriores, pues no es posible que en una ciudad en donde existen tantos desplazamientos al día en vehículos propulsados por motores de combustibles fósiles los adolescentes no superen 1 tonelada de CO₂ emitida al año.',
                 'valor_opcion' => 0
             ],
             //Contexto5_Metacognición
@@ -461,19 +460,19 @@ class OpcionesSeeder extends Seeder
             [
                 'id_opcion' => 68,
                 'id_pregunta' => 29,
-                'texto' => 'Si fuera el papá de la chica también prohibiría el uso en casa de Instagram y Facebook, porque la investigación encontraba que cuando se incrementa el uso de estas redes sociales la depresión aumenta.',
+                'texto' => 'a)	Si fuera el papá de la chica también prohibiría el uso en casa de Instagram y Facebook, porque la investigación encontraba que cuando se incrementa el uso de estas redes sociales la depresión aumenta, lo cual resulta preocupante para un padre de familia.',
                 'valor_opcion' => 0
             ],
             [
                 'id_opcion' => 69,
                 'id_pregunta' => 29,
-                'texto' => 'Lo más seguro es que la hija se aliviará al evitar que use Instagram y Facebook, y en ese sentido no puede ser que si el papá incrementa el uso de esas redes sociales la depresión disminuya.',
+                'texto' => 'b)	Lo más seguro es que la hija se aliviará al evitar que use Instagram y Facebook, y en ese sentido no puede ser que si el papá incrementa los permisos para el uso de esas redes sociales en casa la depresión de su hija disminuya, sino todo lo contrario.',
                 'valor_opcion' => 0
             ],
             [
                 'id_opcion' => 70,
                 'id_pregunta' => 29,
-                'texto' => 'Es posible que la depresión de la hija adolescente no disminuya si se prohíbe que use esas redes sociales, porque sólo conocemos que usar frecuentemente Instagram y Facebook y depresión están relacionados, pero no si usar estas redes sociales es la causa de la depresión como tal.',
+                'texto' => 'c)	Es posible que la depresión de la hija adolescente no disminuya si se prohíbe que use esas redes sociales, porque sólo conocemos que usar frecuentemente Instagram y Facebook y la depresión están relacionados, pero no si usar estas redes sociales es la causa como tal de la depresión.',
                 'valor_opcion' => 1
             ],
             [
@@ -485,7 +484,7 @@ class OpcionesSeeder extends Seeder
             [
                 'id_opcion' => 72,
                 'id_pregunta' => 29,
-                'texto' => 'Un uso prudente de las redes sociales puede ayudar a que la hija se recupere de la depresión, es cuestión de contenido y frecuencia en que se usan.',
+                'texto' => 'e)	Un uso prudente de las redes sociales puede ayudar a que la hija se recupere de la depresión, es cuestión de contenido y frecuencia en que se usan. Entonces, el padre puede regular o sugerir los contenidos que su hija puede o debe ver en esas redes sociales.',
                 'valor_opcion' => 0
             ],
             //Contexto6_Metacognición
@@ -586,31 +585,31 @@ class OpcionesSeeder extends Seeder
             [
                 'id_opcion' => 88,
                 'id_pregunta' => 34,
-                'texto' => 'El porcentaje de jóvenes que escuchan esta música y declaran que consumen drogas, son violentos o llevan una vida sexual irresponsable; y, el porcentaje de adolescentes que escuchan esta música y no se declaran violentos, no consumen drogas o no llevan una vida sexual irresponsable o la frecuencia con que la escuchan.',
+                'texto' => 'El porcentaje de jóvenes que escuchan esta música y declaran que consumen drogas, son violentos o llevan una vida sexual irresponsable; y, el porcentaje de adolescentes que escuchan esta música y no se declaran violentos, no consumen drogas o no llevan una vida sexual irresponsable.',
                 'valor_opcion' => 1
             ],
             [
                 'id_opcion' => 89,
                 'id_pregunta' => 34,
-                'texto' => 'Si alguno de los miembros del Consejo Nacional de Música conoce las implicaciones de esta música en el comportamiento de los jóvenes; y si es probable que esas decisiones afecten la libertad de expresión.',
+                'texto' => 'Necesitaría saber si alguno de los miembros del Consejo Nacional de Música conoce las implicaciones de esta música en el comportamiento de los jóvenes, es decir, sin inciden en las conductas de los jóvenes en cuanto a la violencia o el sexo; y si es probable que esas decisiones afecten la libertad de expresión. ',
                 'valor_opcion' => 0
             ],
             [
                 'id_opcion' => 90,
                 'id_pregunta' => 34,
-                'texto' => 'Si los miembros del Consejo Nacional de Música son designados políticamente o si tienen familiares que produzcan este tipo de música; y, cuál es la opinión de los padres de familia sobre la situación en cuestión.',
+                'texto' => 'Si los miembros del Consejo Nacional de Música son designados o nombrados por personas que ostentan cargos políticos en el territorio nacional o si tienen familiares que produzcan este tipo de música; y, cuál es la opinión de los padres de familia sobre la situación en cuestión.',
                 'valor_opcion' => 0
             ],
             [
                 'id_opcion' => 91,
                 'id_pregunta' => 34,
-                'texto' => 'Si los jóvenes que escuchan esta música son delincuentes en potencia; y, si el Consejo Nacional de Música está conformado por liberales o conservadores.',
+                'texto' => 'Si los jóvenes que escuchan esta música son delincuentes en potencia, es decir, que tengan antecedentes penales o estén propensos a cometer delitos; y, si el Consejo Nacional de Música está conformado por personas que tengan determinadas inclinaciones ideológicas históricas como las de los liberales o conservadores.',
                 'valor_opcion' => 0
             ],
             [
                 'id_opcion' => 92,
                 'id_pregunta' => 34,
-                'texto' => 'La cantidad de empleos directos e indirectos que se verían afectados con ese tipo de sanciones; y, si se trata de la música de mi gusto.',
+                'texto' => 'Sería importante conocer la cantidad de empleos directos e indirectos que se verían afectados con ese tipo de sanciones, como, por ejemplo, las labores que desempeñan los ingenieros de sonido y las personas que realizan montajes para conciertos; y, si se trata de la música de mi gusto o del gusto de mis amigos.',
                 'valor_opcion' => 0
             ],
             //Contexto7_Metacognición
@@ -723,19 +722,19 @@ class OpcionesSeeder extends Seeder
             [
                 'id_opcion' => 110,
                 'id_pregunta' => 39,
-                'texto' => 'El programa universitario está respaldado por un personaje público de la ciudad o del país y, si el programa universitario goza de reconocimiento a nivel nacional e internacional.',
+                'texto' => 'Si el programa universitario está respaldado por un personaje público de la ciudad o del país y, si el programa universitario goza de reconocimiento a nivel nacional e internacional en cuanto a la calidad de su propuesta académica.',
                 'valor_opcion' => 0
             ],
             [
                 'id_opcion' => 111,
                 'id_pregunta' => 39,
-                'texto' => 'Cuántos estudiantes abandonan el programa universitario antes de completarlo y, si los estudiantes que se gradúan potencializan sus capacidades en las empresas en las que ingresan a trabajar.',
+                'texto' => 'Cuántos estudiantes abandonan el programa universitario antes de completarlo y, si los estudiantes que se gradúan tienen la posibilidad de potencializar sus capacidades en las empresas en las que ingresan a trabajar.',
                 'valor_opcion' => 0
             ],
             [
                 'id_opcion' => 112,
                 'id_pregunta' => 39,
-                'texto' => 'Si las empresas a las que ingresan a trabajar los egresados tienen programas de becas para estudios de posgrado o especialización. Y si las empresas a las que ingresan a trabajar los egresados ofrecen muy buenos salarios a su personal.',
+                'texto' => 'Si las empresas a las que ingresan a trabajar los egresados tienen programas de becas para estudios de posgrado o especialización y, si las empresas a las que ingresan a trabajar los egresados ofrecen buenos salarios a su personal.',
                 'valor_opcion' => 0
             ],
             //Contexto8_Metacognición
@@ -964,31 +963,31 @@ class OpcionesSeeder extends Seeder
             [
                 'id_opcion' => 148,
                 'id_pregunta' => 49,
-                'texto' => 'probablemente demasiado altas. Están confundiendo Inteligencia Artificial con robótica.',
+                'texto' => 'Las estimaciones sobre los niveles de desarrollo de la Inteligencia artificial son probablemente demasiado altas. Parece que en la publicación electrónica están confundiendo Inteligencia Artificial con robótica, lo cual es un desacierto.',
                 'valor_opcion' => 0
             ],
             [
                 'id_opcion' => 149,
                 'id_pregunta' => 49,
-                'texto' => 'Las estimaciones sobre los niveles de desempleo actual son probablemente demasiado altas. No sabemos cómo se comportará la oferta frente a la demanda laboral.',
+                'texto' => 'Las estimaciones sobre los niveles de desempleo actual son probablemente demasiado altas. No sabemos cómo se comportarán las necesidades de empleo con respecto a las alternativas u opciones disponibles para trabajar.',
                 'valor_opcion' => 0
             ],
             [
                 'id_opcion' => 150,
                 'id_pregunta' => 49,
-                'texto' => 'Esta predicción supone que la inteligencia artificial se apoderará de las industrias y que los niveles de desempleo a nivel mundial crecerán al mismo ritmo que ha venido creciendo, y generaliza afirmando que todas las personas se quedarán sin empleo como si esas fueran las únicas industrias.',
+                'texto' => 'En la publicación suponen que los niveles de desempleo a nivel mundial crecerán al mismo ritmo que ha venido creciendo, y generaliza afirmando que todas las personas se quedarán sin empleo como si esas fueran las únicas industrias.',
                 'valor_opcion' => 1
             ],
             [
                 'id_opcion' => 151,
                 'id_pregunta' => 49,
-                'texto' => 'El artículo probablemente fue escrito por alguien que no está seguro de si habrá crecimiento o decrecimiento poblacional, parece que la población mundial está disminuyendo.',
+                'texto' => 'El artículo probablemente fue escrito por alguien que no está seguro de si habrá crecimiento o decrecimiento poblacional, parece que la población mundial está disminuyendo entonces no es lógico pensar que todos nos quedaremos sin empleo.',
                 'valor_opcion' => 0
             ],
             [
                 'id_opcion' => 152,
                 'id_pregunta' => 49,
-                'texto' => 'Esta predicción asume que no habrá posibilidad de que la inteligencia artificial genere nuevos empleos, la reglas están para hacerse como algunas reglamentaciones en los próximos 80 años.',
+                'texto' => 'Esta predicción asume que no habrá posibilidad de que la inteligencia artificial genere nuevos empleos, la reglas están para hacerse de modo que pueden crearse algunas reglamentaciones en los próximos 80 años que regulen el asunto.',
                 'valor_opcion' => 0
             ],
 
@@ -1091,13 +1090,13 @@ class OpcionesSeeder extends Seeder
             [
                 'id_opcion' => 168,
                 'id_pregunta' => 54,
-                'texto' => 'Al rector no le importan los sentimientos de los estudiantes.',
+                'texto' => 'Al rector no le importan los sentimientos de los estudiantes o los intereses que ellos tienen respecto del aprendizaje.',
                 'valor_opcion' => 0
             ],
             [
                 'id_opcion' => 169,
                 'id_pregunta' => 54,
-                'texto' => 'Algunos niños no pueden jugar muy bien con ese tipo de presiones.',
+                'texto' => 'Algunos niños no pueden jugar muy bien con ese tipo de presiones, es mejor replantear la manera en que se asume la educación.',
                 'valor_opcion' => 0
             ],
             [
@@ -1357,31 +1356,31 @@ class OpcionesSeeder extends Seeder
             [
                 'id_opcion' => 210,
                 'id_pregunta' => 64,
-                'texto' => 'Prohibir totalmente todas las interacciones físicas entre los estudiantes para evitar cualquier muestra de afecto.',
+                'texto' => 'Prohibir totalmente todas las interacciones físicas entre los estudiantes para evitar cualquier muestra de afecto en las instalaciones del colegio como, por ejemplo, pasillos y aulas de clase.',
                 'valor_opcion' => 0
             ],
             [
                 'id_opcion' => 211,
                 'id_pregunta' => 64,
-                'texto' => 'Iniciar un programa de vigilancia intensiva para monitorear y sancionar cualquier muestra de afecto entre los estudiantes.',
-                'valor_opcion' => 1
+                'texto' => 'Iniciar un programa de vigilancia intensiva para monitorear y sancionar cualquier muestra de afecto entre los estudiantes, bien sea a través de cámaras de vigilancia o delegando personal administrativo.',
+                'valor_opcion' => 0
             ],
             [
                 'id_opcion' => 212,
                 'id_pregunta' => 64,
-                'texto' => 'Ajustar el manual de convivencia para definir claramente las muestras de afecto permitidas y prohibidas, asegurando que todos los estudiantes y el personal entiendan las expectativas de comportamiento.',
-                'valor_opcion' => 0
+                'texto' => 'Ajustar el manual de convivencia para definir claramente cuáles son las muestras de afecto permitidas y prohibidas, asegurando que todos los estudiantes y el personal entiendan las expectativas de comportamiento.',
+                'valor_opcion' => 1
             ],
             [
                 'id_opcion' => 213,
                 'id_pregunta' => 64,
-                'texto' => 'Permitir todas las muestras de afecto sin restricciones para promover la libertad y la expresión personal entre los estudiantes.',
+                'texto' => 'Permitir todas las muestras de afecto sin restricciones para promover la libertad y la expresión personal entre los estudiantes, esto garantiza que la expresión de las emociones y el amor sea un derecho para todos.',
                 'valor_opcion' => 0
             ],
             [
                 'id_opcion' => 214,
                 'id_pregunta' => 64,
-                'texto' => 'Eliminar todas las sanciones relacionadas con las muestras de afecto y confiar en que los estudiantes actuarán de manera apropiada.',
+                'texto' => 'Eliminar todas las sanciones relacionadas con las muestras de afecto y confiar en que los estudiantes actuarán de manera apropiada, pues se supone que se enseña ética del cuidado de sí y de los demás.',
                 'valor_opcion' => 0
             ],
 
@@ -1484,38 +1483,32 @@ class OpcionesSeeder extends Seeder
             [
                 'id_opcion' => 230,
                 'id_pregunta' => 69,
-                'texto' => 'Determinando las zonas de desalojo por semanas.',
+                'texto' => 'No determinó las zonas de desalojo por días o semanas de acuerdo con el número de personas que integran las familias.',
                 'valor_opcion' => 0
             ],
             [
                 'id_opcion' => 231,
                 'id_pregunta' => 69,
-                'texto' => 'Reubicando a las familias en campamentos temporales.',
+                'texto' => 'No expresó cómo reubicaría a las familias en campamentos temporales en los que se les pueda garantizar un tiempo prudente de tranquilidad.',
                 'valor_opcion' => 0
             ],
             [
                 'id_opcion' => 232,
                 'id_pregunta' => 69,
-                'texto' => 'Determinando espacios adecuados del territorio en los que pueden establecerse.',
+                'texto' => 'No ha determinado espacios adecuados del territorio en los que pueden establecerse y que no les represente estar en vulnerabilidad.',
                 'valor_opcion' => 0
             ],
             [
                 'id_opcion' => 233,
                 'id_pregunta' => 69,
-                'texto' => 'Enviando comunicaciones a las comunidades para que conserven la calma.',
+                'texto' => 'No ha enviado comunicaciones a las comunidades indicando cómo pueden conserven la calma y actuar ante la temporada de lluvias.',
                 'valor_opcion' => 0
             ],
             [
                 'id_opcion' => 234,
                 'id_pregunta' => 69,
-                'texto' => 'Informando a las comunidades qué es estar en vulnerabilidad, en amenaza o en riesgo.',
+                'texto' => 'No brindó información detallada y precisa a las comunidades sobre lo que significa estar en vulnerabilidad, en amenaza o en riesgo.',
                 'valor_opcion' => 1
-            ],
-            [
-                'id_opcion' => 235,
-                'id_pregunta' => 69,
-                'texto' => 'Concientizando a la comunidad acerca de la importancia de proteger la vida y la de sus seres queridos.',
-                'valor_opcion' => 0
             ],
 
             //Contexto14_Metacognición
@@ -1618,31 +1611,31 @@ class OpcionesSeeder extends Seeder
                 'id_opcion' => 251,
                 'id_pregunta' => 74,
                 'texto' => 'El gobierno no ha explicado con suficiente claridad el impacto del uso de anticonceptivos en la dinamización de la economía. Y establece una relación directa entre el uso de anticonceptivos y el decrecimiento poblacional como causas del estancamiento de la economía, sin tener en cuenta otros factores relevantes; entonces, su argumento a mayor crecimiento poblacional menor estancamiento de la economía es inválido.',
-                'valor_opcion' => 5
+                'valor_opcion' => 1
             ],
             [
                 'id_opcion' => 252,
                 'id_pregunta' => 74,
                 'texto' => 'Es entendible a que mayor uso de anticonceptivos menor crecimiento poblacional y menores flujos de dinero, entre más personas estén consumiendo bienes y servicios mayores dinámicas económicas se generan en el territorio, lo cuestionable es cómo serán los incentivos económicos que se dará a las parejas, y si esto influye en la decisión de tener hijos, siendo que las parejas pueden priorizar el dinero y luego no ser lo suficientemente responsables con los hijos que se traen al mundo.',
-                'valor_opcion' => 5
+                'valor_opcion' => 0
             ],
             [
                 'id_opcion' => 253,
                 'id_pregunta' => 74,
                 'texto' => 'Cómo es que van a desincentivar el uso de anticonceptivos con tantas problemáticas económicas y sociales que se presentan en la actualidad, por el contrario, lo que se requiere es fomentar la sexualidad responsable y que las personas no traigan hijos al mundo a sufrir.',
-                'valor_opcion' => 5
+                'valor_opcion' => 0
             ],
             [
                 'id_opcion' => 254,
                 'id_pregunta' => 74,
                 'texto' => 'No es posible que el uso de preservativos se relacione con la salud de los habitantes directamente, es cierto que si se usan los preservativos las personas evitan adquirir enfermedades de transmisión sexual, lo cual genera menores costos para el Estado, pero el aumento en las condiciones de salud de los ciudadanos depende de otros factores como una excelente prestación de ese servicio social o los hábitos de vida saludable de las personas.',
-                'valor_opcion' => 5
+                'valor_opcion' => 0
             ],
             [
                 'id_opcion' => 255,
                 'id_pregunta' => 74,
                 'texto' => 'Entre más personas estén cuidando su salud reproductiva mayores niveles de bienestar a nivel social; el gobierno no debe formular una política pública que atente contra el trabajo de tantos años de otros gobiernos que ha buscado garantizar la responsabilidad sexual y reproductiva, de una sociedad que lo ha ido en entendiendo con el paso del tiempo.',
-                'valor_opcion' => 5
+                'valor_opcion' => 0
             ],
 
             //Contexto15_Metacognición
@@ -1739,6 +1732,38 @@ class OpcionesSeeder extends Seeder
                 'texto' => 'Completamente de acuerdo',
                 'valor_opcion' => 5
             ], */
+
+            //Item 37
+            [
+                'id_opcion' => 256,
+                'id_pregunta' => 85,
+                'texto' => 'Los creadores de la red social deben estar haciendo un buen trabajo al innovar porque el gurú de las tecnologías y plataformas digitales así lo sugirió. ',
+                'valor_opcion' => 0
+            ],
+            [
+                'id_opcion' => 257,
+                'id_pregunta' => 85,
+                'texto' => 'Los creadores de la red social deben estar haciendo un mal trabajo, puesto que en según mis observaciones el contenido es pésimo.  ',
+                'valor_opcion' => 0
+            ],
+            [
+                'id_opcion' => 258,
+                'id_pregunta' => 85,
+                'texto' => 'No hay una conclusión definitiva, pues los creadores de la red social pueden no estar haciendo un buen trabajo al innovar, y la plataforma ser un éxito. ',
+                'valor_opcion' => 1
+            ],
+            [
+                'id_opcion' => 259,
+                'id_pregunta' => 85,
+                'texto' => 'La cantidad de usuarios y de influencers no se relaciona con otros factores que determinen el nivel de aceptación de la red social. ',
+                'valor_opcion' => 0
+            ],
+            [
+                'id_opcion' => 260,
+                'id_pregunta' => 85,
+                'texto' => 'La cantidad de usuarios no está relacionada con el tipo de trabajo que están haciendo los creadores de la red social.',
+                'valor_opcion' => 0
+            ],
 
         ]);
     }

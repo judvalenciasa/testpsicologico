@@ -16,6 +16,9 @@ return new class extends Migration
             $table->unsignedBigInteger('id_pregunta')->nullable(true);
             $table->string('texto', 500);
             $table->string('valor_opcion', 10)->nullable();     
+            $table->string('tipo_pregunta', 50)->nullable();
+
+            
             $table->foreign('id_pregunta')->references('id_pregunta')->on('preguntas');
             $table->timestamps();
         });
