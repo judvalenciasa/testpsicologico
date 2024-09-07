@@ -23,7 +23,7 @@ class TestsController extends Controller
         $this->openAIService = $openAIService;
     }
 
-   
+
 
     public function mostrarPrueba()
     {
@@ -132,6 +132,14 @@ class TestsController extends Controller
         $prueba_id = $request->input('prueba_id');
         $pregunta_index = $request->input('pregunta_index', 0);
 
+        // Verificar si ya no hay más preguntas por responder
+        $total_preguntas = Preguntas::where('id_prueba', $prueba_id)->count();
+
+        if ($pregunta_index >= $total_preguntas) {
+            // Redirigir a la página de finalización o a otra encuesta
+            return redirect()->route('metacognicion.encuesta')->with('message', 'Has completado la prueba. Ahora continúa con la encuesta de metacognición.');
+        }
+
         // Cargar dos preguntas relacionadas con el mismo contexto
         $preguntas = Preguntas::with('opciones')
             ->where('id_prueba', $prueba_id)
@@ -142,5 +150,10 @@ class TestsController extends Controller
         $total_preguntas = Preguntas::where('id_prueba', $prueba_id)->count();
 
         return view('private.prueba_page', compact('preguntas', 'pregunta_index', 'total_preguntas', 'prueba_id'));
+    }
+
+    public function metacognicion()
+    {
+        return view('private.metacognicion');
     }
 }

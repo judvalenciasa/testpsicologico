@@ -1,0 +1,56 @@
+.caracterizacion_section{
+    display: flex;
+    flex-direction: column;
+    gap: 3vw;
+}
+
+.caracterizacion_section .encabezado_ctn {
+    display: flex;
+    flex-direction: column;
+    gap: 1vw;
+    text-align: justify;
+}
+
+.caracterizacion_section .encabezado_ctn h3{
+    font-weight: normal;
+}
+
+.caracterizacion_section .encabezado_ctn span{
+    font-weight: 700;
+}
+
+.caracterizacion_section .pregunta_ctn table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.metacognicionForm .pregunta_ctn table th,
+td {
+    padding: 2vw 1vw;
+}
+
+.metacognicionForm {
+    display: flex;
+    flex-direction: column;
+    gap: 3vw;
+    width: 100%;
+}
+
+.metacognicionForm .category_ctn {
+    display: flex;
+    flex-direction: column;
+    gap: 3vw;
+}
+
+.metacognicionForm .category_ctn .pregunta_ctn {
+    display: flex;
+    flex-direction: column;
+    gap: 1vw;
+}
+
+.metacognicionForm .send_btn {
+    display: flex;
+    justify-content: center !important;
+    width: 30% !important;
+    align-self: center !important;
+}

@@ -17,7 +17,6 @@ class OpcionesSeeder extends Seeder
 
             //Item 1
             [
-
                 'id_opcion' => 1,
                 'id_pregunta' => 12,
                 'texto' => 'Más mujeres participando en el evento que en todos los torneos anuales en los que ha estado.',
@@ -167,9 +166,7 @@ class OpcionesSeeder extends Seeder
             [
                 'id_opcion' => 23,
                 'id_pregunta' => 19,
-                'texto' => 'No. Importar almidones de yuca o maíz para la fabricación de empaques
-                plásticos biodegradables no es tan buen negocio teniendo en cuenta que esos
-                productos se cosechan en abundancia en nuestro país.',
+                'texto' => 'No. Importar almidones de yuca o maíz para la fabricación de empaques plásticos biodegradables no es tan buen negocio teniendo en cuenta que esos productos se cosechan en abundancia en nuestro país.',
                 'valor_opcion' => 0
             ],
             [
@@ -203,7 +200,7 @@ class OpcionesSeeder extends Seeder
                 diversifican los productos y se fabrican en poco tiempo.',
                 'valor_opcion' => 0
             ],
-           /*  //Item 1_Metacognición
+            /*  //Item 1_Metacognición
             [
                 'id_opcion' => 28,
                 'id_pregunta' => 17,
