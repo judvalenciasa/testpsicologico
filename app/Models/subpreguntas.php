@@ -13,7 +13,7 @@ class subpreguntas extends Model
     protected $table = 'subpreguntas';
 
     // Definir los campos que pueden ser asignados masivamente
-    protected $fillable = ['id_pregunta', 'texto', 'valor_opcion'];
+    protected $fillable = ['id_pregunta', 'texto', 'valor_opcion','tipo_pregunta'];
 
     // Relación con el modelo Pregunta (muchas subpreguntas pertenecen a una pregunta)
     public function pregunta()
@@ -21,7 +21,7 @@ class subpreguntas extends Model
         return $this->belongsTo(Preguntas::class, 'id_pregunta');
     }
 
-    
+
     public function opciones()
     {
         return $this->hasMany(OpcionesSubpreguntas::class, 'id_subpregunta');

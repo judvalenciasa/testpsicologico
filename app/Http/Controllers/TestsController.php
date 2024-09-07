@@ -24,6 +24,11 @@ class TestsController extends Controller
     }
 
 
+    // Función para mostrar la página de metacognición
+    public function metacognicion()
+    {
+        return view('private.metacognicion');
+    }
 
     public function mostrarPrueba()
     {
@@ -106,13 +111,11 @@ class TestsController extends Controller
                     ->where('id_pregunta', $pregunta_id)
                     ->first();
 
-                // Verificar si la opción existe
                 if (!$opcionSeleccionada) {
                     return redirect()->back()->with('error', 'Opción seleccionada no válida.');
                 }
 
                 if ($respuestaExistente) {
-                    // Actualizar la respuesta existente
                     $respuestaExistente->update([
                         'respuesta' => $opcionSeleccionada->texto,
                         'calificacion_respuesta' => $opcionSeleccionada->valor_opcion,
@@ -136,12 +139,11 @@ class TestsController extends Controller
         $total_preguntas = Preguntas::where('id_prueba', $prueba_id)->count();
 
         if ($pregunta_index >= $total_preguntas) {
-            // Redirigir a la página de finalización o a otra encuesta
             return redirect()->route('metacognicion.encuesta')->with('message', 'Has completado la prueba. Ahora continúa con la encuesta de metacognición.');
         }
 
-        // Cargar dos preguntas relacionadas con el mismo contexto
-        $preguntas = Preguntas::with('opciones')
+        // Cargar dos preguntas y subpreguntas relacionadas con el mismo contexto
+        $preguntas = Preguntas::with('opciones', 'subpreguntas.opciones')
             ->where('id_prueba', $prueba_id)
             ->skip($pregunta_index)
             ->take(2)
@@ -152,8 +154,5 @@ class TestsController extends Controller
         return view('private.prueba_page', compact('preguntas', 'pregunta_index', 'total_preguntas', 'prueba_id'));
     }
 
-    public function metacognicion()
-    {
-        return view('private.metacognicion');
-    }
+    
 }
