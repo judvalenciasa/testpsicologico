@@ -50,6 +50,30 @@
                 @endforeach
                 @endif
 
+                <!-- Verificar si hay subpreguntas y mostrarlas -->
+                @if($pregunta_actual->subpreguntas && $pregunta_actual->subpreguntas->count() > 0)
+                <div class="subpreguntas">
+                    @foreach($pregunta_actual->subpreguntas as $subpregunta)
+                    <p class="pregunta_texto">{{ $subpregunta->texto }}</p>
+
+                    @if($subpregunta->tipo_pregunta == 'abierta')
+                    <div class="opcion">
+                        <textarea name="respuestas_abiertas[{{ $subpregunta->id_pregunta }}]" id="respuesta_abierta_{{ $subpregunta->id_pregunta }}" rows="4" placeholder="Escribe tu respuesta aquí..."></textarea>
+                    </div>
+                    @else
+                    @foreach($subpregunta->opciones as $opcion)
+                    <div class="opcion">
+                        <label>
+                            <input type="radio" name="respuestas[{{ $subpregunta->id_pregunta }}]" value="{{ $opcion->id_opcion }}">
+                            <p>{{ $opcion->texto }}</p>
+                        </label>
+                    </div>
+                    @endforeach
+                    @endif
+                    @endforeach
+                </div>
+                @endif
+
                 <input type="hidden" name="pregunta_ids[]" value="{{ $pregunta_actual->id_pregunta }}">
                 @endforeach
 
@@ -59,11 +83,10 @@
                 @if($pregunta_index + 2 < $total_preguntas)
                     <button type="submit">Siguiente</button>
                     @else
-                 
-                     <button class="send_btn" type="submit">Continuar con encuesta de metacognición</button>
-                @endif
-           
+                    <button class="send_btn" type="submit">Continuar con encuesta de metacognición</button>
+                    @endif
             </form>
+
             @else
             <p>Felicidades terminaste la prueba.</p>
             @endif

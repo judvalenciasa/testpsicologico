@@ -20,6 +20,11 @@ class Preguntas extends Model
         'texto'
     ];
 
+    public function subpreguntas()
+    {
+        return $this->hasMany(Subpreguntas::class, 'id_pregunta');
+    }
+
     public function prueba()
     {
         return $this->belongsTo(Tests::class, 'id_prueba');

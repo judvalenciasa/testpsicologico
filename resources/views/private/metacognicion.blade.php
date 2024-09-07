@@ -30,7 +30,7 @@
 
         <form id="metacognicionForm" class="metacognicionForm">
             <!-- Categoria: Conocimiento Procedimental -->
-            <div class="category_ctn" data-category="Conocimiento Procedimental">
+            <div class="category_ctn" data-category="conocimiento_procedimental">
                 <div class="pregunta_ctn">
                     <p>Soy consciente de las estrategias que utilicé para responder la anterior prueba.</p>
 
@@ -80,7 +80,7 @@
             </div>
 
             <!-- Categoria: Planificación -->
-            <div class="category_ctn" data-category="Planificación">
+            <div class="category_ctn" data-category="planificacion">
 
                 <div class="pregunta_ctn">
                     <p>Pensé en lo que realmente necesitaba comprender antes de responder al ítem.</p>
@@ -326,7 +326,7 @@
             </div>
 
             <!-- Categoria: Organización -->
-            <div class="category_ctn" data-category="Organización">
+            <div class="category_ctn" data-category="organizacion">
 
                 <!-- Septima pregunta -->
                 <div class="pregunta_ctn">
@@ -571,7 +571,7 @@
             </div>
 
             <!-- Categoria: Conocimiento Monitoreo -->
-            <div class="category_ctn" data-category="Monitoreo">
+            <div class="category_ctn" data-category="monitoreo">
 
                 <!-- Doce pregunta -->
                 <div class="pregunta_ctn">
@@ -816,7 +816,7 @@
             </div>
 
             <!-- Categoria: Conocimiento Monitoreo -->
-            <div class="category_ctn" data-category="Depuración">
+            <div class="category_ctn" data-category="depuracion">
 
                 <!-- Diescisiete pregunta -->
                 <div class="pregunta_ctn">
@@ -1061,7 +1061,7 @@
             </div>
 
             <!-- Categoria: Conocimiento Monitoreo -->
-            <div class="category_ctn" data-category="Evaluación">
+            <div class="category_ctn" data-category="evaluacion">
 
                 <!-- Veintidos pregunta -->
                 <div class="pregunta_ctn">
@@ -1307,6 +1307,15 @@
 
             <button class="send_btn" type="submit">Terminar</button>
         </form>
+
+        <!-- Modal de Felicitaciones -->
+        <div id="felicitacionesModal" class="modal" style="display:none;">
+            <div class="modal-content">
+                <h2>¡Felicitaciones!</h2>
+                <p>Has terminado la encuesta. Gracias por tu participación.</p>
+                <button id="cerrarModal">Cerrar sesión</button>
+            </div>
+        </div>
     </section>
 
 </body>
@@ -1357,7 +1366,7 @@
             })
             .catch(error => {
                 console.error('Error al guardar puntajes:', error);
-            }); 
+            });
     });
 </script>
 
