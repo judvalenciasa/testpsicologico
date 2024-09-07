@@ -75,7 +75,7 @@ class PreguntasSeeder extends Seeder
                 'id_pregunta' => 17,
                 'id_prueba' => 1,
                 'id_contexto' => 3,
-                'id_subhabilidad' => 3,
+                'id_subhabilidad' => 1,
                 'id_categoria' => 2,
                 'texto' => 'En no más de 100 palabras explica por qué seleccionaste esa alternativa.',
                 'tipo_pregunta' => 'abierta'
@@ -97,7 +97,7 @@ class PreguntasSeeder extends Seeder
                 'id_pregunta' => 19,
                 'id_prueba' => 1,
                 'id_contexto' => 4,
-                'id_subhabilidad' => 3,
+                'id_subhabilidad' => 2,
                 'id_categoria' => 2,
                 'texto' => 'Cuál de las siguientes opciones representa la respuesta que darías a la empresa:',
                 'tipo_pregunta' => 'cerrada'
@@ -108,7 +108,7 @@ class PreguntasSeeder extends Seeder
                 'id_pregunta' => 20,
                 'id_prueba' => 1,
                 'id_contexto' => 4,
-                'id_subhabilidad' => 3,
+                'id_subhabilidad' => 2,
                 'id_categoria' => 2,
                 'texto' => 'En no más de 100 palabras explica por qué seleccionaste esa alternativa.',
                 'tipo_pregunta' => 'abierta'
@@ -152,7 +152,7 @@ class PreguntasSeeder extends Seeder
                 'id_pregunta' => 24,
                 'id_prueba' => 1,
                 'id_contexto' => 5,
-                'id_subhabilidad' => 3,
+                'id_subhabilidad' => 2,
                 'id_categoria' => 2,
                 'texto' => '¿Cuál crees que sería la respuesta más razonable que debe darle el jefe al experto delegado?',
                 'tipo_pregunta' => 'cerrada'
@@ -163,7 +163,7 @@ class PreguntasSeeder extends Seeder
                 'id_pregunta' => 25,
                 'id_prueba' => 1,
                 'id_contexto' => 5,
-                'id_subhabilidad' => 3,
+                'id_subhabilidad' => 2,
                 'id_categoria' => 2,
                 'texto' => 'En no más de 100 palabras explica por qué seleccionaste esa alternativa.',
                 'tipo_pregunta' => 'abierta'
@@ -204,7 +204,7 @@ class PreguntasSeeder extends Seeder
                 'id_pregunta' => 29,
                 'id_prueba' => 1,
                 'id_contexto' => 6,
-                'id_subhabilidad' => 2,
+                'id_subhabilidad' => 3,
                 'id_categoria' => 2,
                 'texto' => 'A partir de la anterior información, a través de cuál de los siguientes postulados darías tu opinión al padre de familia respecto de su convencimiento acerca de la causa de su depresión y la medida que ha tomado.',
                 'tipo_pregunta' => 'cerrada'
@@ -214,7 +214,7 @@ class PreguntasSeeder extends Seeder
                 'id_pregunta' => 30,
                 'id_prueba' => 1,
                 'id_contexto' => 6,
-                'id_subhabilidad' => 2,
+                'id_subhabilidad' => 3,
                 'id_categoria' => 2,
                 'texto' => 'En no más de 100 palabras explica por qué seleccionaste esa alternativa.',
                 'tipo_pregunta' => 'abierta'
@@ -255,7 +255,7 @@ class PreguntasSeeder extends Seeder
                 'id_pregunta' => 34,
                 'id_prueba' => 1,
                 'id_contexto' => 7,
-                'id_subhabilidad' => 2,
+                'id_subhabilidad' => 3,
                 'id_categoria' => 2,
                 'texto' => 'Si se aproxima el día en que los ciudadanos participan con el voto a favor o en contra de los cambios en la Ley, cuál de la siguiente información acerca de los estudios realizados por la institución y el rol de las acciones del Consejo Nacional de Música necesitarías para apoyar tu decisión y ejercer el derecho al voto.',
                 'tipo_pregunta' => 'cerrada'
@@ -265,7 +265,7 @@ class PreguntasSeeder extends Seeder
                 'id_pregunta' => 35,
                 'id_prueba' => 1,
                 'id_contexto' => 7,
-                'id_subhabilidad' => 2,
+                'id_subhabilidad' => 3,
                 'id_categoria' => 2,
                 'texto' => 'En no más de 100 palabras explica por qué seleccionaste esa alternativa.',
                 'tipo_pregunta' => 'abierta'
@@ -306,7 +306,7 @@ class PreguntasSeeder extends Seeder
                 'id_pregunta' => 39,
                 'id_prueba' => 1,
                 'id_contexto' => 8,
-                'id_subhabilidad' => 2,
+                'id_subhabilidad' => 3,
                 'id_categoria' => 2,
                 'texto' => '¿Cuál de la siguiente información suministrada por los representantes del programa universitario sería de mayor utilidad para decidir qué programa recomendar a tu amiga?',
                 'tipo_pregunta' => 'cerrada'
@@ -317,7 +317,7 @@ class PreguntasSeeder extends Seeder
                 'id_pregunta' => 40,
                 'id_prueba' => 1,
                 'id_contexto' => 8,
-                'id_subhabilidad' => 2,
+                'id_subhabilidad' => 3,
                 'id_categoria' => 2,
                 'texto' => 'En no más de 100 palabras explica por qué seleccionaste esa alternativa.',
                 'tipo_pregunta' => 'abierta'
@@ -359,7 +359,7 @@ class PreguntasSeeder extends Seeder
                 'id_pregunta' => 44,
                 'id_prueba' => 1,
                 'id_contexto' => 9,
-                'id_subhabilidad' => 2,
+                'id_subhabilidad' => 4,
                 'id_categoria' => 2,
                 'texto' => 'Teniendo en cuenta sólo esta información sobre Jesús David ¿Cuál es la probabilidad de que Jesús David se convierta en un astronauta de la NASA?',
                 'tipo_pregunta' => 'cerrada'
@@ -370,7 +370,7 @@ class PreguntasSeeder extends Seeder
                 'id_pregunta' => 45,
                 'id_prueba' => 1,
                 'id_contexto' => 9,
-                'id_subhabilidad' => 2,
+                'id_subhabilidad' => 4,
                 'id_categoria' => 2,
                 'texto' => 'En no más de 100 palabras explica por qué seleccionaste esa alternativa.',
                 'tipo_pregunta' => 'abierta'
@@ -413,7 +413,7 @@ class PreguntasSeeder extends Seeder
                 'id_pregunta' => 49,
                 'id_prueba' => 1,
                 'id_contexto' => 10,
-                'id_subhabilidad' => 2,
+                'id_subhabilidad' => 4,
                 'id_categoria' => 2,
                 'texto' => '¿Cuáles de los siguientes son los dos posibles defectos de predicción?',
                 'tipo_pregunta' => 'cerrada'
@@ -424,7 +424,7 @@ class PreguntasSeeder extends Seeder
                 'id_pregunta' => 50,
                 'id_prueba' => 1,
                 'id_contexto' => 10,
-                'id_subhabilidad' => 2,
+                'id_subhabilidad' => 4,
                 'id_categoria' => 2,
                 'texto' => 'En no más de 100 palabras explica por qué seleccionaste esa alternativa.',
                 'tipo_pregunta' => 'abierta'
@@ -467,7 +467,7 @@ class PreguntasSeeder extends Seeder
                 'id_pregunta' => 54,
                 'id_prueba' => 1,
                 'id_contexto' => 11,
-                'id_subhabilidad' => 3,  //preguntar porque no dice en el documento
+                'id_subhabilidad' => 6,  //preguntar porque no dice en el documento
                 'id_categoria' => 2,
                 'texto' => '¿Cuál de las siguientes es la mejor crítica al mensaje del rector?',
                 'tipo_pregunta' => 'cerrada'
@@ -478,7 +478,7 @@ class PreguntasSeeder extends Seeder
                 'id_pregunta' => 55,
                 'id_prueba' => 1,
                 'id_contexto' => 11,
-                'id_subhabilidad' => 3,  //preguntar porque no dice en el documento
+                'id_subhabilidad' => 6,  //preguntar porque no dice en el documento
                 'id_categoria' => 2,
                 'texto' => 'En no más de 100 palabras explica por qué seleccionaste esa alternativa.',
                 'tipo_pregunta' => 'abierta'
@@ -521,7 +521,7 @@ class PreguntasSeeder extends Seeder
                 'id_pregunta' => 59,
                 'id_prueba' => 1,
                 'id_contexto' => 12,
-                'id_subhabilidad' => 3,
+                'id_subhabilidad' => 5,
                 'id_categoria' => 2,
                 'texto' => 'Seleccionando una de las siguientes alternativas califica el razonamiento del gobernador sobre este tema utilizando una escala de 7 puntos.',
                 'tipo_pregunta' => 'cerrada'
@@ -532,7 +532,7 @@ class PreguntasSeeder extends Seeder
                 'id_pregunta' => 60,
                 'id_prueba' => 1,
                 'id_contexto' => 12,
-                'id_subhabilidad' => 3,
+                'id_subhabilidad' => 5,
                 'id_categoria' => 2,
                 'texto' => 'En no más de 100 palabras explica por qué seleccionaste esa alternativa.',
                 'tipo_pregunta' => 'abierta'
@@ -575,7 +575,7 @@ class PreguntasSeeder extends Seeder
                 'id_pregunta' => 64,
                 'id_prueba' => 1,
                 'id_contexto' => 13,
-                'id_subhabilidad' => 3,
+                'id_subhabilidad' => 5,
                 'id_categoria' => 2,
                 'texto' => 'De los siguientes enunciados ¿Cuál propuesta respaldarías?',
                 'tipo_pregunta' => 'cerrada'
@@ -586,7 +586,7 @@ class PreguntasSeeder extends Seeder
                 'id_pregunta' => 65,
                 'id_prueba' => 1,
                 'id_contexto' => 13,
-                'id_subhabilidad' => 3,
+                'id_subhabilidad' => 5,
                 'id_categoria' => 2,
                 'texto' => 'En no más de 100 palabras explica por qué seleccionaste esa alternativa.',
                 'tipo_pregunta' => 'abierta'
@@ -629,7 +629,7 @@ class PreguntasSeeder extends Seeder
                 'id_pregunta' => 69,
                 'id_prueba' => 1,
                 'id_contexto' => 14,
-                'id_subhabilidad' => 3,
+                'id_subhabilidad' => 6,
                 'id_categoria' => 2,
                 'texto' => '¿Cómo crees que desde la Unidad de Gestión del Riesgo se puedan resolver las inquietudes de las personas para que tengan mayor claridad al respecto, y así poder actuar con prontitud?',
                 'tipo_pregunta' => 'cerrada'
@@ -640,7 +640,7 @@ class PreguntasSeeder extends Seeder
                 'id_pregunta' => 70,
                 'id_prueba' => 1,
                 'id_contexto' => 14,
-                'id_subhabilidad' => 3,
+                'id_subhabilidad' => 6,
                 'id_categoria' => 2,
                 'texto' => 'En no más de 100 palabras explica por qué seleccionaste esa alternativa.',
                 'tipo_pregunta' => 'abierta'
@@ -683,7 +683,7 @@ class PreguntasSeeder extends Seeder
                 'id_pregunta' => 74,
                 'id_prueba' => 1,
                 'id_contexto' => 15,
-                'id_subhabilidad' => 3,
+                'id_subhabilidad' => 6,
                 'id_categoria' => 2,
                 'texto' => '¿Más allá de las opiniones, por qué crees que la decisión del gobierno es irracional?',
                 'tipo_pregunta' => 'cerrada'
@@ -694,7 +694,7 @@ class PreguntasSeeder extends Seeder
                 'id_pregunta' => 75,
                 'id_prueba' => 1,
                 'id_contexto' => 15,
-                'id_subhabilidad' => 3,
+                'id_subhabilidad' => 6,
                 'id_categoria' => 2,
                 'texto' => 'En no más de 100 palabras explica por qué seleccionaste esa alternativa.',
                 'tipo_pregunta' => 'abierta'
