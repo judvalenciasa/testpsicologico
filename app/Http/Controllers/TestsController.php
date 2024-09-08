@@ -149,10 +149,9 @@ class TestsController extends Controller
             ->take(2)
             ->get();
 
+
         $total_preguntas = Preguntas::where('id_prueba', $prueba_id)->count();
 
         return view('private.prueba_page', compact('preguntas', 'pregunta_index', 'total_preguntas', 'prueba_id'));
     }
-
-    
 }
