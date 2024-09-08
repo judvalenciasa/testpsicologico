@@ -27,6 +27,7 @@ class UserController extends Controller
     public function index()
     {
         $users = User::where('es_administrador', 0)->get();
+        return view('private.usuarios', compact('users')); // Asegúrate de tener una vista admin/usuarios
     }
 
     public function indexAdministrador(Request $request)

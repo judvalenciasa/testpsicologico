@@ -71,6 +71,10 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/metacognicion', [TestsController::class, 'metacognicion'])->name('metacognicion.encuesta');
 
     Route::post('/informe/crear_reporte', [ReportesController::class, 'crear_reporte'])->name('reporte.crear');
+
+    // Rutas para administradores
+    Route::get('/admin/usuarios', [UserController::class, 'index'])->name('private.usuarios');
+    Route::get('/admin/usuarios/{id}/reportes', [ReportesController::class, 'verReportes'])->name('private.verReportes');
 });
 
 // Rutas accesibles solo para invitados (usuarios no autenticados)
