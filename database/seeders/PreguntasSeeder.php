@@ -819,6 +819,286 @@ class PreguntasSeeder extends Seeder
                 'tipo_pregunta' => 'abierta'
             ],
 
+            //Item 39
+            [
+                'id_pregunta' => 87,
+                'id_prueba' => 1,
+                'id_contexto' => 20,
+                'id_subhabilidad' => 8,
+                'id_categoria' => 2,
+                'texto' => 'Imaginando que res uno de los compañeros de trabajo y con base en el contexto proporcionado ¿Con cuál de los siguientes enunciados contrargumentarías la conclusión a la que ha llegado Rafael?',
+                'tipo_pregunta' => 'cerrada'
+            ],
+
+            //Item 40
+            [
+                'id_pregunta' => 88,
+                'id_prueba' => 1,
+                'id_contexto' => 20,
+                'id_subhabilidad' => 8,
+                'id_categoria' => 2,
+                'texto' => 'Imaginando que eres uno de los compañeros de trabajo, en no más de 100 palabras explica por qué seleccionaste esa alternativa como la respuesta que contrargumenta la conclusión de Rafael. ',
+                'tipo_pregunta' => 'abierta'
+            ],
+
+            //Item 41
+            [
+                'id_pregunta' => 89,
+                'id_prueba' => 1,
+                'id_contexto' => 21,
+                'id_subhabilidad' => 9,
+                'id_categoria' => 2,
+                'texto' => '¿Cuál de las siguientes opciones representaría una respuesta razonable por parte de sus amigas?',
+                'tipo_pregunta' => 'cerrada'
+            ],
+
+            //Item 42
+            [
+                'id_pregunta' => 90,
+                'id_prueba' => 1,
+                'id_contexto' => 21,
+                'id_subhabilidad' => 9,
+                'id_categoria' => 2,
+                'texto' => 'En no más de 100 palabras explica por qué seleccionaste esa alternativa como una respuesta razonable que le darían las amigas a la joven',
+                'tipo_pregunta' => 'abierta'
+            ],
+
+            //Item 43
+            [
+                'id_pregunta' => 91,
+                'id_prueba' => 1,
+                'id_contexto' => 22,
+                'id_subhabilidad' => 9,
+                'id_categoria' => 2,
+                'texto' => 'Con base en lo anterior ¿Cuál de las siguientes opciones representaría una respuesta razonable de parte de otros vecinos?',
+                'tipo_pregunta' => 'cerrada'
+            ],
+
+            //Item 44
+            [
+                'id_pregunta' => 92,
+                'id_prueba' => 1,
+                'id_contexto' => 22,
+                'id_subhabilidad' => 9,
+                'id_categoria' => 2,
+                'texto' => 'En no más de 100 palabras explica por qué seleccionaste esa alternativa como la opción que representaría una respuesta razonable de parte de otros vecinos.',
+                'tipo_pregunta' => 'abierta'
+            ],
+
+            //Item 45
+             [
+                'id_pregunta' => 93,
+                'id_prueba' => 1,
+                'id_contexto' => 23,
+                'id_subhabilidad' => 10,
+                'id_categoria' => 2,
+                'texto' => '¿Qué información es determinante en la decisión que tomará Pepito? Para cada una de las siguientes alternativas, califica su importancia a la hora de tomar una decisión sobre el ofrecimiento de la Universidad. Selecciona tu calificación de la información en una escala de 1 a 5 en donde:
+                    1 = nada importante.
+                    2 = de muy poca importancia.
+                    3 = de cierta importancia.
+                    4 = importante. 
+                    5 = muy importante.
+                    ',
+                'tipo_pregunta' => 'subpregunta'
+            ],
+
+            //Item 46
+            [
+                'id_pregunta' => 94,
+                'id_prueba' => 1,
+                'id_contexto' => 23,
+                'id_subhabilidad' => 10,
+                'id_categoria' => 2,
+                'texto' => 'En no más de 100 palabras explica por qué seleccionaste la información marcada como muy importante (a la que asignaste los 5 puntos).',
+                'tipo_pregunta' => 'abierta'
+            ],
+
+            //Item 47
+            [
+                'id_pregunta' => 95,
+                'id_prueba' => 1,
+                'id_contexto' => 24,
+                'id_subhabilidad' => 10,
+                'id_categoria' => 2,
+                'texto' => '¿Cuál de las siguientes opciones representaría una respuesta razonable de Margarita al decidir si apoyar o no el proyecto de ley?',
+                'tipo_pregunta' => 'cerrada'
+            ],
+
+            //Item 48
+            [
+                'id_pregunta' => 96,
+                'id_prueba' => 1,
+                'id_contexto' => 24,
+                'id_subhabilidad' => 10,
+                'id_categoria' => 2,
+                'texto' => 'En no más de 100 palabras, explica por qué seleccionaste esa opción como la respuesta razonable de Margarita al decidir si apoyar o no el proyecto de ley.',
+                'tipo_pregunta' => 'abierta'
+            ],
+
+            //Item 49
+            [
+                'id_pregunta' => 97,
+                'id_prueba' => 1,
+                'id_contexto' => 25,
+                'id_subhabilidad' => 11,
+                'id_categoria' => 2,
+                'texto' => '¿Cómo podrías describir de la mejor manera la situación en la que se encuentran tu compañero y tú y cuál sería la mejor acción que deberías emprender? ',
+                'tipo_pregunta' => 'cerrada'
+            ],
+
+            //Item 50
+            [
+                'id_pregunta' => 98,
+                'id_prueba' => 1,
+                'id_contexto' => 25,
+                'id_subhabilidad' => 11,
+                'id_categoria' => 2,
+                'texto' => 'En no más de 100 palabras explica por qué seleccionaste esa alternativa como la que describe de la mejor manera la situación en la que se encuentran tu compañero y tú y la mejor acción que deberías emprender.',
+                'tipo_pregunta' => 'abierta'
+            ],
+
+            //Item 51
+            [
+                'id_pregunta' => 99,
+                'id_prueba' => 1,
+                'id_contexto' => 26,
+                'id_subhabilidad' => 11,
+                'id_categoria' => 2,
+                'texto' => 'Entre las siguientes alternativas de respuesta selecciona la que responde a la pregunta ¿Cómo podrías describir de la mejor manera la situación en la que se encuentran tu compañero y tú y cuál sería la mejor acción que deberías emprender?',
+                'tipo_pregunta' => 'cerrada'
+            ],
+
+            //Item 52
+            [
+                'id_pregunta' => 100,
+                'id_prueba' => 1,
+                'id_contexto' => 26,
+                'id_subhabilidad' => 11,
+                'id_categoria' => 2,
+                'texto' => 'En no más de 100 palabras explica por qué seleccionaste esa alternativa por ser la que mejor describe la situación en la que se encuentran tu compañero y tú y cuál sería la mejor acción que deberías emprender',
+                'tipo_pregunta' => 'abierta'
+            ],
+
+            //Item 53
+            [
+                'id_pregunta' => 101,
+                'id_prueba' => 1,
+                'id_contexto' => 27,
+                'id_subhabilidad' => 12,
+                'id_categoria' => 2,
+                'texto' => 'Califica cada una de las siguientes soluciones por su calidad, utilizando una escala del 1 a 5 en donde:
+
+                    1 = solución muy mala.
+                    2 = solución mala.
+                    3 = solución medianamente buena.
+                    4 = solución muy buena.
+                    5 = solución excelente.
+                    ',
+                'tipo_pregunta' => 'subpregunta'
+            ],
+
+            //Item 54
+            [
+                'id_pregunta' => 102,
+                'id_prueba' => 1,
+                'id_contexto' => 27,
+                'id_subhabilidad' => 12,
+                'id_categoria' => 2,
+                'texto' => 'A partir del problema en el que te encuentras por haber perdido el manual con el cual realizarás la sustentación de manera detallada, en no más de 100 palabras redacta la mejor ruta de solución tomando como base por lo menos dos palabras de la siguiente lista (algunas palabras pueden cambiar en su forma gramatical): 
+
+ 
+                    •	Mochila
+                    •	Proceso
+                    •	Profesor
+                    •	Memoria
+                    •	Recordar
+                    •	Visualmente
+                    •	Simplificar 
+                    •	Colaborar 
+                    •	Internet
+                    •	Biblioteca
+                    •	Diagramas
+                    •	Tablero
+                    •	Improvisación
+                    •	Tiempo 
+                    •	Foto
+                    •	Llamada
+                    •	Funcionalidad
+                    •	Ejercicio
+                    •	Ideas
+                    •	Calma
+                    •	Principal
+                    •	Aprendizaje
+                    ',
+                'tipo_pregunta' => 'abierta'
+            ],
+
+            //Item 55
+            [
+                'id_pregunta' => 103,
+                'id_prueba' => 1,
+                'id_contexto' => 28,
+                'id_subhabilidad' => 12,
+                'id_categoria' => 2,
+                'texto' => '¿Cuál de las siguientes opciones sería la mejor manera de abordar la situación para proteger adecuadamente el hábitat de las aves y preservar el ecosistema?',
+                'tipo_pregunta' => 'cerrada'
+            ],
+
+            //Item 56
+            [
+                'id_pregunta' => 104,
+                'id_prueba' => 1,
+                'id_contexto' => 28,
+                'id_subhabilidad' => 12,
+                'id_categoria' => 2,
+                'texto' => 'En no más de 100 palabra explica por qué elegiste esa opción como la mejor manera de abordar la situación para proteger adecuadamente el hábitat de las aves y preservar el ecosistema. ',
+                'tipo_pregunta' => 'abierta'
+            ],
+
+            //Item 57
+            [
+                'id_pregunta' => 105,
+                'id_prueba' => 1,
+                'id_contexto' => 29,
+                'id_subhabilidad' => 13,
+                'id_categoria' => 2,
+                'texto' => 'A partir de las siguientes alternativas de solución de la columna de la derecha y la columna de la izquierda, escoge la alternativa de solución de la columna de la izquierda que mejor se complementa con otra alternativa de la columna de la derecha. Luego de haber identificado la mejor combinación de alternativas dirigite a las opciones de combinación y selecciona la que identificaste como la más acertada. 1) Decorar la habitación con mensajes alusivos al triunfo 2) Investigar los casos de éxito de algunas agrupaciones que atravesaron por situaciones similares y lograron triunfar. 3) Descartar la participación en el certamen de cualquiera que se queje de la situación. 4) Dialogar con el grupo, encontrar los motivos por los cuales pueden ganar, y las formas de contrarrestar el virus y el agotamiento. 5) Limitar las salidas en la noche y poner música relajante. 6) Solicitar todo tipo de medicamentos, inyecciones, remedios caseros y vitaminas que fortalezcan el sistema inmune.  g) Trabajar la mente de los compañeros con discursos fuertes que los haga reaccionar.  h) Pedir al Maestro que reemplace a los miembros de la banda que están enfermos.  i) Solicitar el doble de ensayos musicales y pedir bebidas energizantes.  j) Identificar las cualidades de la banda sinfónica y reflexionarlas con tus compañeros, motivándolos al triunfo. k) Decir a los compañeros que están más desanimados que no contagien de ese ánimo a los demás.  l) Resaltar la identidad de la banda y solicitar que se toquen las piezas musicales que caracterizan a la banda para convencer al jurado. ',
+                'tipo_pregunta' => 'cerrada'
+            ],
+
+            //Item 58
+            [
+                'id_pregunta' => 106,
+                'id_prueba' => 1,
+                'id_contexto' => 29,
+                'id_subhabilidad' => 13,
+                'id_categoria' => 2,
+                'texto' => 'En no más de 100 palabras crea una alternativa de solución al problema al que se enfrenta el líder de compañeros de la banda sinfónica, distinta a las alternativas de solución que se presentaron en las anteriores dos columnas.  ',
+                'tipo_pregunta' => 'abierta'
+            ],
+
+            //Item 59
+            [
+                'id_pregunta' => 107,
+                'id_prueba' => 1,
+                'id_contexto' => 30,
+                'id_subhabilidad' => 13,
+                'id_categoria' => 2,
+                'texto' => 'De acuerdo con los problemas de acceso al servicio de salud y la mala calidad del aire, escoge una de las alternativas de solución de la columna de la izquierda que mejor se complemente con otra alternativa de la columna de la derecha. Luego de haber identificado la mejor combinación de alternativas dirigite a las opciones de combinación y selecciona la que identificaste como la más acertada. 1.	Implementar clínicas móviles en comunidades rurales para ofrecer atención médica básica y emergencias. 2.	Lanzar una campaña en redes sociales sobre la importancia de una vida saludable. 3.	Proveer capacitación básica en primeros auxilios a voluntarios comunitarios. 4.	Repartir folletos sobre higiene personal en mercados locales. 5.	Proponer una reducción en el horario laboral de los trabajadores de la salud para evitar el agotamiento. 6.	Construir un nuevo hospital en la periferia de la ciudad con una planificación deficiente de transporte. a) Implementar un sistema de transporte público eléctrico y bicicletas compartidas para reducir las emisiones de vehículos. b) Organizar un concurso de dibujos para estudiantes sobre la contaminación del aire. c) Establecer un programa de monitoreo del aire y reforestación en áreas urbanas para identificar focos de contaminación y mejorar la calidad del aire. d) Distribuir mascarillas en zonas de alta contaminación. e) Fomentar el uso de energías renovables mediante subsidios para paneles solares en hogares. f) Colocar carteles informativos sobre los peligros de la contaminación del aire en lugares públicos.',
+                'tipo_pregunta' => 'cerrada'
+            ],
+
+            //Item 60
+            [
+                'id_pregunta' => 108,
+                'id_prueba' => 1,
+                'id_contexto' => 30,
+                'id_subhabilidad' => 13,
+                'id_categoria' => 2,
+                'texto' => 'En no más de 100 palabras crea una alternativa de solución al problema del acceso al servicio de salud y la mala calidad del aire, distinta a las alternativas de solución que se presentaron en las anteriores dos columnas.',
+                'tipo_pregunta' => 'abierta'
+            ],
+
         ]);
     }
 }

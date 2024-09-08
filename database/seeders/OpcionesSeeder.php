@@ -1762,6 +1762,666 @@ class OpcionesSeeder extends Seeder
                 'valor_opcion' => 0
             ],
 
+            //Item 39
+            [
+                'id_opcion' => 261,
+                'id_pregunta' => 87,
+                'texto' => 'Se ha mencionado en la charla que ingerir este plato ayuda a las personas a tener una piel más sana y a detener el envejecimiento, pero, no sé si sea más importante la apariencia física o los aportes de estos animales al ecosistema.',
+                'valor_opcion' => 0
+            ],
+            [
+                'id_opcion' => 262,
+                'id_pregunta' => 87,
+                'texto' => 'Definitivamente las culturas son muy diversas y, desafortunadamente, algunas de ellas desestiman el daño ocasionado al ecosistema, para estas culturas prima el hecho de satisfacer sus placeres o garantizar ganancias económicas.',
+                'valor_opcion' => 0
+            ],
+            [
+                'id_opcion' => 263,
+                'id_pregunta' => 87,
+                'texto' => 'Si este plato representa grandes aportes a ese sector de la economía hace parte de la cultura ancestral y puede generar empleos directos e indirectos, pero sería mejor hacer algo para que los tiburones se reproduzcan masivamente.',
+                'valor_opcion' => 0
+            ],
+            [
+                'id_opcion' => 264,
+                'id_pregunta' => 87,
+                'texto' => 'Es preocupante el asunto de la extinción de estos animales, pero indudablemente Rafa es un chico listo, tiene razón y más si se piensa en que este plato es muy consumido en China.',
+                'valor_opcion' => 0
+            ],
+            [
+                'id_opcion' => 265,
+                'id_pregunta' => 87,
+                'texto' => 'Indistintamente de las preocupaciones medioambientales, Rafa está suponiendo que las aletas de tiburón en realidad aportan al rejuvenecimiento, pero no estamos seguros de que así sea, se necesita evidencia científica.',
+                'valor_opcion' => 1
+            ],
+
+            //Item 41
+            [
+                'id_opcion' => 266,
+                'id_pregunta' => 89,
+                'texto' => 'Respetamos tu forma de ver las cosas, las amigas están para apoyarse entre sí bien sea en lo emociona o sentimental. ',
+                'valor_opcion' => 0
+            ],
+            [
+                'id_opcion' => 267,
+                'id_pregunta' => 89,
+                'texto' => 'El hecho de aceptar salir con uno de ellos no implica que deba aceptar salir con los demás, analiza mejor las cosas. ',
+                'valor_opcion' => 1
+            ],
+            [
+                'id_opcion' => 268,
+                'id_pregunta' => 89,
+                'texto' => 'Algunas personas quieren salir con alguien y no encuentran la oportunidad, otras encuentran la oportunidad y no lo hacen.',
+                'valor_opcion' => 0
+            ],
+            [
+                'id_opcion' => 269,
+                'id_pregunta' => 89,
+                'texto' => 'El hecho se salir con todos no implica compromiso alguno con uno de ellos o con todos, se trata de elecciones. ',
+                'valor_opcion' => 0
+            ],
+            [
+                'id_opcion' => 270,
+                'id_pregunta' => 89,
+                'texto' => 'La vida pasa y las cosas cambian, las oportunidades no deben desaprovecharse, la juventud debe vivirse con toda la responsabilidad que amerita.  ',
+                'valor_opcion' => 0
+            ],
+
+            //Item 43
+            [
+                'id_opcion' => 271,
+                'id_pregunta' => 91,
+                'texto' => 'Respetamos tu preocupación, pero es importante considerar los beneficios que el parque podría traer.',
+                'valor_opcion' => 0
+            ],
+            [
+                'id_opcion' => 272,
+                'id_pregunta' => 91,
+                'texto' => 'La construcción de un solo parque no implica que la comunidad se transforme en una zona urbana congestionada. Podemos analizar mejor las cosas.',
+                'valor_opcion' => 0
+            ],
+            [
+                'id_opcion' => 273,
+                'id_pregunta' => 91,
+                'texto' => 'Algunas personas quieren más espacios verdes y otras prefieren mantener las cosas como están.',
+                'valor_opcion' => 0
+            ],
+            [
+                'id_opcion' => 274,
+                'id_pregunta' => 91,
+                'texto' => 'El hecho de construir un parque no significa que nos comprometamos a construir más. Se trata de decisiones independientes.',
+                'valor_opcion' => 1
+            ],
+            [
+                'id_opcion' => 275,
+                'id_pregunta' => 91,
+                'texto' => 'La vida sigue y las comunidades cambian, no debemos desaprovechar las oportunidades de mejora, siempre que lo hagamos con responsabilidad.',
+                'valor_opcion' => 0
+            ],
+
+            //Item 47
+            [
+                'id_opcion' => 276,
+                'id_pregunta' => 95,
+                'texto' => 'Voy a apoyar el proyecto porque todos mis amigos y compañeros de clase lo apoyan.',
+                'valor_opcion' => 0
+            ],
+            [
+                'id_opcion' => 277,
+                'id_pregunta' => 95,
+                'texto' => 'Voy a esperar más cobertura mediática para decidir si apoyar el proyecto.',
+                'valor_opcion' => 0
+            ],
+            [
+                'id_opcion' => 278,
+                'id_pregunta' => 95,
+                'texto' => 'Apoyaré el proyecto si los políticos que lo impulsan tienen una buena reputación.',
+                'valor_opcion' => 0
+            ],
+            [
+                'id_opcion' => 279,
+                'id_pregunta' => 95,
+                'texto' => 'No apoyaré el proyecto hasta que esté segura de que no tendrá consecuencias económicas negativas.',
+                'valor_opcion' => 0
+            ],
+            [
+                'id_opcion' => 280,
+                'id_pregunta' => 95,
+                'texto' => 'Apoyaré el proyecto porque las organizaciones de Derechos Humanos lo respaldan después de una evaluación detallada.',
+                'valor_opcion' => 1
+            ],
+
+            //Item 49
+            [
+                'id_opcion' => 281,
+                'id_pregunta' => 97,
+                'texto' => 'Ambos estamos en riesgo de sanciones si se descubre el consumo de sustancias. Lo mejor es hablar directamente con nuestro entrenador sobre lo que está sucediendo para que él pueda intervenir y ayudar a mi amigo.',
+                'valor_opcion' => 1
+            ],
+            [
+                'id_opcion' => 282,
+                'id_pregunta' => 97,
+                'texto' => 'La situación es que se trata de lealtad y compañerismo. De ninguna manera hablaría con su familia, lo mejor es convencerlo de que deje de consumir sustancias por su cuenta antes de que comiencen las competencias.',
+                'valor_opcion' => 0
+            ],
+            [
+                'id_opcion' => 283,
+                'id_pregunta' => 97,
+                'texto' => 'La situación es un problema personal de mi amigo que no me afecta directamente. Lo mejor es concentrarme en mi propio entrenamiento y dejar que mi amigo maneje sus propios asuntos.',
+                'valor_opcion' => 0
+            ],
+            [
+                'id_opcion' => 284,
+                'id_pregunta' => 97,
+                'texto' => 'La situación es que mi amigo podría afectar negativamente al equipo durante las justas nacionales. Lo mejor es hablar con otros compañeros para ver si podemos convencerlo juntos de dejar las sustancias.',
+                'valor_opcion' => 0
+            ],
+            [
+                'id_opcion' => 285,
+                'id_pregunta' => 97,
+                'texto' => 'La situación es que no se sabe qué tipo de sustancias consume y si podrían mejorar su rendimiento en las competencias. Lo mejor es no involucrarme y esperar a ver si se detecta algo en las pruebas antidopaje.',
+                'valor_opcion' => 0
+            ],
+
+            //Item 51
+            [
+                'id_opcion' => 286,
+                'id_pregunta' => 99,
+                'texto' => 'La situación no es un problema técnico menor, es necesario atender a ciertas consideraciones, pero lo mejor es esperar a ver si se resuelve solo. Mientras tanto, aconsejaría a mi amigo que ignore los mensajes.',
+                'valor_opcion' => 0
+            ],
+            [
+                'id_opcion' => 287,
+                'id_pregunta' => 99,
+                'texto' => 'La situación es un problema personal de mi amigo pues se trata de su dispositivo portátil. Debido a los problemas en los que podría estar mi madre, lo mejor es aconsejarle que no use el dispositivo hasta que se sienta seguro.',
+                'valor_opcion' => 0
+            ],
+            [
+                'id_opcion' => 288,
+                'id_pregunta' => 99,
+                'texto' => 'La situación es preocupante, pero es responsabilidad de mi amigo asumir las consecuencias de haber comprado el dispositivo, aunque como la empresa de mi madre está involucrada lo mejor es que la empresa se responsabilice. ',
+                'valor_opcion' => 0
+            ],
+            [
+                'id_opcion' => 289,
+                'id_pregunta' => 99,
+                'texto' => 'La situación es que hay un riesgo potencial para la seguridad personal de los usuarios. Lo mejor es informar tanto a mi madre como a las autoridades locales para que tomen medidas urgentes.',
+                'valor_opcion' => 1
+            ],
+            [
+                'id_opcion' => 290,
+                'id_pregunta' => 99,
+                'texto' => 'La situación es algo de lo que debo ocuparme más no preocuparme. Seguiré usando el dispositivo y sugeriré a mi amigo que lo haga también, seguramente se solucionará gracias a la eficiencia de sus creadores.',
+                'valor_opcion' => 0
+            ],
+
+            //Item 55
+            [
+                'id_opcion' => 291,
+                'id_pregunta' => 103,
+                'texto' => 'Aceptar el plan actual de la empresa constructora sin cambios, ya que es probable que tenga algún impacto, pero no es posible evitar la construcción pues es bien sabido que estas empresas invierten grandes cantidades de dinero en este tipo de proyectos. ',
+                'valor_opcion' => 0
+            ],
+            [
+                'id_opcion' => 292,
+                'id_pregunta' => 103,
+                'texto' => 'La mejor manera es reunir a la comunidad y solicitar formalmente a la empresa que reduzca el tamaño del proyecto para minimizar el impacto ambiental que pueda llegarse a generar, eso evita exigir una evaluación más detallada del impacto ambiental.',
+                'valor_opcion' => 0
+            ],
+            [
+                'id_opcion' => 293,
+                'id_pregunta' => 103,
+                'texto' => 'Informar a la comunidad sobre los riesgos del proyecto de construcción sin proporcionar soluciones alternativas o propuestas específicas para mitigar el impacto ambiental, pues es la empresa la que debe ofrecer opciones a la comunidad que se verá afectada.',
+                'valor_opcion' => 0
+            ],
+            [
+                'id_opcion' => 294,
+                'id_pregunta' => 103,
+                'texto' => 'Informarle a la comunidad para que no se involucre en la evaluación del plan, ya que puede ser un esfuerzo que no tiene un impacto significativo en el resultado final. Eso es lo que generalmente se observa cuando una constructora persigue sus fines. ',
+                'valor_opcion' => 0
+            ],
+            [
+                'id_opcion' => 295,
+                'id_pregunta' => 103,
+                'texto' => 'Proponer a la empresa constructora que realice una evaluación más detallada del impacto ambiental del plan y que incluya medidas específicas para mitigar el daño a los hábitats de las aves. Además, sugerir la reubicación de la construcción a una zona menos sensible ecológicamente.',
+                'valor_opcion' => 1
+            ],
+
+            //Item 57
+            [
+                'id_opcion' => 296,
+                'id_pregunta' => 105,
+                'texto' => '1 - g',
+                'valor_opcion' => 3
+            ],
+            [
+                'id_opcion' => 297,
+                'id_pregunta' => 105,
+                'texto' => '1 - h',
+                'valor_opcion' => 3
+            ],
+            [
+                'id_opcion' => 298,
+                'id_pregunta' => 105,
+                'texto' => '1 - i',
+                'valor_opcion' => 3
+            ],
+            [
+                'id_opcion' => 299,
+                'id_pregunta' => 105,
+                'texto' => '1 - j',
+                'valor_opcion' => 4
+            ],
+            [
+                'id_opcion' => 300,
+                'id_pregunta' => 105,
+                'texto' => '1 - k',
+                'valor_opcion' => 3
+            ],
+            [
+                'id_opcion' => 301,
+                'id_pregunta' => 105,
+                'texto' => '1 - l',
+                'valor_opcion' => 4
+            ],
+            [
+                'id_opcion' => 302,
+                'id_pregunta' => 105,
+                'texto' => '2 - g',
+                'valor_opcion' => 3
+            ],
+            [
+                'id_opcion' => 303,
+                'id_pregunta' => 105,
+                'texto' => '2 - h',
+                'valor_opcion' => 3
+            ],
+            [
+                'id_opcion' => 304,
+                'id_pregunta' => 105,
+                'texto' => '2 - i',
+                'valor_opcion' => 3
+            ],
+            [
+                'id_opcion' => 305,
+                'id_pregunta' => 105,
+                'texto' => '2 - j',
+                'valor_opcion' => 5
+            ],
+            [
+                'id_opcion' => 306,
+                'id_pregunta' => 105,
+                'texto' => '2 - k',
+                'valor_opcion' => 3
+            ],
+            [
+                'id_opcion' => 307,
+                'id_pregunta' => 105,
+                'texto' => '2 - l',
+                'valor_opcion' => 4
+            ],
+            [
+                'id_opcion' => 308,
+                'id_pregunta' => 105,
+                'texto' => '3 - g',
+                'valor_opcion' => 2
+            ],
+            [
+                'id_opcion' => 309,
+                'id_pregunta' => 105,
+                'texto' => '3 - h',
+                'valor_opcion' => 2
+            ],
+            [
+                'id_opcion' => 310,
+                'id_pregunta' => 105,
+                'texto' => '3 - i',
+                'valor_opcion' => 2
+            ],
+            [
+                'id_opcion' => 311,
+                'id_pregunta' => 105,
+                'texto' => '3 - j',
+                'valor_opcion' => 2
+            ],
+            [
+                'id_opcion' => 312,
+                'id_pregunta' => 105,
+                'texto' => '3 - k',
+                'valor_opcion' => 2
+            ],
+            [
+                'id_opcion' => 313,
+                'id_pregunta' => 105,
+                'texto' => '3 - l',
+                'valor_opcion' => 3
+            ],
+            [
+                'id_opcion' => 314,
+                'id_pregunta' => 105,
+                'texto' => '4 - g',
+                'valor_opcion' => 5
+            ],
+            [
+                'id_opcion' => 315,
+                'id_pregunta' => 105,
+                'texto' => '4 - h',
+                'valor_opcion' => 5
+            ],
+            [
+                'id_opcion' => 316,
+                'id_pregunta' => 105,
+                'texto' => '4 - i',
+                'valor_opcion' => 5
+            ],
+            [
+                'id_opcion' => 317,
+                'id_pregunta' => 105,
+                'texto' => '4 - j',
+                'valor_opcion' => 7
+            ],
+            [
+                'id_opcion' => 318,
+                'id_pregunta' => 105,
+                'texto' => '4 - k',
+                'valor_opcion' => 5
+            ],
+            [
+                'id_opcion' => 319,
+                'id_pregunta' => 105,
+                'texto' => '4 - l',
+                'valor_opcion' => 6
+            ],
+            [
+                'id_opcion' => 320,
+                'id_pregunta' => 105,
+                'texto' => '5 - g',
+                'valor_opcion' => 2
+            ],
+            [
+                'id_opcion' => 321,
+                'id_pregunta' => 105,
+                'texto' => '5 - h',
+                'valor_opcion' => 3
+            ],
+            [
+                'id_opcion' => 322,
+                'id_pregunta' => 105,
+                'texto' => '5 - i',
+                'valor_opcion' => 2
+            ],
+            [
+                'id_opcion' => 323,
+                'id_pregunta' => 105,
+                'texto' => '5 - j',
+                'valor_opcion' => 5
+            ],
+            [
+                'id_opcion' => 324,
+                'id_pregunta' => 105,
+                'texto' => '5 - k',
+                'valor_opcion' => 3
+            ],
+            [
+                'id_opcion' => 325,
+                'id_pregunta' => 105,
+                'texto' => '5 - l',
+                'valor_opcion' => 4
+            ],
+            [
+                'id_opcion' => 326,
+                'id_pregunta' => 105,
+                'texto' => '6 - g',
+                'valor_opcion' => 3
+            ],
+            [
+                'id_opcion' => 327,
+                'id_pregunta' => 105,
+                'texto' => '6  - h',
+                'valor_opcion' => 3
+            ],
+            [
+                'id_opcion' => 328,
+                'id_pregunta' => 105,
+                'texto' => '6 - i',
+                'valor_opcion' => 3
+            ],
+            [
+                'id_opcion' => 329,
+                'id_pregunta' => 105,
+                'texto' => '6 - j',
+                'valor_opcion' => 12
+            ],
+            [
+                'id_opcion' => 330,
+                'id_pregunta' => 105,
+                'texto' => '6 - k',
+                'valor_opcion' => 4
+            ],
+            [
+                'id_opcion' => 331,
+                'id_pregunta' => 105,
+                'texto' => '6 - l',
+                'valor_opcion' => 10
+            ],
+
+            //Item 59
+            [
+                'id_opcion' => 332,
+                'id_pregunta' => 107,
+                'texto' => '1 - a',
+                'valor_opcion' => 10
+            ],
+            [
+                'id_opcion' => 333,
+                'id_pregunta' => 107,
+                'texto' => '1 - b',
+                'valor_opcion' => 5
+            ],
+            [
+                'id_opcion' => 334,
+                'id_pregunta' => 107,
+                'texto' => '1 - c',
+                'valor_opcion' => 12
+            ],
+            [
+                'id_opcion' => 335,
+                'id_pregunta' => 107,
+                'texto' => '1 - d',
+                'valor_opcion' => 4
+            ],
+            [
+                'id_opcion' => 336,
+                'id_pregunta' => 107,
+                'texto' => '1 - e',
+                'valor_opcion' => 9
+            ],
+            [
+                'id_opcion' => 337,
+                'id_pregunta' => 107,
+                'texto' => '1 - f',
+                'valor_opcion' => 4
+            ],
+            [
+                'id_opcion' => 338,
+                'id_pregunta' => 107,
+                'texto' => '2 - a',
+                'valor_opcion' => 7
+            ],
+            [
+                'id_opcion' => 339,
+                'id_pregunta' => 107,
+                'texto' => '2 - b',
+                'valor_opcion' => 4
+            ],
+            [
+                'id_opcion' => 340,
+                'id_pregunta' => 107,
+                'texto' => '2 - c',
+                'valor_opcion' => 6
+            ],
+            [
+                'id_opcion' => 341,
+                'id_pregunta' => 107,
+                'texto' => '2 - d',
+                'valor_opcion' => 3
+            ],
+            [
+                'id_opcion' => 342,
+                'id_pregunta' => 107,
+                'texto' => '2 - e',
+                'valor_opcion' => 6
+            ],
+            [
+                'id_opcion' => 343,
+                'id_pregunta' => 107,
+                'texto' => '2 - f',
+                'valor_opcion' => 2
+            ],
+            [
+                'id_opcion' => 344,
+                'id_pregunta' => 107,
+                'texto' => '3 - a',
+                'valor_opcion' => 6
+            ],
+            [
+                'id_opcion' => 345,
+                'id_pregunta' => 107,
+                'texto' => '3 - b',
+                'valor_opcion' => 3
+            ],
+            [
+                'id_opcion' => 346,
+                'id_pregunta' => 107,
+                'texto' => '3 - c',
+                'valor_opcion' => 7
+            ],
+            [
+                'id_opcion' => 347,
+                'id_pregunta' => 107,
+                'texto' => '3 - d',
+                'valor_opcion' => 3
+            ],
+            [
+                'id_opcion' => 348,
+                'id_pregunta' => 107,
+                'texto' => '3 - e',
+                'valor_opcion' => 5
+            ],
+            [
+                'id_opcion' => 349,
+                'id_pregunta' => 107,
+                'texto' => '3 - f',
+                'valor_opcion' => 2
+            ],
+            [
+                'id_opcion' => 350,
+                'id_pregunta' => 107,
+                'texto' => '4 - a',
+                'valor_opcion' => 5
+            ],
+            [
+                'id_opcion' => 351,
+                'id_pregunta' => 107,
+                'texto' => '4 - b',
+                'valor_opcion' => 2
+            ],
+            [
+                'id_opcion' => 352,
+                'id_pregunta' => 107,
+                'texto' => '4 - c',
+                'valor_opcion' => 5
+            ],
+            [
+                'id_opcion' => 353,
+                'id_pregunta' => 107,
+                'texto' => '4 - d',
+                'valor_opcion' => 2
+            ],
+            [
+                'id_opcion' => 354,
+                'id_pregunta' => 105,
+                'texto' => '4 - e',
+                'valor_opcion' => 4
+            ],
+            [
+                'id_opcion' => 355,
+                'id_pregunta' => 107,
+                'texto' => '4 - f',
+                'valor_opcion' => 1
+            ],
+            [
+                'id_opcion' => 356,
+                'id_pregunta' => 107,
+                'texto' => '5 - a',
+                'valor_opcion' => 6
+            ],
+            [
+                'id_opcion' => 357,
+                'id_pregunta' => 107,
+                'texto' => '5 - b',
+                'valor_opcion' => 3
+            ],
+            [
+                'id_opcion' => 358,
+                'id_pregunta' => 107,
+                'texto' => '5 - c',
+                'valor_opcion' => 7
+            ],
+            [
+                'id_opcion' => 359,
+                'id_pregunta' => 107,
+                'texto' => '5 - d',
+                'valor_opcion' => 3
+            ],
+            [
+                'id_opcion' => 360,
+                'id_pregunta' => 107,
+                'texto' => '5 - e',
+                'valor_opcion' => 8
+            ],
+            [
+                'id_opcion' => 361,
+                'id_pregunta' => 107,
+                'texto' => '5 - f',
+                'valor_opcion' => 2
+            ],
+            [
+                'id_opcion' => 362,
+                'id_pregunta' => 107,
+                'texto' => '6 - a',
+                'valor_opcion' => 7
+            ],
+            [
+                'id_opcion' => 363,
+                'id_pregunta' => 107,
+                'texto' => '6  - b',
+                'valor_opcion' => 4
+            ],
+            [
+                'id_opcion' => 364,
+                'id_pregunta' => 107,
+                'texto' => '6 - c',
+                'valor_opcion' => 8
+            ],
+            [
+                'id_opcion' => 365,
+                'id_pregunta' => 107,
+                'texto' => '6 - d',
+                'valor_opcion' => 3
+            ],
+            [
+                'id_opcion' => 366,
+                'id_pregunta' => 107,
+                'texto' => '6 - e',
+                'valor_opcion' => 9
+            ],
+            [
+                'id_opcion' => 367,
+                'id_pregunta' => 107,
+                'texto' => '6 - f',
+                'valor_opcion' => 3
+            ],
+
         ]);
     }
 }
