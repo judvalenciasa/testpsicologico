@@ -28,4 +28,10 @@ class Subpreguntas extends Model
     {
         return $this->hasMany(OpcionesSubpreguntas::class, 'id_subpregunta');
     }
+
+    // Relación con la tabla Preguntas
+    public function pregunta()
+    {
+        return $this->belongsTo(Pregunta::class, 'id_pregunta', 'id_pregunta');
+    }
 }

@@ -31,6 +31,6 @@ class DatabaseSeeder extends Seeder
 
         $this->call(SubpreguntasSeeder::class);
         $this->call(Opcionessubpreguntas::class);
-
+        $this->call(subcriteriosSeeders::class);
     }
 }

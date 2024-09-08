@@ -54,4 +54,9 @@ class Preguntas extends Model
     {
         return $this->hasMany(Respuestas::class, 'id_pregunta');
     }
+
+    public function criterios()
+    {
+        return $this->hasMany(Criterio::class, 'id_pregunta', 'id_pregunta');
+    }
 }

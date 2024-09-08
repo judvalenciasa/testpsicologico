@@ -60,31 +60,31 @@ class OpcionesSeeder extends Seeder
             [
                 'id_opcion' => 7,
                 'id_pregunta' => 14,
-                'texto' => 'a)	En cartografía siempre se nos ha mostrado a través de los mapamundis que el Planeta Tierra es una esfera, eso indica que la representación gráfica es infalible. Distintos textos sagrados de algunas de las religiones del mundo han determinado históricamente que la Tierra es redonda.',
+                'texto' => 'En cartografía siempre se nos ha mostrado a través de los mapamundis que el Planeta Tierra es una esfera, eso indica que la representación gráfica es infalible. Distintos textos sagrados de algunas de las religiones del mundo han determinado históricamente que la Tierra es redonda.',
                 'valor_opcion' => 0
             ],
             [
                 'id_opcion' => 8,
                 'id_pregunta' => 14,
-                'texto' => 'b)	Si la tierra fuera plana, cómo se explica que el agua de los mares no se derrama en algún punto, bien sea en el Norte, Sur, Oeste o Este. Los miles de satélites que actualmente orbitan alrededor del planeta han tomado imágenes en las que se observa que el planeta Tierra es redondo.',
+                'texto' => 'Si la tierra fuera plana, cómo se explica que el agua de los mares no se derrama en algún punto, bien sea en el Norte, Sur, Oeste o Este. Los miles de satélites que actualmente orbitan alrededor del planeta han tomado imágenes en las que se observa que el planeta Tierra es redondo.',
                 'valor_opcion' => 0
             ],
             [
                 'id_opcion' => 9,
                 'id_pregunta' => 14,
-                'texto' => 'c)	Por más que se quisiera la luz del sol no puede reflejar la misma sombra al mismo tiempo sobre distintos objetos distribuidos a distancias significativas en el espacio terrestre. La rotación es otra evidencia que no deja dudas respecto de la circunferencia del Planeta Tierra.',
+                'texto' => 'Por más que se quisiera la luz del sol no puede reflejar la misma sombra al mismo tiempo sobre distintos objetos distribuidos a distancias significativas en el espacio terrestre. La rotación es otra evidencia que no deja dudas respecto de la circunferencia del Planeta Tierra.',
                 'valor_opcion' => 0
             ],
             [
                 'id_opcion' => 10,
                 'id_pregunta' => 14,
-                'texto' => 'd)	Los pilotos de aerolíneas comerciales afirman que los aviones no viajan en línea recta en aquellos vuelos de largas horas. Además, la Física nos dice que si el Planeta tierra fuera plano la gravedad funcionaría con atracciones desordenadas y no de manera uniforme hacia el centro de la masa. ',
+                'texto' => 'Los pilotos de aerolíneas comerciales afirman que los aviones no viajan en línea recta en aquellos vuelos de largas horas. Además, la Física nos dice que si el Planeta tierra fuera plano la gravedad funcionaría con atracciones desordenadas y no de manera uniforme hacia el centro de la masa. ',
                 'valor_opcion' => 0
             ],
             [
                 'id_opcion' => 11,
                 'id_pregunta' => 14,
-                'texto' => 'e)	Si nos ubicamos en un lugar alto visualizamos nuestro alrededor, pero en cierto punto la vista se pierde en el firmamento y ni con un telescopio potente observaríamos ciudades de otros continentes debido a la curvatura del Plantea. La hora en la que sale y se pone el sol es distinta en cada lugar del mundo. ',
+                'texto' => 'Si nos ubicamos en un lugar alto visualizamos nuestro alrededor, pero en cierto punto la vista se pierde en el firmamento y ni con un telescopio potente observaríamos ciudades de otros continentes debido a la curvatura del Plantea. La hora en la que sale y se pone el sol es distinta en cada lugar del mundo. ',
                 'valor_opcion' => 1
             ],
 
@@ -100,7 +100,7 @@ class OpcionesSeeder extends Seeder
             [
                 'id_opcion' => 13,
                 'id_pregunta' => 16,
-                'texto' => 'a)	Mariana se apresuró en las generalizaciones, de modo que concluye de manera general sin tener en la cuenta que no en todas las culturas y países del continente se aprueba el matrimonio infantil ni se quebrantan las leyes.',
+                'texto' => 'Mariana se apresuró en las generalizaciones, de modo que concluye de manera general sin tener en la cuenta que no en todas las culturas y países del continente se aprueba el matrimonio infantil ni se quebrantan las leyes.',
                 'valor_opcion' => 1
             ],
             [
@@ -189,7 +189,7 @@ class OpcionesSeeder extends Seeder
             [
                 'id_opcion' => 26,
                 'id_pregunta' => 19,
-                'texto' => 'd)	No. Con la situación actual de la economía es difícil ofrecer empaques plásticos a excelentes precios, debido a que los precios del mercado no son estables y posiblemente se llegue a producir pérdidas en insumos demasiado costosos.',
+                'texto' => 'No. Con la situación actual de la economía es difícil ofrecer empaques plásticos a excelentes precios, debido a que los precios del mercado no son estables y posiblemente se llegue a producir pérdidas en insumos demasiado costosos.',
                 'valor_opcion' => 0
             ],
             [
@@ -457,19 +457,19 @@ class OpcionesSeeder extends Seeder
             [
                 'id_opcion' => 68,
                 'id_pregunta' => 29,
-                'texto' => 'a)	Si fuera el papá de la chica también prohibiría el uso en casa de Instagram y Facebook, porque la investigación encontraba que cuando se incrementa el uso de estas redes sociales la depresión aumenta, lo cual resulta preocupante para un padre de familia.',
+                'texto' => 'Si fuera el papá de la chica también prohibiría el uso en casa de Instagram y Facebook, porque la investigación encontraba que cuando se incrementa el uso de estas redes sociales la depresión aumenta, lo cual resulta preocupante para un padre de familia.',
                 'valor_opcion' => 0
             ],
             [
                 'id_opcion' => 69,
                 'id_pregunta' => 29,
-                'texto' => 'b)	Lo más seguro es que la hija se aliviará al evitar que use Instagram y Facebook, y en ese sentido no puede ser que si el papá incrementa los permisos para el uso de esas redes sociales en casa la depresión de su hija disminuya, sino todo lo contrario.',
+                'texto' => 'Lo más seguro es que la hija se aliviará al evitar que use Instagram y Facebook, y en ese sentido no puede ser que si el papá incrementa los permisos para el uso de esas redes sociales en casa la depresión de su hija disminuya, sino todo lo contrario.',
                 'valor_opcion' => 0
             ],
             [
                 'id_opcion' => 70,
                 'id_pregunta' => 29,
-                'texto' => 'c)	Es posible que la depresión de la hija adolescente no disminuya si se prohíbe que use esas redes sociales, porque sólo conocemos que usar frecuentemente Instagram y Facebook y la depresión están relacionados, pero no si usar estas redes sociales es la causa como tal de la depresión.',
+                'texto' => 'Es posible que la depresión de la hija adolescente no disminuya si se prohíbe que use esas redes sociales, porque sólo conocemos que usar frecuentemente Instagram y Facebook y la depresión están relacionados, pero no si usar estas redes sociales es la causa como tal de la depresión.',
                 'valor_opcion' => 1
             ],
             [
@@ -481,7 +481,7 @@ class OpcionesSeeder extends Seeder
             [
                 'id_opcion' => 72,
                 'id_pregunta' => 29,
-                'texto' => 'e)	Un uso prudente de las redes sociales puede ayudar a que la hija se recupere de la depresión, es cuestión de contenido y frecuencia en que se usan. Entonces, el padre puede regular o sugerir los contenidos que su hija puede o debe ver en esas redes sociales.',
+                'texto' => 'Un uso prudente de las redes sociales puede ayudar a que la hija se recupere de la depresión, es cuestión de contenido y frecuencia en que se usan. Entonces, el padre puede regular o sugerir los contenidos que su hija puede o debe ver en esas redes sociales.',
                 'valor_opcion' => 0
             ],
             //Contexto6_Metacognición
