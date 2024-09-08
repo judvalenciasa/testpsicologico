@@ -11,7 +11,6 @@
 .title h2 {
     font-size: 1.5rem;
     color: #000;
-    margin-bottom: 20px;
 }
 
 .pregunta_ctn {
@@ -73,4 +72,15 @@
     color: #000;
     line-height: 1.4;
     text-align: justify;
+}
+
+.subpreguntas {
+    display: flex;
+    flex-direction: column;
+    gap: 2vw;
+}
+
+.subpreguntas .pregunta_texto {
+    font-size: 1.5vw;
+    font-weight: 600;
 }

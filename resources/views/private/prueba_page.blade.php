@@ -40,7 +40,7 @@
                 @foreach($pregunta_actual->opciones as $opcion)
                 <div class="opcion">
                     <label>
-                        <input type="radio" name="respuestas[{{ $pregunta_actual->id_pregunta }}]" value="{{ $opcion->id_opcion }}">
+                        <input type="radio" name="respuestas_cerrada[{{ $pregunta_actual->id_pregunta }}]" value="{{ $opcion->id_opcion }}">
                         <p>{{ $opcion->texto }}</p>
                     </label>
                 </div>
@@ -55,13 +55,13 @@
 
                     @if($subpregunta->tipo_pregunta == 'abierta')
                     <div class="opcion">
-                        <textarea name="respuestas_abiertas[{{ $subpregunta->id_pregunta }}]" id="respuesta_abierta_{{ $subpregunta->id_pregunta }}" rows="4" placeholder="Escribe tu respuesta aquí..."></textarea>
+                        <textarea name="respuestas_abiertas[{{ $subpregunta }}]" id="respuesta_abierta_{{ $subpregunta->id_pregunta }}" rows="4" placeholder="Escribe tu respuesta aquí..."></textarea>
                     </div>
                     @else
                     @foreach($subpregunta->opciones as $opcion)
                     <div class="opcion">
                         <label>
-                            <input type="radio" name="respuestas[{{ $subpregunta->id_pregunta }}]" value="{{ $opcion->id_opcion }}">
+                            <input type="radio" name="respuestas_cerrada[{{ $subpregunta }}]" value="{{ $opcion->id_opcionsubpregunta }}">
                             <p>{{ $opcion->texto }}</p>
                         </label>
                     </div>
@@ -71,6 +71,7 @@
                 </div>
                 @endif
 
+                <input type="hidden" name="tipo_pregunta" value="{{ $pregunta_actual->tipo_pregunta }}">
                 <input type="hidden" name="pregunta_ids[]" value="{{ $pregunta_actual->id_pregunta }}">
                 @endforeach
 

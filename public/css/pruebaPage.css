@@ -1,4 +1,4 @@
-.prueba_section{
+.prueba_section {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -8,14 +8,14 @@
     background-color: #f1f1f1;
 }
 
-.prueba_section .title{
+.prueba_section .title {
     display: flex;
-    flex-direction: column ;
+    flex-direction: column;
     align-items: center;
 }
 
 .form_ctn .prueba_btn {
-    background-color: #4CAF50;
+    background-color: #4caf50;
     color: white;
     font-weight: 600;
     padding: 14px 20px;
@@ -29,11 +29,11 @@
 }
 
 /** button deshabilitado **/
-.form_ctn .prueba_btn:disabled{
+.form_ctn .prueba_btn:disabled {
     background-color: gray;
 }
 
-.form_ctn .prueba_btn:disabled:hover{
+.form_ctn .prueba_btn:disabled:hover {
     background-color: none;
     opacity: none;
 }
@@ -41,3 +41,5 @@
 .form_ctn .prueba_btn:hover {
     opacity: 0.8;
 }
+
+

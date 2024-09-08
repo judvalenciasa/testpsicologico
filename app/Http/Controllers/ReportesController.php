@@ -7,10 +7,26 @@ use App\Models\Respuestas;
 use App\Models\Subhabilidad;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use Carbon\Carbon;
 
 class ReportesController extends Controller
 {
 
+
+    /**
+     * Display a listing of the resource.
+     */
+    public function sumar_puntaje_total()
+    {
+
+        $total_puntaje = $this->buscar_total_subhabilidad("INDUCCIÓN GENERAL") + $this->buscar_total_subhabilidad("INDUCCIÓN ESPECÍFICA") +
+            $this->buscar_total_subhabilidad("COMPROBACIÓN DE HIPÓTESIS") + $this->buscar_total_subhabilidad("USO DE PROBABILIDAD E INCERTIDUMBRE") +
+            $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE FALLO POR ANALOGÍA") + $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE FALLO POR VAGUEDAD") +
+            $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE ESTRUCTURA ARGUMENTATIVA") + $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE SUPOSICIÓN") + $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE FALACIA") +
+            $this->buscar_total_subhabilidad("TOMA DE DECISIONES INFORMADAS") + $this->buscar_total_subhabilidad("CONCIENCIA DE SITUACIÓN Y ACCIONES RAZONABLES") + $this->buscar_total_subhabilidad("PENSAMIENTO ESTRATÉGICO") + $this->buscar_total_subhabilidad("PENSAMIENTO CREATIVO");
+
+        return $total_puntaje;
+    }
     /**
      * Display a listing of the resource.
      */
@@ -36,7 +52,7 @@ class ReportesController extends Controller
     /**
      * Suma las categorías de las respuestas del request
      */
-    private function sumarCategorias(Request $request)
+    private function sumar_por_categorias(Request $request)
     {
         // Inicializar los totales para cada categoría
         $categorias = [
@@ -73,36 +89,95 @@ class ReportesController extends Controller
      */
     public function crear_reporte(Request $request)
     {
-        Log::info('Creando reporte');
-        Log::info($request->all());
 
-        //obtener el user api ejemplo en elcontro
         $user = $request->user();
+        $categorias = $this->sumar_por_categorias($request);
 
-        // Obtener las sumas de las categorías 
-        $categorias = $this->sumarCategorias($request);
+        //parsear categorias a entero
+
+        $calificacion_metacognicion = array_sum(array_map('floatval', $categorias)) ?? 0;
 
 
+        Reportes::create([
+
+            'id_usuario' => $user->id_usuario,
+            'calificacion_total' => $this->sumar_puntaje_total(),
+            'calificacion_metacognicion' => $calificacion_metacognicion,
+            'fecha_calificacion' =>  Carbon::now(),
+
+            'documento_identificacion' => $user->documento_identificacion,
+            'edad' => $user->edad,
+            'estrato' => $user->estrato,
+            'nivel_escolaridad' => $user->nivel_escolaridad,
+
+
+            'nivel_educativo_padre' => $user->nivel_educativo_padre,
+            'nivel_educativo_madre' => $user->nivel_educativo_madre,
+            'horas_lectura' => $user->horas_lectura,
+            'horas_redes_sociales' => $user->horas_redes_sociales,
+            'horas_entretenimiento' => $user->horas_entretenimiento,
+            'hora_sueno' => $user->hora_sueno,
+            'genero' => $user->genero,
+            'promedio_deporte' => $user->promedio_deporte,
+            'promedio_arte' => $user->promedio_arte,
+
+            'grasas' => $user->grasas,
+            'alimentos_saludables' => $user->alimentos_saludables,
+            'litro_agua' => $user->litro_agua,
+
+            'induccion_general' => $this->buscar_total_subhabilidad("INDUCCIÓN GENERAL"),
+            'induccion_especifica' => $this->buscar_total_subhabilidad("INDUCCIÓN ESPECÍFICA"),
+            'total_macrohabilidad_inductiva' => $this->buscar_total_subhabilidad("INDUCCIÓN GENERAL") + $this->buscar_total_subhabilidad("INDUCCIÓN ESPECÍFICA"),
+
+            'comprobacion_hipotesis' => $this->buscar_total_subhabilidad("COMPROBACIÓN DE HIPÓTESIS"),
+            'uso_probabilidad_incertidumbre' => $this->buscar_total_subhabilidad("USO DE PROBABILIDAD E INCERTIDUMBRE"),
+            'total_macrohabilidad_abductiva' => $this->buscar_total_subhabilidad("COMPROBACIÓN DE HIPÓTESIS") + $this->buscar_total_subhabilidad("USO DE PROBABILIDAD E INCERTIDUMBRE"),
+
+            'identificacion_analogia' => $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE FALLO POR ANALOGÍA"),
+            'identificacion_por_fallo_vaguedad' => $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE FALLO POR VAGUEDAD"),
+            'total_macrohabilidad_deductivo_y_verbal' => $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE FALLO POR ANALOGÍA") + $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE FALLO POR VAGUEDAD"),
+
+
+            'identificacion_estructura_argumentativa' => $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE ESTRUCTURA ARGUMENTATIVA"),
+            'identificacion_de_suposicion' => $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE SUPOSICIÓN"),
+            'identificacion_de_falacia' => $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE FALACIA"),
+            'total_macrohabilidad_analisis_de_argumentos' => $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE ESTRUCTURA ARGUMENTATIVA") + $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE SUPOSICIÓN") + $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE FALACIA"),
+
+            'toma_desiciones_informadas' => $this->buscar_total_subhabilidad("TOMA DE DECISIONES INFORMADAS"),
+            'conciencia_situacion_acciones_razonables' => $this->buscar_total_subhabilidad("CONCIENCIA DE SITUACIÓN Y ACCIONES RAZONABLES"),
+            'pensamiento_estrategico' => $this->buscar_total_subhabilidad("PENSAMIENTO ESTRATÉGICO"),
+            'pensamiento_creativo' => $this->buscar_total_subhabilidad("PENSAMIENTO CREATIVO"),
+            'macrohabilidad_toma_desiciones_y_resolucion_problemas' => $this->buscar_total_subhabilidad("TOMA DE DECISIONES INFORMADAS") + $this->buscar_total_subhabilidad("CONCIENCIA DE SITUACIÓN Y ACCIONES RAZONABLES") + $this->buscar_total_subhabilidad("PENSAMIENTO ESTRATÉGICO") + $this->buscar_total_subhabilidad("PENSAMIENTO CREATIVO"),
+
+            'conocimiento_procedimental' => $categorias['conocimiento_procedimental'],
+            'depuracion' => $categorias['depuracion'],
+            'evaluacion' => $categorias['evaluacion'],
+            'monitoreo' => $categorias['monitoreo'],
+            'organizacion' => $categorias['organizacion'],
+            'planificacion' => $categorias['planificacion'],
+
+        ]);
+
+        // Crear el objeto respuesta para pasar a la vista
         $respuesta = [
             "Personales" => [
                 [
                     "documento_identificacion" => $user->documento_identificacion,
                     "edad" => $user->edad,
                     "genero" => $user->genero,
-
                 ]
             ],
             "Sociodemograficos" => [
                 [
-                    "estrato" => $user->estrato, // Supongamos que el usuario tiene una propiedad 'estrato'
-                    "nivel_educativo_padre" => $user->nivel_educativo_padre, // Supongamos que el usuario tiene una propiedad 'escolaridad'
+                    "estrato" => $user->estrato,
+                    "nivel_educativo_padre" => $user->nivel_educativo_padre,
                     "nivel_educativo_madre" => $user->nivel_educativo_madre,
                 ]
             ],
             "estilos_vida" => [
                 [
-                    "horas_lectura" => $user->horas_lectura, // Supongamos que el usuario tiene una propiedad 'estrato'
-                    "horas_redes_sociales" => $user->horas_redes_sociales, // Supongamos que el usuario tiene una propiedad 'escolaridad'
+                    "horas_lectura" => $user->horas_lectura,
+                    "horas_redes_sociales" => $user->horas_redes_sociales,
                     "horas_entretenimiento" => $user->horas_entretenimiento,
                     "hora_sueno" => $user->hora_sueno,
                     "promedio_arte" => $user->promedio_arte,
@@ -115,7 +190,6 @@ class ReportesController extends Controller
                     "alimentos_saludables" => $user->alimentos_saludables,
                 ]
             ],
-
             "macrohabilidad_inductiva" => [
                 [
                     "induccion_general" => $this->buscar_total_subhabilidad("INDUCCIÓN GENERAL"),
@@ -123,7 +197,6 @@ class ReportesController extends Controller
                     "total" => $this->buscar_total_subhabilidad("INDUCCIÓN GENERAL") + $this->buscar_total_subhabilidad("INDUCCIÓN ESPECÍFICA"),
                 ]
             ],
-
             "macrohabilidad_abductiva" => [
                 [
                     "comprobacion_hipotesis" => $this->buscar_total_subhabilidad("COMPROBACIÓN DE HIPÓTESIS"),
@@ -131,7 +204,6 @@ class ReportesController extends Controller
                     "total" => $this->buscar_total_subhabilidad("COMPROBACIÓN DE HIPÓTESIS") + $this->buscar_total_subhabilidad("USO DE PROBABILIDAD E INCERTIDUMBRE"),
                 ]
             ],
-
             "macrohabilidad_deductivo_y_verbal" => [
                 [
                     "identificacion_analogia" => $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE FALLO POR ANALOGÍA"),
@@ -139,7 +211,6 @@ class ReportesController extends Controller
                     "total" => $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE FALLO POR ANALOGÍA") + $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE FALLO POR VAGUEDAD"),
                 ]
             ],
-
             "macrohabilidad_analisis_de_argumentos" => [
                 [
                     "identificacion_estructura_argumentativa" => $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE ESTRUCTURA ARGUMENTATIVA"),
@@ -158,15 +229,15 @@ class ReportesController extends Controller
                 "metacognicion_conocimiento_procedimental" => [
                     [
                         "conocimiento_procedimental" => $categorias['conocimiento_procedimental'],
-                        "planificacion" => $categorias['planificacion'],
-                        "organizacion" => $categorias['organizacion'],
-                        "monitoreo" => $categorias['monitoreo'],
                         "depuracion" => $categorias['depuracion'],
                         "evaluacion" => $categorias['evaluacion'],
-                        "total" => array_sum($categorias) // Total sumando todas las categorías
+                        "monitoreo" => $categorias['monitoreo'],
+                        "organizacion" => $categorias['organizacion'],
+                        "planificacion" => $categorias['planificacion'],
+                        "total" =>  $categorias['conocimiento_procedimental'] + $categorias['depuracion'] + $categorias['evaluacion'] + $categorias['monitoreo'] + $categorias['organizacion'] + $categorias['planificacion']
                     ]
                 ],
-            ]
+            ],
         ];
 
         return view('reporte.index', compact('respuesta'));

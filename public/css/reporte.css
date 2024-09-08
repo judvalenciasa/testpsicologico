@@ -34,9 +34,9 @@
 
 .table th {
     background-color: #f4f4f4;
-    text-align: left;
+    text-align: center;
 }
 
 .table td {
-    text-align: right;
+    text-align: center;
 }

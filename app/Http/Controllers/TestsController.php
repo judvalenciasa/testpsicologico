@@ -41,11 +41,13 @@ class TestsController extends Controller
             return redirect()->back()->with('error', 'No hay pruebas disponibles.');
         }
 
-        return view('private.mostrartest', compact('prueba'));
+        return view('private.mostrarTest', compact('prueba'));
     }
 
     public function cargarPreguntas(Request $request)
     {
+
+        
         if (!Auth::check()) {
             return redirect()->route('login')->with('error', 'Debes iniciar sesión para continuar.');
         }
@@ -97,7 +99,7 @@ class TestsController extends Controller
             }
         }
 
-        if ($request->has('respuestas')) {
+        if ($request->has('respuestas_cerradas')) {
             foreach ($request->input('respuestas') as $pregunta_id => $respuesta) {
 
                 // Obtener el texto de la opción seleccionada
@@ -131,6 +133,12 @@ class TestsController extends Controller
                 }
             }
         }
+
+
+        if ($request->has('respuestas_abiertas_subpregunta')) {
+
+        }
+
 
         $prueba_id = $request->input('prueba_id');
         $pregunta_index = $request->input('pregunta_index', 0);
