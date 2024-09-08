@@ -6,7 +6,7 @@ use App\Models\Reportes;
 use App\Models\Respuestas;
 use App\Models\Subhabilidad;
 use Illuminate\Http\Request;
-use Log;
+use Illuminate\Support\Facades\Log;
 
 class ReportesController extends Controller
 {
@@ -33,6 +33,39 @@ class ReportesController extends Controller
         return $total_Calificacion_induccion_general;
     }
 
+    /**
+     * Suma las categorías de las respuestas del request
+     */
+    private function sumarCategorias(Request $request)
+    {
+        // Inicializar los totales para cada categoría
+        $categorias = [
+            'conocimiento_procedimental' => 0,
+            'planificacion' => 0,
+            'organizacion' => 0,
+            'monitoreo' => 0,
+            'depuracion' => 0,
+            'evaluacion' => 0,
+        ];
+
+        // Iterar sobre las respuestas del request
+        foreach ($request->all() as $key => $value) {
+            // Dividir la clave para obtener la categoría
+            $parts = explode('-', $key);
+
+            if (count($parts) > 1) {
+                $categoria = $parts[0]; // Obtener el prefijo como categoría
+
+                // Sumar el valor en la categoría correspondiente si existe
+                if (array_key_exists($categoria, $categorias)) {
+                    $categorias[$categoria] += (int) $value; // Sumar el valor como entero
+                }
+            }
+        }
+
+        return $categorias; // Devolver el array con las sumas por categoría
+    }
+
 
     /**
      * Crea el reporte, con los siguientes parametros de ingreso
@@ -40,8 +73,15 @@ class ReportesController extends Controller
      */
     public function crear_reporte(Request $request)
     {
+        Log::info('Creando reporte');
+        Log::info($request->all());
+
         //obtener el user api ejemplo en elcontro
         $user = $request->user();
+
+        // Obtener las sumas de las categorías 
+        $categorias = $this->sumarCategorias($request);
+
 
         $respuesta = [
             "Personales" => [
@@ -117,22 +157,19 @@ class ReportesController extends Controller
                 ],
                 "metacognicion_conocimiento_procedimental" => [
                     [
-                        "conocimiento_procedimental" => $request->conocimiento_procedimental,
-                        "depuracion" => $request->depuracion,
-                        "evaluacion" => $request->evaluacion,
-                        "monitoreo" => $request->monitoreo,
-                        "organizacion" => $request->organizacion,
-                        "planificacion" => $request->planificacion,
-                        "total"=>  $request->conocimiento_procedimental + $request->depuracion + $request->evaluacion + $request->monitoreo + $request->organizacion + $request->planificacion
+                        "conocimiento_procedimental" => $categorias['conocimiento_procedimental'],
+                        "planificacion" => $categorias['planificacion'],
+                        "organizacion" => $categorias['organizacion'],
+                        "monitoreo" => $categorias['monitoreo'],
+                        "depuracion" => $categorias['depuracion'],
+                        "evaluacion" => $categorias['evaluacion'],
+                        "total" => array_sum($categorias) // Total sumando todas las categorías
                     ]
                 ],
             ]
-
-
-
         ];
 
-        return view('reporte.index', compact($respuesta));
+        return view('reporte.index', compact('respuesta'));
     }
 
 

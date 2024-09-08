@@ -54,6 +54,7 @@ class UserController extends Controller
 
     public function indexMostrarTest(Request $request)
     {
+        Log::info('Usuario intenta mostrar test: ' . $request->user());
         $user = $request->user();
 
         if ($user) {
@@ -121,6 +122,7 @@ class UserController extends Controller
 
     public function login(Request $request)
     {
+        
         Log::info('Usuario intenta autenticarse: ' . $request->email);
         // Validar los datos del formulario de login
         $request->validate([
@@ -133,16 +135,12 @@ class UserController extends Controller
 
         // Intentar autenticar al usuario usando Auth::attempt
         if (Auth::attempt($credentials)) {
-            // Regenerar la sesión después de autenticación exitosa
-            $request->session()->regenerate();
 
             // Registrar en los logs al usuario autenticado
             Log::info('Usuario autenticado: ' . $request->user());
 
             // Llamar al método authenticated para redirigir dependiendo del usuario
-            //return $this->authenticated($request, Auth::user());
-            $this->authenticated($request, Auth::user());
-            return   $request->session()->token();
+            return $this->authenticated($request, Auth::user());
         }
 
         // Si la autenticación falla, redirigir de vuelta al formulario de login con un mensaje de error
