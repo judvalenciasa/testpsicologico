@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Contexto;
 use App\Models\Criterios;
+use App\Models\opcionessubpreguntas;
 use App\Models\Preguntas;
 use App\Models\Pruebas;
 use App\Models\Respuestas;
+use App\Models\subpreguntas;
 use App\Services\OpenAIService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -96,8 +98,6 @@ class TestsController extends Controller
         }
 
         if ($request->has('respuestas')) {
-
-
             foreach ($request->input('respuestas') as $pregunta_id => $respuesta) {
 
                 // Obtener el texto de la opción seleccionada
@@ -142,6 +142,7 @@ class TestsController extends Controller
             return redirect()->route('metacognicion.encuesta')->with('message', 'Has completado la prueba. Ahora continúa con la encuesta de metacognición.');
         }
 
+
         // Cargar dos preguntas y subpreguntas relacionadas con el mismo contexto
         $preguntas = Preguntas::with('opciones', 'subpreguntas.opciones')
             ->where('id_prueba', $prueba_id)
@@ -149,7 +150,7 @@ class TestsController extends Controller
             ->take(2)
             ->get();
 
-        Log::info('Cargando preguntas', ['preguntas' => $preguntas]);
+        Log::info($preguntas);
 
         $total_preguntas = Preguntas::where('id_prueba', $prueba_id)->count();
 

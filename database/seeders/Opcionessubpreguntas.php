@@ -25,7 +25,7 @@ class Opcionessubpreguntas extends Seeder
             [
                 'id_opcionessubpregunta' => 2,
                 'id_subpregunta' => 1,
-                'texto' => 'Conclusión ',
+                'texto' => 'Conclusión',
                 'valor_opcion'=> 0
             ],
             [

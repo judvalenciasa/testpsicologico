@@ -5,12 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class subpreguntas extends Model
+class Subpreguntas extends Model
 {
     use HasFactory;
 
     // Definir la tabla relacionada
     protected $table = 'subpreguntas';
+
+    protected $primaryKey = 'id_subpregunta';
 
     // Definir los campos que pueden ser asignados masivamente
     protected $fillable = ['id_pregunta', 'texto', 'valor_opcion','tipo_pregunta'];
