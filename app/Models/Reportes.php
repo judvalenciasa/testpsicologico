@@ -17,6 +17,7 @@ class Reportes extends Model
         'id_usuario',
         'calificacion_total',
         'fecha_calificacion',
+        'calificacion_metacognicion',
         'documento_identificacion',
         'edad',
         'estrato',

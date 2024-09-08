@@ -41,7 +41,7 @@ class TestsController extends Controller
             return redirect()->back()->with('error', 'No hay pruebas disponibles.');
         }
 
-        return view('private.mostrartest', compact('prueba'));
+        return view('private.mostrarTest', compact('prueba'));
     }
 
     public function cargarPreguntas(Request $request)

@@ -22,7 +22,7 @@ class Preguntas extends Model
 
     public function subpreguntas()
     {
-        return $this->hasMany(Subpreguntas::class, 'id_pregunta');
+        return $this->hasMany(subpreguntas::class, 'id_pregunta');
     }
 
     public function prueba()
