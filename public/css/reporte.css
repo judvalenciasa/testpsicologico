@@ -1,5 +1,23 @@
+.reporte_section {
+    background-color: #f4f4f4;
+    display: flex;
+    flex-direction: column;
+    gap: 3vw;
+}
+
+.reporte_section .title{
+    font-size: 2vw;
+    text-align: center;
+}
+
 .section {
-    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 1vw;
+}
+
+.tablas_ctn:nth-child(odd) {
+    background-color: #f90000;
 }
 
 .table {
@@ -8,8 +26,9 @@
     margin-bottom: 20px;
 }
 
-.table th, .table td {
-    border: 1px solid #ddd;
+.table th,
+.table td {
+    border: 1px solid black;
     padding: 8px;
 }
 

@@ -29,17 +29,14 @@
             <form class="form_ctn" action="{{ route('cargar.preguntas') }}" method="POST">
                 @csrf
                 @foreach($preguntas as $index => $pregunta_actual)
-                <!-- Mostrar el texto de la pregunta -->
+
                 <p class="pregunta_texto">{{ $pregunta_actual->texto }}</p>
 
-                <!-- Verificar si la pregunta es abierta -->
                 @if($pregunta_actual->tipo_pregunta == 'abierta')
-                <!-- Campo para la respuesta abierta -->
                 <div class="opcion">
                     <textarea name="respuestas_abiertas[{{ $pregunta_actual->id_pregunta }}]" id="respuesta_abierta_{{ $pregunta_actual->id_pregunta }}" rows="4" placeholder="Escribe tu respuesta aquí..."></textarea>
                 </div>
                 @else
-                <!-- Si no es abierta, mostrar las opciones de selección -->
                 @foreach($pregunta_actual->opciones as $opcion)
                 <div class="opcion">
                     <label>

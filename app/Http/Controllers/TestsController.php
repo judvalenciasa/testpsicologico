@@ -149,6 +149,7 @@ class TestsController extends Controller
             ->take(2)
             ->get();
 
+        Log::info('Cargando preguntas', ['preguntas' => $preguntas]);
 
         $total_preguntas = Preguntas::where('id_prueba', $prueba_id)->count();
 
