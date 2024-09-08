@@ -48,6 +48,7 @@ class User extends Authenticatable
     }
 
     public function reportes()
+    
     {
         return $this->hasMany(Reportes::class, 'id_usuario');
     }
