@@ -153,10 +153,6 @@ class ReportesController extends Controller
 
         ]);
 
-
-
-    
-
         return view('reporte.index', compact('respuesta'));
     }
 
