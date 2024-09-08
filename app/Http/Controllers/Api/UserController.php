@@ -23,6 +23,12 @@ class UserController extends Controller
         $this->testsController = $testsController;
     }
 
+    //Carga todos los usuarios que no son administradores
+    public function index()
+    {
+        $users = User::where('es_administrador', 0)->get();
+    }
+
     public function indexAdministrador(Request $request)
     {
         $user = $request->user();
@@ -122,7 +128,7 @@ class UserController extends Controller
 
     public function login(Request $request)
     {
-        
+
         Log::info('Usuario intenta autenticarse: ' . $request->email);
         // Validar los datos del formulario de login
         $request->validate([
