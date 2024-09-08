@@ -234,6 +234,80 @@ class SubpreguntasSeeder extends Seeder
                 'tipo_pregunta' => 'abierta'
             ],
 
+            //Item 45
+            [
+                'id_subpregunta' => 31,
+                'id_pregunta' => 93,
+                'texto' => 'La experiencia de un familiar o amigo que ha estudiado en el extranjero.',
+                'valor_opcion'=> null,
+                'tipo_pregunta' => 'cerrada'
+            ],
+            [
+                'id_subpregunta' => 32,
+                'id_pregunta' => 93,
+                'texto' => 'La confiabilidad de la comunicación que ha recibido por parte de la universidad.',
+                'valor_opcion'=> null,
+                'tipo_pregunta' => 'cerrada'
+            ],
+            [
+                'id_subpregunta' => 33,
+                'id_pregunta' => 93,
+                'texto' => 'La cultura y gastronomía del país al que llegará a estudiar. ',
+                'valor_opcion'=> null,
+                'tipo_pregunta' => 'cerrada'
+            ],
+            [
+                'id_subpregunta' => 34,
+                'id_pregunta' => 93,
+                'texto' => 'El plan de estudios, la ubicación de la Universidad y de lugar en el que residirá.',
+                'valor_opcion'=> null,
+                'tipo_pregunta' => 'cerrada'
+            ],
+            [
+                'id_subpregunta' => 35,
+                'id_pregunta' => 93,
+                'texto' => 'La zona horaria del país y los climas o las estaciones del año.',
+                'valor_opcion'=> null,
+                'tipo_pregunta' => 'cerrada'
+            ],
+
+            //Item 53
+            [
+                'id_subpregunta' => 36,
+                'id_pregunta' => 101,
+                'texto' => 'Sustento el proyecto mostrando el prototipo al público sin compartir información detallada.',
+                'valor_opcion'=> null,
+                'tipo_pregunta' => 'cerrada'
+            ],
+            [
+                'id_subpregunta' => 37,
+                'id_pregunta' => 101,
+                'texto' => 'Explico cualquier cosa relacionada con el proceso de elaboración del prototipo con la esperanza de que salga bien.',
+                'valor_opcion'=> null,
+                'tipo_pregunta' => 'cerrada'
+            ],
+            [
+                'id_subpregunta' => 38,
+                'id_pregunta' => 101,
+                'texto' => 'Intento escribir un nuevo manual con los puntos principales del proceso del prototipo y recuerdo detalles que pueden ser de utilidad.',
+                'valor_opcion'=> null,
+                'tipo_pregunta' => 'cerrada'
+            ],
+            [
+                'id_subpregunta' => 39,
+                'id_pregunta' => 101,
+                'texto' => 'Comienzo la sustentación indicando que perdí el manual y tal vez no lo presente bien. ',
+                'valor_opcion'=> null,
+                'tipo_pregunta' => 'cerrada'
+            ],
+            [
+                'id_subpregunta' => 40,
+                'id_pregunta' => 101,
+                'texto' => 'Hago una lluvia de ideas que me ayuden a resolver la situación',
+                'valor_opcion'=> null,
+                'tipo_pregunta' => 'cerrada'
+            ],
+
 
         ]);
     }

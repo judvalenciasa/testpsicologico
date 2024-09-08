@@ -90,6 +90,50 @@ class ContextoSeeder extends Seeder
                 'id_contexto' => 19,
                 'texto' => 'En la era digital las formas de interacción social han cambiado de forma sustancial debido a la aparición sistemática de plataformas como las de las redes sociales en las cuales interactúan sus usuarios, de ahí que los entornos virtuales sean motivo de análisis por parte de expertos en la materia. Por lo tanto, un gurú de las tecnologías y plataformas digitales sugiere que «si los influenciadores que utilizan una plataforma de contenido digital en específico están haciendo muy bien su trabajo al innovar, como resultado se tiene que la cantidad de usuarios de esta plataforma reflejará una gran aceptación de la plataforma en un país determinado». Observas que la cantidad de usuarios de una plataforma determinada presenta unos niveles elevados sin precedentes en tu país.'
             ],
+            [
+                'id_contexto' => 20,
+                'texto' => 'Los compañeros de trabajo de una empresa de creación de productos se encontraban conversando acerca de uno de los platos más exquisitos, codiciados y costosos que dinamizan la economía de la industria gastronómica en China, y, de hecho, además de tener matices ancestrales, representa la bonanza económica en ese país asiático; se trata de la sopa de aleta de tiburón, a la cual se atribuyen aportes a la piel sana y al detenimiento del envejecimiento. Algunos de ellos expresaron su preocupación por la extinción de estos animales que son asesinados sólo para obtener esta parte de su cuerpo y preparar dicho plato tan apetecido, otros, como Rafael, uno de ellos, exclamó: “¡Es hora de crear un producto para la industria cosmética a partir de las propiedades que contiene la aleta de tiburón!”.'
+            ],
+            [
+                'id_contexto' => 21,
+                'texto' => 'Una joven reconocida por su belleza tiene varios pretendientes en la universidad, pero ella no se decide a salir con ninguno de ellos. En una conversación con sus amigas ella les dice que, desafortunadamente, si acepta salir con uno de ellos tendrá que aceptar salir con todos los demás, lo cual no está en sus planes.'
+            ],
+            [
+                'id_contexto' => 22,
+                'texto' => 'En una pequeña comunidad, hay un debate sobre la construcción de un nuevo parque ecológico que beneficiaría tanto al medio ambiente como a los habitantes locales. Este parque incluiría áreas verdes, un jardín botánico y espacios recreativos para familias y estudiantes de la escuela local. Durante una reunión comunitaria, algunos vecinos expresaron su preocupación sobre el impacto ambiental positivo y la mejora en la calidad de vida. Sin embargo, una madre preocupada argumentó: «Si permitimos la construcción de este parque, pronto querrán construir más parques y eventualmente toda la zona se convertirá en un área urbana congestionada, destruyendo nuestro vecindario tranquilo y afectando la vida de nuestros hijos».'
+            ],
+            [
+                'id_contexto' => 23,
+                'texto' => 'Gracias a las excelentes puntuaciones que obtuvo Pepito en las pruebas de Estado de su país, una Universidad no muy reconocida de un país de habla inglesa le ha ofrecido una beca del 90% que cubre los costos de matrícula y manutención para estudiar una ingeniería. Es una excelente oportunidad debido a que la familia de Pepito cuenta con muy pocos recursos económicos, y estudiar una ingeniería en un país como estos es uno de sus sueños. En caso de aceptar la beca Pepito debe transferir el 10% del dinero a la Universidad, correspondiente a los costos del primer semestre y a los gastos de manutención. '
+            ],
+            [
+                'id_contexto' => 24,
+                'texto' => 'En un país con una joven democracia, se ha lanzado una iniciativa para promover la participación ciudadana en la toma de decisiones políticas. Se está considerando un nuevo proyecto de ley que busca fortalecer los derechos humanos y mejorar las condiciones de vida de los ciudadanos más vulnerables. Margarita, una estudiante universitaria comprometida con la defensa de los Derechos Humanos y miembro activo de varias organizaciones comunitarias, debe decidir si apoyará públicamente este proyecto de ley. Aunque está entusiasmada por la posibilidad de cambio positivo, ha escuchado rumores sobre posibles intereses ocultos detrás del proyecto. Para tomar una decisión informada, Margarita sabe que debe investigar más a fondo y evaluar las fuentes de información disponibles.'
+            ],
+            [
+                'id_contexto' => 25,
+                'texto' => 'Supongamos que eres un deportista de alto rendimiento, haces parte de la liga de tu ciudad y te enteras de que tu amigo, quien también practica este deporte en la misma liga, está consumiendo sustancias psicoactivas recientemente. Tu amigo no es consciente de lo que esto representa para su rendimiento, y estás preocupado porque ambos comenzarán las justas nacionales dentro de un mes y habrá pruebas antidopaje y de rendimiento físico y mental. El amigo no ha respondido a tus insinuaciones sobre su problema con estas sustancias. Hasta donde sabes, nadie más sabe de esta situación, aunque el entrenador parece sospechar.'
+            ],
+            [
+                'id_contexto' => 26,
+                'texto' => 'Supongamos que eres un estudiante de secundaria y tu madre trabaja en una empresa de tecnología que ha desarrollado un nuevo dispositivo portátil de inteligencia artificial diseñado para la seguridad personal. Este dispositivo se ha implementado recientemente en tu comunidad para ayudar a las personas a moverse con mayor seguridad por la ciudad. Sin embargo, te das cuenta de que el dispositivo tiene un problema técnico que podría permitir a terceros acceder y rastrear la ubicación de los usuarios sin su consentimiento. Te enteras de que un amigo cercano ha comenzado a recibir mensajes amenazantes, y sospechas que estos mensajes podrían estar relacionados con el uso del dispositivo. Tu amigo está preocupado por su seguridad física y no quiere informar a las autoridades porque teme que el problema del dispositivo sea más grave de lo que parece y que esto pueda causar un escándalo público que involucre a tu familia.'
+            ],
+            [
+                'id_contexto' => 27,
+                'texto' => 'Imagina que estás en el último día de clases en el colegio y para aprobar el año escolar debes sustentar un proyecto de robótica en el que has trabajado arduamente desarrollando un prototipo de una tabla de dibujo táctil, al llegar al colegio te enteras de que en el trayecto perdiste el manual con el cual realizarás la sustentación de manera detallada. '
+            ],
+            [
+                'id_contexto' => 28,
+                'texto' => 'Imagina que trabajas como voluntario en un proyecto comunitario en tu ciudad que se dedica a preservar el hábitat natural de una especie de ave en peligro de extinción. Tu comunidad ha estado enfrentando problemas con la destrucción del hábitat debido a la construcción de nuevos edificios cerca de las áreas naturales. La empresa constructora ha propuesto un plan para minimizar el impacto ambiental, pero el plan no ha sido evaluado adecuadamente en cuanto a su efectividad para proteger a las aves. Como parte del equipo de conservación, tu tarea es evaluar el plan propuesto y sugerir alternativas que puedan ser más efectivas en la protección del hábitat de las aves y la preservación del ecosistema.'
+            ],
+            [
+                'id_contexto' => 29,
+                'texto' => 'Imagina que has sido seleccionado por el Maestro de la banda musical de tu colegio como el líder de tus compañeros en un certamen nacional de bandas sinfónicas estudiantiles que tiene lugar en las tarimas de distintas poblaciones; tu misión es apoyar el proceso y alentar a tus compañeros a ganarse el título como la mejor banda musical del país. El ánimo de tus compañeros está por el piso, han obtenido malas puntuaciones en las últimas dos presentaciones, al parecer se está propagando un virus que está afectando sus vías respiratorias y se encuentran agotados luego de viajar cientos de kilómetros por varias semanas. '
+            ],
+            [
+                'id_contexto' => 30,
+                'texto' => 'Un comité de salud pública está trabajando en políticas para mejorar la salud y aumentar la expectativa de vida en varias ciudades. Los principales problemas identificados son el acceso limitado a servicios de salud y la mala calidad del aire. Tu tarea es proponer políticas innovadoras que no solo enfrenten estos problemas, sino que también aseguren que las personas puedan vivir vidas largas y saludables.'
+            ],
 
         ]);
     }

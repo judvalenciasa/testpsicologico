@@ -17,7 +17,7 @@ return new class extends Migration
             $table->unsignedBigInteger('id_contexto')->nullable(true);
             $table->unsignedBigInteger('id_subhabilidad')->nullable(true);
             $table->unsignedBigInteger('id_categoria')->nullable(true);
-            $table->string('texto', 1500);
+            $table->string('texto', 3500);
             $table->string('tipo_pregunta', 50)->nullable();
             $table->timestamps();
             
