@@ -54,8 +54,7 @@ class TestsController extends Controller
 
         $user = Auth::user();
 
-        Log::info('Cargando preguntas', $request->all());
-
+ 
         if ($request->tipo_pregunta != 'subpregunta') {
             // Procesar la respuesta anterior antes de cargar la siguiente pregunta
             if ($request->has('respuestas_abiertas')) {
@@ -139,12 +138,86 @@ class TestsController extends Controller
                 }
             }
         } else {
-
+/*
+            Log::info($request);
             if ($request->has('respuestas_abiertas')) {
+                $respuestas_abiertas = $request->input('respuestas_abiertas');
+                $pregunta_id = key($respuestas_abiertas);  // Obtiene la clave (id de la pregunta)
+                $respuesta_abierta = $respuestas_abiertas[$pregunta_id];  // Obtiene la respuesta correspondiente
+
+                // Verificar que $respuesta_abierta es una cadena válida
+                if (!is_string($respuesta_abierta) || empty(trim($respuesta_abierta))) {
+                    return redirect()->back()->with('error', 'Por favor ingrese una respuesta válida.');
+                }
+
+                $id_contexto = Preguntas::where('id_pregunta', $pregunta_id)->pluck('id_contexto')->first();
+
+                $contexto = Contexto::where('id_contexto', $id_contexto)->pluck('texto')->first();
+                $criterio = Criterios::where('id_pregunta', $pregunta_id)->pluck('texto');
+
+                //concatenar contexto,criterio "con lo anterior devuelveme el numero de la calificación, sin ninguna otra letra", respuesta ($respuesta_abierta)
+                $promt =  "Contexto: " . $contexto . " fin contexto. " . "Estos son los criterios para la calificacion: " . $criterio . " fin criterio. " . "Con lo anterior devuelveme el numero de la calificación, sin ninguna otra letra con la siguiente respuesta: " . $respuesta_abierta;
+
+                // Llamar a la IA para obtener la calificación
+                $respuesta_chatgpt = $this->openAIService->enviarRespuestaAChatGPT($promt);
+
+
+                // Verificar si la respuesta ya existe para este usuario y pregunta
+                $respuestaExistente = Respuestas::where('id_usuario', $user->id_usuario)
+                    ->where('id_pregunta', $pregunta_id)
+                    ->first();
+
+                if ($respuestaExistente) {
+                    // Actualizar la respuesta existente
+                    $respuestaExistente->update([
+                        'respuesta' => $respuesta_abierta,
+                        'calificacion_respuesta' => $respuesta_chatgpt,
+                    ]);
+                } else {
+                    // Crear una nueva respuesta
+                    Respuestas::create([
+                        'id_usuario' => $user->id_usuario,
+                        'id_pregunta' => $pregunta_id,
+                        'respuesta' => $respuesta_abierta,
+                        'calificacion_respuesta' => $respuesta_chatgpt,
+                    ]);
+                }
             }
 
-            if ($request->has('respuestas_cerrada')) {
-            }
+            if ($request->has('respuestas_cerradas')) {
+                foreach ($request->input('respuestas') as $pregunta_id => $respuesta) {
+
+                    // Obtener el texto de la opción seleccionada
+                    $opcionSeleccionada = DB::table('opcionessubpreguntas')
+                        ->where('id_subpregunta', $pregunta_id)
+                        ->where('id_opcionessubpregunta', $respuesta)
+                        ->first();
+
+                    // Verificar si la respuesta ya existe para este usuario y pregunta
+                    $respuestaExistente = Respuestas::where('id_usuario', $user->id_usuario)
+                        ->where('id_subpregunta', $pregunta_id)
+                        ->first();
+
+                    if (!$opcionSeleccionada) {
+                        return redirect()->back()->with('error', 'Opción seleccionada no válida.');
+                    }
+
+                    if ($respuestaExistente) {
+                        $respuestaExistente->update([
+                            'respuesta' => $opcionSeleccionada->texto,
+                            'calificacion_respuesta' => $opcionSeleccionada->valor_opcion,
+                        ]);
+                    } else {
+                        // Crear una nueva respuesta
+                        Respuestas::create([
+                            'id_usuario' => $user->id_usuario,
+                            'id_pregunta' => $pregunta_id,
+                            'respuesta' => $opcionSeleccionada->texto,
+                            'calificacion_respuesta' => $opcionSeleccionada->valor_opcion,
+                        ]);
+                    }
+                }
+            }*/
         }
 
 
