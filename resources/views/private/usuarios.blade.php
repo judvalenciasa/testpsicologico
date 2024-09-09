@@ -9,6 +9,10 @@
 </head>
 
 <body>
+
+    @include('shared.header')
+
+
     <div class="container">
         <h1>Usuarios No Administradores</h1>
         <table class="table">
@@ -38,6 +42,10 @@
             </tbody>
         </table>
     </div>
+
+    @include('shared.footer')
+
+
 </body>
 
 </html>

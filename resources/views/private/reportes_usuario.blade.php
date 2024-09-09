@@ -9,6 +9,10 @@
 </head>
 
 <body>
+
+    @include('shared.header')
+
+
     <div class="container">
         <h1>Reportes de {{ $user->name }}</h1>
         @if($reportes->count() > 0)
@@ -39,6 +43,9 @@
         @endif
         <a href="{{ route('private.usuarios') }}" class="btn">Volver a Usuarios</a>
     </div>
+
+    @include('shared.footer')
+
 </body>
 
 </html>
