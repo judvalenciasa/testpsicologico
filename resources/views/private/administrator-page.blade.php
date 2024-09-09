@@ -48,7 +48,7 @@
                     @endif
 
                      <!-- Botón para ver los informes -->
-                     <form action="{{ route('private.verReportes') }}" method="get">
+                     <form action="{{ route('private.usuarios') }}" method="get">
                         @csrf
                         <div class="section">
                             <button type="submit" class="btn">Ver Informes</button>
