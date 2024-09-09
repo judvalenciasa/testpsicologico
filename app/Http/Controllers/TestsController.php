@@ -54,10 +54,12 @@ class TestsController extends Controller
 
         $user = Auth::user();
 
+        Log::info('Cargando preguntas', $request->all());
 
         if ($request->tipo_pregunta != 'subpregunta') {
             // Procesar la respuesta anterior antes de cargar la siguiente pregunta
             if ($request->has('respuestas_abiertas')) {
+                Log::info('Respuestas abiertas', $request->input('respuestas_abiertas'));
                 $respuestas_abiertas = $request->input('respuestas_abiertas');
                 $pregunta_id = key($respuestas_abiertas);  // Obtiene la clave (id de la pregunta)
                 $respuesta_abierta = $respuestas_abiertas[$pregunta_id];  // Obtiene la respuesta correspondiente
@@ -101,8 +103,9 @@ class TestsController extends Controller
                 }
             }
 
-            if ($request->has('respuestas_cerradas')) {
-                foreach ($request->input('respuestas') as $pregunta_id => $respuesta) {
+            if ($request->has('respuestas_cerrada')) {
+                Log::info('Respuestas cerradas', $request->input('respuestas_cerrada'));
+                foreach ($request->input('respuestas_cerrada') as $pregunta_id => $respuesta) {
 
                     // Obtener el texto de la opción seleccionada
                     $opcionSeleccionada = DB::table('opciones')
@@ -138,12 +141,9 @@ class TestsController extends Controller
         } else {
 
             if ($request->has('respuestas_abiertas')) {
-
-                
             }
 
-            if ($request->has('respuestas_cerradas')) {
-                
+            if ($request->has('respuestas_cerrada')) {
             }
         }
 
