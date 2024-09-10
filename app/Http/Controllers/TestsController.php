@@ -77,7 +77,7 @@ class TestsController extends Controller
 
         $user = Auth::user();
 
-
+        
         if ($request->tipo_pregunta != 'subpregunta') {
             // Procesar la respuesta anterior antes de cargar la siguiente pregunta
             if ($request->has('respuestas_abiertas')) {

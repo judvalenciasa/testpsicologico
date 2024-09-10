@@ -1319,6 +1319,14 @@
 
     @include('shared.footer')
 
+    <script>
+        // Detener el cronómetro cuando se haga clic en "Terminar Prueba"
+        document.getElementById('terminarBtn').addEventListener('click', function() {
+            clearInterval(intervalo); // Detener el cronómetro
+            document.getElementById('tiempoTotalInput').value = tiempoTotal; // Guardar el tiempo total en el input oculto
+        });
+    </script>
+
 </body>
 
 <!-- <script>

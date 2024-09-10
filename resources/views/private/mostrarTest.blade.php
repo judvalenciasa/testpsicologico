@@ -31,6 +31,32 @@
 
     @include('shared.footer')
 
+    <script>
+        let intervalo;
+        let tiempoTotal = 0;
+
+        document.getElementById('iniciarBtn').addEventListener('click', function() {
+            // Iniciar el cronómetro
+            intervalo = setInterval(function() {
+                tiempoTotal++;
+                document.getElementById('tiempo').innerHTML = formatearTiempo(tiempoTotal);
+            }, 1000);
+
+            // Cambiar el botón a deshabilitado
+            this.disabled = true;
+        });
+
+        function formatearTiempo(segundos) {
+            const horas = Math.floor(segundos / 3600);
+            const minutos = Math.floor((segundos % 3600) / 60);
+            const segs = segundos % 60;
+
+            return `${String(horas).padStart(2, '0')}:${String(minutos).padStart(2, '0')}:${String(segs).padStart(2, '0')}`;
+        }
+    </script>
+
+
+
 </body>
 
 </html>

@@ -259,6 +259,9 @@ class ReportesController extends Controller
             ],
         ];
 
+
+        $tiempoTotal = $request->input('tiempo_total');
+
         return view('reporte.index', compact('respuesta'));
     }
 
