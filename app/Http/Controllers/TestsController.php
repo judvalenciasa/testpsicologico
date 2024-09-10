@@ -8,6 +8,7 @@ use App\Models\opcionessubpreguntas;
 use App\Models\Preguntas;
 use App\Models\Pruebas;
 use App\Models\Respuestas;
+use App\Models\Subcriterios;
 use App\Models\subpreguntas;
 use App\Services\OpenAIService;
 use Illuminate\Http\Request;
@@ -78,7 +79,6 @@ class TestsController extends Controller
 
 
         if ($request->tipo_pregunta != 'subpregunta') {
-            Log::info('Respuestas  normales');
             // Procesar la respuesta anterior antes de cargar la siguiente pregunta
             if ($request->has('respuestas_abiertas')) {
                 $respuestas_abiertas = $request->input('respuestas_abiertas');
@@ -101,6 +101,7 @@ class TestsController extends Controller
                 // Llamar a la IA para obtener la calificación
                 $respuesta_chatgpt = $this->openAIService->enviarRespuestaAChatGPT($promt);
 
+                Log::info('Calificación obtenida', ['calificacion' => $respuesta_chatgpt]);
 
                 // Verificar si la respuesta ya existe para este usuario y pregunta
                 $respuestaExistente = Respuestas::where('id_usuario', $user->id_usuario)
@@ -181,15 +182,61 @@ class TestsController extends Controller
                     $totalCalificacionSubpreguntas += $opcionSubpreguntaSeleccionada->valor_opcion;
                     $totalSubpreguntas++;
                 }
-               
-                    // Guardar la calificación final para la pregunta principal
-                    $preguntaPrincipalId = $request->input('pregunta_ids')[0]; // Suponiendo que la pregunta principal está en el índice 0
-                    $this->guardarRespuesta($user->id_usuario, $preguntaPrincipalId, 'Calificación basada en subpreguntas', $totalCalificacionSubpreguntas);
-                
+
+                // Guardar la calificación final para la pregunta principal
+                $preguntaPrincipalId = $request->input('pregunta_ids')[0]; // Suponiendo que la pregunta principal está en el índice 0
+                $this->guardarRespuesta($user->id_usuario, $preguntaPrincipalId, 'Calificación basada en subpreguntas', $totalCalificacionSubpreguntas);
             }
             if ($request->has('respuestas_abiertas')) {
-                Log::info('Respuestas abiertas');
-                dd($request);
+                Log::info('Respuestas abiertas subpreguntas');
+
+                $totalCalificacionSubpreguntas = 0;
+                $totalSubpreguntas = 0;
+
+                // Obtener el ID de la pregunta principal
+                $preguntaPrincipalId = $request->input('pregunta_ids')[1]; // Suponiendo que la pregunta principal está en el índice 0
+
+                Log::info('ID de la pregunta principal', ['id_pregunta' => $preguntaPrincipalId]);
+
+                // Obtener el contexto de la pregunta principal
+                $id_contexto = Preguntas::where('id_pregunta', $preguntaPrincipalId)->pluck('id_contexto')->first();
+                $contexto = Contexto::where('id_contexto', $id_contexto)->pluck('texto')->first();
+
+                Log::info('Contexto asociado a la pregunta principal', ['id_contexto' => $id_contexto, 'contexto' => $contexto]);
+
+
+                foreach ($request->input('respuestas_abiertas') as $subpregunta_id => $respuesta_abierta) {
+                    Log::info('Procesando subpregunta abierta', ['id_subpregunta' => $subpregunta_id, 'respuesta' => $respuesta_abierta]);
+
+                    // Verificar que la respuesta sea válida
+                    if (!is_string($respuesta_abierta) || empty(trim($respuesta_abierta))) {
+                        return redirect()->back()->with('error', 'Por favor ingrese una respuesta válida para la subpregunta.');
+                    }
+
+                    // Obtener los criterios asociados a la subpregunta
+                    $criterio = Subcriterios::where('id_subpregunta', $subpregunta_id)->pluck('texto');
+
+                    // Crear el prompt para OpenAI utilizando el contexto de la pregunta principal y los criterios de la subpregunta
+                    $prompt =  "Contexto: " . $contexto . " fin contexto. " . "Estos son los criterios para la calificación: " . $criterio . " fin criterio. " . "Con lo anterior devuélveme el número de la calificación, sin ninguna otra letra, con la siguiente respuesta: " . $respuesta_abierta;
+
+                    Log::info('Prompt para subpregunta abierta', ['prompt' => $prompt]);
+
+                    // Llamar a la IA para obtener la calificación
+                    $respuesta_chatgpt = $this->openAIService->enviarRespuestaAChatGPT($prompt);
+
+                    Log::info('Calificación obtenida para la subpregunta abierta', ['calificacion' => $respuesta_chatgpt]);
+
+                    // Sumar la calificación de la subpregunta abierta
+                    $totalCalificacionSubpreguntas += $respuesta_chatgpt;
+                    $totalSubpreguntas++;
+                }
+
+                // Guardar la calificación final para la pregunta principal
+                if ($totalSubpreguntas > 0) {
+                    Log::info('Calificación final basada en subpreguntas abiertas', ['totalCalificacionSubpreguntas' => $totalCalificacionSubpreguntas]);
+
+                    $this->guardarRespuesta($user->id_usuario, $preguntaPrincipalId, 'Calificación basada en subpreguntas abiertas', $totalCalificacionSubpreguntas);
+                }
             }
         }
 

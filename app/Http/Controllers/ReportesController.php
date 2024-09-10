@@ -22,6 +22,15 @@ class ReportesController extends Controller
         return view('private.reportes_usuario', compact('user', 'reportes')); // Asegúrate de tener una vista admin/reportes_usuario
     }
 
+    public function verReporte($id)
+    {
+        // Encuentra el reporte por su ID
+        $reporte = Reportes::findOrFail($id);
+
+        // Retorna la vista de detalle del reporte
+        return view('reporte.reporte_detalle', compact('reporte'));
+    }
+
 
     /**
      * Display a listing of the resource.

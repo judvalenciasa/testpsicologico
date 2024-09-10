@@ -782,7 +782,9 @@ class PreguntasSeeder extends Seeder
                 'id_contexto' => 18,
                 'id_subhabilidad' => 7,
                 'id_categoria' => 2,
-                'texto' => 'Sin responder exactamente con las definiciones que te hemos suministrado de lo que es una razón, una conclusión y un contrargumento, explica tus respuestas anteriores. ',
+                'texto' => 'A partir del anterior contexto y teniendo presente que una opinión es una afirmación que expresa juicios o puntos de vista personales, sin basarse necesariamente en hechos verificables; que un hecho es una afirmación susceptible de comprobación o verificación objetiva en el contexto de lo enunciado; y, que un argumento razonado es el planteamiento de una o más declaraciones que apoyan una conclusión.
+
+Para cada una de las siguientes afirmaciones, indica si se trata de una opinión, un hecho, o argumento razonado ',
                 'tipo_pregunta' => 'subpregunta'
             ],
 
@@ -886,7 +888,7 @@ class PreguntasSeeder extends Seeder
             ],
 
             //Item 45
-             [
+            [
                 'id_pregunta' => 93,
                 'id_prueba' => 1,
                 'id_contexto' => 23,

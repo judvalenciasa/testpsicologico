@@ -66,6 +66,9 @@ Route::group(['middleware' => ['auth']], function () {
 
     // Crear informe
     Route::post('/informe/crear_reporte', [ReportesController::class, 'crear_reporte'])->name('reporte.crear');
+    // Ruta para ver el reporte individual
+    Route::get('/reporte/{id}', [ReportesController::class, 'verReporte'])->name('reporte.ver');
+
 
     //Ruta para cargar la vista de metacognicion
     Route::get('/metacognicion', [TestsController::class, 'metacognicion'])->name('metacognicion.encuesta');
@@ -75,6 +78,10 @@ Route::group(['middleware' => ['auth']], function () {
     // Rutas para administradores
     Route::get('/admin/usuarios', [UserController::class, 'index'])->name('private.usuarios');
     Route::get('/admin/usuarios/{id}/reportes', [ReportesController::class, 'verReportes'])->name('private.verReportes');
+
+    // Ruta para mostrar la política de datos
+    Route::get('/politica-datos', [UserController::class, 'mostrarPolitica'])->name('politica.datos');
+    Route::post('/politica-datos/aceptar', [UserController::class, 'aceptarPolitica'])->name('politica.aceptar');
 });
 
 // Rutas accesibles solo para invitados (usuarios no autenticados)

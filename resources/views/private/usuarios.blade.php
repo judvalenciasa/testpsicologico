@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Administración de Usuarios</title>
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/usuarios.css') }}">
 </head>
 
 <body>
@@ -13,12 +14,10 @@
     @include('shared.header')
 
 
-    <div class="container">
-        <h1>Usuarios No Administradores</h1>
+    <section class="container">
         <table class="table">
             <thead>
                 <tr>
-                    <th>ID</th>
                     <th>Nombre</th>
                     <th>Email</th>
                     <th>Ver Reportes</th>
@@ -27,7 +26,6 @@
             <tbody>
                 @foreach($users as $user)
                 <tr>
-                    <td>{{ $user->id }}</td>
                     <td>{{ $user->name }}</td>
                     <td>{{ $user->email }}</td>
                     <td>
@@ -41,7 +39,10 @@
                 @endforeach
             </tbody>
         </table>
-    </div>
+
+        <a href="{{ route('administrator-page') }}" class="btn">Volver a la pagina de administradores</a>
+
+    </section>
 
     @include('shared.footer')
 
