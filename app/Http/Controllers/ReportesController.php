@@ -5,12 +5,31 @@ namespace App\Http\Controllers;
 use App\Models\Reportes;
 use App\Models\Respuestas;
 use App\Models\Subhabilidad;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Carbon\Carbon;
 
 class ReportesController extends Controller
 {
+
+    // Mostrar los reportes de un usuario específico
+    public function verReportes($id_usuario)
+    {
+        $user = User::findOrFail($id_usuario);
+        $reportes = Reportes::where('id_usuario', $id_usuario)->get();
+
+        return view('private.reportes_usuario', compact('user', 'reportes')); // Asegúrate de tener una vista admin/reportes_usuario
+    }
+
+    public function verReporte($id)
+    {
+        // Encuentra el reporte por su ID
+        $reporte = Reportes::findOrFail($id);
+
+        // Retorna la vista de detalle del reporte
+        return view('reporte.reporte_detalle', compact('reporte'));
+    }
 
 
     /**

@@ -47,11 +47,13 @@
                     </div>
                     @endif
 
-                    @if(session('success'))
-                    <div class="section">
-                        <p style="color:green;">{{ session('success') }}</p>
-                    </div>
-                    @endif
+                     <!-- Botón para ver los informes -->
+                     <form action="{{ route('private.usuarios') }}" method="get">
+                        @csrf
+                        <div class="section">
+                            <button type="submit" class="btn">Ver Informes</button>
+                        </div>
+                    </form>
 
                     <!-- Botón para ver los pines -->
                     <form action="{{ route('pines.index') }}" method="get">

@@ -149,6 +149,7 @@
             return re.test(email);
         }
     </script>
+    @include('shared.footer')
 
 </body>
 

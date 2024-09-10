@@ -27,7 +27,15 @@ class UserController extends Controller
     public function index()
     {
         $users = User::where('es_administrador', 0)->get();
+        return view('private.usuarios', compact('users')); // Asegúrate de tener una vista admin/usuarios
     }
+
+    // Página de política de privacidad
+    public function mostrarPolitica()
+    {
+        return view('private.politica_tratamiento_datos');
+    }
+
 
     public function indexAdministrador(Request $request)
     {
@@ -160,10 +168,15 @@ class UserController extends Controller
 
     protected function authenticated(Request $request, $user)
     {
-
         if ($user->es_administrador) {
             return $this->indexAdministrador($request);
         } else {
+            // Verificar si el usuario ya aceptó la política de tratamiento de datos
+            if (!$user->ha_aceptado_politica) { // Suponiendo que tienes este campo en tu base de datos
+                return redirect()->route('politica.datos'); // Redirigir a la página de política
+            }
+
+            // Si ya aceptó la política, verificar si debe llenar la caracterización
             if ($user->documento_identificacion == null) {
                 Log::info('Usuario sin caracterización' . $user);
                 return $this->indexCaracterizacion($request);
@@ -172,6 +185,24 @@ class UserController extends Controller
             }
         }
     }
+
+    // Método para aceptar la política de datos
+    public function aceptarPolitica(Request $request)
+    {
+        $user = $request->user();
+        if ($user) {
+            $user->update(['ha_aceptado_politica' => true]);
+        }
+
+        if ($user->documento_identificacion == null) {
+            return redirect()->route('caracterizacion');
+        } else {
+            return redirect()->route('test.iniciar');
+        }
+
+        return redirect()->route('login')->withErrors('Debes iniciar sesión para continuar.');
+    }
+
 
 
 

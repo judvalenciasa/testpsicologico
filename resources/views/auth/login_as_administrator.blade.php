@@ -42,6 +42,7 @@
             </button>
         </form>
     </section>
+    @include('shared.footer')
 
 </body>
 

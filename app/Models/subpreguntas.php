@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Subpreguntas extends Model
+class subpreguntas extends Model
 {
     use HasFactory;
 
@@ -29,9 +29,4 @@ class Subpreguntas extends Model
         return $this->hasMany(OpcionesSubpreguntas::class, 'id_subpregunta');
     }
 
-    // Relación con la tabla Preguntas
-    public function pregunta()
-    {
-        return $this->belongsTo(Pregunta::class, 'id_pregunta', 'id_pregunta');
-    }
 }
