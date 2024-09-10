@@ -45,6 +45,7 @@
                     </label>
                 </div>
                 @endforeach
+            
                 @endif
 
                 <!-- Verificar si hay subpreguntas y mostrarlas -->
@@ -56,6 +57,7 @@
                     @if($subpregunta->tipo_pregunta == 'abierta')
                     <div class="opcion">
                         <textarea name="respuestas_abiertas[{{ $subpregunta->id_subpregunta }}]" id="respuesta_abierta_{{ $subpregunta->id_subpregunta }}" rows="4" placeholder="Escribe tu respuesta aquí..."></textarea>
+                     
                     </div>
                     @else
                     @foreach($subpregunta->opciones as $opcion)
@@ -66,12 +68,12 @@
                         </label>
                     </div>
                     @endforeach
+               
                     @endif
                     @endforeach
                 </div>
                 @endif
 
-                <input type="hidden" name="tipo_pregunta" value="{{ $pregunta_actual->tipo_pregunta }}">
                 <input type="hidden" name="pregunta_ids[]" value="{{ $pregunta_actual->id_pregunta }}">
                 @endforeach
 

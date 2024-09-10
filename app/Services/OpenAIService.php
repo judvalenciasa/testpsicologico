@@ -44,7 +44,6 @@ class OpenAIService
             ]);
 
             $body = json_decode($response->getBody(), true);
-            Log::info('Cuerpo de la respuesta de ChatGPT', ['body' => $body]);
 
             return $body['choices'][0]['message']['content'] ?? '';
         } catch (\Exception $e) {
