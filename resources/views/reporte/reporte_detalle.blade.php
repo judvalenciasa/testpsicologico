@@ -17,6 +17,10 @@
         <div class="title">
             <h1>Detalle del Reporte #{{ $reporte->id_informe }} del usuario con identificación {{ $reporte->documento_identificacion }}</h1>
         </div>
+        <div class="tiempo_prueba_ctn">
+            <h2>Tiempo de la Prueba</h2>
+            <p>{{ $reporte->tiempo_prueba }}</p>
+        </div>
 
         <div class="tablas_ctn">
             <!-- Datos Personales -->
@@ -121,6 +125,7 @@
                         <td>{{ $reporte->comprobacion_hipotesis }}</td>
                         <td>{{ $reporte->uso_probabilidad_incertidumbre }}</td>
                         <td>{{ $reporte->total_macrohabilidad_abductiva }}</td>
+
                     </tr>
                 </table>
             </div>
@@ -151,6 +156,7 @@
                         <th>Identificación de Suposición</th>
                         <th>Identificación de Falacia</th>
                         <th>Total</th>
+                        <th>Nivel</th>
                     </tr>
                     <tr>
                         <td>{{ $reporte->identificacion_estructura_argumentativa }}</td>
