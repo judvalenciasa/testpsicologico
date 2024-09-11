@@ -12,7 +12,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('descriptivos', function (Blueprint $table) {
-            $table->id();
+            $table->id('id_descriptivo');
+            $table->unsignedBigInteger('id_pregunta');
+            $table->string('texto_descriptivo', 300);
+            $table->integer('calificacion')->nullable();
+            
+            $table->foreign('id_pregunta')->references('id_pregunta')->on('preguntas');
             $table->timestamps();
         });
     }
@@ -25,3 +30,4 @@ return new class extends Migration
         Schema::dropIfExists('descriptivos');
     }
 };
+ 
