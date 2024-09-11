@@ -113,10 +113,6 @@
                     </p>
                     <a href="mailto:juanmanuelvelezar@gmail.com ">juanmanuelvelezar@gmail.com </a>
                 </div>
-
-                <div class="developed_credits">
-                    <p>Developed By Yorman Valencia <a href="mailto:yormanvale@outlook.com">yormanvale@outlook.com</a></p>
-                </div>
             </div>
         </section>
 
