@@ -1242,15 +1242,9 @@ class OpcionesSeeder extends Seeder
                 'valor_opcion' => 0
             ],
             [
-                'id_opcion' => 193,
-                'id_pregunta' => 59,
-                'texto' => '5 = Buen razonamiento',
-                'valor_opcion' => 0
-            ],
-            [
                 'id_opcion' => 194,
                 'id_pregunta' => 59,
-                'texto' => '7 = Excelente razonamiento',
+                'texto' => '6 = Excelente razonamiento',
                 'valor_opcion' => 0
             ],
 
