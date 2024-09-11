@@ -116,7 +116,6 @@ class ReportesController extends Controller
 
         $calificacion_metacognicion = array_sum(array_map('floatval', $categorias)) ?? 0;
 
-
         Reportes::create([
 
             'id_usuario' => $user->id_usuario,
@@ -174,7 +173,7 @@ class ReportesController extends Controller
             'monitoreo' => $categorias['monitoreo'],
             'organizacion' => $categorias['organizacion'],
             'planificacion' => $categorias['planificacion'],
-
+            'tiempo_prueba' => $request->tiempo_prueba,
         ]);
 
         // Crear el objeto respuesta para pasar a la vista
@@ -261,6 +260,7 @@ class ReportesController extends Controller
 
 
         $tiempoTotal = $request->input('tiempo_total');
+        Log::info('totalSubpreguntas: ' . $tiempoTotal);
 
         return view('reporte.index', compact('respuesta'));
     }

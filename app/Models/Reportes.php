@@ -58,7 +58,8 @@ class Reportes extends Model
         'monitoreo',
         'organizacion',
         'planificacion',
-        'total_metacognicion'
+        'total_metacognicion',
+        'tiempo_prueba'
     ];
 
     public function usuario()

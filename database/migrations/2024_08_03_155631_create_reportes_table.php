@@ -59,7 +59,7 @@ return new class extends Migration
             $table->integer('organizacion')->nullable();
             $table->integer('planificacion')->nullable();
             $table->integer('total_metacognicion')->nullable();
-
+            $table->integer('tiempo_prueba')->nullable();
             
             $table->timestamps();
             

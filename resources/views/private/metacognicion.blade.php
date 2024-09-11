@@ -19,15 +19,19 @@
 
     <section class="caracterizacion_section">
         <div class="encabezado_ctn">
-            <h3>Felicitaciones, has terminado las preguntas de pensamiento crítico. Para finalizar, en relación con la prueba que acabas de culminar, te invitamos a responder de la manera más honesta a las siguientes afirmaciones.
+            <h3>Felicitaciones, has terminado las preguntas de pensamiento crítico. Para finalizar, en relación con la
+                prueba que acabas de culminar, te invitamos a responder de la manera más honesta a las siguientes
+                afirmaciones.
             </h3>
-            <h3> <span>Indicaciones:</span> Lee cuidadosamente cada una de las afirmaciones y usa la escala de 1 a 5 en donde 1 es completamente en desacuerdo; 2 es en desacuerdo; 3 es Ni de acuerdo ni en desacuerdo; 4 de acuerdo y 5 completamente de acuerdo.
+            <h3> <span>Indicaciones:</span> Lee cuidadosamente cada una de las afirmaciones y usa la escala de 1 a 5 en
+                donde 1 es completamente en desacuerdo; 2 es en desacuerdo; 3 es Ni de acuerdo ni en desacuerdo; 4 de
+                acuerdo y 5 completamente de acuerdo.
             </h3>
         </div>
         @if(session('success'))
-        <div class="alert alert-success">
-            {{ session('success') }}
-        </div>
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
         @endif
 
         <form id="metacognicionForm" class="metacognicionForm" action="{{ route('reporte.crear') }}" method="POST">
@@ -380,7 +384,8 @@
 
                 <!-- Octava pregunta -->
                 <div class="pregunta_ctn">
-                    <p>Una estrategia que utilicé para responder a este tipo de preguntas es inventar mis propios ejemplos para poder entender mejor la información.</p>
+                    <p>Una estrategia que utilicé para responder a este tipo de preguntas es inventar mis propios
+                        ejemplos para poder entender mejor la información.</p>
 
                     <!-- Tabla para las opciones -->
                     <table border="1" cellspacing="0" cellpadding="10">
@@ -722,7 +727,8 @@
 
                 <!-- Quinceava pregunta -->
                 <div class="pregunta_ctn">
-                    <p>Cuando estaba respondiendo al ítem, me detuve en algún momento para saber si estaba entendiendo.</p>
+                    <p>Cuando estaba respondiendo al ítem, me detuve en algún momento para saber si estaba entendiendo.
+                    </p>
 
                     <!-- Tabla para las opciones -->
                     <table border="1" cellspacing="0" cellpadding="10">
@@ -770,7 +776,8 @@
 
                 <!-- Dieciseisava pregunta -->
                 <div class="pregunta_ctn">
-                    <p>Cuando leí los contextos y preguntas me pregunté si entendí bien o no lo que se planteaba en ambos.</p>
+                    <p>Cuando leí los contextos y preguntas me pregunté si entendí bien o no lo que se planteaba en
+                        ambos.</p>
 
                     <!-- Tabla para las opciones -->
                     <table border="1" cellspacing="0" cellpadding="10">
@@ -1118,7 +1125,8 @@
 
                 <!-- Veintitrés pregunta -->
                 <div class="pregunta_ctn">
-                    <p>Cuando terminé de responder a cada pregunta me pregunté si había una alternativa o respuesta más acertada.</p>
+                    <p>Cuando terminé de responder a cada pregunta me pregunté si había una alternativa o respuesta más
+                        acertada.</p>
 
                     <!-- Tabla para las opciones -->
                     <table border="1" cellspacing="0" cellpadding="10">
@@ -1166,7 +1174,8 @@
 
                 <!-- Veinticuatro pregunta -->
                 <div class="pregunta_ctn">
-                    <p>Cuando terminé de responder a cada pregunta me pregunté hasta qué punto había conseguido mis objetivos.</p>
+                    <p>Cuando terminé de responder a cada pregunta me pregunté hasta qué punto había conseguido mis
+                        objetivos.</p>
 
                     <!-- Tabla para las opciones -->
                     <table border="1" cellspacing="0" cellpadding="10">
@@ -1262,7 +1271,8 @@
 
                 <!-- Veintiséis pregunta -->
                 <div class="pregunta_ctn">
-                    <p>Cuando terminé de responder al ítem me pregunté si había empleado mis habilidades al máximo posible.</p>
+                    <p>Cuando terminé de responder al ítem me pregunté si había empleado mis habilidades al máximo
+                        posible.</p>
 
                     <!-- Tabla para las opciones -->
                     <table border="1" cellspacing="0" cellpadding="10">
@@ -1310,7 +1320,7 @@
 
             </div>
 
-
+            <input type="hidden" name="tiempo_prueba" value="{{ $tiempo_prueba }}">
             <button class="send_btn" type="submit">Terminar</button>
         </form>
 
@@ -1319,66 +1329,8 @@
 
     @include('shared.footer')
 
-    <script>
-        // Detener el cronómetro cuando se haga clic en "Terminar Prueba"
-        document.getElementById('terminarBtn').addEventListener('click', function() {
-            clearInterval(intervalo); // Detener el cronómetro
-            document.getElementById('tiempoTotalInput').value = tiempoTotal; // Guardar el tiempo total en el input oculto
-        });
-    </script>
+
 
 </body>
-
-<!-- <script>
-    document.getElementById('metacognicionForm').addEventListener('submit', function(event) {
-        //event.preventDefault(); // Prevenimos el envío normal del formulario solo si se usa fetch
-
-        const form = event.target;
-        const categories = {};
-
-        // Recorrer todas las preguntas del formulario
-        form.querySelectorAll('div[data-category]').forEach(categoryDiv => {
-            const category = categoryDiv.getAttribute('data-category');
-            let totalPoints = 0;
-            let questions = 0;
-
-            // Contar las preguntas dentro de cada categoría
-            categoryDiv.querySelectorAll('input[type="radio"]:checked').forEach(input => {
-                totalPoints += parseInt(input.value, 10);
-                questions += 1;
-            });
-
-            // Guardar el total de puntos por categoría
-            if (questions > 0) {
-                categories[category] = totalPoints;
-            }
-        });
-
-        // Obtener el token CSRF del meta tag
-        const token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-
-
-        // Enviar los datos al servidor usando fetch
-        /* fetch('/informe/crear_reporte', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'X-CSRF-TOKEN': token
-                },
-                body: JSON.stringify(categories) // Enviamos solo las categorías
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.redirect_url) {
-                    // Redirigir a la vista reporte.index
-                    window.location.href = data.redirect_url;
-                }
-                console.log('Puntajes guardados exitosamente', data);
-            })
-            .catch(error => {
-                console.error('Error al guardar puntajes:', error);
-            }); */
-    });
-</script> -->
 
 </html>

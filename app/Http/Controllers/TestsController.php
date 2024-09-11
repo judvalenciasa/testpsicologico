@@ -11,6 +11,7 @@ use App\Models\Respuestas;
 use App\Models\Subcriterios;
 use App\Models\subpreguntas;
 use App\Services\OpenAIService;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
@@ -52,9 +53,9 @@ class TestsController extends Controller
 
 
     // Función para mostrar la página de metacognición
-    public function metacognicion()
+    public function metacognicion($tiempo_prueba)
     {
-        return view('private.metacognicion');
+        return view('private.metacognicion',compact("tiempo_prueba"));
     }
 
     public function mostrarPrueba()
@@ -68,18 +69,27 @@ class TestsController extends Controller
 
         return view('private.mostrarTest', compact('prueba'));
     }
-
+    
+    //public static $hora_inicio_prueba = 'Soy una variable estática';
+   
     public function cargarPreguntas(Request $request)
     {
+       
         if (!Auth::check()) {
             return redirect()->route('login')->with('error', 'Debes iniciar sesión para continuar.');
         }
-
+      
+        
         $user = Auth::user();
-
-
+        
         // Verificar si es la primera vez que se carga la página o si ya se han enviado respuestas
         if (!$request->has('pregunta_ids')) {
+            
+            $hora_inicio_prueba = Carbon::now();
+            Log::info("cronometro inicio". $hora_inicio_prueba);
+            
+            session(['hora_inicio_prueba' => $hora_inicio_prueba]);
+
             // Primera carga de la página: cargar las primeras preguntas
             $prueba_id = $request->input('prueba_id');
 
@@ -257,7 +267,11 @@ class TestsController extends Controller
         // Verificar si ya no hay más preguntas por responder
         $total_preguntas = Preguntas::where('id_prueba', $prueba_id)->count();
         if ($pregunta_index >= $total_preguntas) {
-            return redirect()->route('metacognicion.encuesta')->with('message', 'Has completado la prueba. Ahora continúa con la encuesta de metacognición.');
+            $hora_final_prueba = Carbon::now();
+            $hora_inicio_prueba = session('hora_inicio_prueba');
+            $tiempo_prueba = $tiempo_prueba = $hora_final_prueba->diffInSeconds($hora_inicio_prueba);
+
+            return $this->metacognicion($tiempo_prueba);
         }
 
         // Cargar las siguientes preguntas
