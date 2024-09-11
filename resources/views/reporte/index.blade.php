@@ -93,11 +93,15 @@
                         <th>Inducción General</th>
                         <th>Inducción Específica</th>
                         <th>Total</th>
+                        <th>Nivel</th>
+
                     </tr>
                     <tr>
                         <td>{{ $respuesta['macrohabilidad_inductiva'][0]['induccion_general'] }}</td>
                         <td>{{ $respuesta['macrohabilidad_inductiva'][0]['induccion_especifica'] }}</td>
-                        <td>{{ $respuesta['macrohabilidad_inductiva'][0]['total'] }}</td>
+                        <td>{{ $respuesta['macrohabilidad_inductiva'][0]['total_macrohabilidad_inductiva'] }}</td>
+                        <td>{{ $respuesta['macrohabilidad_inductiva'][0]['nivel_induccion_general'] }}</td>
+
                     </tr>
                 </table>
             </div>
@@ -109,11 +113,14 @@
                         <th>Comprobación de Hipótesis</th>
                         <th>Uso de Probabilidad e Incertidumbre</th>
                         <th>Total</th>
+                        <th>Nivel</th>
+
                     </tr>
                     <tr>
                         <td>{{ $respuesta['macrohabilidad_abductiva'][0]['comprobacion_hipotesis'] }}</td>
                         <td>{{ $respuesta['macrohabilidad_abductiva'][0]['uso_probabilidad_incertidumbre'] }}</td>
-                        <td>{{ $respuesta['macrohabilidad_abductiva'][0]['total'] }}</td>
+                        <td>{{ $respuesta['macrohabilidad_abductiva'][0]['total_abductiva'] }}</td>
+                        <td>{{ $respuesta['macrohabilidad_abductiva'][0]['nivel_abductiva'] }}</td>
                     </tr>
                 </table>
             </div>
@@ -125,11 +132,14 @@
                         <th>Identificación de Fallo por Analogía</th>
                         <th>Identificación de Fallo por Vaguedad</th>
                         <th>Total</th>
+                        <th>Nivel</th>
+
                     </tr>
                     <tr>
                         <td>{{ $respuesta['macrohabilidad_deductivo_y_verbal'][0]['identificacion_analogia'] }}</td>
                         <td>{{ $respuesta['macrohabilidad_deductivo_y_verbal'][0]['identificacion_por_fallo_vaguedad'] }}</td>
-                        <td>{{ $respuesta['macrohabilidad_deductivo_y_verbal'][0]['total'] }}</td>
+                        <td>{{ $respuesta['macrohabilidad_deductivo_y_verbal'][0]['total_deductivo_y_verbal'] }}</td>
+                        <td>{{ $respuesta['macrohabilidad_deductivo_y_verbal'][0]['nivel_deductivo_y_verbal'] }}</td>
                     </tr>
                 </table>
             </div>
@@ -142,12 +152,15 @@
                         <th>Identificación de Suposición</th>
                         <th>Identificación de Falacia</th>
                         <th>Total</th>
+                        <th>Nivel</th>
+
                     </tr>
                     <tr>
                         <td>{{ $respuesta['macrohabilidad_analisis_de_argumentos'][0]['identificacion_estructura_argumentativa'] }}</td>
                         <td>{{ $respuesta['macrohabilidad_analisis_de_argumentos'][0]['identificacion_de_suposicion'] }}</td>
                         <td>{{ $respuesta['macrohabilidad_analisis_de_argumentos'][0]['identificacion_de_falacia'] }}</td>
-                        <td>{{ $respuesta['macrohabilidad_analisis_de_argumentos'][0]['total'] }}</td>
+                        <td>{{ $respuesta['macrohabilidad_analisis_de_argumentos'][0]['total_analisis_de_argumentos'] }}</td>
+                        <td>{{ $respuesta['macrohabilidad_analisis_de_argumentos'][0]['nivel_analisis_de_argumentos'] }}</td>
                     </tr>
                 </table>
             </div>
@@ -160,12 +173,17 @@
                         <th>Conciencia de Situación y Acciones Razonables</th>
                         <th>Pensamiento Estratégico</th>
                         <th>Pensamiento Creativo</th>
+                        <th>Total</th>
+                        <th>Nivel</th>
+
                     </tr>
                     <tr>
                         <td>{{ $respuesta['macrohabilidad_toma_desiciones_y_resolucion_problemas'][0]['toma_desiciones_informadas'] }}</td>
                         <td>{{ $respuesta['macrohabilidad_toma_desiciones_y_resolucion_problemas'][0]['conciencia_situacion_acciones_razonables'] }}</td>
                         <td>{{ $respuesta['macrohabilidad_toma_desiciones_y_resolucion_problemas'][0]['pensamiento_estrategico'] }}</td>
                         <td>{{ $respuesta['macrohabilidad_toma_desiciones_y_resolucion_problemas'][0]['pensamiento_creativo'] }}</td>
+                        <td>{{ $respuesta['macrohabilidad_toma_desiciones_y_resolucion_problemas'][0]['total_toma_desiciones_y_resolucion_problemas'] }}</td>
+                        <td>{{ $respuesta['macrohabilidad_toma_desiciones_y_resolucion_problemas'][0]['nivel_toma_desiciones_y_resolucion_problemas'] }}</td>
                     </tr>
                 </table>
             </div>
@@ -183,13 +201,14 @@
                         <th>Total</th>
                     </tr>
                     <tr>
-                        <td>{{ $respuesta['macrohabilidad_toma_desiciones_y_resolucion_problemas']['metacognicion_conocimiento_procedimental'][0]['conocimiento_procedimental'] }}</td>
-                        <td>{{ $respuesta['macrohabilidad_toma_desiciones_y_resolucion_problemas']['metacognicion_conocimiento_procedimental'][0]['depuracion'] }}</td>
-                        <td>{{ $respuesta['macrohabilidad_toma_desiciones_y_resolucion_problemas']['metacognicion_conocimiento_procedimental'][0]['evaluacion'] }}</td>
-                        <td>{{ $respuesta['macrohabilidad_toma_desiciones_y_resolucion_problemas']['metacognicion_conocimiento_procedimental'][0]['monitoreo'] }}</td>
-                        <td>{{ $respuesta['macrohabilidad_toma_desiciones_y_resolucion_problemas']['metacognicion_conocimiento_procedimental'][0]['organizacion'] }}</td>
-                        <td>{{ $respuesta['macrohabilidad_toma_desiciones_y_resolucion_problemas']['metacognicion_conocimiento_procedimental'][0]['planificacion'] }}</td>
-                        <td>{{ $respuesta['macrohabilidad_toma_desiciones_y_resolucion_problemas']['metacognicion_conocimiento_procedimental'][0]['total'] }}</td>
+                        <td>{{ $respuesta['metacognicion_conocimiento_procedimental'][0]['conocimiento_procedimental'] }}</td>
+                        <td>{{ $respuesta['metacognicion_conocimiento_procedimental'][0]['depuracion'] }}</td>
+                        <td>{{ $respuesta['metacognicion_conocimiento_procedimental'][0]['evaluacion'] }}</td>
+                        <td>{{ $respuesta['metacognicion_conocimiento_procedimental'][0]['monitoreo'] }}</td>
+                        <td>{{ $respuesta['metacognicion_conocimiento_procedimental'][0]['organizacion'] }}</td>
+                        <td>{{ $respuesta['metacognicion_conocimiento_procedimental'][0]['planificacion'] }}</td>
+                        <td>{{ $respuesta['metacognicion_conocimiento_procedimental'][0]['total_conocimiento_procedimental'] }}</td>
+
                     </tr>
                 </table>
             </div>

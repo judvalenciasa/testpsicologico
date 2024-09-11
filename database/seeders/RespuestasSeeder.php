@@ -13,9 +13,6 @@ class RespuestasSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('respuestas')->insert([
-    
-        ]);
-        
+        DB::table('respuestas')->insert([]);
     }
 }

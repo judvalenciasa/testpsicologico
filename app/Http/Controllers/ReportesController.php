@@ -22,6 +22,80 @@ class ReportesController extends Controller
         return view('private.reportes_usuario', compact('user', 'reportes')); // Asegúrate de tener una vista admin/reportes_usuario
     }
 
+    private function calcularNivel($puntaje, $tipo_habilidad)
+    {
+        switch ($tipo_habilidad) {
+            case 'inductivo':
+                switch (true) {
+                    case ($puntaje <= 4):
+                        return 'Muy Bajo';
+                    case ($puntaje <= 8):
+                        return 'Bajo';
+                    case ($puntaje <= 12):
+                        return 'Intermedio';
+                    case ($puntaje <= 16):
+                        return 'Alto';
+                    default:
+                        return 'Muy Alto';
+                }
+            case 'abductivo':
+                switch (true) {
+                    case ($puntaje <= 3):
+                        return 'Muy Bajo';
+                    case ($puntaje <= 6):
+                        return 'Bajo';
+                    case ($puntaje <= 9):
+                        return 'Intermedio';
+                    case ($puntaje <= 12):
+                        return 'Alto';
+                    default:
+                        return 'Muy Alto';
+                }
+            case 'deductivo':
+                switch (true) {
+                    case ($puntaje <= 3):
+                        return 'Muy Bajo';
+                    case ($puntaje <= 6):
+                        return 'Bajo';
+                    case ($puntaje <= 9):
+                        return 'Intermedio';
+                    case ($puntaje <= 12):
+                        return 'Alto';
+                    default:
+                        return 'Muy Alto';
+                }
+            case 'analisis_argumentos':
+                switch (true) {
+                    case ($puntaje <= 8):
+                        return 'Muy Bajo';
+                    case ($puntaje <= 17):
+                        return 'Bajo';
+                    case ($puntaje <= 25):
+                        return 'Intermedio';
+                    case ($puntaje <= 33):
+                        return 'Alto';
+                    default:
+                        return 'Muy Alto';
+                }
+            case 'toma_decisiones':
+                switch (true) {
+                    case ($puntaje <= 13):
+                        return 'Muy Bajo';
+                    case ($puntaje <= 26):
+                        return 'Bajo';
+                    case ($puntaje <= 40):
+                        return 'Intermedio';
+                    case ($puntaje <= 53):
+                        return 'Alto';
+                    default:
+                        return 'Muy Alto';
+                }
+            default:
+                return 'Nivel desconocido';
+        }
+    }
+
+
     public function verReporte($id)
     {
         // Encuentra el reporte por su ID
@@ -165,7 +239,8 @@ class ReportesController extends Controller
             'conciencia_situacion_acciones_razonables' => $this->buscar_total_subhabilidad("CONCIENCIA DE SITUACIÓN Y ACCIONES RAZONABLES"),
             'pensamiento_estrategico' => $this->buscar_total_subhabilidad("PENSAMIENTO ESTRATÉGICO"),
             'pensamiento_creativo' => $this->buscar_total_subhabilidad("PENSAMIENTO CREATIVO"),
-            'macrohabilidad_toma_desiciones_y_resolucion_problemas' => $this->buscar_total_subhabilidad("TOMA DE DECISIONES INFORMADAS") + $this->buscar_total_subhabilidad("CONCIENCIA DE SITUACIÓN Y ACCIONES RAZONABLES") + $this->buscar_total_subhabilidad("PENSAMIENTO ESTRATÉGICO") + $this->buscar_total_subhabilidad("PENSAMIENTO CREATIVO"),
+
+            'total_macrohabilidad_toma_desiciones_y_resolucion_problemas' => $this->buscar_total_subhabilidad("TOMA DE DECISIONES INFORMADAS") + $this->buscar_total_subhabilidad("CONCIENCIA DE SITUACIÓN Y ACCIONES RAZONABLES") + $this->buscar_total_subhabilidad("PENSAMIENTO ESTRATÉGICO") + $this->buscar_total_subhabilidad("PENSAMIENTO CREATIVO"),
 
             'conocimiento_procedimental' => $categorias['conocimiento_procedimental'],
             'depuracion' => $categorias['depuracion'],
@@ -212,21 +287,24 @@ class ReportesController extends Controller
                 [
                     "induccion_general" => $this->buscar_total_subhabilidad("INDUCCIÓN GENERAL"),
                     "induccion_especifica" => $this->buscar_total_subhabilidad("INDUCCIÓN ESPECÍFICA"),
-                    "total" => $this->buscar_total_subhabilidad("INDUCCIÓN GENERAL") + $this->buscar_total_subhabilidad("INDUCCIÓN ESPECÍFICA"),
+                    "total_macrohabilidad_inductiva" => $this->buscar_total_subhabilidad("INDUCCIÓN GENERAL") + $this->buscar_total_subhabilidad("INDUCCIÓN ESPECÍFICA"),
+                    "nivel_induccion_general" => $this->calcularNivel($this->buscar_total_subhabilidad("INDUCCIÓN GENERAL") + $this->buscar_total_subhabilidad("INDUCCIÓN ESPECÍFICA"), 'inductivo')
                 ]
             ],
             "macrohabilidad_abductiva" => [
                 [
                     "comprobacion_hipotesis" => $this->buscar_total_subhabilidad("COMPROBACIÓN DE HIPÓTESIS"),
                     "uso_probabilidad_incertidumbre" => $this->buscar_total_subhabilidad("USO DE PROBABILIDAD E INCERTIDUMBRE"),
-                    "total" => $this->buscar_total_subhabilidad("COMPROBACIÓN DE HIPÓTESIS") + $this->buscar_total_subhabilidad("USO DE PROBABILIDAD E INCERTIDUMBRE"),
+                    "total_abductiva" => $this->buscar_total_subhabilidad("COMPROBACIÓN DE HIPÓTESIS") + $this->buscar_total_subhabilidad("USO DE PROBABILIDAD E INCERTIDUMBRE"),
+                    "nivel_abductiva" => $this->calcularNivel($this->buscar_total_subhabilidad("COMPROBACIÓN DE HIPÓTESIS") + $this->buscar_total_subhabilidad("USO DE PROBABILIDAD E INCERTIDUMBRE"), 'abductivo')
                 ]
             ],
             "macrohabilidad_deductivo_y_verbal" => [
                 [
                     "identificacion_analogia" => $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE FALLO POR ANALOGÍA"),
                     "identificacion_por_fallo_vaguedad" => $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE FALLO POR VAGUEDAD"),
-                    "total" => $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE FALLO POR ANALOGÍA") + $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE FALLO POR VAGUEDAD"),
+                    "total_deductivo_y_verbal" => $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE FALLO POR ANALOGÍA") + $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE FALLO POR VAGUEDAD"),
+                    "nivel_deductivo_y_verbal" => $this->calcularNivel($this->buscar_total_subhabilidad("IDENTIFICACIÓN DE FALLO POR ANALOGÍA") + $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE FALLO POR VAGUEDAD"), 'deductivo')
                 ]
             ],
             "macrohabilidad_analisis_de_argumentos" => [
@@ -234,7 +312,9 @@ class ReportesController extends Controller
                     "identificacion_estructura_argumentativa" => $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE ESTRUCTURA ARGUMENTATIVA"),
                     "identificacion_de_suposicion" => $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE SUPOSICIÓN"),
                     "identificacion_de_falacia" => $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE FALACIA"),
-                    "total" => $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE ESTRUCTURA ARGUMENTATIVA") + $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE SUPOSICIÓN") + $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE FALACIA"),
+                    "total_analisis_de_argumentos" => $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE ESTRUCTURA ARGUMENTATIVA") + $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE SUPOSICIÓN") + $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE FALACIA"),
+                    "nivel_analisis_de_argumentos" => $this->calcularNivel($this->buscar_total_subhabilidad("IDENTIFICACIÓN DE ESTRUCTURA ARGUMENTATIVA") + $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE SUPOSICIÓN") + $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE FALACIA"), 'analisis_argumentos')
+
                 ]
             ],
             "macrohabilidad_toma_desiciones_y_resolucion_problemas" => [
@@ -243,18 +323,21 @@ class ReportesController extends Controller
                     "conciencia_situacion_acciones_razonables" => $this->buscar_total_subhabilidad("CONCIENCIA DE SITUACIÓN Y ACCIONES RAZONABLES"),
                     "pensamiento_estrategico" => $this->buscar_total_subhabilidad("PENSAMIENTO ESTRATÉGICO"),
                     "pensamiento_creativo" => $this->buscar_total_subhabilidad("PENSAMIENTO CREATIVO"),
+                    "total_toma_desiciones_y_resolucion_problemas" => $this->buscar_total_subhabilidad("TOMA DE DECISIONES INFORMADAS") + $this->buscar_total_subhabilidad("CONCIENCIA DE SITUACIÓN Y ACCIONES RAZONABLES") + $this->buscar_total_subhabilidad("PENSAMIENTO ESTRATÉGICO") + $this->buscar_total_subhabilidad("PENSAMIENTO CREATIVO"),
+                    "nivel_toma_desiciones_y_resolucion_problemas" => $this->calcularNivel($this->buscar_total_subhabilidad("TOMA DE DECISIONES INFORMADAS") + $this->buscar_total_subhabilidad("CONCIENCIA DE SITUACIÓN Y ACCIONES RAZONABLES") + $this->buscar_total_subhabilidad("PENSAMIENTO ESTRATÉGICO") + $this->buscar_total_subhabilidad("PENSAMIENTO CREATIVO"), 'toma_decisiones')
                 ],
-                "metacognicion_conocimiento_procedimental" => [
-                    [
-                        "conocimiento_procedimental" => $categorias['conocimiento_procedimental'],
-                        "depuracion" => $categorias['depuracion'],
-                        "evaluacion" => $categorias['evaluacion'],
-                        "monitoreo" => $categorias['monitoreo'],
-                        "organizacion" => $categorias['organizacion'],
-                        "planificacion" => $categorias['planificacion'],
-                        "total" =>  $categorias['conocimiento_procedimental'] + $categorias['depuracion'] + $categorias['evaluacion'] + $categorias['monitoreo'] + $categorias['organizacion'] + $categorias['planificacion']
-                    ]
-                ],
+
+            ],
+            "metacognicion_conocimiento_procedimental" => [
+                [
+                    "conocimiento_procedimental" => $categorias['conocimiento_procedimental'],
+                    "depuracion" => $categorias['depuracion'],
+                    "evaluacion" => $categorias['evaluacion'],
+                    "monitoreo" => $categorias['monitoreo'],
+                    "organizacion" => $categorias['organizacion'],
+                    "planificacion" => $categorias['planificacion'],
+                    "total_conocimiento_procedimental" =>  $categorias['conocimiento_procedimental'] + $categorias['depuracion'] + $categorias['evaluacion'] + $categorias['monitoreo'] + $categorias['organizacion'] + $categorias['planificacion']
+                ]
             ],
         ];
 

@@ -1228,7 +1228,7 @@ class CriteriosSeeders extends Seeder
             //Item 58
             [
                 'id_criterio' => 26,
-                'id_pregunta' => 106,
+                'id_pregunta' => 114,
                 'texto' => 'Las alternativas de solución no son distintas a las dadas en el anterior ítem = 0 puntos.
                 Las alternativas de solución son distintas a las del ítem anterior, pero sólo atiende un problema = 1 punto 
                 Las alternativas son distintas a las alternativas de solución del ítem anterior, pero responden parcialmente a los dos problemas presentados = 2 puntos
@@ -1279,7 +1279,7 @@ class CriteriosSeeders extends Seeder
             //Item 60
             [
                 'id_criterio' => 27,
-                'id_pregunta' => 108,
+                'id_pregunta' => 121,
                 'texto' => 'La creación no contiene alternativas de solución distintas a las dadas en el anterior ítem, o no son soluciones directas = 0 puntos.
                 La creación es distinta a las alternativas de solución del ítem anterior, pero sólo atiende un problema = 1 punto 
                 La creación es distinta a las alternativas de solución del ítem anterior, pero las alternativas responden parcialmente a los dos problemas presentados = 2 puntos
