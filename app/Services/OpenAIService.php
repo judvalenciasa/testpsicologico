@@ -29,7 +29,7 @@ class OpenAIService
                     'Content-Type' => 'application/json',
                 ],
                 'json' => [
-                    'model' => 'gpt-4o-mini-2024-07-18',
+                    'model' => 'gpt-4o',
                     'messages' => [
                         [
                             'role' => 'system',

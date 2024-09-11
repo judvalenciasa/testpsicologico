@@ -11,6 +11,7 @@ class opcionessubpreguntas extends Model
 
     // Definir la tabla relacionada
     protected $table = 'opcionessubpreguntas';
+    protected $primaryKey = 'id_opcionessubpregunta';
 
     // Definir los campos que pueden ser asignados masivamente
     protected $fillable = ['id_subpregunta', 'texto', 'valor_opcion'];
