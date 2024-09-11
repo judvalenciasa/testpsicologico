@@ -82,12 +82,12 @@ class TestsController extends Controller
         
         $user = Auth::user();
         
+
+
         // Verificar si es la primera vez que se carga la página o si ya se han enviado respuestas
         if (!$request->has('pregunta_ids')) {
             
             $hora_inicio_prueba = Carbon::now();
-            Log::info("cronometro inicio". $hora_inicio_prueba);
-            
             session(['hora_inicio_prueba' => $hora_inicio_prueba]);
 
             // Primera carga de la página: cargar las primeras preguntas
@@ -114,9 +114,10 @@ class TestsController extends Controller
                 // Obtener el tipo de pregunta
                 $tipo_pregunta = Preguntas::where('id_pregunta', $pregunta_id)->pluck('tipo_pregunta')->first();
 
+                Log::info($request);
                 // Procesar preguntas abiertas
-                if ($tipo_pregunta == 'abierta' && $request->has('respuestas_abiertas' . $pregunta_id)) {
-                    $respuesta_abierta = $request->input('respuestas_abiertas.' . $pregunta_id);
+                if ($tipo_pregunta == 'abierta' && $request->has('respuestas_abiertas')) {
+                    $respuesta_abierta = $request->input('respuestas_abiertas.');
 
                     if (!is_string($respuesta_abierta) || empty(trim($respuesta_abierta))) {
                         return redirect()->back()->with('error', 'Por favor ingrese una respuesta válida.');
@@ -146,8 +147,8 @@ class TestsController extends Controller
                 }
 
                 // Procesar preguntas cerradas
-                if ($tipo_pregunta == 'cerrada' && $request->has('respuestas_cerrada' . $pregunta_id)) {
-                    $respuesta_cerrada = $request->input('respuestas_cerrada.' . $pregunta_id);
+                if ($tipo_pregunta == 'cerrada' && $request->has('respuestas_cerrada')) {
+                    $respuesta_cerrada = $request->input('respuestas_cerrada.');
 
                     $opcionSeleccionada = DB::table('opciones')
                         ->where('id_pregunta', $pregunta_id)

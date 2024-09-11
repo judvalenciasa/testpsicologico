@@ -57,6 +57,6 @@ class Preguntas extends Model
 
     public function criterios()
     {
-        return $this->hasMany(Criterio::class, 'id_pregunta', 'id_pregunta');
+        return $this->hasMany(Criterios::class, 'id_pregunta', 'id_pregunta');
     }
 }
