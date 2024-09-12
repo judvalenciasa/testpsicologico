@@ -78,9 +78,9 @@
                 @endforeach
 
                 <input type="hidden" name="prueba_id" value="{{ $prueba_id }}">
-                <input type="hidden" name="pregunta_index" value="{{ $pregunta_index + 2 }}">
+                <input type="hidden" name="contexto_index" value="{{ $contexto_index + 1 }}">
 
-                @if($pregunta_index + 2 < $total_preguntas)
+                @if($contexto_index + 1 < $total_contextos)
                     <button type="submit">Siguiente</button>
                     @else
                     <button class="send_btn" type="submit">Continuar con encuesta de metacognición</button>

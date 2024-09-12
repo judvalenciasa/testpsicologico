@@ -97,7 +97,32 @@ class TestsController extends Controller
             // Primera carga de la página: cargar las primeras preguntas
             $prueba_id = $request->input('prueba_id');
 
-            // Cargar las primeras preguntas
+            // Obtener los contextos y preguntas asociadas a la prueba
+            $contextos = Contexto::with('preguntas')->get();
+
+            // Definir los índices según el orden que deseas (pares primero, impares después)
+            $indices = [2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25, 27, 29, 30];
+
+            $contextos_ordenados = [];
+
+            // Ordenar los contextos de acuerdo a los índices dados
+            foreach ($indices as $indice) {
+                // Utilizar la función `firstWhere` para hacer coincidir el contexto según el id_contexto
+                $contexto_encontrado = $contextos->firstWhere('id_contexto', $indice);
+
+                if ($contexto_encontrado) {
+                    array_push($contextos_ordenados, $contexto_encontrado);
+                }
+            }
+
+            $contexto_index = 0;
+            $total_contextos = count($contextos_ordenados);
+            $preguntas = $contextos_ordenados[$contexto_index]->preguntas;
+
+            session(['contextos_ordenados' => $contextos_ordenados]);
+
+
+            /* // Cargar las primeras preguntas
             $pregunta_index = 0;
             $preguntas = Preguntas::with('opciones', 'subpreguntas.opciones')
                 ->where('id_prueba', $prueba_id)
@@ -106,8 +131,9 @@ class TestsController extends Controller
                 ->get();
 
             // Mostrar las preguntas en la vista
-            $total_preguntas = Preguntas::where('id_prueba', $prueba_id)->count();
-            return view('private.prueba_page', compact('preguntas', 'pregunta_index', 'total_preguntas', 'prueba_id'));
+            $total_preguntas = Preguntas::where('id_prueba', $prueba_id)->count(); */
+
+            return view('private.prueba_page', compact('preguntas', 'contexto_index', 'total_contextos', 'prueba_id'));
         }
 
         // Si ya se han enviado respuestas, procesar las preguntas
@@ -123,10 +149,7 @@ class TestsController extends Controller
                 // Procesar preguntas cerradas
                 if ($tipo_pregunta == 'cerrada' && $request->has('respuestas_cerrada')) {
 
-
                     $respuesta_cerrada = $request->input('respuestas_cerrada');
-
-
 
                     $opcionSeleccionada = DB::table('opciones')
                         ->where('id_pregunta', $pregunta_id)
@@ -161,7 +184,6 @@ class TestsController extends Controller
                     //buscar opcion por id
                     //$opcion = Opciones::find($opcion_seleccionada)->pluck('texto');
                     $opcion = Opciones::find($opcion_seleccionada);
-
 
                     if ($opcion->valor_opcion == 0) {
                         $respuesta_chatgpt = 0;
@@ -260,7 +282,7 @@ class TestsController extends Controller
                         $respuesta_cerrada = $request->input('respuestas_cerrada');
 
                         $respuestas_cerradas_indexadas = array_values($respuestas_cerradas);
-                        
+
 
 
                         // Verificar que la respuesta sea válida
@@ -330,11 +352,11 @@ class TestsController extends Controller
 
         // Lógica para cargar las siguientes preguntas o finalizar la prueba
         $prueba_id = $request->input('prueba_id');
-        $pregunta_index = $request->input('pregunta_index', 0);
+        $contexto_index = $request->input('contexto_index', 0);
 
         // Verificar si ya no hay más preguntas por responder
-        $total_preguntas = Preguntas::where('id_prueba', $prueba_id)->count();
-        if ($pregunta_index >= $total_preguntas) {
+        $total_contextos = Contexto::count();
+        if ($contexto_index >= $total_contextos) {
             $hora_final_prueba = Carbon::now();
             $hora_inicio_prueba = session('hora_inicio_prueba');
             $tiempo_prueba = $tiempo_prueba = $hora_final_prueba->diffInSeconds($hora_inicio_prueba);
@@ -342,13 +364,19 @@ class TestsController extends Controller
             return $this->metacognicion($tiempo_prueba);
         }
 
-        // Cargar las siguientes preguntas
+        //cargo los contextos ordenados desde session
+        $contextos_ordenados = session('contextos_ordenados');
+
+        //envio el contexto en la posicion contexto_index
+        $preguntas = $contextos_ordenados[$contexto_index]->preguntas;
+
+        /*  // Cargar las siguientes preguntas
         $preguntas = Preguntas::with('opciones', 'subpreguntas.opciones')
             ->where('id_prueba', $prueba_id)
             ->skip($pregunta_index)
             ->take(2)
-            ->get();
+            ->get(); */
 
-        return view('private.prueba_page', compact('preguntas', 'pregunta_index', 'total_preguntas', 'prueba_id'));
+        return view('private.prueba_page', compact('preguntas', 'contexto_index', 'total_contextos', 'prueba_id'));
     }
 }
