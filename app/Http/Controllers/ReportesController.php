@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Preguntas;
 use App\Models\Reportes;
 use App\Models\Respuestas;
 use App\Models\Subhabilidad;
@@ -195,7 +196,7 @@ class ReportesController extends Controller
             'id_usuario' => $user->id_usuario,
             'calificacion_total' => $this->sumar_puntaje_total(),
             'calificacion_metacognicion' => $calificacion_metacognicion,
-            'fecha_calificacion' =>  Carbon::now(),
+            'fecha_calificacion' => Carbon::now(),
 
             'documento_identificacion' => $user->documento_identificacion,
             'edad' => $user->edad,
@@ -336,17 +337,105 @@ class ReportesController extends Controller
                     "monitoreo" => $categorias['monitoreo'],
                     "organizacion" => $categorias['organizacion'],
                     "planificacion" => $categorias['planificacion'],
-                    "total_conocimiento_procedimental" =>  $categorias['conocimiento_procedimental'] + $categorias['depuracion'] + $categorias['evaluacion'] + $categorias['monitoreo'] + $categorias['organizacion'] + $categorias['planificacion']
+                    "total_conocimiento_procedimental" => $categorias['conocimiento_procedimental'] + $categorias['depuracion'] + $categorias['evaluacion'] + $categorias['monitoreo'] + $categorias['organizacion'] + $categorias['planificacion']
                 ]
             ],
         ];
 
+        $consulta_informe = $this->consultar_informe();
+        $this->crear_informe_descriptivo($user, $consulta_informe);
+        //$this->crear_informe_revisor($user, $consulta_informe);
+
 
         $tiempoTotal = $request->input('tiempo_total');
-        Log::info('totalSubpreguntas: ' . $tiempoTotal);
+        // dd($consulta_informe);
+        // dd($consulta_informe[0]['habilidad']);
+
+       /*
+        foreach ($consulta_informe as $calificacion) {
+            log::info($calificacion->habilidad);
+        }
+*/
+
+
+
 
         return view('reporte.index', compact('respuesta'));
     }
+
+    /**
+     * Realiza la consulta para traer Contexto, Habilidad, Subhabilidad, texto_pregunta, calificacion, respuesta y calificacion de una pregunta.
+     * Devuelve todas las preguntas con los encabezados descritos anteriormente 
+     */
+    public function consultar_informe()
+    {
+        $consulta_informe = Preguntas::with(['subhabilidad.habilidad', 'contexto', 'respuestas'])
+            ->get()
+            ->map(function ($pregunta) {
+                return [
+                    'habilidad' => $pregunta->subhabilidad->habilidad->nombre,
+                    'subhabilidad' => $pregunta->subhabilidad->nombre,
+                    'contexto' => $pregunta->contexto ? $pregunta->contexto->texto : null, // Texto del contexto
+                    'id_pregunta' => $pregunta->id_pregunta,
+                    'texto_pregunta' => $pregunta->texto,
+                    'respuestas_texto' => $pregunta->respuestas->pluck('respuesta'),
+                    'calificacion' => $pregunta->respuestas->avg('calificacion_respuesta'), // Promedio de la calificación de las respuestas
+                ];
+            });
+
+        return $consulta_informe;
+    }
+
+    /**
+     * Display a listing of the resource.
+     */
+    public function identificar_descriptor($pregunta, $calificacion)
+    {
+
+        
+
+
+
+        return "retorno descirptor_prueba";
+    }
+
+
+    /**
+     * Display a listing of the resource.
+     */
+    public function crear_informe_revisor($user, $consulta_informe)
+    {
+        return "prueba";
+    }
+
+
+    /**
+     * Display a listing of the resource.
+     */
+    public function crear_informe_descriptivo($user, $consulta_informe)
+    {
+        $pregunta = "";
+        $documentos_totales = [];
+        //de esta manera se accede
+        //dd($resultados[0]['calificacion']);
+        foreach ($consulta_informe as $pregunta) {
+            $nombre_pregunta = "pregunta_" . $pregunta['id_pregunta'];
+
+            $documento = [
+                $nombre_pregunta => [
+                    "Contexto y habilidad" => $pregunta['habilidad'],
+                    "Ejercicio mental/subhabilidad" => $pregunta['subhabilidad'],
+                    "puntuación" => $pregunta['calificacion'],
+                    "descriptivo" => $this->identificar_descriptor($pregunta['id_pregunta'], $pregunta['calificacion']),
+                ],
+            ];
+            $documentos_totales[$nombre_pregunta] =  $documento;
+        }
+
+        dd($documentos_totales);
+    }
+
+
 
 
 

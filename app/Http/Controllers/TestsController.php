@@ -84,14 +84,14 @@ class TestsController extends Controller
         $user = Auth::user();
 
         Log::info($request);
+        
+
 
         // Verificar si es la primera vez que se carga la página o si ya se han enviado respuestas
         if (!$request->has('pregunta_ids')) {
 
 
             $hora_inicio_prueba = Carbon::now();
-            Log::info("cronometro inicio" . $hora_inicio_prueba);
-
             session(['hora_inicio_prueba' => $hora_inicio_prueba]);
 
             // Primera carga de la página: cargar las primeras preguntas

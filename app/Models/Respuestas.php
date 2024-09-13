@@ -28,4 +28,5 @@ class Respuestas extends Model
     {
         return $this->belongsTo(Preguntas::class, 'id_pregunta');
     }
+
 }

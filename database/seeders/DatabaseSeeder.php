@@ -26,11 +26,15 @@ class DatabaseSeeder extends Seeder
         
         
         $this->call(UserSeeder::class);
+        
         $this->call(RespuestasSeeder::class);
+        $this->call(DescriptivosSeeder::class);
         $this->call(CriteriosSeeders::class);
 
         $this->call(SubpreguntasSeeder::class);
         $this->call(Opcionessubpreguntas::class);
         $this->call(subcriteriosSeeders::class);
+
+        
     }
 }
