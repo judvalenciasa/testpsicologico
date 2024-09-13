@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Descriptivos;
 use App\Models\Preguntas;
 use App\Models\Reportes;
 use App\Models\Respuestas;
@@ -26,7 +27,7 @@ class ReportesController extends Controller
         Reportes::create([
 
             'id_usuario' => $user->id_usuario,
-            'calificacion_total' => $this->sumar_puntaje_total(),
+            'calificacion_total' => 0,
             'calificacion_metacognicion' => 0,
             'fecha_calificacion' => Carbon::now(),
 
@@ -176,7 +177,7 @@ class ReportesController extends Controller
 
         $consulta_informe = $this->consultar_informe($user->id_usuario);
         $informe_final = $this->crear_informe_descriptivo($consulta_informe, $categorias);
-  
+
         //Esto es lo que debería restornar
         return view('reporte.index', compact('respuesta'));
     }
@@ -303,21 +304,6 @@ class ReportesController extends Controller
         return view('reporte.reporte_detalle', compact('reporte'));
     }
 
-
-    /**
-     * Display a listing of the resource.
-     */
-    public function sumar_puntaje_total()
-    {
-
-        $total_puntaje = $this->buscar_total_subhabilidad("INDUCCIÓN GENERAL") + $this->buscar_total_subhabilidad("INDUCCIÓN ESPECÍFICA") +
-            $this->buscar_total_subhabilidad("COMPROBACIÓN DE HIPÓTESIS") + $this->buscar_total_subhabilidad("USO DE PROBABILIDAD E INCERTIDUMBRE") +
-            $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE FALLO POR ANALOGÍA") + $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE FALLO POR VAGUEDAD") +
-            $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE ESTRUCTURA ARGUMENTATIVA") + $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE SUPOSICIÓN") + $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE FALACIA") +
-            $this->buscar_total_subhabilidad("TOMA DE DECISIONES INFORMADAS") + $this->buscar_total_subhabilidad("CONCIENCIA DE SITUACIÓN Y ACCIONES RAZONABLES") + $this->buscar_total_subhabilidad("PENSAMIENTO ESTRATÉGICO") + $this->buscar_total_subhabilidad("PENSAMIENTO CREATIVO");
-
-        return $total_puntaje;
-    }
     /**
      * Display a listing of the resource.
      */
@@ -339,10 +325,6 @@ class ReportesController extends Controller
 
         return $total_Calificacion_induccion_general;
     }
-
-
-
-
 
 
     /**
@@ -386,8 +368,6 @@ class ReportesController extends Controller
     public function crear_informe_descriptivo($consulta_informe, $categorias)
     {
 
-         dd($categorias);
-
         $pregunta = "";
         foreach ($consulta_informe as $pregunta) {
             $nombre_pregunta = "pregunta_" . $pregunta['id_pregunta'];
@@ -417,39 +397,23 @@ class ReportesController extends Controller
             ]
         ];
 
-
+        dd($documentos_totales);
         return $documentos_totales;
-        
+
     }
 
     /**
      * Display a listing of the resource.
      */
-    public function identificar_descriptor($pregunta, $calificacion)
+    public function identificar_descriptor($id_pregunta, $calificacion)
     {
+        $textoDescriptivo = Descriptivos::where('id_pregunta', $id_pregunta)
+            ->where('calificacion', $calificacion)
+            ->value('texto_descriptivo');
 
-
-
-
-
-        return "retorno descirptor_prueba";
+        // Devolvemos el texto descriptivo o un mensaje si no se encuentra
+        return $textoDescriptivo ?: 'No se encontró un texto descriptivo para esta pregunta y calificación';
     }
-
-
-    /**
-     * Display a listing of the resource.
-     */
-    public function crear_informe_revisor($user, $consulta_informe)
-    {
-        return "prueba";
-    }
-
-
-
-
-
-
-
 
     /**
      * Display a listing of the resource.
