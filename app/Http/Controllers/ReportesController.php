@@ -415,61 +415,30 @@ class ReportesController extends Controller
         return $textoDescriptivo ?: 'No se encontró un texto descriptivo para esta pregunta y calificación';
     }
 
+    
+
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function ver_respuestas_admin(Request $request)
     {
-        //
-    }
+        $informe = $this->consultar_informe($request->id_usuario);
 
+        $informe = array_map(function ($item) {
+            return [
+                'habilidad' => $item['habilidad'],
+                'subhabilidad' => $item['subhabilidad'],
+                'contexto' => $item['contexto'],
+                'id_pregunta' => $item['id_pregunta'],
+                'texto_pregunta' => $item['texto_pregunta'],
+                'respuestas_texto' => implode(', ', $item['respuestas_texto']), // Combinar respuestas en una cadena
+                'calificacion' => $item['calificacion'],
+            ];
+        }, $informe);
+      
+        //dd($informe[0]['habilidad']);
+        //dd($informe);
+        return view('reporte.reporte_revisor', compact('informe'));
 
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Reportes $reportes)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Reportes $reportes)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Reportes $reportes)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Reportes $reportes)
-    {
-        //
     }
 }
