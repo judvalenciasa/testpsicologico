@@ -16,9 +16,6 @@
     gap: 1vw;
 }
 
-.tablas_ctn:nth-child(odd) {
-    background-color: #f90000;
-}
 
 .table {
     width: 100%;

@@ -11,18 +11,14 @@ class RespuestasController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function registrar_respuesta_test(Request $request)
+    public function guardarRespuesta(Request $request, $user, $pregunta_id, $respuestas, $respuesta_chatgpt)
     {
 
-
-        $contador = 0;
-        foreach ($request->all() as $key => $value) {
-            
-            print_r($key);
-        }
-    
-     
-        return $contador;
+        // Guardar o actualizar la respuesta
+        Respuestas::updateOrCreate(
+            ['id_usuario' => $user->id_usuario, 'id_pregunta' => $pregunta_id],
+            ['respuesta' => $respuestas, 'calificacion_respuesta' => $respuesta_chatgpt]
+        );
     }
 
     /**

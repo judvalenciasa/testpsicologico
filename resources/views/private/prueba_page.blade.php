@@ -40,7 +40,7 @@
                 @foreach($pregunta_actual->opciones as $opcion)
                 <div class="opcion">
                     <label>
-                        <input type="radio" name="respuestas_cerrada[{{ $pregunta_actual->id_pregunta }}]" value="{{ $opcion->id_opcion }}">
+                        <input type="radio" name="respuestas_cerradas[{{ $pregunta_actual->id_pregunta }}]" value="{{ $opcion->id_opcion }}">
                         <p>{{ $opcion->texto }}</p>
                     </label>
                 </div>
@@ -63,7 +63,7 @@
                     @foreach($subpregunta->opciones as $opcion)
                     <div class="opcion">
                         <label>
-                            <input type="radio" name="respuestas_cerrada[{{ $subpregunta->id_subpregunta }}]" value="{{ $opcion->id_opcionessubpregunta }}">
+                            <input type="radio" name="respuestas_cerradas[{{ $subpregunta->id_subpregunta }}]" value="{{ $opcion->id_opcionessubpregunta }}">
                             <p>{{ $opcion->texto }}</p>
                         </label>
                     </div>
@@ -78,9 +78,9 @@
                 @endforeach
 
                 <input type="hidden" name="prueba_id" value="{{ $prueba_id }}">
-                <input type="hidden" name="pregunta_index" value="{{ $pregunta_index + 2 }}">
+                <input type="hidden" name="contexto_index" value="{{ $contexto_index + 1 }}">
 
-                @if($pregunta_index + 2 < $total_preguntas)
+                @if($contexto_index + 1 < $total_contextos)
                     <button type="submit">Siguiente</button>
                     @else
                     <button class="send_btn" type="submit">Continuar con encuesta de metacognición</button>
