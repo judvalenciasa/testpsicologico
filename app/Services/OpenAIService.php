@@ -29,11 +29,12 @@ class OpenAIService
                     'Content-Type' => 'application/json',
                 ],
                 'json' => [
-                    'model' => 'gpt-4o',
+                    'model' => 'gpt-4',
+                    'temperature' => 0.2, // Ajuste para menos creatividad
                     'messages' => [
                         [
                             'role' => 'system',
-                            'content' => 'Eres un psicólogo profesional. Tu objetivo es ayudar al usuario a enfrentar sus desafíos personales y ofrecer respuestas reflexivas y empáticas basadas en principios psicológicos.',
+                            'content' => 'Eres un evaluador objetivo. Responde solo con el número de la calificación, sin ninguna otra información.',
                         ],
                         [
                             'role' => 'user',
@@ -44,6 +45,7 @@ class OpenAIService
             ]);
 
             $body = json_decode($response->getBody(), true);
+            Log::info('Respuesta de ChatGPT: ' . json_encode($body));
 
             return $body['choices'][0]['message']['content'] ?? '';
         } catch (\Exception $e) {

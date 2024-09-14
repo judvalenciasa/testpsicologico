@@ -40,7 +40,7 @@
                 @foreach($pregunta_actual->opciones as $opcion)
                 <div class="opcion">
                     <label>
-                        <input type="radio" name="respuestas_cerrada[{{ $pregunta_actual->id_pregunta }}]" value="{{ $opcion->id_opcion }}">
+                        <input type="radio" name="respuestas_cerradas[{{ $pregunta_actual->id_pregunta }}]" value="{{ $opcion->id_opcion }}">
                         <p>{{ $opcion->texto }}</p>
                     </label>
                 </div>
@@ -63,7 +63,7 @@
                     @foreach($subpregunta->opciones as $opcion)
                     <div class="opcion">
                         <label>
-                            <input type="radio" name="respuestas_cerrada[{{ $subpregunta->id_subpregunta }}]" value="{{ $opcion->id_opcionessubpregunta }}">
+                            <input type="radio" name="respuestas_cerradas[{{ $subpregunta->id_subpregunta }}]" value="{{ $opcion->id_opcionessubpregunta }}">
                             <p>{{ $opcion->texto }}</p>
                         </label>
                     </div>
