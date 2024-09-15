@@ -1057,69 +1057,14 @@ Para cada una de las siguientes afirmaciones, indica si se trata de una opinión
                 'tipo_pregunta' => 'abierta'
             ],
 
-            //Item 57.1
+            //Item 57
             [
                 'id_pregunta' => 105,
                 'id_prueba' => 1,
                 'id_contexto' => 29,
                 'id_subhabilidad' => 13,
                 'id_categoria' => 2,
-                'texto' => 'Escoge la alternativa de solución que mejor se complementa para la alternativa: decorar la habitación con mensajes alusivos al triunfo. ',
-                'tipo_pregunta' => 'cerrada'
-            ],
-
-            //Item 57.2
-            [
-                'id_pregunta' => 109,
-                'id_prueba' => 1,
-                'id_contexto' => 29,
-                'id_subhabilidad' => 13,
-                'id_categoria' => 2,
-                'texto' => 'Escoge la alternativa de solución que mejor se complementa para la alternativa: Investigar los casos de éxito de algunas agrupaciones que atravesaron por situaciones similares y lograron triunfar.',
-                'tipo_pregunta' => 'cerrada'
-            ],
-
-            //Item 57.3
-            [
-                'id_pregunta' => 110,
-                'id_prueba' => 1,
-                'id_contexto' => 29,
-                'id_subhabilidad' => 13,
-                'id_categoria' => 2,
-                'texto' => 'Escoge la alternativa de solución que mejor se complementa para la alternativa: Descartar la participación en el certamen de cualquiera que se queje de la situación.',
-                'tipo_pregunta' => 'cerrada'
-            ],
-
-            //Item 57.4
-            [
-                'id_pregunta' => 111,
-                'id_prueba' => 1,
-                'id_contexto' => 29,
-                'id_subhabilidad' => 13,
-                'id_categoria' => 2,
-                'texto' => 'Escoge la alternativa de solución que mejor se complementa para la alternativa: Dialogar con el grupo, encontrar los motivos por los cuales pueden ganar, y las formas de contrarrestar el virus y el agotamiento.',
-                'tipo_pregunta' => 'cerrada'
-            ],
-
-            //Item 57.5
-            [
-                'id_pregunta' => 112,
-                'id_prueba' => 1,
-                'id_contexto' => 29,
-                'id_subhabilidad' => 13,
-                'id_categoria' => 2,
-                'texto' => 'Escoge la alternativa de solución que mejor se complementa para la alternativa: Limitar las salidas en la noche y poner música relajante.',
-                'tipo_pregunta' => 'cerrada'
-            ],
-
-            //Item 57.6
-            [
-                'id_pregunta' => 113,
-                'id_prueba' => 1,
-                'id_contexto' => 29,
-                'id_subhabilidad' => 13,
-                'id_categoria' => 2,
-                'texto' => 'Escoge la alternativa de solución que mejor se complementa para la alternativa: Solicitar todo tipo de medicamentos, inyecciones, remedios caseros y vitaminas que fortalezcan el sistema inmune.',
+                'texto' => 'En las siguientes dos columnas se encuentran alternativas de solución al problema de la propagación del virus (Columna A) y del decaimiento del ánimo del grupo (Columna B), selecciona la mejor combinación de soluciones con la cual ayudarás a resolver los dos problemas; para determinar esa mejor combinación de soluciones debes marcar la mejor alternativa de solución de cada una de las dos columnas (A y B). Columna A : 1. Decorar la habitación con mensajes alusivos al triunfo. 2 Investigar los casos de éxito de algunas agrupaciones que atravesaron por situaciones similares y lograron triunfar. 3. Descartar la participación en el certamen de cualquiera que se queje de la situación. 4. Dialogar con el grupo, encontrar los motivos por los cuales pueden ganar, y las formas de contrarrestar el virus y el agotamiento. 5. Limitar las salidas en la noche y poner música relajante. 6. Solicitar todo tipo de medicamentos, inyecciones, remedios caseros y vitaminas que fortalezcan el sistema inmune. Columna B: G. Trabajar la mente de los compañeros con discursos fuertes que los haga reaccionar. H. Pedir al Maestro que reemplace a los miembros de la banda que están enfermos. I. Solicitar el doble de ensayos musicales y pedir bebidas energizantes. J. Identificar las cualidades de la banda sinfónica y reflexionarlas con tus compañeros, motivándolos al triunfo.Identificar las cualidades de la banda sinfónica y reflexionarlas con tus compañeros, motivándolos al triunfo. K. Decir a los compañeros que están más desanimados que no contagien de ese ánimo a los demás. L. Resaltar la identidad de la banda y solicitar que se toquen las piezas musicales que caracterizan a la banda para convencer al jurado.',
                 'tipo_pregunta' => 'cerrada'
             ],
 
@@ -1130,73 +1075,18 @@ Para cada una de las siguientes afirmaciones, indica si se trata de una opinión
                 'id_contexto' => 29,
                 'id_subhabilidad' => 13,
                 'id_categoria' => 2,
-                'texto' => 'En no más de 100 palabras crea una alternativa de solución al problema al que se enfrenta el líder de compañeros de la banda sinfónica, distinta a las alternativas de solución que se presentaron en las anteriores dos columnas.  ',
+                'texto' => 'En no más de 100 palabras crea una alternativa de solución al problema de la propagación del virus y crea una alternativa de solución al problema del decaimiento del ánimo del grupo (o sea, crea una nueva combinación de alternativas de solución), distintas a las alternativas de solución que se presentaron en las anteriores dos columnas.',
                 'tipo_pregunta' => 'abierta'
             ],
 
-            //Item 59.1
+            //Item 59
             [
                 'id_pregunta' => 115,
                 'id_prueba' => 1,
                 'id_contexto' => 30,
                 'id_subhabilidad' => 13,
                 'id_categoria' => 2,
-                'texto' => 'Escoge la alternativa de solución que mejor se complementa para la alternativa: Implementar clínicas móviles en comunidades rurales para ofrecer atención médica básica y emergencias.',
-                'tipo_pregunta' => 'cerrada'
-            ],
-
-            //Item 59.2
-            [
-                'id_pregunta' => 116,
-                'id_prueba' => 1,
-                'id_contexto' => 30,
-                'id_subhabilidad' => 13,
-                'id_categoria' => 2,
-                'texto' => 'Escoge la alternativa de solución que mejor se complementa para la alternativa: Lanzar una campaña en redes sociales sobre la importancia de una vida saludable.',
-                'tipo_pregunta' => 'cerrada'
-            ],
-
-            //Item 59.3
-            [
-                'id_pregunta' => 117,
-                'id_prueba' => 1,
-                'id_contexto' => 30,
-                'id_subhabilidad' => 13,
-                'id_categoria' => 2,
-                'texto' => 'Escoge la alternativa de solución que mejor se complementa para la alternativa: Proveer capacitación básica en primeros auxilios a voluntarios comunitarios.',
-                'tipo_pregunta' => 'cerrada'
-            ],
-
-            //Item 59.4
-            [
-                'id_pregunta' => 118,
-                'id_prueba' => 1,
-                'id_contexto' => 30,
-                'id_subhabilidad' => 13,
-                'id_categoria' => 2,
-                'texto' => 'Escoge la alternativa de solución que mejor se complementa para la alternativa: Repartir folletos sobre higiene personal en mercados locales.',
-                'tipo_pregunta' => 'cerrada'
-            ],
-
-            //Item 59.5
-            [
-                'id_pregunta' => 119,
-                'id_prueba' => 1,
-                'id_contexto' => 30,
-                'id_subhabilidad' => 13,
-                'id_categoria' => 2,
-                'texto' => 'Escoge la alternativa de solución que mejor se complementa para la alternativa: Proponer una reducción en el horario laboral de los trabajadores de la salud para evitar el agotamiento.',
-                'tipo_pregunta' => 'cerrada'
-            ],
-
-            //Item 59.6
-            [
-                'id_pregunta' => 120,
-                'id_prueba' => 1,
-                'id_contexto' => 30,
-                'id_subhabilidad' => 13,
-                'id_categoria' => 2,
-                'texto' => 'Escoge la alternativa de solución que mejor se complementa para la alternativa: Construir un nuevo hospital en la periferia de la ciudad con una planificación deficiente de transporte.',
+                'texto' => 'En las siguientes dos columnas se encuentran alternativas de solución al problema de acceso al servicio de salud (Columna A) y a la mala calidad del aire (Columna B), selecciona la mejor combinación de soluciones con la cual ayudarás a resolver los dos problemas; para determinar esa mejor combinación de soluciones debes marcar la mejor alternativa de solución de cada una de las dos columnas (A y B). Columna A:  1. 1.	Implementar clínicas móviles en comunidades rurales para ofrecer atención médica básica y emergencias. 2. 2.	Lanzar una campaña en redes sociales sobre la importancia de una vida saludable. 3. 3.	Proveer capacitación básica en primeros auxilios a voluntarios comunitarios. 4. 4.	Repartir folletos sobre higiene personal en mercados locales. 5. 5.	Proponer una reducción en el horario laboral de los trabajadores de la salud para evitar el agotamiento. 6. 6.	Construir un nuevo hospital en la periferia de la ciudad con una planificación deficiente de transporte. Columna B: A.  Implementar un sistema de transporte público eléctrico y bicicletas compartidas para reducir las emisiones de vehículos. B. Organizar un concurso de dibujos para estudiantes sobre la contaminación del aire. C. Establecer un programa de monitoreo del aire y reforestación en áreas urbanas para identificar focos de contaminación y mejorar la calidad del aire. D. Distribuir mascarillas en zonas de alta contaminación. E. Fomentar el uso de energías renovables mediante subsidios para paneles solares en hogares. F. Colocar carteles informativos sobre los peligros de la contaminación del aire en lugares públicos.',
                 'tipo_pregunta' => 'cerrada'
             ],
 
@@ -1207,7 +1097,7 @@ Para cada una de las siguientes afirmaciones, indica si se trata de una opinión
                 'id_contexto' => 30,
                 'id_subhabilidad' => 13,
                 'id_categoria' => 2,
-                'texto' => 'En no más de 100 palabras crea una alternativa de solución al problema del acceso al servicio de salud y la mala calidad del aire, distinta a las alternativas de solución que se presentaron en las anteriores dos columnas.',
+                'texto' => 'En no más de 100 palabras crea una alternativa de solución al problema del acceso al servicio de salud y crea una alternativa de solución a la mala calidad del aire (o sea, crea una nueva combinación de alternativas de solución), distintas a las alternativas de solución que se presentaron en las anteriores dos columnas.',
                 'tipo_pregunta' => 'abierta'
             ],
 

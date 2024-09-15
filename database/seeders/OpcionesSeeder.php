@@ -1984,227 +1984,227 @@ class OpcionesSeeder extends Seeder
             [
                 'id_opcion' => 296,
                 'id_pregunta' => 105,
-                'texto' => 'Trabajar la mente de los compañeros con discursos fuertes que los haga reaccionar.',
+                'texto' => '1 – G ',
                 'valor_opcion' => 3
             ],
             [
                 'id_opcion' => 297,
                 'id_pregunta' => 105,
-                'texto' => 'Pedir al Maestro que reemplace a los miembros de la banda que están enfermos.',
+                'texto' => '1 – H ',
                 'valor_opcion' => 3
             ],
             [
                 'id_opcion' => 298,
                 'id_pregunta' => 105,
-                'texto' => 'Solicitar el doble de ensayos musicales y pedir bebidas energizantes.',
+                'texto' => '1 – I',
                 'valor_opcion' => 3
             ],
             [
                 'id_opcion' => 299,
                 'id_pregunta' => 105,
-                'texto' => 'Identificar las cualidades de la banda sinfónica y reflexionarlas con tus compañeros, motivándolos al triunfo.',
+                'texto' => '1 – J ',
                 'valor_opcion' => 4
             ],
             [
                 'id_opcion' => 300,
                 'id_pregunta' => 105,
-                'texto' => 'Decir a los compañeros que están más desanimados que no contagien de ese ánimo a los demás.',
+                'texto' => '1 – K ',
                 'valor_opcion' => 3
             ],
             [
                 'id_opcion' => 301,
                 'id_pregunta' => 105,
-                'texto' => 'Resaltar la identidad de la banda y solicitar que se toquen las piezas musicales que caracterizan a la banda para convencer al jurado.',
+                'texto' => '1 – L ',
                 'valor_opcion' => 4
             ],
 
             //Item 57.2
             [
                 'id_opcion' => 302,
-                'id_pregunta' => 109,
-                'texto' => 'Trabajar la mente de los compañeros con discursos fuertes que los haga reaccionar.',
+                'id_pregunta' => 105,
+                'texto' => '2 - G',
                 'valor_opcion' => 3
             ],
             [
                 'id_opcion' => 303,
-                'id_pregunta' => 109,
-                'texto' => 'Pedir al Maestro que reemplace a los miembros de la banda que están enfermos.',
+                'id_pregunta' => 105,
+                'texto' => '2 - H',
                 'valor_opcion' => 3
             ],
             [
                 'id_opcion' => 304,
-                'id_pregunta' => 109,
-                'texto' => 'Solicitar el doble de ensayos musicales y pedir bebidas energizantes.',
+                'id_pregunta' => 105,
+                'texto' => '2 - I',
                 'valor_opcion' => 3
             ],
             [
                 'id_opcion' => 305,
-                'id_pregunta' => 109,
-                'texto' => 'Identificar las cualidades de la banda sinfónica y reflexionarlas con tus compañeros, motivándolos al triunfo.',
+                'id_pregunta' => 105,
+                'texto' => '2 - J',
                 'valor_opcion' => 5
             ],
             [
                 'id_opcion' => 306,
-                'id_pregunta' => 109,
-                'texto' => 'Decir a los compañeros que están más desanimados que no contagien de ese ánimo a los demás.',
+                'id_pregunta' => 105,
+                'texto' => '2 - K',
                 'valor_opcion' => 3
             ],
             [
                 'id_opcion' => 307,
-                'id_pregunta' => 109,
-                'texto' => 'Resaltar la identidad de la banda y solicitar que se toquen las piezas musicales que caracterizan a la banda para convencer al jurado.',
+                'id_pregunta' => 105,
+                'texto' => '2 - L',
                 'valor_opcion' => 4
             ],
 
             //item 57.3
             [
                 'id_opcion' => 308,
-                'id_pregunta' => 110,
-                'texto' => 'Trabajar la mente de los compañeros con discursos fuertes que los haga reaccionar.',
+                'id_pregunta' => 105,
+                'texto' => '3 - G',
                 'valor_opcion' => 2
             ],
             [
                 'id_opcion' => 309,
-                'id_pregunta' => 110,
-                'texto' => 'Pedir al Maestro que reemplace a los miembros de la banda que están enfermos.',
+                'id_pregunta' => 105,
+                'texto' => '3 - H',
                 'valor_opcion' => 2
             ],
             [
                 'id_opcion' => 310,
-                'id_pregunta' => 110,
-                'texto' => 'Solicitar el doble de ensayos musicales y pedir bebidas energizantes.',
+                'id_pregunta' => 105,
+                'texto' => '3 - I',
                 'valor_opcion' => 2
             ],
             [
                 'id_opcion' => 311,
-                'id_pregunta' => 110,
-                'texto' => 'Identificar las cualidades de la banda sinfónica y reflexionarlas con tus compañeros, motivándolos al triunfo.',
+                'id_pregunta' => 105,
+                'texto' => '3 - J',
                 'valor_opcion' => 2
             ],
             [
                 'id_opcion' => 312,
-                'id_pregunta' => 110,
-                'texto' => 'Decir a los compañeros que están más desanimados que no contagien de ese ánimo a los demás',
+                'id_pregunta' => 105,
+                'texto' => '3 - K',
                 'valor_opcion' => 2
             ],
             [
                 'id_opcion' => 313,
-                'id_pregunta' => 110,
-                'texto' => 'Resaltar la identidad de la banda y solicitar que se toquen las piezas musicales que caracterizan a la banda para convencer al jurado.',
+                'id_pregunta' => 105,
+                'texto' => '2 - L',
                 'valor_opcion' => 3
             ],
 
             //Item 57.4
             [
                 'id_opcion' => 314,
-                'id_pregunta' => 111,
-                'texto' => 'Trabajar la mente de los compañeros con discursos fuertes que los haga reaccionar.',
+                'id_pregunta' => 105,
+                'texto' => '4 - G',
                 'valor_opcion' => 5
             ],
             [
                 'id_opcion' => 315,
-                'id_pregunta' => 111,
-                'texto' => 'Pedir al Maestro que reemplace a los miembros de la banda que están enfermos.',
+                'id_pregunta' => 105,
+                'texto' => '4 - H',
                 'valor_opcion' => 5
             ],
             [
                 'id_opcion' => 316,
-                'id_pregunta' => 111,
-                'texto' => 'Solicitar el doble de ensayos musicales y pedir bebidas energizantes.',
+                'id_pregunta' => 105,
+                'texto' => '4 - I',
                 'valor_opcion' => 5
             ],
             [
                 'id_opcion' => 317,
-                'id_pregunta' => 111,
-                'texto' => 'Identificar las cualidades de la banda sinfónica y reflexionarlas con tus compañeros, motivándolos al triunfo.',
+                'id_pregunta' => 105,
+                'texto' => '4 - J',
                 'valor_opcion' => 7
             ],
             [
                 'id_opcion' => 318,
-                'id_pregunta' => 111,
-                'texto' => 'Decir a los compañeros que están más desanimados que no contagien de ese ánimo a los demás',
+                'id_pregunta' => 105,
+                'texto' => '4 - K',
                 'valor_opcion' => 5
             ],
             [
                 'id_opcion' => 319,
-                'id_pregunta' => 111,
-                'texto' => 'Resaltar la identidad de la banda y solicitar que se toquen las piezas musicales que caracterizan a la banda para convencer al jurado.',
+                'id_pregunta' => 105,
+                'texto' => '4 - L',
                 'valor_opcion' => 6
             ],
 
             //Item 57.5
             [
                 'id_opcion' => 320,
-                'id_pregunta' => 112,
-                'texto' => 'Trabajar la mente de los compañeros con discursos fuertes que los haga reaccionar.',
+                'id_pregunta' => 105,
+                'texto' => '5 - G',
                 'valor_opcion' => 2
             ],
             [
                 'id_opcion' => 321,
-                'id_pregunta' => 112,
-                'texto' => 'Pedir al Maestro que reemplace a los miembros de la banda que están enfermos.',
+                'id_pregunta' => 105,
+                'texto' => '5 - H',
                 'valor_opcion' => 3
             ],
             [
                 'id_opcion' => 322,
-                'id_pregunta' => 112,
-                'texto' => 'Solicitar el doble de ensayos musicales y pedir bebidas energizantes.',
+                'id_pregunta' => 105,
+                'texto' => '5 - I',
                 'valor_opcion' => 2
             ],
             [
                 'id_opcion' => 323,
-                'id_pregunta' => 112,
-                'texto' => 'Identificar las cualidades de la banda sinfónica y reflexionarlas con tus compañeros, motivándolos al triunfo.',
+                'id_pregunta' => 105,
+                'texto' => '5 - J',
                 'valor_opcion' => 5
             ],
             [
                 'id_opcion' => 324,
-                'id_pregunta' => 112,
-                'texto' => 'Decir a los compañeros que están más desanimados que no contagien de ese ánimo a los demás',
+                'id_pregunta' => 105,
+                'texto' => '5 - K',
                 'valor_opcion' => 3
             ],
             [
                 'id_opcion' => 325,
-                'id_pregunta' => 112,
-                'texto' => 'Resaltar la identidad de la banda y solicitar que se toquen las piezas musicales que caracterizan a la banda para convencer al jurado.',
+                'id_pregunta' => 105,
+                'texto' => '5 - L',
                 'valor_opcion' => 4
             ],
 
             //Item 57.6
             [
                 'id_opcion' => 326,
-                'id_pregunta' => 113,
-                'texto' => 'Trabajar la mente de los compañeros con discursos fuertes que los haga reaccionar.',
+                'id_pregunta' => 105,
+                'texto' => '6 - G',
                 'valor_opcion' => 3
             ],
             [
                 'id_opcion' => 327,
-                'id_pregunta' => 113,
-                'texto' => 'Pedir al Maestro que reemplace a los miembros de la banda que están enfermos.',
+                'id_pregunta' => 105,
+                'texto' => '6 - H',
                 'valor_opcion' => 3
             ],
             [
                 'id_opcion' => 328,
-                'id_pregunta' => 113,
-                'texto' => 'Solicitar el doble de ensayos musicales y pedir bebidas energizantes.',
+                'id_pregunta' => 105,
+                'texto' => '6 - I',
                 'valor_opcion' => 3
             ],
             [
                 'id_opcion' => 329,
-                'id_pregunta' => 113,
-                'texto' => 'Identificar las cualidades de la banda sinfónica y reflexionarlas con tus compañeros, motivándolos al triunfo.',
+                'id_pregunta' => 105,
+                'texto' => '6 - J',
                 'valor_opcion' => 12
             ],
             [
                 'id_opcion' => 330,
-                'id_pregunta' => 113,
-                'texto' => 'Decir a los compañeros que están más desanimados que no contagien de ese ánimo a los demás',
+                'id_pregunta' => 105,
+                'texto' => '6 - K',
                 'valor_opcion' => 4
             ],
             [
                 'id_opcion' => 331,
-                'id_pregunta' => 113,
-                'texto' => 'Resaltar la identidad de la banda y solicitar que se toquen las piezas musicales que caracterizan a la banda para convencer al jurado.',
+                'id_pregunta' => 105,
+                'texto' => '6 - L',
                 'valor_opcion' => 10
             ],
 
@@ -2212,221 +2212,221 @@ class OpcionesSeeder extends Seeder
             [
                 'id_opcion' => 332,
                 'id_pregunta' => 115,
-                'texto' => 'Implementar un sistema de transporte público eléctrico y bicicletas compartidas para reducir las emisiones de vehículos.',
+                'texto' => '1 - A',
                 'valor_opcion' => 10
             ],
             [
                 'id_opcion' => 333,
                 'id_pregunta' => 115,
-                'texto' => 'Organizar un concurso de dibujos para estudiantes sobre la contaminación del aire.',
+                'texto' => '1 - B',
                 'valor_opcion' => 5
             ],
             [
                 'id_opcion' => 334,
                 'id_pregunta' => 115,
-                'texto' => 'Establecer un programa de monitoreo del aire y reforestación en áreas urbanas para identificar focos de contaminación y mejorar la calidad del aire.',
+                'texto' => '1 - C',
                 'valor_opcion' => 12
             ],
             [
                 'id_opcion' => 335,
                 'id_pregunta' => 115,
-                'texto' => 'Distribuir mascarillas en zonas de alta contaminación.',
+                'texto' => '1 - D',
                 'valor_opcion' => 4
             ],
             [
                 'id_opcion' => 336,
                 'id_pregunta' => 115,
-                'texto' => 'Fomentar el uso de energías renovables mediante subsidios para paneles solares en hogares.',
+                'texto' => '1 - E',
                 'valor_opcion' => 9
             ],
             [
                 'id_opcion' => 337,
                 'id_pregunta' => 115,
-                'texto' => 'Colocar carteles informativos sobre los peligros de la contaminación del aire en lugares públicos.',
+                'texto' => '1 - F',
                 'valor_opcion' => 4
             ],
             [
                 'id_opcion' => 338,
-                'id_pregunta' => 116,
-                'texto' => 'Implementar un sistema de transporte público eléctrico y bicicletas compartidas para reducir las emisiones de vehículos.',
+                'id_pregunta' => 115,
+                'texto' => '2 - A ',
                 'valor_opcion' => 7
             ],
             [
                 'id_opcion' => 339,
-                'id_pregunta' => 116,
-                'texto' => 'Organizar un concurso de dibujos para estudiantes sobre la contaminación del aire.',
+                'id_pregunta' => 115,
+                'texto' => '2 - B',
                 'valor_opcion' => 4
             ],
             [
                 'id_opcion' => 340,
-                'id_pregunta' => 116,
-                'texto' => 'Establecer un programa de monitoreo del aire y reforestación en áreas urbanas para identificar focos de contaminación y mejorar la calidad del aire.',
+                'id_pregunta' => 115,
+                'texto' => '2 - C',
                 'valor_opcion' => 6
             ],
             [
                 'id_opcion' => 341,
-                'id_pregunta' => 116,
-                'texto' => 'Distribuir mascarillas en zonas de alta contaminación.',
+                'id_pregunta' => 115,
+                'texto' => '2 - D',
                 'valor_opcion' => 3
             ],
             [
                 'id_opcion' => 342,
-                'id_pregunta' => 116,
-                'texto' => 'Fomentar el uso de energías renovables mediante subsidios para paneles solares en hogares.',
+                'id_pregunta' => 115,
+                'texto' => '2 - E',
                 'valor_opcion' => 6
             ],
             [
                 'id_opcion' => 343,
-                'id_pregunta' => 116,
-                'texto' => 'Colocar carteles informativos sobre los peligros de la contaminación del aire en lugares públicos.',
+                'id_pregunta' => 115,
+                'texto' => '2 - F',
                 'valor_opcion' => 2
             ],
 
             //Item 59.3
             [
                 'id_opcion' => 344,
-                'id_pregunta' => 117,
-                'texto' => 'Implementar un sistema de transporte público eléctrico y bicicletas compartidas para reducir las emisiones de vehículos.',
+                'id_pregunta' => 115,
+                'texto' => '3 - A',
                 'valor_opcion' => 6
             ],
             [
                 'id_opcion' => 345,
-                'id_pregunta' => 117,
-                'texto' => 'Organizar un concurso de dibujos para estudiantes sobre la contaminación del aire.',
+                'id_pregunta' => 115,
+                'texto' => '3 - B',
                 'valor_opcion' => 3
             ],
             [
                 'id_opcion' => 346,
-                'id_pregunta' => 117,
-                'texto' => 'Establecer un programa de monitoreo del aire y reforestación en áreas urbanas para identificar focos de contaminación y mejorar la calidad del aire.',
+                'id_pregunta' => 115,
+                'texto' => '3 - C',
                 'valor_opcion' => 7
             ],
             [
                 'id_opcion' => 347,
-                'id_pregunta' => 117,
-                'texto' => 'Distribuir mascarillas en zonas de alta contaminación.',
+                'id_pregunta' => 115,
+                'texto' => '3 - D',
                 'valor_opcion' => 3
             ],
             [
                 'id_opcion' => 348,
-                'id_pregunta' => 117,
-                'texto' => 'Fomentar el uso de energías renovables mediante subsidios para paneles solares en hogares.',
+                'id_pregunta' => 115,
+                'texto' => '3 - E',
                 'valor_opcion' => 5
             ],
             [
                 'id_opcion' => 349,
-                'id_pregunta' => 117,
-                'texto' => 'Colocar carteles informativos sobre los peligros de la contaminación del aire en lugares públicos.',
+                'id_pregunta' => 115,
+                'texto' => '3 - F',
                 'valor_opcion' => 2
             ],
             [
                 'id_opcion' => 350,
-                'id_pregunta' => 118,
-                'texto' => 'Implementar un sistema de transporte público eléctrico y bicicletas compartidas para reducir las emisiones de vehículos.',
+                'id_pregunta' => 115,
+                'texto' => '4 - A ',
                 'valor_opcion' => 5
             ],
             [
                 'id_opcion' => 351,
-                'id_pregunta' => 118,
-                'texto' => 'Organizar un concurso de dibujos para estudiantes sobre la contaminación del aire.',
+                'id_pregunta' => 115,
+                'texto' => '4 - B',
                 'valor_opcion' => 2
             ],
             [
                 'id_opcion' => 352,
-                'id_pregunta' => 118,
-                'texto' => 'Establecer un programa de monitoreo del aire y reforestación en áreas urbanas para identificar focos de contaminación y mejorar la calidad del aire.',
+                'id_pregunta' => 115,
+                'texto' => '4 - C',
                 'valor_opcion' => 5
             ],
             [
                 'id_opcion' => 353,
-                'id_pregunta' => 118,
-                'texto' => 'Distribuir mascarillas en zonas de alta contaminación.',
+                'id_pregunta' => 115,
+                'texto' => '4 - D',
                 'valor_opcion' => 2
             ],
             [
                 'id_opcion' => 354,
-                'id_pregunta' => 118,
-                'texto' => 'Fomentar el uso de energías renovables mediante subsidios para paneles solares en hogares.',
+                'id_pregunta' => 115,
+                'texto' => '4 - E',
                 'valor_opcion' => 4
             ],
             [
                 'id_opcion' => 355,
-                'id_pregunta' => 118,
-                'texto' => 'Colocar carteles informativos sobre los peligros de la contaminación del aire en lugares públicos.',
+                'id_pregunta' => 115,
+                'texto' => '4 - F',
                 'valor_opcion' => 1
             ],
 
             //Item 59.5
             [
                 'id_opcion' => 356,
-                'id_pregunta' => 119,
-                'texto' => 'Implementar un sistema de transporte público eléctrico y bicicletas compartidas para reducir las emisiones de vehículos.',
+                'id_pregunta' => 115,
+                'texto' => '5 - A',
                 'valor_opcion' => 6
             ],
             [
                 'id_opcion' => 357,
-                'id_pregunta' => 119,
-                'texto' => 'Organizar un concurso de dibujos para estudiantes sobre la contaminación del aire.',
+                'id_pregunta' => 115,
+                'texto' => '5 - B',
                 'valor_opcion' => 3
             ],
             [
                 'id_opcion' => 358,
-                'id_pregunta' => 119,
-                'texto' => 'Establecer un programa de monitoreo del aire y reforestación en áreas urbanas para identificar focos de contaminación y mejorar la calidad del aire.',
+                'id_pregunta' => 115,
+                'texto' => '5 - C',
                 'valor_opcion' => 7
             ],
             [
                 'id_opcion' => 359,
-                'id_pregunta' => 119,
-                'texto' => 'Distribuir mascarillas en zonas de alta contaminación.',
+                'id_pregunta' => 115,
+                'texto' => '5 - D',
                 'valor_opcion' => 3
             ],
             [
                 'id_opcion' => 360,
-                'id_pregunta' => 119,
-                'texto' => 'Fomentar el uso de energías renovables mediante subsidios para paneles solares en hogares.',
+                'id_pregunta' => 115,
+                'texto' => '5 - E',
                 'valor_opcion' => 8
             ],
             [
                 'id_opcion' => 361,
-                'id_pregunta' => 119,
-                'texto' => 'Colocar carteles informativos sobre los peligros de la contaminación del aire en lugares públicos.',
+                'id_pregunta' => 115,
+                'texto' => ' 5 - F',
                 'valor_opcion' => 2
             ],
             [
                 'id_opcion' => 362,
-                'id_pregunta' => 120,
-                'texto' => 'Implementar un sistema de transporte público eléctrico y bicicletas compartidas para reducir las emisiones de vehículos.',
+                'id_pregunta' => 115,
+                'texto' => '6 - A',
                 'valor_opcion' => 7
             ],
             [
                 'id_opcion' => 363,
-                'id_pregunta' => 120,
-                'texto' => 'Organizar un concurso de dibujos para estudiantes sobre la contaminación del aire.',
+                'id_pregunta' => 115,
+                'texto' => '6 - B',
                 'valor_opcion' => 4
             ],
             [
                 'id_opcion' => 364,
-                'id_pregunta' => 120,
-                'texto' => 'Establecer un programa de monitoreo del aire y reforestación en áreas urbanas para identificar focos de contaminación y mejorar la calidad del aire.',
+                'id_pregunta' => 115,
+                'texto' => '6 - C',
                 'valor_opcion' => 8
             ],
             [
                 'id_opcion' => 365,
-                'id_pregunta' => 120,
-                'texto' => 'Distribuir mascarillas en zonas de alta contaminación.',
+                'id_pregunta' => 115,
+                'texto' => '6 - D',
                 'valor_opcion' => 3
             ],
             [
                 'id_opcion' => 366,
-                'id_pregunta' => 120,
-                'texto' => 'Fomentar el uso de energías renovables mediante subsidios para paneles solares en hogares.',
+                'id_pregunta' => 115,
+                'texto' => '6 - E',
                 'valor_opcion' => 9
             ],
             [
                 'id_opcion' => 367,
-                'id_pregunta' => 120,
-                'texto' => 'Colocar carteles informativos sobre los peligros de la contaminación del aire en lugares públicos.',
+                'id_pregunta' => 115,
+                'texto' => '6 - F',
                 'valor_opcion' => 3
             ],
 
