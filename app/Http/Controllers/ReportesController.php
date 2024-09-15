@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Descriptivos;
 use App\Models\Preguntas;
 use App\Models\Reportes;
 use App\Models\Respuestas;
@@ -13,189 +14,21 @@ use Carbon\Carbon;
 
 class ReportesController extends Controller
 {
-
-    // Mostrar los reportes de un usuario específico
-    public function verReportes($id_usuario)
-    {
-        $user = User::findOrFail($id_usuario);
-        $reportes = Reportes::where('id_usuario', $id_usuario)->get();
-
-        return view('private.reportes_usuario', compact('user', 'reportes')); // Asegúrate de tener una vista admin/reportes_usuario
-    }
-
-    private function calcularNivel($puntaje, $tipo_habilidad)
-    {
-        switch ($tipo_habilidad) {
-            case 'inductivo':
-                switch (true) {
-                    case ($puntaje <= 4):
-                        return 'Muy Bajo';
-                    case ($puntaje <= 8):
-                        return 'Bajo';
-                    case ($puntaje <= 12):
-                        return 'Intermedio';
-                    case ($puntaje <= 16):
-                        return 'Alto';
-                    default:
-                        return 'Muy Alto';
-                }
-            case 'abductivo':
-                switch (true) {
-                    case ($puntaje <= 3):
-                        return 'Muy Bajo';
-                    case ($puntaje <= 6):
-                        return 'Bajo';
-                    case ($puntaje <= 9):
-                        return 'Intermedio';
-                    case ($puntaje <= 12):
-                        return 'Alto';
-                    default:
-                        return 'Muy Alto';
-                }
-            case 'deductivo':
-                switch (true) {
-                    case ($puntaje <= 3):
-                        return 'Muy Bajo';
-                    case ($puntaje <= 6):
-                        return 'Bajo';
-                    case ($puntaje <= 9):
-                        return 'Intermedio';
-                    case ($puntaje <= 12):
-                        return 'Alto';
-                    default:
-                        return 'Muy Alto';
-                }
-            case 'analisis_argumentos':
-                switch (true) {
-                    case ($puntaje <= 8):
-                        return 'Muy Bajo';
-                    case ($puntaje <= 17):
-                        return 'Bajo';
-                    case ($puntaje <= 25):
-                        return 'Intermedio';
-                    case ($puntaje <= 33):
-                        return 'Alto';
-                    default:
-                        return 'Muy Alto';
-                }
-            case 'toma_decisiones':
-                switch (true) {
-                    case ($puntaje <= 13):
-                        return 'Muy Bajo';
-                    case ($puntaje <= 26):
-                        return 'Bajo';
-                    case ($puntaje <= 40):
-                        return 'Intermedio';
-                    case ($puntaje <= 53):
-                        return 'Alto';
-                    default:
-                        return 'Muy Alto';
-                }
-            default:
-                return 'Nivel desconocido';
-        }
-    }
-
-
-    public function verReporte($id)
-    {
-        // Encuentra el reporte por su ID
-        $reporte = Reportes::findOrFail($id);
-
-        // Retorna la vista de detalle del reporte
-        return view('reporte.reporte_detalle', compact('reporte'));
-    }
-
-
-    /**
-     * Display a listing of the resource.
-     */
-    public function sumar_puntaje_total()
-    {
-
-        $total_puntaje = $this->buscar_total_subhabilidad("INDUCCIÓN GENERAL") + $this->buscar_total_subhabilidad("INDUCCIÓN ESPECÍFICA") +
-            $this->buscar_total_subhabilidad("COMPROBACIÓN DE HIPÓTESIS") + $this->buscar_total_subhabilidad("USO DE PROBABILIDAD E INCERTIDUMBRE") +
-            $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE FALLO POR ANALOGÍA") + $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE FALLO POR VAGUEDAD") +
-            $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE ESTRUCTURA ARGUMENTATIVA") + $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE SUPOSICIÓN") + $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE FALACIA") +
-            $this->buscar_total_subhabilidad("TOMA DE DECISIONES INFORMADAS") + $this->buscar_total_subhabilidad("CONCIENCIA DE SITUACIÓN Y ACCIONES RAZONABLES") + $this->buscar_total_subhabilidad("PENSAMIENTO ESTRATÉGICO") + $this->buscar_total_subhabilidad("PENSAMIENTO CREATIVO");
-
-        return $total_puntaje;
-    }
-    /**
-     * Display a listing of the resource.
-     */
-    public function buscar_total_subhabilidad($nombre_habilidad)
-    {
-
-        $id_subhabilidad = Subhabilidad::where('nombre', $nombre_habilidad)
-            ->pluck('id_subhabilidad')
-            ->first();
-
-
-        if ($id_subhabilidad) {
-            $total_Calificacion_induccion_general = Respuestas::join('preguntas', 'respuestas.id_pregunta', '=', 'preguntas.id_pregunta')
-                ->where('preguntas.id_subhabilidad', $id_subhabilidad)
-                ->sum('respuestas.calificacion_respuesta');
-        } else {
-            $total_Calificacion_induccion_general = 0;
-        }
-
-        return $total_Calificacion_induccion_general;
-    }
-
-    /**
-     * Suma las categorías de las respuestas del request
-     */
-    private function sumar_por_categorias(Request $request)
-    {
-        // Inicializar los totales para cada categoría
-        $categorias = [
-            'conocimiento_procedimental' => 0,
-            'planificacion' => 0,
-            'organizacion' => 0,
-            'monitoreo' => 0,
-            'depuracion' => 0,
-            'evaluacion' => 0,
-        ];
-
-        // Iterar sobre las respuestas del request
-        foreach ($request->all() as $key => $value) {
-            // Dividir la clave para obtener la categoría
-            $parts = explode('-', $key);
-
-            if (count($parts) > 1) {
-                $categoria = $parts[0]; // Obtener el prefijo como categoría
-
-                // Sumar el valor en la categoría correspondiente si existe
-                if (array_key_exists($categoria, $categorias)) {
-                    $categorias[$categoria] += (int) $value; // Sumar el valor como entero
-                }
-            }
-        }
-
-        return $categorias; // Devolver el array con las sumas por categoría
-    }
-
-
     /**
      * Crea el reporte, con los siguientes parametros de ingreso
      * 
      */
     public function crear_reporte(Request $request)
     {
-
         $user = $request->user();
-        $categorias = $this->sumar_por_categorias($request);
-
-        //parsear categorias a entero
-
-        $calificacion_metacognicion = array_sum(array_map('floatval', $categorias)) ?? 0;
+        $categorias = $this->sumar_por_categorias(request: $request);
+        $tiempoTotal = $request->input('tiempo_total');
 
         Reportes::create([
 
             'id_usuario' => $user->id_usuario,
-            'calificacion_total' => $this->sumar_puntaje_total(),
-            'calificacion_metacognicion' => $calificacion_metacognicion,
+            'calificacion_total' => 0,
+            'calificacion_metacognicion' => 0,
             'fecha_calificacion' => Carbon::now(),
 
             'documento_identificacion' => $user->documento_identificacion,
@@ -342,82 +175,200 @@ class ReportesController extends Controller
             ],
         ];
 
-        $consulta_informe = $this->consultar_informe();
-        $this->crear_informe_descriptivo($user, $consulta_informe);
-        //$this->crear_informe_revisor($user, $consulta_informe);
+        $consulta_informe = $this->consultar_informe($user->id_usuario);
+        $informe_final = $this->crear_informe_descriptivo($consulta_informe, $categorias);
 
-
-        $tiempoTotal = $request->input('tiempo_total');
-        // dd($consulta_informe);
-        // dd($consulta_informe[0]['habilidad']);
-
-       /*
-        foreach ($consulta_informe as $calificacion) {
-            log::info($calificacion->habilidad);
-        }
-*/
-
-
-
-
+        //Esto es lo que debería restornar
         return view('reporte.index', compact('respuesta'));
     }
+
+
+    /**
+     * Suma las categorías de las respuestas del request y retorna una 
+     * lista de categorias con su correspondiente suma
+     */
+    private function sumar_por_categorias(Request $request)
+    {
+        $categorias = [
+            'conocimiento_procedimental' => 0,
+            'planificacion' => 0,
+            'organizacion' => 0,
+            'monitoreo' => 0,
+            'depuracion' => 0,
+            'evaluacion' => 0,
+        ];
+        foreach ($request->all() as $key => $value) {
+            $parts = explode('-', $key);
+
+            if (count($parts) > 1) {
+                $categoria = $parts[0];
+                if (array_key_exists($categoria, $categorias)) {
+                    $categorias[$categoria] += (int) $value;
+                }
+            }
+        }
+
+        return $categorias;
+    }
+
+
+    // Mostrar los reportes de un usuario específico
+    public function verReportes($id_usuario)
+    {
+        $user = User::findOrFail($id_usuario);
+        $reportes = Reportes::where('id_usuario', $id_usuario)->get();
+
+        return view('private.reportes_usuario', compact('user', 'reportes')); // Asegúrate de tener una vista admin/reportes_usuario
+    }
+
+    private function calcularNivel($puntaje, $tipo_habilidad)
+    {
+        switch ($tipo_habilidad) {
+            case 'inductivo':
+                switch (true) {
+                    case ($puntaje <= 4):
+                        return 'Muy Bajo';
+                    case ($puntaje <= 8):
+                        return 'Bajo';
+                    case ($puntaje <= 12):
+                        return 'Intermedio';
+                    case ($puntaje <= 16):
+                        return 'Alto';
+                    default:
+                        return 'Muy Alto';
+                }
+            case 'abductivo':
+                switch (true) {
+                    case ($puntaje <= 3):
+                        return 'Muy Bajo';
+                    case ($puntaje <= 6):
+                        return 'Bajo';
+                    case ($puntaje <= 9):
+                        return 'Intermedio';
+                    case ($puntaje <= 12):
+                        return 'Alto';
+                    default:
+                        return 'Muy Alto';
+                }
+            case 'deductivo':
+                switch (true) {
+                    case ($puntaje <= 3):
+                        return 'Muy Bajo';
+                    case ($puntaje <= 6):
+                        return 'Bajo';
+                    case ($puntaje <= 9):
+                        return 'Intermedio';
+                    case ($puntaje <= 12):
+                        return 'Alto';
+                    default:
+                        return 'Muy Alto';
+                }
+            case 'analisis_argumentos':
+                switch (true) {
+                    case ($puntaje <= 8):
+                        return 'Muy Bajo';
+                    case ($puntaje <= 17):
+                        return 'Bajo';
+                    case ($puntaje <= 25):
+                        return 'Intermedio';
+                    case ($puntaje <= 33):
+                        return 'Alto';
+                    default:
+                        return 'Muy Alto';
+                }
+            case 'toma_decisiones':
+                switch (true) {
+                    case ($puntaje <= 13):
+                        return 'Muy Bajo';
+                    case ($puntaje <= 26):
+                        return 'Bajo';
+                    case ($puntaje <= 40):
+                        return 'Intermedio';
+                    case ($puntaje <= 53):
+                        return 'Alto';
+                    default:
+                        return 'Muy Alto';
+                }
+            default:
+                return 'Nivel desconocido';
+        }
+    }
+
+
+    public function verReporte($id)
+    {
+        // Encuentra el reporte por su ID
+        $reporte = Reportes::findOrFail($id);
+
+        // Retorna la vista de detalle del reporte
+        return view('reporte.reporte_detalle', compact('reporte'));
+    }
+
+    /**
+     * Display a listing of the resource.
+     */
+    public function buscar_total_subhabilidad($nombre_habilidad)
+    {
+
+        $id_subhabilidad = Subhabilidad::where('nombre', $nombre_habilidad)
+            ->pluck('id_subhabilidad')
+            ->first();
+
+
+        if ($id_subhabilidad) {
+            $total_Calificacion_induccion_general = Respuestas::join('preguntas', 'respuestas.id_pregunta', '=', 'preguntas.id_pregunta')
+                ->where('preguntas.id_subhabilidad', $id_subhabilidad)
+                ->sum('respuestas.calificacion_respuesta');
+        } else {
+            $total_Calificacion_induccion_general = 0;
+        }
+
+        return $total_Calificacion_induccion_general;
+    }
+
 
     /**
      * Realiza la consulta para traer Contexto, Habilidad, Subhabilidad, texto_pregunta, calificacion, respuesta y calificacion de una pregunta.
      * Devuelve todas las preguntas con los encabezados descritos anteriormente 
      */
-    public function consultar_informe()
+    public function consultar_informe($id_usuario)
     {
-        $consulta_informe = Preguntas::with(['subhabilidad.habilidad', 'contexto', 'respuestas'])
+        $consulta_informe = Preguntas::with([
+            'subhabilidad.habilidad',
+            'contexto',
+            'respuestas' // No necesitas agregar el filtro aquí
+        ])
             ->get()
-            ->map(function ($pregunta) {
+            ->map(function ($pregunta) use ($id_usuario) {
+                // Filtramos las respuestas para obtener solo las del usuario $id_usuario
+                $respuestas_usuario = $pregunta->respuestas->filter(function ($respuesta) use ($id_usuario) {
+                    return $respuesta->id_usuario == $id_usuario;
+                });
+
                 return [
                     'habilidad' => $pregunta->subhabilidad->habilidad->nombre,
                     'subhabilidad' => $pregunta->subhabilidad->nombre,
                     'contexto' => $pregunta->contexto ? $pregunta->contexto->texto : null, // Texto del contexto
                     'id_pregunta' => $pregunta->id_pregunta,
                     'texto_pregunta' => $pregunta->texto,
-                    'respuestas_texto' => $pregunta->respuestas->pluck('respuesta'),
-                    'calificacion' => $pregunta->respuestas->avg('calificacion_respuesta'), // Promedio de la calificación de las respuestas
+                    'respuestas_texto' => $respuestas_usuario->pluck('respuesta')->toArray(), // Respuestas del usuario
+                    'calificacion' => $respuestas_usuario->avg('calificacion_respuesta'), // Promedio de la calificación de las respuestas del usuario
                 ];
-            });
+            })
+            ->toArray(); // Convertir el resultado final a un solo array
+
 
         return $consulta_informe;
     }
 
     /**
-     * Display a listing of the resource.
+     * Recorremos toda la consulta y sacamos solamente lo que necesitamos de consultar_informe y lo
+     * unimos con la metacognición
      */
-    public function identificar_descriptor($pregunta, $calificacion)
+    public function crear_informe_descriptivo($consulta_informe, $categorias)
     {
 
-        
-
-
-
-        return "retorno descirptor_prueba";
-    }
-
-
-    /**
-     * Display a listing of the resource.
-     */
-    public function crear_informe_revisor($user, $consulta_informe)
-    {
-        return "prueba";
-    }
-
-
-    /**
-     * Display a listing of the resource.
-     */
-    public function crear_informe_descriptivo($user, $consulta_informe)
-    {
         $pregunta = "";
-        $documentos_totales = [];
-        //de esta manera se accede
-        //dd($resultados[0]['calificacion']);
         foreach ($consulta_informe as $pregunta) {
             $nombre_pregunta = "pregunta_" . $pregunta['id_pregunta'];
 
@@ -429,71 +380,65 @@ class ReportesController extends Controller
                     "descriptivo" => $this->identificar_descriptor($pregunta['id_pregunta'], $pregunta['calificacion']),
                 ],
             ];
-            $documentos_totales[$nombre_pregunta] =  $documento;
+            $documentos_totales[$nombre_pregunta] = $documento;
         }
 
+        $documentos_totales["metacognicion_conocimiento_procedimental"] = [
+            "metacognicion_conocimiento_procedimental" => [
+                [
+                    "conocimiento_procedimental" => $categorias['conocimiento_procedimental'],
+                    "depuracion" => $categorias['depuracion'],
+                    "evaluacion" => $categorias['evaluacion'],
+                    "monitoreo" => $categorias['monitoreo'],
+                    "organizacion" => $categorias['organizacion'],
+                    "planificacion" => $categorias['planificacion'],
+                    "total_conocimiento_procedimental" => $categorias['conocimiento_procedimental'] + $categorias['depuracion'] + $categorias['evaluacion'] + $categorias['monitoreo'] + $categorias['organizacion'] + $categorias['planificacion']
+                ]
+            ]
+        ];
+
         dd($documentos_totales);
+        return $documentos_totales;
+
     }
-
-
-
-
 
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function identificar_descriptor($id_pregunta, $calificacion)
     {
-        //
+        $textoDescriptivo = Descriptivos::where('id_pregunta', $id_pregunta)
+            ->where('calificacion', $calificacion)
+            ->value('texto_descriptivo');
+
+        // Devolvemos el texto descriptivo o un mensaje si no se encuentra
+        return $textoDescriptivo ?: 'No se encontró un texto descriptivo para esta pregunta y calificación';
     }
 
-
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
+    
 
     /**
-     * Store a newly created resource in storage.
+     * Display a listing of the resource.
      */
-    public function store(Request $request)
+    public function ver_respuestas_admin(Request $request)
     {
-        //
-    }
+        $informe = $this->consultar_informe($request->id_usuario);
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Reportes $reportes)
-    {
-        //
-    }
+        $informe = array_map(function ($item) {
+            return [
+                'habilidad' => $item['habilidad'],
+                'subhabilidad' => $item['subhabilidad'],
+                'contexto' => $item['contexto'],
+                'id_pregunta' => $item['id_pregunta'],
+                'texto_pregunta' => $item['texto_pregunta'],
+                'respuestas_texto' => implode(', ', $item['respuestas_texto']), // Combinar respuestas en una cadena
+                'calificacion' => $item['calificacion'],
+            ];
+        }, $informe);
+      
+        //dd($informe[0]['habilidad']);
+        //dd($informe);
+        return view('reporte.reporte_revisor', compact('informe'));
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Reportes $reportes)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Reportes $reportes)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Reportes $reportes)
-    {
-        //
     }
 }

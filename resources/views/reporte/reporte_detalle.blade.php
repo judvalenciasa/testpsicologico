@@ -19,7 +19,7 @@
         </div>
         <div class="tiempo_prueba_ctn">
             <h2>Tiempo de la Prueba</h2>
-            <p>{{ $reporte->tiempo_prueba }}</p>
+            <p>{{ $reporte->tiempo_prueba/60 }} Minutos</p>
         </div>
 
         <div class="tablas_ctn">
