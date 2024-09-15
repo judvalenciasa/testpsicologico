@@ -81,16 +81,6 @@ class PreguntasSeeder extends Seeder
                 'tipo_pregunta' => 'abierta'
             ],
 
-            /* //Item 1_metacognicion
-            [
-                'id_pregunta' => 18,
-                'id_prueba' => 1,
-                'id_contexto' => 1,
-                'id_subhabilidad' => null,
-                'id_categoria' => 3,
-                'texto' => 'Soy consciente de la habilidad del pensamiento crítico que empleé para responder a los anteriores dos (2) ítems.',
-                'tipo_pregunta' => 'cerrada'
-            ], */
 
             //Item 7
             [
@@ -114,38 +104,7 @@ class PreguntasSeeder extends Seeder
                 'tipo_pregunta' => 'abierta'
             ],
 
-            //Contexto4_Metacognición
-            /* //pregunta 1
-            [
-                'id_pregunta' => 21,
-                'id_prueba' => 1,
-                'id_contexto' => 4,
-                'id_subhabilidad' => null,
-                'id_categoria' => 3,
-                'texto' => 'Soy consciente de la habilidad del pensamiento crítico que empleé para responder a los s dos (2) ítems anteriores.',
-                'tipo_pregunta' => 'cerrada'
-            ],
-            //pregunta 2 metacognición
-            [
-                'id_pregunta' => 22,
-                'id_prueba' => 1,
-                'id_contexto' => 4,
-                'id_subhabilidad' => null,
-                'id_categoria' => 3,
-                'texto' => '¿Cuál de las siguientes habilidades de pensamiento crítico utilicé principalmente?',
-                'tipo_pregunta' => 'cerrada'
-            ],
-            //pregunta 3 metacognición
-            [
-                'id_pregunta' => 23,
-                'id_prueba' => 1,
-                'id_contexto' => 4,
-                'id_subhabilidad' => null,
-                'id_categoria' => 3,
-                'texto' => 'Al responder a este tipo de tareas mentales procuro avanzar y/o tomar una pausa
-                cuando no entiendo algo',
-                'tipo_pregunta' => 'cerrada'
-            ], */
+           
 
             //Item 9
             [
@@ -168,37 +127,7 @@ class PreguntasSeeder extends Seeder
                 'texto' => 'En no más de 100 palabras explica por qué seleccionaste esa alternativa como la respuesta razonable que debe darle el jefe al experto.',
                 'tipo_pregunta' => 'abierta'
             ],
-            //Contexto5_Metacognición
-            /* //pregunta 1
-            [
-                'id_pregunta' => 26,
-                'id_prueba' => 1,
-                'id_contexto' => 5,
-                'id_subhabilidad' => null,
-                'id_categoria' => 3,
-                'texto' => 'Soy consciente de la habilidad del pensamiento crítico que empleé para responder a los s dos (2) ítems anteriores.',
-                'tipo_pregunta' => 'cerrada'
-            ],
-            //pregunta 2 metacognición
-            [
-                'id_pregunta' => 27,
-                'id_prueba' => 1,
-                'id_contexto' => 5,
-                'id_subhabilidad' => null,
-                'id_categoria' => 3,
-                'texto' => '¿Cuál de las siguientes habilidades de pensamiento crítico utilicé principalmente?',
-                'tipo_pregunta' => 'cerrada'
-            ],
-            //pregunta 3 metacognición
-            [
-                'id_pregunta' => 28,
-                'id_prueba' => 1,
-                'id_contexto' => 5,
-                'id_subhabilidad' => null,
-                'id_categoria' => 3,
-                'texto' => 'Cuando terminé de responder al ítem supe cómo me había ido',
-                'tipo_pregunta' => 'cerrada'
-            ], */
+            
             //Item 11
             [
                 'id_pregunta' => 29,
@@ -219,37 +148,7 @@ class PreguntasSeeder extends Seeder
                 'texto' => 'En no más de 100 palabras explica por qué seleccionaste esa alternativa como la opinión razonada que darías al padre de familia respecto de su convencimiento acerca de la causa de la depresión de su hija y la medida que ha tomado.',
                 'tipo_pregunta' => 'abierta'
             ],
-            //Contexto6_Metacognición
-            /* //pregunta 1
-            [
-                'id_pregunta' => 31,
-                'id_prueba' => 1,
-                'id_contexto' => 6,
-                'id_subhabilidad' => null,
-                'id_categoria' => 3,
-                'texto' => 'Soy consciente de la habilidad del pensamiento crítico que empleé para responder a los s dos (2) ítems anteriores.',
-                'tipo_pregunta' => 'cerrada'
-            ],
-            //pregunta 2 metacognición
-            [
-                'id_pregunta' => 32,
-                'id_prueba' => 1,
-                'id_contexto' => 6,
-                'id_subhabilidad' => null,
-                'id_categoria' => 3,
-                'texto' => '¿Cuál de las siguientes habilidades de pensamiento crítico utilicé principalmente?',
-                'tipo_pregunta' => 'cerrada'
-            ],
-            //pregunta 3 metacognición
-            [
-                'id_pregunta' => 33,
-                'id_prueba' => 1,
-                'id_contexto' => 6,
-                'id_subhabilidad' => null,
-                'id_categoria' => 3,
-                'texto' => 'Me propuse el objetivo de pensar críticamente antes de responder al ítem',
-                'tipo_pregunta' => 'cerrada'
-            ], */
+            
             //Item 13
             [
                 'id_pregunta' => 34,
@@ -270,37 +169,7 @@ class PreguntasSeeder extends Seeder
                 'texto' => 'En no más de 100 palabras explica por qué seleccionaste esa alternativa como la que contiene información acerca de los estudios realizados por la institución necesitaría para apoyar tu decisión y ejercer el derecho al voto de forma razonada.',
                 'tipo_pregunta' => 'abierta'
             ],
-            //Contexto7_Metacognición
-            /* //pregunta 1
-            [
-                'id_pregunta' => 36,
-                'id_prueba' => 1,
-                'id_contexto' => 7,
-                'id_subhabilidad' => null,
-                'id_categoria' => 3,
-                'texto' => 'Soy consciente de la habilidad del pensamiento crítico que empleé para responder a los s dos (2) ítems anteriores.',
-                'tipo_pregunta' => 'cerrada'
-            ],
-            //pregunta 2 metacognición
-            [
-                'id_pregunta' => 37,
-                'id_prueba' => 1,
-                'id_contexto' => 7,
-                'id_subhabilidad' => null,
-                'id_categoria' => 3,
-                'texto' => '¿Cuál de las siguientes habilidades de pensamiento crítico utilicé principalmente?',
-                'tipo_pregunta' => 'cerrada'
-            ],
-            //pregunta 3 metacognición
-            [
-                'id_pregunta' => 38,
-                'id_prueba' => 1,
-                'id_contexto' => 7,
-                'id_subhabilidad' => null,
-                'id_categoria' => 3,
-                'texto' => 'Una estrategia que puedo utilizar para responder a este tipo de tareas cognitivas es inventarme mis propios ejemplos para poder entender mejor la información',
-                'tipo_pregunta' => 'cerrada'
-            ], */
+            
             //Item 15
             [
                 'id_pregunta' => 39,
@@ -322,37 +191,7 @@ class PreguntasSeeder extends Seeder
                 'texto' => 'En no más de 100 palabras explica por qué seleccionaste esa alternativa como la información, suministrada por los representantes del programa universitario, de mayor utilidad para decidir qué programa recomendar a tu amiga.',
                 'tipo_pregunta' => 'abierta'
             ],
-            //Contexto8_Metacognición
-            /* //pregunta 1
-            [
-                'id_pregunta' => 41,
-                'id_prueba' => 1,
-                'id_contexto' => 8,
-                'id_subhabilidad' => null,
-                'id_categoria' => 3,
-                'texto' => 'Soy consciente de la habilidad del pensamiento crítico que empleé para responder a los s dos (2) ítems anteriores.',
-                'tipo_pregunta' => 'cerrada'
-            ],
-            //pregunta 2 metacognición
-            [
-                'id_pregunta' => 42,
-                'id_prueba' => 1,
-                'id_contexto' => 8,
-                'id_subhabilidad' => null,
-                'id_categoria' => 3,
-                'texto' => '¿Cuál de las siguientes habilidades de pensamiento crítico utilicé principalmente?',
-                'tipo_pregunta' => 'cerrada'
-            ],
-            //pregunta 3 metacognición
-            [
-                'id_pregunta' => 43,
-                'id_prueba' => 1,
-                'id_contexto' => 8,
-                'id_subhabilidad' => null,
-                'id_categoria' => 3,
-                'texto' => 'Pensé en distintas alternativas de respuesta al ítem',
-                'tipo_pregunta' => 'cerrada'
-            ], */
+            
 
             //Item 17
             [
@@ -376,37 +215,7 @@ class PreguntasSeeder extends Seeder
                 'tipo_pregunta' => 'abierta'
             ],
 
-            //Contexto9_Metacognición
-            /* //pregunta 1
-            [
-                'id_pregunta' => 46,
-                'id_prueba' => 1,
-                'id_contexto' => 9,
-                'id_subhabilidad' => null,
-                'id_categoria' => 3,
-                'texto' => 'Soy consciente de la habilidad del pensamiento crítico que empleé para responder a los s dos (2) ítems anteriores.',
-                'tipo_pregunta' => 'cerrada'
-            ],
-            //pregunta 2 metacognición
-            [
-                'id_pregunta' => 47,
-                'id_prueba' => 1,
-                'id_contexto' => 9,
-                'id_subhabilidad' => null,
-                'id_categoria' => 3,
-                'texto' => '¿Cuál de las siguientes habilidades de pensamiento crítico utilicé principalmente?',
-                'tipo_pregunta' => 'cerrada'
-            ],
-            //pregunta 3 metacognición
-            [
-                'id_pregunta' => 48,
-                'id_prueba' => 1,
-                'id_contexto' => 9,
-                'id_subhabilidad' => null,
-                'id_categoria' => 3,
-                'texto' => 'Cuando no logro entender un problema o situación como el anterior cambio de estrategias',
-                'tipo_pregunta' => 'cerrada'
-            ], */
+            
 
             //Item 19
             [
@@ -430,37 +239,7 @@ class PreguntasSeeder extends Seeder
                 'tipo_pregunta' => 'abierta'
             ],
 
-            //Contexto10_Metacognición
-            /* //pregunta 1
-            [
-                'id_pregunta' => 51,
-                'id_prueba' => 1,
-                'id_contexto' => 10,
-                'id_subhabilidad' => null,
-                'id_categoria' => 3,
-                'texto' => 'Soy consciente de la habilidad del pensamiento crítico que empleé para responder a los s dos (2) ítems anteriores.',
-                'tipo_pregunta' => 'cerrada'
-            ],
-            //pregunta 2 metacognición
-            [
-                'id_pregunta' => 52,
-                'id_prueba' => 1,
-                'id_contexto' => 10,
-                'id_subhabilidad' => null,
-                'id_categoria' => 3,
-                'texto' => '¿Cuál de las siguientes habilidades de pensamiento crítico utilicé principalmente?',
-                'tipo_pregunta' => 'cerrada'
-            ],
-            //pregunta 3 metacognición
-            [
-                'id_pregunta' => 53,
-                'id_prueba' => 1,
-                'id_contexto' => 10,
-                'id_subhabilidad' => null,
-                'id_categoria' => 3,
-                'texto' => 'Cuando terminé de responder al ítem me pregunté si había una alternativa o respuesta más acertada',
-                'tipo_pregunta' => 'cerrada'
-            ], */
+            
 
             //Item 21
             [
@@ -484,37 +263,7 @@ class PreguntasSeeder extends Seeder
                 'tipo_pregunta' => 'abierta'
             ],
 
-            //Contexto11_Metacognición
-            /* //pregunta 1
-            [
-                'id_pregunta' => 56,
-                'id_prueba' => 1,
-                'id_contexto' => 11,
-                'id_subhabilidad' => null,
-                'id_categoria' => 3,
-                'texto' => 'Soy consciente de la habilidad del pensamiento crítico que empleé para responder a los s dos (2) ítems anteriores.',
-                'tipo_pregunta' => 'cerrada'
-            ],
-            //pregunta 2 metacognición
-            [
-                'id_pregunta' => 57,
-                'id_prueba' => 1,
-                'id_contexto' => 11,
-                'id_subhabilidad' => null,
-                'id_categoria' => 3,
-                'texto' => '¿Cuál de las siguientes habilidades de pensamiento crítico utilicé principalmente?',
-                'tipo_pregunta' => 'cerrada'
-            ],
-            //pregunta 3 metacognición
-            [
-                'id_pregunta' => 58,
-                'id_prueba' => 1,
-                'id_contexto' => 11,
-                'id_subhabilidad' => null,
-                'id_categoria' => 3,
-                'texto' => 'Me hice preguntas sobre el tema antes de responder al ítem',
-                'tipo_pregunta' => 'cerrada'
-            ], */
+            
 
             //Item 23
             [
@@ -538,37 +287,7 @@ class PreguntasSeeder extends Seeder
                 'tipo_pregunta' => 'abierta'
             ],
 
-            //Contexto12_Metacognición
-            /* //pregunta 1
-            [
-                'id_pregunta' => 61,
-                'id_prueba' => 1,
-                'id_contexto' => 12,
-                'id_subhabilidad' => null,
-                'id_categoria' => 3,
-                'texto' => 'Soy consciente de la habilidad del pensamiento crítico que empleé para responder a los s dos (2) ítems anteriores.',
-                'tipo_pregunta' => 'cerrada'
-            ],
-            //pregunta 2 metacognición
-            [
-                'id_pregunta' => 62,
-                'id_prueba' => 1,
-                'id_contexto' => 12,
-                'id_subhabilidad' => null,
-                'id_categoria' => 3,
-                'texto' => '¿Cuál de las siguientes habilidades de pensamiento crítico utilicé principalmente?',
-                'tipo_pregunta' => 'cerrada'
-            ],
-            //pregunta 3 metacognición
-            [
-                'id_pregunta' => 63,
-                'id_prueba' => 1,
-                'id_contexto' => 12,
-                'id_subhabilidad' => null,
-                'id_categoria' => 3,
-                'texto' => 'Utilicé la estructura y la organización del texto para comprender mejor el ítem',
-                'tipo_pregunta' => 'cerrada'
-            ], */
+            
 
             //Item 25
             [
@@ -592,37 +311,7 @@ class PreguntasSeeder extends Seeder
                 'tipo_pregunta' => 'abierta'
             ],
 
-            //Contexto13_Metacognición
-            /* //pregunta 1
-            [
-                'id_pregunta' => 66,
-                'id_prueba' => 1,
-                'id_contexto' => 13,
-                'id_subhabilidad' => null,
-                'id_categoria' => 3,
-                'texto' => 'Soy consciente de la habilidad del pensamiento crítico que empleé para responder a los s dos (2) ítems anteriores.',
-                'tipo_pregunta' => 'cerrada'
-            ],
-            //pregunta 2 metacognición
-            [
-                'id_pregunta' => 67,
-                'id_prueba' => 1,
-                'id_contexto' => 13,
-                'id_subhabilidad' => null,
-                'id_categoria' => 3,
-                'texto' => '¿Cuál de las siguientes habilidades de pensamiento crítico utilicé principalmente?',
-                'tipo_pregunta' => 'cerrada'
-            ],
-            //pregunta 3 metacognición
-            [
-                'id_pregunta' => 68,
-                'id_prueba' => 1,
-                'id_contexto' => 13,
-                'id_subhabilidad' => null,
-                'id_categoria' => 3,
-                'texto' => 'Cuando estaba respondiendo al ítem, me detuve en algún momento para saber si estaba entendiendo',
-                'tipo_pregunta' => 'cerrada'
-            ], */
+            
 
             //Item 27
             [
@@ -646,37 +335,7 @@ class PreguntasSeeder extends Seeder
                 'tipo_pregunta' => 'abierta'
             ],
 
-            //Contexto14_Metacognición
-            /* //pregunta 1
-            [
-                'id_pregunta' => 71,
-                'id_prueba' => 1,
-                'id_contexto' => 14,
-                'id_subhabilidad' => null,
-                'id_categoria' => 3,
-                'texto' => 'Soy consciente de la habilidad del pensamiento crítico que empleé para responder a los s dos (2) ítems anteriores.',
-                'tipo_pregunta' => 'cerrada'
-            ],
-            //pregunta 2 metacognición
-            [
-                'id_pregunta' => 72,
-                'id_prueba' => 1,
-                'id_contexto' => 14,
-                'id_subhabilidad' => null,
-                'id_categoria' => 3,
-                'texto' => '¿Cuál de las siguientes habilidades de pensamiento crítico utilicé principalmente?',
-                'tipo_pregunta' => 'cerrada'
-            ],
-            //pregunta 3 metacognición
-            [
-                'id_pregunta' => 73,
-                'id_prueba' => 1,
-                'id_contexto' => 14,
-                'id_subhabilidad' => null,
-                'id_categoria' => 3,
-                'texto' => 'Al responder a este tipo de tareas cognitivas y me encuentro confundido me pregunto si lo que suponía era correcto o no',
-                'tipo_pregunta' => 'cerrada'
-            ], */
+            
 
             //Item 29
             [
@@ -700,37 +359,7 @@ class PreguntasSeeder extends Seeder
                 'tipo_pregunta' => 'abierta'
             ],
 
-            //Contexto15_Metacognición
-            /* //pregunta 1
-            [
-                'id_pregunta' => 76,
-                'id_prueba' => 1,
-                'id_contexto' => 15,
-                'id_subhabilidad' => null,
-                'id_categoria' => 3,
-                'texto' => 'Soy consciente de la habilidad del pensamiento crítico que empleé para responder a los s dos (2) ítems anteriores.',
-                'tipo_pregunta' => 'cerrada'
-            ],
-            //pregunta 2 metacognición
-            [
-                'id_pregunta' => 77,
-                'id_prueba' => 1,
-                'id_contexto' => 15,
-                'id_subhabilidad' => null,
-                'id_categoria' => 3,
-                'texto' => '¿Cuál de las siguientes habilidades de pensamiento crítico utilicé principalmente?',
-                'tipo_pregunta' => 'cerrada'
-            ],
-            //pregunta 3 metacognición
-            [
-                'id_pregunta' => 78,
-                'id_prueba' => 1,
-                'id_contexto' => 15,
-                'id_subhabilidad' => null,
-                'id_categoria' => 3,
-                'texto' => 'Cuando terminé de responder el ítem me pregunté si había pensado críticamente',
-                'tipo_pregunta' => 'cerrada'
-            ], */
+            
 
             //Item 31
             [
@@ -1064,7 +693,30 @@ Para cada una de las siguientes afirmaciones, indica si se trata de una opinión
                 'id_contexto' => 29,
                 'id_subhabilidad' => 13,
                 'id_categoria' => 2,
-                'texto' => 'En las siguientes dos columnas se encuentran alternativas de solución al problema de la propagación del virus (Columna A) y del decaimiento del ánimo del grupo (Columna B), selecciona la mejor combinación de soluciones con la cual ayudarás a resolver los dos problemas; para determinar esa mejor combinación de soluciones debes marcar la mejor alternativa de solución de cada una de las dos columnas (A y B). Columna A : 1. Decorar la habitación con mensajes alusivos al triunfo. 2 Investigar los casos de éxito de algunas agrupaciones que atravesaron por situaciones similares y lograron triunfar. 3. Descartar la participación en el certamen de cualquiera que se queje de la situación. 4. Dialogar con el grupo, encontrar los motivos por los cuales pueden ganar, y las formas de contrarrestar el virus y el agotamiento. 5. Limitar las salidas en la noche y poner música relajante. 6. Solicitar todo tipo de medicamentos, inyecciones, remedios caseros y vitaminas que fortalezcan el sistema inmune. Columna B: G. Trabajar la mente de los compañeros con discursos fuertes que los haga reaccionar. H. Pedir al Maestro que reemplace a los miembros de la banda que están enfermos. I. Solicitar el doble de ensayos musicales y pedir bebidas energizantes. J. Identificar las cualidades de la banda sinfónica y reflexionarlas con tus compañeros, motivándolos al triunfo.Identificar las cualidades de la banda sinfónica y reflexionarlas con tus compañeros, motivándolos al triunfo. K. Decir a los compañeros que están más desanimados que no contagien de ese ánimo a los demás. L. Resaltar la identidad de la banda y solicitar que se toquen las piezas musicales que caracterizan a la banda para convencer al jurado.',
+                'texto' => '
+    En las siguientes dos columnas se encuentran alternativas de solución al problema de la propagación del virus (Columna A) y del decaimiento del ánimo del grupo (Columna B), selecciona la mejor combinación de soluciones con la cual ayudarás a resolver los dos problemas; para determinar esa mejor combinación de soluciones debes marcar la mejor alternativa de solución de cada una de las dos columnas (A y B).
+    <div class="columnas">
+        <div class="columna-a">
+            <h3>Columna A</h3>
+            <p>1. Decorar la habitación con mensajes alusivos al triunfo.</p>
+            <p>2. Investigar los casos de éxito de algunas agrupaciones que atravesaron por situaciones similares y lograron triunfar.</p>
+            <p>3. Descartar la participación en el certamen de cualquiera que se queje de la situación.</p>
+            <p>4. Dialogar con el grupo, encontrar los motivos por los cuales pueden ganar, y las formas de contrarrestar el virus y el agotamiento.</p>
+            <p>5. Limitar las salidas en la noche y poner música relajante.</p>
+            <p>6. Solicitar todo tipo de medicamentos, inyecciones, remedios caseros y vitaminas que fortalezcan el sistema inmune.</p>
+        </div>
+        <div class="columna-b">
+            <h3>Columna B</h3>
+            <p>G. Trabajar la mente de los compañeros con discursos fuertes que los haga reaccionar.</p>
+            <p>H. Pedir al Maestro que reemplace a los miembros de la banda que están enfermos.</p>
+            <p>I. Solicitar el doble de ensayos musicales y pedir bebidas energizantes.</p>
+            <p>J. Identificar las cualidades de la banda sinfónica y reflexionarlas con tus compañeros, motivándolos al triunfo.</p>
+            <p>K. Decir a los compañeros que están más desanimados que no contagien de ese ánimo a los demás.</p>
+            <p>L. Resaltar la identidad de la banda y solicitar que se toquen las piezas musicales que caracterizan a la banda para convencer al jurado.</p>
+        </div>
+    </div>
+',
+
                 'tipo_pregunta' => 'cerrada'
             ],
 
@@ -1086,7 +738,30 @@ Para cada una de las siguientes afirmaciones, indica si se trata de una opinión
                 'id_contexto' => 30,
                 'id_subhabilidad' => 13,
                 'id_categoria' => 2,
-                'texto' => 'En las siguientes dos columnas se encuentran alternativas de solución al problema de acceso al servicio de salud (Columna A) y a la mala calidad del aire (Columna B), selecciona la mejor combinación de soluciones con la cual ayudarás a resolver los dos problemas; para determinar esa mejor combinación de soluciones debes marcar la mejor alternativa de solución de cada una de las dos columnas (A y B). Columna A:  1. 1.	Implementar clínicas móviles en comunidades rurales para ofrecer atención médica básica y emergencias. 2. 2.	Lanzar una campaña en redes sociales sobre la importancia de una vida saludable. 3. 3.	Proveer capacitación básica en primeros auxilios a voluntarios comunitarios. 4. 4.	Repartir folletos sobre higiene personal en mercados locales. 5. 5.	Proponer una reducción en el horario laboral de los trabajadores de la salud para evitar el agotamiento. 6. 6.	Construir un nuevo hospital en la periferia de la ciudad con una planificación deficiente de transporte. Columna B: A.  Implementar un sistema de transporte público eléctrico y bicicletas compartidas para reducir las emisiones de vehículos. B. Organizar un concurso de dibujos para estudiantes sobre la contaminación del aire. C. Establecer un programa de monitoreo del aire y reforestación en áreas urbanas para identificar focos de contaminación y mejorar la calidad del aire. D. Distribuir mascarillas en zonas de alta contaminación. E. Fomentar el uso de energías renovables mediante subsidios para paneles solares en hogares. F. Colocar carteles informativos sobre los peligros de la contaminación del aire en lugares públicos.',
+                'texto' => '
+    En las siguientes dos columnas se encuentran alternativas de solución al problema de acceso al servicio de salud (Columna A) y a la mala calidad del aire (Columna B), selecciona la mejor combinación de soluciones con la cual ayudarás a resolver los dos problemas; para determinar esa mejor combinación de soluciones debes marcar la mejor alternativa de solución de cada una de las dos columnas (A y B).
+    <div class="columnas">
+        <div class="columna-a">
+            <h3>Columna A</h3>
+            <p>1. Implementar clínicas móviles en comunidades rurales para ofrecer atención médica básica y emergencias.</p>
+            <p>2. Lanzar una campaña en redes sociales sobre la importancia de una vida saludable.</p>
+            <p>3. Proveer capacitación básica en primeros auxilios a voluntarios comunitarios.</p>
+            <p>4. Repartir folletos sobre higiene personal en mercados locales.</p>
+            <p>5. Proponer una reducción en el horario laboral de los trabajadores de la salud para evitar el agotamiento.</p>
+            <p>6. Construir un nuevo hospital en la periferia de la ciudad con una planificación deficiente de transporte.</p>
+        </div>
+        <div class="columna-b">
+            <h3>Columna B</h3>
+            <p>A. Implementar un sistema de transporte público eléctrico y bicicletas compartidas para reducir las emisiones de vehículos.</p>
+            <p>B. Organizar un concurso de dibujos para estudiantes sobre la contaminación del aire.</p>
+            <p>C. Establecer un programa de monitoreo del aire y reforestación en áreas urbanas para identificar focos de contaminación y mejorar la calidad del aire.</p>
+            <p>D. Distribuir mascarillas en zonas de alta contaminación.</p>
+            <p>E. Fomentar el uso de energías renovables mediante subsidios para paneles solares en hogares.</p>
+            <p>F. Colocar carteles informativos sobre los peligros de la contaminación del aire en lugares públicos.</p>
+        </div>
+    </div>
+',
+
                 'tipo_pregunta' => 'cerrada'
             ],
 

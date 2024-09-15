@@ -179,7 +179,7 @@ class ReportesController extends Controller
         $informe_final = $this->crear_informe_descriptivo($consulta_informe, $categorias);
 
         //Esto es lo que debería restornar
-        return view('reporte.index', compact('respuesta'));
+        return view('reporte.index', compact('informe_final', 'respuesta'));
     }
 
 
@@ -367,10 +367,10 @@ class ReportesController extends Controller
      */
     public function crear_informe_descriptivo($consulta_informe, $categorias)
     {
-
-        $pregunta = "";
+        $documentos_totales = [];
+        $indice = 1; // Empezar el índice en 1
         foreach ($consulta_informe as $pregunta) {
-            $nombre_pregunta = "pregunta_" . $pregunta['id_pregunta'];
+            $nombre_pregunta = "Item " . $indice; // Usar el índice en lugar del ID de la pregunta
 
             $documento = [
                 $nombre_pregunta => [
@@ -381,6 +381,7 @@ class ReportesController extends Controller
                 ],
             ];
             $documentos_totales[$nombre_pregunta] = $documento;
+            $indice++; // Incrementar el índice
         }
 
         $documentos_totales["metacognicion_conocimiento_procedimental"] = [
@@ -397,10 +398,9 @@ class ReportesController extends Controller
             ]
         ];
 
-        dd($documentos_totales);
         return $documentos_totales;
-
     }
+
 
     /**
      * Display a listing of the resource.
@@ -415,7 +415,7 @@ class ReportesController extends Controller
         return $textoDescriptivo ?: 'No se encontró un texto descriptivo para esta pregunta y calificación';
     }
 
-    
+
 
     /**
      * Display a listing of the resource.
@@ -435,10 +435,9 @@ class ReportesController extends Controller
                 'calificacion' => $item['calificacion'],
             ];
         }, $informe);
-      
+
         //dd($informe[0]['habilidad']);
         //dd($informe);
         return view('reporte.reporte_revisor', compact('informe'));
-
     }
 }

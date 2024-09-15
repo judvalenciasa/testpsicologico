@@ -1,0 +1,50 @@
+.report_section {
+    background-color: #f4f4f4;
+}
+
+.container {
+    width: 100%;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid #888787;
+}
+
+.container h1 {
+    
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.section {
+    border: 1px solid #888787;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 1vw;
+    border-radius: 10px;
+
+    margin-bottom: 20px;
+}
+
+.section h2 {
+    background-color: #888787;
+    padding: 10px;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.col {
+    flex: 0 0 50%;
+
+    /* Cada columna ocupa el 50% del ancho del contenedor */
+    box-sizing: border-box;
+    padding: 10px;
+}
+
+.descriptor p {
+    margin: 5px 0;
+}

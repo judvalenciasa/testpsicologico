@@ -29,7 +29,7 @@ class OpenAIService
                     'Content-Type' => 'application/json',
                 ],
                 'json' => [
-                    'model' => 'gpt-4',
+                    'model' => 'gpt-4o',
                     'temperature' => 0.2, // Ajuste para menos creatividad
                     'messages' => [
                         [

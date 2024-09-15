@@ -1,222 +1,97 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reporte de Resultados</title>
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/reporte.css') }}">
+    <title>Reporte Descriptivo</title>
+    <link rel="stylesheet" href="{{ asset('css/reporte_usuario.css') }}">
 </head>
-
-<body class="antialiased">
+<body>
 
     @include('shared.header')
 
-    <section class="reporte_section">
-        <div class="title">
-            <h1>Reporte de Resultados</h1>
-        </div>
-        <div class="tablas_ctn">
+    <section class="report_section">
+        <div class="container">
+            <h1>Reporte Descriptivo</h1>
+
+            <!-- Sección de Datos Personales -->
             <div class="section">
                 <h2>Datos Personales</h2>
-                <table class="table">
-                    <tr>
-                        <th>Documento de Identificación</th>
-                        <th>Edad</th>
-                        <th>Género</th>
-                    </tr>
-                    <tr>
-                        <td>{{ $respuesta['Personales'][0]['documento_identificacion'] }}</td>
-                        <td>{{ $respuesta['Personales'][0]['edad'] }}</td>
-                        <td>{{ $respuesta['Personales'][0]['genero'] }}</td>
-                    </tr>
-                </table>
+                <p><strong>Documento de Identificación:</strong> {{ $respuesta['Personales'][0]['documento_identificacion'] }}</p>
+                <p><strong>Edad:</strong> {{ $respuesta['Personales'][0]['edad'] }}</p>
+                <p><strong>Género:</strong> {{ $respuesta['Personales'][0]['genero'] }}</p>
             </div>
 
+            <!-- Sección de Datos Sociodemográficos -->
             <div class="section">
                 <h2>Datos Sociodemográficos</h2>
-                <table class="table">
-                    <tr>
-                        <th>Estrato</th>
-                        <th>Nivel Educativo Padre</th>
-                        <th>Nivel Educativo Madre</th>
-                    </tr>
-                    <tr>
-                        <td>{{ $respuesta['Sociodemograficos'][0]['estrato'] }}</td>
-                        <td>{{ $respuesta['Sociodemograficos'][0]['nivel_educativo_padre'] }}</td>
-                        <td>{{ $respuesta['Sociodemograficos'][0]['nivel_educativo_madre'] }}</td>
-                    </tr>
-                </table>
+                <p><strong>Estrato:</strong> {{ $respuesta['Sociodemograficos'][0]['estrato'] }}</p>
+                <p><strong>Nivel Educativo Padre:</strong> {{ $respuesta['Sociodemograficos'][0]['nivel_educativo_padre'] }}</p>
+                <p><strong>Nivel Educativo Madre:</strong> {{ $respuesta['Sociodemograficos'][0]['nivel_educativo_madre'] }}</p>
             </div>
 
+            <!-- Sección de Estilos de Vida -->
             <div class="section">
                 <h2>Estilos de Vida</h2>
-                <table class="table">
-                    <tr>
-                        <th>Horas de Lectura</th>
-                        <th>Horas en Redes Sociales</th>
-                        <th>Horas de Entretenimiento</th>
-                        <th>Horas de Sueño</th>
-                        <th>Promedio en Arte</th>
-                    </tr>
-                    <tr>
-                        <td>{{ $respuesta['estilos_vida'][0]['horas_lectura'] }}</td>
-                        <td>{{ $respuesta['estilos_vida'][0]['horas_redes_sociales'] }}</td>
-                        <td>{{ $respuesta['estilos_vida'][0]['horas_entretenimiento'] }}</td>
-                        <td>{{ $respuesta['estilos_vida'][0]['hora_sueno'] }}</td>
-                        <td>{{ $respuesta['estilos_vida'][0]['promedio_arte'] }}</td>
-                    </tr>
-                </table>
+                <p><strong>Horas de Lectura:</strong> {{ $respuesta['estilos_vida'][0]['horas_lectura'] }}</p>
+                <p><strong>Horas en Redes Sociales:</strong> {{ $respuesta['estilos_vida'][0]['horas_redes_sociales'] }}</p>
+                <p><strong>Horas de Entretenimiento:</strong> {{ $respuesta['estilos_vida'][0]['horas_entretenimiento'] }}</p>
+                <p><strong>Horas de Sueño:</strong> {{ $respuesta['estilos_vida'][0]['hora_sueno'] }}</p>
+                <p><strong>Promedio de Actividades Artísticas:</strong> {{ $respuesta['estilos_vida'][0]['promedio_arte'] }}</p>
             </div>
 
+            <!-- Sección de Saludable -->
             <div class="section">
-                <h2>Alimentación Saludable</h2>
-                <table class="table">
-                    <tr>
-                        <th>Promedio de Deporte</th>
-                        <th>Consumo de Grasas</th>
-                        <th>Alimentos Saludables</th>
-                    </tr>
-                    <tr>
-                        <td>{{ $respuesta['saludable'][0]['promedio_deporte'] }}</td>
-                        <td>{{ $respuesta['saludable'][0]['grasas'] }}</td>
-                        <td>{{ $respuesta['saludable'][0]['alimentos_saludables'] }}</td>
-                    </tr>
-                </table>
+                <h2>Saludable</h2>
+                <p><strong>Promedio de Deporte:</strong> {{ $respuesta['saludable'][0]['promedio_deporte'] }}</p>
+                <p><strong>Consumo de Grasas:</strong> {{ $respuesta['saludable'][0]['grasas'] }}</p>
+                <p><strong>Consumo de Alimentos Saludables:</strong> {{ $respuesta['saludable'][0]['alimentos_saludables'] }}</p>
             </div>
 
-            <div class="section">
-                <h2>Macrohabilidad Inductiva</h2>
-                <table class="table">
-                    <tr>
-                        <th>Inducción General</th>
-                        <th>Inducción Específica</th>
-                        <th>Total</th>
-                        <th>Nivel</th>
+            @php $count = 0; $indice = 1; @endphp
+            <div class="row">
+                @foreach($informe_final as $key => $documento)
+                <div class="col section">
+                    <h2>{{ $key }}</h2>
 
-                    </tr>
-                    <tr>
-                        <td>{{ $respuesta['macrohabilidad_inductiva'][0]['induccion_general'] }}</td>
-                        <td>{{ $respuesta['macrohabilidad_inductiva'][0]['induccion_especifica'] }}</td>
-                        <td>{{ $respuesta['macrohabilidad_inductiva'][0]['total_macrohabilidad_inductiva'] }}</td>
-                        <td>{{ $respuesta['macrohabilidad_inductiva'][0]['nivel_induccion_general'] }}</td>
+                    @if(is_array($documento))
+                    @foreach($documento as $subKey => $subDocumento)
+                    @if(is_array($subDocumento))
+                    @foreach($subDocumento as $detalleKey => $detalle)
+                    @if(is_array($detalle))
+                    @foreach($detalle as $detalleSubKey => $detalleValor)
+                    <div class="descriptor">
+                        <p><strong>{{ ucfirst($detalleSubKey) }}:</strong> {{ $detalleValor }}</p>
+                    </div>
+                    @endforeach
+                    @else
+                    <div class="descriptor">
+                        <p><strong>{{ ucfirst($detalleKey) }}:</strong> {{ $detalle }}</p>
+                    </div>
+                    @endif
+                    @endforeach
+                    @else
+                    <div class="descriptor">
+                        <p><strong>{{ $subKey }}:</strong> {{ $subDocumento }}</p>
+                    </div>
+                    @endif
+                    @endforeach
+                    @endif
+                </div>
 
-                    </tr>
-                </table>
+                @php $count++; $indice++; @endphp
+
+                <!-- Cada dos elementos, cerramos la fila y abrimos una nueva -->
+                @if($count % 2 == 0)
             </div>
-
-            <div class="section">
-                <h2>Macrohabilidad Abductiva</h2>
-                <table class="table">
-                    <tr>
-                        <th>Comprobación de Hipótesis</th>
-                        <th>Uso de Probabilidad e Incertidumbre</th>
-                        <th>Total</th>
-                        <th>Nivel</th>
-
-                    </tr>
-                    <tr>
-                        <td>{{ $respuesta['macrohabilidad_abductiva'][0]['comprobacion_hipotesis'] }}</td>
-                        <td>{{ $respuesta['macrohabilidad_abductiva'][0]['uso_probabilidad_incertidumbre'] }}</td>
-                        <td>{{ $respuesta['macrohabilidad_abductiva'][0]['total_abductiva'] }}</td>
-                        <td>{{ $respuesta['macrohabilidad_abductiva'][0]['nivel_abductiva'] }}</td>
-                    </tr>
-                </table>
-            </div>
-
-            <div class="section">
-                <h2>Macrohabilidad Deductivo y Verbal</h2>
-                <table class="table">
-                    <tr>
-                        <th>Identificación de Fallo por Analogía</th>
-                        <th>Identificación de Fallo por Vaguedad</th>
-                        <th>Total</th>
-                        <th>Nivel</th>
-
-                    </tr>
-                    <tr>
-                        <td>{{ $respuesta['macrohabilidad_deductivo_y_verbal'][0]['identificacion_analogia'] }}</td>
-                        <td>{{ $respuesta['macrohabilidad_deductivo_y_verbal'][0]['identificacion_por_fallo_vaguedad'] }}</td>
-                        <td>{{ $respuesta['macrohabilidad_deductivo_y_verbal'][0]['total_deductivo_y_verbal'] }}</td>
-                        <td>{{ $respuesta['macrohabilidad_deductivo_y_verbal'][0]['nivel_deductivo_y_verbal'] }}</td>
-                    </tr>
-                </table>
-            </div>
-
-            <div class="section">
-                <h2>Macrohabilidad de Análisis de Argumentos</h2>
-                <table class="table">
-                    <tr>
-                        <th>Identificación de Estructura Argumentativa</th>
-                        <th>Identificación de Suposición</th>
-                        <th>Identificación de Falacia</th>
-                        <th>Total</th>
-                        <th>Nivel</th>
-
-                    </tr>
-                    <tr>
-                        <td>{{ $respuesta['macrohabilidad_analisis_de_argumentos'][0]['identificacion_estructura_argumentativa'] }}</td>
-                        <td>{{ $respuesta['macrohabilidad_analisis_de_argumentos'][0]['identificacion_de_suposicion'] }}</td>
-                        <td>{{ $respuesta['macrohabilidad_analisis_de_argumentos'][0]['identificacion_de_falacia'] }}</td>
-                        <td>{{ $respuesta['macrohabilidad_analisis_de_argumentos'][0]['total_analisis_de_argumentos'] }}</td>
-                        <td>{{ $respuesta['macrohabilidad_analisis_de_argumentos'][0]['nivel_analisis_de_argumentos'] }}</td>
-                    </tr>
-                </table>
-            </div>
-
-            <div class="section">
-                <h2>Toma de Decisiones y Resolución de Problemas</h2>
-                <table class="table">
-                    <tr>
-                        <th>Toma de Decisiones Informadas</th>
-                        <th>Conciencia de Situación y Acciones Razonables</th>
-                        <th>Pensamiento Estratégico</th>
-                        <th>Pensamiento Creativo</th>
-                        <th>Total</th>
-                        <th>Nivel</th>
-
-                    </tr>
-                    <tr>
-                        <td>{{ $respuesta['macrohabilidad_toma_desiciones_y_resolucion_problemas'][0]['toma_desiciones_informadas'] }}</td>
-                        <td>{{ $respuesta['macrohabilidad_toma_desiciones_y_resolucion_problemas'][0]['conciencia_situacion_acciones_razonables'] }}</td>
-                        <td>{{ $respuesta['macrohabilidad_toma_desiciones_y_resolucion_problemas'][0]['pensamiento_estrategico'] }}</td>
-                        <td>{{ $respuesta['macrohabilidad_toma_desiciones_y_resolucion_problemas'][0]['pensamiento_creativo'] }}</td>
-                        <td>{{ $respuesta['macrohabilidad_toma_desiciones_y_resolucion_problemas'][0]['total_toma_desiciones_y_resolucion_problemas'] }}</td>
-                        <td>{{ $respuesta['macrohabilidad_toma_desiciones_y_resolucion_problemas'][0]['nivel_toma_desiciones_y_resolucion_problemas'] }}</td>
-                    </tr>
-                </table>
-            </div>
-
-            <div class="section">
-                <h2>Metacognición - Conocimiento Procedimental</h2>
-                <table class="table">
-                    <tr>
-                        <th>Conocimiento Procedimental</th>
-                        <th>Depuración</th>
-                        <th>Evaluación</th>
-                        <th>Monitoreo</th>
-                        <th>Organización</th>
-                        <th>Planificación</th>
-                        <th>Total</th>
-                    </tr>
-                    <tr>
-                        <td>{{ $respuesta['metacognicion_conocimiento_procedimental'][0]['conocimiento_procedimental'] }}</td>
-                        <td>{{ $respuesta['metacognicion_conocimiento_procedimental'][0]['depuracion'] }}</td>
-                        <td>{{ $respuesta['metacognicion_conocimiento_procedimental'][0]['evaluacion'] }}</td>
-                        <td>{{ $respuesta['metacognicion_conocimiento_procedimental'][0]['monitoreo'] }}</td>
-                        <td>{{ $respuesta['metacognicion_conocimiento_procedimental'][0]['organizacion'] }}</td>
-                        <td>{{ $respuesta['metacognicion_conocimiento_procedimental'][0]['planificacion'] }}</td>
-                        <td>{{ $respuesta['metacognicion_conocimiento_procedimental'][0]['total_conocimiento_procedimental'] }}</td>
-
-                    </tr>
-                </table>
-            </div>
+            <div class="row">
+                @endif
+                @endforeach
+            </div> <!-- Cierra el último contenedor row -->
         </div>
     </section>
+
     @include('shared.footer')
 
-
 </body>
-
 </html>

@@ -55,7 +55,9 @@ class TestsController extends Controller
 
     // Función para mostrar la página de metacognición
     public function metacognicion($tiempo_prueba)
+
     {
+        $tiempo_prueba = 10; // El valor que quieres pasar
         return view('private.metacognicion', compact("tiempo_prueba"));
     }
 
