@@ -175,11 +175,13 @@ class ReportesController extends Controller
             ],
         ];
 
-        $consulta_informe = $this->consultar_informe($user->id_usuario);
-        $informe_final = $this->crear_informe_descriptivo($consulta_informe, $categorias);
+        $informe_test = $this->consultar_informe($user->id_usuario);
+        $informe_final = $this->crear_informe_descriptivo($informe_test, $categorias);
 
+
+        dd($informe_final);
         //Esto es lo que debería restornar
-        return view('reporte.index', compact('respuesta'));
+        return view('reporte.index', compact('informe_final'));
     }
 
 
@@ -329,7 +331,7 @@ class ReportesController extends Controller
 
     /**
      * Realiza la consulta para traer Contexto, Habilidad, Subhabilidad, texto_pregunta, calificacion, respuesta y calificacion de una pregunta.
-     * Devuelve todas las preguntas con los encabezados descritos anteriormente 
+     * respecto a un usuario devuelve todas las preguntas con los encabezados descritos anteriormente 
      */
     public function consultar_informe($id_usuario)
     {
@@ -397,7 +399,6 @@ class ReportesController extends Controller
             ]
         ];
 
-        dd($documentos_totales);
         return $documentos_totales;
 
     }
@@ -407,12 +408,13 @@ class ReportesController extends Controller
      */
     public function identificar_descriptor($id_pregunta, $calificacion)
     {
+        
         $textoDescriptivo = Descriptivos::where('id_pregunta', $id_pregunta)
             ->where('calificacion', $calificacion)
             ->value('texto_descriptivo');
 
         // Devolvemos el texto descriptivo o un mensaje si no se encuentra
-        return $textoDescriptivo ?: 'No se encontró un texto descriptivo para esta pregunta y calificación';
+        return $textoDescriptivo;
     }
 
     
@@ -436,8 +438,6 @@ class ReportesController extends Controller
             ];
         }, $informe);
       
-        //dd($informe[0]['habilidad']);
-        //dd($informe);
         return view('reporte.reporte_revisor', compact('informe'));
 
     }

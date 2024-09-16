@@ -274,7 +274,6 @@ class TestsController extends Controller
 
         //Se verifica que si la opcion tiene como valor_opcion 0
         if ($subopcion->valor_opcion == 0) {
-            dd('La opción seleccionada tiene valor 0');
             $respuesta_chatgpt = 0;
         } else {
 
@@ -393,7 +392,7 @@ class TestsController extends Controller
             foreach ($pregunta_ids as $pregunta_id) {
 
 
-                if ($pregunta_id == 93) {
+                if ($pregunta_id == 93 || $pregunta_id == 94) {
                     $this->calificar_pregunta_93($request,  $user);
                 } elseif ($pregunta_id == 101 || $pregunta_id == 102) {
                     $this->calificar_pregunta_101($request,  $user);
