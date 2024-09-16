@@ -306,7 +306,8 @@ class ReportesController extends Controller
         }
     }
 
-    /**Muestra el reporte para el usuario administrador buscado por el id del reporte
+    /**
+     * Muestra el reporte para el usuario administrador buscado por el id del reporte
      * Retorna la vista reporte_detalle con los datos del reporte
      */
 
