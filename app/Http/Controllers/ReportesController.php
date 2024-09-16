@@ -178,6 +178,7 @@ class ReportesController extends Controller
         $consulta_informe = $this->consultar_informe($user->id_usuario);
         $informe_final = $this->crear_informe_descriptivo($consulta_informe, $categorias);
 
+
         //Esto es lo que debería restornar
         return view('reporte.index', compact('informe_final', 'respuesta'));
     }
@@ -297,10 +298,11 @@ class ReportesController extends Controller
 
     public function verReporte($id)
     {
-        // Encuentra el reporte por su ID
         $reporte = Reportes::findOrFail($id);
+        
+        
 
-        // Retorna la vista de detalle del reporte
+        // Retorna la vista con los datos
         return view('reporte.reporte_detalle', compact('reporte'));
     }
 

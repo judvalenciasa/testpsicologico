@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use DB;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB as FacadesDB;
 
 class DescriptivosSeeder extends Seeder
 {
@@ -13,7 +14,7 @@ class DescriptivosSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('descriptivos')->insert([
+        FacadesDB::table('descriptivos')->insert([
             //descriptivos item_1
             [
                 'id_descriptivo' => 1,
