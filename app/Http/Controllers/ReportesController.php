@@ -20,7 +20,7 @@ class ReportesController extends Controller
      */
     public function crear_reporte(Request $request)
     {
-             
+
     }
     
 
@@ -305,13 +305,14 @@ class ReportesController extends Controller
         }
     }
 
+    /**Muestra el reporte para el usuario administrador buscado por el id del reporte
+     * Retorna la vista reporte_detalle con los datos del reporte
+     */
 
     public function verReporte($id)
     {
         $reporte = Reportes::findOrFail($id);
         
-
-
         // Retorna la vista con los datos
         return view('reporte.reporte_detalle', compact('reporte'));
     }
