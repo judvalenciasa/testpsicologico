@@ -10,7 +10,7 @@ class Reportes extends Model
     use HasFactory;
 
     protected $table = 'reportes';
-    protected $primaryKey = 'id_informe';
+    protected $primaryKey = 'id_reporte';
 
 
     protected $fillable = [
@@ -65,5 +65,10 @@ class Reportes extends Model
     public function usuario()
     {
         return $this->belongsTo(User::class, 'id_usuario');
+    }
+
+    public function respuestas()
+    {
+        return $this->hasMany(Respuestas::class, 'id_reporte');
     }
 }

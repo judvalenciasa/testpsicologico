@@ -15,12 +15,14 @@ return new class extends Migration
             $table->id('id_respuesta');
             $table->unsignedBigInteger('id_usuario');
             $table->unsignedBigInteger('id_pregunta');
+            $table->unsignedBigInteger('id_reporte');
             $table->string('respuesta', 500)->nullable();
             $table->integer('calificacion_respuesta');
             $table->timestamps();
             
             $table->foreign('id_usuario')->references('id_usuario')->on('users');
             $table->foreign('id_pregunta')->references('id_pregunta')->on('preguntas');
+            $table->foreign('id_reporte')->references('id_reporte')->on('reportes');
         });
     }
 

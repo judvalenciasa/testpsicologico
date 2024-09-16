@@ -8,6 +8,7 @@ use App\Models\Opciones;
 use App\Models\opcionessubpreguntas;
 use App\Models\Preguntas;
 use App\Models\Pruebas;
+use App\Models\Reportes;
 use App\Models\Respuestas;
 use App\Models\Subcriterios;
 use App\Models\subpreguntas;
@@ -33,29 +34,39 @@ class TestsController extends Controller
     }
 
     //funcion para guardar respuesta
-    public function guardarRespuesta(Request $request, $user_id, $pregunta_id, $respuesta, $calificacion)
+    public function guardarRespuesta(Request $request, $user, $pregunta_id, $respuesta, $calificacion)
     {
-        $respuestaExistente = Respuestas::where('id_usuario', $user_id)
+        $id_reporte=session('reporte');
+        $respuestaExistente = Respuestas::where('id_usuario', $user->id_usuario)
             ->where('id_pregunta', $pregunta_id)
+            ->where('id_reporte',$id_reporte)
             ->first();
 
         if ($respuestaExistente) {
             $respuestaExistente->update([
                 'respuesta' => $respuesta,
-                'calificacion_respuesta' => $calificacion,
+                'calificacion_respuesta' => $calificacion
             ]);
         } else {
-
-            $respuestasControler = new RespuestasController();
-
-            $respuestasControler->guardarRespuesta($request, $user_id, $pregunta_id, $respuesta, $calificacion);
+            
+            Respuestas::create([
+                'id_usuario' => $user->id_usuario,
+                'id_pregunta' => $pregunta_id,
+                'id_reporte' => $id_reporte,
+                'respuesta' => $respuesta,
+                'calificacion_respuesta' => $calificacion
+            ]);
+            
+            
+            
+            //$respuestasControler = new RespuestasController();
+            //$respuestasControler->guardarRespuesta($request, $user, $pregunta_id, $respuesta, $calificacion, $id_reporte);
         }
     }
 
 
     // Función para mostrar la página de metacognición
     public function metacognicion($tiempo_prueba)
-
     {
         return view('private.metacognicion', compact("tiempo_prueba"));
     }
@@ -87,7 +98,7 @@ class TestsController extends Controller
         $this->guardarRespuesta($request, $user, $pregunta_id, $opcionSeleccionada->texto, $opcionSeleccionada->valor_opcion);
     }
 
-    public function calificar_pregunta_abierta(Request $request,  $pregunta_id, $user)
+    public function calificar_pregunta_abierta(Request $request, $pregunta_id, $user)
     {
         $respuestas_abiertas = $request->input('respuestas_abiertas');
         $respuestas_abiertas_texto = reset($respuestas_abiertas);
@@ -149,7 +160,7 @@ class TestsController extends Controller
         }
 
 
-        $preguntaPrincipalId = $request->input('pregunta_ids')[0]; 
+        $preguntaPrincipalId = $request->input('pregunta_ids')[0];
         $this->guardarRespuesta($request, $user, $preguntaPrincipalId, 'Calificación basada en subpreguntas', $totalCalificacionSubpreguntas);
     }
 
@@ -158,7 +169,7 @@ class TestsController extends Controller
         $totalCalificacionSubpreguntas = 0;
         $totalSubpreguntas = 0;
 
-        $preguntaPrincipalId = $request->input('pregunta_ids')[1]; 
+        $preguntaPrincipalId = $request->input('pregunta_ids')[1];
 
 
         $id_contexto = Preguntas::where('id_pregunta', $preguntaPrincipalId)->pluck('id_contexto')->first();
@@ -188,7 +199,7 @@ class TestsController extends Controller
 
                 $criterio = Subcriterios::where('id_subpregunta', $subpregunta_id)->pluck('texto');
 
-                $prompt =  "Contexto: " . $contexto . " fin contexto. Esta es la pregunta: "  . $subpregunta->texto . " Fin pregunta. Esta es la respuesta del enunciado: " . $opcion->texto . ". fin respuesta. Estos son los criterios para la calificación: " . $criterio . " fin criterio. " . "Nota: La respuesta debe tener un sentido coherente con lo que se pregunta en el contexto." . "Con lo anterior devuélveme el número de la calificación, sin ninguna otra letra, con la siguiente respuesta: " . $respuesta_abierta;
+                $prompt = "Contexto: " . $contexto . " fin contexto. Esta es la pregunta: " . $subpregunta->texto . " Fin pregunta. Esta es la respuesta del enunciado: " . $opcion->texto . ". fin respuesta. Estos son los criterios para la calificación: " . $criterio . " fin criterio. " . "Nota: La respuesta debe tener un sentido coherente con lo que se pregunta en el contexto." . "Con lo anterior devuélveme el número de la calificación, sin ninguna otra letra, con la siguiente respuesta: " . $respuesta_abierta;
 
 
                 $respuesta_chatgpt = $this->openAIService->enviarRespuestaAChatGPT($prompt);
@@ -308,6 +319,8 @@ class TestsController extends Controller
         if (!$request->has('pregunta_ids')) {
 
             //Se crea un informe de la hora de inicio de la prueba
+            $reporte = $this->crear_reporte($user);
+            session(['reporte' => $reporte->id_reporte]);
 
 
             $hora_inicio_prueba = Carbon::now();
@@ -351,9 +364,9 @@ class TestsController extends Controller
 
 
                 if ($pregunta_id == 93 || $pregunta_id == 94) {
-                    $this->calificar_pregunta_93($request,  $user);
+                    $this->calificar_pregunta_93($request, $user);
                 } elseif ($pregunta_id == 101 || $pregunta_id == 102) {
-                    $this->calificar_pregunta_101($request,  $user);
+                    $this->calificar_pregunta_101($request, $user);
                 } else {
                     $tipo_pregunta = Preguntas::where('id_pregunta', $pregunta_id)->pluck('tipo_pregunta')->first();
 
@@ -399,5 +412,27 @@ class TestsController extends Controller
         $preguntas = $contextos_ordenados[$contexto_index]->preguntas;
 
         return view('private.prueba_page', compact('preguntas', 'contexto_index', 'total_contextos', 'prueba_id'));
+    }
+
+    /**
+     * Será llamado por primera vez para asociar las preguntas respondidas a ese reporte
+     * @return void
+     */
+    public function crear_reporte($user): Reportes
+    {
+        $fecha_actual = Carbon::now()->format('Y-m-d');
+        $reporte = Reportes::where('id_usuario', $user->id_usuario)
+            ->whereDate('fecha_calificacion', '=', $fecha_actual)
+            ->first(); 
+
+        if (!$reporte) {
+            $nuevo_reporte = Reportes::create([
+                'id_usuario' => $user->id_usuario,
+                'fecha_calificacion' => $fecha_actual
+            ]);
+
+            return $nuevo_reporte;
+        }
+        return $reporte; 
     }
 }

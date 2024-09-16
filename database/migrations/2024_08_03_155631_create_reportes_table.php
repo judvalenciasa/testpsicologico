@@ -12,10 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('reportes', function (Blueprint $table) {
-            $table->id('id_informe');
+            $table->id('id_reporte');
             $table->unsignedBigInteger('id_usuario');
-            $table->integer('calificacion_total');
-            $table->integer('calificacion_metacognicion');
+            $table->integer('calificacion_total')->nullable();
+            $table->integer('calificacion_metacognicion')->nullable();
             $table->date('fecha_calificacion');
             
             $table->string('documento_identificacion')->nullable();
