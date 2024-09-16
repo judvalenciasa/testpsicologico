@@ -73,9 +73,7 @@ class TestsController extends Controller
 
     public function calificar_pregunta_cerrada(Request $request, $pregunta_id, $user)
     {
-
         $respuesta_cerrada = $request->input('respuestas_cerradas');
-
 
         $opcionSeleccionada = DB::table('opciones')
             ->where('id_pregunta', $pregunta_id)
@@ -292,8 +290,6 @@ class TestsController extends Controller
         $this->guardarRespuesta($request, $user, $pregunta2Id, $respuestas_abiertas, $respuesta_chatgpt);
     }
 
-
-
     //public static $hora_inicio_prueba = 'Soy una variable estática';
 
     public function cargarPreguntas(Request $request)
@@ -310,6 +306,9 @@ class TestsController extends Controller
 
 
         if (!$request->has('pregunta_ids')) {
+
+            //Se crea un informe de la hora de inicio de la prueba
+
 
             $hora_inicio_prueba = Carbon::now();
             session(['hora_inicio_prueba' => $hora_inicio_prueba]);

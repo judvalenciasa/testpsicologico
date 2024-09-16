@@ -14,11 +14,21 @@ use Carbon\Carbon;
 
 class ReportesController extends Controller
 {
+
     /**
-     * Crea el reporte, con los siguientes parametros de ingreso
-     * 
+     * Crea un nuevo reporte
      */
     public function crear_reporte(Request $request)
+    {
+             
+    }
+    
+
+    /**
+     * Muestra el reporte en la vista de un usuario
+     * 
+     */
+    public function ver_reporte_usuario(Request $request)
     {
         $user = $request->user();
         $categorias = $this->sumar_por_categorias(request: $request);
@@ -300,7 +310,7 @@ class ReportesController extends Controller
     {
         $reporte = Reportes::findOrFail($id);
         
-        
+
 
         // Retorna la vista con los datos
         return view('reporte.reporte_detalle', compact('reporte'));
