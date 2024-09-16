@@ -43,6 +43,9 @@
                 @endforeach
             </tbody>
         </table>
+
+        <a href="{{ route('private.usuarios') }}" class="btn">Volver a Usuarios</a>
+
     </section>
     @include('shared.footer')
 
