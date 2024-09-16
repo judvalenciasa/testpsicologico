@@ -37,14 +37,14 @@
                             <td>{{ $reporte->documento_identificacion }}</td>
                             <td>
                                 <a href="{{ route('reporte.ver', ['id' => $reporte->id_informe]) }}" class="btn btn-primary">Ver
-                                    Reporte</a> <!-- Enlace para ver el reporte -->
+                                    reporte</a> <!-- Enlace para ver el reporte -->
                             </td>
                             <td>
                                 <form class="form_ctn" action="{{ route('reporte.verRespuestas') }}" method="POST">
                                     @csrf
                                     <input type="hidden" name="id_usuario" value="{{ $user->id_usuario }}">
                                     <div>
-                                        <button class="prueba_btn" type="submit"> ver Respuesta</button>
+                                        <button class="btn btn-primary prueba_btn" type="submit"> Ver respuesta</button>
                                     </div>
                                 </form>
                             </td>

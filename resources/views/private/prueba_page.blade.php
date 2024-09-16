@@ -30,22 +30,23 @@
                 @csrf
                 @foreach($preguntas as $index => $pregunta_actual)
 
-                <p class="pregunta_texto">{{ $pregunta_actual->texto }}</p>
+                <p class="pregunta_texto">
+                    {!! $pregunta_actual->texto !!}</p>
 
                 @if($pregunta_actual->tipo_pregunta == 'abierta')
                 <div class="opcion">
-                    <textarea name="respuestas_abiertas[{{ $pregunta_actual->id_pregunta }}]" id="respuesta_abierta_{{ $pregunta_actual->id_pregunta }}" rows="4" placeholder="Escribe tu respuesta aquí..."></textarea>
+                    <textarea name="respuestas_abiertas[{{ $pregunta_actual->id_pregunta }}]" id="respuesta_abierta_{{ $pregunta_actual->id_pregunta }}" required rows="4" placeholder="Escribe tu respuesta aquí..."></textarea>
                 </div>
                 @else
                 @foreach($pregunta_actual->opciones as $opcion)
                 <div class="opcion">
                     <label>
-                        <input type="radio" name="respuestas_cerradas[{{ $pregunta_actual->id_pregunta }}]" value="{{ $opcion->id_opcion }}">
+                        <input type="radio" name="respuestas_cerradas[{{ $pregunta_actual->id_pregunta }}]" required value="{{ $opcion->id_opcion }}">
                         <p>{{ $opcion->texto }}</p>
                     </label>
                 </div>
                 @endforeach
-            
+
                 @endif
 
                 <!-- Verificar si hay subpreguntas y mostrarlas -->
@@ -57,7 +58,7 @@
                     @if($subpregunta->tipo_pregunta == 'abierta')
                     <div class="opcion">
                         <textarea name="respuestas_abiertas[{{ $subpregunta->id_subpregunta }}]" id="respuesta_abierta_{{ $subpregunta->id_subpregunta }}" rows="4" placeholder="Escribe tu respuesta aquí..."></textarea>
-                     
+
                     </div>
                     @else
                     @foreach($subpregunta->opciones as $opcion)
@@ -68,7 +69,7 @@
                         </label>
                     </div>
                     @endforeach
-               
+
                     @endif
                     @endforeach
                 </div>

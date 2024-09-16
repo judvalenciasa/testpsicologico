@@ -34,7 +34,7 @@
             </div>
         @endif
 
-        <form id="metacognicionForm" class="metacognicionForm" action="{{ route('reporte.crear') }}" method="POST">
+        <form id="metacognicionForm" class="metacognicionForm" action="{{ route('ver.reporte.usuario') }}" method="POST">
             @csrf
             <!-- Categoria: Conocimiento Procedimental -->
             <div class="category_ctn" data-category="conocimiento_procedimental">

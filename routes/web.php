@@ -65,7 +65,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/pruebas/deshabilitar', [PruebasController::class, 'deshabilitarPrueba'])->name('pruebas.deshabilitar');
 
     // Crear informe
-    Route::post('/informe/crear_reporte', [ReportesController::class, 'crear_reporte'])->name('reporte.crear');
+    Route::post('/informe/crear_reporte', [ReportesController::class, 'ver_reporte_usuario'])->name('ver.reporte.usuario');
     // Ruta para ver el reporte individual
     Route::get('/reporte/{id}', [ReportesController::class, 'verReporte'])->name('reporte.ver');
     

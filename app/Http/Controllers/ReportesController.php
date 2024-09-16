@@ -14,11 +14,21 @@ use Carbon\Carbon;
 
 class ReportesController extends Controller
 {
+
     /**
-     * Crea el reporte, con los siguientes parametros de ingreso
-     * 
+     * Crea un nuevo reporte
      */
     public function crear_reporte(Request $request)
+    {
+
+    }
+    
+
+    /**
+     * Muestra el reporte en la vista de un usuario
+     * 
+     */
+    public function ver_reporte_usuario(Request $request)
     {
         $user = $request->user();
         $categorias = $this->sumar_por_categorias(request: $request);
@@ -175,13 +185,13 @@ class ReportesController extends Controller
             ],
         ];
 
-        $informe_test = $this->consultar_informe($user->id_usuario);
-        $informe_final = $this->crear_informe_descriptivo($informe_test, $categorias);
+        $consulta_informe = $this->consultar_informe($user->id_usuario);
+        $informe_final = $this->crear_informe_descriptivo($consulta_informe, $categorias);
 
 
         dd($informe_final);
         //Esto es lo que debería restornar
-        return view('reporte.index', compact('informe_final'));
+        return view('reporte.index', compact('informe_final', 'respuesta'));
     }
 
 
@@ -296,13 +306,15 @@ class ReportesController extends Controller
         }
     }
 
+    /**Muestra el reporte para el usuario administrador buscado por el id del reporte
+     * Retorna la vista reporte_detalle con los datos del reporte
+     */
 
     public function verReporte($id)
     {
-        // Encuentra el reporte por su ID
         $reporte = Reportes::findOrFail($id);
-
-        // Retorna la vista de detalle del reporte
+        
+        // Retorna la vista con los datos
         return view('reporte.reporte_detalle', compact('reporte'));
     }
 
@@ -369,10 +381,10 @@ class ReportesController extends Controller
      */
     public function crear_informe_descriptivo($consulta_informe, $categorias)
     {
-
-        $pregunta = "";
+        $documentos_totales = [];
+        $indice = 1; // Empezar el índice en 1
         foreach ($consulta_informe as $pregunta) {
-            $nombre_pregunta = "pregunta_" . $pregunta['id_pregunta'];
+            $nombre_pregunta = "Item " . $indice; // Usar el índice en lugar del ID de la pregunta
 
             $documento = [
                 $nombre_pregunta => [
@@ -383,6 +395,7 @@ class ReportesController extends Controller
                 ],
             ];
             $documentos_totales[$nombre_pregunta] = $documento;
+            $indice++; // Incrementar el índice
         }
 
         $documentos_totales["metacognicion_conocimiento_procedimental"] = [
@@ -400,8 +413,8 @@ class ReportesController extends Controller
         ];
 
         return $documentos_totales;
-
     }
+
 
     /**
      * Display a listing of the resource.
@@ -417,7 +430,7 @@ class ReportesController extends Controller
         return $textoDescriptivo;
     }
 
-    
+
 
     /**
      * Display a listing of the resource.
@@ -437,8 +450,9 @@ class ReportesController extends Controller
                 'calificacion' => $item['calificacion'],
             ];
         }, $informe);
-      
-        return view('reporte.reporte_revisor', compact('informe'));
 
+        //dd($informe[0]['habilidad']);
+        //dd($informe);
+        return view('reporte.reporte_revisor', compact('informe'));
     }
 }
