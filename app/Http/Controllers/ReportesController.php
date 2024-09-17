@@ -130,6 +130,7 @@ class ReportesController extends Controller
     // Mostrar los reportes de un usuario específico
     public function verReportes($id_usuario)
     {
+
         $user = User::findOrFail($id_usuario);
         $reportes = Reportes::where('id_usuario', $id_usuario)->get();
 
@@ -234,6 +235,7 @@ class ReportesController extends Controller
         $consulta_informe = $this->consultar_informe(id_usuario: $request->id_usuario, id_reporte: $request->id_reporte);
         $informe_final = $this->crear_informe_descriptivo($consulta_informe, $categorias);
 
+
         //Esto es lo que debería restornar
         return view('reporte.reporte_detalle', compact('informe_final'));
 
@@ -325,7 +327,7 @@ class ReportesController extends Controller
                     "Contexto y habilidad" => $pregunta['habilidad'],
                     "Ejercicio mental/subhabilidad" => $pregunta['subhabilidad'],
                     "puntuación" => $pregunta['calificacion'],
-                    "descriptivo" => $this->identificar_descriptor($pregunta['id_pregunta'], $pregunta['calificacion']),
+                    "Descriptores" => $this->identificar_descriptor($pregunta['id_pregunta'], $pregunta['calificacion']),
                 ],
             ];
             $documentos_totales[$nombre_pregunta] = $documento;

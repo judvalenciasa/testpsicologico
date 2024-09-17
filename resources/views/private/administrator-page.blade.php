@@ -87,6 +87,8 @@
             </div>
         </div>
     </section>
+    @include('shared.footer')
+
 </body>
 
 </html>
