@@ -36,7 +36,7 @@ class TestsController extends Controller
     //funcion para guardar respuesta
     public function guardarRespuesta(Request $request, $user, $pregunta_id, $respuesta, $calificacion)
     {
-        $id_reporte=session('reporte');
+        $id_reporte=session('id_reporte');
         $respuestaExistente = Respuestas::where('id_usuario', $user->id_usuario)
             ->where('id_pregunta', $pregunta_id)
             ->where('id_reporte',$id_reporte)
@@ -66,9 +66,9 @@ class TestsController extends Controller
 
 
     // Función para mostrar la página de metacognición
-    public function metacognicion($tiempo_prueba)
+    public function metacognicion($tiempo_prueba, $id_reporte)
     {
-        return view('private.metacognicion', compact("tiempo_prueba"));
+        return view('private.metacognicion', compact("tiempo_prueba", "id_reporte"));
     }
 
     public function mostrarPrueba()
@@ -320,9 +320,11 @@ class TestsController extends Controller
 
             //Se crea un informe de la hora de inicio de la prueba
             $reporte = $this->crear_reporte($user);
-            session(['reporte' => $reporte->id_reporte]);
+            
 
+            session(['id_reporte' => $reporte->id_reporte]);
 
+           
             $hora_inicio_prueba = Carbon::now();
             session(['hora_inicio_prueba' => $hora_inicio_prueba]);
 
@@ -397,6 +399,8 @@ class TestsController extends Controller
 
         $prueba_id = $request->input('prueba_id');
         $contexto_index = $request->input('contexto_index', 0);
+        $id_reporte = session('id_reporte');
+
 
         $total_contextos = Contexto::count();
         if ($contexto_index >= $total_contextos) {
@@ -404,7 +408,7 @@ class TestsController extends Controller
             $hora_inicio_prueba = session('hora_inicio_prueba');
             $tiempo_prueba = $tiempo_prueba = $hora_final_prueba->diffInSeconds($hora_inicio_prueba);
 
-            return $this->metacognicion($tiempo_prueba);
+            return $this->metacognicion($tiempo_prueba, $id_reporte);
         }
 
         $contextos_ordenados = session('contextos_ordenados');
@@ -420,10 +424,12 @@ class TestsController extends Controller
      */
     public function crear_reporte($user): Reportes
     {
+    
         $fecha_actual = Carbon::now()->format('Y-m-d');
         $reporte = Reportes::where('id_usuario', $user->id_usuario)
             ->whereDate('fecha_calificacion', '=', $fecha_actual)
             ->first(); 
+
 
         if (!$reporte) {
             $nuevo_reporte = Reportes::create([
@@ -434,5 +440,7 @@ class TestsController extends Controller
             return $nuevo_reporte;
         }
         return $reporte; 
+
+
     }
 }

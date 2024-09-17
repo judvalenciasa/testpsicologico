@@ -1321,6 +1321,7 @@
             </div>
 
             <input type="hidden" name="tiempo_prueba" value="{{ $tiempo_prueba }}">
+            <input type="hidden" name="id_reporte" value="{{ $id_reporte }}">
             <button class="send_btn" type="submit">Terminar</button>
         </form>
 

@@ -18,11 +18,59 @@ class ReportesController extends Controller
     /**
      * Crea un nuevo reporte
      */
-    public function crear_reporte(Request $request)
+    public function actualizar_reporte($request, $user, $categorias, $id_reporte)
     {
+        $reporte = Reportes::where('id_reporte', $id_reporte)->first();
 
+        if ($reporte) {
+            // Si el reporte existe, actualízalo con los nuevos datos
+            $reporte->update([
+                'calificacion_metacognicion' => $categorias['conocimiento_procedimental'] + $categorias['depuracion'] + $categorias['evaluacion'] + $categorias['monitoreo'] + $categorias['organizacion'] + $categorias['planificacion'],
+                'documento_identificacion' => $user->documento_identificacion,
+                'edad' => $user->edad,
+                'estrato' => $user->estrato,
+                'nivel_escolaridad' => $user->nivel_escolaridad,
+                'nivel_educativo_padre' => $user->nivel_educativo_padre,
+                'nivel_educativo_madre' => $user->nivel_educativo_madre,
+                'horas_lectura' => $user->horas_lectura,
+                'horas_redes_sociales' => $user->horas_redes_sociales,
+                'horas_entretenimiento' => $user->horas_entretenimiento,
+                'hora_sueno' => $user->hora_sueno,
+                'genero' => $user->genero,
+                'promedio_deporte' => $user->promedio_deporte,
+                'promedio_arte' => $user->promedio_arte,
+                'grasas' => $user->grasas,
+                'alimentos_saludables' => $user->alimentos_saludables,
+                'litro_agua' => $user->litro_agua,
+                'induccion_general' => $this->buscar_total_subhabilidad("INDUCCIÓN GENERAL"),
+                'induccion_especifica' => $this->buscar_total_subhabilidad("INDUCCIÓN ESPECÍFICA"),
+                'total_macrohabilidad_inductiva' => $this->buscar_total_subhabilidad("INDUCCIÓN GENERAL") + $this->buscar_total_subhabilidad("INDUCCIÓN ESPECÍFICA"),
+                'comprobacion_hipotesis' => $this->buscar_total_subhabilidad("COMPROBACIÓN DE HIPÓTESIS"),
+                'uso_probabilidad_incertidumbre' => $this->buscar_total_subhabilidad("USO DE PROBABILIDAD E INCERTIDUMBRE"),
+                'total_macrohabilidad_abductiva' => $this->buscar_total_subhabilidad("COMPROBACIÓN DE HIPÓTESIS") + $this->buscar_total_subhabilidad("USO DE PROBABILIDAD E INCERTIDUMBRE"),
+                'identificacion_analogia' => $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE FALLO POR ANALOGÍA"),
+                'identificacion_por_fallo_vaguedad' => $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE FALLO POR VAGUEDAD"),
+                'total_macrohabilidad_deductivo_y_verbal' => $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE FALLO POR ANALOGÍA") + $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE FALLO POR VAGUEDAD"),
+                'identificacion_estructura_argumentativa' => $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE ESTRUCTURA ARGUMENTATIVA"),
+                'identificacion_de_suposicion' => $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE SUPOSICIÓN"),
+                'identificacion_de_falacia' => $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE FALACIA"),
+                'total_macrohabilidad_analisis_de_argumentos' => $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE ESTRUCTURA ARGUMENTATIVA") + $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE SUPOSICIÓN") + $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE FALACIA"),
+                'toma_desiciones_informadas' => $this->buscar_total_subhabilidad("TOMA DE DECISIONES INFORMADAS"),
+                'conciencia_situacion_acciones_razonables' => $this->buscar_total_subhabilidad("CONCIENCIA DE SITUACIÓN Y ACCIONES RAZONABLES"),
+                'pensamiento_estrategico' => $this->buscar_total_subhabilidad("PENSAMIENTO ESTRATÉGICO"),
+                'pensamiento_creativo' => $this->buscar_total_subhabilidad("PENSAMIENTO CREATIVO"),
+                'total_macrohabilidad_toma_desiciones_y_resolucion_problemas' => $this->buscar_total_subhabilidad("TOMA DE DECISIONES INFORMADAS") + $this->buscar_total_subhabilidad("CONCIENCIA DE SITUACIÓN Y ACCIONES RAZONABLES") + $this->buscar_total_subhabilidad("PENSAMIENTO ESTRATÉGICO") + $this->buscar_total_subhabilidad("PENSAMIENTO CREATIVO"),
+                'conocimiento_procedimental' => $categorias['conocimiento_procedimental'],
+                'depuracion' => $categorias['depuracion'],
+                'evaluacion' => $categorias['evaluacion'],
+                'monitoreo' => $categorias['monitoreo'],
+                'organizacion' => $categorias['organizacion'],
+                'planificacion' => $categorias['planificacion'],
+                'tiempo_prueba' => $request->tiempo_prueba,
+            ]);
+        }
     }
-    
+
 
     /**
      * Muestra el reporte en la vista de un usuario
@@ -30,168 +78,23 @@ class ReportesController extends Controller
      */
     public function ver_reporte_usuario(Request $request)
     {
+
+
         $user = $request->user();
         $categorias = $this->sumar_por_categorias(request: $request);
         $tiempoTotal = $request->input('tiempo_total');
-
-        Reportes::create([
-
-            'id_usuario' => $user->id_usuario,
-            'calificacion_total' => 0,
-            'calificacion_metacognicion' => 0,
-            'fecha_calificacion' => Carbon::now(),
-
-            'documento_identificacion' => $user->documento_identificacion,
-            'edad' => $user->edad,
-            'estrato' => $user->estrato,
-            'nivel_escolaridad' => $user->nivel_escolaridad,
+        $id_reporte = $request->input('id_reporte');
 
 
-            'nivel_educativo_padre' => $user->nivel_educativo_padre,
-            'nivel_educativo_madre' => $user->nivel_educativo_madre,
-            'horas_lectura' => $user->horas_lectura,
-            'horas_redes_sociales' => $user->horas_redes_sociales,
-            'horas_entretenimiento' => $user->horas_entretenimiento,
-            'hora_sueno' => $user->hora_sueno,
-            'genero' => $user->genero,
-            'promedio_deporte' => $user->promedio_deporte,
-            'promedio_arte' => $user->promedio_arte,
+        $this->actualizar_reporte($request, $user, $categorias, $id_reporte);
 
-            'grasas' => $user->grasas,
-            'alimentos_saludables' => $user->alimentos_saludables,
-            'litro_agua' => $user->litro_agua,
-
-            'induccion_general' => $this->buscar_total_subhabilidad("INDUCCIÓN GENERAL"),
-            'induccion_especifica' => $this->buscar_total_subhabilidad("INDUCCIÓN ESPECÍFICA"),
-            'total_macrohabilidad_inductiva' => $this->buscar_total_subhabilidad("INDUCCIÓN GENERAL") + $this->buscar_total_subhabilidad("INDUCCIÓN ESPECÍFICA"),
-
-            'comprobacion_hipotesis' => $this->buscar_total_subhabilidad("COMPROBACIÓN DE HIPÓTESIS"),
-            'uso_probabilidad_incertidumbre' => $this->buscar_total_subhabilidad("USO DE PROBABILIDAD E INCERTIDUMBRE"),
-            'total_macrohabilidad_abductiva' => $this->buscar_total_subhabilidad("COMPROBACIÓN DE HIPÓTESIS") + $this->buscar_total_subhabilidad("USO DE PROBABILIDAD E INCERTIDUMBRE"),
-
-            'identificacion_analogia' => $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE FALLO POR ANALOGÍA"),
-            'identificacion_por_fallo_vaguedad' => $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE FALLO POR VAGUEDAD"),
-            'total_macrohabilidad_deductivo_y_verbal' => $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE FALLO POR ANALOGÍA") + $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE FALLO POR VAGUEDAD"),
-
-
-            'identificacion_estructura_argumentativa' => $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE ESTRUCTURA ARGUMENTATIVA"),
-            'identificacion_de_suposicion' => $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE SUPOSICIÓN"),
-            'identificacion_de_falacia' => $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE FALACIA"),
-            'total_macrohabilidad_analisis_de_argumentos' => $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE ESTRUCTURA ARGUMENTATIVA") + $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE SUPOSICIÓN") + $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE FALACIA"),
-
-            'toma_desiciones_informadas' => $this->buscar_total_subhabilidad("TOMA DE DECISIONES INFORMADAS"),
-            'conciencia_situacion_acciones_razonables' => $this->buscar_total_subhabilidad("CONCIENCIA DE SITUACIÓN Y ACCIONES RAZONABLES"),
-            'pensamiento_estrategico' => $this->buscar_total_subhabilidad("PENSAMIENTO ESTRATÉGICO"),
-            'pensamiento_creativo' => $this->buscar_total_subhabilidad("PENSAMIENTO CREATIVO"),
-
-            'total_macrohabilidad_toma_desiciones_y_resolucion_problemas' => $this->buscar_total_subhabilidad("TOMA DE DECISIONES INFORMADAS") + $this->buscar_total_subhabilidad("CONCIENCIA DE SITUACIÓN Y ACCIONES RAZONABLES") + $this->buscar_total_subhabilidad("PENSAMIENTO ESTRATÉGICO") + $this->buscar_total_subhabilidad("PENSAMIENTO CREATIVO"),
-
-            'conocimiento_procedimental' => $categorias['conocimiento_procedimental'],
-            'depuracion' => $categorias['depuracion'],
-            'evaluacion' => $categorias['evaluacion'],
-            'monitoreo' => $categorias['monitoreo'],
-            'organizacion' => $categorias['organizacion'],
-            'planificacion' => $categorias['planificacion'],
-            'tiempo_prueba' => $request->tiempo_prueba,
-        ]);
-
-        // Crear el objeto respuesta para pasar a la vista
-        $respuesta = [
-            "Personales" => [
-                [
-                    "documento_identificacion" => $user->documento_identificacion,
-                    "edad" => $user->edad,
-                    "genero" => $user->genero,
-                ]
-            ],
-            "Sociodemograficos" => [
-                [
-                    "estrato" => $user->estrato,
-                    "nivel_educativo_padre" => $user->nivel_educativo_padre,
-                    "nivel_educativo_madre" => $user->nivel_educativo_madre,
-                ]
-            ],
-            "estilos_vida" => [
-                [
-                    "horas_lectura" => $user->horas_lectura,
-                    "horas_redes_sociales" => $user->horas_redes_sociales,
-                    "horas_entretenimiento" => $user->horas_entretenimiento,
-                    "hora_sueno" => $user->hora_sueno,
-                    "promedio_arte" => $user->promedio_arte,
-                ]
-            ],
-            "saludable" => [
-                [
-                    "promedio_deporte" => $user->promedio_deporte,
-                    "grasas" => $user->grasas,
-                    "alimentos_saludables" => $user->alimentos_saludables,
-                ]
-            ],
-            "macrohabilidad_inductiva" => [
-                [
-                    "induccion_general" => $this->buscar_total_subhabilidad("INDUCCIÓN GENERAL"),
-                    "induccion_especifica" => $this->buscar_total_subhabilidad("INDUCCIÓN ESPECÍFICA"),
-                    "total_macrohabilidad_inductiva" => $this->buscar_total_subhabilidad("INDUCCIÓN GENERAL") + $this->buscar_total_subhabilidad("INDUCCIÓN ESPECÍFICA"),
-                    "nivel_induccion_general" => $this->calcularNivel($this->buscar_total_subhabilidad("INDUCCIÓN GENERAL") + $this->buscar_total_subhabilidad("INDUCCIÓN ESPECÍFICA"), 'inductivo')
-                ]
-            ],
-            "macrohabilidad_abductiva" => [
-                [
-                    "comprobacion_hipotesis" => $this->buscar_total_subhabilidad("COMPROBACIÓN DE HIPÓTESIS"),
-                    "uso_probabilidad_incertidumbre" => $this->buscar_total_subhabilidad("USO DE PROBABILIDAD E INCERTIDUMBRE"),
-                    "total_abductiva" => $this->buscar_total_subhabilidad("COMPROBACIÓN DE HIPÓTESIS") + $this->buscar_total_subhabilidad("USO DE PROBABILIDAD E INCERTIDUMBRE"),
-                    "nivel_abductiva" => $this->calcularNivel($this->buscar_total_subhabilidad("COMPROBACIÓN DE HIPÓTESIS") + $this->buscar_total_subhabilidad("USO DE PROBABILIDAD E INCERTIDUMBRE"), 'abductivo')
-                ]
-            ],
-            "macrohabilidad_deductivo_y_verbal" => [
-                [
-                    "identificacion_analogia" => $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE FALLO POR ANALOGÍA"),
-                    "identificacion_por_fallo_vaguedad" => $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE FALLO POR VAGUEDAD"),
-                    "total_deductivo_y_verbal" => $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE FALLO POR ANALOGÍA") + $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE FALLO POR VAGUEDAD"),
-                    "nivel_deductivo_y_verbal" => $this->calcularNivel($this->buscar_total_subhabilidad("IDENTIFICACIÓN DE FALLO POR ANALOGÍA") + $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE FALLO POR VAGUEDAD"), 'deductivo')
-                ]
-            ],
-            "macrohabilidad_analisis_de_argumentos" => [
-                [
-                    "identificacion_estructura_argumentativa" => $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE ESTRUCTURA ARGUMENTATIVA"),
-                    "identificacion_de_suposicion" => $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE SUPOSICIÓN"),
-                    "identificacion_de_falacia" => $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE FALACIA"),
-                    "total_analisis_de_argumentos" => $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE ESTRUCTURA ARGUMENTATIVA") + $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE SUPOSICIÓN") + $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE FALACIA"),
-                    "nivel_analisis_de_argumentos" => $this->calcularNivel($this->buscar_total_subhabilidad("IDENTIFICACIÓN DE ESTRUCTURA ARGUMENTATIVA") + $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE SUPOSICIÓN") + $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE FALACIA"), 'analisis_argumentos')
-
-                ]
-            ],
-            "macrohabilidad_toma_desiciones_y_resolucion_problemas" => [
-                [
-                    "toma_desiciones_informadas" => $this->buscar_total_subhabilidad("TOMA DE DECISIONES INFORMADAS"),
-                    "conciencia_situacion_acciones_razonables" => $this->buscar_total_subhabilidad("CONCIENCIA DE SITUACIÓN Y ACCIONES RAZONABLES"),
-                    "pensamiento_estrategico" => $this->buscar_total_subhabilidad("PENSAMIENTO ESTRATÉGICO"),
-                    "pensamiento_creativo" => $this->buscar_total_subhabilidad("PENSAMIENTO CREATIVO"),
-                    "total_toma_desiciones_y_resolucion_problemas" => $this->buscar_total_subhabilidad("TOMA DE DECISIONES INFORMADAS") + $this->buscar_total_subhabilidad("CONCIENCIA DE SITUACIÓN Y ACCIONES RAZONABLES") + $this->buscar_total_subhabilidad("PENSAMIENTO ESTRATÉGICO") + $this->buscar_total_subhabilidad("PENSAMIENTO CREATIVO"),
-                    "nivel_toma_desiciones_y_resolucion_problemas" => $this->calcularNivel($this->buscar_total_subhabilidad("TOMA DE DECISIONES INFORMADAS") + $this->buscar_total_subhabilidad("CONCIENCIA DE SITUACIÓN Y ACCIONES RAZONABLES") + $this->buscar_total_subhabilidad("PENSAMIENTO ESTRATÉGICO") + $this->buscar_total_subhabilidad("PENSAMIENTO CREATIVO"), 'toma_decisiones')
-                ],
-
-            ],
-            "metacognicion_conocimiento_procedimental" => [
-                [
-                    "conocimiento_procedimental" => $categorias['conocimiento_procedimental'],
-                    "depuracion" => $categorias['depuracion'],
-                    "evaluacion" => $categorias['evaluacion'],
-                    "monitoreo" => $categorias['monitoreo'],
-                    "organizacion" => $categorias['organizacion'],
-                    "planificacion" => $categorias['planificacion'],
-                    "total_conocimiento_procedimental" => $categorias['conocimiento_procedimental'] + $categorias['depuracion'] + $categorias['evaluacion'] + $categorias['monitoreo'] + $categorias['organizacion'] + $categorias['planificacion']
-                ]
-            ],
-        ];
-
-        $consulta_informe = $this->consultar_informe($user->id_usuario);
+        $consulta_informe = $this->consultar_informe(id_usuario: $user->id_usuario, id_reporte: $id_reporte);
         $informe_final = $this->crear_informe_descriptivo($consulta_informe, $categorias);
 
 
-        dd($informe_final);
+        
         //Esto es lo que debería restornar
-        return view('reporte.index', compact('informe_final', 'respuesta'));
+        return view('reporte.index', compact('informe_final'));
     }
 
 
@@ -310,13 +213,36 @@ class ReportesController extends Controller
      * Muestra el reporte para el usuario administrador buscado por el id del reporte
      * Retorna la vista reporte_detalle con los datos del reporte
      */
-
-    public function verReporte($id)
+    public function verReporte(Request $request)
     {
-        $reporte = Reportes::findOrFail($id);
+
+
+        $categorias = Reportes::where('id_reporte', $request->id_reporte)
+            ->select(
+                'conocimiento_procedimental',
+                'depuracion',
+                'evaluacion',
+                'monitoreo',
+                'organizacion',
+                'planificacion',
+                'total_metacognicion',
+                'tiempo_prueba'
+            )
+            ->first()
+            ->toArray();
         
-        // Retorna la vista con los datos
-        return view('reporte.reporte_detalle', compact('reporte'));
+        $consulta_informe = $this->consultar_informe(id_usuario: $request->id_usuario, id_reporte: $request->id_reporte);
+        $informe_final = $this->crear_informe_descriptivo($consulta_informe, $categorias);
+
+        //Esto es lo que debería restornar
+        return view('reporte.reporte_detalle', compact('informe_final'));
+
+
+
+        //necesito crear la consulta para ver el reporte 
+        //$reporte_descriptivo = $this->consultar_informe(id_usuario: $request->id_usuario, id_reporte: $request->id_reporte);
+
+        //return view('reporte.reporte_detalle', compact('reporte_descriptivo'));
     }
 
     /**
@@ -346,32 +272,39 @@ class ReportesController extends Controller
      * Realiza la consulta para traer Contexto, Habilidad, Subhabilidad, texto_pregunta, calificacion, respuesta y calificacion de una pregunta.
      * respecto a un usuario devuelve todas las preguntas con los encabezados descritos anteriormente 
      */
-    public function consultar_informe($id_usuario)
+    public function consultar_informe($id_usuario, $id_reporte)
     {
         $consulta_informe = Preguntas::with([
             'subhabilidad.habilidad',
             'contexto',
-            'respuestas' // No necesitas agregar el filtro aquí
+            'respuestas'
         ])
             ->get()
-            ->map(function ($pregunta) use ($id_usuario) {
-                // Filtramos las respuestas para obtener solo las del usuario $id_usuario
-                $respuestas_usuario = $pregunta->respuestas->filter(function ($respuesta) use ($id_usuario) {
-                    return $respuesta->id_usuario == $id_usuario;
+            ->flatMap(function ($pregunta) use ($id_usuario, $id_reporte) {
+                // Filtramos las respuestas para obtener solo las que pertenecen al usuario y al reporte indicado
+                $respuestas_usuario = $pregunta->respuestas->filter(function ($respuesta) use ($id_usuario, $id_reporte) {
+                    return $respuesta->id_usuario == $id_usuario && $respuesta->id_reporte == $id_reporte;
                 });
 
-                return [
-                    'habilidad' => $pregunta->subhabilidad->habilidad->nombre,
-                    'subhabilidad' => $pregunta->subhabilidad->nombre,
-                    'contexto' => $pregunta->contexto ? $pregunta->contexto->texto : null, // Texto del contexto
-                    'id_pregunta' => $pregunta->id_pregunta,
-                    'texto_pregunta' => $pregunta->texto,
-                    'respuestas_texto' => $respuestas_usuario->pluck('respuesta')->toArray(), // Respuestas del usuario
-                    'calificacion' => $respuestas_usuario->avg('calificacion_respuesta'), // Promedio de la calificación de las respuestas del usuario
-                ];
-            })
-            ->toArray(); // Convertir el resultado final a un solo array
+                // Si no hay respuestas que coincidan con el usuario y reporte, no procesamos esta pregunta
+                if ($respuestas_usuario->isEmpty()) {
+                    return [];
+                }
 
+                // Aplanamos los datos, retornando una entrada por cada respuesta
+                return $respuestas_usuario->map(function ($respuesta) use ($pregunta) {
+                    return [
+                        'habilidad' => $pregunta->subhabilidad->habilidad->nombre,
+                        'subhabilidad' => $pregunta->subhabilidad->nombre,
+                        'contexto' => $pregunta->contexto ? $pregunta->contexto->texto : null,
+                        'id_pregunta' => $pregunta->id_pregunta,
+                        'texto_pregunta' => $pregunta->texto,
+                        'respuesta_texto' => $respuesta->respuesta, // Una única respuesta
+                        'calificacion' => $respuesta->calificacion_respuesta, // Calificación de la respuesta
+                    ];
+                });
+            })
+            ->toArray(); // Convertir el resultado final a un solo array plano
 
         return $consulta_informe;
     }
@@ -422,7 +355,7 @@ class ReportesController extends Controller
      */
     public function identificar_descriptor($id_pregunta, $calificacion)
     {
-        
+
         $textoDescriptivo = Descriptivos::where('id_pregunta', $id_pregunta)
             ->where('calificacion', $calificacion)
             ->value('texto_descriptivo');
@@ -434,26 +367,16 @@ class ReportesController extends Controller
 
 
     /**
+     * TERMINADO
      * Display a listing of the resource.
      */
     public function ver_respuestas_admin(Request $request)
     {
-        $informe = $this->consultar_informe($request->id_usuario);
 
-        $informe = array_map(function ($item) {
-            return [
-                'habilidad' => $item['habilidad'],
-                'subhabilidad' => $item['subhabilidad'],
-                'contexto' => $item['contexto'],
-                'id_pregunta' => $item['id_pregunta'],
-                'texto_pregunta' => $item['texto_pregunta'],
-                'respuestas_texto' => implode(', ', $item['respuestas_texto']), // Combinar respuestas en una cadena
-                'calificacion' => $item['calificacion'],
-            ];
-        }, $informe);
 
-        //dd($informe[0]['habilidad']);
-        //dd($informe);
+
+        $informe = $this->consultar_informe($request->id_usuario, $request->id_reporte);
         return view('reporte.reporte_revisor', compact('informe'));
+
     }
 }

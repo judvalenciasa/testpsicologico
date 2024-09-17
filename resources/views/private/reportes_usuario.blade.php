@@ -20,10 +20,9 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th>Calificación Total</th>
-                        <th>Calificación Metacognición</th>
+                        <th>Número de reporte</th>
+                        <th>documento de identificación</th>
                         <th>Fecha de Calificación</th>
-                        <th>Documento de Identificación</th>
                         <th>Acciones</th> <!-- Nueva columna para el botón -->
                         <th>Respuestas</th>
                     </tr>
@@ -31,18 +30,25 @@
                 <tbody>
                     @foreach($reportes as $reporte)
                         <tr>
-                            <td>{{ $reporte->calificacion_total }}</td>
-                            <td>{{ $reporte->calificacion_metacognicion }}</td>
-                            <td>{{ $reporte->fecha_calificacion }}</td>
+                            <td>{{ $reporte->id_reporte }}</td>
                             <td>{{ $reporte->documento_identificacion }}</td>
+                            <td>{{ $reporte->fecha_calificacion }}</td>
                             <td>
-                                <a href="{{ route('reporte.ver', ['id' => $reporte->id_informe]) }}" class="btn btn-primary">Ver
-                                    reporte</a> <!-- Enlace para ver el reporte -->
+                                <form class="form_ctn" action="{{ route('reporte.ver') }}" method="POST">
+                                    @csrf
+                                    <input type="hidden" name="id_usuario" value="{{ $user->id_usuario }}">
+                                    <input type="hidden" name="id_reporte" value="{{ $reporte->id_reporte }}">
+                                    <div>
+                                        <button class="btn btn-primary prueba_btn" type="submit"> Reporte </button>
+                                    </div>
+                                </form>
+                                
                             </td>
                             <td>
                                 <form class="form_ctn" action="{{ route('reporte.verRespuestas') }}" method="POST">
                                     @csrf
                                     <input type="hidden" name="id_usuario" value="{{ $user->id_usuario }}">
+                                    <input type="hidden" name="id_reporte" value="{{ $reporte->id_reporte }}">
                                     <div>
                                         <button class="btn btn-primary prueba_btn" type="submit"> Ver respuesta</button>
                                     </div>

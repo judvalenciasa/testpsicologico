@@ -37,7 +37,7 @@
                     <td>{{ $respuesta['subhabilidad'] }}</td>
                     <td>{{ $respuesta['contexto'] }}</td>
                     <td>{{ $respuesta['texto_pregunta'] }}</td>
-                    <td>{{ $respuesta['respuestas_texto'] }}</td>
+                    <td>{{ $respuesta['respuesta_texto'] }}</td>
                     <td>{{ $respuesta['calificacion'] }}</td>
                 </tr>
                 @endforeach

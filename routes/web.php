@@ -67,13 +67,12 @@ Route::group(['middleware' => ['auth']], function () {
     // Crear informe
     Route::post('/informe/crear_reporte', [ReportesController::class, 'ver_reporte_usuario'])->name('ver.reporte.usuario');
     // Ruta para ver el reporte individual
-    Route::get('/reporte/{id}', [ReportesController::class, 'verReporte'])->name('reporte.ver');
+    Route::post('ver/reporte', [ReportesController::class, 'verReporte'])->name('reporte.ver');
     
 
     //Ruta para cargar la vista de metacognicion
     Route::get('/metacognicion', [TestsController::class, 'metacognicion'])->name('metacognicion.encuesta');
 
-    Route::post('/informe/crear_reporte', [ReportesController::class, 'crear_reporte'])->name('reporte.crear');
 
     // Rutas para administradores
     Route::get('/admin/usuarios', [UserController::class, 'index'])->name('private.usuarios');
