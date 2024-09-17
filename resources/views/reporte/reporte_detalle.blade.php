@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reporte Descriptivo</title>
     <link rel="stylesheet" href="{{ asset('css/reporte_usuario.css') }}">
 </head>
+
 <body>
 
     @include('shared.header')
@@ -14,7 +16,7 @@
         <div class="container">
             <h1>Reporte Descriptivo</h1>
 
-           
+
 
             @php $count = 0; $indice = 1; @endphp
             <div class="row">
@@ -57,9 +59,13 @@
                 @endforeach
             </div> <!-- Cierra el último contenedor row -->
         </div>
+
+        <a href="{{ route('private.usuarios') }}" class="btn">Volver a Usuarios</a>
+
     </section>
 
     @include('shared.footer')
 
 </body>
+
 </html>
