@@ -18,7 +18,6 @@
         <div class="text_ctn">
             <h1>Ingreso</h1>
             <div class="underline"></div>
-            <p>Si eres usuario administrador</p>
         </div>
         <!-- Aquí el formulario no necesita acción porque la manejas con JavaScript -->
         <form class="form_ctn" id="login-form" method="post" action="{{ route('login') }}">

@@ -56,6 +56,9 @@
                 @endif
                 @endforeach
             </div> <!-- Cierra el último contenedor row -->
+            <div class="btn_terminar">
+                <a href="{{ route('logout') }}" class="btn btn-primary">Terminar</a>
+            </div>
         </div>
     </section>
 
