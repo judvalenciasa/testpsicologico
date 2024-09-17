@@ -57,14 +57,14 @@
 
                     @if($subpregunta->tipo_pregunta == 'abierta')
                     <div class="opcion">
-                        <textarea name="respuestas_abiertas[{{ $subpregunta->id_subpregunta }}]" id="respuesta_abierta_{{ $subpregunta->id_subpregunta }}" rows="4" placeholder="Escribe tu respuesta aquí..."></textarea>
+                        <textarea required name="respuestas_abiertas[{{ $subpregunta->id_subpregunta }}]" id="respuesta_abierta_{{ $subpregunta->id_subpregunta }}" rows="4" placeholder="Escribe tu respuesta aquí..."></textarea>
 
                     </div>
                     @else
                     @foreach($subpregunta->opciones as $opcion)
                     <div class="opcion">
                         <label>
-                            <input type="radio" name="respuestas_cerradas[{{ $subpregunta->id_subpregunta }}]" value="{{ $opcion->id_opcionessubpregunta }}">
+                            <input required type="radio" name="respuestas_cerradas[{{ $subpregunta->id_subpregunta }}]" value="{{ $opcion->id_opcionessubpregunta }}">
                             <p>{{ $opcion->texto }}</p>
                         </label>
                     </div>
