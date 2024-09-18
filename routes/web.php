@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ArchivosController;
 use App\Http\Controllers\ReportesController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TestsController;
@@ -83,6 +84,8 @@ Route::group(['middleware' => ['auth']], function () {
     // Ruta para mostrar la política de datos
     Route::get('/politica-datos', [UserController::class, 'mostrarPolitica'])->name('politica.datos');
     Route::post('/politica-datos/aceptar', [UserController::class, 'aceptarPolitica'])->name('politica.aceptar');
+
+    Route::post('usuarios/cargar_politicas', [ArchivosController::class, 'store'])->name('archivo.store');
 });
 
 // Rutas accesibles solo para invitados (usuarios no autenticados)

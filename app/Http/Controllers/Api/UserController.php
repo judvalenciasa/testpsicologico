@@ -199,8 +199,6 @@ class UserController extends Controller
         } else {
             return redirect()->route('test.iniciar');
         }
-
-        return redirect()->route('login')->withErrors('Debes iniciar sesión para continuar.');
     }
 
 

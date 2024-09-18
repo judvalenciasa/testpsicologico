@@ -63,3 +63,7 @@
 .checkbox-container {
     margin-top: 20px;
 }
+
+.file_upload_ctn {
+    display:flex;
+}

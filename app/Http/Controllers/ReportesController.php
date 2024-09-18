@@ -91,7 +91,7 @@ class ReportesController extends Controller
         $consulta_informe = $this->consultar_informe(id_usuario: $user->id_usuario, id_reporte: $id_reporte);
         $informe_final = $this->crear_informe_descriptivo($consulta_informe, $categorias);
 
-
+        //dd($consulta_informe);
         
         //Esto es lo que debería restornar
         return view('reporte.index', compact('informe_final'));
@@ -299,6 +299,7 @@ class ReportesController extends Controller
                         'habilidad' => $pregunta->subhabilidad->habilidad->nombre,
                         'subhabilidad' => $pregunta->subhabilidad->nombre,
                         'contexto' => $pregunta->contexto ? $pregunta->contexto->texto : null,
+                        'id_contexto' => $pregunta->id_contexto ? $pregunta->contexto->id_contexto : null,
                         'id_pregunta' => $pregunta->id_pregunta,
                         'texto_pregunta' => $pregunta->texto,
                         'respuesta_texto' => $respuesta->respuesta, // Una única respuesta
