@@ -92,7 +92,7 @@ class ReportesController extends Controller
         $informe_final = $this->crear_informe_descriptivo($consulta_informe, $categorias);
 
         //dd($consulta_informe);
-        
+
         //Esto es lo que debería restornar
         return view('reporte.index', compact('informe_final'));
     }
@@ -231,7 +231,7 @@ class ReportesController extends Controller
             )
             ->first()
             ->toArray();
-        
+
         $consulta_informe = $this->consultar_informe(id_usuario: $request->id_usuario, id_reporte: $request->id_reporte);
         $informe_final = $this->crear_informe_descriptivo($consulta_informe, $categorias);
 
@@ -319,38 +319,142 @@ class ReportesController extends Controller
     public function crear_informe_descriptivo($consulta_informe, $categorias)
     {
         $documentos_totales = [];
-        $indice = 1; // Empezar el índice en 1
-        foreach ($consulta_informe as $pregunta) {
-            $nombre_pregunta = "Item " . $indice; // Usar el índice en lugar del ID de la pregunta
+        $indice_item = 1;
+        $indice_contexto = 1;
+        for ($i = 0; $i < count($consulta_informe) - 1; $i++) {
 
-            $documento = [
-                $nombre_pregunta => [
-                    "Contexto y habilidad" => $pregunta['habilidad'],
-                    "Ejercicio mental/subhabilidad" => $pregunta['subhabilidad'],
-                    "puntuación" => $pregunta['calificacion'],
-                    "Descriptores" => $this->identificar_descriptor($pregunta['id_pregunta'], $pregunta['calificacion']),
-                ],
-            ];
-            $documentos_totales[$nombre_pregunta] = $documento;
-            $indice++; // Incrementar el índice
+            if ($consulta_informe[$i]['id_contexto'] == $consulta_informe[$i + 1]['id_contexto']) {
+                $nombre_contexto = "Contexto " . $indice_contexto; // Usar el índice en lugar del ID de la pregunta
+                $nombre_item_1 = "Item " . $indice_item;
+                $nombre_item_2 = "Item " . $indice_item + 1;
+
+                $documento = [
+                    $nombre_item_1 => [
+                        "Contexto y habilidad" => $consulta_informe[$i]['habilidad'],
+                        "id_contexto" => $consulta_informe[$i]['id_contexto'],
+                        "Ejercicio mental/subhabilidad" => $consulta_informe[$i]['subhabilidad'],
+                        "puntuación" => $consulta_informe[$i]['calificacion']
+                    ],
+                    $nombre_item_2 =>
+                        [
+                            "Contexto y habilidad" => $consulta_informe[$i + 1]['habilidad'],
+                            "id_contexto" => $consulta_informe[$i + 1]['id_contexto'],
+                            "Ejercicio mental/subhabilidad" => $consulta_informe[$i + 1]['subhabilidad'],
+                            "puntuación" => $consulta_informe[$i + 1]['calificacion']
+                        ],
+                    "descriptor" =>
+                        $this->identificar_descriptor($consulta_informe[$i]['id_pregunta'], $consulta_informe[$i]['calificacion']) . " " . $this->identificar_descriptor($consulta_informe[$i + 1]['id_pregunta'], $consulta_informe[$i + 1]['calificacion']) . $this->buscar_descriptor_contexto($consulta_informe[$i]['id_contexto']),
+                    "id_contexto" =>
+                        $consulta_informe[$i]['id_contexto']
+
+                ];
+                $documentos_totales[$nombre_contexto] = $documento;
+                $indice_contexto++; // Incrementar el índice
+            }
+            $indice_item++;
         }
-
-        $documentos_totales["metacognicion_conocimiento_procedimental"] = [
-            "metacognicion_conocimiento_procedimental" => [
-                [
-                    "conocimiento_procedimental" => $categorias['conocimiento_procedimental'],
-                    "depuracion" => $categorias['depuracion'],
-                    "evaluacion" => $categorias['evaluacion'],
-                    "monitoreo" => $categorias['monitoreo'],
-                    "organizacion" => $categorias['organizacion'],
-                    "planificacion" => $categorias['planificacion'],
-                    "total_conocimiento_procedimental" => $categorias['conocimiento_procedimental'] + $categorias['depuracion'] + $categorias['evaluacion'] + $categorias['monitoreo'] + $categorias['organizacion'] + $categorias['planificacion']
-                ]
-            ]
-        ];
 
         return $documentos_totales;
     }
+
+    /**
+     * Buscar el descriptor del contexto correspondiente .
+     */
+    public function buscar_descriptor_contexto($contexto)
+    {
+        if ($contexto == 1) {
+            return "en contextos de entretenimiento y diversión ";
+        }
+        if ($contexto == 2) {
+            return "en contextos culturales, científicos y de percepción del mundo";
+        }
+        if ($contexto == 3) {
+            return "en contextos culturales";
+        }
+        if ($contexto == 4) {
+            return "en contextos económico-ambientales";
+        }
+        if ($contexto == 5) {
+            return "en contextos ambientales y sociales.";
+        }
+        if ($contexto == 6) {
+            return "en contextos familiares, de salud mental, y tecnológicos.";
+        }
+        if ($contexto == 7) {
+            return "en contextos políticos y culturales";
+        }
+        if ($contexto == 8) {
+            return "en contextos de relaciones interpersonales, educativos y del proyecto de vida.";
+        }
+        if ($contexto == 9) {
+            return "en contextos económicos, educativos y de proyección de vida.";
+        }
+        if ($contexto == 10) {
+            return "en contextosfuturibles, tecnológicos, laborales y económicos.";
+        }
+        if ($contexto == 11) {
+            return "en contextos educativos, e institucionales.";
+        }
+        if ($contexto == 12) {
+            return "en contextos culturales, sociales y de participación comunitaria.";
+        }
+        if ($contexto == 13) {
+            return "en contextos educativos, institucionales, de participación en los asuntos colectivos y de vínculos emocionales.";
+        }
+        if ($contexto == 14) {
+            return "en contextos ambientales de riesgos de desastres y de interacción institucional con el ámbito social- comunitario.";
+        }
+        if ($contexto == 15) {
+            return "en contextos de carácter político, social y de salud reproductiva.";
+        }
+        if ($contexto == 16) {
+            return "en contextos culturales y sociales que movilizan los sentidos, la imaginación y el pensamiento.";
+        }
+        if ($contexto == 17) {
+            return "en contextos de política pública sostenible relacionada con la descontaminación de cuerpos de agua.";
+        }
+        if ($contexto == 18) {
+            return "en contextos de participación social comunitaria, integridad física y seguridad.";
+        }
+        if ($contexto == 19) {
+            return "en contextos de era digital y tecnológica en los que tienen lugar nuevas interacciones sociales.";
+        }
+        if ($contexto == 20) {
+            return "en contextos de fenómenos ambientales, culturales y de propuestas de emprendimiento.";
+        }
+        if ($contexto == 21) {
+            return "en contextos sociales y emocionales.";
+        }
+        if ($contexto == 22) {
+            return "en contextos de participación ambiental y calidad de vida.";
+        }
+        if ($contexto == 23) {
+            return "en contextos educativos, económicos y de proyección internacional.";
+        }
+        if ($contexto == 24) {
+            return "en contextos políticos de protección de DD.HH.";
+        }
+        if ($contexto == 25) {
+            return "en contextos deportivos, de salud y relaciones interpersonales.";
+        }
+        if ($contexto == 26) {
+            return "En contextos en los que la era tecnológica y digital ofrece facilidades, pero también ponen en riesgo la seguridad de las personas";
+        }
+        if ($contexto == 27) {
+            return "En contextos educativos y de responsabilidades académicas.";
+        }
+        if ($contexto == 28) {
+            return "En contextos de conservación ecosistémica o vida natural ante amenazas propias de la urbanización.";
+        }
+        if ($contexto == 29) {
+            return "En contextos culturales de competitividad y situaciones adversas";
+        }
+        if ($contexto == 30) {
+            return "En contextos sociales y ambientales de búsqueda de calidad de vida alrededor de la salud y el aire.";
+        }
+        return "no hay descripcion para este contexto";
+    }
+
 
 
     /**
