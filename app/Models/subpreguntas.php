@@ -26,7 +26,7 @@ class subpreguntas extends Model
 
     public function opciones()
     {
-        return $this->hasMany(OpcionesSubpreguntas::class, 'id_subpregunta');
+        return $this->hasMany(opcionessubpreguntas::class, 'id_subpregunta');
     }
 
 }
