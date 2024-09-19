@@ -36,10 +36,10 @@ class TestsController extends Controller
     //funcion para guardar respuesta
     public function guardarRespuesta(Request $request, $user, $pregunta_id, $respuesta, $calificacion)
     {
-        $id_reporte=session('id_reporte');
+        $id_reporte = session('id_reporte');
         $respuestaExistente = Respuestas::where('id_usuario', $user->id_usuario)
             ->where('id_pregunta', $pregunta_id)
-            ->where('id_reporte',$id_reporte)
+            ->where('id_reporte', $id_reporte)
             ->first();
 
         if ($respuestaExistente) {
@@ -48,7 +48,7 @@ class TestsController extends Controller
                 'calificacion_respuesta' => $calificacion
             ]);
         } else {
-            
+
             Respuestas::create([
                 'id_usuario' => $user->id_usuario,
                 'id_pregunta' => $pregunta_id,
@@ -56,9 +56,9 @@ class TestsController extends Controller
                 'respuesta' => $respuesta,
                 'calificacion_respuesta' => $calificacion
             ]);
-            
-            
-            
+
+
+
             //$respuestasControler = new RespuestasController();
             //$respuestasControler->guardarRespuesta($request, $user, $pregunta_id, $respuesta, $calificacion, $id_reporte);
         }
@@ -70,6 +70,64 @@ class TestsController extends Controller
     {
         return view('private.metacognicion', compact("tiempo_prueba", "id_reporte"));
     }
+
+    // Función para guardar las respuestas de motivacion
+    public function guardar_motivacion(Request $request)
+    {
+        $categorias_motivacion = $this->sumar_categorias_motivacion($request);
+
+        $id_reporte = session('id_reporte');
+
+        $reporte = Reportes::where('id_reporte', $id_reporte)->first();
+
+        if ($reporte) {
+            $reporte->update([
+                'motivacion_intrinseca' => $categorias_motivacion['motivacion_intrinseca'],
+                'motivacion_extrinseca' => $categorias_motivacion['motivacion_extrinseca'],
+            ]);
+        }
+
+        return $this->cargarPreguntas($request);
+    }
+
+    /**
+     * Suma las categorías de las respuestas del request y retorna una 
+     * lista de categorias con su correspondiente suma
+     */
+    private function sumar_categorias_motivacion(Request $request)
+    {
+        $categorias_motivacion = [
+            'motivacion_intrinseca' => 0,
+            'motivacion_extrinseca' => 0,
+
+        ];
+        foreach ($request->all() as $key => $value) {
+            $parts = explode('-', $key);
+
+            if (count($parts) > 1) {
+                $categoria = $parts[0];
+                if (array_key_exists($categoria, $categorias_motivacion)) {
+                    $categorias_motivacion[$categoria] += (int) $value;
+                }
+            }
+        }
+
+        return $categorias_motivacion;
+    }
+
+    // Función para mostrar la página de motivacion
+    public function motivacion(Request $request)
+    {
+        $user = Auth::user();
+
+        //Se crea un informe de la hora de inicio de la prueba
+        $reporte = $this->crear_reporte($user);
+        session(['id_reporte' => $reporte->id_reporte]);
+
+
+        return view('private.motivacion');
+    }
+
 
     public function mostrarPrueba()
     {
@@ -315,16 +373,8 @@ class TestsController extends Controller
         Log::info($request);
 
 
-
         if (!$request->has('pregunta_ids')) {
 
-            //Se crea un informe de la hora de inicio de la prueba
-            $reporte = $this->crear_reporte($user);
-            
-
-            session(['id_reporte' => $reporte->id_reporte]);
-
-           
             $hora_inicio_prueba = Carbon::now();
             session(['hora_inicio_prueba' => $hora_inicio_prueba]);
 
@@ -424,11 +474,11 @@ class TestsController extends Controller
      */
     public function crear_reporte($user): Reportes
     {
-    
+
         $fecha_actual = Carbon::now()->format('Y-m-d');
         $reporte = Reportes::where('id_usuario', $user->id_usuario)
             ->whereDate('fecha_calificacion', '=', $fecha_actual)
-            ->first(); 
+            ->first();
 
 
         if (!$reporte) {
@@ -439,8 +489,6 @@ class TestsController extends Controller
 
             return $nuevo_reporte;
         }
-        return $reporte; 
-
-
+        return $reporte;
     }
 }

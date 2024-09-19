@@ -4,16 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Models\Descriptivos;
 use App\Models\Preguntas;
-use App\Models\Reportes;
 use App\Models\Respuestas;
 use App\Models\Subhabilidad;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log;
-use Carbon\Carbon;
+use App\Models\Reportes;
 
 class ReportesController extends Controller
 {
+
 
     /**
      * Crea un nuevo reporte
@@ -97,6 +96,10 @@ class ReportesController extends Controller
         return view('reporte.index', compact('informe_final'));
     }
 
+
+   
+
+    
 
     /**
      * Suma las categorías de las respuestas del request y retorna una 
@@ -316,7 +319,7 @@ class ReportesController extends Controller
      * Recorremos toda la consulta y sacamos solamente lo que necesitamos de consultar_informe y lo
      * unimos con la metacognición
      */
-    public function crear_informe_descriptivo($consulta_informe, $categorias)
+    public function crear_informe_descriptivo($consulta_informe)
     {
         $documentos_totales = [];
         $indice_item = 1;
@@ -336,16 +339,16 @@ class ReportesController extends Controller
                         "puntuación" => $consulta_informe[$i]['calificacion']
                     ],
                     $nombre_item_2 =>
-                        [
-                            "Contexto y habilidad" => $consulta_informe[$i + 1]['habilidad'],
-                            "id_contexto" => $consulta_informe[$i + 1]['id_contexto'],
-                            "Ejercicio mental/subhabilidad" => $consulta_informe[$i + 1]['subhabilidad'],
-                            "puntuación" => $consulta_informe[$i + 1]['calificacion']
-                        ],
+                    [
+                        "Contexto y habilidad" => $consulta_informe[$i + 1]['habilidad'],
+                        "id_contexto" => $consulta_informe[$i + 1]['id_contexto'],
+                        "Ejercicio mental/subhabilidad" => $consulta_informe[$i + 1]['subhabilidad'],
+                        "puntuación" => $consulta_informe[$i + 1]['calificacion']
+                    ],
                     "descriptor" =>
-                        $this->identificar_descriptor($consulta_informe[$i]['id_pregunta'], $consulta_informe[$i]['calificacion']) . " " . $this->identificar_descriptor($consulta_informe[$i + 1]['id_pregunta'], $consulta_informe[$i + 1]['calificacion']) . $this->buscar_descriptor_contexto($consulta_informe[$i]['id_contexto']),
+                    $this->identificar_descriptor($consulta_informe[$i]['id_pregunta'], $consulta_informe[$i]['calificacion']) . " " . $this->identificar_descriptor($consulta_informe[$i + 1]['id_pregunta'], $consulta_informe[$i + 1]['calificacion']) . $this->buscar_descriptor_contexto($consulta_informe[$i]['id_contexto']),
                     "id_contexto" =>
-                        $consulta_informe[$i]['id_contexto']
+                    $consulta_informe[$i]['id_contexto']
 
                 ];
                 $documentos_totales[$nombre_contexto] = $documento;
@@ -484,6 +487,5 @@ class ReportesController extends Controller
 
         $informe = $this->consultar_informe($request->id_usuario, $request->id_reporte);
         return view('reporte.reporte_revisor', compact('informe'));
-
     }
 }

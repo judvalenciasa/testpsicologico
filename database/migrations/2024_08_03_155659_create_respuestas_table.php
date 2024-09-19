@@ -16,7 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('id_usuario');
             $table->unsignedBigInteger('id_pregunta');
             $table->unsignedBigInteger('id_reporte');
-            $table->string('respuesta', 500)->nullable();
+            $table->string('respuesta', 650)->nullable();
             $table->integer('calificacion_respuesta');
             $table->timestamps();
             

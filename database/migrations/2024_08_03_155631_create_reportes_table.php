@@ -60,6 +60,8 @@ return new class extends Migration
             $table->integer('planificacion')->nullable();
             $table->integer('total_metacognicion')->nullable();
             $table->integer('tiempo_prueba')->nullable();
+            $table->integer('motivacion_intrinseca')->nullable();
+            $table->integer('motivacion_extrinseca')->nullable();
             
             $table->timestamps();
             

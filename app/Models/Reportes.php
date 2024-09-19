@@ -59,7 +59,9 @@ class Reportes extends Model
         'organizacion',
         'planificacion',
         'total_metacognicion',
-        'tiempo_prueba'
+        'tiempo_prueba',
+        'motivacion_intrinseca',
+        'motivacion_extrinseca',
     ];
 
     public function usuario()

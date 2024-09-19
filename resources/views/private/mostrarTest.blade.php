@@ -20,7 +20,7 @@
             <p>{{ $prueba->descripcion }}</p>
         </div>
 
-        <form class="form_ctn" action="{{ route('cargar.preguntas') }}" method="POST">
+        <form class="form_ctn" action="{{ route('motivacion.encuesta') }}" method="GET">
             @csrf
             <input type="hidden" name="prueba_id" value="{{ $prueba->id_prueba }}">
             <div>
