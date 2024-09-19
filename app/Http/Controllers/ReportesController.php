@@ -88,7 +88,7 @@ class ReportesController extends Controller
         $this->actualizar_reporte($request, $user, $categorias, $id_reporte);
 
         $consulta_informe = $this->consultar_informe(id_usuario: $user->id_usuario, id_reporte: $id_reporte);
-        $informe_final = $this->crear_informe_descriptivo($consulta_informe, $categorias);
+        $informe_final = $this->crear_informe_descriptivo($consulta_informe, $id_reporte);
 
         //dd($consulta_informe);
 
@@ -97,9 +97,9 @@ class ReportesController extends Controller
     }
 
 
-   
 
-    
+
+
 
     /**
      * Suma las categorías de las respuestas del request y retorna una 
@@ -319,7 +319,7 @@ class ReportesController extends Controller
      * Recorremos toda la consulta y sacamos solamente lo que necesitamos de consultar_informe y lo
      * unimos con la metacognición
      */
-    public function crear_informe_descriptivo($consulta_informe)
+    public function crear_informe_descriptivo($consulta_informe, $id_reporte)
     {
         $documentos_totales = [];
         $indice_item = 1;
@@ -339,16 +339,16 @@ class ReportesController extends Controller
                         "puntuación" => $consulta_informe[$i]['calificacion']
                     ],
                     $nombre_item_2 =>
-                    [
-                        "Contexto y habilidad" => $consulta_informe[$i + 1]['habilidad'],
-                        "id_contexto" => $consulta_informe[$i + 1]['id_contexto'],
-                        "Ejercicio mental/subhabilidad" => $consulta_informe[$i + 1]['subhabilidad'],
-                        "puntuación" => $consulta_informe[$i + 1]['calificacion']
-                    ],
+                        [
+                            "Contexto y habilidad" => $consulta_informe[$i + 1]['habilidad'],
+                            "id_contexto" => $consulta_informe[$i + 1]['id_contexto'],
+                            "Ejercicio mental/subhabilidad" => $consulta_informe[$i + 1]['subhabilidad'],
+                            "puntuación" => $consulta_informe[$i + 1]['calificacion']
+                        ],
                     "descriptor" =>
-                    $this->identificar_descriptor($consulta_informe[$i]['id_pregunta'], $consulta_informe[$i]['calificacion']) . " " . $this->identificar_descriptor($consulta_informe[$i + 1]['id_pregunta'], $consulta_informe[$i + 1]['calificacion']) . $this->buscar_descriptor_contexto($consulta_informe[$i]['id_contexto']),
+                        $this->identificar_descriptor($consulta_informe[$i]['id_pregunta'], $consulta_informe[$i]['calificacion']) . " " . $this->identificar_descriptor($consulta_informe[$i + 1]['id_pregunta'], $consulta_informe[$i + 1]['calificacion']) . $this->buscar_descriptor_contexto($consulta_informe[$i]['id_contexto']),
                     "id_contexto" =>
-                    $consulta_informe[$i]['id_contexto']
+                        $consulta_informe[$i]['id_contexto']
 
                 ];
                 $documentos_totales[$nombre_contexto] = $documento;
@@ -357,6 +357,65 @@ class ReportesController extends Controller
             $indice_item++;
         }
 
+        $reporte = Reportes::where('id_reporte', $id_reporte)->first();
+
+        $metacognicion_motivacion = [
+            "id_reporte" => $reporte->id_reporte,
+            "id_usuario" => $reporte->id_usuario,
+            "calificacion_total" => $reporte->calificacion_total,
+            "calificacion_metacognicion" => $reporte->calificacion_metacognicion,  // Asumiendo que existe este atributo en $reporte
+            "fecha_calificacion" => $reporte->fecha_calificacion,  // Asumiendo que existe
+            "documento_identificacion" => $reporte->documento_identificacion,
+            "edad" => $reporte->edad,
+            "estrato" => $reporte->estrato,
+            "nivel_escolaridad" => $reporte->nivel_escolaridad,
+            "nivel_educativo_padre" => $reporte->nivel_educativo_padre,
+            "nivel_educativo_madre" => $reporte->nivel_educativo_madre,
+            "horas_lectura" => $reporte->horas_lectura,
+            "horas_redes_sociales" => $reporte->horas_redes_sociales,
+            "horas_entretenimiento" => $reporte->horas_entretenimiento,
+            "hora_sueno" => $reporte->hora_sueno,
+            "genero" => $reporte->genero,
+            "promedio_deporte" => $reporte->promedio_deporte,
+            "promedio_arte" => $reporte->promedio_arte,
+            "grasas" => $reporte->grasas,
+            "alimentos_saludables" => $reporte->alimentos_saludables,
+            "litro_agua" => $reporte->litro_agua,
+            "induccion_general" => $reporte->induccion_general,
+            "induccion_especifica" => $reporte->induccion_especifica,
+            "total_macrohabilidad_inductiva" => $reporte->total_macrohabilidad_inductiva,
+            "comprobacion_hipotesis" => $reporte->comprobacion_hipotesis,
+            "uso_probabilidad_incertidumbre" => $reporte->uso_probabilidad_incertidumbre,
+            "total_macrohabilidad_abductiva" => $reporte->total_macrohabilidad_abductiva,
+            "identificacion_analogia" => $reporte->identificacion_analogia,
+            "identificacion_por_fallo_vaguedad" => $reporte->identificacion_por_fallo_vaguedad,
+            "total_macrohabilidad_deductivo_y_verbal" => $reporte->total_macrohabilidad_deductivo_y_verbal,
+            "identificacion_estructura_argumentativa" => $reporte->identificacion_estructura_argumentativa,
+            "identificacion_de_suposicion" => $reporte->identificacion_de_suposicion,
+            "identificacion_de_falacia" => $reporte->identificacion_de_falacia,
+            "total_macrohabilidad_analisis_de_argumentos" => $reporte->total_macrohabilidad_analisis_de_argumentos,
+            "toma_desiciones_informadas" => $reporte->toma_desiciones_informadas,
+            "conciencia_situacion_acciones_razonables" => $reporte->conciencia_situacion_acciones_razonables,
+            "pensamiento_estrategico" => $reporte->pensamiento_estrategico,
+            "pensamiento_creativo" => $reporte->pensamiento_creativo,
+            "macrohabilidad_toma_desiciones_y_resolucion_problemas" => $reporte->macrohabilidad_toma_desiciones_y_resolucion_problemas,
+            "conocimiento_procedimental" => $reporte->conocimiento_procedimental,
+            "depuracion" => $reporte->depuracion,
+            "evaluacion" => $reporte->evaluacion,
+            "monitoreo" => $reporte->monitoreo,
+            "organizacion" => $reporte->organizacion,
+            "planificacion" => $reporte->planificacion,
+            "total_metacognicion" => $reporte->total_metacognicion,
+            "tiempo_prueba" => $reporte->tiempo_prueba,
+            "motivacion_intrinseca" => $reporte->motivacion_intrinseca,
+            "motivacion_extrinseca" => $reporte->motivacion_extrinseca,
+        ];
+        $documentos_totales["metacognicion_motivacion"] = $metacognicion_motivacion;
+
+
+
+
+        dd($documentos_totales);
         return $documentos_totales;
     }
 
@@ -474,17 +533,12 @@ class ReportesController extends Controller
         return $textoDescriptivo;
     }
 
-
-
     /**
      * TERMINADO
      * Display a listing of the resource.
      */
     public function ver_respuestas_admin(Request $request)
     {
-
-
-
         $informe = $this->consultar_informe($request->id_usuario, $request->id_reporte);
         return view('reporte.reporte_revisor', compact('informe'));
     }
