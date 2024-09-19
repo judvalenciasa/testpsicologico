@@ -103,7 +103,10 @@
                 <input type="checkbox" id="acceptPolicy" required>
                 <label for="acceptPolicy">He leído y acepto la política de tratamiento de datos personales</label>
             </div>
-            <button type="submit" class="submit-btn">Aceptar y Continuar</button>
+            <button id="submitButton" type="submit" class="submit-btn"
+                {{ $consentimientoSubido ? '' : 'disabled' }}>
+                Aceptar y Continuar
+            </button>
         </form>
 
 

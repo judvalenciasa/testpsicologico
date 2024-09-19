@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\TestsController;
 use PHPUnit\Event\Code\Test;
 use App\Models\Pruebas;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -33,7 +35,16 @@ class UserController extends Controller
     // Página de política de privacidad
     public function mostrarPolitica()
     {
-        return view('private.politica_tratamiento_datos');
+
+        $user = Auth::user();
+
+        // Crear el nombre personalizado del archivo
+        $fileName = $user->name . "_" . Carbon::now()->format('Y-m-d') . ".pdf";
+
+ 
+        $consentimientoSubido = Storage::disk('public')->exists('pdfs/' . $user->documento_identificacion . '/' . $fileName);
+        
+        return view('private.politica_tratamiento_datos', compact('consentimientoSubido'));
     }
 
 
