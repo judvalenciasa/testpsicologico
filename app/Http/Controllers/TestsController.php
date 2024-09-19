@@ -323,10 +323,8 @@ class TestsController extends Controller
             $prompt = "Contexto: " . $contexto . " fin contexto. Esta es la pregunta : " . $pregunta . " fin pregunta. Esta es la opcion seleccionada en el anterior item" . $subopcion->texto . "Estos son los criterios para la calificacion " . $criterio . "Fin criterio. Necesito que lo que valla en la respuesta abierta sea coherente con la pregunta que se hace y si no lo es su calificación debe ser 0. Con lo anterior devuélveme el número de la calificación, sin ninguna otra letra, con la siguiente respuesta: " . $respuesta_abierta_texto;
 
             $respuesta_chatgpt = $this->openAIService->enviarRespuestaAChatGPT($prompt);
-
-
-            $this->guardarRespuesta($request, $user, $pregunta2Id, $respuesta_abierta_texto, $respuesta_chatgpt);
         }
+        $this->guardarRespuesta($request, $user, $pregunta2Id, $respuesta_abierta_texto, $respuesta_chatgpt);
     }
 
     public function calificar_pregunta_101(Request $request, $user)
