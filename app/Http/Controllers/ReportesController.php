@@ -356,7 +356,6 @@ class ReportesController extends Controller
             }
             $indice_item++;
         }
-        dd($documentos_totales);
         return $documentos_totales;
     }
 
