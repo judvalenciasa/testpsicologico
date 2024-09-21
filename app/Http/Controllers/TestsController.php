@@ -292,8 +292,13 @@ class TestsController extends Controller
     public function calificar_pregunta_93(Request $request, $user)
     {
 
+        $respuestas_abiertas = $request->input('respuestas_abiertas');
+        $respuesta_abierta_texto = reset($respuestas_abiertas);
+
+
         $pregunta1Id = $request->input('pregunta_ids')[0];
         $pregunta2Id = $request->input('pregunta_ids')[1];
+
 
 
         $this->calificar_subpreguntas_cerradas($request, $pregunta1Id, $user);

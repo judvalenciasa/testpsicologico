@@ -1,50 +1,135 @@
 .report_section {
-    background-color: #f4f4f4;
+    background-color: white;
 }
 
 .container {
-    width: 100%;
-    padding: 20px;
-    border-radius: 10px;
-    border: 1px solid #888787;
+    display: flex;
+    flex-direction: column;
+    gap: 2vw;
+    align-items: center;
 }
 
-.container h1 {
-    
-    text-align: center;
-    margin-bottom: 20px;
+.contexto-row {
+    display: flex;
+    flex-direction: column;
+    gap: 2vw;
 }
 
-.section {
-    border: 1px solid #888787;
-    padding: 10px;
+.contexto-section {
+    border: 1px solid rgb(179, 177, 177);
+    padding: 1vw;
+    border-radius: 1vw;
+}
+
+.card_ctn {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    padding: 1vw;
+    border-radius: 1vw;
+}
+
+.item-card {
     display: flex;
     flex-direction: column;
     gap: 1vw;
-    border-radius: 10px;
-
-    margin-bottom: 20px;
-}
-
-.section h2 {
-    background-color: #888787;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    margin: 15px 0;
     padding: 10px;
-}
-
-.row {
-    display: flex;
-    flex-wrap: wrap;
-    margin-bottom: 20px;
-}
-
-.col {
-    flex: 0 0 50%;
-
-    /* Cada columna ocupa el 50% del ancho del contenedor */
-    box-sizing: border-box;
-    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .descriptor p {
     margin: 5px 0;
 }
+
+.btn_terminar {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border: none;
+    padding: 10px 20px;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+/** Metacognicion y motivacion */
+
+.metacognicion-motivacion-section {
+    width: 100%;
+    padding: 1vw;
+    border-radius: 1vw;
+    display: flex;
+    flex-direction: column;
+    gap: 1vw;
+    border: 1px solid rgb(179, 177, 177);
+}
+
+.metacognicion-motivacion-section .title {
+    text-align: center;
+}
+
+.datos-personales, .datos-demograficos, .habitos-personales, .habitos-salud, .calificacion-metacognicion {
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.calificacion_ctn {
+    display: flex;
+    flex-direction: column;
+    gap: 2vw;
+    border: 1px solid black;
+    padding: 1vw;
+    border-radius: 1vw;
+}
+
+.card_box {
+    background-color: #f9f9f9;
+}
+
+.text_box {
+    padding: 1vw;
+}
+
+h3 {
+    background-color: #007bff;
+    color: white;
+    padding: 10px;
+    border-radius: 5px 5px 0 0;
+}
+
+p {
+    margin: 5px 0;
+}
+
+.btn_terminar {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border: none;
+    padding: 10px 20px;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+

@@ -41,25 +41,45 @@ class ReportesController extends Controller
                 'grasas' => $user->grasas,
                 'alimentos_saludables' => $user->alimentos_saludables,
                 'litro_agua' => $user->litro_agua,
+
                 'induccion_general' => $this->buscar_total_subhabilidad("INDUCCIÓN GENERAL"),
+
                 'induccion_especifica' => $this->buscar_total_subhabilidad("INDUCCIÓN ESPECÍFICA"),
+
                 'total_macrohabilidad_inductiva' => $this->buscar_total_subhabilidad("INDUCCIÓN GENERAL") + $this->buscar_total_subhabilidad("INDUCCIÓN ESPECÍFICA"),
                 'comprobacion_hipotesis' => $this->buscar_total_subhabilidad("COMPROBACIÓN DE HIPÓTESIS"),
+
                 'uso_probabilidad_incertidumbre' => $this->buscar_total_subhabilidad("USO DE PROBABILIDAD E INCERTIDUMBRE"),
+
                 'total_macrohabilidad_abductiva' => $this->buscar_total_subhabilidad("COMPROBACIÓN DE HIPÓTESIS") + $this->buscar_total_subhabilidad("USO DE PROBABILIDAD E INCERTIDUMBRE"),
+
                 'identificacion_analogia' => $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE FALLO POR ANALOGÍA"),
+
                 'identificacion_por_fallo_vaguedad' => $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE FALLO POR VAGUEDAD"),
+
                 'total_macrohabilidad_deductivo_y_verbal' => $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE FALLO POR ANALOGÍA") + $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE FALLO POR VAGUEDAD"),
+
                 'identificacion_estructura_argumentativa' => $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE ESTRUCTURA ARGUMENTATIVA"),
+
                 'identificacion_de_suposicion' => $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE SUPOSICIÓN"),
+
                 'identificacion_de_falacia' => $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE FALACIA"),
+
                 'total_macrohabilidad_analisis_de_argumentos' => $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE ESTRUCTURA ARGUMENTATIVA") + $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE SUPOSICIÓN") + $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE FALACIA"),
+
                 'toma_desiciones_informadas' => $this->buscar_total_subhabilidad("TOMA DE DECISIONES INFORMADAS"),
+
                 'conciencia_situacion_acciones_razonables' => $this->buscar_total_subhabilidad("CONCIENCIA DE SITUACIÓN Y ACCIONES RAZONABLES"),
                 'pensamiento_estrategico' => $this->buscar_total_subhabilidad("PENSAMIENTO ESTRATÉGICO"),
+
                 'pensamiento_creativo' => $this->buscar_total_subhabilidad("PENSAMIENTO CREATIVO"),
-                'total_macrohabilidad_toma_desiciones_y_resolucion_problemas' => $this->buscar_total_subhabilidad("TOMA DE DECISIONES INFORMADAS") + $this->buscar_total_subhabilidad("CONCIENCIA DE SITUACIÓN Y ACCIONES RAZONABLES") + $this->buscar_total_subhabilidad("PENSAMIENTO ESTRATÉGICO") + $this->buscar_total_subhabilidad("PENSAMIENTO CREATIVO"),
+
+                'macrohabilidad_toma_desiciones_y_resolucion_problemas' => $this->buscar_total_subhabilidad("TOMA DE DECISIONES INFORMADAS") + $this->buscar_total_subhabilidad("CONCIENCIA DE SITUACIÓN Y ACCIONES RAZONABLES") + $this->buscar_total_subhabilidad("PENSAMIENTO ESTRATÉGICO") + $this->buscar_total_subhabilidad("PENSAMIENTO CREATIVO"),
+
+                'calificacion_total' => $this->buscar_total_subhabilidad("TOMA DE DECISIONES INFORMADAS") + $this->buscar_total_subhabilidad("CONCIENCIA DE SITUACIÓN Y ACCIONES RAZONABLES") + $this->buscar_total_subhabilidad("PENSAMIENTO ESTRATÉGICO") + $this->buscar_total_subhabilidad("PENSAMIENTO CREATIVO") + $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE ESTRUCTURA ARGUMENTATIVA") + $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE SUPOSICIÓN") + $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE FALACIA") + $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE FALLO POR ANALOGÍA") + $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE FALLO POR VAGUEDAD") + $this->buscar_total_subhabilidad("COMPROBACIÓN DE HIPÓTESIS") + $this->buscar_total_subhabilidad("USO DE PROBABILIDAD E INCERTIDUMBRE") + $this->buscar_total_subhabilidad("INDUCCIÓN GENERAL") + $this->buscar_total_subhabilidad("INDUCCIÓN ESPECÍFICA"),
+
                 'conocimiento_procedimental' => $categorias['conocimiento_procedimental'],
+
                 'depuracion' => $categorias['depuracion'],
                 'evaluacion' => $categorias['evaluacion'],
                 'monitoreo' => $categorias['monitoreo'],
@@ -220,7 +240,6 @@ class ReportesController extends Controller
     public function verReporte(Request $request)
     {
 
-
         $categorias = Reportes::where('id_reporte', $request->id_reporte)
             ->select(
                 'conocimiento_procedimental',
@@ -229,15 +248,17 @@ class ReportesController extends Controller
                 'monitoreo',
                 'organizacion',
                 'planificacion',
-                'total_metacognicion',
+                'calificacion_metacognicion',
                 'tiempo_prueba'
             )
             ->first()
             ->toArray();
 
-        $consulta_informe = $this->consultar_informe(id_usuario: $request->id_usuario, id_reporte: $request->id_reporte);
-        $informe_final = $this->crear_informe_descriptivo($consulta_informe, $categorias);
 
+        $consulta_informe = $this->consultar_informe(id_usuario: $request->id_usuario, id_reporte: $request->id_reporte);
+
+
+        $informe_final = $this->crear_informe_descriptivo($consulta_informe, $request->id_reporte);
 
         //Esto es lo que debería restornar
         return view('reporte.reporte_detalle', compact('informe_final'));
@@ -339,16 +360,16 @@ class ReportesController extends Controller
                         "puntuación" => $consulta_informe[$i]['calificacion']
                     ],
                     $nombre_item_2 =>
-                        [
-                            "Contexto y habilidad" => $consulta_informe[$i + 1]['habilidad'],
-                            "id_contexto" => $consulta_informe[$i + 1]['id_contexto'],
-                            "Ejercicio mental/subhabilidad" => $consulta_informe[$i + 1]['subhabilidad'],
-                            "puntuación" => $consulta_informe[$i + 1]['calificacion']
-                        ],
+                    [
+                        "Contexto y habilidad" => $consulta_informe[$i + 1]['habilidad'],
+                        "id_contexto" => $consulta_informe[$i + 1]['id_contexto'],
+                        "Ejercicio mental/subhabilidad" => $consulta_informe[$i + 1]['subhabilidad'],
+                        "puntuación" => $consulta_informe[$i + 1]['calificacion']
+                    ],
                     "descriptor" =>
-                        $this->identificar_descriptor($consulta_informe[$i]['id_pregunta'], $consulta_informe[$i]['calificacion']) . " " . $this->identificar_descriptor($consulta_informe[$i + 1]['id_pregunta'], $consulta_informe[$i + 1]['calificacion']) . $this->buscar_descriptor_contexto($consulta_informe[$i]['id_contexto']),
-                    "id_contexto" =>
-                        $consulta_informe[$i]['id_contexto']
+                    $this->identificar_descriptor($consulta_informe[$i]['id_pregunta'], $consulta_informe[$i]['calificacion']) . " " . $this->identificar_descriptor($consulta_informe[$i + 1]['id_pregunta'], $consulta_informe[$i + 1]['calificacion']) . $this->buscar_descriptor_contexto($consulta_informe[$i]['id_contexto']),
+                    // "id_contexto" =>
+                    //     $consulta_informe[$i]['id_contexto']
 
                 ];
                 $documentos_totales[$nombre_contexto] = $documento;
@@ -409,13 +430,11 @@ class ReportesController extends Controller
             "tiempo_prueba" => $reporte->tiempo_prueba,
             "motivacion_intrinseca" => $reporte->motivacion_intrinseca,
             "motivacion_extrinseca" => $reporte->motivacion_extrinseca,
+            "total_motivación" => $reporte->motivacion_extrinseca + $reporte->motivacion_intrinseca
         ];
         $documentos_totales["metacognicion_motivacion"] = $metacognicion_motivacion;
 
-
-
-
-        dd($documentos_totales);
+        //dd($documentos_totales);
         return $documentos_totales;
     }
 

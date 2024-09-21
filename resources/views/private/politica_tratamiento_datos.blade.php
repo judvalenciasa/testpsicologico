@@ -96,6 +96,27 @@
             </p>
         </div>
 
+        @if ($consentimientoSubido)
+        <div style="color: green; font-weight: bold;">
+            El consentimiento informado ha sido cargado correctamente.
+        </div>
+        @else
+        <div style="color: red; font-weight: bold;">
+            El consentimiento informado aún no ha sido cargado. Por favor, cargue el documento para continuar.
+        </div>
+        @endif
+
+
+        <form action="{{ route('archivo.store') }}" class="file_upload_ctn" method="POST" enctype="multipart/form-data">
+            <div>
+                <p>Cargar consentimiento informado</p>
+            </div>
+            @csrf
+            <input type="file" name="pdf" accept="application/pdf">
+            <button type="submit">Subir PDF</button>
+        </form>
+
+
         <!-- Checkbox and submit button -->
         <form action="{{ route('politica.aceptar') }}" method="POST">
             @csrf
@@ -103,6 +124,8 @@
                 <input type="checkbox" id="acceptPolicy" required>
                 <label for="acceptPolicy">He leído y acepto la política de tratamiento de datos personales</label>
             </div>
+
+
             <button id="submitButton" type="submit" class="submit-btn"
                 {{ $consentimientoSubido ? '' : 'disabled' }}>
                 Aceptar y Continuar
@@ -111,16 +134,7 @@
 
 
         <!-- -->
-        <form action="{{ route('archivo.store') }}" class="file_upload_ctn" method="POST" enctype="multipart/form-data">
-            <div>
-                <p>
-                    Cargar consentimiento informado
-                </p>
-            </div>
-            @csrf
-            <input type="file" name="pdf" accept="application/pdf">
-            <button type="submit">Subir PDF</button>
-        </form>
+
     </section>
 
     @include('shared.footer')
