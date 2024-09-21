@@ -62,6 +62,12 @@ class Reportes extends Model
         'tiempo_prueba',
         'motivacion_intrinseca',
         'motivacion_extrinseca',
+        'nivel_inductivo',
+        'nivel_abductivo',
+        'nivel_deductivo_y_verbal',
+        'nivel_analisis_de_argumentos',
+        'nivel_toma_desiciones_y_resolucion_problemas',
+        'nivel_total',
     ];
 
     public function usuario()

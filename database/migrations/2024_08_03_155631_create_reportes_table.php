@@ -17,18 +17,18 @@ return new class extends Migration
             $table->integer('calificacion_total')->nullable();
             $table->integer('calificacion_metacognicion')->nullable();
             $table->date('fecha_calificacion');
-            
+
             $table->string('documento_identificacion')->nullable();
             $table->integer('edad')->nullable();
             $table->integer('estrato')->nullable();
             $table->string('nivel_escolaridad')->nullable();
             $table->string('nivel_educativo_padre')->nullable();
             $table->string('nivel_educativo_madre')->nullable();
-            $table->string('horas_lectura')->nullable(); 
-            $table->string('horas_redes_sociales')->nullable(); 
-            $table->string('horas_entretenimiento')->nullable(); 
-            $table->string('hora_sueno')->nullable(); 
-            $table->string('genero')->nullable(); 
+            $table->string('horas_lectura')->nullable();
+            $table->string('horas_redes_sociales')->nullable();
+            $table->string('horas_entretenimiento')->nullable();
+            $table->string('hora_sueno')->nullable();
+            $table->string('genero')->nullable();
             $table->string('promedio_deporte')->nullable();
             $table->string('promedio_arte')->nullable();
             $table->string('grasas')->nullable();
@@ -62,9 +62,15 @@ return new class extends Migration
             $table->integer('tiempo_prueba')->nullable();
             $table->integer('motivacion_intrinseca')->nullable();
             $table->integer('motivacion_extrinseca')->nullable();
-            
+            $table->string('nivel_inductivo')->nullable();
+            $table->string('nivel_abductivo')->nullable();
+            $table->string('nivel_deductivo_y_verbal')->nullable();
+            $table->string('nivel_analisis_de_argumentos')->nullable();
+            $table->string('nivel_toma_desiciones_y_resolucion_problemas')->nullable();
+            $table->string('nivel_total')->nullable();
+
             $table->timestamps();
-            
+
             $table->foreign('id_usuario')->references('id_usuario')->on('users');
         });
     }

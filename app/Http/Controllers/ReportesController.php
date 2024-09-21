@@ -80,6 +80,19 @@ class ReportesController extends Controller
 
                 'conocimiento_procedimental' => $categorias['conocimiento_procedimental'],
 
+                'nivel_inductivo' => $this->calcularNivel($this->buscar_total_subhabilidad("INDUCCIÓN GENERAL") + $this->buscar_total_subhabilidad("INDUCCIÓN ESPECÍFICA"), 'inductivo'),
+
+                'nivel_abductivo' => $this->calcularNivel($this->buscar_total_subhabilidad("COMPROBACIÓN DE HIPÓTESIS") + $this->buscar_total_subhabilidad("USO DE PROBABILIDAD E INCERTIDUMBRE"), 'abductivo'),
+
+                'nivel_deductivo_y_verbal' => $this->calcularNivel($this->buscar_total_subhabilidad("IDENTIFICACIÓN DE FALLO POR ANALOGÍA") + $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE FALLO POR VAGUEDAD"), 'deductivo'),
+
+
+                'nivel_analisis_de_argumentos' => $this->calcularNivel($this->buscar_total_subhabilidad("IDENTIFICACIÓN DE ESTRUCTURA ARGUMENTATIVA") + $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE SUPOSICIÓN") + $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE FALACIA"), 'analisis_argumentos'),
+
+                'nivel_toma_desiciones_y_resolucion_problemas' => $this->calcularNivel($this->buscar_total_subhabilidad("TOMA DE DECISIONES INFORMADAS") + $this->buscar_total_subhabilidad("CONCIENCIA DE SITUACIÓN Y ACCIONES RAZONABLES") + $this->buscar_total_subhabilidad("PENSAMIENTO ESTRATÉGICO") + $this->buscar_total_subhabilidad("PENSAMIENTO CREATIVO"), 'toma_decisiones'),
+
+                'nivel_total' => $this->calcularNivel($this->buscar_total_subhabilidad("TOMA DE DECISIONES INFORMADAS") + $this->buscar_total_subhabilidad("CONCIENCIA DE SITUACIÓN Y ACCIONES RAZONABLES") + $this->buscar_total_subhabilidad("PENSAMIENTO ESTRATÉGICO") + $this->buscar_total_subhabilidad("PENSAMIENTO CREATIVO") + $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE ESTRUCTURA ARGUMENTATIVA") + $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE SUPOSICIÓN") + $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE FALACIA") + $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE FALLO POR ANALOGÍA") + $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE FALLO POR VAGUEDAD") + $this->buscar_total_subhabilidad("COMPROBACIÓN DE HIPÓTESIS") + $this->buscar_total_subhabilidad("USO DE PROBABILIDAD E INCERTIDUMBRE") + $this->buscar_total_subhabilidad("INDUCCIÓN GENERAL") + $this->buscar_total_subhabilidad("INDUCCIÓN ESPECÍFICA"), 'total'),
+
                 'depuracion' => $categorias['depuracion'],
                 'evaluacion' => $categorias['evaluacion'],
                 'monitoreo' => $categorias['monitoreo'],
@@ -87,7 +100,9 @@ class ReportesController extends Controller
                 'planificacion' => $categorias['planificacion'],
                 'tiempo_prueba' => $request->tiempo_prueba,
             ]);
+
         }
+
     }
 
 
@@ -97,7 +112,6 @@ class ReportesController extends Controller
      */
     public function ver_reporte_usuario(Request $request)
     {
-
 
         $user = $request->user();
         $categorias = $this->sumar_por_categorias(request: $request);
@@ -110,7 +124,6 @@ class ReportesController extends Controller
         $consulta_informe = $this->consultar_informe(id_usuario: $user->id_usuario, id_reporte: $id_reporte);
         $informe_final = $this->crear_informe_descriptivo($consulta_informe, $id_reporte);
 
-        //dd($consulta_informe);
 
         //Esto es lo que debería restornar
         return view('reporte.index', compact('informe_final'));
@@ -162,6 +175,7 @@ class ReportesController extends Controller
 
     private function calcularNivel($puntaje, $tipo_habilidad)
     {
+
         switch ($tipo_habilidad) {
             case 'inductivo':
                 switch (true) {
@@ -228,6 +242,19 @@ class ReportesController extends Controller
                     default:
                         return 'Muy Alto';
                 }
+            case 'total':
+                switch (true) {
+                    case ($puntaje <= 20):
+                        return 'Muy Bajo';
+                    case ($puntaje <= 40):
+                        return 'Bajo';
+                    case ($puntaje <= 60):
+                        return 'Intermedio';
+                    case ($puntaje <= 80):
+                        return 'Alto';
+                    default:
+                        return 'Muy Alto';
+                }
             default:
                 return 'Nivel desconocido';
         }
@@ -259,6 +286,7 @@ class ReportesController extends Controller
 
 
         $informe_final = $this->crear_informe_descriptivo($consulta_informe, $request->id_reporte);
+
 
         //Esto es lo que debería restornar
         return view('reporte.reporte_detalle', compact('informe_final'));
@@ -430,7 +458,13 @@ class ReportesController extends Controller
             "tiempo_prueba" => $reporte->tiempo_prueba,
             "motivacion_intrinseca" => $reporte->motivacion_intrinseca,
             "motivacion_extrinseca" => $reporte->motivacion_extrinseca,
-            "total_motivación" => $reporte->motivacion_extrinseca + $reporte->motivacion_intrinseca
+            "total_motivación" => $reporte->motivacion_extrinseca + $reporte->motivacion_intrinseca,
+            "nivel_inductivo" => $reporte->nivel_inductivo,
+            "nivel_abductivo" => $reporte->nivel_abductivo,
+            "nivel_deductivo_y_verbal" => $reporte->nivel_deductivo_y_verbal,
+            "nivel_analisis_de_argumentos" => $reporte->nivel_analisis_de_argumentos,
+            "nivel_toma_desiciones_y_resolucion_problemas" => $reporte->nivel_toma_desiciones_y_resolucion_problemas,
+            "nivel_total" => $reporte->nivel_total,
         ];
         $documentos_totales["metacognicion_motivacion"] = $metacognicion_motivacion;
 

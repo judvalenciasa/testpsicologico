@@ -97,6 +97,7 @@
                             <p><strong>Inducción general:</strong> {{ $metacognicion['induccion_general'] }}</p>
                             <p><strong>Inducción específica:</strong> {{ $metacognicion['induccion_especifica'] }}</p>
                             <p><strong>Total: </strong> {{ $metacognicion['total_macrohabilidad_inductiva'] }}</p>
+                            <p><strong>Nivel: </strong> {{ $metacognicion['nivel_inductivo'] }}</p>
                         </div>
                     </div>
 
@@ -106,6 +107,7 @@
                             <p><strong>Comprobación de hipótesis:</strong> {{ $metacognicion['comprobacion_hipotesis'] }}</p>
                             <p><strong>Uso de probabilidad e incertidumbre:</strong> {{ $metacognicion['uso_probabilidad_incertidumbre'] }}</p>
                             <p><strong>Total: </strong> {{ $metacognicion['total_macrohabilidad_abductiva'] }}</p>
+                            <p><strong>Nivel: </strong> {{ $metacognicion['nivel_abductivo'] }}</p>
                         </div>
                     </div>
 
@@ -115,6 +117,7 @@
                             <p><strong>Identificación de fallo por analogía: </strong> {{ $metacognicion['identificacion_analogia'] }}</p>
                             <p><strong>Identificación de fallo por vaguedad:</strong> {{ $metacognicion['identificacion_por_fallo_vaguedad'] }}</p>
                             <p><strong>Total: </strong> {{ $metacognicion['total_macrohabilidad_deductivo_y_verbal'] }}</p>
+                            <p><strong>Nivel: </strong> {{ $metacognicion['nivel_deductivo_y_verbal'] }}</p>
                         </div>
                     </div>
 
@@ -125,6 +128,7 @@
                             <p><strong>Identificación de suposición:</strong> {{ $metacognicion['identificacion_de_suposicion'] }}</p>
                             <p><strong>Identificación de falacia:</strong> {{ $metacognicion['identificacion_de_falacia'] }}</p>
                             <p><strong>Total: </strong> {{ $metacognicion['total_macrohabilidad_analisis_de_argumentos'] }}</p>
+                            <p><strong>Nivel: </strong> {{ $metacognicion['nivel_analisis_de_argumentos'] }}</p>
                         </div>
                     </div>
 
@@ -136,6 +140,7 @@
                             <p><strong>Pensamiento estratégico: </strong> {{ $metacognicion['pensamiento_estrategico'] }}</p>
                             <p><strong>Pensamiento creativo: </strong> {{ $metacognicion['pensamiento_creativo'] }}</p>
                             <p><strong>Total: </strong> {{ $metacognicion['macrohabilidad_toma_desiciones_y_resolucion_problemas'] }}</p>
+                            <p><strong>Nivel: </strong> {{ $metacognicion['nivel_toma_desiciones_y_resolucion_problemas'] }}</p>
                         </div>
                     </div>
 
@@ -143,6 +148,7 @@
                         <h3>Nivel de desempeño del pensamiento crítico global o total alcanzado</h3>
                         <div class="text_box">
                             <p><strong>Total : </strong> {{ $metacognicion['calificacion_total'] }}</p>
+                            <p><strong>Nivel: </strong> {{ $metacognicion['nivel_total'] }}</p>
 
                         </div>
                     </div>
@@ -233,6 +239,7 @@
 
         <a href="{{ route('private.usuarios') }}" class="btn">Volver a usuarios</a>
 
+        </div>
     </section>
 
     @include('shared.footer')
