@@ -29,7 +29,7 @@
 
             <!-- Documento Identificacion -->
             <div class="input-group">
-                <label for="documento_identificacion">Documento de identificación:</label>
+                <label for="documento_identificacion">Documento de identificación del Participante:</label>
                 <input type="number" id="documento_identificacion" name="documento_identificacion" placeholder="Ingrese su documento de identificación" required>
             </div>
 
@@ -41,7 +41,7 @@
 
             <!-- Género -->
             <div class="input-group">
-                <label for="genero">Género:</label>
+                <label for="genero">Sexo:</label>
                 <select id="genero" name="genero" required>
                     <option value="" disabled selected>Seleccione su género</option>
                     <option value="Masculino">Masculino</option>
@@ -61,8 +61,8 @@
                 <select id="nivel_escolaridad" name="nivel_escolaridad" required>
                     <option value="" disabled selected>Seleccione su nivel de escolaridad</option>
                     <option value="Noveno">Noveno</option>
-                    <option value="Decimo">Decimo</option>
-                    <option value="Undecimo">Undecimo</option>
+                    <option value="Decimo">Décimo</option>
+                    <option value="Undecimo">Undécimo</option>
                 </select>
             </div>
 
@@ -104,7 +104,7 @@
 
             <!-- Horas de lectura -->
             <div class="input-group">
-                <label for="horas_lectura">Cantidad de horas de lectura por semana:</label>
+                <label for="horas_lectura">Cantidad de horas semanales dedicadas a lectura:</label>
                 <select id="horas_lectura" name="horas_lectura" required>
                     <option value="" disabled selected>Seleccione una opción</option>
                     <option value="Menos de 1 hora">Menos de 1 hora</option>
@@ -118,7 +118,7 @@
 
             <!-- Horas en redes sociales -->
             <div class="input-group">
-                <label for="horas_redes_sociales">Cantidad de horas en redes sociales por semana:</label>
+                <label for="horas_redes_sociales">Cantidad de horas semanales dedicadas a interactuar en redes sociales: </label>
                 <select id="horas_redes_sociales" name="horas_redes_sociales" required>
                     <option value="" disabled selected>Seleccione una opción</option>
                     <option value="Menos de 1 hora">Menos de 1 hora</option>
@@ -135,6 +135,7 @@
                 <label for="horas_entretenimiento">Cantidad promedio de horas semanales destinadas al entretenimiento con videojuegos en consolas o a través de internet</label>
                 <select id="horas_entretenimiento" name="horas_entretenimiento" required>
                     <option value="" disabled selected>Seleccione una opción</option>
+                    <option value="No realizo estas actividades">No realizo estas actividades</option>
                     <option value="Menos de 1 hora">Menos de 1 hora</option>
                     <option value="Entre 1 y 3 horas">Entre 1 y 3 horas</option>
                     <option value="Hasta 5 horas">Hasta 5 horas</option>
@@ -146,7 +147,7 @@
 
             <!-- Horas de sueño -->
             <div class="input-group">
-                <label for="hora_sueno">Cantidad promedio de horas semanales dedicadas en la noche a dormir</label>
+                <label for="hora_sueno">Cantidad promedio de horas semanales dedicadas a dormir en la noche</label>
                 <select id="hora_sueno" name="hora_sueno" required>
                     <option value="" disabled selected>Seleccione una opción</option>
                     <option value="Entre 4 y 6 horas">Entre 4 y 6 horas</option>
@@ -201,7 +202,7 @@
 
             <!-- Bebe más de un litro -->
             <div class="input-group">
-                <label for="litro_agua">¿Consume más de un litro de agua al día?</label>
+                <label for="litro_agua">¿Consume un (1) litro o más de agua al día?</label>
                 <select id="litro_agua" name="litro_agua" required>
                     <option value="" disabled selected>Seleccione una opción</option>
                     <option value=Si>Sí</option>

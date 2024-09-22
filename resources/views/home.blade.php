@@ -33,7 +33,7 @@
                 <h1>¿Qué es <br> Cognitive Spark?</h1>
             </div>
             <div class="banner_text">
-                <p>Es una prueba de pensamiento crítico diseñada específicamente para adolescentes. Esta herramienta evaluativa se centra en medir el nivel de desempeño del pensamiento crítico. CognitiveSpark busca no solo evaluar, sino también inspirar y activar el potencial mental de los jóvenes, preparando a las próximas generaciones para afrontar los complejos desafíos y aportar a la transformación de las realidades complejas.
+                <p>Es una prueba de pensamiento crítico diseñada específicamente para adolescentes. Esta herramienta evaluativa se centra en medir el nivel de desempeño del pensamiento crítico. CognitiveSpark busca no solo evaluar, sino también inspirar y activar el potencial mental de los jóvenes, preparando a las próximas generaciones para afrontar los complejos desafíos y aportar a la transformación de realidades complejas.
                 </p>
             </div>
         </div>
@@ -41,7 +41,7 @@
 
     <section class="preguntas_frecuentes_section">
         <div class="title">
-            <h1>PREGUNTAS FRECUENTES</h1>
+            <h2>PREGUNTAS FRECUENTES</h2>
         </div>
 
         <div class="swiper mySwiper">
@@ -55,10 +55,10 @@
 
                         </div>
                         <div class="pregunta">
-                            <p>¿La prueba tiene un tiempo límite de respuesta?</p>
+                            <p>¿Para quiénes está diseñada la prueba?</p>
                         </div>
                         <div class="respuesta">
-                            <p><span>Respuesta: </span>No, puedes tomarte el tiempo necesario para responder cada pregunta.</p>
+                            <p><span>Respuesta: </span>Para adolescentes que se encuentren entre los 15 y 18 años </p>
                         </div>
                     </div>
                 </div>
@@ -71,10 +71,58 @@
 
                         </div>
                         <div class="pregunta">
-                            <p>¿La prueba tiene un ?</p>
+                            <p>¿Cuál es el precio de aplicación de la prueba?</p>
                         </div>
                         <div class="respuesta">
-                            <p><span>Respuesta: </span>No, puedes tomarte el tiempo necesario para .</p>
+                            <p><span>Respuesta: </span>La institución educativa en la que estudias te brindará esa información. Si eres directivo de una institución educativa, investigador o externo, puedes contactarte con: Hermano Antidio Bolívar Enríquez Oviedo bolivarenriquez@gmail.com Juan Manuel Vélez Arias juanmanuelvelezar@gmail.com</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="foto_ctn">
+                        <img src="{{ asset('images/jpg/9720016.jpg') }}" alt="avatar">
+                    </div>
+                    <div class="pregunta_ctn">
+                        <div class="stars_ctn">
+
+                        </div>
+                        <div class="pregunta">
+                            <p>¿Qué habilidades de pensamiento crítico evalúa Cognitive Spark?</p>
+                        </div>
+                        <div class="respuesta">
+                            <p><span>Respuesta: </span>Razonamiento inductivo, razonamiento abductivo, razonamiento deductivo y verbal, análisis de argumentos y toma de decisiones y resolución de problemas. </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="foto_ctn">
+                        <img src="{{ asset('images/jpg/9720016.jpg') }}" alt="avatar">
+                    </div>
+                    <div class="pregunta_ctn">
+                        <div class="stars_ctn">
+
+                        </div>
+                        <div class="pregunta">
+                            <p>¿Cuál es el formato de aplicación de la prueba?</p>
+                        </div>
+                        <div class="respuesta">
+                            <p><span>Respuesta: </span>La prueba se responde a través de un sistema de información con una interfaz amigable</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="foto_ctn">
+                        <img src="{{ asset('images/jpg/9720016.jpg') }}" alt="avatar">
+                    </div>
+                    <div class="pregunta_ctn">
+                        <div class="stars_ctn">
+
+                        </div>
+                        <div class="pregunta">
+                            <p>¿Qué novedad ofrece Cognitive Spark? </p>
+                        </div>
+                        <div class="respuesta">
+                            <p><span>Respuesta: </span>Cognitive Spark evalúa cinco (5) habilidades de pensamiento cítrico de las cuales se desprenden trece (13) subhabilidades, a su vez, desplegadas en treinta (30) contextos que sitúan al adolescente en escenarios de desarrollo humano y sostenibilidad. Al finalizar la prueba, el sistema arroja un reporte final con el nivel de desempeño del pensamiento crítico logrado y sus respectivos descriptores conforme a las trece (13) subhabilidades y los contextos en mención.</p>
                         </div>
                     </div>
                 </div>
@@ -83,6 +131,29 @@
             <div class="swiper-button-next"></div>
             <div class="swiper-button-prev"></div>
         </div>
+    </section>
+
+    <section class="habilidades_section">
+        <div class="title">
+            <h2>Cognitive Spark evalúa las siguientes habilidades de pensamiento crítico: </h2>
+        </div>
+        <ul>
+            <li>
+                <h3>Razonamiento inductivo</h3>
+            </li>
+            <li>
+                <h3>Razonamiento abductivo</h3>
+            </li>
+            <li>
+                <h3>Razonamiento deductivo y razonamiento verbal</h3>
+            </li>
+            <li>
+                <h3>Análisis de Argumentos</h3>
+            </li>
+            <li>
+                <h3>Habilidad de Toma de Decisiones y Resolución de problemas</h3>
+            </li>
+        </ul>
     </section>
 
     <section class="contact_section">

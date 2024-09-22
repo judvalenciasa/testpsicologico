@@ -19,9 +19,7 @@
 
     <section class="caracterizacion_section">
         <div class="encabezado_ctn">
-            <h3>Felicitaciones, has terminado las preguntas de pensamiento crítico. Para finalizar, en relación con la
-                prueba que acabas de culminar, te invitamos a responder de la manera más honesta a las siguientes
-                afirmaciones.
+            <h3 class="titulo_metacognicion">¡Felicitaciones, Has terminado las preguntas de pensamiento crítico! Para finalizar, en relación con el test psicométrico que acabas de culminar, te invitamos a responder de la manera más honesta a las siguientes afirmaciones, con la finalidad de establecer el grado de conocimiento y regulación de las habilidades de constructo.
             </h3>
             <h3> <span>Indicaciones:</span> Lee cuidadosamente cada una de las afirmaciones y usa la escala de 1 a 5 en
                 donde 1 es completamente en desacuerdo; 2 es en desacuerdo; 3 es Ni de acuerdo ni en desacuerdo; 4 de
@@ -29,9 +27,9 @@
             </h3>
         </div>
         @if(session('success'))
-            <div class="alert alert-success">
-                {{ session('success') }}
-            </div>
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
         @endif
 
         <form id="metacognicionForm" class="metacognicionForm" action="{{ route('ver.reporte.usuario') }}" method="POST">

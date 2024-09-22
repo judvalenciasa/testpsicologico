@@ -40,12 +40,13 @@
                     compartidos con las instituciones educativas y, de manera anonimizada, con investigadores
                     académicos.</li>
                 <li>Mejorar y optimizar futuras versiones de la prueba CognitiveSpark.</li>
+                <li>Durante el proceso de validación del instrumento, segundo semestre del año 2024, se indica que en cuanto se consideren realizadas algunas comprobaciones de validación del instrumento Cognitive Spark, te haremos llegar el reporte final con los niveles de desempeño en pensamiento crítico y los respectivos descriptores.</li>
             </ul>
 
             <h3>Datos Personales Recolectados</h3>
             <p>Los datos personales que se recolectarán incluyen, pero no se limitan a:</p>
             <ul>
-                <li>Documento de identificación del estudiante: nombre completo, edad y género.</li>
+                <li>Documento de identificación del estudiante: nombre completo, edad y sexo.</li>
                 <li>Datos académicos: grado escolar, nombre de la institución educativa.</li>
                 <li>Respuestas y resultados de la prueba de pensamiento crítico y de las variables prueba-criterio
                     motivación y metacognición.</li>
@@ -63,6 +64,7 @@
                 <li>Presentar quejas ante las autoridades competentes por infracciones a la normatividad vigente.</li>
                 <li>Revocar la autorización y/o solicitar la supresión de los datos cuando no se respeten los
                     principios, derechos y garantías constitucionales y legales.</li>
+
             </ul>
 
             <h3>Medidas de Seguridad</h3>
@@ -94,6 +96,8 @@
                 responsables del tratamiento de los datos personales relacionados al principio de la política en
                 mención.
             </p>
+
+
         </div>
 
         @if ($consentimientoSubido)

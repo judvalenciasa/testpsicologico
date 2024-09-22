@@ -17,13 +17,13 @@
 
         <div class="pregunta_ctn">
             <div class="title">
-                <h2>Contexto </h2>
+                <h2>Contexto - {{$contexto_index + 1}} </h2>
             </div>
 
             @if(isset($preguntas) && count($preguntas) > 0)
             <!-- Mostrar el contexto una vez -->
             <div class="contexto">
-                <p>{{ $preguntas->first()->contexto->texto }}</p>
+                <p>{{ $preguntas->first()->contexto->texto }} </p>
             </div>
 
             <form class="form_ctn" action="{{ route('cargar.preguntas') }}" method="POST">
@@ -35,13 +35,16 @@
 
                 @if($pregunta_actual->tipo_pregunta == 'abierta')
                 <div class="opcion">
-                    <textarea maxlength="650" name="respuestas_abiertas[{{ $pregunta_actual->id_pregunta }}]" id="respuesta_abierta_{{ $pregunta_actual->id_pregunta }}" required rows="4" placeholder="Escribe tu respuesta aquí..."></textarea>
+                    <textarea maxlength="650" name="respuestas_abiertas[{{ $pregunta_actual->id_pregunta }}]"
+                        id="respuesta_abierta_{{ $pregunta_actual->id_pregunta }}" required rows="4"
+                        placeholder="Escribe tu respuesta aquí..."></textarea>
                 </div>
                 @else
                 @foreach($pregunta_actual->opciones as $opcion)
                 <div class="opcion">
                     <label>
-                        <input type="radio" name="respuestas_cerradas[{{ $pregunta_actual->id_pregunta }}]" required value="{{ $opcion->id_opcion }}">
+                        <input type="radio" name="respuestas_cerradas[{{ $pregunta_actual->id_pregunta }}]" required
+                            value="{{ $opcion->id_opcion }}">
                         <p>{{ $opcion->texto }}</p>
                     </label>
                 </div>
@@ -57,13 +60,17 @@
 
                     @if($subpregunta->tipo_pregunta == 'abierta')
                     <div class="opcion">
-                        <textarea required maxlength="650" name="respuestas_abiertas[{{ $subpregunta->id_subpregunta }}]" id="respuesta_abierta_{{ $subpregunta->id_subpregunta }}" rows="4" placeholder="Escribe tu respuesta aquí..."></textarea>
+                        <textarea required maxlength="650"
+                            name="respuestas_abiertas[{{ $subpregunta->id_subpregunta }}]"
+                            id="respuesta_abierta_{{ $subpregunta->id_subpregunta }}" rows="4"
+                            placeholder="Escribe tu respuesta aquí..."></textarea>
                     </div>
                     @else
                     @foreach($subpregunta->opciones as $opcion)
                     <div class="opcion">
                         <label>
-                            <input required type="radio" name="respuestas_cerradas[{{ $subpregunta->id_subpregunta }}]" value="{{ $opcion->id_opcionessubpregunta }}">
+                            <input required type="radio" name="respuestas_cerradas[{{ $subpregunta->id_subpregunta }}]"
+                                value="{{ $opcion->id_opcionessubpregunta }}">
                             <p>{{ $opcion->texto }}</p>
                         </label>
                     </div>
@@ -82,8 +89,15 @@
 
                 @if($contexto_index + 1 < $total_contextos)
                     <button type="submit">Siguiente</button>
+                    <!-- Botón visible para activar pantalla completa -->
+                    <div id="fullscreen-message" style="text-align: center; margin: 20px;">
+                        <button id="fullscreenBtn" style="padding: 10px 20px; font-size: 18px;">Entrar en Pantalla Completa</button>
+                    </div>
                     @else
                     <button class="send_btn" type="submit">Continuar con encuesta de metacognición</button>
+
+
+
                     @endif
             </form>
 
@@ -91,7 +105,52 @@
             <p>Felicidades terminaste la prueba.</p>
             @endif
         </div>
+
     </section>
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Función para activar pantalla completa
+            function openFullscreen() {
+                var elem = document.documentElement;
+                if (elem.requestFullscreen) {
+                    elem.requestFullscreen();
+                } else if (elem.mozRequestFullScreen) { // Firefox
+                    elem.mozRequestFullScreen();
+                } else if (elem.webkitRequestFullscreen) { // Chrome, Safari y Opera
+                    elem.webkitRequestFullscreen();
+                } else if (elem.msRequestFullscreen) { // IE/Edge
+                    elem.msRequestFullscreen();
+                }
+            }
+
+            // Listener para el botón de pantalla completa
+            document.getElementById('fullscreenBtn').addEventListener('click', openFullscreen);
+
+            // Función para comprobar si estamos en pantalla completa
+            function checkFullscreen() {
+                if (document.fullscreenElement || document.mozFullScreenElement || document
+                    .webkitFullscreenElement || document.msFullscreenElement) {
+                    // Si estamos en pantalla completa, ocultar el botón
+                    document.getElementById('fullscreen-message').style.display = 'none';
+                } else {
+                    // Si no estamos en pantalla completa, mostrar el botón
+                    document.getElementById('fullscreen-message').style.display = 'block';
+                }
+            }
+
+            // Escuchar cambios en el estado de pantalla completa
+            document.addEventListener('fullscreenchange', checkFullscreen);
+            document.addEventListener('webkitfullscreenchange', checkFullscreen);
+            document.addEventListener('mozfullscreenchange', checkFullscreen);
+            document.addEventListener('MSFullscreenChange', checkFullscreen);
+
+            // Llamar la función para comprobar el estado inicial
+            checkFullscreen();
+        });
+    </script>
+
 </body>
 
 </html>

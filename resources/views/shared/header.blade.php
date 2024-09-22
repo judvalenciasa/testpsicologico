@@ -80,8 +80,8 @@
                 <ul>
                     @if (Auth::guest())
                     <li><a href="{{ url('/') }}">Inicio</a></li>
-                    <li><a href="{{ url('/ingreso') }}">Ingresar </a></li>
                     <li><a href="{{ url('/register') }}">Registrarse</a></li>
+                    <li><a href="{{ url('/ingreso') }}">Ingresar </a></li>
                     @endif
                     @if (Auth::check())
                     <li>

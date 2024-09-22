@@ -47,7 +47,7 @@
                 <span class="error-message" id="pin-error"></span>
             </div>
             <div class="input-group">
-                <input type="checkbox" id="show-pin">
+                <input type="checkbox" id="show-password">
                 <span class="span_mostrar_pin" for="show-pin">Mostrar Contraseña</span>
             </div>
             <button type="submit" id="submit-btn">
@@ -57,6 +57,15 @@
 
     </section>
     <script>
+        document.getElementById('show-password').addEventListener('change', function() {
+            var passwordInput = document.getElementById('password');
+            if (this.checked) {
+                passwordInput.type = 'text'; // Mostrar contraseña
+            } else {
+                passwordInput.type = 'password'; // Ocultar contraseña
+            }
+        });
+
         document.getElementById('submit-btn').addEventListener('click', function(event) {
             event.preventDefault(); // Evitar que el formulario se envíe de manera tradicional
 
@@ -92,36 +101,7 @@
                 isValid = false;
             }
 
-            if (isValid) {
-                // Si todo es válido, envía los datos a través de fetch
-                fetch("{{ route('registrar') }}", {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-                        },
-                        body: JSON.stringify({
-                            name: name,
-                            email: email,
-                            pin: pin,
-                            password: password
-                        })
-                    })
-                    .then(response => response.json())
-                    .then(data => {
-                        if (data.status === 1) {
-                            alert('Registro exitoso');
-                            // Limpiar los campos
-                            document.getElementById('name').value = '';
-                            document.getElementById('email').value = '';
-                            document.getElementById('pin').value = '';
-                            document.getElementById('password').value = '';
-                        } else {
-                            alert(data.msg);
-                        }
-                    })
-                    .catch(error => console.error('Error:', error));
-            }
+           
         });
 
         function showError(inputId, message) {

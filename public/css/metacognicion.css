@@ -15,6 +15,13 @@
     font-weight: normal;
 }
 
+/** titulo que debe ir en italica */
+.titulo_metacognicion {
+    text-align: center;
+    font-style: italic;
+
+}
+
 .caracterizacion_section .encabezado_ctn span{
     font-weight: 700;
 }
