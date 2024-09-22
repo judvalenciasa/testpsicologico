@@ -972,7 +972,7 @@ class OpcionesSeeder extends Seeder
             [
                 'id_opcion' => 150,
                 'id_pregunta' => 49,
-                'texto' => 'En la publicación suponen que los niveles de desempleo a nivel mundial crecerán al mismo ritmo que ha venido creciendo, y generaliza afirmando que todas las personas se quedarán sin empleo como si esas fueran las únicas industrias.',
+                'texto' => 'En la publicación suponen que los niveles de desempleo a nivel mundial crecerán al mismo ritmo que ha venido creciendo, y generaliza afirmando que todas las personas se quedarán sin empleo como si esas fueran las únicas industrias que generan empleo.',
                 'valor_opcion' => 1
             ],
             [

@@ -230,7 +230,7 @@ class DescriptivosSeeder extends Seeder
                 'id_descriptivo' => 33,
                 'id_pregunta' => 29,
                 'texto_descriptivo' => 'Entiende la diferencia entre correlación y causa y efecto;',
-                'calificacion' => 0
+                'calificacion' => 1
             ],
 
             //Item 12
@@ -831,7 +831,7 @@ class DescriptivosSeeder extends Seeder
             [
                 'id_descriptivo' => 124,
                 'id_pregunta' => 87,
-                'texto_descriptivo' => 'establece suposiciones apresuradas que se cometen al tomar como base determinada información que No ha sido valorada, detallada, examinada o comprobada de manera empírica; ',
+                'texto_descriptivo' => 'identifica  suposiciones apresuradas que se cometen al tomar como base determinada información que No ha sido valorada, detallada, examinada o comprobada de manera empírica; ',
                 'calificacion' => 1
             ],
 
@@ -1251,31 +1251,31 @@ class DescriptivosSeeder extends Seeder
             [
                 'id_descriptivo' => 188,
                 'id_pregunta' => 105,
-                'texto_descriptivo' => 'mejorara sucintamente las alternativas de solución disponibles complementándolas con otras soluciones, en aras de resolver problemas simultáneos',
+                'texto_descriptivo' => 'mejora sucintamente las alternativas de solución disponibles complementándolas con otras soluciones, en aras de resolver problemas simultáneos',
                 'calificacion' => 3
             ],
             [
                 'id_descriptivo' => 189,
                 'id_pregunta' => 105,
-                'texto_descriptivo' => 'mejorara sucintamente las alternativas de solución disponibles complementándolas con otras soluciones, en aras de resolver problemas simultáneos',
+                'texto_descriptivo' => 'mejora sucintamente las alternativas de solución disponibles complementándolas con otras soluciones, en aras de resolver problemas simultáneos',
                 'calificacion' => 4
             ],
             [
                 'id_descriptivo' => 190,
                 'id_pregunta' => 105,
-                'texto_descriptivo' => 'mejorara sucintamente las alternativas de solución disponibles complementándolas con otras soluciones, en aras de resolver problemas simultáneos',
+                'texto_descriptivo' => 'mejora sucintamente las alternativas de solución disponibles complementándolas con otras soluciones, en aras de resolver problemas simultáneos',
                 'calificacion' => 5
             ],
             [
                 'id_descriptivo' => 191,
                 'id_pregunta' => 105,
-                'texto_descriptivo' => 'mejorara debidamente las alternativas de solución disponibles complementándolas con otras soluciones, en aras de resolver problemas simultáneos',
+                'texto_descriptivo' => 'mejora debidamente las alternativas de solución disponibles complementándolas con otras soluciones, en aras de resolver problemas simultáneos',
                 'calificacion' => 6
             ],
             [
                 'id_descriptivo' => 192,
                 'id_pregunta' => 105,
-                'texto_descriptivo' => 'mejorara debidamente las alternativas de solución disponibles complementándolas con otras soluciones, en aras de resolver problemas simultáneos',
+                'texto_descriptivo' => 'mejora debidamente las alternativas de solución disponibles complementándolas con otras soluciones, en aras de resolver problemas simultáneos',
                 'calificacion' => 7
             ],
             [

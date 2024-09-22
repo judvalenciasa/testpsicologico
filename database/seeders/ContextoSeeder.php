@@ -20,7 +20,7 @@ class ContextoSeeder extends Seeder
             ],
             [
                 'id_contexto' => 2,
-                'texto' => 'En una de esas conversaciones familiares que se dan una tarde de vacaciones un primo tuyo expresa que la humanidad está siendo engañada desde hace siglos y que el planeta Tierra en realidad es plano y no redondo; según él esto se debe a que ciertos gobiernos y la ciencia operan articuladamente con la finalidad de dominar a gran parte de la humanidad. Algunos de los familiares hablan al respecto defendiendo ambas posturas.'
+                'texto' => 'En una de esas conversaciones familiares que se dan una tarde de vacaciones, un primo tuyo expresa que la humanidad está siendo engañada desde hace siglos y que el planeta Tierra en realidad es plano y no redondo; según él, esto se debe a que ciertos gobiernos y la ciencia operan articuladamente con la finalidad de dominar a gran parte de la humanidad. Algunos de los familiares debaten respecto de la forma del Planta Tierra.'
             ],
             [
                 'id_contexto' => 3,
@@ -36,7 +36,7 @@ class ContextoSeeder extends Seeder
             ],
             [
                 'id_contexto' => 6,
-                'texto' => 'Un padre de familia se encuentra preocupado porque su hija adolescente viene mostrando síntomas depresivos y cree que lo que ha originado estos estados mentales en su hija es estar constantemente conectada a las redes sociales. Por consiguiente, decide realizar una consulta en internet y encuentra que en la actualidad los estudios sobre la incidencia de la tecnología y las redes sociales en la depresión de niños y adolescentes viene en aumento, algunos de estos estudios sugieren que los adolescentes y adultos jóvenes que pasan más tiempo en plataformas como Instagram y Facebook mostraron una tasa de depresión sustancialmente más alta del 13 % al 66 %, que aquellos que pasan menos tiempo en ellas. Con base en lo anterior, el padre se convence de que la causa de la depresión de su hija es el uso de estas redes sociales y prohibirá en casa el uso de estas redes sociales para aliviar a su hija de la depresión.'
+                'texto' => 'Un padre de familia se encuentra preocupado porque su hija adolescente viene mostrando síntomas depresivos, él cree que lo que ha originado estos estados mentales en su hija es estar constantemente conectada a las redes sociales. Por consiguiente, decide realizar una consulta en internet y encuentra que en la actualidad los estudios sobre la incidencia de la tecnología y las redes sociales en la depresión de niños y adolescentes viene en aumento, algunos de estos estudios sugieren que los adolescentes y adultos jóvenes que pasan más tiempo en plataformas como Instagram y Facebook mostraron una tasa de depresión sustancialmente más alta del 13 % al 66 %, que aquellos que pasan menos tiempo en ellas. Con base en lo anterior, el padre se convence de que la causa de la depresión de su hija es el uso de estas redes sociales y prohibirá en casa el uso de estas redes sociales para aliviar a su hija de la depresión.'
             ],
             [
                 'id_contexto' => 7,
@@ -52,7 +52,7 @@ class ContextoSeeder extends Seeder
             ],
             [
                 'id_contexto' => 10,
-                'texto' => 'En una publicación electrónica aparece información acerca de los altos niveles actuales en la tasa de desempleo alrededor del mundo asociando los grandes desarrollos en Inteligencia Artificial de los últimos años. Allí se afirma que al ritmo que vamos los humanos nos quedaremos sin empleo y las máquinas dominarán industrias como la construcción, la manufactura, la producción metal mecánica y el diseño audiovisual en aproximadamente 80 años.'
+                'texto' => 'En una publicación electrónica aparece información acerca de los altos niveles actuales en la tasa de desempleo alrededor del mundo asociando los grandes desarrollos en Inteligencia Artificial de los últimos años. Allí se afirma que al ritmo en que vamos los humanos nos quedaremos sin empleo y las máquinas dominarán industrias como la construcción, la manufactura, la producción metal mecánica y el diseño audiovisual, en aproximadamente 80 años.'
             ],
             [
                 'id_contexto' => 11,
@@ -84,7 +84,7 @@ class ContextoSeeder extends Seeder
             ],
             [
                 'id_contexto' => 18,
-                'texto' => 'Debido a algunos casos de abusos y percepción de peligro e inseguridad que se ha estado presentado en una zona rural de un municipio, un grupo de lideresas está planeando estrategias que involucren a la comunidad en general para que los niños, niñas y mujeres de varias veredas de la zona puedan desplazarse tranquilamente por los caminos y senderos sin sentir temor de ser agredidos sexualmente o de cualquier otra manera por malhechores o delincuentes que se camuflan en áreas boscosas. Sin embargo, uno que otro miembro de la comunidad manifiesta que no colaborará de ninguna manera puesto que no es su deber informar sobre cualquier persona o situación sospechosa que observe en la zona.'
+                'texto' => 'Debido a algunos casos de abuso y percepción de peligro e inseguridad que se ha estado presentado en una zona rural de un municipio, un grupo de lideresas está planeando estrategias que involucren a la comunidad en general para que los niños, niñas y mujeres de varias veredas de la zona puedan desplazarse tranquilamente por los caminos y senderos sin sentir temor de ser agredidos sexualmente o de cualquier otra manera por malhechores o delincuentes que se camuflan en áreas boscosas. Sin embargo, uno que otro miembro de la comunidad manifiesta que no colaborará de ninguna manera puesto que no es su deber informar sobre cualquier persona o situación sospechosa que observe en la zona.'
             ],
             [
                 'id_contexto' => 19,
@@ -92,7 +92,7 @@ class ContextoSeeder extends Seeder
             ],
             [
                 'id_contexto' => 20,
-                'texto' => 'Los compañeros de trabajo de una empresa de creación de productos se encontraban conversando acerca de uno de los platos más exquisitos, codiciados y costosos que dinamizan la economía de la industria gastronómica en China, y, de hecho, además de tener matices ancestrales, representa la bonanza económica en ese país asiático; se trata de la sopa de aleta de tiburón, a la cual se atribuyen aportes a la piel sana y al detenimiento del envejecimiento. Algunos de ellos expresaron su preocupación por la extinción de estos animales que son asesinados sólo para obtener esta parte de su cuerpo y preparar dicho plato tan apetecido, otros, como Rafael, uno de ellos, exclamó: “¡Es hora de crear un producto para la industria cosmética a partir de las propiedades que contiene la aleta de tiburón!”.'
+                'texto' => 'Los compañeros de trabajo de una empresa de creación de productos se encontraban conversando acerca de uno de los platos más exquisitos, codiciados y costosos que dinamizan la economía de la industria gastronómica en China, y, de hecho, además de tener matices ancestrales, representa la bonanza económica en ese país asiático; se trata de la sopa de aleta de tiburón, a la cual se atribuyen aportes a la piel sana y al detenimiento del envejecimiento. Algunos de ellos expresaron su preocupación por la extinción de estos animales que son asesinados sólo para obtener esta parte de su cuerpo y preparar dicho plato tan apetecido, otros, como Rafael exclamó: “¡Es hora de crear un producto para la industria cosmética a partir de las propiedades que contiene la aleta de tiburón!”.'
             ],
             [
                 'id_contexto' => 21,
@@ -124,7 +124,7 @@ class ContextoSeeder extends Seeder
             ],
             [
                 'id_contexto' => 28,
-                'texto' => 'Imagina que trabajas como voluntario en un proyecto comunitario en tu ciudad que se dedica a preservar el hábitat natural de una especie de ave en peligro de extinción. Tu comunidad ha estado enfrentando problemas con la destrucción del hábitat debido a la construcción de nuevos edificios cerca de las áreas naturales. La empresa constructora ha propuesto un plan para minimizar el impacto ambiental, pero el plan no ha sido evaluado adecuadamente en cuanto a su efectividad para proteger a las aves. Como parte del equipo de conservación, tu tarea es evaluar el plan propuesto y sugerir alternativas que puedan ser más efectivas en la protección del hábitat de las aves y la preservación del ecosistema.'
+                'texto' => 'Imagina que trabajas como voluntario en un proyecto comunitario de tu ciudad que se dedica a preservar el hábitat natural de una especie de ave en peligro de extinción. Tu comunidad ha estado enfrentando problemas con la destrucción del hábitat debido a la construcción de nuevos edificios cerca de las áreas naturales. La empresa constructora ha propuesto un plan para minimizar el impacto ambiental, pero el plan no ha sido evaluado adecuadamente en cuanto a su efectividad para proteger a las aves. Como parte del equipo de conservación, tu tarea es evaluar el plan propuesto y sugerir alternativas que puedan ser más efectivas en la protección del hábitat de las aves y la preservación del ecosistema.'
             ],
             [
                 'id_contexto' => 29,
