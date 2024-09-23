@@ -35,7 +35,7 @@
 
                 @if($pregunta_actual->tipo_pregunta == 'abierta')
                 <div class="opcion">
-                    <textarea maxlength="650" name="respuestas_abiertas[{{ $pregunta_actual->id_pregunta }}]"
+                    <textarea class="textarea_field" maxlength="650" name="respuestas_abiertas[{{ $pregunta_actual->id_pregunta }}]"
                         id="respuesta_abierta_{{ $pregunta_actual->id_pregunta }}" required rows="4"
                         placeholder="Escribe tu respuesta aquí..."></textarea>
                 </div>
@@ -60,7 +60,7 @@
 
                     @if($subpregunta->tipo_pregunta == 'abierta')
                     <div class="opcion">
-                        <textarea required maxlength="650"
+                        <textarea class="textarea_field" required maxlength="650"
                             name="respuestas_abiertas[{{ $subpregunta->id_subpregunta }}]"
                             id="respuesta_abierta_{{ $subpregunta->id_subpregunta }}" rows="4"
                             placeholder="Escribe tu respuesta aquí..."></textarea>

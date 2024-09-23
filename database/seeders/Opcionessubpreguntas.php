@@ -476,7 +476,7 @@ class Opcionessubpreguntas extends Seeder
                 'id_opcionessubpregunta' => 71,
                 'id_subpregunta' => 36,
                 'texto' => '1 = solución muy mala.',
-                'valor_opcion'=> 0
+                'valor_opcion'=> 1
             ],
             [
                 'id_opcionessubpregunta' => 72,
@@ -500,7 +500,7 @@ class Opcionessubpreguntas extends Seeder
                 'id_opcionessubpregunta' => 75,
                 'id_subpregunta' => 36,
                 'texto' => '5 = solución excelente.',
-                'valor_opcion'=> 1
+                'valor_opcion'=> 0
             ],
 
             //Item 53, subpregunta 2

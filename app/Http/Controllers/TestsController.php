@@ -42,12 +42,15 @@ class TestsController extends Controller
             ->where('id_reporte', $id_reporte)
             ->first();
 
+
+
         if ($respuestaExistente) {
             $respuestaExistente->update([
                 'respuesta' => $respuesta,
                 'calificacion_respuesta' => $calificacion
             ]);
         } else {
+
 
             Respuestas::create([
                 'id_usuario' => $user->id_usuario,
