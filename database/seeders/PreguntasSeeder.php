@@ -457,7 +457,7 @@ Para cada una de las siguientes afirmaciones, indica si se trata de una opinión
                 'id_contexto' => 20,
                 'id_subhabilidad' => 8,
                 'id_categoria' => 2,
-                'texto' => 'Imaginando que res uno de los compañeros de trabajo y con base en el contexto proporcionado ¿Con cuál de los siguientes enunciados contrargumentarías la conclusión a la que ha llegado Rafael?',
+                'texto' => 'Imaginando que eres uno de los compañeros de trabajo y con base en el contexto proporcionado ¿Con cuál de los siguientes enunciados contrargumentarías la conclusión a la que ha llegado Rafael?',
                 'tipo_pregunta' => 'cerrada'
             ],
 

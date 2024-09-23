@@ -972,7 +972,7 @@ class OpcionesSeeder extends Seeder
             [
                 'id_opcion' => 150,
                 'id_pregunta' => 49,
-                'texto' => 'En la publicación suponen que los niveles de desempleo a nivel mundial crecerán al mismo ritmo que ha venido creciendo, y generaliza afirmando que todas las personas se quedarán sin empleo como si esas fueran las únicas industrias.',
+                'texto' => 'En la publicación suponen que los niveles de desempleo a nivel mundial crecerán al mismo ritmo que ha venido creciendo, y generaliza afirmando que todas las personas se quedarán sin empleo como si esas fueran las únicas industrias que generan empleo.',
                 'valor_opcion' => 1
             ],
             [
@@ -1953,7 +1953,7 @@ class OpcionesSeeder extends Seeder
                 'id_opcion' => 291,
                 'id_pregunta' => 103,
                 'texto' => 'Aceptar el plan actual de la empresa constructora sin cambios, ya que es probable que tenga algún impacto, pero no es posible evitar la construcción pues es bien sabido que estas empresas invierten grandes cantidades de dinero en este tipo de proyectos. ',
-                'valor_opcion' => 0
+                'valor_opcion' => 1
             ],
             [
                 'id_opcion' => 292,
@@ -1977,7 +1977,7 @@ class OpcionesSeeder extends Seeder
                 'id_opcion' => 295,
                 'id_pregunta' => 103,
                 'texto' => 'Proponer a la empresa constructora que realice una evaluación más detallada del impacto ambiental del plan y que incluya medidas específicas para mitigar el daño a los hábitats de las aves. Además, sugerir la reubicación de la construcción a una zona menos sensible ecológicamente.',
-                'valor_opcion' => 1
+                'valor_opcion' => 0
             ],
 
             //Item 57.1
