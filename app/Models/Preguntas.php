@@ -20,6 +20,11 @@ class Preguntas extends Model
         'texto'
     ];
 
+    public function subpreguntas()
+    {
+        return $this->hasMany(subpreguntas::class, 'id_pregunta');
+    }
+
     public function prueba()
     {
         return $this->belongsTo(Tests::class, 'id_prueba');
@@ -48,5 +53,16 @@ class Preguntas extends Model
     public function respuestas()
     {
         return $this->hasMany(Respuestas::class, 'id_pregunta');
+    }
+
+    public function criterios()
+    {
+        return $this->hasMany(Criterios::class, 'id_pregunta', 'id_pregunta');
+    }
+
+
+    public function descriptivos()
+    {
+        return $this->hasMany(Descriptivos::class, 'id_pregunta', 'id_pregunta');
     }
 }

@@ -26,7 +26,7 @@
             @csrf
 
             <div class="input-group">
-                <input required type="text" name="nombre" id="nombre" autocomplete="off" class="input">
+                <input required type="text" name="name" id="name" autocomplete="off" class="input">
                 <label class="user-label">Nombre Completo</label>
                 <span class="error-message" id="nombre-error"></span>
             </div>
@@ -47,7 +47,7 @@
                 <span class="error-message" id="pin-error"></span>
             </div>
             <div class="input-group">
-                <input type="checkbox" id="show-pin">
+                <input type="checkbox" id="show-password">
                 <span class="span_mostrar_pin" for="show-pin">Mostrar Contraseña</span>
             </div>
             <button type="submit" id="submit-btn">
@@ -56,17 +56,24 @@
         </form>
 
     </section>
-
     <script>
+        document.getElementById('show-password').addEventListener('change', function() {
+            var passwordInput = document.getElementById('password');
+            if (this.checked) {
+                passwordInput.type = 'text'; // Mostrar contraseña
+            } else {
+                passwordInput.type = 'password'; // Ocultar contraseña
+            }
+        });
+
         document.getElementById('submit-btn').addEventListener('click', function(event) {
             event.preventDefault(); // Evitar que el formulario se envíe de manera tradicional
 
             // Obtener los valores de los campos del formulario
-            var nombre = document.getElementById('nombre').value.trim();
+            var name = document.getElementById('name').value.trim();
             var email = document.getElementById('email').value.trim();
             var pin = document.getElementById('pin').value.trim();
             var password = document.getElementById('password').value.trim();
-
 
             // Limpiar mensajes de error previos
             clearErrors();
@@ -74,8 +81,8 @@
             // Validar cada campo
             var isValid = true;
 
-            if (nombre === '') {
-                showError('nombre', 'El nombre completo es obligatorio.');
+            if (name === '') {
+                showError('name', 'El nombre completo es obligatorio.');
                 isValid = false;
             }
 
@@ -89,65 +96,18 @@
                 isValid = false;
             }
 
-            if (password.length < 6) { // Validar longitud de la contraseña
+            if (password.length < 6) {
                 showError('password', 'La contraseña debe tener al menos 6 caracteres.');
                 isValid = false;
             }
 
-            document.getElementById('show-pin').addEventListener('change', function() {
-                var passwordInput = document.getElementById('password');
-                if (this.checked) {
-                    passwordInput.type = 'text';
-                } else {
-                    passwordInput.type = 'password';
-                }
-            });
-
-
-            if (isValid) {
-                // Hacer la solicitud a la API
-                fetch('/api/registrar', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-                        },
-                        body: JSON.stringify({
-                            name: nombre,
-                            email: email,
-                            pin: pin,
-                            password: password
-
-                        })
-                    })
-                    .then(response => {
-                        if (!response.ok) {
-                            return response.text().then(text => {
-                                throw new Error(text);
-                            });
-                        }
-                        return response.json();
-                    })
-                    .then(data => {
-                        console.log('response data:', data);
-                        if (data.status === 1) {
-                            alert('Registro exitoso');
-                            window.location.href = '/';
-                        } else {
-                            alert(data.msg || 'Error en el registro');
-                        }
-                    })
-                    .catch(error => {
-                        console.error('Error:', error);
-                        alert('Ocurrió un error en el servidor. Verifique la consola para más detalles.');
-                    });
-            }
+           
         });
 
-
-        function showError(input, message) {
+        function showError(inputId, message) {
+            var input = document.getElementById(inputId);
             input.style.borderColor = 'red';
-            var errorElement = document.getElementById(input.id + '-error');
+            var errorElement = document.getElementById(inputId + '-error');
             errorElement.textContent = message;
             errorElement.style.color = 'red';
         }
@@ -169,6 +129,8 @@
             return re.test(email);
         }
     </script>
+    @include('shared.footer')
+
 </body>
 
 </html>

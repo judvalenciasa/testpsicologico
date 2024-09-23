@@ -1,0 +1,42 @@
+.reporte_respuestas_section {
+    background-color: #f4f4f4;
+    border-radius: 10px;
+    border: 1px solid #888787;
+    
+}
+
+table {
+    width: 100%;    
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 18px;
+    text-align: left;
+}
+
+table th,
+table td {
+    padding: 12px 15px;
+    border: 1px solid #6e6e6e;
+}
+
+table thead {
+    background-color: #f2f2f2;
+}
+
+table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+table tr:hover {
+    background-color: #f1f1f1;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.center {
+    margin-left: auto;
+    margin-right: auto;
+}

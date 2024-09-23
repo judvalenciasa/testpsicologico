@@ -17,7 +17,6 @@ class OpcionesSeeder extends Seeder
 
             //Item 1
             [
-
                 'id_opcion' => 1,
                 'id_pregunta' => 12,
                 'texto' => 'Más mujeres participando en el evento que en todos los torneos anuales en los que ha estado.',
@@ -61,31 +60,31 @@ class OpcionesSeeder extends Seeder
             [
                 'id_opcion' => 7,
                 'id_pregunta' => 14,
-                'texto' => 'En cartografía siempre se nos ha mostrado a través de los mapamundis que el Planeta Tierra es una esfera. Distintos textos religiosos han determinado históricamente que la Tierra es redonda.',
+                'texto' => 'En cartografía siempre se nos ha mostrado a través de los mapamundis que el Planeta Tierra es una esfera, eso indica que la representación gráfica es infalible. Distintos textos sagrados de algunas de las religiones del mundo han determinado históricamente que la Tierra es redonda.',
                 'valor_opcion' => 0
             ],
             [
                 'id_opcion' => 8,
                 'id_pregunta' => 14,
-                'texto' => 'Si la tierra fuera plana, cómo se explica que el agua de los mares no se derrama en algún punto. Los miles de satélites que orbitan alrededor del planeta han tomado imágenes en las que se observa que el planeta Tierra es redondo.',
+                'texto' => 'Si la tierra fuera plana, cómo se explica que el agua de los mares no se derrama en algún punto, bien sea en el Norte, Sur, Oeste o Este. Los miles de satélites que actualmente orbitan alrededor del planeta han tomado imágenes en las que se observa que el planeta Tierra es redondo.',
                 'valor_opcion' => 0
             ],
             [
                 'id_opcion' => 9,
                 'id_pregunta' => 14,
-                'texto' => 'La luz del sol no puede reflejar la misma sombra al mismo tiempo sobre distintos objetos distribuidos a distancias significativas en el espacio terrestre. La rotación del Planeta es otra evidencia de su forma.',
+                'texto' => 'Por más que se quisiera la luz del sol no puede reflejar la misma sombra al mismo tiempo sobre distintos objetos distribuidos a distancias significativas en el espacio terrestre. La rotación es otra evidencia que no deja dudas respecto de la circunferencia del Planeta Tierra.',
                 'valor_opcion' => 0
             ],
             [
                 'id_opcion' => 10,
                 'id_pregunta' => 14,
-                'texto' => 'Los aviones no viajan en línea recta en aquellos vuelos de largas horas. Si el Planeta tierra fuera plano la gravedad funcionaría con atracciones desordenadas y no de manera uniforme hacia el centro de la masa. ',
+                'texto' => 'Los pilotos de aerolíneas comerciales afirman que los aviones no viajan en línea recta en aquellos vuelos de largas horas. Además, la Física nos dice que si el Planeta tierra fuera plano la gravedad funcionaría con atracciones desordenadas y no de manera uniforme hacia el centro de la masa. ',
                 'valor_opcion' => 0
             ],
             [
                 'id_opcion' => 11,
                 'id_pregunta' => 14,
-                'texto' => 'La evidencia nos dice que al ubicarnos en un lugar alto podemos ver hacia nuestro alrededor, pero en cierto punto la vista se pierde en el firmamento y ni siquiera con un telescopio potente podremos observar ciudades de otros continentes debido a la curvatura del Plantea. La hora en la que sale y se pone el sol es distinta en cada lugar del mundo.',
+                'texto' => 'Si nos ubicamos en un lugar alto visualizamos nuestro alrededor, pero en cierto punto la vista se pierde en el firmamento y ni con un telescopio potente observaríamos ciudades de otros continentes debido a la curvatura del Plantea. La hora en la que sale y se pone el sol es distinta en cada lugar del mundo. ',
                 'valor_opcion' => 1
             ],
 
@@ -101,13 +100,13 @@ class OpcionesSeeder extends Seeder
             [
                 'id_opcion' => 13,
                 'id_pregunta' => 16,
-                'texto' => 'Mariana se apresuró en las generalizaciones sin tener en cuenta otros países y otras leyes del continente.',
+                'texto' => 'Mariana se apresuró en las generalizaciones, de modo que concluye de manera general sin tener en la cuenta que no en todas las culturas y países del continente se aprueba el matrimonio infantil ni se quebrantan las leyes.',
                 'valor_opcion' => 1
             ],
             [
                 'id_opcion' => 14,
                 'id_pregunta' => 16,
-                'texto' => 'Mariana no explicó nada acerca de la vestimenta, los sistemas políticos, la gastronomía o la música del continente asiático',
+                'texto' => 'Mariana no explicó nada acerca de la vestimenta, los sistemas políticos, la gastronomía (tipo de comida) o la música del continente asiático, y esos son aspectos importantes de la cultura.',
                 'valor_opcion' => 0
             ],
             [
@@ -131,7 +130,7 @@ class OpcionesSeeder extends Seeder
                 'valor_opcion' => 0
             ],
 
-            //Item 1_Metacognición
+            /* //Item 1_Metacognición
             [
                 'id_opcion' => 18,
                 'id_pregunta' => 17,
@@ -161,15 +160,13 @@ class OpcionesSeeder extends Seeder
                 'id_pregunta' => 17,
                 'texto' => 'Completamente de acuerdo',
                 'valor_opcion' => 5
-            ],
+            ], */
 
             //Item 7
             [
                 'id_opcion' => 23,
                 'id_pregunta' => 19,
-                'texto' => 'No. Importar almidones de yuca o maíz para la fabricación de empaques
-                plásticos biodegradables no es tan buen negocio teniendo en cuenta que esos
-                productos se cosechan en abundancia en nuestro país.',
+                'texto' => 'No. Importar almidones de yuca o maíz para la fabricación de empaques plásticos biodegradables no es tan buen negocio teniendo en cuenta que esos productos se cosechan en abundancia en nuestro país.',
                 'valor_opcion' => 0
             ],
             [
@@ -192,8 +189,7 @@ class OpcionesSeeder extends Seeder
             [
                 'id_opcion' => 26,
                 'id_pregunta' => 19,
-                'texto' => 'No. Con la situación actual de la economía es difícil ofrecer empaques
-                plásticos a excelentes precios.',
+                'texto' => 'No. Con la situación actual de la economía es difícil ofrecer empaques plásticos a excelentes precios, debido a que los precios del mercado no son estables y posiblemente se llegue a producir pérdidas en insumos demasiado costosos.',
                 'valor_opcion' => 0
             ],
             [
@@ -204,7 +200,7 @@ class OpcionesSeeder extends Seeder
                 diversifican los productos y se fabrican en poco tiempo.',
                 'valor_opcion' => 0
             ],
-            //Item 1_Metacognición
+            /*  //Item 1_Metacognición
             [
                 'id_opcion' => 28,
                 'id_pregunta' => 17,
@@ -234,10 +230,10 @@ class OpcionesSeeder extends Seeder
                 'id_pregunta' => 17,
                 'texto' => 'Completamente de acuerdo',
                 'valor_opcion' => 5
-            ],
+            ], */
 
             //Contexto4_Metacognición
-            //pregunta 1_Metacognición
+            /* //pregunta 1_Metacognición
             [
                 'id_opcion' => 33,
                 'id_pregunta' => 21,
@@ -329,41 +325,41 @@ class OpcionesSeeder extends Seeder
                 'id_pregunta' => 23,
                 'texto' => 'Completamente de acuerdo',
                 'valor_opcion' => 5
-            ],
+            ], */
 
             //Item 9
             [
                 'id_opcion' => 48,
                 'id_pregunta' => 24,
-                'texto' => 'Que la experiencia no se improvisa y que tal como se lo había indicado los jóvenes no emiten tanto CO₂ como lo hacen los adultos.',
+                'texto' => 'Que la experiencia no se improvisa y que tal como había previsto en conversaciones anteriores a la visita de los colegios, los jóvenes no emiten tanto CO₂ al año como lo hacen los adultos, incluso si los adolescentes se encuentran en el colegio y los adultos laborando.',
                 'valor_opcion' => 0
             ],
             [
                 'id_opcion' => 49,
                 'id_pregunta' => 24,
-                'texto' => 'Que por más seguro que esté de los promedios del próximo colegio las ordenes son claras y deben cumplirse, especialmente si se trata de un experto que trabaja para un organismo multilateral.',
+                'texto' => 'Que por más que piense o intuya los resultados de los promedios del próximo colegio, las ordenes son claras y deben cumplirse, especialmente si se trata de un experto que trabaja para un organismo multilateral que viene desarrollando estudios de altas responsabilidades.',
                 'valor_opcion' => 0
             ],
             [
                 'id_opcion' => 50,
                 'id_pregunta' => 24,
-                'texto' => 'Que no importa si no realiza el promedio en el siguiente colegio, es más importante ser eficientes, ahorrar gastos de viáticos y no caer en sobrecostos cuando se sabe cuál es la tendencia.',
+                'texto' => 'Que no importa si no realiza el promedio en el siguiente colegio, es más importante ser eficientes, ahorrar gastos de viáticos, no caer en sobrecostos y continuar contaminando con sus desplazamientos cuando se sabe cuál es la tendencia de emisiones de CO₂ de los adolescentes.',
                 'valor_opcion' => 0
             ],
             [
                 'id_opcion' => 51,
                 'id_pregunta' => 24,
-                'texto' => 'QQue debe visitar el próximo colegio y promediar la huella de carbono de los adolescentes, puesto que, aunque las probabilidades de no superar la emisión de 1 tonelada de CO₂ al año por adolescentes sean altas para ese colegio, nadie puede asegurar que así sea sin antes verificarlo.',
+                'texto' => 'Que debe visitar el próximo colegio y promediar la huella de carbono de los adolescentes, puesto que, aunque las probabilidades de no superar la emisión de 1 tonelada de CO₂ al año sean altas para ese colegio, nadie puede asegurar que así sea sin antes verificarlo.',
                 'valor_opcion' => 1
             ],
             [
                 'id_opcion' => 52,
                 'id_pregunta' => 24,
-                'texto' => 'Que replantee los promedios anteriores y los realice nuevamente, pues no es posible que, en una de las ciudades más contaminantes del continente, en donde existen tantos desplazamientos al día en vehículos propulsados por motores de combustibles fósiles para movilizarse hasta el colegio y regresar a casa, con tanto consumo de energía y servicios, los adolescentes no superen 1 tonelada de CO₂ emitida al año.',
+                'texto' => 'Que realice nuevamente los promedios anteriores, pues no es posible que en una ciudad en donde existen tantos desplazamientos al día en vehículos propulsados por motores de combustibles fósiles los adolescentes no superen 1 tonelada de CO₂ emitida al año.',
                 'valor_opcion' => 0
             ],
             //Contexto5_Metacognición
-            //pregunta 1_Metacognición
+            /* //pregunta 1_Metacognición
             [
                 'id_opcion' => 53,
                 'id_pregunta' => 26,
@@ -455,25 +451,25 @@ class OpcionesSeeder extends Seeder
                 'id_pregunta' => 28,
                 'texto' => 'Completamente de acuerdo',
                 'valor_opcion' => 5
-            ],
+            ], */
 
             //Item 11
             [
                 'id_opcion' => 68,
                 'id_pregunta' => 29,
-                'texto' => 'Si fuera el papá de la chica también prohibiría el uso en casa de Instagram y Facebook, porque la investigación encontraba que cuando se incrementa el uso de estas redes sociales la depresión aumenta.',
+                'texto' => 'Si fuera el papá de la chica también prohibiría el uso en casa de Instagram y Facebook, porque la investigación encontraba que cuando se incrementa el uso de estas redes sociales la depresión aumenta, lo cual resulta preocupante para un padre de familia.',
                 'valor_opcion' => 0
             ],
             [
                 'id_opcion' => 69,
                 'id_pregunta' => 29,
-                'texto' => 'Lo más seguro es que la hija se aliviará al evitar que use Instagram y Facebook, y en ese sentido no puede ser que si el papá incrementa el uso de esas redes sociales la depresión disminuya.',
+                'texto' => 'Lo más seguro es que la hija se aliviará al evitar que use Instagram y Facebook, y en ese sentido no puede ser que si el papá incrementa los permisos para el uso de esas redes sociales en casa la depresión de su hija disminuya, sino todo lo contrario.',
                 'valor_opcion' => 0
             ],
             [
                 'id_opcion' => 70,
                 'id_pregunta' => 29,
-                'texto' => 'Es posible que la depresión de la hija adolescente no disminuya si se prohíbe que use esas redes sociales, porque sólo conocemos que usar frecuentemente Instagram y Facebook y depresión están relacionados, pero no si usar estas redes sociales es la causa de la depresión como tal.',
+                'texto' => 'Es posible que la depresión de la hija adolescente no disminuya si se prohíbe que use esas redes sociales, porque sólo conocemos que usar frecuentemente Instagram y Facebook y la depresión están relacionados, pero no si usar estas redes sociales es la causa como tal de la depresión.',
                 'valor_opcion' => 1
             ],
             [
@@ -485,11 +481,11 @@ class OpcionesSeeder extends Seeder
             [
                 'id_opcion' => 72,
                 'id_pregunta' => 29,
-                'texto' => 'Un uso prudente de las redes sociales puede ayudar a que la hija se recupere de la depresión, es cuestión de contenido y frecuencia en que se usan.',
+                'texto' => 'Un uso prudente de las redes sociales puede ayudar a que la hija se recupere de la depresión, es cuestión de contenido y frecuencia en que se usan. Entonces, el padre puede regular o sugerir los contenidos que su hija puede o debe ver en esas redes sociales.',
                 'valor_opcion' => 0
             ],
             //Contexto6_Metacognición
-            //pregunta 1_Metacognición
+            /* //pregunta 1_Metacognición
             [
                 'id_opcion' => 73,
                 'id_pregunta' => 31,
@@ -581,40 +577,40 @@ class OpcionesSeeder extends Seeder
                 'id_pregunta' => 33,
                 'texto' => 'Completamente de acuerdo',
                 'valor_opcion' => 5
-            ],
+            ], */
             //Item 13
             [
                 'id_opcion' => 88,
                 'id_pregunta' => 34,
-                'texto' => 'El porcentaje de jóvenes que escuchan esta música y declaran que consumen drogas, son violentos o llevan una vida sexual irresponsable; y, el porcentaje de adolescentes que escuchan esta música y no se declaran violentos, no consumen drogas o no llevan una vida sexual irresponsable o la frecuencia con que la escuchan.',
+                'texto' => 'El porcentaje de jóvenes que escuchan esta música y declaran que consumen drogas, son violentos o llevan una vida sexual irresponsable; y, el porcentaje de adolescentes que escuchan esta música y no se declaran violentos, no consumen drogas o no llevan una vida sexual irresponsable.',
                 'valor_opcion' => 1
             ],
             [
                 'id_opcion' => 89,
                 'id_pregunta' => 34,
-                'texto' => 'Si alguno de los miembros del Consejo Nacional de Música conoce las implicaciones de esta música en el comportamiento de los jóvenes; y si es probable que esas decisiones afecten la libertad de expresión.',
+                'texto' => 'Necesitaría saber si alguno de los miembros del Consejo Nacional de Música conoce las implicaciones de esta música en el comportamiento de los jóvenes, es decir, sin inciden en las conductas de los jóvenes en cuanto a la violencia o el sexo; y si es probable que esas decisiones afecten la libertad de expresión. ',
                 'valor_opcion' => 0
             ],
             [
                 'id_opcion' => 90,
                 'id_pregunta' => 34,
-                'texto' => 'Si los miembros del Consejo Nacional de Música son designados políticamente o si tienen familiares que produzcan este tipo de música; y, cuál es la opinión de los padres de familia sobre la situación en cuestión.',
+                'texto' => 'Si los miembros del Consejo Nacional de Música son designados o nombrados por personas que ostentan cargos políticos en el territorio nacional o si tienen familiares que produzcan este tipo de música; y, cuál es la opinión de los padres de familia sobre la situación en cuestión.',
                 'valor_opcion' => 0
             ],
             [
                 'id_opcion' => 91,
                 'id_pregunta' => 34,
-                'texto' => 'Si los jóvenes que escuchan esta música son delincuentes en potencia; y, si el Consejo Nacional de Música está conformado por liberales o conservadores.',
+                'texto' => 'Si los jóvenes que escuchan esta música son delincuentes en potencia, es decir, que tengan antecedentes penales o estén propensos a cometer delitos; y, si el Consejo Nacional de Música está conformado por personas que tengan determinadas inclinaciones ideológicas históricas como las de los liberales o conservadores.',
                 'valor_opcion' => 0
             ],
             [
                 'id_opcion' => 92,
                 'id_pregunta' => 34,
-                'texto' => 'La cantidad de empleos directos e indirectos que se verían afectados con ese tipo de sanciones; y, si se trata de la música de mi gusto.',
+                'texto' => 'Sería importante conocer la cantidad de empleos directos e indirectos que se verían afectados con ese tipo de sanciones, como, por ejemplo, las labores que desempeñan los ingenieros de sonido y las personas que realizan montajes para conciertos; y, si se trata de la música de mi gusto o del gusto de mis amigos.',
                 'valor_opcion' => 0
             ],
             //Contexto7_Metacognición
-            //pregunta 1_Metacognición
+            /* //pregunta 1_Metacognición
             [
                 'id_opcion' => 93,
                 'id_pregunta' => 36,
@@ -706,7 +702,7 @@ class OpcionesSeeder extends Seeder
                 'id_pregunta' => 38,
                 'texto' => 'Completamente de acuerdo',
                 'valor_opcion' => 5
-            ],
+            ], */
             //Item 15
             [
                 'id_opcion' => 108,
@@ -723,23 +719,23 @@ class OpcionesSeeder extends Seeder
             [
                 'id_opcion' => 110,
                 'id_pregunta' => 39,
-                'texto' => 'El programa universitario está respaldado por un personaje público de la ciudad o del país y, si el programa universitario goza de reconocimiento a nivel nacional e internacional.',
+                'texto' => 'Si el programa universitario está respaldado por un personaje público de la ciudad o del país y, si el programa universitario goza de reconocimiento a nivel nacional e internacional en cuanto a la calidad de su propuesta académica.',
                 'valor_opcion' => 0
             ],
             [
                 'id_opcion' => 111,
                 'id_pregunta' => 39,
-                'texto' => 'Cuántos estudiantes abandonan el programa universitario antes de completarlo y, si los estudiantes que se gradúan potencializan sus capacidades en las empresas en las que ingresan a trabajar.',
+                'texto' => 'Cuántos estudiantes abandonan el programa universitario antes de completarlo y, si los estudiantes que se gradúan tienen la posibilidad de potencializar sus capacidades en las empresas en las que ingresan a trabajar.',
                 'valor_opcion' => 0
             ],
             [
                 'id_opcion' => 112,
                 'id_pregunta' => 39,
-                'texto' => 'Si las empresas a las que ingresan a trabajar los egresados tienen programas de becas para estudios de posgrado o especialización. Y si las empresas a las que ingresan a trabajar los egresados ofrecen muy buenos salarios a su personal.',
+                'texto' => 'Si las empresas a las que ingresan a trabajar los egresados tienen programas de becas para estudios de posgrado o especialización y, si las empresas a las que ingresan a trabajar los egresados ofrecen buenos salarios a su personal.',
                 'valor_opcion' => 0
             ],
             //Contexto8_Metacognición
-            //pregunta 1_Metacognición
+            /* //pregunta 1_Metacognición
             [
                 'id_opcion' => 113,
                 'id_pregunta' => 41,
@@ -831,7 +827,7 @@ class OpcionesSeeder extends Seeder
                 'id_pregunta' => 43,
                 'texto' => 'Completamente de acuerdo',
                 'valor_opcion' => 5
-            ],
+            ], */
 
             //Item 17
             [
@@ -866,7 +862,7 @@ class OpcionesSeeder extends Seeder
             ],
 
             //Contexto9_Metacognición
-            //pregunta 1_Metacognición
+            /* //pregunta 1_Metacognición
             [
                 'id_opcion' => 133,
                 'id_pregunta' => 46,
@@ -958,42 +954,42 @@ class OpcionesSeeder extends Seeder
                 'id_pregunta' => 48,
                 'texto' => 'Completamente de acuerdo',
                 'valor_opcion' => 5
-            ],
+            ], */
 
             //Item 19 
             [
                 'id_opcion' => 148,
                 'id_pregunta' => 49,
-                'texto' => 'probablemente demasiado altas. Están confundiendo Inteligencia Artificial con robótica.',
+                'texto' => 'Las estimaciones sobre los niveles de desarrollo de la Inteligencia artificial son probablemente demasiado altas. Parece que en la publicación electrónica están confundiendo Inteligencia Artificial con robótica, lo cual es un desacierto.',
                 'valor_opcion' => 0
             ],
             [
                 'id_opcion' => 149,
                 'id_pregunta' => 49,
-                'texto' => 'Las estimaciones sobre los niveles de desempleo actual son probablemente demasiado altas. No sabemos cómo se comportará la oferta frente a la demanda laboral.',
+                'texto' => 'Las estimaciones sobre los niveles de desempleo actual son probablemente demasiado altas. No sabemos cómo se comportarán las necesidades de empleo con respecto a las alternativas u opciones disponibles para trabajar.',
                 'valor_opcion' => 0
             ],
             [
                 'id_opcion' => 150,
                 'id_pregunta' => 49,
-                'texto' => 'Esta predicción supone que la inteligencia artificial se apoderará de las industrias y que los niveles de desempleo a nivel mundial crecerán al mismo ritmo que ha venido creciendo, y generaliza afirmando que todas las personas se quedarán sin empleo como si esas fueran las únicas industrias.',
+                'texto' => 'En la publicación suponen que los niveles de desempleo a nivel mundial crecerán al mismo ritmo que ha venido creciendo, y generaliza afirmando que todas las personas se quedarán sin empleo como si esas fueran las únicas industrias que generan empleo.',
                 'valor_opcion' => 1
             ],
             [
                 'id_opcion' => 151,
                 'id_pregunta' => 49,
-                'texto' => 'El artículo probablemente fue escrito por alguien que no está seguro de si habrá crecimiento o decrecimiento poblacional, parece que la población mundial está disminuyendo.',
+                'texto' => 'El artículo probablemente fue escrito por alguien que no está seguro de si habrá crecimiento o decrecimiento poblacional, parece que la población mundial está disminuyendo entonces no es lógico pensar que todos nos quedaremos sin empleo.',
                 'valor_opcion' => 0
             ],
             [
                 'id_opcion' => 152,
                 'id_pregunta' => 49,
-                'texto' => 'Esta predicción asume que no habrá posibilidad de que la inteligencia artificial genere nuevos empleos, la reglas están para hacerse como algunas reglamentaciones en los próximos 80 años.',
+                'texto' => 'Esta predicción asume que no habrá posibilidad de que la inteligencia artificial genere nuevos empleos, la reglas están para hacerse de modo que pueden crearse algunas reglamentaciones en los próximos 80 años que regulen el asunto.',
                 'valor_opcion' => 0
             ],
 
             //Contexto10_Metacognición
-            //pregunta 1_Metacognición
+            /* //pregunta 1_Metacognición
             [
                 'id_opcion' => 153,
                 'id_pregunta' => 51,
@@ -1085,19 +1081,19 @@ class OpcionesSeeder extends Seeder
                 'id_pregunta' => 53,
                 'texto' => 'Completamente de acuerdo',
                 'valor_opcion' => 5
-            ],
+            ], */
 
             //Item 21
             [
                 'id_opcion' => 168,
                 'id_pregunta' => 54,
-                'texto' => 'Al rector no le importan los sentimientos de los estudiantes.',
+                'texto' => 'Al rector no le importan los sentimientos de los estudiantes o los intereses que ellos tienen respecto del aprendizaje.',
                 'valor_opcion' => 0
             ],
             [
                 'id_opcion' => 169,
                 'id_pregunta' => 54,
-                'texto' => 'Algunos niños no pueden jugar muy bien con ese tipo de presiones.',
+                'texto' => 'Algunos niños no pueden jugar muy bien con ese tipo de presiones, es mejor replantear la manera en que se asume la educación.',
                 'valor_opcion' => 0
             ],
             [
@@ -1120,7 +1116,7 @@ class OpcionesSeeder extends Seeder
             ],
 
             //Contexto11_Metacognición
-            //pregunta 1_Metacognición
+            /* //pregunta 1_Metacognición
             [
                 'id_opcion' => 173,
                 'id_pregunta' => 56,
@@ -1212,7 +1208,7 @@ class OpcionesSeeder extends Seeder
                 'id_pregunta' => 58,
                 'texto' => 'Completamente de acuerdo',
                 'valor_opcion' => 5
-            ],
+            ], */
 
             //Item 23
             [
@@ -1246,20 +1242,14 @@ class OpcionesSeeder extends Seeder
                 'valor_opcion' => 0
             ],
             [
-                'id_opcion' => 193,
-                'id_pregunta' => 59,
-                'texto' => '5 = Buen razonamiento',
-                'valor_opcion' => 0
-            ],
-            [
                 'id_opcion' => 194,
                 'id_pregunta' => 59,
-                'texto' => '7 = Excelente razonamiento',
+                'texto' => '6 = Excelente razonamiento',
                 'valor_opcion' => 0
             ],
 
             //Contexto12_Metacognición
-            //pregunta 1_Metacognición
+            /* //pregunta 1_Metacognición
             [
                 'id_opcion' => 195,
                 'id_pregunta' => 61,
@@ -1351,42 +1341,42 @@ class OpcionesSeeder extends Seeder
                 'id_pregunta' => 63,
                 'texto' => 'Completamente de acuerdo',
                 'valor_opcion' => 5
-            ],
+            ], */
 
             //Item 25
             [
                 'id_opcion' => 210,
                 'id_pregunta' => 64,
-                'texto' => 'Prohibir totalmente todas las interacciones físicas entre los estudiantes para evitar cualquier muestra de afecto.',
+                'texto' => 'Prohibir totalmente todas las interacciones físicas entre los estudiantes para evitar cualquier muestra de afecto en las instalaciones del colegio como, por ejemplo, pasillos y aulas de clase.',
                 'valor_opcion' => 0
             ],
             [
                 'id_opcion' => 211,
                 'id_pregunta' => 64,
-                'texto' => 'Iniciar un programa de vigilancia intensiva para monitorear y sancionar cualquier muestra de afecto entre los estudiantes.',
-                'valor_opcion' => 1
+                'texto' => 'Iniciar un programa de vigilancia intensiva para monitorear y sancionar cualquier muestra de afecto entre los estudiantes, bien sea a través de cámaras de vigilancia o delegando personal administrativo.',
+                'valor_opcion' => 0
             ],
             [
                 'id_opcion' => 212,
                 'id_pregunta' => 64,
-                'texto' => 'Ajustar el manual de convivencia para definir claramente las muestras de afecto permitidas y prohibidas, asegurando que todos los estudiantes y el personal entiendan las expectativas de comportamiento.',
-                'valor_opcion' => 0
+                'texto' => 'Ajustar el manual de convivencia para definir claramente cuáles son las muestras de afecto permitidas y prohibidas, asegurando que todos los estudiantes y el personal entiendan las expectativas de comportamiento.',
+                'valor_opcion' => 1
             ],
             [
                 'id_opcion' => 213,
                 'id_pregunta' => 64,
-                'texto' => 'Permitir todas las muestras de afecto sin restricciones para promover la libertad y la expresión personal entre los estudiantes.',
+                'texto' => 'Permitir todas las muestras de afecto sin restricciones para promover la libertad y la expresión personal entre los estudiantes, esto garantiza que la expresión de las emociones y el amor sea un derecho para todos.',
                 'valor_opcion' => 0
             ],
             [
                 'id_opcion' => 214,
                 'id_pregunta' => 64,
-                'texto' => 'Eliminar todas las sanciones relacionadas con las muestras de afecto y confiar en que los estudiantes actuarán de manera apropiada.',
+                'texto' => 'Eliminar todas las sanciones relacionadas con las muestras de afecto y confiar en que los estudiantes actuarán de manera apropiada, pues se supone que se enseña ética del cuidado de sí y de los demás.',
                 'valor_opcion' => 0
             ],
 
             //Contexto13_Metacognición
-            //pregunta 1_Metacognición
+            /* //pregunta 1_Metacognición
             [
                 'id_opcion' => 215,
                 'id_pregunta' => 66,
@@ -1478,48 +1468,42 @@ class OpcionesSeeder extends Seeder
                 'id_pregunta' => 68,
                 'texto' => 'Completamente de acuerdo',
                 'valor_opcion' => 5
-            ],
+            ], */
 
             //Item 27
             [
                 'id_opcion' => 230,
                 'id_pregunta' => 69,
-                'texto' => 'Determinando las zonas de desalojo por semanas.',
+                'texto' => 'No determinó las zonas de desalojo por días o semanas de acuerdo con el número de personas que integran las familias.',
                 'valor_opcion' => 0
             ],
             [
                 'id_opcion' => 231,
                 'id_pregunta' => 69,
-                'texto' => 'Reubicando a las familias en campamentos temporales.',
+                'texto' => 'No expresó cómo reubicaría a las familias en campamentos temporales en los que se les pueda garantizar un tiempo prudente de tranquilidad.',
                 'valor_opcion' => 0
             ],
             [
                 'id_opcion' => 232,
                 'id_pregunta' => 69,
-                'texto' => 'Determinando espacios adecuados del territorio en los que pueden establecerse.',
+                'texto' => 'No ha determinado espacios adecuados del territorio en los que pueden establecerse y que no les represente estar en vulnerabilidad.',
                 'valor_opcion' => 0
             ],
             [
                 'id_opcion' => 233,
                 'id_pregunta' => 69,
-                'texto' => 'Enviando comunicaciones a las comunidades para que conserven la calma.',
+                'texto' => 'No ha enviado comunicaciones a las comunidades indicando cómo pueden conserven la calma y actuar ante la temporada de lluvias.',
                 'valor_opcion' => 0
             ],
             [
                 'id_opcion' => 234,
                 'id_pregunta' => 69,
-                'texto' => 'Informando a las comunidades qué es estar en vulnerabilidad, en amenaza o en riesgo.',
+                'texto' => 'No brindó información detallada y precisa a las comunidades sobre lo que significa estar en vulnerabilidad, en amenaza o en riesgo.',
                 'valor_opcion' => 1
-            ],
-            [
-                'id_opcion' => 235,
-                'id_pregunta' => 69,
-                'texto' => 'Concientizando a la comunidad acerca de la importancia de proteger la vida y la de sus seres queridos.',
-                'valor_opcion' => 0
             ],
 
             //Contexto14_Metacognición
-            //pregunta 1_Metacognición
+            /* //pregunta 1_Metacognición
             [
                 'id_opcion' => 236,
                 'id_pregunta' => 71,
@@ -1611,42 +1595,42 @@ class OpcionesSeeder extends Seeder
                 'id_pregunta' => 73,
                 'texto' => 'Completamente de acuerdo',
                 'valor_opcion' => 5
-            ],
+            ], */
 
             //Item 29
             [
                 'id_opcion' => 251,
                 'id_pregunta' => 74,
                 'texto' => 'El gobierno no ha explicado con suficiente claridad el impacto del uso de anticonceptivos en la dinamización de la economía. Y establece una relación directa entre el uso de anticonceptivos y el decrecimiento poblacional como causas del estancamiento de la economía, sin tener en cuenta otros factores relevantes; entonces, su argumento a mayor crecimiento poblacional menor estancamiento de la economía es inválido.',
-                'valor_opcion' => 5
+                'valor_opcion' => 1
             ],
             [
                 'id_opcion' => 252,
                 'id_pregunta' => 74,
                 'texto' => 'Es entendible a que mayor uso de anticonceptivos menor crecimiento poblacional y menores flujos de dinero, entre más personas estén consumiendo bienes y servicios mayores dinámicas económicas se generan en el territorio, lo cuestionable es cómo serán los incentivos económicos que se dará a las parejas, y si esto influye en la decisión de tener hijos, siendo que las parejas pueden priorizar el dinero y luego no ser lo suficientemente responsables con los hijos que se traen al mundo.',
-                'valor_opcion' => 5
+                'valor_opcion' => 0
             ],
             [
                 'id_opcion' => 253,
                 'id_pregunta' => 74,
                 'texto' => 'Cómo es que van a desincentivar el uso de anticonceptivos con tantas problemáticas económicas y sociales que se presentan en la actualidad, por el contrario, lo que se requiere es fomentar la sexualidad responsable y que las personas no traigan hijos al mundo a sufrir.',
-                'valor_opcion' => 5
+                'valor_opcion' => 0
             ],
             [
                 'id_opcion' => 254,
                 'id_pregunta' => 74,
                 'texto' => 'No es posible que el uso de preservativos se relacione con la salud de los habitantes directamente, es cierto que si se usan los preservativos las personas evitan adquirir enfermedades de transmisión sexual, lo cual genera menores costos para el Estado, pero el aumento en las condiciones de salud de los ciudadanos depende de otros factores como una excelente prestación de ese servicio social o los hábitos de vida saludable de las personas.',
-                'valor_opcion' => 5
+                'valor_opcion' => 0
             ],
             [
                 'id_opcion' => 255,
                 'id_pregunta' => 74,
                 'texto' => 'Entre más personas estén cuidando su salud reproductiva mayores niveles de bienestar a nivel social; el gobierno no debe formular una política pública que atente contra el trabajo de tantos años de otros gobiernos que ha buscado garantizar la responsabilidad sexual y reproductiva, de una sociedad que lo ha ido en entendiendo con el paso del tiempo.',
-                'valor_opcion' => 5
+                'valor_opcion' => 0
             ],
 
             //Contexto15_Metacognición
-            //pregunta 1_Metacognición
+            /* //pregunta 1_Metacognición
             [
                 'id_opcion' => 256,
                 'id_pregunta' => 76,
@@ -1738,6 +1722,712 @@ class OpcionesSeeder extends Seeder
                 'id_pregunta' => 78,
                 'texto' => 'Completamente de acuerdo',
                 'valor_opcion' => 5
+            ], */
+
+            //Item 37
+            [
+                'id_opcion' => 256,
+                'id_pregunta' => 85,
+                'texto' => 'Los creadores de la red social deben estar haciendo un buen trabajo al innovar porque el gurú de las tecnologías y plataformas digitales así lo sugirió. ',
+                'valor_opcion' => 0
+            ],
+            [
+                'id_opcion' => 257,
+                'id_pregunta' => 85,
+                'texto' => 'Los creadores de la red social deben estar haciendo un mal trabajo, puesto que en según mis observaciones el contenido es pésimo.  ',
+                'valor_opcion' => 0
+            ],
+            [
+                'id_opcion' => 258,
+                'id_pregunta' => 85,
+                'texto' => 'No hay una conclusión definitiva, pues los creadores de la red social pueden no estar haciendo un buen trabajo al innovar, y la plataforma ser un éxito. ',
+                'valor_opcion' => 1
+            ],
+            [
+                'id_opcion' => 259,
+                'id_pregunta' => 85,
+                'texto' => 'La cantidad de usuarios y de influencers no se relaciona con otros factores que determinen el nivel de aceptación de la red social. ',
+                'valor_opcion' => 0
+            ],
+            [
+                'id_opcion' => 260,
+                'id_pregunta' => 85,
+                'texto' => 'La cantidad de usuarios no está relacionada con el tipo de trabajo que están haciendo los creadores de la red social.',
+                'valor_opcion' => 0
+            ],
+
+            //Item 39
+            [
+                'id_opcion' => 261,
+                'id_pregunta' => 87,
+                'texto' => 'Se ha mencionado en la charla que ingerir este plato ayuda a las personas a tener una piel más sana y a detener el envejecimiento, pero, no sé si sea más importante la apariencia física o los aportes de estos animales al ecosistema.',
+                'valor_opcion' => 0
+            ],
+            [
+                'id_opcion' => 262,
+                'id_pregunta' => 87,
+                'texto' => 'Definitivamente las culturas son muy diversas y, desafortunadamente, algunas de ellas desestiman el daño ocasionado al ecosistema, para estas culturas prima el hecho de satisfacer sus placeres o garantizar ganancias económicas.',
+                'valor_opcion' => 0
+            ],
+            [
+                'id_opcion' => 263,
+                'id_pregunta' => 87,
+                'texto' => 'Si este plato representa grandes aportes a ese sector de la economía hace parte de la cultura ancestral y puede generar empleos directos e indirectos, pero sería mejor hacer algo para que los tiburones se reproduzcan masivamente.',
+                'valor_opcion' => 0
+            ],
+            [
+                'id_opcion' => 264,
+                'id_pregunta' => 87,
+                'texto' => 'Es preocupante el asunto de la extinción de estos animales, pero indudablemente Rafa es un chico listo, tiene razón y más si se piensa en que este plato es muy consumido en China.',
+                'valor_opcion' => 0
+            ],
+            [
+                'id_opcion' => 265,
+                'id_pregunta' => 87,
+                'texto' => 'Indistintamente de las preocupaciones medioambientales, Rafa está suponiendo que las aletas de tiburón en realidad aportan al rejuvenecimiento, pero no estamos seguros de que así sea, se necesita evidencia científica.',
+                'valor_opcion' => 1
+            ],
+
+            //Item 41
+            [
+                'id_opcion' => 266,
+                'id_pregunta' => 89,
+                'texto' => 'Respetamos tu forma de ver las cosas, las amigas están para apoyarse entre sí bien sea en lo emociona o sentimental. ',
+                'valor_opcion' => 0
+            ],
+            [
+                'id_opcion' => 267,
+                'id_pregunta' => 89,
+                'texto' => 'El hecho de aceptar salir con uno de ellos no implica que deba aceptar salir con los demás, analiza mejor las cosas. ',
+                'valor_opcion' => 1
+            ],
+            [
+                'id_opcion' => 268,
+                'id_pregunta' => 89,
+                'texto' => 'Algunas personas quieren salir con alguien y no encuentran la oportunidad, otras encuentran la oportunidad y no lo hacen.',
+                'valor_opcion' => 0
+            ],
+            [
+                'id_opcion' => 269,
+                'id_pregunta' => 89,
+                'texto' => 'El hecho se salir con todos no implica compromiso alguno con uno de ellos o con todos, se trata de elecciones. ',
+                'valor_opcion' => 0
+            ],
+            [
+                'id_opcion' => 270,
+                'id_pregunta' => 89,
+                'texto' => 'La vida pasa y las cosas cambian, las oportunidades no deben desaprovecharse, la juventud debe vivirse con toda la responsabilidad que amerita.  ',
+                'valor_opcion' => 0
+            ],
+
+            //Item 43
+            [
+                'id_opcion' => 271,
+                'id_pregunta' => 91,
+                'texto' => 'Respetamos tu preocupación, pero es importante considerar los beneficios que el parque podría traer.',
+                'valor_opcion' => 0
+            ],
+            [
+                'id_opcion' => 272,
+                'id_pregunta' => 91,
+                'texto' => 'La construcción de un solo parque no implica que la comunidad se transforme en una zona urbana congestionada. Podemos analizar mejor las cosas.',
+                'valor_opcion' => 0
+            ],
+            [
+                'id_opcion' => 273,
+                'id_pregunta' => 91,
+                'texto' => 'Algunas personas quieren más espacios verdes y otras prefieren mantener las cosas como están.',
+                'valor_opcion' => 0
+            ],
+            [
+                'id_opcion' => 274,
+                'id_pregunta' => 91,
+                'texto' => 'El hecho de construir un parque no significa que nos comprometamos a construir más. Se trata de decisiones independientes.',
+                'valor_opcion' => 1
+            ],
+            [
+                'id_opcion' => 275,
+                'id_pregunta' => 91,
+                'texto' => 'La vida sigue y las comunidades cambian, no debemos desaprovechar las oportunidades de mejora, siempre que lo hagamos con responsabilidad.',
+                'valor_opcion' => 0
+            ],
+
+            //Item 47
+            [
+                'id_opcion' => 276,
+                'id_pregunta' => 95,
+                'texto' => 'Voy a apoyar el proyecto porque todos mis amigos y compañeros de clase lo apoyan.',
+                'valor_opcion' => 0
+            ],
+            [
+                'id_opcion' => 277,
+                'id_pregunta' => 95,
+                'texto' => 'Voy a esperar más cobertura mediática para decidir si apoyar el proyecto.',
+                'valor_opcion' => 0
+            ],
+            [
+                'id_opcion' => 278,
+                'id_pregunta' => 95,
+                'texto' => 'Apoyaré el proyecto si los políticos que lo impulsan tienen una buena reputación.',
+                'valor_opcion' => 0
+            ],
+            [
+                'id_opcion' => 279,
+                'id_pregunta' => 95,
+                'texto' => 'No apoyaré el proyecto hasta que esté segura de que no tendrá consecuencias económicas negativas.',
+                'valor_opcion' => 0
+            ],
+            [
+                'id_opcion' => 280,
+                'id_pregunta' => 95,
+                'texto' => 'Apoyaré el proyecto porque las organizaciones de Derechos Humanos lo respaldan después de una evaluación detallada.',
+                'valor_opcion' => 1
+            ],
+
+            //Item 49
+            [
+                'id_opcion' => 281,
+                'id_pregunta' => 97,
+                'texto' => 'Ambos estamos en riesgo de sanciones si se descubre el consumo de sustancias. Lo mejor es hablar directamente con nuestro entrenador sobre lo que está sucediendo para que él pueda intervenir y ayudar a mi amigo.',
+                'valor_opcion' => 1
+            ],
+            [
+                'id_opcion' => 282,
+                'id_pregunta' => 97,
+                'texto' => 'La situación es que se trata de lealtad y compañerismo. De ninguna manera hablaría con su familia, lo mejor es convencerlo de que deje de consumir sustancias por su cuenta antes de que comiencen las competencias.',
+                'valor_opcion' => 0
+            ],
+            [
+                'id_opcion' => 283,
+                'id_pregunta' => 97,
+                'texto' => 'La situación es un problema personal de mi amigo que no me afecta directamente. Lo mejor es concentrarme en mi propio entrenamiento y dejar que mi amigo maneje sus propios asuntos.',
+                'valor_opcion' => 0
+            ],
+            [
+                'id_opcion' => 284,
+                'id_pregunta' => 97,
+                'texto' => 'La situación es que mi amigo podría afectar negativamente al equipo durante las justas nacionales. Lo mejor es hablar con otros compañeros para ver si podemos convencerlo juntos de dejar las sustancias.',
+                'valor_opcion' => 0
+            ],
+            [
+                'id_opcion' => 285,
+                'id_pregunta' => 97,
+                'texto' => 'La situación es que no se sabe qué tipo de sustancias consume y si podrían mejorar su rendimiento en las competencias. Lo mejor es no involucrarme y esperar a ver si se detecta algo en las pruebas antidopaje.',
+                'valor_opcion' => 0
+            ],
+
+            //Item 51
+            [
+                'id_opcion' => 286,
+                'id_pregunta' => 99,
+                'texto' => 'La situación no es un problema técnico menor, es necesario atender a ciertas consideraciones, pero lo mejor es esperar a ver si se resuelve solo. Mientras tanto, aconsejaría a mi amigo que ignore los mensajes.',
+                'valor_opcion' => 0
+            ],
+            [
+                'id_opcion' => 287,
+                'id_pregunta' => 99,
+                'texto' => 'La situación es un problema personal de mi amigo pues se trata de su dispositivo portátil. Debido a los problemas en los que podría estar mi madre, lo mejor es aconsejarle que no use el dispositivo hasta que se sienta seguro.',
+                'valor_opcion' => 0
+            ],
+            [
+                'id_opcion' => 288,
+                'id_pregunta' => 99,
+                'texto' => 'La situación es preocupante, pero es responsabilidad de mi amigo asumir las consecuencias de haber comprado el dispositivo, aunque como la empresa de mi madre está involucrada lo mejor es que la empresa se responsabilice. ',
+                'valor_opcion' => 0
+            ],
+            [
+                'id_opcion' => 289,
+                'id_pregunta' => 99,
+                'texto' => 'La situación es que hay un riesgo potencial para la seguridad personal de los usuarios. Lo mejor es informar tanto a mi madre como a las autoridades locales para que tomen medidas urgentes.',
+                'valor_opcion' => 1
+            ],
+            [
+                'id_opcion' => 290,
+                'id_pregunta' => 99,
+                'texto' => 'La situación es algo de lo que debo ocuparme más no preocuparme. Seguiré usando el dispositivo y sugeriré a mi amigo que lo haga también, seguramente se solucionará gracias a la eficiencia de sus creadores.',
+                'valor_opcion' => 0
+            ],
+
+            //Item 55
+            [
+                'id_opcion' => 291,
+                'id_pregunta' => 103,
+                'texto' => 'Aceptar el plan actual de la empresa constructora sin cambios, ya que es probable que tenga algún impacto, pero no es posible evitar la construcción pues es bien sabido que estas empresas invierten grandes cantidades de dinero en este tipo de proyectos. ',
+                'valor_opcion' => 1
+            ],
+            [
+                'id_opcion' => 292,
+                'id_pregunta' => 103,
+                'texto' => 'La mejor manera es reunir a la comunidad y solicitar formalmente a la empresa que reduzca el tamaño del proyecto para minimizar el impacto ambiental que pueda llegarse a generar, eso evita exigir una evaluación más detallada del impacto ambiental.',
+                'valor_opcion' => 0
+            ],
+            [
+                'id_opcion' => 293,
+                'id_pregunta' => 103,
+                'texto' => 'Informar a la comunidad sobre los riesgos del proyecto de construcción sin proporcionar soluciones alternativas o propuestas específicas para mitigar el impacto ambiental, pues es la empresa la que debe ofrecer opciones a la comunidad que se verá afectada.',
+                'valor_opcion' => 0
+            ],
+            [
+                'id_opcion' => 294,
+                'id_pregunta' => 103,
+                'texto' => 'Informarle a la comunidad para que no se involucre en la evaluación del plan, ya que puede ser un esfuerzo que no tiene un impacto significativo en el resultado final. Eso es lo que generalmente se observa cuando una constructora persigue sus fines. ',
+                'valor_opcion' => 0
+            ],
+            [
+                'id_opcion' => 295,
+                'id_pregunta' => 103,
+                'texto' => 'Proponer a la empresa constructora que realice una evaluación más detallada del impacto ambiental del plan y que incluya medidas específicas para mitigar el daño a los hábitats de las aves. Además, sugerir la reubicación de la construcción a una zona menos sensible ecológicamente.',
+                'valor_opcion' => 0
+            ],
+
+            //Item 57.1
+            [
+                'id_opcion' => 296,
+                'id_pregunta' => 105,
+                'texto' => '1 – G ',
+                'valor_opcion' => 3
+            ],
+            [
+                'id_opcion' => 297,
+                'id_pregunta' => 105,
+                'texto' => '1 – H ',
+                'valor_opcion' => 3
+            ],
+            [
+                'id_opcion' => 298,
+                'id_pregunta' => 105,
+                'texto' => '1 – I',
+                'valor_opcion' => 3
+            ],
+            [
+                'id_opcion' => 299,
+                'id_pregunta' => 105,
+                'texto' => '1 – J ',
+                'valor_opcion' => 4
+            ],
+            [
+                'id_opcion' => 300,
+                'id_pregunta' => 105,
+                'texto' => '1 – K ',
+                'valor_opcion' => 3
+            ],
+            [
+                'id_opcion' => 301,
+                'id_pregunta' => 105,
+                'texto' => '1 – L ',
+                'valor_opcion' => 4
+            ],
+
+            //Item 57.2
+            [
+                'id_opcion' => 302,
+                'id_pregunta' => 105,
+                'texto' => '2 - G',
+                'valor_opcion' => 3
+            ],
+            [
+                'id_opcion' => 303,
+                'id_pregunta' => 105,
+                'texto' => '2 - H',
+                'valor_opcion' => 3
+            ],
+            [
+                'id_opcion' => 304,
+                'id_pregunta' => 105,
+                'texto' => '2 - I',
+                'valor_opcion' => 3
+            ],
+            [
+                'id_opcion' => 305,
+                'id_pregunta' => 105,
+                'texto' => '2 - J',
+                'valor_opcion' => 5
+            ],
+            [
+                'id_opcion' => 306,
+                'id_pregunta' => 105,
+                'texto' => '2 - K',
+                'valor_opcion' => 3
+            ],
+            [
+                'id_opcion' => 307,
+                'id_pregunta' => 105,
+                'texto' => '2 - L',
+                'valor_opcion' => 4
+            ],
+
+            //item 57.3
+            [
+                'id_opcion' => 308,
+                'id_pregunta' => 105,
+                'texto' => '3 - G',
+                'valor_opcion' => 2
+            ],
+            [
+                'id_opcion' => 309,
+                'id_pregunta' => 105,
+                'texto' => '3 - H',
+                'valor_opcion' => 2
+            ],
+            [
+                'id_opcion' => 310,
+                'id_pregunta' => 105,
+                'texto' => '3 - I',
+                'valor_opcion' => 2
+            ],
+            [
+                'id_opcion' => 311,
+                'id_pregunta' => 105,
+                'texto' => '3 - J',
+                'valor_opcion' => 2
+            ],
+            [
+                'id_opcion' => 312,
+                'id_pregunta' => 105,
+                'texto' => '3 - K',
+                'valor_opcion' => 2
+            ],
+            [
+                'id_opcion' => 313,
+                'id_pregunta' => 105,
+                'texto' => '2 - L',
+                'valor_opcion' => 3
+            ],
+
+            //Item 57.4
+            [
+                'id_opcion' => 314,
+                'id_pregunta' => 105,
+                'texto' => '4 - G',
+                'valor_opcion' => 5
+            ],
+            [
+                'id_opcion' => 315,
+                'id_pregunta' => 105,
+                'texto' => '4 - H',
+                'valor_opcion' => 5
+            ],
+            [
+                'id_opcion' => 316,
+                'id_pregunta' => 105,
+                'texto' => '4 - I',
+                'valor_opcion' => 5
+            ],
+            [
+                'id_opcion' => 317,
+                'id_pregunta' => 105,
+                'texto' => '4 - J',
+                'valor_opcion' => 7
+            ],
+            [
+                'id_opcion' => 318,
+                'id_pregunta' => 105,
+                'texto' => '4 - K',
+                'valor_opcion' => 5
+            ],
+            [
+                'id_opcion' => 319,
+                'id_pregunta' => 105,
+                'texto' => '4 - L',
+                'valor_opcion' => 6
+            ],
+
+            //Item 57.5
+            [
+                'id_opcion' => 320,
+                'id_pregunta' => 105,
+                'texto' => '5 - G',
+                'valor_opcion' => 2
+            ],
+            [
+                'id_opcion' => 321,
+                'id_pregunta' => 105,
+                'texto' => '5 - H',
+                'valor_opcion' => 3
+            ],
+            [
+                'id_opcion' => 322,
+                'id_pregunta' => 105,
+                'texto' => '5 - I',
+                'valor_opcion' => 2
+            ],
+            [
+                'id_opcion' => 323,
+                'id_pregunta' => 105,
+                'texto' => '5 - J',
+                'valor_opcion' => 5
+            ],
+            [
+                'id_opcion' => 324,
+                'id_pregunta' => 105,
+                'texto' => '5 - K',
+                'valor_opcion' => 3
+            ],
+            [
+                'id_opcion' => 325,
+                'id_pregunta' => 105,
+                'texto' => '5 - L',
+                'valor_opcion' => 4
+            ],
+
+            //Item 57.6
+            [
+                'id_opcion' => 326,
+                'id_pregunta' => 105,
+                'texto' => '6 - G',
+                'valor_opcion' => 3
+            ],
+            [
+                'id_opcion' => 327,
+                'id_pregunta' => 105,
+                'texto' => '6 - H',
+                'valor_opcion' => 3
+            ],
+            [
+                'id_opcion' => 328,
+                'id_pregunta' => 105,
+                'texto' => '6 - I',
+                'valor_opcion' => 3
+            ],
+            [
+                'id_opcion' => 329,
+                'id_pregunta' => 105,
+                'texto' => '6 - J',
+                'valor_opcion' => 12
+            ],
+            [
+                'id_opcion' => 330,
+                'id_pregunta' => 105,
+                'texto' => '6 - K',
+                'valor_opcion' => 4
+            ],
+            [
+                'id_opcion' => 331,
+                'id_pregunta' => 105,
+                'texto' => '6 - L',
+                'valor_opcion' => 10
+            ],
+
+            //Item 59.1
+            [
+                'id_opcion' => 332,
+                'id_pregunta' => 115,
+                'texto' => '1 - A',
+                'valor_opcion' => 10
+            ],
+            [
+                'id_opcion' => 333,
+                'id_pregunta' => 115,
+                'texto' => '1 - B',
+                'valor_opcion' => 5
+            ],
+            [
+                'id_opcion' => 334,
+                'id_pregunta' => 115,
+                'texto' => '1 - C',
+                'valor_opcion' => 12
+            ],
+            [
+                'id_opcion' => 335,
+                'id_pregunta' => 115,
+                'texto' => '1 - D',
+                'valor_opcion' => 4
+            ],
+            [
+                'id_opcion' => 336,
+                'id_pregunta' => 115,
+                'texto' => '1 - E',
+                'valor_opcion' => 9
+            ],
+            [
+                'id_opcion' => 337,
+                'id_pregunta' => 115,
+                'texto' => '1 - F',
+                'valor_opcion' => 4
+            ],
+            [
+                'id_opcion' => 338,
+                'id_pregunta' => 115,
+                'texto' => '2 - A ',
+                'valor_opcion' => 7
+            ],
+            [
+                'id_opcion' => 339,
+                'id_pregunta' => 115,
+                'texto' => '2 - B',
+                'valor_opcion' => 4
+            ],
+            [
+                'id_opcion' => 340,
+                'id_pregunta' => 115,
+                'texto' => '2 - C',
+                'valor_opcion' => 6
+            ],
+            [
+                'id_opcion' => 341,
+                'id_pregunta' => 115,
+                'texto' => '2 - D',
+                'valor_opcion' => 3
+            ],
+            [
+                'id_opcion' => 342,
+                'id_pregunta' => 115,
+                'texto' => '2 - E',
+                'valor_opcion' => 6
+            ],
+            [
+                'id_opcion' => 343,
+                'id_pregunta' => 115,
+                'texto' => '2 - F',
+                'valor_opcion' => 2
+            ],
+
+            //Item 59.3
+            [
+                'id_opcion' => 344,
+                'id_pregunta' => 115,
+                'texto' => '3 - A',
+                'valor_opcion' => 6
+            ],
+            [
+                'id_opcion' => 345,
+                'id_pregunta' => 115,
+                'texto' => '3 - B',
+                'valor_opcion' => 3
+            ],
+            [
+                'id_opcion' => 346,
+                'id_pregunta' => 115,
+                'texto' => '3 - C',
+                'valor_opcion' => 7
+            ],
+            [
+                'id_opcion' => 347,
+                'id_pregunta' => 115,
+                'texto' => '3 - D',
+                'valor_opcion' => 3
+            ],
+            [
+                'id_opcion' => 348,
+                'id_pregunta' => 115,
+                'texto' => '3 - E',
+                'valor_opcion' => 5
+            ],
+            [
+                'id_opcion' => 349,
+                'id_pregunta' => 115,
+                'texto' => '3 - F',
+                'valor_opcion' => 2
+            ],
+            [
+                'id_opcion' => 350,
+                'id_pregunta' => 115,
+                'texto' => '4 - A ',
+                'valor_opcion' => 5
+            ],
+            [
+                'id_opcion' => 351,
+                'id_pregunta' => 115,
+                'texto' => '4 - B',
+                'valor_opcion' => 2
+            ],
+            [
+                'id_opcion' => 352,
+                'id_pregunta' => 115,
+                'texto' => '4 - C',
+                'valor_opcion' => 5
+            ],
+            [
+                'id_opcion' => 353,
+                'id_pregunta' => 115,
+                'texto' => '4 - D',
+                'valor_opcion' => 2
+            ],
+            [
+                'id_opcion' => 354,
+                'id_pregunta' => 115,
+                'texto' => '4 - E',
+                'valor_opcion' => 4
+            ],
+            [
+                'id_opcion' => 355,
+                'id_pregunta' => 115,
+                'texto' => '4 - F',
+                'valor_opcion' => 1
+            ],
+
+            //Item 59.5
+            [
+                'id_opcion' => 356,
+                'id_pregunta' => 115,
+                'texto' => '5 - A',
+                'valor_opcion' => 6
+            ],
+            [
+                'id_opcion' => 357,
+                'id_pregunta' => 115,
+                'texto' => '5 - B',
+                'valor_opcion' => 3
+            ],
+            [
+                'id_opcion' => 358,
+                'id_pregunta' => 115,
+                'texto' => '5 - C',
+                'valor_opcion' => 7
+            ],
+            [
+                'id_opcion' => 359,
+                'id_pregunta' => 115,
+                'texto' => '5 - D',
+                'valor_opcion' => 3
+            ],
+            [
+                'id_opcion' => 360,
+                'id_pregunta' => 115,
+                'texto' => '5 - E',
+                'valor_opcion' => 8
+            ],
+            [
+                'id_opcion' => 361,
+                'id_pregunta' => 115,
+                'texto' => ' 5 - F',
+                'valor_opcion' => 2
+            ],
+            [
+                'id_opcion' => 362,
+                'id_pregunta' => 115,
+                'texto' => '6 - A',
+                'valor_opcion' => 7
+            ],
+            [
+                'id_opcion' => 363,
+                'id_pregunta' => 115,
+                'texto' => '6 - B',
+                'valor_opcion' => 4
+            ],
+            [
+                'id_opcion' => 364,
+                'id_pregunta' => 115,
+                'texto' => '6 - C',
+                'valor_opcion' => 8
+            ],
+            [
+                'id_opcion' => 365,
+                'id_pregunta' => 115,
+                'texto' => '6 - D',
+                'valor_opcion' => 3
+            ],
+            [
+                'id_opcion' => 366,
+                'id_pregunta' => 115,
+                'texto' => '6 - E',
+                'valor_opcion' => 9
+            ],
+            [
+                'id_opcion' => 367,
+                'id_pregunta' => 115,
+                'texto' => '6 - F',
+                'valor_opcion' => 3
             ],
 
         ]);

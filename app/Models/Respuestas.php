@@ -15,6 +15,8 @@ class Respuestas extends Model
     protected $fillable = [
         'id_usuario',
         'id_pregunta',
+        'id_respuesta',
+        'id_reporte',
         'respuesta',
         'calificacion_respuesta'
     ];
@@ -28,4 +30,10 @@ class Respuestas extends Model
     {
         return $this->belongsTo(Preguntas::class, 'id_pregunta');
     }
+
+    public function reporte()
+    {
+        return $this->belongsTo(Reportes::class, 'id_reporte');
+    }
+
 }

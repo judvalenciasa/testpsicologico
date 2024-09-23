@@ -18,9 +18,9 @@
         <div class="text_ctn">
             <h1>Ingreso</h1>
             <div class="underline"></div>
-            <p>Si eres usuario administrador</p>
         </div>
-        <form class="form_ctn">
+        <!-- Aquí el formulario no necesita acción porque la manejas con JavaScript -->
+        <form class="form_ctn" id="login-form" method="post" action="{{ route('login') }}">
             @csrf
             <div class="input-group">
                 <input required type="text" name="email" id="email" autocomplete="off" class="input">
@@ -36,82 +36,25 @@
                 <input type="checkbox" id="show-password">
                 <span class="span_mostrar_pin" for="show-password">Mostrar contraseña</span>
             </div>
-            <button class="btn_login" id="login-btn">
+            <button type="submit" class="btn_login" id="login-btn">
                 <span>Iniciar Sesión</span>
             </button>
         </form>
     </section>
+    @include('shared.footer')
 
-    <script>
-        document.getElementById('login-btn').addEventListener('click', function(event) {
-            event.preventDefault();
-
-            var email = document.getElementById('email').value.trim();
-            var password = document.getElementById('password').value.trim();
-            clearErrors();
-            var isValid = true;
-
-            if (!validateEmail(email)) {
-                showError('email', 'El correo electrónico no es válido.');
-                isValid = false;
-            }
-
-            if (password === '') {
-                showError('password', 'La contraseña es obligatoria.');
-                isValid = false;
-            }
-
-            if (isValid) {
-                fetch('/api/login', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-                        },
-                        body: JSON.stringify({
-                            email: email,
-                            password: password
-                        })
-                    })
-                    .then(response => response.json())
-                    .then(data => {
-                        if (data.status === 1) {
-                            // Redirigir según la URL devuelta por el servidor
-                            window.location.href = data.redirect_url;
-                        } else {
-                            alert(data.msg);
-                        }
-                    })
-                    .catch(error => console.error('Error:', error));
-
+        <!-- JavaScript para mostrar/ocultar contraseña -->
+        <script>
+        document.getElementById('show-password').addEventListener('change', function() {
+            var passwordInput = document.getElementById('password');
+            if (this.checked) {
+                // Si el checkbox está marcado, mostrar la contraseña
+                passwordInput.type = 'text';
+            } else {
+                // Si no está marcado, ocultar la contraseña
+                passwordInput.type = 'password';
             }
         });
-
-
-        function showError(inputId, message) {
-            var input = document.getElementById(inputId);
-            input.style.borderColor = 'red';
-            var errorElement = document.getElementById(inputId + '-error');
-            errorElement.textContent = message;
-            errorElement.style.color = 'red';
-        }
-
-        function clearErrors() {
-            var inputs = document.querySelectorAll('.input');
-            inputs.forEach(function(input) {
-                input.style.borderColor = ''; // Restablecer el color del borde
-            });
-
-            var errorMessages = document.querySelectorAll('.error-message');
-            errorMessages.forEach(function(error) {
-                error.textContent = ''; // Limpiar mensajes de error
-            });
-        }
-
-        function validateEmail(email) {
-            var re = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-            return re.test(email);
-        }
     </script>
 </body>
 

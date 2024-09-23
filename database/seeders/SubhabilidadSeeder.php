@@ -13,7 +13,7 @@ class SubhabilidadSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('subhabilidads')->insert([
+        DB::table('subhabilidades')->insert([
             [
                 'id_subhabilidad' => 1,
                 'id_habilidad' => 1,

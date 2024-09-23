@@ -91,7 +91,29 @@
                 </div>
             </div>
 
-            <div class="second_column"></div>
+            <div class="credits_ctn">
+                <div class="second_column copyrights_section">
+                    <p>© [2024] [Hermano Antidio Bolívar Enríquez Oviedo - Comunidad Hermanos Maristas de la Enseñanza]. Todos los derechos reservados.
+                    </p>
+                    <p>Patrocinador: Hermanos Maristas de la Enseñanza
+                    </p>
+                    <p>Gestor: Hermano Antidio Bolívar Enríquez Oviedo
+                    </p>
+                    <p>Editor: Juan Manuel Vélez Arias
+                    </p>
+                    <p>Este sistema de información y la prueba de pensamiento crítico "CognitiveSpark Critical Thinking Assessment" están protegidos por las leyes de derechos de autor y otras leyes de propiedad intelectual. Ninguna parte de este sistema o prueba puede ser reproducida, distribuida, transmitida, mostrada, publicada ni transmitida de ninguna forma o por ningún medio, ya sea electrónico, mecánico, fotocopia, grabación u otros, sin el permiso previo por escrito del titular del copyright.
+                    </p>
+                    <p>Para obtener permisos, contactar al gestor y/o editor de la prueba:
+                    </p>
+                    <p>Hermano Antidio Bolívar Enríquez Oviedo
+                    </p>
+                    <a href="mailto:bolivarenriquez@gmail.com">bolivarenriquez@gmail.com
+                    </a>
+                    <p>Juan Manuel Vélez Arias
+                    </p>
+                    <a href="mailto:juanmanuelvelezar@gmail.com ">juanmanuelvelezar@gmail.com </a>
+                </div>
+            </div>
         </section>
 
     </footer>

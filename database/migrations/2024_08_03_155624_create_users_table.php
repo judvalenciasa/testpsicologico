@@ -14,22 +14,28 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id('id_usuario');
             $table->unsignedBigInteger('id_pin')->unique();
+            $table->boolean('ha_aceptado_politica')->default(false);
             $table->string('name');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->rememberToken();
+            $table->rememberToken()->nullable();
+            $table->string('documento_identificacion')->nullable();
             $table->integer('edad')->nullable();
             $table->integer('estrato')->nullable();
-            $table->string('horas_lectura')->nullable(); // Cambiado de integer a string
-            $table->string('horas_redes_sociales')->nullable(); // Cambiado de integer a string
-            $table->string('horas_entretenimiento')->nullable(); // Cambiado de integer a string
-            $table->string('hora_sueno')->nullable(); // Cambiado de integer a string
-            $table->string('genero')->nullable(); // Cambiado de boolean a string
-            $table->boolean('promedio_deporte')->nullable();
-            $table->boolean('promedio_arte')->nullable();
-            $table->boolean('grasas')->nullable();
-            $table->boolean('alimentos_saludables')->nullable();
+            $table->string('nivel_escolaridad')->nullable();
+            $table->string('nivel_educativo_padre')->nullable();
+            $table->string('nivel_educativo_madre')->nullable();
+            $table->string('horas_lectura')->nullable(); 
+            $table->string('horas_redes_sociales')->nullable(); 
+            $table->string('horas_entretenimiento')->nullable(); 
+            $table->string('hora_sueno')->nullable(); 
+            $table->string('genero')->nullable(); 
+            $table->string('promedio_deporte')->nullable();
+            $table->string('promedio_arte')->nullable();
+            $table->string('grasas')->nullable();
+            $table->string('alimentos_saludables')->nullable();
+            $table->string('litro_agua')->nullable();
             $table->boolean('es_administrador');
 
             $table->foreign('id_pin')->references('id_pin')->on('pines');

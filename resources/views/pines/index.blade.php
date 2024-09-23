@@ -32,6 +32,9 @@
             @endforeach
         </tbody>
     </table>
+
+    <a href="{{ route('administrator-page') }}" class="btn">Volver a la pagina de administradores</a>
+
 </section>
 @endsection
 

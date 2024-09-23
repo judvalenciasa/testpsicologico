@@ -11,7 +11,6 @@
 .title h2 {
     font-size: 1.5rem;
     color: #000;
-    margin-bottom: 20px;
 }
 
 .pregunta_ctn {
@@ -74,3 +73,37 @@
     line-height: 1.4;
     text-align: justify;
 }
+
+.subpreguntas {
+    display: flex;
+    flex-direction: column;
+    gap: 2vw;
+}
+
+.subpreguntas .pregunta_texto {
+    font-size: 1.5vw;
+    font-weight: 600;
+}
+
+/** estilos para las columnas */
+.columnas {
+    display: flex;
+    justify-content: space-between;
+}
+
+.columna-a, .columna-b {
+    width: 48%;
+    display: flex;
+    flex-direction: column;
+    gap: 1vw;
+}
+
+.columna-a h3, .columna-b h3 {
+    margin-top: 0;
+}
+
+.textarea_field {
+    font-size: 1vw;
+}
+
+

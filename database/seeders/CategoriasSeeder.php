@@ -13,7 +13,7 @@ class CategoriasSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('Categorias')->insert([
+        DB::table('categorias')->insert([
         	[
                 'nombre' => 'caracterización'
             ],
