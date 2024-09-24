@@ -41,9 +41,8 @@ class UserController extends Controller
         // Crear el nombre personalizado del archivo
         $fileName = $user->name . "_" . Carbon::now()->format('Y-m-d') . ".pdf";
 
- 
         $consentimientoSubido = Storage::disk('public')->exists('pdfs/' . $user->documento_identificacion . '/' . $fileName);
-        
+
         return view('private.politica_tratamiento_datos', compact('consentimientoSubido'));
     }
 
