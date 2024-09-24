@@ -195,58 +195,68 @@
 
                 <div class="calificacion-desempeno-critico calificacion_ctn">
                     <div class="title">
-                        <h2>Regulación de la cognición: es la forma
-                            en que los estudiantes regulan la cognición a través de cinco (5) subprocesos. </h2>
+                        <h2>Metacognición</h2>
                     </div>
 
-                    <div class="card_box">
-                        <h3>Planificación</h3>
+                    <div class="conocimiento_procedimental">
+                        <h2>Conocimiento procedimental</h2>
                         <div class="text_box">
-                            <p><strong>Calificación : </strong> {{ $metacognicion['planificacion'] }}</p>
+                            <h3>Conocimiento procedimental</h3>
+                            <p><strong>Calificación : </strong> {{ $metacognicion['conocimiento_procedimental'] }}</p>
                         </div>
                     </div>
+                    <div class="regulación_de_la_cognición">
+                        <h2>Regulación de la cognición</h2>
+                        <div class="card_box">
+                            <h3>Planificación</h3>
+                            <div class="text_box">
+                                <p><strong>Calificación : </strong> {{ $metacognicion['planificacion'] }}</p>
+                            </div>
+                        </div>
 
-                    <div class="card_box">
-                        <h3>Organización de la información</h3>
-                        <div class="text_box">
-                            <p><strong>Calificación : </strong> {{ $metacognicion['organizacion'] }}</p>
+                        <div class="card_box">
+                            <h3>Organización de la información</h3>
+                            <div class="text_box">
+                                <p><strong>Calificación : </strong> {{ $metacognicion['organizacion'] }}</p>
+                            </div>
+                        </div>
+
+                        <div class="card_box">
+                            <h3>Monitoreo</h3>
+                            <div class="text_box">
+                                <p><strong>Calificación : </strong> {{ $metacognicion['monitoreo'] }}</p>
+                            </div>
+                        </div>
+
+                        <div class="card_box">
+                            <h3>Depuración</h3>
+                            <div class="text_box">
+                                <p><strong>Calificación : </strong> {{ $metacognicion['depuracion'] }}</p>
+                            </div>
+                        </div>
+
+                        <div class="card_box">
+                            <h3>Evaluación</h3>
+                            <div class="text_box">
+                                <p><strong>Calificación : </strong> {{ $metacognicion['evaluacion'] }}</p>
+                            </div>
+                        </div>
+
+                        <div class="card_box">
+                            <h3>Puntuación total lograda en Regulación de la cognición</h3>
+                            <div class="text_box">
+                                <p><strong>Calificación : </strong> {{ $metacognicion['calificacion_metacognicion'] }}</p>
+                            </div>
                         </div>
                     </div>
-
-                    <div class="card_box">
-                        <h3>Monitoreo</h3>
-                        <div class="text_box">
-                            <p><strong>Calificación : </strong> {{ $metacognicion['monitoreo'] }}</p>
-                        </div>
-                    </div>
-
-                    <div class="card_box">
-                        <h3>Depuración</h3>
-                        <div class="text_box">
-                            <p><strong>Calificación : </strong> {{ $metacognicion['depuracion'] }}</p>
-                        </div>
-                    </div>
-
-                    <div class="card_box">
-                        <h3>Evaluación</h3>
-                        <div class="text_box">
-                            <p><strong>Calificación : </strong> {{ $metacognicion['evaluacion'] }}</p>
-                        </div>
-                    </div>
-
-                    <div class="card_box">
-                        <h3>Puntuación total lograda en Regulación de la cognición</h3>
-                        <div class="text_box">
-                            <p><strong>Calificación : </strong> {{ $metacognicion['calificacion_metacognicion'] }}</p>
-                        </div>
-                    </div>
-
                 </div>
 
 
             </div> <!-- Cierra metacognicion-motivacion-section -->
             @endif
         </div> <!-- Cierra el container -->
+
+       
 
         <a href="{{ route('private.usuarios') }}" class="btn">Volver a usuarios</a>
 
