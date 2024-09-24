@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Models\Archivo;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use App\Models\User;
+
 
 class ArchivosController extends Controller
 {
@@ -37,4 +40,8 @@ class ArchivosController extends Controller
 
         return back()->with('success', 'Archivo PDF cargado correctamente.');
     }
+
+
+    
+
 }

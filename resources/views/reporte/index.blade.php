@@ -16,6 +16,83 @@
         <div class="container">
             <h1>Reporte Descriptivo</h1>
 
+            <!-- Sección de Metacognición y Motivación -->
+            @if(isset($informe_final['metacognicion_motivacion']))
+            @php
+            $metacognicion = $informe_final['metacognicion_motivacion'];
+            @endphp
+
+            <div class="metacognicion-motivacion-section">
+
+                <div class="caracterizacion_ctn">
+                    <div class="title">
+                        <h2>Caracterización</h2>
+                    </div>
+
+                    <div class="datos-personales">
+                        <h3>Datos sociodemográficos y personales del (la) examinando(a)</h3>
+                        <p><strong>Documento de identificación del Participante:</strong> {{ $metacognicion['documento_identificacion'] }}</p>
+                        <p><strong>Edad:</strong> {{ $metacognicion['edad'] }}</p>
+                        <p><strong>Género:</strong> {{ $metacognicion['genero'] }}</p>
+                    </div>
+
+                    <div class="datos-demograficos">
+                        <h3>Datos sociodemográficos</h3>
+                        <p><strong>Estrato socioeconómico en que vive:</strong> {{ $metacognicion['estrato'] }}</p>
+                        <p><strong>Nivel de escolaridad en el que se encuentra:</strong> {{ $metacognicion['nivel_escolaridad'] }}</p>
+                        <p><strong>Último nivel de escolaridad alcanzado por alguno de sus padres:</strong> {{ $metacognicion['nivel_educativo_padre'] }}</p>
+                    </div>
+
+                    <div class="habitos-personales">
+                        <h3>Datos sobre estilos de vida</h3>
+                        <p><strong>Cantidad promedio de horas semanales dedicadas a la lectura :</strong> {{ $metacognicion['horas_lectura'] }}</p>
+                        <p><strong>Cantidad promedio de horas semanales destinadas a estar en redes sociales :</strong> {{ $metacognicion['horas_redes_sociales'] }}</p>
+                        <p><strong>Cantidad promedio de horas semanales destinadas al entretenimiento con videojuegos en consolas o a través de internet:</strong> {{ $metacognicion['horas_entretenimiento'] }}</p>
+                        <p><strong>Cantidad promedio de horas semanales dedicadas en la noche a dormir:</strong> {{ $metacognicion['hora_sueno'] }}</p>
+                        <p><strong>Practica algún arte como música, pintura, manualidades o danza de manera recurrente: </strong> {{ $metacognicion['promedio_arte'] }}</p>
+                    </div>
+
+                    <div class="habitos-salud">
+                        <h3>Datos sobre hábitos de vida saludable</h3>
+                        <p><strong>Practica algún arte como música, pintura, manualidades o danza de manera recurrente: </strong> {{ $metacognicion['promedio_deporte'] }}</p>
+                        <p><strong>En su dieta están siempre presentes grasas saturadas como salsas, o papas y/o carnes fritas o procesadas: </strong> {{ $metacognicion['grasas'] }}</p>
+                        <p><strong>En su dieta incluye alimentos saludables como carnes blancas, verduras/vegetales, frutas y frutos secos: </strong> {{ $metacognicion['alimentos_saludables'] }}</p>
+                        <p><strong>Bebe 1 litro o más de agua al día: </strong> {{ $metacognicion['litro_agua'] }}</p>
+                    </div>
+                </div>
+
+                <div class="calificacion-desempeno-critico calificacion_ctn">
+                    <div class="title">
+                        <h2>Puntuación Lograda en Motivación</h2>
+                    </div>
+
+                    <div class="card_box">
+                        <h3>Motivación intrínseca</h3>
+                        <div class="text_box">
+                            <p><strong>Calificación : </strong> {{ $metacognicion['motivacion_intrinseca'] }}</p>
+                        </div>
+                    </div>
+
+                    <div class="card_box">
+                        <h3>Motivación extrínseca</h3>
+                        <div class="text_box">
+                            <p><strong>Calificación : </strong> {{ $metacognicion['motivacion_extrinseca'] }}</p>
+                        </div>
+                    </div>
+
+
+                    <div class="card_box">
+                        <h3>Puntuación total lograda en Motivación</h3>
+                        </h3>
+                        <div class="text_box">
+                            <p><strong>Calificación : </strong> {{ $metacognicion['total_motivación'] }}</p>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
             <!-- Recorre los contextos -->
             <div class="contexto-row">
                 @foreach($informe_final as $key => $documento)
@@ -45,47 +122,9 @@
                 @endforeach
             </div> <!-- Cierra contexto-row -->
 
-            <!-- Sección de Metacognición y Motivación -->
-            @if(isset($informe_final['metacognicion_motivacion']))
-            @php
-            $metacognicion = $informe_final['metacognicion_motivacion'];
-            @endphp
+
 
             <div class="metacognicion-motivacion-section">
-                <div class="title">
-                    <h2>Metacognición y Motivación</h2>
-                </div>
-
-                <div class="datos-personales">
-                    <h3>Datos sociodemográficos y personales del (la) examinando(a)</h3>
-                    <p><strong>Documento de identificación del Participante:</strong> {{ $metacognicion['documento_identificacion'] }}</p>
-                    <p><strong>Edad:</strong> {{ $metacognicion['edad'] }}</p>
-                    <p><strong>Género:</strong> {{ $metacognicion['genero'] }}</p>
-                </div>
-
-                <div class="datos-demograficos">
-                    <h3>Datos sociodemográficos</h3>
-                    <p><strong>Estrato socioeconómico en que vive:</strong> {{ $metacognicion['estrato'] }}</p>
-                    <p><strong>Nivel de escolaridad en el que se encuentra:</strong> {{ $metacognicion['nivel_escolaridad'] }}</p>
-                    <p><strong>Último nivel de escolaridad alcanzado por alguno de sus padres:</strong> {{ $metacognicion['nivel_educativo_padre'] }}</p>
-                </div>
-
-                <div class="habitos-personales">
-                    <h3>Datos sobre estilos de vida</h3>
-                    <p><strong>Cantidad promedio de horas semanales dedicadas a la lectura :</strong> {{ $metacognicion['horas_lectura'] }}</p>
-                    <p><strong>Cantidad promedio de horas semanales destinadas a estar en redes sociales :</strong> {{ $metacognicion['horas_redes_sociales'] }}</p>
-                    <p><strong>Cantidad promedio de horas semanales destinadas al entretenimiento con videojuegos en consolas o a través de internet:</strong> {{ $metacognicion['horas_entretenimiento'] }}</p>
-                    <p><strong>Cantidad promedio de horas semanales dedicadas en la noche a dormir:</strong> {{ $metacognicion['hora_sueno'] }}</p>
-                    <p><strong>Practica algún arte como música, pintura, manualidades o danza de manera recurrente: </strong> {{ $metacognicion['promedio_arte'] }}</p>
-                </div>
-
-                <div class="habitos-salud">
-                    <h3>Datos sobre hábitos de vida saludable</h3>
-                    <p><strong>Practica algún arte como música, pintura, manualidades o danza de manera recurrente: </strong> {{ $metacognicion['promedio_deporte'] }}</p>
-                    <p><strong>En su dieta están siempre presentes grasas saturadas como salsas, o papas y/o carnes fritas o procesadas: </strong> {{ $metacognicion['grasas'] }}</p>
-                    <p><strong>En su dieta incluye alimentos saludables como carnes blancas, verduras/vegetales, frutas y frutos secos: </strong> {{ $metacognicion['alimentos_saludables'] }}</p>
-                    <p><strong>Bebe 1 litro o más de agua al día: </strong> {{ $metacognicion['litro_agua'] }}</p>
-                </div>
 
                 <div class="calificacion-desempeno-critico calificacion_ctn">
                     <div class="title">
@@ -204,35 +243,7 @@
 
                 </div>
 
-                <div class="calificacion-desempeno-critico calificacion_ctn">
-                    <div class="title">
-                        <h2>Puntuación Lograda en Motivación</h2>
-                    </div>
 
-                    <div class="card_box">
-                        <h3>Motivación intrínseca</h3>
-                        <div class="text_box">
-                            <p><strong>Calificación : </strong> {{ $metacognicion['motivacion_intrinseca'] }}</p>
-                        </div>
-                    </div>
-
-                    <div class="card_box">
-                        <h3>Motivación extrínseca</h3>
-                        <div class="text_box">
-                            <p><strong>Calificación : </strong> {{ $metacognicion['motivacion_extrinseca'] }}</p>
-                        </div>
-                    </div>
-
-
-                    <div class="card_box">
-                        <h3>Puntuación total lograda en Motivación</h3>
-                        </h3>
-                        <div class="text_box">
-                            <p><strong>Calificación : </strong> {{ $metacognicion['total_motivación'] }}</p>
-                        </div>
-                    </div>
-
-                </div>
             </div> <!-- Cierra metacognicion-motivacion-section -->
             @endif
         </div> <!-- Cierra el container -->
