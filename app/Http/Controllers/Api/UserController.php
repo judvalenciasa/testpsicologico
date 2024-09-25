@@ -101,7 +101,6 @@ class UserController extends Controller
     }
     public function registrar(Request $request)
     {
-        dd($request);
 
         $id_pin = $this->pin_valido($request);
 
