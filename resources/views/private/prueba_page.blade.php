@@ -89,10 +89,10 @@
 
                 @if($contexto_index + 1 < $total_contextos)
                     <button type="submit">Siguiente</button>
-                    <!-- Botón visible para activar pantalla completa -->
+                    <!-- 
                     <div id="fullscreen-message" style="text-align: center; margin: 20px;">
                         <button id="fullscreenBtn" style="padding: 10px 20px; font-size: 18px;">Entrar en Pantalla Completa</button>
-                    </div>
+                    </div> -->
                     @else
                     <button class="send_btn" type="submit">Continuar con encuesta de metacognición</button>
 
