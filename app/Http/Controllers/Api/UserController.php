@@ -101,45 +101,39 @@ class UserController extends Controller
     }
     public function registrar(Request $request)
     {
-        try {
-            $id_pin = $this->pin_valido($request);
+        dd($request);
 
-            if ($id_pin != null) {
-                $request->merge(['id_pin' => $id_pin]);
+        $id_pin = $this->pin_valido($request);
 
-                $request->validate([
-                    'name' => 'required',
-                    'email' => 'required',
-                    'id_pin' => 'required',
-                    'password' => 'required|string|min:6',
+        if ($id_pin != null) {
+            $request->merge(['id_pin' => $id_pin]);
 
-                ]);
+            $request->validate([
+                'name' => 'required',
+                'email' => 'required',
+                'id_pin' => 'required',
+                'password' => 'required|string|min:6',
 
-                $user = new User();
-                $user->name = $request->name;
-                $user->email = $request->email;
-                $user->id_pin = $request->id_pin;
-                $user->password = Hash::make($request->password); // Hashear la contraseña
-                $user->es_administrador = 0;
+            ]);
 
-                $user->save();
+            $user = new User();
+            $user->name = $request->name;
+            $user->email = $request->email;
+            $user->id_pin = $request->id_pin;
+            $user->password = Hash::make($request->password); // Hashear la contraseña
+            $user->es_administrador = 0;
 
-                return response()->json([
-                    "status" => 1,
-                    "msg" => "Registro exitoso"
-                ]);
-            } else {
-                return response()->json([
-                    "status" => 0,
-                    "msg" => "Pin inválido"
-                ], 400);
-            }
-        } catch (\Exception $e) {
+            $user->save();
+
+            return response()->json([
+                "status" => 1,
+                "msg" => "Registro exitoso"
+            ]);
+        } else {
             return response()->json([
                 "status" => 0,
-                "msg" => "Ocurrió un error en el servidor.",
-                "error" => $e->getMessage()
-            ], 500);
+                "msg" => "Pin inválido"
+            ], 400);
         }
     }
 

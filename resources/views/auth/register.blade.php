@@ -67,7 +67,6 @@
         });
 
         document.getElementById('submit-btn').addEventListener('click', function(event) {
-            event.preventDefault(); // Evitar que el formulario se envíe de manera tradicional
 
             // Obtener los valores de los campos del formulario
             var name = document.getElementById('name').value.trim();
