@@ -101,7 +101,6 @@ class UserController extends Controller
     }
     public function registrar(Request $request)
     {
-
         $id_pin = $this->pin_valido($request);
 
         if ($id_pin != null) {
@@ -112,7 +111,6 @@ class UserController extends Controller
                 'email' => 'required',
                 'id_pin' => 'required',
                 'password' => 'required|string|min:6',
-
             ]);
 
             $user = new User();
@@ -124,17 +122,14 @@ class UserController extends Controller
 
             $user->save();
 
-            return response()->json([
-                "status" => 1,
-                "msg" => "Registro exitoso"
-            ]);
+            // Devolver respuesta JSON de éxito
+            return response()->json(['success' => true]);
         } else {
-            return response()->json([
-                "status" => 0,
-                "msg" => "Pin inválido"
-            ], 400);
+            // Devolver respuesta JSON de error
+            return response()->json(['success' => false, 'message' => 'El pin es inválido.']);
         }
     }
+
 
 
     public function login(Request $request)
