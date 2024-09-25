@@ -538,7 +538,7 @@ class ReportesController extends Controller
             return "en contextos de fenómenos ambientales, culturales y de propuestas de emprendimiento.";
         }
         if ($contexto == 21) {
-            return "en contextos sociales y emocionales.";
+            return "de relaciones sociales y vínculos emocionales.";
         }
         if ($contexto == 22) {
             return "en contextos de participación ambiental y calidad de vida.";
@@ -553,7 +553,7 @@ class ReportesController extends Controller
             return "en contextos deportivos, de salud y relaciones interpersonales.";
         }
         if ($contexto == 26) {
-            return "En contextos en los que la era tecnológica y digital ofrece facilidades, pero también ponen en riesgo la seguridad de las personas";
+            return "En contextos en los que la era tecnológica y digital ofrece facilidades, pero también pone en riesgo la seguridad de las personas";
         }
         if ($contexto == 27) {
             return "En contextos educativos y de responsabilidades académicas.";
