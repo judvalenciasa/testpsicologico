@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cognitive Sparks | Encuesta de Metacognición</title>
+    <title>CognitiveSparks | Encuesta de Metacognición</title>
     <!-- token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -89,7 +89,7 @@
 
                 <!-- Primera pregunta -->
                 <div class="pregunta_ctn">
-                    <p>Pensé en lo que realmente necesitaba comprender antes de responder al ítem.</p>
+                    <p>Pensé en lo que realmente necesitaba comprender antes de responder a las preguntas</p>
 
                     <!-- Tabla para las opciones -->
                     <table border="1" cellspacing="0" cellpadding="10">
@@ -137,7 +137,7 @@
 
                 <!-- Segunda pregunta -->
                 <div class="pregunta_ctn">
-                    <p>Me propuse el objetivo de pensar críticamente antes de responder al ítem.</p>
+                    <p>Me propuse el objetivo de pensar críticamente antes de responder a las preguntas.</p>
 
                     <!-- Tabla para las opciones -->
                     <table border="1" cellspacing="0" cellpadding="10">
@@ -185,7 +185,7 @@
 
                 <!-- Tercera pregunta -->
                 <div class="pregunta_ctn">
-                    <p>Me hice preguntas sobre el tema antes de responder al ítem.</p>
+                    <p>Me hice preguntas sobre el tema antes de responder a las preguntas.</p>
 
                     <!-- Tabla para las opciones -->
                     <table border="1" cellspacing="0" cellpadding="10">
@@ -233,7 +233,7 @@
 
                 <!-- Cuarta pregunta -->
                 <div class="pregunta_ctn">
-                    <p>Pensé en distintas maneras de resolver el ítem y escogí la mejor.</p>
+                    <p>Pensé en distintas maneras de resolver las preguntas y escogí la mejor.</p>
 
                     <!-- Tabla para las opciones -->
                     <table border="1" cellspacing="0" cellpadding="10">
@@ -725,7 +725,7 @@
 
                 <!-- Quinceava pregunta -->
                 <div class="pregunta_ctn">
-                    <p>Cuando estaba respondiendo al ítem, me detuve en algún momento para saber si estaba entendiendo.
+                    <p>Cuando estaba respondiendo las preguntas, me detuve en algún momento para saber si estaba entendiendo.
                     </p>
 
                     <!-- Tabla para las opciones -->
@@ -1269,7 +1269,7 @@
 
                 <!-- Veintiséis pregunta -->
                 <div class="pregunta_ctn">
-                    <p>Cuando terminé de responder al ítem me pregunté si había empleado mis habilidades al máximo
+                    <p>Cuando terminé de responder las preguntas me pregunté si había empleado mis habilidades al máximo
                         posible.</p>
 
                     <!-- Tabla para las opciones -->

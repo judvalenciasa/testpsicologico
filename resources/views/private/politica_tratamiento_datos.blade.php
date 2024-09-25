@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cognitive Sparks | Política de Tratamiento de Datos</title>
+    <title>CognitiveSparks | Política de Tratamiento de Datos</title>
 
     <!-- Styles -->
     <link href="{{ asset('css/politica.css') }}" rel="stylesheet">
@@ -40,7 +40,7 @@
                     compartidos con las instituciones educativas y, de manera anonimizada, con investigadores
                     académicos.</li>
                 <li>Mejorar y optimizar futuras versiones de la prueba CognitiveSpark.</li>
-                <li>Durante el proceso de validación del instrumento, segundo semestre del año 2024, se indica que en cuanto se consideren realizadas algunas comprobaciones de validación del instrumento Cognitive Spark, te haremos llegar el reporte final con los niveles de desempeño en pensamiento crítico y los respectivos descriptores.</li>
+                <li>Durante el proceso de validación del instrumento, segundo semestre del año 2024, se indica que en cuanto se consideren realizadas algunas comprobaciones de validación del instrumento CognitiveSpark, te haremos llegar el reporte final con los niveles de desempeño en pensamiento crítico y los respectivos descriptores.</li>
             </ul>
 
             <h3>Datos Personales Recolectados</h3>

@@ -1,5 +1,8 @@
 .report_section {
     background-color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 2vw;
 }
 
 .container {
@@ -79,7 +82,11 @@
     text-align: center;
 }
 
-.datos-personales, .datos-demograficos, .habitos-personales, .habitos-salud, .calificacion-metacognicion {
+.datos-personales,
+.datos-demograficos,
+.habitos-personales,
+.habitos-salud,
+.calificacion-metacognicion {
     margin-bottom: 20px;
     padding: 10px;
     border: 1px solid #ccc;
@@ -133,3 +140,25 @@ p {
     background-color: #0056b3;
 }
 
+.conocimiento_procedimental {
+    border: 1px solid #ccc;
+    border-radius: 1vw;
+    padding: 1vw;
+}
+
+.regulación_de_la_cognición {
+    border: 1px solid #ccc;
+    border-radius: 1vw;
+    padding: 1vw;
+    display: flex;
+    flex-direction: column;
+    gap: 1vw;
+}
+
+.pie_de_pagina_ctn{
+    font-size: 1vw;
+}
+
+.pie_de_pagina_ctn span{
+    font-weight: bold;
+} 

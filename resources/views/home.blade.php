@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Cognitive Sparks | Home</title>
+    <title>CognitiveSparks | Home</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -30,7 +30,7 @@
     <section class="banner_section">
         <div class="banner_ctn">
             <div class="title">
-                <h1>¿Qué es <br> Cognitive Spark?</h1>
+                <h1>¿Qué es <br> CognitiveSpark?</h1>
             </div>
             <div class="banner_text">
                 <p>Es una prueba de pensamiento crítico diseñada específicamente para adolescentes. Esta herramienta evaluativa se centra en medir el nivel de desempeño del pensamiento crítico. CognitiveSpark busca no solo evaluar, sino también inspirar y activar el potencial mental de los jóvenes, preparando a las próximas generaciones para afrontar los complejos desafíos y aportar a la transformación de realidades complejas.
@@ -87,7 +87,7 @@
 
                         </div>
                         <div class="pregunta">
-                            <p>¿Qué habilidades de pensamiento crítico evalúa Cognitive Spark?</p>
+                            <p>¿Qué habilidades de pensamiento crítico evalúa CognitiveSpark?</p>
                         </div>
                         <div class="respuesta">
                             <p><span>Respuesta: </span>Razonamiento inductivo, razonamiento abductivo, razonamiento deductivo y verbal, análisis de argumentos y toma de decisiones y resolución de problemas. </p>
@@ -119,10 +119,10 @@
 
                         </div>
                         <div class="pregunta">
-                            <p>¿Qué novedad ofrece Cognitive Spark? </p>
+                            <p>¿Qué novedad ofrece CognitiveSpark? </p>
                         </div>
                         <div class="respuesta">
-                            <p><span>Respuesta: </span>Cognitive Spark evalúa cinco (5) habilidades de pensamiento cítrico de las cuales se desprenden trece (13) subhabilidades, a su vez, desplegadas en treinta (30) contextos que sitúan al adolescente en escenarios de desarrollo humano y sostenibilidad. Al finalizar la prueba, el sistema arroja un reporte final con el nivel de desempeño del pensamiento crítico logrado y sus respectivos descriptores conforme a las trece (13) subhabilidades y los contextos en mención.</p>
+                            <p><span>Respuesta: </span>CognitiveSpark evalúa cinco (5) habilidades de pensamiento cítrico de las cuales se desprenden trece (13) subhabilidades, a su vez, desplegadas en treinta (30) contextos que sitúan al adolescente en escenarios de desarrollo humano y sostenibilidad. Al finalizar la prueba, el sistema arroja un reporte final con el nivel de desempeño del pensamiento crítico logrado y sus respectivos descriptores conforme a las trece (13) subhabilidades y los contextos en mención.</p>
                         </div>
                     </div>
                 </div>
@@ -135,7 +135,7 @@
 
     <section class="habilidades_section">
         <div class="title">
-            <h2>Cognitive Spark evalúa las siguientes habilidades de pensamiento crítico: </h2>
+            <h2>CognitiveSpark evalúa las siguientes habilidades de pensamiento crítico: </h2>
         </div>
         <ul>
             <li>

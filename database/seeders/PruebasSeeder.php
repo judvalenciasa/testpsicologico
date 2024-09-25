@@ -17,7 +17,7 @@ class PruebasSeeder extends Seeder
         DB::table('pruebas')->insert([
         	[
 				'titulo' => 'Prueba psicotécnica',
-	        	'descripcion' => 'Cognitive Spark Critical Thinking Assessment',
+	        	'descripcion' => 'CognitiveSpark Critical Thinking Assessment',
                 'estado' => 1
             ],
         ]);

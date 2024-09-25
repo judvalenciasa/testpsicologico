@@ -91,6 +91,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/politica-datos/aceptar', [UserController::class, 'aceptarPolitica'])->name('politica.aceptar');
 
     Route::post('usuarios/cargar_politicas', [ArchivosController::class, 'store'])->name('archivo.store');
+
 });
 
 // Rutas accesibles solo para invitados (usuarios no autenticados)
