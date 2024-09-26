@@ -37,7 +37,7 @@
             <!-- Categoria: Conocimiento Procedimental -->
             <div class="category_ctn" data-category="conocimiento_procedimental">
                 <div class="pregunta_ctn">
-                    <p>Soy consciente de las estrategias que utilicé para responder la anterior prueba.</p>
+                    <p>Soy consciente de habilidades que necesité para responder a la anterior prueba</p>
 
                     <!-- Tabla para las opciones -->
                     <table border="1" cellspacing="0" cellpadding="10">
@@ -137,7 +137,7 @@
 
                 <!-- Segunda pregunta -->
                 <div class="pregunta_ctn">
-                    <p>Me propuse el objetivo de pensar críticamente antes de responder a las preguntas.</p>
+                    <p>Me propuse metas claras antes de iniciar la prueba.</p>
 
                     <!-- Tabla para las opciones -->
                     <table border="1" cellspacing="0" cellpadding="10">
@@ -334,7 +334,7 @@
 
                 <!-- Séptima pregunta -->
                 <div class="pregunta_ctn">
-                    <p>Soy consciente de las estrategias que utilicé para responder la anterior prueba.</p>
+                    <p>Soy consciente de haber centrado mi atención en la información que era importante</p>
 
                     <!-- Tabla para las opciones -->
                     <table border="1" cellspacing="0" cellpadding="10">
@@ -382,8 +382,8 @@
 
                 <!-- Octava pregunta -->
                 <div class="pregunta_ctn">
-                    <p>Una estrategia que utilicé para responder a este tipo de preguntas es inventar mis propios
-                        ejemplos para poder entender mejor la información.</p>
+                    <p>Una estrategia que utilicé para responder a este tipo de preguntas 
+                    fue inventar mis propios ejemplos para entender mejor la información</p>
 
                     <!-- Tabla para las opciones -->
                     <table border="1" cellspacing="0" cellpadding="10">
@@ -1172,8 +1172,7 @@
 
                 <!-- Veinticuatro pregunta -->
                 <div class="pregunta_ctn">
-                    <p>Cuando terminé de responder a cada pregunta me pregunté hasta qué punto había conseguido mis
-                        objetivos.</p>
+                    <p>Cuando terminé de responder a cada pregunta me pregunté hasta qué punto había conseguido mis metas.</p>
 
                     <!-- Tabla para las opciones -->
                     <table border="1" cellspacing="0" cellpadding="10">

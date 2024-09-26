@@ -72,7 +72,7 @@ class OpcionesSeeder extends Seeder
             [
                 'id_opcion' => 9,
                 'id_pregunta' => 14,
-                'texto' => 'Por más que se quisiera la luz del sol no puede reflejar la misma sombra al mismo tiempo sobre distintos objetos distribuidos a distancias significativas en el espacio terrestre. La rotación es otra evidencia que no deja dudas respecto de la circunferencia del Planeta Tierra.',
+                'texto' => 'Por más que se quisiera, la luz del sol no puede reflejar la misma sombra al mismo tiempo sobre distintos objetos distribuidos a distancias significativas en el espacio terrestre. La rotación es otra evidencia que no deja dudas respecto de la circunferencia del Planeta Tierra.',
                 'valor_opcion' => 0
             ],
             [

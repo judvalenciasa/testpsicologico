@@ -243,7 +243,7 @@
                         </div>
 
                         <div class="card_box">
-                            <h3>Puntuación total lograda en Regulación de la cognición</h3>
+                            <h3>Puntuación total lograda en Metacognición</h3>
                             <div class="text_box">
                                 <p><strong>Calificación : </strong> {{ $metacognicion['calificacion_metacognicion'] }}</p>
                             </div>

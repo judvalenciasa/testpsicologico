@@ -24,6 +24,10 @@
 
             <div class="metacognicion-motivacion-section">
 
+                <div class="tiempo_reporte">
+                    <p><strong>Tiempo prueba:</strong> {{ $metacognicion['tiempo_prueba'] }} minutos</p>
+                </div>
+
                 <div class="caracterizacion_ctn">
                     <div class="title">
                         <h2>Caracterización</h2>
@@ -243,7 +247,7 @@
                         </div>
 
                         <div class="card_box">
-                            <h3>Puntuación total lograda en Regulación de la cognición</h3>
+                            <h3>Puntuación total lograda en Metacognición</h3>
                             <div class="text_box">
                                 <p><strong>Calificación : </strong> {{ $metacognicion['calificacion_metacognicion'] }}</p>
                             </div>
@@ -256,7 +260,7 @@
             @endif
         </div> <!-- Cierra el container -->
 
-       
+
 
         <a href="{{ route('private.usuarios') }}" class="btn">Volver a usuarios</a>
 

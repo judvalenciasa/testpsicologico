@@ -464,9 +464,11 @@ class TestsController extends Controller
         if ($contexto_index >= $total_contextos) {
             $hora_final_prueba = Carbon::now();
             $hora_inicio_prueba = session('hora_inicio_prueba');
-            $tiempo_prueba = $tiempo_prueba = $hora_final_prueba->diffInSeconds($hora_inicio_prueba);
+            $tiempo_prueba = $hora_final_prueba->diffInSeconds($hora_inicio_prueba);
+            $tiempo_en_minutos = $tiempo_prueba / 60;
 
-            return $this->metacognicion($tiempo_prueba, $id_reporte);
+
+            return $this->metacognicion($tiempo_en_minutos, $id_reporte);
         }
 
         $contextos_ordenados = session('contextos_ordenados');

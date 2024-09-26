@@ -467,7 +467,7 @@ class ReportesController extends Controller
             "nivel_total" => $reporte->nivel_total,
         ];
         $documentos_totales["metacognicion_motivacion"] = $metacognicion_motivacion;
-
+        
         //dd($documentos_totales);
         return $documentos_totales;
     }

@@ -294,7 +294,7 @@ class PreguntasSeeder extends Seeder
                 'id_pregunta' => 64,
                 'id_prueba' => 1,
                 'id_contexto' => 13,
-                'id_subhabilidad' => 5,
+                'id_subhabilidad' => 6,
                 'id_categoria' => 2,
                 'texto' => 'Con base en los anteriores acontecimientos, de los siguientes enunciados ¿Cuál de las siguientes propuestas presentadas por los estudiantes de bachillerato respaldarías?',
                 'tipo_pregunta' => 'cerrada'
@@ -305,7 +305,7 @@ class PreguntasSeeder extends Seeder
                 'id_pregunta' => 65,
                 'id_prueba' => 1,
                 'id_contexto' => 13,
-                'id_subhabilidad' => 5,
+                'id_subhabilidad' => 6,
                 'id_categoria' => 2,
                 'texto' => 'En no más de 100 palabras explica por qué seleccionaste esa alternativa como la propuesta que respaldarías.',
                 'tipo_pregunta' => 'abierta'

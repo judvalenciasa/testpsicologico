@@ -38,13 +38,13 @@ class DescriptivosSeeder extends Seeder
             [
                 'id_descriptivo' => 4,
                 'id_pregunta' => 13,
-                'texto_descriptivo' => 'Y lo explica parcialmente.',
+                'texto_descriptivo' => 'y lo explica parcialmente ',
                 'calificacion' => 1
             ],
             [
                 'id_descriptivo' => 5,
                 'id_pregunta' => 13,
-                'texto_descriptivo' => 'Y lo explica con cierta precisión.',
+                'texto_descriptivo' => 'Y lo explica con cierta precisión ',
                 'calificacion' => 2
             ],
             [
@@ -83,14 +83,14 @@ class DescriptivosSeeder extends Seeder
             [
                 'id_descriptivo' => 11,
                 'id_pregunta' => 15,
-                'texto_descriptivo' => 'Y lo explica parcialmente.',
+                'texto_descriptivo' => 'y lo explica parcialmente ',
                 'calificacion' => 1
             ],
 
             [
                 'id_descriptivo' => 12,
                 'id_pregunta' => 15,
-                'texto_descriptivo' => 'Y lo explica con cierta precisión.',
+                'texto_descriptivo' => 'Y lo explica con cierta precisión ',
                 'calificacion'  => 2 
             ],
             [
@@ -129,13 +129,13 @@ class DescriptivosSeeder extends Seeder
             [
                 'id_descriptivo' => 18,
                 'id_pregunta' => 17,
-                'texto_descriptivo' => 'Y lo explica parcialmente.',
+                'texto_descriptivo' => 'y lo explica parcialmente ',
                 'calificacion' => 1
             ],
             [
                 'id_descriptivo' => 19,
                 'id_pregunta' => 17,
-                'texto_descriptivo' => 'Y lo explica con cierta precisión.',
+                'texto_descriptivo' => 'Y lo explica con cierta precisión ',
                 'calificacion' => 2
             ],
             [
@@ -161,7 +161,7 @@ class DescriptivosSeeder extends Seeder
             [
                 'id_descriptivo' => 23,
                 'id_pregunta' => 19,
-                'texto_descriptivo' => 'Reconoce que la información dada no es exclusiva en la incidencia de determinados resultados, y que existen otros factores distintos a los contenidos en la información que se ven involucrados;',
+                'texto_descriptivo' => ' Reconoce que la información dada no es exclusiva en la incidencia de determinados resultados y que existen otros factores que se ven involucrados distintos a los contenidos en la información dada;',
                 'calificacion' => 1
             ],
 
@@ -175,13 +175,13 @@ class DescriptivosSeeder extends Seeder
             [
                 'id_descriptivo' => 25,
                 'id_pregunta' => 20,
-                'texto_descriptivo' => 'Y lo explica parcialmente.',
+                'texto_descriptivo' => 'y lo explica parcialmente ',
                 'calificacion' => 1
             ],
             [
                 'id_descriptivo' => 26,
                 'id_pregunta' => 20,
-                'texto_descriptivo' => 'y lo explica en detalle.',
+                'texto_descriptivo' => 'y lo explica en detalle ',
                 'calificacion' => 2
             ],
 
@@ -209,7 +209,7 @@ class DescriptivosSeeder extends Seeder
             [
                 'id_descriptivo' => 30,
                 'id_pregunta' => 25,
-                'texto_descriptivo' => 'Y lo explica parcialmente.',
+                'texto_descriptivo' => 'y lo explica parcialmente ',
                 'calificacion' => 1
             ],
             [
@@ -243,13 +243,13 @@ class DescriptivosSeeder extends Seeder
             [
                 'id_descriptivo' => 35,
                 'id_pregunta' => 30,
-                'texto_descriptivo' => 'Y lo explica parcialmente.',
+                'texto_descriptivo' => 'y lo explica parcialmente ',
                 'calificacion' => 1
             ],
             [
                 'id_descriptivo' => 36,
                 'id_pregunta' => 30,
-                'texto_descriptivo' => 'y lo explica en detalle.',
+                'texto_descriptivo' => 'y lo explica en detalle ',
                 'calificacion' => 2
             ],
 
@@ -277,13 +277,13 @@ class DescriptivosSeeder extends Seeder
             [
                 'id_descriptivo' => 40,
                 'id_pregunta' => 35,
-                'texto_descriptivo' => 'Y lo explica parcialmente.',
+                'texto_descriptivo' => 'y lo explica parcialmente ',
                 'calificacion' => 1
             ],
             [
                 'id_descriptivo' => 41,
                 'id_pregunta' => 35,
-                'texto_descriptivo' => 'y lo explica en detalle.',
+                'texto_descriptivo' => 'y lo explica en detalle ',
                 'calificacion' => 2
             ],
 
@@ -311,13 +311,13 @@ class DescriptivosSeeder extends Seeder
             [
                 'id_descriptivo' => 45,
                 'id_pregunta' => 40,
-                'texto_descriptivo' => 'Y lo explica parcialmente.',
+                'texto_descriptivo' => 'y lo explica parcialmente ',
                 'calificacion' => 1
             ],
             [
                 'id_descriptivo' => 46,
                 'id_pregunta' => 40,
-                'texto_descriptivo' => 'y lo explica en detalle.',
+                'texto_descriptivo' => 'y lo explica en detalle ',
                 'calificacion' => 2
             ],
 
@@ -345,13 +345,13 @@ class DescriptivosSeeder extends Seeder
             [
                 'id_descriptivo' => 50,
                 'id_pregunta' => 45,
-                'texto_descriptivo' => 'Y lo explica parcialmente.',
+                'texto_descriptivo' => 'y lo explica parcialmente ',
                 'calificacion' => 1
             ],
             [
                 'id_descriptivo' => 51,
                 'id_pregunta' => 45,
-                'texto_descriptivo' => 'y lo explica en detalle.',
+                'texto_descriptivo' => 'y lo explica en detalle ',
                 'calificacion' => 2
             ],
 
@@ -379,13 +379,13 @@ class DescriptivosSeeder extends Seeder
             [
                 'id_descriptivo' => 55,
                 'id_pregunta' => 50,
-                'texto_descriptivo' => 'Y lo explica parcialmente.',
+                'texto_descriptivo' => 'y lo explica parcialmente ',
                 'calificacion' => 1
             ],
             [
                 'id_descriptivo' => 56,
                 'id_pregunta' => 50,
-                'texto_descriptivo' => 'y lo explica en detalle.',
+                'texto_descriptivo' => 'y lo explica en detalle ',
                 'calificacion' => 2
             ],
 
@@ -413,13 +413,13 @@ class DescriptivosSeeder extends Seeder
             [
                 'id_descriptivo' => 60,
                 'id_pregunta' => 55,
-                'texto_descriptivo' => 'Y lo explica parcialmente.',
+                'texto_descriptivo' => 'y lo explica parcialmente ',
                 'calificacion' => 1
             ],
             [
                 'id_descriptivo' => 61,
                 'id_pregunta' => 55,
-                'texto_descriptivo' => 'y lo explica en detalle.',
+                'texto_descriptivo' => 'y lo explica en detalle ',
                 'calificacion' => 2
             ],
 
@@ -447,13 +447,13 @@ class DescriptivosSeeder extends Seeder
             [
                 'id_descriptivo' => 65,
                 'id_pregunta' => 60,
-                'texto_descriptivo' => 'Y lo explica parcialmente.',
+                'texto_descriptivo' => 'y lo explica parcialmente ',
                 'calificacion' => 1
             ],
             [
                 'id_descriptivo' => 66,
                 'id_pregunta' => 60,
-                'texto_descriptivo' => 'y lo explica en detalle.',
+                'texto_descriptivo' => 'y lo explica en detalle ',
                 'calificacion' => 2
             ],
 
@@ -481,13 +481,13 @@ class DescriptivosSeeder extends Seeder
             [
                 'id_descriptivo' => 70,
                 'id_pregunta' => 65,
-                'texto_descriptivo' => 'Y lo explica parcialmente.',
+                'texto_descriptivo' => 'y lo explica parcialmente ',
                 'calificacion' => 1
             ],
             [
                 'id_descriptivo' => 71,
                 'id_pregunta' => 65 ,
-                'texto_descriptivo' => 'y lo explica en detalle.',
+                'texto_descriptivo' => 'y lo explica en detalle ',
                 'calificacion' => 2
             ],
 
@@ -515,13 +515,13 @@ class DescriptivosSeeder extends Seeder
             [
                 'id_descriptivo' => 75,
                 'id_pregunta' => 70,
-                'texto_descriptivo' => 'Y lo explica parcialmente.',
+                'texto_descriptivo' => 'y lo explica parcialmente ',
                 'calificacion' => 1
             ],
             [
                 'id_descriptivo' => 76,
                 'id_pregunta' => 70,
-                'texto_descriptivo' => 'y lo explica en detalle.',
+                'texto_descriptivo' => 'y lo explica en detalle ',
                 'calificacion' => 2
             ],
 
@@ -549,13 +549,13 @@ class DescriptivosSeeder extends Seeder
             [
                 'id_descriptivo' => 80,
                 'id_pregunta' => 75,
-                'texto_descriptivo' => 'Y lo explica parcialmente.',
+                'texto_descriptivo' => 'y lo explica parcialmente ',
                 'calificacion' => 1
             ],
             [
                 'id_descriptivo' => 81,
                 'id_pregunta' => 75,
-                'texto_descriptivo' => 'y lo explica en detalle.',
+                'texto_descriptivo' => 'y lo explica en detalle ',
                 'calificacion' => 2
             ],
 
@@ -811,13 +811,13 @@ class DescriptivosSeeder extends Seeder
             [
                 'id_descriptivo' => 121,
                 'id_pregunta' => 86,
-                'texto_descriptivo' => 'Y lo explica parcialmente.',
+                'texto_descriptivo' => 'y lo explica parcialmente ',
                 'calificacion' => 1
             ],
             [
                 'id_descriptivo' => 122,
                 'id_pregunta' => 86,
-                'texto_descriptivo' => 'y lo explica en detalle.',
+                'texto_descriptivo' => 'y lo explica en detalle ',
                 'calificacion' => 2
             ],
 
@@ -845,13 +845,13 @@ class DescriptivosSeeder extends Seeder
             [
                 'id_descriptivo' => 126,
                 'id_pregunta' => 88,
-                'texto_descriptivo' => 'Y lo explica parcialmente.',
+                'texto_descriptivo' => 'y lo explica parcialmente ',
                 'calificacion' => 1
             ],
             [
                 'id_descriptivo' => 127,
                 'id_pregunta' => 88,
-                'texto_descriptivo' => 'y lo explica en detalle.',
+                'texto_descriptivo' => 'y lo explica en detalle ',
                 'calificacion' => 2
             ],
 
@@ -879,13 +879,13 @@ class DescriptivosSeeder extends Seeder
             [
                 'id_descriptivo' => 131,
                 'id_pregunta' => 90,
-                'texto_descriptivo' => 'Y lo explica parcialmente.',
+                'texto_descriptivo' => 'y lo explica parcialmente ',
                 'calificacion' => 1
             ],
             [
                 'id_descriptivo' => 132,
                 'id_pregunta' => 90,
-                'texto_descriptivo' => 'y lo explica en detalle.',
+                'texto_descriptivo' => 'y lo explica en detalle ',
                 'calificacion' => 2
             ],
 
@@ -913,13 +913,13 @@ class DescriptivosSeeder extends Seeder
             [
                 'id_descriptivo' => 136,
                 'id_pregunta' => 92,
-                'texto_descriptivo' => 'Y lo explica parcialmente.',
+                'texto_descriptivo' => 'y lo explica parcialmente ',
                 'calificacion' => 1
             ],
             [
                 'id_descriptivo' => 137,
                 'id_pregunta' => 92,
-                'texto_descriptivo' => 'y lo explica en detalle.',
+                'texto_descriptivo' => 'y lo explica en detalle ',
                 'calificacion' => 2
             ],
 
@@ -977,7 +977,7 @@ class DescriptivosSeeder extends Seeder
             [
                 'id_descriptivo' => 146,
                 'id_pregunta' => 94,
-                'texto_descriptivo' => 'y lo explica en detalle.',
+                'texto_descriptivo' => 'y lo explica en detalle ',
                 'calificacion' => 2
             ],
 
@@ -1005,13 +1005,13 @@ class DescriptivosSeeder extends Seeder
             [
                 'id_descriptivo' => 150,
                 'id_pregunta' => 96,
-                'texto_descriptivo' => 'Y lo explica parcialmente. ',
+                'texto_descriptivo' => 'y lo explica parcialmente  ',
                 'calificacion' => 1
             ],
             [
                 'id_descriptivo' => 151,
                 'id_pregunta' => 96,
-                'texto_descriptivo' => 'y lo explica en detalle.',
+                'texto_descriptivo' => 'y lo explica en detalle ',
                 'calificacion' => 2
             ],
 
@@ -1045,7 +1045,7 @@ class DescriptivosSeeder extends Seeder
             [
                 'id_descriptivo' => 156,
                 'id_pregunta' => 98,
-                'texto_descriptivo' => 'Y lo explica parcialmente. ',
+                'texto_descriptivo' => 'y lo explica parcialmente  ',
                 'calificacion' => 2
             ],
             [
@@ -1091,7 +1091,7 @@ class DescriptivosSeeder extends Seeder
             [
                 'id_descriptivo' => 163,
                 'id_pregunta' => 100,
-                'texto_descriptivo' => 'Y lo explica parcialmente. ',
+                'texto_descriptivo' => 'y lo explica parcialmente  ',
                 'calificacion' => 2
             ],
             [

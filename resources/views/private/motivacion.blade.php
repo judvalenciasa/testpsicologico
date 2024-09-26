@@ -19,10 +19,11 @@
 
     <section class="caracterizacion_section">
         <div class="encabezado_ctn">
-            <h3> Bienvenido(a) a la prueba de pensamiento crítico CognitiveSpark
-                Aquí iniciarás a responder un total de 60 ítems de pensamiento crítico y 120 ítems sobre metacognición.
-
-                Antes de iniciar con la prueba de pensamiento crítico, es importante que respondas la siguiente encuesta sobre motivación. Lee cuidadosamente cada una de las afirmaciones y usa la escala para responder a tu respuesta que puede ir desde Nada cierto en mi (1) hasta Totalmente cierto en mi (7).
+            <h3> Bienvenido(a) a la prueba de pensamiento crítico <span>CognitiveSpark</span>
+                <br><br>
+                Responderás un total de 60 preguntas y 32 subpreguntas (de menor esfuerzo mental que las preguntas principales) sobre pensamiento crítico, y al final, 26 ítems sobre metacognición. Te invitamos a mantener la calma y la concentración durante el proceso.
+                <br><br>
+                Antes de iniciar con la prueba de pensamiento crítico, es importante que respondas la siguiente encuesta sobre motivación. Lee cuidadosamente cada una de las afirmaciones y utiliza la escala para indicar tu respuesta, que puede ir desde Nada cierto en mí (1) hasta Totalmente cierto en mí (7).
             </h3>
         </div>
         @if(session('success'))
