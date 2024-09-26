@@ -92,6 +92,9 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::post('usuarios/cargar_politicas', [ArchivosController::class, 'store'])->name('archivo.store');
 
+    //buscar archivo por su nombre como parametro
+    Route::get('usuarios/descargar_consentimiento/{nombre}', [ArchivosController::class, 'download'])->name('archivo.descargar');
+
 });
 
 // Rutas accesibles solo para invitados (usuarios no autenticados)
