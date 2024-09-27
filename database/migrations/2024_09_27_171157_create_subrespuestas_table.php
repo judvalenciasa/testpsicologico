@@ -18,7 +18,6 @@ return new class extends Migration
             $table->unsignedBigInteger('id_reporte');
             $table->string('respuesta', 650)->nullable();
             $table->integer(column: 'calificacion_respuesta');
-            $table->timestamps();
             
             $table->foreign('id_usuario')->references('id_usuario')->on('users');
             $table->foreign('id_subpregunta')->references('id_subpregunta')->on('subpreguntas');
