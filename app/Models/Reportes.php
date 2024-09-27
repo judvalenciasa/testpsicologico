@@ -79,4 +79,9 @@ class Reportes extends Model
     {
         return $this->hasMany(Respuestas::class, 'id_reporte');
     }
+
+    public function subrespuestas()
+    {
+        return $this->hasMany(Subrespuestas::class, 'id_reporte', 'id_reporte');
+    }
 }
