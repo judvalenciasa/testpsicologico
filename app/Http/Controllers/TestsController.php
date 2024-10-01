@@ -15,7 +15,7 @@ use App\Models\subpreguntas;
 
 //se importa el controlador de respuestas
 use App\Http\Controllers\RespuestasController;
-
+use App\Models\subrespuestas;
 use App\Services\OpenAIService;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -31,6 +31,35 @@ class TestsController extends Controller
     public function __construct(OpenAIService $openAIService)
     {
         $this->openAIService = $openAIService;
+    }
+
+    //funcion para guardar subrespuestas
+    public function guardarRespuestaSubpregunta(Request $request, $user, $id_subpregunta, $respuesta, $calificacion)
+    {
+
+        $id_reporte = session('id_reporte');
+
+        $subrespuestaExistente = subrespuestas::where('id_usuario', $user->id_usuario)
+            ->where('id_subpregunta', $id_subpregunta)
+            ->where('id_reporte', $id_reporte)
+            ->first();
+
+        if ($subrespuestaExistente) {
+            $subrespuestaExistente->update([
+                'respuesta' => $respuesta,
+                'calificacion_respuesta' => $calificacion
+            ]);
+        } else {
+
+
+            subrespuestas::create([
+                'id_usuario' => $user->id_usuario,
+                'id_subpregunta' => $id_subpregunta,
+                'id_reporte' => $id_reporte,
+                'respuesta' => $respuesta,
+                'calificacion_respuesta' => $calificacion
+            ]);
+        }
     }
 
     //funcion para guardar respuesta
@@ -215,6 +244,9 @@ class TestsController extends Controller
                 return redirect()->back()->with('error', 'Opción seleccionada no válida para la subpregunta.');
             }
 
+            //guardar respuesta subpregunta en la tabla subrespuestas
+            $this->guardarRespuestaSubpregunta($request, $user, $subpregunta, $opcionSubpreguntaSeleccionada->texto, $opcionSubpreguntaSeleccionada->valor_opcion);
+
 
             $totalCalificacionSubpreguntas += $opcionSubpreguntaSeleccionada->valor_opcion;
             $totalSubpreguntas++;
@@ -225,7 +257,7 @@ class TestsController extends Controller
         $this->guardarRespuesta($request, $user, $preguntaPrincipalId, 'Calificación basada en subpreguntas', $totalCalificacionSubpreguntas);
     }
 
-    public function calificar_subpreguntas_abiertas(Request $request, $pregunta_id, $user)
+    public function calificar_subpreguntas_abiertas(Request $request, $user)
     {
         $totalCalificacionSubpreguntas = 0;
         $totalSubpreguntas = 0;
@@ -243,6 +275,9 @@ class TestsController extends Controller
             $respuestas_cerradas = $request->input('respuestas_cerradas');
 
             $respuestas_cerradas_indexadas = array_values($respuestas_cerradas);
+            $subpregunta = Subpreguntas::find($subpregunta_id);
+
+
 
             if (!is_string($respuesta_abierta) || empty(trim($respuesta_abierta))) {
                 return redirect()->back()->with('error', 'Por favor ingrese una respuesta válida para la subpregunta.');
@@ -254,9 +289,10 @@ class TestsController extends Controller
 
             if ($opcion->valor_opcion == 0) {
                 $respuesta_chatgpt = 0;
-            } else {
 
-                $subpregunta = Subpreguntas::find($subpregunta_id);
+                //guardar respuesta subpregunta en la tabla subrespuestas
+                $this->guardarRespuestaSubpregunta($request, $user, $subpregunta->id_subpregunta, $respuesta_abierta, $respuesta_chatgpt);
+            } else {
 
                 $criterio = Subcriterios::where('id_subpregunta', $subpregunta_id)->pluck('texto');
 
@@ -271,14 +307,16 @@ class TestsController extends Controller
                     $respuesta_chatgpt = 0;
                 }
 
+
+                //guardar respuesta subpregunta en la tabla subrespuestas
+                $this->guardarRespuestaSubpregunta($request, $user, $subpregunta->id_subpregunta, $respuesta_abierta, $respuesta_chatgpt);
+
                 $totalCalificacionSubpreguntas += $respuesta_chatgpt;
                 $totalSubpreguntas++;
             }
 
-            if ($totalSubpreguntas > 0) {
 
-                $this->guardarRespuesta($request, $user, $preguntaPrincipalId, 'Calificación basada en subpreguntas abiertas', $totalCalificacionSubpreguntas);
-            }
+
 
             $totalCalificacionSubpreguntas += $respuesta_chatgpt;
             $totalSubpreguntas++;
@@ -376,9 +414,6 @@ class TestsController extends Controller
 
         $user = Auth::user();
 
-        Log::info($request);
-
-
         if (!$request->has('pregunta_ids')) {
 
             $hora_inicio_prueba = Carbon::now();
@@ -391,7 +426,7 @@ class TestsController extends Controller
             $contextos = Contexto::with('preguntas')->get();
 
             // Definir los índices según el orden que deseas (pares primero, impares después)
-            $indices = [2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25, 27, 29];
+            $indices = [16, 2, 4, 6, 8, 10, 12, 14, 18, 20, 22, 24, 26, 28, 30, 1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25, 27, 29];
 
             $contextos_ordenados = [];
 
@@ -405,7 +440,6 @@ class TestsController extends Controller
                 }
             }
 
-            //dd($contextos_ordenados);
 
             $contexto_index = 0;
             $total_contextos = count($contextos_ordenados);
@@ -447,7 +481,7 @@ class TestsController extends Controller
 
                     if ($tipo_pregunta == 'subpregunta' && $request->has('respuestas_abiertas')) {
 
-                        $this->calificar_subpreguntas_abiertas($request, $pregunta_id, $user);
+                        $this->calificar_subpreguntas_abiertas($request, $user);
                     }
                 }
             }
