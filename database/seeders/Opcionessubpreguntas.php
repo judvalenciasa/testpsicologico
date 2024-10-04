@@ -19,19 +19,19 @@ class Opcionessubpreguntas extends Seeder
             [
                 'id_opcionessubpregunta' => 1,
                 'id_subpregunta' => 1,
-                'texto' => 'Razón',
+                'texto' => 'a) Razón',
                 'valor_opcion'=> 1
             ],
             [
                 'id_opcionessubpregunta' => 2,
                 'id_subpregunta' => 1,
-                'texto' => 'Conclusión',
+                'texto' => 'b) Conclusión',
                 'valor_opcion'=> 0
             ],
             [
                 'id_opcionessubpregunta' => 3,
                 'id_subpregunta' => 1,
-                'texto' => 'Contrargumento ',
+                'texto' => 'c) Contrargumento ',
                 'valor_opcion'=> 0
             ],
 
@@ -39,19 +39,19 @@ class Opcionessubpreguntas extends Seeder
             [
                 'id_opcionessubpregunta' => 4,
                 'id_subpregunta' => 2,
-                'texto' => 'Razón',
+                'texto' => 'a) Razón',
                 'valor_opcion'=> 0
             ],
             [
                 'id_opcionessubpregunta' => 5,
                 'id_subpregunta' => 2,
-                'texto' => 'Conclusión ',
+                'texto' => 'b) Conclusión ',
                 'valor_opcion'=> 1
             ],
             [
                 'id_opcionessubpregunta' => 6,
                 'id_subpregunta' => 2,
-                'texto' => 'Contrargumento ',
+                'texto' => 'c) Contrargumento ',
                 'valor_opcion'=> 0
             ],
 
@@ -59,19 +59,19 @@ class Opcionessubpreguntas extends Seeder
             [
                 'id_opcionessubpregunta' => 7,
                 'id_subpregunta' => 3,
-                'texto' => 'Razón',
+                'texto' => 'a) Razón',
                 'valor_opcion'=> 1
             ],
             [
                 'id_opcionessubpregunta' => 8,
                 'id_subpregunta' => 3,
-                'texto' => 'Conclusión ',
+                'texto' => 'b) Conclusión ',
                 'valor_opcion'=> 0
             ],
             [
                 'id_opcionessubpregunta' => 9,
                 'id_subpregunta' => 3,
-                'texto' => 'Contrargumento ',
+                'texto' => 'c) Contrargumento ',
                 'valor_opcion'=> 0
             ],
 
@@ -79,38 +79,38 @@ class Opcionessubpreguntas extends Seeder
             [
                 'id_opcionessubpregunta' => 10,
                 'id_subpregunta' => 4,
-                'texto' => 'Razón',
+                'texto' => 'a) Razón',
                 'valor_opcion'=> 1
             ],
             [
                 'id_opcionessubpregunta' => 11,
                 'id_subpregunta' => 4,
-                'texto' => 'Conclusión ',
+                'texto' => 'b) Conclusión ',
                 'valor_opcion'=> 0
             ],
             [
                 'id_opcionessubpregunta' => 12,
                 'id_subpregunta' => 4,
-                'texto' => 'Contrargumento ',
+                'texto' => 'c) Contrargumento ',
                 'valor_opcion'=> 0
             ],
             //Item 31, subpregunta 5
             [
                 'id_opcionessubpregunta' => 13,
                 'id_subpregunta' => 5,
-                'texto' => 'Razón',
+                'texto' => 'a) Razón',
                 'valor_opcion'=> 0
             ],
             [
                 'id_opcionessubpregunta' => 14,
                 'id_subpregunta' => 5,
-                'texto' => 'Conclusión ',
+                'texto' => 'b) Conclusión ',
                 'valor_opcion'=> 0
             ],
             [
                 'id_opcionessubpregunta' => 15,
                 'id_subpregunta' => 5,
-                'texto' => 'Contrargumento ',
+                'texto' => 'c) Contrargumento ',
                 'valor_opcion'=> 1
             ],
 
@@ -118,19 +118,19 @@ class Opcionessubpreguntas extends Seeder
             [
                 'id_opcionessubpregunta' => 16,
                 'id_subpregunta' => 11,
-                'texto' => 'Razón',
+                'texto' => 'a) Razón',
                 'valor_opcion'=> 1
             ],
             [
                 'id_opcionessubpregunta' => 17,
                 'id_subpregunta' => 11,
-                'texto' => 'Conclusión ',
+                'texto' => 'b) Conclusión ',
                 'valor_opcion'=> 0
             ],
             [
                 'id_opcionessubpregunta' => 18,
                 'id_subpregunta' => 11,
-                'texto' => 'Contrargumento ',
+                'texto' => 'c) Contrargumento ',
                 'valor_opcion'=> 0
             ],
 
@@ -138,19 +138,19 @@ class Opcionessubpreguntas extends Seeder
             [
                 'id_opcionessubpregunta' => 19,
                 'id_subpregunta' => 12,
-                'texto' => 'Razón',
+                'texto' => 'a) Razón',
                 'valor_opcion'=> 0
             ],
             [
                 'id_opcionessubpregunta' => 20,
                 'id_subpregunta' => 12,
-                'texto' => 'Conclusión ',
+                'texto' => 'b) Conclusión ',
                 'valor_opcion'=> 0
             ],
             [
                 'id_opcionessubpregunta' => 21,
                 'id_subpregunta' => 12,
-                'texto' => 'Contrargumento ',
+                'texto' => 'c) Contrargumento ',
                 'valor_opcion'=> 1
             ],
 
@@ -158,19 +158,19 @@ class Opcionessubpreguntas extends Seeder
             [
                 'id_opcionessubpregunta' => 22,
                 'id_subpregunta' => 13,
-                'texto' => 'Razón',
+                'texto' => 'a) Razón',
                 'valor_opcion'=> 0
             ],
             [
                 'id_opcionessubpregunta' => 23,
                 'id_subpregunta' => 13,
-                'texto' => 'Conclusión ',
+                'texto' => 'b) Conclusión ',
                 'valor_opcion'=> 1
             ],
             [
                 'id_opcionessubpregunta' => 24,
                 'id_subpregunta' => 13,
-                'texto' => 'Contrargumento ',
+                'texto' => 'c) Contrargumento ',
                 'valor_opcion'=> 0
             ],
 
@@ -178,38 +178,38 @@ class Opcionessubpreguntas extends Seeder
             [
                 'id_opcionessubpregunta' => 25,
                 'id_subpregunta' => 14,
-                'texto' => 'Razón',
+                'texto' => 'a) Razón',
                 'valor_opcion'=> 0
             ],
             [
                 'id_opcionessubpregunta' => 26,
                 'id_subpregunta' => 14,
-                'texto' => 'Conclusión ',
+                'texto' => 'b) Conclusión ',
                 'valor_opcion'=> 0
             ],
             [
                 'id_opcionessubpregunta' => 27,
                 'id_subpregunta' => 14,
-                'texto' => 'Contrargumento ',
+                'texto' => 'c) Contrargumento ',
                 'valor_opcion'=> 1
             ],
             //Item 33, subpregunta 5
             [
                 'id_opcionessubpregunta' => 28,
                 'id_subpregunta' => 15,
-                'texto' => 'Razón',
+                'texto' => 'a) Razón',
                 'valor_opcion'=> 1
             ],
             [
                 'id_opcionessubpregunta' => 29,
                 'id_subpregunta' => 15,
-                'texto' => 'Conclusión ',
+                'texto' => 'b) Conclusión ',
                 'valor_opcion'=> 0
             ],
             [
                 'id_opcionessubpregunta' => 30,
                 'id_subpregunta' => 15,
-                'texto' => 'Contrargumento ',
+                'texto' => 'c) Contrargumento ',
                 'valor_opcion'=> 0
             ],
 
@@ -217,19 +217,19 @@ class Opcionessubpreguntas extends Seeder
             [
                 'id_opcionessubpregunta' => 31,
                 'id_subpregunta' => 21,
-                'texto' => 'Opinión ',
+                'texto' => 'a) Opinión ',
                 'valor_opcion'=> 0
             ],
             [
                 'id_opcionessubpregunta' => 32,
                 'id_subpregunta' => 21,
-                'texto' => 'Hecho  ',
+                'texto' => 'b) Hecho  ',
                 'valor_opcion'=> 1
             ],
             [
                 'id_opcionessubpregunta' => 33,
                 'id_subpregunta' => 21,
-                'texto' => 'Argumento razonado ',
+                'texto' => 'c) Argumento razonado ',
                 'valor_opcion'=> 0
             ],
 
@@ -237,19 +237,19 @@ class Opcionessubpreguntas extends Seeder
             [
                 'id_opcionessubpregunta' => 34,
                 'id_subpregunta' => 22,
-                'texto' => 'Opinión ',
+                'texto' => 'a) Opinión ',
                 'valor_opcion'=> 0
             ],
             [
                 'id_opcionessubpregunta' => 35,
                 'id_subpregunta' => 22,
-                'texto' => 'Hecho ',
+                'texto' => 'b) Hecho ',
                 'valor_opcion'=> 0
             ],
             [
                 'id_opcionessubpregunta' => 36,
                 'id_subpregunta' => 22,
-                'texto' => 'Argumento razonado ',
+                'texto' => 'c) Argumento razonado ',
                 'valor_opcion'=> 1
             ],
 
@@ -257,19 +257,19 @@ class Opcionessubpreguntas extends Seeder
             [
                 'id_opcionessubpregunta' => 37,
                 'id_subpregunta' => 23,
-                'texto' => 'Opinión',
+                'texto' => 'a) Opinión',
                 'valor_opcion'=> 0
             ],
             [
                 'id_opcionessubpregunta' => 38,
                 'id_subpregunta' => 23,
-                'texto' => 'Hecho ',
+                'texto' => 'b) Hecho ',
                 'valor_opcion'=> 0
             ],
             [
                 'id_opcionessubpregunta' => 39,
                 'id_subpregunta' => 23,
-                'texto' => 'Argumento razonado ',
+                'texto' => 'c)  razonado ',
                 'valor_opcion'=> 1
             ],
 
@@ -277,38 +277,38 @@ class Opcionessubpreguntas extends Seeder
             [
                 'id_opcionessubpregunta' => 40,
                 'id_subpregunta' => 24,
-                'texto' => 'Opinión',
+                'texto' => 'a) Opinión',
                 'valor_opcion'=> 1
             ],
             [
                 'id_opcionessubpregunta' => 41,
                 'id_subpregunta' => 24,
-                'texto' => 'Hecho ',
+                'texto' => 'b) Hecho ',
                 'valor_opcion'=> 0
             ],
             [
                 'id_opcionessubpregunta' => 42,
                 'id_subpregunta' => 24,
-                'texto' => 'Argumento razonado ',
+                'texto' => 'c) Argumento razonado ',
                 'valor_opcion'=> 0
             ],
             //Item 35, subpregunta 5
             [
                 'id_opcionessubpregunta' => 43,
                 'id_subpregunta' => 25,
-                'texto' => 'Opinión',
+                'texto' => 'a) Opinión',
                 'valor_opcion'=> 0
             ],
             [
                 'id_opcionessubpregunta' => 44,
                 'id_subpregunta' => 25,
-                'texto' => 'Hecho ',
+                'texto' => 'b) Hecho ',
                 'valor_opcion'=> 1
             ],
             [
                 'id_opcionessubpregunta' => 45,
                 'id_subpregunta' => 25,
-                'texto' => 'Argumento razonado ',
+                'texto' => 'c) Argumento razonado ',
                 'valor_opcion'=> 0
             ],
 
