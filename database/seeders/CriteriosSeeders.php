@@ -424,9 +424,6 @@ class CriteriosSeeders extends Seeder
 
                 Las explicaciones de 2 puntos incluyen lo siguiente:
 
-                Afirmando que existe una tasa base baja. 
-                Las posibilidades son muy pequeñas, o que la probabilidad sea muy baja.
-
                 Ejemplos de explicaciones de 2 puntos:
 
                 Porque probablemente hubo una cantidad asombrosamente grande de personas que lo intentaron de esta manera, pero nunca lo lograron. Y el número de personas latinas o hispanas que lograron ingresar es una cantidad muy pequeña, y si sólo 17 de cada 100 personas de ese grupo lo logró, eso hace que sea una posibilidad aún menor.

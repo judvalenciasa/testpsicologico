@@ -9,6 +9,8 @@ use App\Models\Subhabilidad;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\Reportes;
+use App\Models\subpreguntas;
+use App\Models\subrespuestas;
 
 class ReportesController extends Controller
 {
@@ -100,9 +102,7 @@ class ReportesController extends Controller
                 'planificacion' => $categorias['planificacion'],
                 'tiempo_prueba' => $request->tiempo_prueba,
             ]);
-
         }
-
     }
 
 
@@ -538,7 +538,7 @@ class ReportesController extends Controller
             return "en contextos de fenómenos ambientales, culturales y de propuestas de emprendimiento.";
         }
         if ($contexto == 21) {
-            return "en contextos sociales y emocionales.";
+            return "de relaciones sociales y vínculos emocionales.";
         }
         if ($contexto == 22) {
             return "en contextos de participación ambiental y calidad de vida.";
@@ -553,7 +553,7 @@ class ReportesController extends Controller
             return "en contextos deportivos, de salud y relaciones interpersonales.";
         }
         if ($contexto == 26) {
-            return "En contextos en los que la era tecnológica y digital ofrece facilidades, pero también ponen en riesgo la seguridad de las personas";
+            return "En contextos en los que la era tecnológica y digital ofrece facilidades, pero también pone en riesgo la seguridad de las personas";
         }
         if ($contexto == 27) {
             return "En contextos educativos y de responsabilidades académicas.";
@@ -592,7 +592,32 @@ class ReportesController extends Controller
      */
     public function ver_respuestas_admin(Request $request)
     {
-        $informe = $this->consultar_informe($request->id_usuario, $request->id_reporte);
+        $respuestas = $this->consultar_informe($request->id_usuario, $request->id_reporte);
+        $subrespuestas = $this->consutar_subrespuestas($request->id_usuario, $request->id_reporte);
+
+        $informe = [
+            'respuestas' => $respuestas,
+            'subrespuestas' => $subrespuestas
+        ];
+
+
         return view('reporte.reporte_revisor', compact('informe'));
+    }
+
+    public function consutar_subrespuestas($id_usuario, $id_reporte)
+    {
+        $subrespuestas = subrespuestas::where('id_usuario', $id_usuario)
+            ->where('id_reporte', $id_reporte)
+            ->get()
+            ->toArray();
+
+
+        //consultar el texto de las subpreguntas asociadas a las subrespuestas
+        foreach ($subrespuestas as $key => $subrespuesta) {
+            $subrespuestas[$key]['texto_subpregunta'] = subpreguntas::where('id_subpregunta', $subrespuesta['id_subpregunta'])
+                ->value('texto');
+        }
+
+        return $subrespuestas;
     }
 }

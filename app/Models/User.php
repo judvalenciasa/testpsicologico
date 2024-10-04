@@ -49,7 +49,7 @@ class User extends Authenticatable
     }
 
     public function reportes()
-    
+
     {
         return $this->hasMany(Reportes::class, 'id_usuario');
     }
@@ -58,4 +58,11 @@ class User extends Authenticatable
     {
         return $this->hasMany(Respuestas::class, 'id_usuario');
     }
+
+    public function isAdmin()
+    {
+        return $this->es_administrador;
+    }
+
+    
 }

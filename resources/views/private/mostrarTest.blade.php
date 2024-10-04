@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cognitive Sparks | Prueba Disponible</title>
+    <title>CognitiveSparks | Prueba Disponible</title>
 
     <!-- Styles -->
     <link href="{{ asset('css/pruebaPage.css') }}" rel="stylesheet">

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Cognitive Sparks | Encuesta de caracterización</title>
+    <title>CognitiveSparks | Encuesta de caracterización</title>
 
     <!-- Styles -->
     <link href="{{ asset('css/caracterizacion.css') }}" rel="stylesheet">

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Mail\MiMailable;
 use App\Models\Pines;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
@@ -11,10 +12,12 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 //import el controlador de test
 use App\Http\Controllers\TestsController;
+use Mail;
 use PHPUnit\Event\Code\Test;
 use App\Models\Pruebas;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Storage;
+use App\Mail\TestEmail;
 
 class UserController extends Controller
 {
@@ -41,9 +44,8 @@ class UserController extends Controller
         // Crear el nombre personalizado del archivo
         $fileName = $user->name . "_" . Carbon::now()->format('Y-m-d') . ".pdf";
 
- 
-        $consentimientoSubido = Storage::disk('public')->exists('pdfs/' . $user->documento_identificacion . '/' . $fileName);
-        
+        $consentimientoSubido = Storage::disk('public')->exists('pdfs/' . $user->name . '/' . $fileName);
+
         return view('private.politica_tratamiento_datos', compact('consentimientoSubido'));
     }
 
@@ -102,47 +104,60 @@ class UserController extends Controller
     }
     public function registrar(Request $request)
     {
-        try {
-            $id_pin = $this->pin_valido($request);
+        $id_pin = $this->pin_valido($request);
 
-            if ($id_pin != null) {
-                $request->merge(['id_pin' => $id_pin]);
+        if ($id_pin != null) {
+            $request->merge(['id_pin' => $id_pin]);
 
-                $request->validate([
-                    'name' => 'required',
-                    'email' => 'required',
-                    'id_pin' => 'required',
-                    'password' => 'required|string|min:6',
+            $request->validate([
+                'name' => 'required',
+                'email' => 'required',
+                'id_pin' => 'required',
+                'password' => 'required|string|min:6',
+            ]);
 
-                ]);
+            
 
-                $user = new User();
-                $user->name = $request->name;
-                $user->email = $request->email;
-                $user->id_pin = $request->id_pin;
-                $user->password = Hash::make($request->password); // Hashear la contraseña
-                $user->es_administrador = 0;
+            $user = new User();
+            $user->name = $request->name;
+            $user->email = $request->email;
+            $user->id_pin = $request->id_pin;
+            $user->password = Hash::make($request->password); // Hashear la contraseña
+            $user->es_administrador = 0;
 
-                $user->save();
+            $user->save();
 
-                return response()->json([
-                    "status" => 1,
-                    "msg" => "Registro exitoso"
-                ]);
-            } else {
-                return response()->json([
-                    "status" => 0,
-                    "msg" => "Pin inválido"
-                ], 400);
+            $details = [
+                'email' => $request->email,
+                'contrasena' =>  $request->password
+            ];
+    
+             // Enviar correo al usuario
+             try {
+                Mail::to('judvalenciasa@gmail.com')->send(new MiMailable($details));
+            } catch (\Exception $e) {
+                Log::error('Error al enviar el correo: ' . $e->getMessage());
             }
-        } catch (\Exception $e) {
-            return response()->json([
-                "status" => 0,
-                "msg" => "Ocurrió un error en el servidor.",
-                "error" => $e->getMessage()
-            ], 500);
+
+            /*
+            //MailController
+            $details = [
+                'title' => 'Registro Exitoso',
+                'body' => 'Hola ' . $user->name . ', tu registro ha sido exitoso en nuestra plataforma.'
+            ];
+
+             // Enviar correo al usuario
+            Mail::to($user->email)->send(new MiMailable($details));
+*/
+
+            // Devolver respuesta JSON de éxito
+            return response()->json(['success' => true]);
+        } else {
+            // Devolver respuesta JSON de error
+            return response()->json(['success' => false, 'message' => 'El pin es inválido.']);
         }
     }
+
 
 
     public function login(Request $request)
@@ -168,6 +183,12 @@ class UserController extends Controller
             return $this->authenticated($request, Auth::user());
         }
 
+
+
+        
+
+
+
         // Si la autenticación falla, redirigir de vuelta al formulario de login con un mensaje de error
         return back()->withErrors([
             'email' => 'Las credenciales no coinciden con nuestros registros.',
@@ -180,6 +201,7 @@ class UserController extends Controller
     protected function authenticated(Request $request, $user)
     {
         if ($user->es_administrador) {
+
             return $this->indexAdministrador($request);
         } else {
             // Verificar si el usuario ya aceptó la política de tratamiento de datos

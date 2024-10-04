@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cognitive Sparks | Encuesta de Motivación</title>
+    <title>CognitiveSparks | Encuesta de Motivación</title>
     <!-- token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -19,10 +19,11 @@
 
     <section class="caracterizacion_section">
         <div class="encabezado_ctn">
-            <h3> Bienvenido(a) a la prueba de pensamiento crítico Cognitive Spark
-                Aquí iniciarás a responder un total de 60 ítems de pensamiento crítico y 120 ítems sobre metacognición.
-
-                Antes de iniciar con la prueba de pensamiento crítico, es importante que respondas la siguiente encuesta sobre motivación. Lee cuidadosamente cada una de las afirmaciones y usa la escala para responder a tu respuesta que puede ir desde Nada cierto en mi (1) hasta Totalmente cierto en mi (7).
+            <h3> Bienvenido(a) a la prueba de pensamiento crítico <span>CognitiveSpark</span>
+                <br><br>
+                Responderás un total de 60 preguntas y 32 subpreguntas (de menor esfuerzo mental que las preguntas principales) sobre pensamiento crítico, y al final, 26 ítems sobre metacognición. Te invitamos a mantener la calma y la concentración durante el proceso.
+                <br><br>
+                Antes de iniciar con la prueba de pensamiento crítico, es importante que respondas la siguiente encuesta sobre motivación. Lee cuidadosamente cada una de las afirmaciones y utiliza la escala para indicar tu respuesta, que puede ir desde Nada cierto en mí (1) hasta Totalmente cierto en mí (7).
             </h3>
         </div>
         @if(session('success'))
@@ -36,7 +37,7 @@
             <!-- Categoria: Motivación Intrinseca -->
             <div class="category_ctn" data-category="motivacion_intrinseca">
                 <div class="pregunta_ctn">
-                    <p>1. En una prueba como esta, prefiero que el contenido sea realmente desafiante para que pueda estimular mi pensamiento crítico.</p>
+                    <p>1. En la actividad que realizaré a continuación, prefiero que el contenido sea mentalmente desafiante.</p>
 
                     <!-- Tabla para las opciones -->
                     <table border="1" cellspacing="0" cellpadding="10">
@@ -100,7 +101,7 @@
             <div class="category_ctn" data-category="motivacion_extrinseca">
 
                 <div class="pregunta_ctn">
-                    <p>2. Obtener una buena puntuación en esta prueba es la cosa más satisfactoria para mí en este momento.</p>
+                    <p>2. Obtener una buena puntuación en la actividad que realizaré a continuación es una meta que me he propuesto en este momento.</p>
 
                     <!-- Tabla para las opciones -->
                     <table border="1" cellspacing="0" cellpadding="10">
@@ -166,7 +167,7 @@
             <!-- Categoria: Motivación Intrinseca -->
             <div class="category_ctn" data-category="motivacion_intrinseca">
                 <div class="pregunta_ctn">
-                    <p>3. En una prueba como esta, prefiero preguntas que despierten mi curiosidad, incluso si requiero esfuerzo al responder.</p>
+                    <p>3. En la actividad que realizaré a continuación, prefiero preguntas que despierten mi curiosidad, aunque requieran esfuerzo al responder.</p>
 
                     <!-- Tabla para las opciones -->
                     <table border="1" cellspacing="0" cellpadding="10">
@@ -229,7 +230,7 @@
             <!-- Categoria: Motivación Extrinseca -->
             <div class="category_ctn" data-category="motivacion_extrinseca">
                 <div class="pregunta_ctn">
-                    <p>4. Mi principal interés en esta prueba es obtener una buena puntuación que me ubique entre los promedios más altos.</p>
+                    <p>4. Desde el inicio, me he comprometido a dar lo mejor de mí en la actividad que realizaré a continuación para alcanzar altas puntuaciones y niveles de desempeño.</p>
 
                     <!-- Tabla para las opciones -->
                     <table border="1" cellspacing="0" cellpadding="10">
@@ -293,7 +294,7 @@
             <!-- Categoria: Motivación Intrinseca -->
             <div class="category_ctn" data-category="motivacion_intrinseca">
                 <div class="pregunta_ctn">
-                    <p>5. Lo más satisfactorio para mí en esta prueba es tratar de entender el contenido tan a fondo como sea posible.</p>
+                    <p>5. Para mí es satisfactorio que en la actividad que realizaré a continuación se pueda entender a fondo el contenido.</p>
 
                     <!-- Tabla para las opciones -->
                     <table border="1" cellspacing="0" cellpadding="10">
@@ -356,7 +357,7 @@
             <!-- Categoria: Motivación Extrinseca -->
             <div class="category_ctn" data-category="motivacion_extrinseca">
                 <div class="pregunta_ctn">
-                    <p>6. Si puedo, quiero obtener mejores puntuaciones en esta prueba que la mayoría de mis compañeros.</p>
+                    <p>6. Otra de las metas que me he fijado en la actividad que realizaré a continuación es obtener puntuaciones más altas que las de mis compañeros.</p>
 
                     <!-- Tabla para las opciones -->
                     <table border="1" cellspacing="0" cellpadding="10">
@@ -420,7 +421,7 @@
             <!-- Categoria: Motivación Intrinseca -->
             <div class="category_ctn" data-category="motivacion_intrinseca">
                 <div class="pregunta_ctn">
-                    <p>7. Si tuviera la oportunidad en esta prueba, elegiría preguntas que me permitan pensar críticamente ante nuevas situaciones, aunque no me garanticen buenas puntuaciones.</p>
+                    <p>7. Si en la actividad que realizaré a continuación tengo la oportunidad, elegiré las estrategias que me ayuden a mejorar mis habilidades del pensamiento al responder las preguntas, aunque no me garanticen buenas puntuaciones.</p>
 
                     <!-- Tabla para las opciones -->
                     <table border="1" cellspacing="0" cellpadding="10">
@@ -483,7 +484,7 @@
             <!-- Categoria: Motivación Extrinseca -->
             <div class="category_ctn" data-category="motivacion_extrinseca">
                 <div class="pregunta_ctn">
-                    <p>8. Quiero hacerlo bien en esta prueba porque es importante para mí demostrar mi habilidad a mi familia, amigos, compañeros o personas de mi contexto cercano.</p>
+                    <p>8. El resultado que obtenga en la actividad que realizaré a continuación es importante para mí, ya que me permitirá demostrar mis habilidades a mis familiares, amigos y profesores.</p>
 
                     <!-- Tabla para las opciones -->
                     <table border="1" cellspacing="0" cellpadding="10">

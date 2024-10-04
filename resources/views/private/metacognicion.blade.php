@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cognitive Sparks | Encuesta de Metacognición</title>
+    <title>CognitiveSparks | Encuesta de Metacognición</title>
     <!-- token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -37,7 +37,7 @@
             <!-- Categoria: Conocimiento Procedimental -->
             <div class="category_ctn" data-category="conocimiento_procedimental">
                 <div class="pregunta_ctn">
-                    <p>Soy consciente de las estrategias que utilicé para responder la anterior prueba.</p>
+                    <p>Soy consciente de habilidades que necesité para responder a la anterior prueba</p>
 
                     <!-- Tabla para las opciones -->
                     <table border="1" cellspacing="0" cellpadding="10">
@@ -89,7 +89,7 @@
 
                 <!-- Primera pregunta -->
                 <div class="pregunta_ctn">
-                    <p>Pensé en lo que realmente necesitaba comprender antes de responder al ítem.</p>
+                    <p>Pensé en lo que realmente necesitaba comprender antes de responder a las preguntas</p>
 
                     <!-- Tabla para las opciones -->
                     <table border="1" cellspacing="0" cellpadding="10">
@@ -137,7 +137,7 @@
 
                 <!-- Segunda pregunta -->
                 <div class="pregunta_ctn">
-                    <p>Me propuse el objetivo de pensar críticamente antes de responder al ítem.</p>
+                    <p>Me propuse metas claras antes de iniciar la prueba.</p>
 
                     <!-- Tabla para las opciones -->
                     <table border="1" cellspacing="0" cellpadding="10">
@@ -185,7 +185,7 @@
 
                 <!-- Tercera pregunta -->
                 <div class="pregunta_ctn">
-                    <p>Me hice preguntas sobre el tema antes de responder al ítem.</p>
+                    <p>Me hice preguntas sobre el tema antes de responder a las preguntas.</p>
 
                     <!-- Tabla para las opciones -->
                     <table border="1" cellspacing="0" cellpadding="10">
@@ -233,7 +233,7 @@
 
                 <!-- Cuarta pregunta -->
                 <div class="pregunta_ctn">
-                    <p>Pensé en distintas maneras de resolver el ítem y escogí la mejor.</p>
+                    <p>Pensé en distintas maneras de resolver las preguntas y escogí la mejor.</p>
 
                     <!-- Tabla para las opciones -->
                     <table border="1" cellspacing="0" cellpadding="10">
@@ -334,7 +334,7 @@
 
                 <!-- Séptima pregunta -->
                 <div class="pregunta_ctn">
-                    <p>Soy consciente de las estrategias que utilicé para responder la anterior prueba.</p>
+                    <p>Soy consciente de haber centrado mi atención en la información que era importante</p>
 
                     <!-- Tabla para las opciones -->
                     <table border="1" cellspacing="0" cellpadding="10">
@@ -382,8 +382,8 @@
 
                 <!-- Octava pregunta -->
                 <div class="pregunta_ctn">
-                    <p>Una estrategia que utilicé para responder a este tipo de preguntas es inventar mis propios
-                        ejemplos para poder entender mejor la información.</p>
+                    <p>Una estrategia que utilicé para responder a este tipo de preguntas 
+                    fue inventar mis propios ejemplos para entender mejor la información</p>
 
                     <!-- Tabla para las opciones -->
                     <table border="1" cellspacing="0" cellpadding="10">
@@ -725,7 +725,7 @@
 
                 <!-- Quinceava pregunta -->
                 <div class="pregunta_ctn">
-                    <p>Cuando estaba respondiendo al ítem, me detuve en algún momento para saber si estaba entendiendo.
+                    <p>Cuando estaba respondiendo las preguntas, me detuve en algún momento para saber si estaba entendiendo.
                     </p>
 
                     <!-- Tabla para las opciones -->
@@ -1172,8 +1172,7 @@
 
                 <!-- Veinticuatro pregunta -->
                 <div class="pregunta_ctn">
-                    <p>Cuando terminé de responder a cada pregunta me pregunté hasta qué punto había conseguido mis
-                        objetivos.</p>
+                    <p>Cuando terminé de responder a cada pregunta me pregunté hasta qué punto había conseguido mis metas.</p>
 
                     <!-- Tabla para las opciones -->
                     <table border="1" cellspacing="0" cellpadding="10">
@@ -1269,7 +1268,7 @@
 
                 <!-- Veintiséis pregunta -->
                 <div class="pregunta_ctn">
-                    <p>Cuando terminé de responder al ítem me pregunté si había empleado mis habilidades al máximo
+                    <p>Cuando terminé de responder las preguntas me pregunté si había empleado mis habilidades al máximo
                         posible.</p>
 
                     <!-- Tabla para las opciones -->

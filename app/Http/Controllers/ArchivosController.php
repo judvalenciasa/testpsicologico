@@ -2,28 +2,34 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Models\Archivo;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use App\Models\User;
+
 
 class ArchivosController extends Controller
 {
     public function store(Request $request)
     {
+
         $user = Auth::user();
+
 
         // Validar que el archivo es un PDF
         $request->validate([
             'pdf' => 'required|mimes:pdf|max:2048', // Tamaño máximo de 2MB
         ]);
 
+
         // Crear el nombre personalizado del archivo
         $fileName = $user->name . "_" . Carbon::now()->format('Y-m-d') . ".pdf";
 
         // Almacenar el archivo en el directorio 'storage/app/public/pdfs/{documento_identificacion}' con el nombre especificado
-        $filePath = $request->file('pdf')->storeAs('pdfs/' . $user->documento_identificacion, $fileName, 'public');
+        $filePath = $request->file('pdf')->storeAs('pdfs/' . $user->name, $fileName, 'public');
 
         // Guardar el nombre del archivo en la base de datos
         $pdf = new Archivo();
@@ -31,6 +37,17 @@ class ArchivosController extends Controller
         $pdf->file_path = $filePath;  // Guardar la ruta completa del archivo
         $pdf->save();
 
+
         return back()->with('success', 'Archivo PDF cargado correctamente.');
+    }
+
+    // Funcion para descargar consentimiento informado 
+    public function download($file_name)
+    {
+
+        $file = Archivo::where('file_name', 'like', '%' . $file_name . '%')->firstOrFail();
+        $pathToFile = storage_path('app/public/' . $file->file_path);
+
+        return response()->download($pathToFile);
     }
 }

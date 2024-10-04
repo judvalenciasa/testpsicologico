@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cognitive Sparks | Responde las Preguntas</title>
+    <title>CognitiveSparks | Responde las Preguntas</title>
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -35,7 +35,7 @@
 
                 @if($pregunta_actual->tipo_pregunta == 'abierta')
                 <div class="opcion">
-                    <textarea maxlength="650" name="respuestas_abiertas[{{ $pregunta_actual->id_pregunta }}]"
+                    <textarea class="textarea_field" maxlength="650" name="respuestas_abiertas[{{ $pregunta_actual->id_pregunta }}]"
                         id="respuesta_abierta_{{ $pregunta_actual->id_pregunta }}" required rows="4"
                         placeholder="Escribe tu respuesta aquí..."></textarea>
                 </div>
@@ -60,7 +60,7 @@
 
                     @if($subpregunta->tipo_pregunta == 'abierta')
                     <div class="opcion">
-                        <textarea required maxlength="650"
+                        <textarea class="textarea_field" required maxlength="650"
                             name="respuestas_abiertas[{{ $subpregunta->id_subpregunta }}]"
                             id="respuesta_abierta_{{ $subpregunta->id_subpregunta }}" rows="4"
                             placeholder="Escribe tu respuesta aquí..."></textarea>
@@ -89,10 +89,10 @@
 
                 @if($contexto_index + 1 < $total_contextos)
                     <button type="submit">Siguiente</button>
-                    <!-- Botón visible para activar pantalla completa -->
+                    <!-- 
                     <div id="fullscreen-message" style="text-align: center; margin: 20px;">
                         <button id="fullscreenBtn" style="padding: 10px 20px; font-size: 18px;">Entrar en Pantalla Completa</button>
-                    </div>
+                    </div> -->
                     @else
                     <button class="send_btn" type="submit">Continuar con encuesta de metacognición</button>
 
