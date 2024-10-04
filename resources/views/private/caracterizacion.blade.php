@@ -43,7 +43,7 @@
             <div class="input-group">
                 <label for="genero">Sexo:</label>
                 <select id="genero" name="genero" required>
-                    <option value="" disabled selected>Seleccione su género</option>
+                    <option value="" disabled selected>Seleccione su sexo</option>
                     <option value="Masculino">Masculino</option>
                     <option value="Femenino">Femenino</option>
                 </select>

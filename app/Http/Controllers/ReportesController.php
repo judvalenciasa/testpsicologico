@@ -179,78 +179,78 @@ class ReportesController extends Controller
         switch ($tipo_habilidad) {
             case 'inductivo':
                 switch (true) {
-                    case ($puntaje <= 4):
+                    case ($puntaje >= 0 && $puntaje <= 4):
                         return 'Muy Bajo';
-                    case ($puntaje <= 8):
+                    case ($puntaje >= 5 && $puntaje <= 8):
                         return 'Bajo';
-                    case ($puntaje <= 12):
+                    case ($puntaje >= 9 && $puntaje <= 12):
                         return 'Intermedio';
-                    case ($puntaje <= 16):
+                    case ($puntaje >= 13 && $puntaje <= 16):
                         return 'Alto';
                     default:
                         return 'Muy Alto';
                 }
             case 'abductivo':
                 switch (true) {
-                    case ($puntaje <= 3):
+                    case ($puntaje >= 0 && $puntaje <= 3):
                         return 'Muy Bajo';
-                    case ($puntaje <= 6):
+                    case ($puntaje >= 4 && $puntaje <= 6):
                         return 'Bajo';
-                    case ($puntaje <= 9):
+                    case ($puntaje >= 7 && $puntaje <= 9):
                         return 'Intermedio';
-                    case ($puntaje <= 12):
+                    case ($puntaje >= 10 && $puntaje <= 12):
                         return 'Alto';
                     default:
                         return 'Muy Alto';
                 }
             case 'deductivo':
                 switch (true) {
-                    case ($puntaje <= 3):
+                    case ($puntaje >= 0 && $puntaje <= 3):
                         return 'Muy Bajo';
-                    case ($puntaje <= 6):
+                    case ($puntaje >= 4 && $puntaje <= 6):
                         return 'Bajo';
-                    case ($puntaje <= 9):
+                    case ($puntaje >= 7 && $puntaje <= 9):
                         return 'Intermedio';
-                    case ($puntaje <= 12):
+                    case ($puntaje >= 10 && $puntaje <= 12):
                         return 'Alto';
                     default:
                         return 'Muy Alto';
                 }
             case 'analisis_argumentos':
                 switch (true) {
-                    case ($puntaje <= 8):
+                    case ($puntaje >= 0 && $puntaje <= 8):
                         return 'Muy Bajo';
-                    case ($puntaje <= 17):
+                    case ($puntaje >= 9 && $puntaje <= 17):
                         return 'Bajo';
-                    case ($puntaje <= 25):
+                    case ($puntaje >= 18 && $puntaje <= 25):
                         return 'Intermedio';
-                    case ($puntaje <= 33):
+                    case ($puntaje >= 26 && $puntaje <= 34):
                         return 'Alto';
                     default:
                         return 'Muy Alto';
                 }
             case 'toma_decisiones':
                 switch (true) {
-                    case ($puntaje <= 13):
+                    case ($puntaje >= 0 && $puntaje <= 13):
                         return 'Muy Bajo';
-                    case ($puntaje <= 26):
+                    case ($puntaje >= 14 && $puntaje <= 26):
                         return 'Bajo';
-                    case ($puntaje <= 40):
+                    case ($puntaje >= 27 && $puntaje <= 39):
                         return 'Intermedio';
-                    case ($puntaje <= 53):
+                    case ($puntaje >= 40 && $puntaje <= 53):
                         return 'Alto';
                     default:
                         return 'Muy Alto';
                 }
             case 'total':
                 switch (true) {
-                    case ($puntaje <= 20):
+                    case ($puntaje >= 0 && $puntaje <= 32):
                         return 'Muy Bajo';
-                    case ($puntaje <= 40):
+                    case ($puntaje >= 33 && $puntaje <= 64):
                         return 'Bajo';
-                    case ($puntaje <= 60):
+                    case ($puntaje >= 65 && $puntaje <= 96):
                         return 'Intermedio';
-                    case ($puntaje <= 80):
+                    case ($puntaje >= 97 && $puntaje <= 128):
                         return 'Alto';
                     default:
                         return 'Muy Alto';

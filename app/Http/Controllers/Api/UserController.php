@@ -102,6 +102,7 @@ class UserController extends Controller
             return Null;
         }
     }
+    
     public function registrar(Request $request)
     {
         $id_pin = $this->pin_valido($request);
@@ -134,21 +135,11 @@ class UserController extends Controller
     
              // Enviar correo al usuario
              try {
-                Mail::to('judvalenciasa@gmail.com')->send(new MiMailable($details));
+                Mail::to($request->email)->send(new MiMailable($details));
             } catch (\Exception $e) {
                 Log::error('Error al enviar el correo: ' . $e->getMessage());
             }
 
-            /*
-            //MailController
-            $details = [
-                'title' => 'Registro Exitoso',
-                'body' => 'Hola ' . $user->name . ', tu registro ha sido exitoso en nuestra plataforma.'
-            ];
-
-             // Enviar correo al usuario
-            Mail::to($user->email)->send(new MiMailable($details));
-*/
 
             // Devolver respuesta JSON de éxito
             return response()->json(['success' => true]);

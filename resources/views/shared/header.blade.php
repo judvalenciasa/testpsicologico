@@ -83,7 +83,7 @@
                     <li><a href="{{ url('/register') }}">Registrarse</a></li>
                     <li><a href="{{ url('/ingreso') }}">Ingresar </a></li>
                     @endif
-                    @if (Auth::check() && Auth::user()->isAdmin())
+                    @if ((Auth::check() && Auth::user()->isAdmin()) || (Auth::check() && (Route::is('home'))))
                     <li>
                         <form class="form_ctn" action="{{ route('logout') }}" method="POST">
                             @csrf
