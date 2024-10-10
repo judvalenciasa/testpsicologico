@@ -179,18 +179,19 @@ class UserController extends Controller
         // Obtener las credenciales (email y password) del request
         $credentials = $request->only('email', 'password');
 
-        
-
-        
 
         // Intentar autenticar al usuario usando Auth::attempt
         if (Auth::attempt($credentials)) {
 
             // Registrar en los logs al usuario autenticado
             Log::info('Usuario autenticado: ' . $request->user());
-            $this->comprobar_cantidad_pines($request);
-            // Llamar al método authenticated para redirigir dependiendo del usuario
-            return $this->authenticated($request, Auth::user());
+            if ($this->comprobar_cantidad_pines($request)) {
+                return back()->with('message', 'La cantidad de pines ha sido superada');
+            }else {
+                  return $this->authenticated($request, Auth::user());
+            }
+            
+          
         }
 
         // Si la autenticación falla, redirigir de vuelta al formulario de login con un mensaje de error
