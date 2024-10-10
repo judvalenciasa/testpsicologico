@@ -1056,7 +1056,7 @@ class CriteriosSeeders extends Seeder
                 Explicaciones de 2 puntos:
                 Criterio: El estudiante identifica claramente la vaguedad en la afirmación del director y el problema de conversión ilegal, además de descartar correctamente una o varias alternativas incorrectas.
                 Ejemplos de explicaciones de 2 puntos:
-                •	"El director cometió un error al usar el término 'vulnerabilidad' sin explicarlo. No queda claro si se refiere a lo social, lo económico o la ubicación de las viviendas. La opción c de no determinar espacios adecuados tampoco resuelve esta falta de claridad."
+                •	"El director cometió un error al usar el término "vulnerabilidad" sin explicarlo. No queda claro si se refiere a lo social, lo económico o la ubicación de las viviendas. La opción c de no determinar espacios adecuados tampoco resuelve esta falta de claridad."
                 •	"El problema principal es que la afirmación sobre la vulnerabilidad es muy vaga, y las comunidades no pueden saber si están en riesgo o no sin una explicación clara. Las órdenes no sirven si no se les da información precisa."
                 •	"La opción b menciona campamentos temporales, pero eso no ayuda a las familias a entender si están en vulnerabilidad. El director necesita aclarar qué significa estar en riesgo, y solo entonces podrán saber si los campamentos son una solución adecuada."
                 •	"Las órdenes deben ser claras para que las comunidades puedan actuar de manera correcta. No es suficiente con mencionar las zonas de desalojo o los campamentos si no se explica bien qué significa estar en vulnerabilidad."',
@@ -2026,7 +2026,7 @@ class CriteriosSeeders extends Seeder
                     o	Ejemplos de creaciones de 1 punto:
                     •	"Animaría a los compañeros con palabras de aliento y buscaría remedios naturales para fortalecer sus sistemas inmunológicos."
                     •	"Propondría hacer descansos más frecuentes durante los ensayos para reducir el cansancio y animar a mis compañeros con historias de éxito."
-                    	"Solicitaría a los padres que proporcionen comidas energéticas para los miembros de la banda y organizaría actividades recreativas para elevar el ánimo."
+                    •	"Solicitaría a los padres que proporcionen comidas energéticas para los miembros de la banda y organizaría actividades recreativas para elevar el ánimo."
                     •	2 puntos:
                     o	Criterio: Las alternativas son distintas a las del ítem anterior, pero responden parcialmente a los dos problemas presentados. Es decir, ambas soluciones abordan los problemas pero de manera superficial o incompleta.
                     o	Ejemplos de creaciones de 2 puntos:
