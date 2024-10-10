@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TestsController;
 use App\Http\Controllers\PinesController;
 use App\Http\Controllers\Api\UserController;
+use App\Http\Controllers\MailController;
 use App\Http\Controllers\PruebasController;
 
 /*
@@ -107,3 +108,6 @@ Route::post("login", [UserController::class, 'login'])->name('login');
 
 // Ruta para logout
 Route::post("logout", [UserController::class, "logout"])->name('logout');
+
+// Ruta para enviar correo de contacto
+Route::post('/enviar_correo', [MailController::class, 'enviarCorreo'])->name('enviar.correo');
