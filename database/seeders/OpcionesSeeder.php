@@ -984,7 +984,7 @@ class OpcionesSeeder extends Seeder
             [
                 'id_opcion' => 152,
                 'id_pregunta' => 49,
-                'texto' => 'e) Esta predicción asume que no habrá posibilidad de que la inteligencia artificial genere nuevos empleos, la reglas están para hacerse de modo que pueden crearse algunas reglamentaciones en los próximos 80 años que regulen el asunto.',
+                'texto' => 'e) Esta predicción asume que no habrá posibilidad de que la inteligencia artificial genere nuevos empleos, las reglas están para hacerse de modo que pueden crearse algunas reglamentaciones en los próximos 80 años que regulen el asunto.',
                 'valor_opcion' => 0
             ],
 
@@ -1498,7 +1498,7 @@ class OpcionesSeeder extends Seeder
             [
                 'id_opcion' => 234,
                 'id_pregunta' => 69,
-                'texto' => 'e) No brindó información detallada y precisa a las comunidades sobre lo que significa estar en vulnerabilidad, en amenaza o en riesgo.',
+                'texto' => 'e) No brindó información detallada y precisa a las comunidades sobre lo que significa estar en vulnerabilidad.',
                 'valor_opcion' => 1
             ],
 
@@ -1810,7 +1810,7 @@ class OpcionesSeeder extends Seeder
             [
                 'id_opcion' => 269,
                 'id_pregunta' => 89,
-                'texto' => 'd) El hecho se salir con todos no implica compromiso alguno con uno de ellos o con todos, se trata de elecciones. ',
+                'texto' => 'd) El hecho de salir con alguno implica un compromiso con los demás, pues debe ser coherente en sus acciones.',
                 'valor_opcion' => 0
             ],
             [

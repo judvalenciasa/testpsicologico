@@ -100,7 +100,7 @@ class ContextoSeeder extends Seeder
             ],
             [
                 'id_contexto' => 22,
-                'texto' => 'En una pequeña comunidad, hay un debate sobre la construcción de un nuevo parque ecológico que beneficiaría tanto al medio ambiente como a los habitantes locales. Este parque incluiría áreas verdes, un jardín botánico y espacios recreativos para familias y estudiantes de la escuela local. Durante una reunión comunitaria, algunos vecinos expresaron su preocupación sobre el impacto ambiental positivo y la mejora en la calidad de vida. Sin embargo, una madre preocupada argumentó: «Si permitimos la construcción de este parque, pronto querrán construir más parques y eventualmente toda la zona se convertirá en un área urbana congestionada, destruyendo nuestro vecindario tranquilo y afectando la vida de nuestros hijos».'
+                'texto' => 'En una pequeña comunidad hay un debate sobre la construcción de un nuevo parque ecológico que beneficiaría tanto al medio ambiente como a los habitantes locales. Este parque incluiría áreas verdes, un jardín botánico y espacios recreativos para familias y estudiantes de la escuela local. Durante una reunión comunitaria, algunos vecinos expresaron su preocupación sobre el impacto ambiental positivo y la mejora en la calidad de vida. Sin embargo, una madre preocupada argumentó: «Si permitimos la construcción de este parque, pronto querrán construir más parques y eventualmente toda la zona se convertirá en un área urbana congestionada, destruyendo nuestro vecindario tranquilo y afectando la vida de nuestros hijos».'
             ],
             [
                 'id_contexto' => 23,
