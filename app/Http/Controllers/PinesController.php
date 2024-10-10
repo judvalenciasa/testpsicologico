@@ -129,8 +129,11 @@ class PinesController extends Controller
     }
 
 
+    public function cantidad_intentos($id_pin){
 
-
+        $pin = Pines::where('id_pin', $id_pin)->first();
+        return $pin;
+    }
 
 
     /**

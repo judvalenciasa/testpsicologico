@@ -18,14 +18,17 @@ use App\Models\Pruebas;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Storage;
 use App\Mail\TestEmail;
+use App\Http\Controllers\PinesController;
 
 class UserController extends Controller
 {
     protected $testsController;
+    protected $pinesController;
 
-    public function __construct(TestsController $testsController)
+    public function __construct(TestsController $testsController, PinesController $pinesController)
     {
         $this->testsController = $testsController;
+        $this->pinesController = $pinesController;
     }
 
     //Carga todos los usuarios que no son administradores
@@ -61,7 +64,8 @@ class UserController extends Controller
 
             Log::info('Prueba: ' . $prueba);
 
-            return view('private.administrator-page', compact('prueba'));; // Pasar la variable 'prueba' a la vista
+            return view('private.administrator-page', compact('prueba'));
+            ; // Pasar la variable 'prueba' a la vista
         } else {
             return redirect()->route('login');
         }
@@ -102,7 +106,7 @@ class UserController extends Controller
             return Null;
         }
     }
-    
+
     public function registrar(Request $request)
     {
         $id_pin = $this->pin_valido($request);
@@ -117,7 +121,7 @@ class UserController extends Controller
                 'password' => 'required|string|min:6',
             ]);
 
-            
+
 
             $user = new User();
             $user->name = $request->name;
@@ -130,11 +134,11 @@ class UserController extends Controller
 
             $details = [
                 'email' => $request->email,
-                'contrasena' =>  $request->password
+                'contrasena' => $request->password
             ];
-    
-             // Enviar correo al usuario
-             try {
+
+            // Enviar correo al usuario
+            try {
                 Mail::to($request->email)->send(new MiMailable($details));
             } catch (\Exception $e) {
                 Log::error('Error al enviar el correo: ' . $e->getMessage());
@@ -149,6 +153,17 @@ class UserController extends Controller
         }
     }
 
+    public function comprobar_cantidad_pines($request){
+        $user = User::where('email', $request->email)->with('pin')->first();
+        //verificamos la cantidad de intentos del pin
+        $pin = $this->pinesController->cantidad_intentos($user->id_pin);
+        session(['pin' => $pin]);
+        
+        if ($pin->intentos >= 2) {
+            session()->flush();
+            return back()->with('message', 'La cantidad de pines ha sido superada');
+        }
+    }
 
 
     public function login(Request $request)
@@ -164,6 +179,10 @@ class UserController extends Controller
         // Obtener las credenciales (email y password) del request
         $credentials = $request->only('email', 'password');
 
+        $this->comprobar_cantidad_pines($request);
+
+
+
         // Intentar autenticar al usuario usando Auth::attempt
         if (Auth::attempt($credentials)) {
 
@@ -173,12 +192,6 @@ class UserController extends Controller
             // Llamar al método authenticated para redirigir dependiendo del usuario
             return $this->authenticated($request, Auth::user());
         }
-
-
-
-        
-
-
 
         // Si la autenticación falla, redirigir de vuelta al formulario de login con un mensaje de error
         return back()->withErrors([
