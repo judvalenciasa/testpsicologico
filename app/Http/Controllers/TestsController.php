@@ -298,7 +298,6 @@ class TestsController extends Controller
 
                 $prompt = "Contexto: " . $contexto . " fin contexto. Esta es la pregunta: " . $subpregunta->texto . " Fin pregunta. Esta es la respuesta del enunciado: " . $opcion->texto . ". fin respuesta. Estos son los criterios para la calificación: " . $criterio . " fin criterio. " . "Nota: La respuesta debe tener un sentido coherente con lo que se pregunta en el contexto." . "Con lo anterior devuélveme el número de la calificación, sin ninguna otra letra, con la siguiente respuesta: " . $respuesta_abierta;
 
-
                 $respuesta_chatgpt = $this->openAIService->enviarRespuestaAChatGPT($prompt);
 
 
@@ -366,7 +365,7 @@ class TestsController extends Controller
             $criterio = Criterios::where('id_pregunta', $pregunta2Id)->pluck('texto')->first();
 
 
-            $prompt = "Contexto: " . $contexto . " fin contexto. Esta es la pregunta : " . $pregunta . " fin pregunta. Esta es la opcion seleccionada en el anterior item" . $subopcion->texto . "Estos son los criterios para la calificacion " . $criterio . "Fin criterio. Necesito que lo que valla en la respuesta abierta sea coherente con la pregunta que se hace y si no lo es su calificación debe ser 0. Con lo anterior devuélveme el número de la calificación, sin ninguna otra letra, con la siguiente respuesta: " . $respuesta_abierta_texto;
+            $prompt = "Contexto: " . $contexto . " fin contexto. Esta es la pregunta : " . $pregunta . " fin pregunta. Esta es la opcion seleccionada en el anterior item" . $subopcion->texto . "Estos son los criterios para la calificacion " . $criterio . "Fin criterio. calificarás la respuesta abierta en función de la información que te entregué en contexto; pregunta; alternativa correcta; criterios. Con lo anterior devuélveme el número de la calificación, sin ninguna otra letra, con la siguiente respuesta: " . $respuesta_abierta_texto;
 
             $respuesta_chatgpt = $this->openAIService->enviarRespuestaAChatGPT($prompt);
         }
