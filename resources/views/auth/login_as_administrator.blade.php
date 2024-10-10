@@ -14,7 +14,15 @@
 <body class="antialiased">
     @include('shared.header')
 
+
+
     <section class="container">
+        @if(session('message'))
+            <div class="alert alert-danger">
+                {{ session('message') }}
+            </div>
+        @endif
+        
         <div class="text_ctn">
             <h1>Ingreso</h1>
             <div class="underline"></div>
@@ -43,9 +51,9 @@
     </section>
     @include('shared.footer')
 
-        <!-- JavaScript para mostrar/ocultar contraseña -->
-        <script>
-        document.getElementById('show-password').addEventListener('change', function() {
+    <!-- JavaScript para mostrar/ocultar contraseña -->
+    <script>
+        document.getElementById('show-password').addEventListener('change', function () {
             var passwordInput = document.getElementById('password');
             if (this.checked) {
                 // Si el checkbox está marcado, mostrar la contraseña
