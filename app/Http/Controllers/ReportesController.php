@@ -106,13 +106,25 @@ class ReportesController extends Controller
     }
 
 
+
+    public function aumentar_intento(){
+        $pin = session('pin');
+
+        if($pin){
+            $pin->update([
+                'intentos' => ($pin->intentos) + 1
+            ]);
+        }
+    }
+
+
     /**
      * Muestra el reporte en la vista de un usuario
      * 
      */
     public function ver_reporte_usuario(Request $request)
     {
-
+        $this->aumentar_intento();
         $user = $request->user();
         $categorias = $this->sumar_por_categorias(request: $request);
         $tiempoTotal = $request->input('tiempo_total');

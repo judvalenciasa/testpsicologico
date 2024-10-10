@@ -20,7 +20,7 @@ class PinesSeeder extends Seeder
                 'id_prueba' => 1,
                 'creacion_fecha' => Carbon::now(),
                 'fecha_expiracion' => Carbon::now(),
-                'intentos' => 3,
+                'intentos' => 0,
                 'estado' => true,
             ],
             [
@@ -29,7 +29,7 @@ class PinesSeeder extends Seeder
                 'id_prueba' => 1,
                 'creacion_fecha' => Carbon::now(),
                 'fecha_expiracion' => Carbon::now(),
-                'intentos' => 3,
+                'intentos' => 0,
                 'estado' => true,
 
             ],
@@ -39,7 +39,7 @@ class PinesSeeder extends Seeder
                 'id_prueba' => 1,
                 'creacion_fecha' => Carbon::now(),
                 'fecha_expiracion' => Carbon::now(),
-                'intentos' => 3,
+                'intentos' => 0,
                 'estado' => true,
 
             ]
