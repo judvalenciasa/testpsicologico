@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Log;
 class PinesController extends Controller
 {
 
-    private $CANTIDAD_DE_INTENTOS = 2;
+    private $CANTIDAD_DE_INTENTOS = 0;
 
     /**
      * Almacenamos los pines en la base de datos.
