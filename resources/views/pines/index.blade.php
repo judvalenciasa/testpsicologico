@@ -15,7 +15,6 @@
             <tr>
                 <th>Pin</th>
                 <th>Fecha de Creación</th>
-                <th>Fecha de Expiración</th>
                 <th>Estado</th>
                 <th>Usuario</th>
             </tr>
@@ -25,7 +24,6 @@
             <tr>
                 <td>{{ $pin->pin }}</td>
                 <td>{{ $pin->creacion_fecha }}</td>
-                <td>{{ $pin->fecha_expiracion }}</td>
                 <td>{{ $pin->estado == 1 ? 'Activo' : 'Inactivo' }}</td>
                 <td>{{ $pin->usuario->email ?? 'Sin asignar' }}</td>
             </tr>
