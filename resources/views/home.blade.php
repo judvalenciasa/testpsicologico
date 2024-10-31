@@ -61,7 +61,7 @@
                             <p>¿Para quiénes está diseñada la prueba?</p>
                         </div>
                         <div class="respuesta">
-                            <p><span>Respuesta: </span>Para adolescentes que se encuentren entre los 15 y 18 años </p>
+                            <p><span>Respuesta: </span>Para adolescentes que se encuentren entre los 14 y 18 años </p>
                         </div>
                     </div>
                 </div>
