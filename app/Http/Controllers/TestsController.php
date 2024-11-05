@@ -523,15 +523,17 @@ class TestsController extends Controller
             ->whereDate('fecha_calificacion', '=', $fecha_actual)
             ->first();
 
-
+        
         if (!$reporte) {
             $nuevo_reporte = Reportes::create([
                 'id_usuario' => $user->id_usuario,
                 'fecha_calificacion' => $fecha_actual
             ]);
-
+            session('id_reporte_actual', $nuevo_reporte->id_reporte);
             return $nuevo_reporte;
         }
+        session(['id_reporte_actual' => $reporte->id_reporte]);
+
         return $reporte;
     }
 }

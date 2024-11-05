@@ -316,7 +316,8 @@ class ReportesController extends Controller
      */
     public function buscar_total_subhabilidad($nombre_habilidad)
     {
-
+    
+        $id_reporte = session("id_reporte_actual");
         $id_subhabilidad = Subhabilidad::where('nombre', $nombre_habilidad)
             ->pluck('id_subhabilidad')
             ->first();
@@ -325,6 +326,7 @@ class ReportesController extends Controller
         if ($id_subhabilidad) {
             $total_Calificacion_induccion_general = Respuestas::join('preguntas', 'respuestas.id_pregunta', '=', 'preguntas.id_pregunta')
                 ->where('preguntas.id_subhabilidad', $id_subhabilidad)
+                ->where('respuestas.id_reporte', $id_reporte)
                 ->sum('respuestas.calificacion_respuesta');
         } else {
             $total_Calificacion_induccion_general = 0;
@@ -623,6 +625,8 @@ class ReportesController extends Controller
             ->get()
             ->toArray();
 
+
+            
 
         //consultar el texto de las subpreguntas asociadas a las subrespuestas
         foreach ($subrespuestas as $key => $subrespuesta) {
