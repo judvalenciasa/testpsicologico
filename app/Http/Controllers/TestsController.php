@@ -298,24 +298,20 @@ class TestsController extends Controller
                 $prompt = "Contexto: " . $contexto . " fin contexto. Esta es la pregunta: " . $subpregunta->texto . " Fin pregunta. Esta es la respuesta del enunciado: " . $opcion->texto . ". fin respuesta. Estos son los criterios para la calificación: " . $criterio . " fin criterio. " . "Nota: La respuesta debe tener un sentido coherente con lo que se pregunta en el contexto." . "Con lo anterior devuélveme el número de la calificación, sin ninguna otra letra, con la siguiente respuesta: " . $respuesta_abierta;
                 $respuesta_chatgpt = $this->openAIService->enviarRespuestaAChatGPT($prompt);
 
-                
                 if (!is_numeric($respuesta_chatgpt)) {
-
                     $respuesta_chatgpt = 0;
                 }
 
 
                 //guardar respuesta subpregunta en la tabla subrespuestas
                 $this->guardarRespuestaSubpregunta($request, $user, $subpregunta->id_subpregunta, $respuesta_abierta, $respuesta_chatgpt);
-
-                $totalCalificacionSubpreguntas += $respuesta_chatgpt;
-                $totalSubpreguntas++;
             }
 
+            $totalCalificacionSubpreguntas += $respuesta_chatgpt;
+            $totalSubpreguntas++;
 
+            if ($totalSubpreguntas == 5) {
 
-
-            if ($totalSubpreguntas > 0) {
                 $this->guardarRespuesta($request, $user, $preguntaPrincipalId, 'Calificación basada en subpreguntas abiertas', $totalCalificacionSubpreguntas);
             }
 
@@ -518,7 +514,7 @@ class TestsController extends Controller
             ->whereDate('fecha_calificacion', '=', $fecha_actual)
             ->first();
 
-        
+
         if (!$reporte) {
             $nuevo_reporte = Reportes::create([
                 'id_usuario' => $user->id_usuario,
