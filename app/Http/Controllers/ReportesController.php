@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use App\Models\Reportes;
 use App\Models\subpreguntas;
 use App\Models\subrespuestas;
+use Session;
 
 class ReportesController extends Controller
 {
@@ -44,56 +45,55 @@ class ReportesController extends Controller
                 'alimentos_saludables' => $user->alimentos_saludables,
                 'litro_agua' => $user->litro_agua,
 
-                'induccion_general' => $this->buscar_total_subhabilidad("INDUCCIÓN GENERAL"),
+                'induccion_general' => $this->buscar_total_subhabilidad("INDUCCIÓN GENERAL", $id_reporte),
 
-                'induccion_especifica' => $this->buscar_total_subhabilidad("INDUCCIÓN ESPECÍFICA"),
+                'induccion_especifica' => $this->buscar_total_subhabilidad("INDUCCIÓN ESPECÍFICA", $id_reporte),
 
-                'total_macrohabilidad_inductiva' => $this->buscar_total_subhabilidad("INDUCCIÓN GENERAL") + $this->buscar_total_subhabilidad("INDUCCIÓN ESPECÍFICA"),
-                'comprobacion_hipotesis' => $this->buscar_total_subhabilidad("COMPROBACIÓN DE HIPÓTESIS"),
+                'total_macrohabilidad_inductiva' => $this->buscar_total_subhabilidad("INDUCCIÓN GENERAL", $id_reporte) + $this->buscar_total_subhabilidad("INDUCCIÓN ESPECÍFICA", $id_reporte),
+                'comprobacion_hipotesis' => $this->buscar_total_subhabilidad("COMPROBACIÓN DE HIPÓTESIS", $id_reporte),
+                'uso_probabilidad_incertidumbre' => $this->buscar_total_subhabilidad("USO DE PROBABILIDAD E INCERTIDUMBRE", $id_reporte),
 
-                'uso_probabilidad_incertidumbre' => $this->buscar_total_subhabilidad("USO DE PROBABILIDAD E INCERTIDUMBRE"),
+                'total_macrohabilidad_abductiva' => $this->buscar_total_subhabilidad("COMPROBACIÓN DE HIPÓTESIS", $id_reporte) + $this->buscar_total_subhabilidad("USO DE PROBABILIDAD E INCERTIDUMBRE", $id_reporte),
 
-                'total_macrohabilidad_abductiva' => $this->buscar_total_subhabilidad("COMPROBACIÓN DE HIPÓTESIS") + $this->buscar_total_subhabilidad("USO DE PROBABILIDAD E INCERTIDUMBRE"),
+                'identificacion_analogia' => $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE FALLO POR ANALOGÍA", $id_reporte),
 
-                'identificacion_analogia' => $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE FALLO POR ANALOGÍA"),
+                'identificacion_por_fallo_vaguedad' => $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE FALLO POR VAGUEDAD", $id_reporte),
 
-                'identificacion_por_fallo_vaguedad' => $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE FALLO POR VAGUEDAD"),
+                'total_macrohabilidad_deductivo_y_verbal' => $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE FALLO POR ANALOGÍA", $id_reporte) + $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE FALLO POR VAGUEDAD", $id_reporte),
 
-                'total_macrohabilidad_deductivo_y_verbal' => $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE FALLO POR ANALOGÍA") + $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE FALLO POR VAGUEDAD"),
+                'identificacion_estructura_argumentativa' => $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE ESTRUCTURA ARGUMENTATIVA", $id_reporte),
 
-                'identificacion_estructura_argumentativa' => $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE ESTRUCTURA ARGUMENTATIVA"),
+                'identificacion_de_suposicion' => $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE SUPOSICIÓN", $id_reporte),
 
-                'identificacion_de_suposicion' => $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE SUPOSICIÓN"),
+                'identificacion_de_falacia' => $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE FALACIA", $id_reporte),
 
-                'identificacion_de_falacia' => $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE FALACIA"),
+                'total_macrohabilidad_analisis_de_argumentos' => $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE ESTRUCTURA ARGUMENTATIVA", $id_reporte) + $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE SUPOSICIÓN", $id_reporte) + $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE FALACIA", $id_reporte),
 
-                'total_macrohabilidad_analisis_de_argumentos' => $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE ESTRUCTURA ARGUMENTATIVA") + $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE SUPOSICIÓN") + $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE FALACIA"),
+                'toma_desiciones_informadas' => $this->buscar_total_subhabilidad("TOMA DE DECISIONES INFORMADAS", $id_reporte),
 
-                'toma_desiciones_informadas' => $this->buscar_total_subhabilidad("TOMA DE DECISIONES INFORMADAS"),
+                'conciencia_situacion_acciones_razonables' => $this->buscar_total_subhabilidad("CONCIENCIA DE SITUACIÓN Y ACCIONES RAZONABLES", $id_reporte),
+                'pensamiento_estrategico' => $this->buscar_total_subhabilidad("PENSAMIENTO ESTRATÉGICO", $id_reporte),
 
-                'conciencia_situacion_acciones_razonables' => $this->buscar_total_subhabilidad("CONCIENCIA DE SITUACIÓN Y ACCIONES RAZONABLES"),
-                'pensamiento_estrategico' => $this->buscar_total_subhabilidad("PENSAMIENTO ESTRATÉGICO"),
+                'pensamiento_creativo' => $this->buscar_total_subhabilidad("PENSAMIENTO CREATIVO", $id_reporte),
 
-                'pensamiento_creativo' => $this->buscar_total_subhabilidad("PENSAMIENTO CREATIVO"),
+                'macrohabilidad_toma_desiciones_y_resolucion_problemas' => $this->buscar_total_subhabilidad("TOMA DE DECISIONES INFORMADAS", $id_reporte) + $this->buscar_total_subhabilidad("CONCIENCIA DE SITUACIÓN Y ACCIONES RAZONABLES", $id_reporte) + $this->buscar_total_subhabilidad("PENSAMIENTO ESTRATÉGICO", $id_reporte) + $this->buscar_total_subhabilidad("PENSAMIENTO CREATIVO", $id_reporte),
 
-                'macrohabilidad_toma_desiciones_y_resolucion_problemas' => $this->buscar_total_subhabilidad("TOMA DE DECISIONES INFORMADAS") + $this->buscar_total_subhabilidad("CONCIENCIA DE SITUACIÓN Y ACCIONES RAZONABLES") + $this->buscar_total_subhabilidad("PENSAMIENTO ESTRATÉGICO") + $this->buscar_total_subhabilidad("PENSAMIENTO CREATIVO"),
-
-                'calificacion_total' => $this->buscar_total_subhabilidad("TOMA DE DECISIONES INFORMADAS") + $this->buscar_total_subhabilidad("CONCIENCIA DE SITUACIÓN Y ACCIONES RAZONABLES") + $this->buscar_total_subhabilidad("PENSAMIENTO ESTRATÉGICO") + $this->buscar_total_subhabilidad("PENSAMIENTO CREATIVO") + $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE ESTRUCTURA ARGUMENTATIVA") + $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE SUPOSICIÓN") + $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE FALACIA") + $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE FALLO POR ANALOGÍA") + $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE FALLO POR VAGUEDAD") + $this->buscar_total_subhabilidad("COMPROBACIÓN DE HIPÓTESIS") + $this->buscar_total_subhabilidad("USO DE PROBABILIDAD E INCERTIDUMBRE") + $this->buscar_total_subhabilidad("INDUCCIÓN GENERAL") + $this->buscar_total_subhabilidad("INDUCCIÓN ESPECÍFICA"),
+                'calificacion_total' => $this->buscar_total_subhabilidad("TOMA DE DECISIONES INFORMADAS", $id_reporte) + $this->buscar_total_subhabilidad("CONCIENCIA DE SITUACIÓN Y ACCIONES RAZONABLES", $id_reporte) + $this->buscar_total_subhabilidad("PENSAMIENTO ESTRATÉGICO", $id_reporte) + $this->buscar_total_subhabilidad("PENSAMIENTO CREATIVO", $id_reporte) + $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE ESTRUCTURA ARGUMENTATIVA", $id_reporte) + $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE SUPOSICIÓN", $id_reporte) + $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE FALACIA", $id_reporte) + $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE FALLO POR ANALOGÍA", $id_reporte) + $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE FALLO POR VAGUEDAD", $id_reporte) + $this->buscar_total_subhabilidad("COMPROBACIÓN DE HIPÓTESIS", $id_reporte) + $this->buscar_total_subhabilidad("USO DE PROBABILIDAD E INCERTIDUMBRE", $id_reporte) + $this->buscar_total_subhabilidad("INDUCCIÓN GENERAL", $id_reporte) + $this->buscar_total_subhabilidad("INDUCCIÓN ESPECÍFICA", $id_reporte),
 
                 'conocimiento_procedimental' => $categorias['conocimiento_procedimental'],
 
-                'nivel_inductivo' => $this->calcularNivel($this->buscar_total_subhabilidad("INDUCCIÓN GENERAL") + $this->buscar_total_subhabilidad("INDUCCIÓN ESPECÍFICA"), 'inductivo'),
+                'nivel_inductivo' => $this->calcularNivel($this->buscar_total_subhabilidad("INDUCCIÓN GENERAL", $id_reporte) + $this->buscar_total_subhabilidad("INDUCCIÓN ESPECÍFICA", $id_reporte), 'inductivo'),
 
-                'nivel_abductivo' => $this->calcularNivel($this->buscar_total_subhabilidad("COMPROBACIÓN DE HIPÓTESIS") + $this->buscar_total_subhabilidad("USO DE PROBABILIDAD E INCERTIDUMBRE"), 'abductivo'),
+                'nivel_abductivo' => $this->calcularNivel($this->buscar_total_subhabilidad("COMPROBACIÓN DE HIPÓTESIS", $id_reporte) + $this->buscar_total_subhabilidad("USO DE PROBABILIDAD E INCERTIDUMBRE", $id_reporte), 'abductivo'),
 
-                'nivel_deductivo_y_verbal' => $this->calcularNivel($this->buscar_total_subhabilidad("IDENTIFICACIÓN DE FALLO POR ANALOGÍA") + $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE FALLO POR VAGUEDAD"), 'deductivo'),
+                'nivel_deductivo_y_verbal' => $this->calcularNivel($this->buscar_total_subhabilidad("IDENTIFICACIÓN DE FALLO POR ANALOGÍA", $id_reporte) + $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE FALLO POR VAGUEDAD", $id_reporte), 'deductivo'),
 
 
-                'nivel_analisis_de_argumentos' => $this->calcularNivel($this->buscar_total_subhabilidad("IDENTIFICACIÓN DE ESTRUCTURA ARGUMENTATIVA") + $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE SUPOSICIÓN") + $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE FALACIA"), 'analisis_argumentos'),
+                'nivel_analisis_de_argumentos' => $this->calcularNivel($this->buscar_total_subhabilidad("IDENTIFICACIÓN DE ESTRUCTURA ARGUMENTATIVA", $id_reporte) + $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE SUPOSICIÓN", $id_reporte) + $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE FALACIA", $id_reporte), 'analisis_argumentos'),
 
-                'nivel_toma_desiciones_y_resolucion_problemas' => $this->calcularNivel($this->buscar_total_subhabilidad("TOMA DE DECISIONES INFORMADAS") + $this->buscar_total_subhabilidad("CONCIENCIA DE SITUACIÓN Y ACCIONES RAZONABLES") + $this->buscar_total_subhabilidad("PENSAMIENTO ESTRATÉGICO") + $this->buscar_total_subhabilidad("PENSAMIENTO CREATIVO"), 'toma_decisiones'),
+                'nivel_toma_desiciones_y_resolucion_problemas' => $this->calcularNivel($this->buscar_total_subhabilidad("TOMA DE DECISIONES INFORMADAS", $id_reporte) + $this->buscar_total_subhabilidad("CONCIENCIA DE SITUACIÓN Y ACCIONES RAZONABLES", $id_reporte) + $this->buscar_total_subhabilidad("PENSAMIENTO ESTRATÉGICO", $id_reporte) + $this->buscar_total_subhabilidad("PENSAMIENTO CREATIVO", $id_reporte), 'toma_decisiones'),
 
-                'nivel_total' => $this->calcularNivel($this->buscar_total_subhabilidad("TOMA DE DECISIONES INFORMADAS") + $this->buscar_total_subhabilidad("CONCIENCIA DE SITUACIÓN Y ACCIONES RAZONABLES") + $this->buscar_total_subhabilidad("PENSAMIENTO ESTRATÉGICO") + $this->buscar_total_subhabilidad("PENSAMIENTO CREATIVO") + $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE ESTRUCTURA ARGUMENTATIVA") + $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE SUPOSICIÓN") + $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE FALACIA") + $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE FALLO POR ANALOGÍA") + $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE FALLO POR VAGUEDAD") + $this->buscar_total_subhabilidad("COMPROBACIÓN DE HIPÓTESIS") + $this->buscar_total_subhabilidad("USO DE PROBABILIDAD E INCERTIDUMBRE") + $this->buscar_total_subhabilidad("INDUCCIÓN GENERAL") + $this->buscar_total_subhabilidad("INDUCCIÓN ESPECÍFICA"), 'total'),
+                'nivel_total' => $this->calcularNivel($this->buscar_total_subhabilidad("TOMA DE DECISIONES INFORMADAS", $id_reporte) + $this->buscar_total_subhabilidad("CONCIENCIA DE SITUACIÓN Y ACCIONES RAZONABLES", $id_reporte) + $this->buscar_total_subhabilidad("PENSAMIENTO ESTRATÉGICO", $id_reporte) + $this->buscar_total_subhabilidad("PENSAMIENTO CREATIVO", $id_reporte) + $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE ESTRUCTURA ARGUMENTATIVA", $id_reporte) + $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE SUPOSICIÓN", $id_reporte) + $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE FALACIA", $id_reporte) + $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE FALLO POR ANALOGÍA", $id_reporte) + $this->buscar_total_subhabilidad("IDENTIFICACIÓN DE FALLO POR VAGUEDAD", $id_reporte) + $this->buscar_total_subhabilidad("COMPROBACIÓN DE HIPÓTESIS", $id_reporte) + $this->buscar_total_subhabilidad("USO DE PROBABILIDAD E INCERTIDUMBRE", $id_reporte) + $this->buscar_total_subhabilidad("INDUCCIÓN GENERAL", $id_reporte) + $this->buscar_total_subhabilidad("INDUCCIÓN ESPECÍFICA", $id_reporte), 'total'),
 
                 'depuracion' => $categorias['depuracion'],
                 'evaluacion' => $categorias['evaluacion'],
@@ -103,6 +103,8 @@ class ReportesController extends Controller
                 'tiempo_prueba' => $request->tiempo_prueba,
             ]);
         }
+
+
     }
 
 
@@ -136,7 +138,7 @@ class ReportesController extends Controller
         $consulta_informe = $this->consultar_informe(id_usuario: $user->id_usuario, id_reporte: $id_reporte);
         $informe_final = $this->crear_informe_descriptivo($consulta_informe, $id_reporte);
 
-
+        
         //Esto es lo que debería restornar
         return view('reporte.index', compact('informe_final'));
     }
@@ -296,10 +298,10 @@ class ReportesController extends Controller
 
         $consulta_informe = $this->consultar_informe(id_usuario: $request->id_usuario, id_reporte: $request->id_reporte);
 
-
+        
         $informe_final = $this->crear_informe_descriptivo($consulta_informe, $request->id_reporte);
 
-
+       
         //Esto es lo que debería restornar
         return view('reporte.reporte_detalle', compact('informe_final'));
 
@@ -314,17 +316,19 @@ class ReportesController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function buscar_total_subhabilidad($nombre_habilidad)
+    public function buscar_total_subhabilidad($nombre_habilidad, $id_reporte)
     {
     
-        $id_reporte = session("id_reporte_actual");
+
+        //dd($id_reporte);
         $id_subhabilidad = Subhabilidad::where('nombre', $nombre_habilidad)
             ->pluck('id_subhabilidad')
             ->first();
 
 
         if ($id_subhabilidad) {
-            $total_Calificacion_induccion_general = Respuestas::join('preguntas', 'respuestas.id_pregunta', '=', 'preguntas.id_pregunta')
+            $total_Calificacion_induccion_general = 
+            Respuestas::join('preguntas', 'respuestas.id_pregunta', '=', 'preguntas.id_pregunta')
                 ->where('preguntas.id_subhabilidad', $id_subhabilidad)
                 ->where('respuestas.id_reporte', $id_reporte)
                 ->sum('respuestas.calificacion_respuesta');
@@ -332,6 +336,7 @@ class ReportesController extends Controller
             $total_Calificacion_induccion_general = 0;
         }
 
+        
         return $total_Calificacion_induccion_general;
     }
 
@@ -342,6 +347,7 @@ class ReportesController extends Controller
      */
     public function consultar_informe($id_usuario, $id_reporte)
     {
+
         $consulta_informe = Preguntas::with([
             'subhabilidad.habilidad',
             'contexto',
@@ -375,6 +381,7 @@ class ReportesController extends Controller
             })
             ->toArray(); // Convertir el resultado final a un solo array plano
 
+
         return $consulta_informe;
     }
 
@@ -384,9 +391,13 @@ class ReportesController extends Controller
      */
     public function crear_informe_descriptivo($consulta_informe, $id_reporte)
     {
+
+        
         $documentos_totales = [];
         $indice_item = 1;
         $indice_contexto = 1;
+
+        
         for ($i = 0; $i < count($consulta_informe) - 1; $i++) {
 
             if ($consulta_informe[$i]['id_contexto'] == $consulta_informe[$i + 1]['id_contexto']) {
@@ -419,9 +430,9 @@ class ReportesController extends Controller
             }
             $indice_item++;
         }
-
+    
         $reporte = Reportes::where('id_reporte', $id_reporte)->first();
-
+        
         $metacognicion_motivacion = [
             "id_reporte" => $reporte->id_reporte,
             "id_usuario" => $reporte->id_usuario,
