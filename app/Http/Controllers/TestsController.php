@@ -300,27 +300,19 @@ class TestsController extends Controller
 
                 $respuesta_chatgpt = $this->openAIService->enviarRespuestaAChatGPT($prompt);
 
-
                 if (!is_numeric($respuesta_chatgpt)) {
-
                     $respuesta_chatgpt = 0;
                 }
 
 
                 //guardar respuesta subpregunta en la tabla subrespuestas
                 $this->guardarRespuestaSubpregunta($request, $user, $subpregunta->id_subpregunta, $respuesta_abierta, $respuesta_chatgpt);
-
-                $totalCalificacionSubpreguntas += $respuesta_chatgpt;
-                $totalSubpreguntas++;
             }
-
-
-
 
             $totalCalificacionSubpreguntas += $respuesta_chatgpt;
             $totalSubpreguntas++;
 
-            if ($totalSubpreguntas > 0) {
+            if ($totalSubpreguntas == 5) {
 
                 $this->guardarRespuesta($request, $user, $preguntaPrincipalId, 'Calificación basada en subpreguntas abiertas', $totalCalificacionSubpreguntas);
             }
@@ -523,7 +515,7 @@ class TestsController extends Controller
             ->whereDate('fecha_calificacion', '=', $fecha_actual)
             ->first();
 
-        
+
         if (!$reporte) {
             $nuevo_reporte = Reportes::create([
                 'id_usuario' => $user->id_usuario,
