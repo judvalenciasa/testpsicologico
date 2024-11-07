@@ -44,7 +44,7 @@ class DescriptivosSeeder extends Seeder
             [
                 'id_descriptivo' => 5,
                 'id_pregunta' => 13,
-                'texto_descriptivo' => 'Y lo explica con cierta precisión ',
+                'texto_descriptivo' => 'y lo explica con cierta precisión ',
                 'calificacion' => 2
             ],
             [
@@ -90,7 +90,7 @@ class DescriptivosSeeder extends Seeder
             [
                 'id_descriptivo' => 12,
                 'id_pregunta' => 15,
-                'texto_descriptivo' => 'Y lo explica con cierta precisión ',
+                'texto_descriptivo' => 'y lo explica con cierta precisión ',
                 'calificacion'  => 2 
             ],
             [
@@ -135,7 +135,7 @@ class DescriptivosSeeder extends Seeder
             [
                 'id_descriptivo' => 19,
                 'id_pregunta' => 17,
-                'texto_descriptivo' => 'Y lo explica con cierta precisión ',
+                'texto_descriptivo' => 'y lo explica con cierta precisión ',
                 'calificacion' => 2
             ],
             [

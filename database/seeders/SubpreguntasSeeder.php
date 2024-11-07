@@ -104,7 +104,7 @@ class SubpreguntasSeeder extends Seeder
             [
                 'id_subpregunta' => 13,
                 'id_pregunta' => 81,
-                'texto' => 'Enunciado 3. Yo apoyaría esta propuesta es una necesidad urgente para las personas y los ecosistemas.',
+                'texto' => 'Enunciado 3. Yo apoyaría esta propuesta, es una necesidad urgente para las personas y los ecosistemas.',
                 'valor_opcion'=> null,
                 'tipo_pregunta' => 'cerrada'
             ],

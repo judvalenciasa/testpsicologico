@@ -517,7 +517,7 @@ class ReportesController extends Controller
             return "en contextos económicos, educativos y de proyección de vida.";
         }
         if ($contexto == 10) {
-            return "en contextosfuturibles, tecnológicos, laborales y económicos.";
+            return "en contextos futuribles, tecnológicos, laborales y económicos.";
         }
         if ($contexto == 11) {
             return "en contextos educativos, e institucionales.";
@@ -565,19 +565,19 @@ class ReportesController extends Controller
             return "en contextos deportivos, de salud y relaciones interpersonales.";
         }
         if ($contexto == 26) {
-            return "En contextos en los que la era tecnológica y digital ofrece facilidades, pero también pone en riesgo la seguridad de las personas";
+            return "en contextos en los que la era tecnológica y digital ofrece facilidades, pero también pone en riesgo la seguridad de las personas";
         }
         if ($contexto == 27) {
-            return "En contextos educativos y de responsabilidades académicas.";
+            return "en contextos educativos y de responsabilidades académicas.";
         }
         if ($contexto == 28) {
-            return "En contextos de conservación ecosistémica o vida natural ante amenazas propias de la urbanización.";
+            return "en contextos de conservación ecosistémica o vida natural ante amenazas propias de la urbanización.";
         }
         if ($contexto == 29) {
-            return "En contextos culturales de competitividad y situaciones adversas";
+            return "en contextos culturales de competitividad y situaciones adversas";
         }
         if ($contexto == 30) {
-            return "En contextos sociales y ambientales de búsqueda de calidad de vida alrededor de la salud y el aire.";
+            return "en contextos sociales y ambientales de búsqueda de calidad de vida alrededor de la salud y el aire.";
         }
         return "no hay descripcion para este contexto";
     }
