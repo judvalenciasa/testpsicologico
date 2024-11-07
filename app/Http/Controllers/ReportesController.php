@@ -299,7 +299,7 @@ class ReportesController extends Controller
 
         $informe_final = $this->crear_informe_descriptivo($consulta_informe, $request->id_reporte);
 
-
+        dd($informe_final);
         //Esto es lo que debería restornar
         return view('reporte.reporte_detalle', compact('informe_final'));
 
@@ -495,91 +495,91 @@ class ReportesController extends Controller
             return "en contextos de entretenimiento y diversión ";
         }
         if ($contexto == 2) {
-            return "en contextos culturales, científicos y de percepción del mundo";
+            return "en contextos culturales, científicos y de percepción del mundo ";
         }
         if ($contexto == 3) {
-            return "en contextos culturales";
+            return "en contextos culturales ";
         }
         if ($contexto == 4) {
-            return "en contextos económico-ambientales";
+            return "en contextos económico-ambientales ";
         }
         if ($contexto == 5) {
-            return "en contextos ambientales y sociales.";
+            return "en contextos ambientales y sociales. ";
         }
         if ($contexto == 6) {
-            return "en contextos familiares, de salud mental, y tecnológicos.";
+            return "en contextos familiares, de salud mental, y tecnológicos. ";
         }
         if ($contexto == 7) {
-            return "en contextos políticos y culturales";
+            return "en contextos políticos y culturales ";
         }
         if ($contexto == 8) {
-            return "en contextos de relaciones interpersonales, educativos y del proyecto de vida.";
+            return "en contextos de relaciones interpersonales, educativos y del proyecto de vida. ";
         }
         if ($contexto == 9) {
-            return "en contextos económicos, educativos y de proyección de vida.";
+            return "en contextos económicos, educativos y de proyección de vida. ";
         }
         if ($contexto == 10) {
-            return "en contextosfuturibles, tecnológicos, laborales y económicos.";
+            return "en contextosfuturibles, tecnológicos, laborales y económicos. ";
         }
         if ($contexto == 11) {
-            return "en contextos educativos, e institucionales.";
+            return "en contextos educativos, e institucionales. ";
         }
         if ($contexto == 12) {
-            return "en contextos culturales, sociales y de participación comunitaria.";
+            return "en contextos culturales, sociales y de participación comunitaria. ";
         }
         if ($contexto == 13) {
-            return "en contextos educativos, institucionales, de participación en los asuntos colectivos y de vínculos emocionales.";
+            return "en contextos educativos, institucionales, de participación en los asuntos colectivos y de vínculos emocionales. ";
         }
         if ($contexto == 14) {
-            return "en contextos ambientales de riesgos de desastres y de interacción institucional con el ámbito social- comunitario.";
+            return "en contextos ambientales de riesgos de desastres y de interacción institucional con el ámbito social- comunitario. ";
         }
         if ($contexto == 15) {
-            return "en contextos de carácter político, social y de salud reproductiva.";
+            return "en contextos de carácter político, social y de salud reproductiva. ";
         }
         if ($contexto == 16) {
-            return "en contextos culturales y sociales que movilizan los sentidos, la imaginación y el pensamiento.";
+            return "en contextos culturales y sociales que movilizan los sentidos, la imaginación y el pensamiento. ";
         }
         if ($contexto == 17) {
-            return "en contextos de política pública sostenible relacionada con la descontaminación de cuerpos de agua.";
+            return "en contextos de política pública sostenible relacionada con la descontaminación de cuerpos de agua. ";
         }
         if ($contexto == 18) {
-            return "en contextos de participación social comunitaria, integridad física y seguridad.";
+            return "en contextos de participación social comunitaria, integridad física y seguridad. ";
         }
         if ($contexto == 19) {
-            return "en contextos de era digital y tecnológica en los que tienen lugar nuevas interacciones sociales.";
+            return "en contextos de era digital y tecnológica en los que tienen lugar nuevas interacciones sociales. ";
         }
         if ($contexto == 20) {
-            return "en contextos de fenómenos ambientales, culturales y de propuestas de emprendimiento.";
+            return "en contextos de fenómenos ambientales, culturales y de propuestas de emprendimiento. ";
         }
         if ($contexto == 21) {
-            return "de relaciones sociales y vínculos emocionales.";
+            return "de relaciones sociales y vínculos emocionales. ";
         }
         if ($contexto == 22) {
-            return "en contextos de participación ambiental y calidad de vida.";
+            return "en contextos de participación ambiental y calidad de vida. ";
         }
         if ($contexto == 23) {
-            return "en contextos educativos, económicos y de proyección internacional.";
+            return "en contextos educativos, económicos y de proyección internacional. ";
         }
         if ($contexto == 24) {
-            return "en contextos políticos de protección de DD.HH.";
+            return "en contextos políticos de protección de DD.HH. ";
         }
         if ($contexto == 25) {
-            return "en contextos deportivos, de salud y relaciones interpersonales.";
+            return "en contextos deportivos, de salud y relaciones interpersonales. ";
         }
         if ($contexto == 26) {
-            return "En contextos en los que la era tecnológica y digital ofrece facilidades, pero también pone en riesgo la seguridad de las personas";
+            return "En contextos en los que la era tecnológica y digital ofrece facilidades, pero también pone en riesgo la seguridad de las personas ";
         }
         if ($contexto == 27) {
-            return "En contextos educativos y de responsabilidades académicas.";
+            return "En contextos educativos y de responsabilidades académicas. ";
         }
         if ($contexto == 28) {
-            return "En contextos de conservación ecosistémica o vida natural ante amenazas propias de la urbanización.";
+            return "En contextos de conservación ecosistémica o vida natural ante amenazas propias de la urbanización. ";
         }
         if ($contexto == 29) {
-            return "En contextos culturales de competitividad y situaciones adversas";
+            return "En contextos culturales de competitividad y situaciones adversas ";
         }
         if ($contexto == 30) {
-            return "En contextos sociales y ambientales de búsqueda de calidad de vida alrededor de la salud y el aire.";
+            return "En contextos sociales y ambientales de búsqueda de calidad de vida alrededor de la salud y el aire. ";
         }
         return "no hay descripcion para este contexto";
     }
