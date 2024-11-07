@@ -259,12 +259,13 @@ class TestsController extends Controller
 
     public function calificar_subpreguntas_abiertas(Request $request, $user)
     {
+        
         $totalCalificacionSubpreguntas = 0;
         $totalSubpreguntas = 0;
 
         $preguntaPrincipalId = $request->input('pregunta_ids')[1];
 
-
+        
         $id_contexto = Preguntas::where('id_pregunta', $preguntaPrincipalId)->pluck('id_contexto')->first();
         $contexto = Contexto::where('id_contexto', $id_contexto)->pluck('texto')->first();
 
@@ -278,7 +279,6 @@ class TestsController extends Controller
             $subpregunta = Subpreguntas::find($subpregunta_id);
 
 
-
             if (!is_string($respuesta_abierta) || empty(trim($respuesta_abierta))) {
                 return redirect()->back()->with('error', 'Por favor ingrese una respuesta válida para la subpregunta.');
             }
@@ -286,7 +286,7 @@ class TestsController extends Controller
             $opcion_seleccionada = $respuestas_cerradas_indexadas[$i];
 
             $opcion = Opcionessubpreguntas::find($opcion_seleccionada);
-
+            
             if ($opcion->valor_opcion == 0) {
                 $respuesta_chatgpt = 0;
 
@@ -295,9 +295,7 @@ class TestsController extends Controller
             } else {
 
                 $criterio = Subcriterios::where('id_subpregunta', $subpregunta_id)->pluck('texto');
-
                 $prompt = "Contexto: " . $contexto . " fin contexto. Esta es la pregunta: " . $subpregunta->texto . " Fin pregunta. Esta es la respuesta del enunciado: " . $opcion->texto . ". fin respuesta. Estos son los criterios para la calificación: " . $criterio . " fin criterio. " . "Nota: La respuesta debe tener un sentido coherente con lo que se pregunta en el contexto." . "Con lo anterior devuélveme el número de la calificación, sin ninguna otra letra, con la siguiente respuesta: " . $respuesta_abierta;
-
                 $respuesta_chatgpt = $this->openAIService->enviarRespuestaAChatGPT($prompt);
 
                 if (!is_numeric($respuesta_chatgpt)) {
@@ -319,6 +317,7 @@ class TestsController extends Controller
 
             $i++;
         }
+
     }
 
     public function calificar_pregunta_93(Request $request, $user)

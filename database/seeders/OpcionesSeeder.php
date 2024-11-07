@@ -1492,7 +1492,7 @@ class OpcionesSeeder extends Seeder
             [
                 'id_opcion' => 233,
                 'id_pregunta' => 69,
-                'texto' => 'd) No ha enviado comunicaciones a las comunidades indicando cómo pueden conserven la calma y actuar ante la temporada de lluvias.',
+                'texto' => 'd) No ha enviado comunicaciones a las comunidades indicando cómo pueden conservar la calma y actuar durante la temporada de lluvias.',
                 'valor_opcion' => 0
             ],
             [
