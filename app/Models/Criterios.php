@@ -25,6 +25,6 @@ class Criterios extends Model
     // Relación con la tabla Preguntas
     public function pregunta()
     {
-        return $this->belongsTo(Pregunta::class, 'id_pregunta', 'id_pregunta');
+        return $this->belongsTo(Preguntas::class, 'id_pregunta', 'id_pregunta');
     }
 }

@@ -35,7 +35,7 @@
 
             <!-- Edad -->
             <div class="input-group">
-                <label for="edad">Edad (15 a 18 años):</label>
+                <label for="edad">Edad (14 a 18 años):</label>
                 <input type="number" id="edad" name="edad" min="15" max="18" placeholder="Ingrese su edad" required>
             </div>
 
