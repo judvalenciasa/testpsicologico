@@ -613,7 +613,7 @@ class DescriptivosSeeder extends Seeder
             [
                 'id_descriptivo' => 90,
                 'id_pregunta' => 80,
-                'texto_descriptivo' => 'Y los define parcialmente. ',
+                'texto_descriptivo' => 'y los define parcialmente. ',
                 'calificacion' => 2
             ],
             [
@@ -689,7 +689,7 @@ class DescriptivosSeeder extends Seeder
             [
                 'id_descriptivo' => 102,
                 'id_pregunta' => 82,
-                'texto_descriptivo' => 'Y los define parcialmente. ',
+                'texto_descriptivo' => 'y los define parcialmente. ',
                 'calificacion' => 2
             ],
             [
@@ -765,7 +765,7 @@ class DescriptivosSeeder extends Seeder
             [
                 'id_descriptivo' => 114,
                 'id_pregunta' => 84,
-                'texto_descriptivo' => 'Y los define parcialmente. ',
+                'texto_descriptivo' => 'y los define parcialmente. ',
                 'calificacion' => 2
             ],
             [
@@ -1213,19 +1213,19 @@ class DescriptivosSeeder extends Seeder
             [
                 'id_descriptivo' => 182,
                 'id_pregunta' => 104,
-                'texto_descriptivo' => 'Y evalúa parcialmente las acciones que allí se emprenderán en aras de resolver el problema. ',
+                'texto_descriptivo' => 'y evalúa parcialmente las acciones que allí se emprenderán en aras de resolver el problema. ',
                 'calificacion' => 2
             ],
             [
                 'id_descriptivo' => 183,
                 'id_pregunta' => 104,
-                'texto_descriptivo' => 'Y evalúa adecuadamente las acciones que allí se emprenderán en aras de resolver el problema ',
+                'texto_descriptivo' => 'y evalúa adecuadamente las acciones que allí se emprenderán en aras de resolver el problema ',
                 'calificacion' => 3
             ],
             [
                 'id_descriptivo' => 184,
                 'id_pregunta' => 104,
-                'texto_descriptivo' => 'Y evalúa adecuadamente las acciones que allí se emprenderán en aras de resolver el problema ',
+                'texto_descriptivo' => 'y evalúa adecuadamente las acciones que allí se emprenderán en aras de resolver el problema ',
                 'calificacion' => 4
             ],
 

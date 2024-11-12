@@ -8,18 +8,6 @@
     position: relative;
 }
 
-/* .banner_section::before {
-    content: "";
-    position: absolute;
-    width: 100%;
-    left: 0;
-    height: 100%;
-    background: linear-gradient(
-        90deg,
-        rgba(255, 255, 255, 0.8) 25%,
-        rgba(0, 0, 0, 0.5) 100%
-    );
-} */
 
 .banner_section .banner_ctn {
     display: flex;
@@ -50,6 +38,10 @@
 
 .banner_section .banner_ctn  .banner_text {
     width: 35vw;
+}
+
+.banner_section .banner_ctn  .banner_text p{
+    font-size: 1.5vw;
 }
 
 /** Seccion preguntas frecuentes **/
