@@ -58,6 +58,7 @@ p {
 .user-label {
     position: absolute;
     left: 15px;
+    font-size: 1.2vw;
     color: gray;
     pointer-events: none;
     transform: translateY(1rem);
@@ -78,9 +79,9 @@ input:valid ~ label {
     color: #2196f3;
 }
 
-
 .span_mostrar_pin {
     color: black;
+    font-size: 1.2vw;
     font-weight: 500;
 }
 
@@ -120,9 +121,9 @@ input:valid ~ label {
     text-align: center;
     text-decoration: none;
     width: 100%;
-    padding: 18px 25px;
+    padding: 1vw 2vw;
     color: #fff;
-    font-size: 1.125em;
+    font-size: 1vw;
     font-weight: 700;
     letter-spacing: 0.3em;
     z-index: 20;
@@ -147,7 +148,6 @@ input:valid ~ label {
         transform: scale(1);
     }
 }
-
 
 .error-message {
     font-size: 0.875em;

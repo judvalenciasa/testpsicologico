@@ -19,7 +19,6 @@
         <div class="text_ctn">
             <h1>Registro</h1>
             <div class="underline"></div>
-            <p>Si deseas presentar la prueba</p>
         </div>
 
         <div class="form_ctn">
