@@ -269,7 +269,7 @@ class Opcionessubpreguntas extends Seeder
             [
                 'id_opcionessubpregunta' => 39,
                 'id_subpregunta' => 23,
-                'texto' => 'c)  razonado ',
+                'texto' => 'c) Argumento razonado ',
                 'valor_opcion'=> 1
             ],
 
