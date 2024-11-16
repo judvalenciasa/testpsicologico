@@ -40,7 +40,8 @@
                         <h3>Datos sociodemográficos</h3>
                         <p><strong>Estrato socioeconómico en que vive:</strong> {{ $metacognicion['estrato'] }}</p>
                         <p><strong>Nivel de escolaridad en el que se encuentra:</strong> {{ $metacognicion['nivel_escolaridad'] }}</p>
-                        <p><strong>Último nivel de escolaridad alcanzado por alguno de sus padres:</strong> {{ $metacognicion['nivel_educativo_padre'] }}</p>
+                        <p><strong>Último nivel de escolaridad alcanzado por el padre:</strong> {{ $metacognicion['nivel_educativo_padre'] }}</p>
+                        <p><strong>Último nivel de escolaridad alcanzado por la madre:</strong> {{ $metacognicion['nivel_educativo_madre'] }}</p>
                     </div>
 
                     <div class="habitos-personales">

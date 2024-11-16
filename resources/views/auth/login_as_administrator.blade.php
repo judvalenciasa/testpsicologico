@@ -17,12 +17,13 @@
 
 
     <section class="container">
-        @if(session('message'))
-            <div class="alert alert-danger">
-                {{ session('message') }}
-            </div>
+        @if ($errors->any())
+        <div class="alert alert-danger">
+            @foreach ($errors->all() as $error)
+            <p>{{ $error }}</p>
+            @endforeach
+        </div>
         @endif
-        
         <div class="text_ctn">
             <h1>Ingreso</h1>
             <div class="underline"></div>
@@ -53,7 +54,7 @@
 
     <!-- JavaScript para mostrar/ocultar contraseña -->
     <script>
-        document.getElementById('show-password').addEventListener('change', function () {
+        document.getElementById('show-password').addEventListener('change', function() {
             var passwordInput = document.getElementById('password');
             if (this.checked) {
                 // Si el checkbox está marcado, mostrar la contraseña
@@ -64,6 +65,8 @@
             }
         });
     </script>
+
+
 </body>
 
 </html>

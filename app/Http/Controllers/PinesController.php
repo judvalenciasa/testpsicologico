@@ -63,11 +63,11 @@ class PinesController extends Controller
         $usuario = auth()->user();
         if ($usuario) {
             if ($usuario->es_administrador == 1) {
-                $caracteres = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+                $caracteres = '0123456789abcdefghijkmnopqrstuvwxyzABCDEFGHJKLMNOPQRSTUVWXYZ';
                 $pines_generados = [];
 
                 for ($i = 0; $i < $cantidad; $i++) {
-                    $tamaño_de_codigo = 10; // Longitud de cada código generado
+                    $tamaño_de_codigo = 5; // Longitud de cada código generado
                     $codigo = '';
                     for ($j = 0; $j < $tamaño_de_codigo; $j++) {
                         $codigo .= $caracteres[rand(0, strlen($caracteres) - 1)];

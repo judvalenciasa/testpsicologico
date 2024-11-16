@@ -190,8 +190,6 @@ class UserController extends Controller
 
     public function login(Request $request)
     {
-
-        Log::info('Usuario intenta autenticarse: ' . $request->email);
         // Validar los datos del formulario de login
         $request->validate([
             'email' => 'required|string|email|max:60',
@@ -205,8 +203,6 @@ class UserController extends Controller
         // Intentar autenticar al usuario usando Auth::attempt
         if (Auth::attempt($credentials)) {
 
-            // Registrar en los logs al usuario autenticado
-            Log::info('Usuario autenticado: ' . $request->user());
             if ($this->comprobar_cantidad_pines($request)) {
                 return back()->with('message', 'La cantidad de pines ha sido superada');
             } else {
@@ -218,12 +214,9 @@ class UserController extends Controller
 
         // Si la autenticación falla, redirigir de vuelta al formulario de login con un mensaje de error
         return back()->withErrors([
-            'email' => 'Las credenciales no coinciden con nuestros registros.',
+            'email' => 'Usuario o contraseña invalidos.',
         ])->onlyInput('email');
     }
-
-
-
 
     protected function authenticated(Request $request, $user)
     {

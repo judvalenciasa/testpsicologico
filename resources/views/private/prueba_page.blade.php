@@ -17,7 +17,7 @@
 
         <div class="pregunta_ctn">
             <div class="title">
-                <h2>Contexto - {{$contexto_index + 1}} </h2>
+                <h2>Contexto - {{ $contexto_index + 1 }} </h2>
             </div>
 
             @if(isset($preguntas) && count($preguntas) > 0)
@@ -30,12 +30,12 @@
                 @csrf
                 @foreach($preguntas as $index => $pregunta_actual)
 
-                <p class="pregunta_texto">
-                    {!! $pregunta_actual->texto !!}</p>
+                <p class="pregunta_texto">{!! $pregunta_actual->texto !!}</p>
 
                 @if($pregunta_actual->tipo_pregunta == 'abierta')
                 <div class="opcion">
-                    <textarea class="textarea_field" maxlength="650" name="respuestas_abiertas[{{ $pregunta_actual->id_pregunta }}]"
+                    <textarea class="textarea_field" maxlength="650"
+                        name="respuestas_abiertas[{{ $pregunta_actual->id_pregunta }}]"
                         id="respuesta_abierta_{{ $pregunta_actual->id_pregunta }}" required rows="4"
                         placeholder="Escribe tu respuesta aquí..."></textarea>
                 </div>
@@ -49,7 +49,6 @@
                     </label>
                 </div>
                 @endforeach
-
                 @endif
 
                 <!-- Verificar si hay subpreguntas y mostrarlas -->
@@ -75,7 +74,6 @@
                         </label>
                     </div>
                     @endforeach
-
                     @endif
                     @endforeach
                 </div>
@@ -85,71 +83,29 @@
                 @endforeach
 
                 <input type="hidden" name="prueba_id" value="{{ $prueba_id }}">
-                <input type="hidden" name="contexto_index" value="{{ $contexto_index + 1 }}">
+                <input type="hidden" name="contexto_index" value="{{ $contexto_index }}">
+
+                <!-- Mostrar mensaje de error si existe -->
+                @if(session('error'))
+                <div class="alert alert-danger" style="color: red; font-weight: bold; margin-bottom: 20px;">
+                    {{ session('error') }}
+                </div>
+                @endif
 
                 @if($contexto_index + 1 < $total_contextos)
                     <button type="submit">Siguiente</button>
-                    <!-- 
-                    <div id="fullscreen-message" style="text-align: center; margin: 20px;">
-                        <button id="fullscreenBtn" style="padding: 10px 20px; font-size: 18px;">Entrar en Pantalla Completa</button>
-                    </div> -->
                     @else
                     <button class="send_btn" type="submit">Continuar con encuesta de metacognición</button>
-
-
-
                     @endif
+
             </form>
 
             @else
-            <p>Felicidades terminaste la prueba.</p>
+            <p>Felicidades, terminaste la prueba.</p>
             @endif
         </div>
 
     </section>
-
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            // Función para activar pantalla completa
-            function openFullscreen() {
-                var elem = document.documentElement;
-                if (elem.requestFullscreen) {
-                    elem.requestFullscreen();
-                } else if (elem.mozRequestFullScreen) { // Firefox
-                    elem.mozRequestFullScreen();
-                } else if (elem.webkitRequestFullscreen) { // Chrome, Safari y Opera
-                    elem.webkitRequestFullscreen();
-                } else if (elem.msRequestFullscreen) { // IE/Edge
-                    elem.msRequestFullscreen();
-                }
-            }
-
-            // Listener para el botón de pantalla completa
-            document.getElementById('fullscreenBtn').addEventListener('click', openFullscreen);
-
-            // Función para comprobar si estamos en pantalla completa
-            function checkFullscreen() {
-                if (document.fullscreenElement || document.mozFullScreenElement || document
-                    .webkitFullscreenElement || document.msFullscreenElement) {
-                    // Si estamos en pantalla completa, ocultar el botón
-                    document.getElementById('fullscreen-message').style.display = 'none';
-                } else {
-                    // Si no estamos en pantalla completa, mostrar el botón
-                    document.getElementById('fullscreen-message').style.display = 'block';
-                }
-            }
-
-            // Escuchar cambios en el estado de pantalla completa
-            document.addEventListener('fullscreenchange', checkFullscreen);
-            document.addEventListener('webkitfullscreenchange', checkFullscreen);
-            document.addEventListener('mozfullscreenchange', checkFullscreen);
-            document.addEventListener('MSFullscreenChange', checkFullscreen);
-
-            // Llamar la función para comprobar el estado inicial
-            checkFullscreen();
-        });
-    </script>
 
 </body>
 
