@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers\Api;
-
 use App\Http\Controllers\Controller;
 use App\Mail\MiMailable;
 use App\Models\Pines;
@@ -96,69 +95,92 @@ class UserController extends Controller
     }
 
 
+    /**
+     * 
+     * Si el es valido es porque existe entonces retorna el pin
+     * si no es porque el pin no existe y es invalido
+     * @param \Illuminate\Http\Request $request
+     * @return mixed
+     */
     public function pin_valido(Request $request)
     {
-        $id_pin = pines::where('pin', $request->pin)->value('id_pin');
-
-        if ($id_pin) {
-            return $id_pin;
-        } else {
-            return Null;
-        }
+        return pines::where('pin', $request->pin)->value('id_pin');
     }
+
+
+    /**
+     * 
+     * @param \Illuminate\Http\Request $request
+     * @return mixed
+     */
+    public function registro_existente(Request $request)
+    {
+        return User::where('email', $request->email)->first();
+    }
+
 
     public function registrar(Request $request)
     {
         $id_pin = $this->pin_valido($request);
 
-        if ($id_pin != null) {
-            $request->merge(['id_pin' => $id_pin]);
 
-            $request->validate([
-                'name' => 'required',
-                'email' => 'required',
-                'id_pin' => 'required',
-                'password' => 'required|string|min:6',
-            ]);
-
-
-
-            $user = new User();
-            $user->name = $request->name;
-            $user->email = $request->email;
-            $user->id_pin = $request->id_pin;
-            $user->password = Hash::make($request->password); // Hashear la contraseña
-            $user->es_administrador = 0;
-
-            $user->save();
-
-            $details = [
-                'email' => $request->email,
-                'contrasena' => $request->password
-            ];
-
-            // Enviar correo al usuario
-            try {
-                Mail::to($request->email)->send(new MiMailable($details));
-            } catch (\Exception $e) {
-                Log::error('Error al enviar el correo: ' . $e->getMessage());
-            }
-
-
-            // Devolver respuesta JSON de éxito
-            return response()->json(['success' => true]);
-        } else {
-            // Devolver respuesta JSON de error
+        if ($id_pin == null) {
             return response()->json(['success' => false, 'message' => 'El pin es inválido.']);
         }
+
+        $registro_existente = $this->registro_existente($request);
+        if ($registro_existente != null) {
+            return response()->json(['success' => false, 'message' => 'El usuario ya está registrado']);
+        }
+
+
+        $request->merge(['id_pin' => $id_pin]);
+        $request->validate([
+            'name' => 'required|max:70',
+            'email' => 'required','string','email','max:70',
+            'id_pin' => 'required',
+            'password' => 'required|string|min:6',
+        ]);
+
+        $user = new User();
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->id_pin = $request->id_pin;
+        $user->password = Hash::make($request->password); // Hashear la contraseña
+        $user->es_administrador = 0;
+
+        try {
+            $user->save();
+        } catch (\Throwable $th) {
+            return response()->json(['success' => false, 'message' => 'Error al registrar el usuario, recargue la página e intente nuevamente']);
+        }
+
+
+        $details = [
+            'email' => $request->email,
+            'contrasena' => $request->password
+        ];
+
+        // Enviar correo al usuario
+        try {
+            Mail::to($request->email)->send(new MiMailable($details));
+        } catch (\Exception $e) {
+            Log::error('Error al enviar el correo: ' . $e->getMessage());
+        }
+
+
+        // Devolver respuesta JSON de éxito
+        return response()->json(['success' => true]);
+
     }
 
-    public function comprobar_cantidad_pines($request){
+    public function comprobar_cantidad_pines($request)
+    {
         $user = User::where('email', $request->email)->with('pin')->first();
         //verificamos la cantidad de intentos del pin
         $pin = $this->pinesController->cantidad_intentos($user->id_pin);
         session(['pin' => $pin]);
-        
+
         if ($pin->intentos >= 2) {
             session()->flush();
             return back()->with('message', 'La cantidad de pines ha sido superada');
@@ -172,8 +194,8 @@ class UserController extends Controller
         Log::info('Usuario intenta autenticarse: ' . $request->email);
         // Validar los datos del formulario de login
         $request->validate([
-            'email' => 'required|string',
-            'password' => 'required|string',
+            'email' => 'required|string|email|max:60',
+            'password' => 'required|string|max:60',
         ]);
 
         // Obtener las credenciales (email y password) del request
@@ -187,11 +209,11 @@ class UserController extends Controller
             Log::info('Usuario autenticado: ' . $request->user());
             if ($this->comprobar_cantidad_pines($request)) {
                 return back()->with('message', 'La cantidad de pines ha sido superada');
-            }else {
-                  return $this->authenticated($request, Auth::user());
+            } else {
+                return $this->authenticated($request, Auth::user());
             }
-            
-          
+
+
         }
 
         // Si la autenticación falla, redirigir de vuelta al formulario de login con un mensaje de error
