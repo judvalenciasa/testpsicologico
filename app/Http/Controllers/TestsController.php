@@ -39,61 +39,68 @@ class TestsController extends Controller
 
         $id_reporte = session('id_reporte');
 
+
         $subrespuestaExistente = subrespuestas::where('id_usuario', $user->id_usuario)
             ->where('id_subpregunta', $id_subpregunta)
             ->where('id_reporte', $id_reporte)
             ->first();
 
-        if ($subrespuestaExistente) {
-            $subrespuestaExistente->update([
-                'respuesta' => $respuesta,
-                'calificacion_respuesta' => $calificacion
-            ]);
-        } else {
-
-
-            subrespuestas::create([
-                'id_usuario' => $user->id_usuario,
-                'id_subpregunta' => $id_subpregunta,
-                'id_reporte' => $id_reporte,
-                'respuesta' => $respuesta,
-                'calificacion_respuesta' => $calificacion
-            ]);
+        try {
+            if ($subrespuestaExistente) {
+                $subrespuestaExistente->update([
+                    'respuesta' => $respuesta,
+                    'calificacion_respuesta' => $calificacion
+                ]);
+            } else {
+                subrespuestas::create([
+                    'id_usuario' => $user->id_usuario,
+                    'id_subpregunta' => $id_subpregunta,
+                    'id_reporte' => $id_reporte,
+                    'respuesta' => $respuesta,
+                    'calificacion_respuesta' => $calificacion
+                ]);
+            }
+        } catch (\Throwable $th) {
+            return redirect()->back()->withErrors(['msg' => 'Ocurrió un error al guardar la pregunta.']);
         }
+
     }
 
     //funcion para guardar respuesta
     public function guardarRespuesta(Request $request, $user, $pregunta_id, $respuesta, $calificacion)
     {
         $id_reporte = session('id_reporte');
+        
+
+
         $respuestaExistente = Respuestas::where('id_usuario', $user->id_usuario)
             ->where('id_pregunta', $pregunta_id)
             ->where('id_reporte', $id_reporte)
             ->first();
 
+        //dd($calificacion);
 
-
-        if ($respuestaExistente) {
-            $respuestaExistente->update([
-                'respuesta' => $respuesta,
-                'calificacion_respuesta' => $calificacion
-            ]);
-        } else {
-
-
-            Respuestas::create([
-                'id_usuario' => $user->id_usuario,
-                'id_pregunta' => $pregunta_id,
-                'id_reporte' => $id_reporte,
-                'respuesta' => $respuesta,
-                'calificacion_respuesta' => $calificacion
-            ]);
-
-
-
-            //$respuestasControler = new RespuestasController();
-            //$respuestasControler->guardarRespuesta($request, $user, $pregunta_id, $respuesta, $calificacion, $id_reporte);
+        try {
+            if ($respuestaExistente) {
+                $respuestaExistente->update([
+                    'respuesta' => $respuesta,
+                    'calificacion_respuesta' => $calificacion
+                ]);
+            } else {
+                Respuestas::create([
+                    'id_usuario' => $user->id_usuario,
+                    'id_pregunta' => $pregunta_id,
+                    'id_reporte' => $id_reporte,
+                    'respuesta' => $respuesta,
+                    'calificacion_respuesta' => $calificacion
+                ]);
+                //$respuestasControler = new RespuestasController();
+                //$respuestasControler->guardarRespuesta($request, $user, $pregunta_id, $respuesta, $calificacion, $id_reporte);
+            }
+        } catch (\Throwable $th) {
+            return redirect()->back()->withErrors(['msg' => 'Ocurrió un error al guardar la pregunta.']);
         }
+        
     }
 
 
@@ -113,10 +120,16 @@ class TestsController extends Controller
         $reporte = Reportes::where('id_reporte', $id_reporte)->first();
 
         if ($reporte) {
-            $reporte->update([
-                'motivacion_intrinseca' => $categorias_motivacion['motivacion_intrinseca'],
-                'motivacion_extrinseca' => $categorias_motivacion['motivacion_extrinseca'],
-            ]);
+
+            try {
+                $reporte->update([
+                    'motivacion_intrinseca' => $categorias_motivacion['motivacion_intrinseca'],
+                    'motivacion_extrinseca' => $categorias_motivacion['motivacion_extrinseca'],
+                ]);
+            } catch (\Throwable $th) {
+                return response()->json(['error' => 'No se pudo guardar la motivación.'], 500);
+            }
+
         }
 
         return $this->cargarPreguntas($request);
@@ -220,7 +233,16 @@ class TestsController extends Controller
             $prompt = "Contexto: " . $contexto . " fin contexto. Esta es la pregunta : " . $pregunta . " fin pregunta. Esta es la opcion seleccionada en el anterior item" . $opcion . "Estos son los criterios para la calificacion " . $criterio . "Fin criterio. Necesito que lo que valla en la respuesta abierta sea coherente con la pregunta que se hace y si no lo es su calificación debe ser 0. Con lo anterior devuélveme el número de la calificación, sin ninguna otra letra, con la siguiente respuesta: " . $respuestas_abiertas_texto;
 
 
+            
+
             $respuesta_chatgpt = $this->openAIService->enviarRespuestaAChatGPT($prompt);
+            
+            
+            
+            if($respuesta_chatgpt == null){
+                dd("falló chatGPT");
+            }
+            dd($respuesta_chatgpt);
         }
 
         $this->guardarRespuesta($request, $user, $pregunta_id, $respuestas_abiertas, $respuesta_chatgpt);
@@ -259,13 +281,13 @@ class TestsController extends Controller
 
     public function calificar_subpreguntas_abiertas(Request $request, $user)
     {
-        
+
         $totalCalificacionSubpreguntas = 0;
         $totalSubpreguntas = 0;
 
         $preguntaPrincipalId = $request->input('pregunta_ids')[1];
 
-        
+
         $id_contexto = Preguntas::where('id_pregunta', $preguntaPrincipalId)->pluck('id_contexto')->first();
         $contexto = Contexto::where('id_contexto', $id_contexto)->pluck('texto')->first();
 
@@ -286,7 +308,7 @@ class TestsController extends Controller
             $opcion_seleccionada = $respuestas_cerradas_indexadas[$i];
 
             $opcion = Opcionessubpreguntas::find($opcion_seleccionada);
-            
+
             if ($opcion->valor_opcion == 0) {
                 $respuesta_chatgpt = 0;
 

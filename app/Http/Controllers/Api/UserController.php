@@ -327,7 +327,7 @@ class UserController extends Controller
         ]);
 
 
-        try {
+       // try {
             // Intentar actualizar los datos del usuario
             $user->update([
                 'documento_identificacion' => $request->documento_identificacion,
@@ -352,10 +352,10 @@ class UserController extends Controller
 
             // Redirigir al usuario a la página del test después de guardar la encuesta
             return redirect()->route('test.iniciar')->with('success', 'Encuesta completada con éxito, ahora puedes iniciar el test.');
-        } catch (\Exception $e) {
+       // } catch (\Exception $e) {
             // Si ocurre algún error durante la actualización, loguéalo y muestra un mensaje
-            Log::error('Error al actualizar la encuesta de caracterización: ' . $e->getMessage());
-            return redirect()->back()->withErrors(['msg' => 'Ocurrió un error al guardar la encuesta.']);
-        }
+     //       Log::error('Error al actualizar la encuesta de caracterización: ' . $e->getMessage());
+      //      return redirect()->back()->withErrors(['msg' => 'Ocurrió un error al guardar la encuesta.']);
+     //   }
     }
 }
