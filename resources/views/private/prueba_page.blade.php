@@ -16,6 +16,15 @@
     <section class="pregunta_section">
 
         <div class="pregunta_ctn">
+
+
+            <!-- Mostrar mensaje de error si existe -->
+            @if(session('error'))
+            <div class="alert alert-danger" style="color: red; font-weight: bold; margin-bottom: 20px;">
+                {{ session('error') }}
+            </div>
+            @endif
+
             <div class="title">
                 <h2>Contexto - {{ $contexto_index + 1 }} </h2>
             </div>
@@ -84,13 +93,6 @@
 
                 <input type="hidden" name="prueba_id" value="{{ $prueba_id }}">
                 <input type="hidden" name="contexto_index" value="{{ $contexto_index }}">
-
-                <!-- Mostrar mensaje de error si existe -->
-                @if(session('error'))
-                <div class="alert alert-danger" style="color: red; font-weight: bold; margin-bottom: 20px;">
-                    {{ session('error') }}
-                </div>
-                @endif
 
                 @if($contexto_index + 1 < $total_contextos)
                     <button type="submit">Siguiente</button>

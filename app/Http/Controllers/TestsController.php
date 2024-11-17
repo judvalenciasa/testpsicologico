@@ -412,38 +412,39 @@ class TestsController extends Controller
         if (!Auth::check()) {
             return redirect()->route('login')->with('error', 'Debes iniciar sesión para continuar.');
         }
-    
+
         $user = Auth::user();
         $hayError = false;
-    
+
         // Validar si no se han recibido preguntas
         if (!$request->has('pregunta_ids')) {
+            session()->forget('error');
             $hora_inicio_prueba = Carbon::now();
             session(['hora_inicio_prueba' => $hora_inicio_prueba]);
-    
+
             // Cargar preguntas iniciales
             $prueba_id = $request->input('prueba_id');
             $contextos = Contexto::with('preguntas')->get();
-    
+
             $indices = [2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25, 27, 29];
             $contextos_ordenados = [];
-    
+
             foreach ($indices as $indice) {
                 $contexto_encontrado = $contextos->firstWhere('id_contexto', $indice);
                 if ($contexto_encontrado) {
                     $contextos_ordenados[] = $contexto_encontrado;
                 }
             }
-    
+
             $contexto_index = 0;
             $total_contextos = count($contextos_ordenados);
             $preguntas = $contextos_ordenados[$contexto_index]->preguntas;
-    
+
             session(['contextos_ordenados' => $contextos_ordenados]);
-    
+
             return view('private.prueba_page', compact('preguntas', 'contexto_index', 'total_contextos', 'prueba_id'));
         }
-    
+
         // Validar respuestas enviadas
         $pregunta_ids = $request->input('pregunta_ids');
         if (is_array($pregunta_ids)) {
@@ -455,7 +456,7 @@ class TestsController extends Controller
                         $this->calificar_pregunta_101($request, $user);
                     } else {
                         $tipo_pregunta = Preguntas::where('id_pregunta', $pregunta_id)->pluck('tipo_pregunta')->first();
-    
+
                         if ($tipo_pregunta == 'cerrada' && $request->has('respuestas_cerradas')) {
                             $this->calificar_pregunta_cerrada($request, $pregunta_id, $user);
                         }
@@ -470,12 +471,10 @@ class TestsController extends Controller
                         }
                     }
                 } catch (ChatGPTException $e) {
-                    // Captura específicamente el error de ChatGPT
-                    session()->flash('error', 'Error en la respuesta de ChatGPT. Por favor, intenta nuevamente.');
+                    session()->flash('error', 'Error en la calificación de la respuesta abierta. Por favor contesta las preguntas y presiona "siguiente" nuevamente.');
                     $hayError = true;
                     break;
                 } catch (\Exception $e) {
-                    // Captura otros errores generales
                     session()->flash('error', 'Ocurrió un error inesperado. Por favor, inténtalo nuevamente.');
                     $hayError = true;
                     break;
@@ -485,40 +484,43 @@ class TestsController extends Controller
             session()->flash('error', 'No se recibieron preguntas.');
             return redirect()->back();
         }
-    
+
         // Si hay un error, no avanzar
         if ($hayError) {
+
             $contexto_index = $request->input('contexto_index', 0);
-            $contexto_index = max(0, $contexto_index - 1); 
+            $contexto_index = max(0, $contexto_index);
             $contextos_ordenados = session('contextos_ordenados');
             $preguntas = $contextos_ordenados[$contexto_index]->preguntas;
             $prueba_id = $request->input('prueba_id');
             $total_contextos = count($contextos_ordenados);
-    
+
             return view('private.prueba_page', compact('preguntas', 'contexto_index', 'total_contextos', 'prueba_id'));
         }
-    
+
         // Avanzar al siguiente contexto si no hubo errores
         $prueba_id = $request->input('prueba_id');
         $contexto_index = $request->input('contexto_index', 0);
         $contexto_index++;
         $total_contextos = Contexto::count();
-    
+
         if ($contexto_index >= $total_contextos) {
             $hora_final_prueba = Carbon::now();
             $hora_inicio_prueba = session('hora_inicio_prueba');
             $tiempo_prueba = $hora_final_prueba->diffInSeconds($hora_inicio_prueba);
             $tiempo_en_minutos = $tiempo_prueba / 60;
-    
+
             return $this->metacognicion($tiempo_en_minutos, session('id_reporte'));
         }
-    
+
         $contextos_ordenados = session('contextos_ordenados');
         $preguntas = $contextos_ordenados[$contexto_index]->preguntas;
-    
+
+        session()->forget('error');
+
         return view('private.prueba_page', compact('preguntas', 'contexto_index', 'total_contextos', 'prueba_id'));
     }
-    
+
 
 
 
