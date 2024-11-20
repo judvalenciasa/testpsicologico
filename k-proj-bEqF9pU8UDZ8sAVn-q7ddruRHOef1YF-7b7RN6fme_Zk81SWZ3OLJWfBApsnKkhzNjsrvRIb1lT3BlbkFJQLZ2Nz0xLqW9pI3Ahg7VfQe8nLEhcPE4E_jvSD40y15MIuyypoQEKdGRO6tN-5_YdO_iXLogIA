@@ -1,0 +1,1276 @@
+[33mcommit 0dc9659e2ccf98de876fd8b1f9cbb1585d9bde0e[m
+Author: judvalenciasa <judvalenciasa@gmail.com>
+Date:   Fri Nov 15 21:40:46 2024 -0500
+
+    puesta de try catch
+
+[33mcommit aae242e4e64dfbc82c80e1ce54253474dd0d7ab9[m
+Author: judvalenciasa <judvalenciasa@gmail.com>
+Date:   Fri Nov 15 19:52:50 2024 -0500
+
+    arreglo en registro
+
+[33mcommit c71d8e3cf961be3d2d75d2a0266a459ac452add1[m
+Merge: f30a0f8 6b97475
+Author: judvalenciasa <judvalenciasa@gmail.com>
+Date:   Wed Nov 6 17:14:39 2024 -0500
+
+    Merge branch 'dev' of https://github.com/judvalenciasa/testpsicologico into dev
+
+[33mcommit f30a0f8d53cc02a9307d24d57e3e4b36ebc697c6[m
+Author: judvalenciasa <judvalenciasa@gmail.com>
+Date:   Wed Nov 6 17:11:42 2024 -0500
+
+    modificacion de la variable global id_reporte a variable pasada por parametro reporte
+
+[33mcommit 6b9747511347993d772be4e995836494861221a3[m
+Author: Yorman Valencia <yormanvale@outlook.com>
+Date:   Wed Nov 6 15:36:26 2024 -0500
+
+    avances
+
+[33mcommit 237c02e1e27d08719601b05468a701d18d0036bc[m
+Author: judvalenciasa <judvalenciasa@gmail.com>
+Date:   Tue Nov 5 16:48:58 2024 -0500
+
+    arreglo de mostrar el informe en el usuario
+
+[33mcommit 2a41816db6c3e7c94c99a91ddc28fa5baa3dd17b[m
+Author: Yorman Valencia <yormanvale@outlook.com>
+Date:   Thu Oct 31 14:59:39 2024 -0500
+
+    modificación en home
+
+[33mcommit 6e21521ccb8ea721239145d46a25b64cdad3d2f6[m
+Author: Yorman Valencia <yormanvale@outlook.com>
+Date:   Thu Oct 31 14:58:16 2024 -0500
+
+    modificación en caracterización
+
+[33mcommit bdd05672b45d2df1402085b5b10e83d780270a26[m
+Author: Yorman Valencia <yormanvale@outlook.com>
+Date:   Thu Oct 17 18:29:41 2024 -0500
+
+    cambios en pines index
+
+[33mcommit fde086d4f5c72fe16cc186497d22c7e63cf364df[m
+Author: Yorman Valencia <yormanvale@outlook.com>
+Date:   Fri Oct 11 18:34:54 2024 -0500
+
+    fix cantidad pines
+
+[33mcommit 632a7bb2e1e971af5f6fd43431aad84efc5ea67c[m
+Author: Yorman Valencia <yormanvale@outlook.com>
+Date:   Thu Oct 10 13:27:18 2024 -0500
+
+    cambios en boton de logout
+
+[33mcommit 8baf504ddc252b03062a9e67abfb5238679489f9[m
+Author: Yorman Valencia <yormanvale@outlook.com>
+Date:   Wed Oct 9 22:45:54 2024 -0500
+
+    cambios en home
+
+[33mcommit a338e1e902e0533e9e668fb53cf3651efd8a2084[m
+Author: Yorman Valencia <yormanvale@outlook.com>
+Date:   Wed Oct 9 22:39:52 2024 -0500
+
+    .
+
+[33mcommit 0709a18803eaf679bc5ea032d2c9052e878dc93a[m
+Author: judvalenciasa <judvalenciasa@gmail.com>
+Date:   Wed Oct 9 22:00:21 2024 -0500
+
+    solución del error de comprobación de un usuario invalido
+
+[33mcommit e889da053514276bbfd64143e0af2b24fce4e6e9[m
+Merge: 13efc4e 47b24c7
+Author: Yorman Valencia <yormanvale@outlook.com>
+Date:   Wed Oct 9 21:50:20 2024 -0500
+
+    Merge branch 'dev' of https://github.com/judvalenciasa/testpsicologico into dev
+
+[33mcommit 47b24c749e3b11ccdf5130baf00d54029196414e[m
+Merge: 5f2e13c 5b5b45e
+Author: Tatianagh <carol.1701613339@ucaldas.edu.co>
+Date:   Wed Oct 9 21:50:08 2024 -0500
+
+    Merge branch 'dev' of https://github.com/judvalenciasa/testpsicologico into dev
+
+[33mcommit 5f2e13c050b725de3fe7ca8801f00916eb4ce43a[m
+Author: Tatianagh <carol.1701613339@ucaldas.edu.co>
+Date:   Wed Oct 9 21:49:50 2024 -0500
+
+    modificación tipo de variabla para los textos de los criterios, de String a text
+
+[33mcommit 13efc4e6c37aad9da930128e6af626fa4314ed26[m
+Merge: 0202647 5b5b45e
+Author: Yorman Valencia <yormanvale@outlook.com>
+Date:   Wed Oct 9 21:45:47 2024 -0500
+
+    Merge branch 'dev' of https://github.com/judvalenciasa/testpsicologico into dev
+
+[33mcommit 0202647afff53860819a2f4c607c30fddba62afe[m
+Author: Yorman Valencia <yormanvale@outlook.com>
+Date:   Wed Oct 9 21:45:44 2024 -0500
+
+    enviar email de home
+
+[33mcommit 5b5b45e57b13c29230dab16e95a357d918a9027b[m
+Merge: 87fc8f7 89b8c68
+Author: judvalenciasa <judvalenciasa@gmail.com>
+Date:   Wed Oct 9 21:24:49 2024 -0500
+
+    Merge branch 'dev' of https://github.com/judvalenciasa/testpsicologico into dev
+
+[33mcommit 87fc8f7c91c4c4647ebc1fffee217f6a6dec9147[m
+Author: judvalenciasa <judvalenciasa@gmail.com>
+Date:   Wed Oct 9 21:24:35 2024 -0500
+
+    Funcionalidad de aumentar pines terminada
+
+[33mcommit 89b8c68936a915d4948c99d7879a5492e40efcb9[m
+Author: Tatianagh <carol.1701613339@ucaldas.edu.co>
+Date:   Wed Oct 9 20:39:48 2024 -0500
+
+    modificación de criterios de las subpreguntas
+
+[33mcommit 50eb113ee2580f86d80595b804c747bb528dd14d[m
+Author: Tatianagh <carol.1701613339@ucaldas.edu.co>
+Date:   Wed Oct 9 20:30:50 2024 -0500
+
+    cambio de criterios
+
+[33mcommit b643631ab9ff5d9d68fc4fe4ed9a6531f3a62d0d[m
+Author: Yorman Valencia <yormanvale@outlook.com>
+Date:   Wed Oct 9 19:58:55 2024 -0500
+
+    cambios
+
+[33mcommit 535b14e7a1b69998d056a38f6cb8f9f68b72b73d[m
+Author: Yorman Valencia <yormanvale@outlook.com>
+Date:   Thu Oct 3 22:44:44 2024 -0500
+
+    avancws
+
+[33mcommit fc26d4fbac46c2046945184f5cfd1c336bffea55[m
+Merge: f4bf2aa 76ba0d9
+Author: Tatianagh <carol.1701613339@ucaldas.edu.co>
+Date:   Thu Oct 3 20:00:45 2024 -0500
+
+    Merge branch 'dev' of https://github.com/judvalenciasa/testpsicologico into dev
+
+[33mcommit f4bf2aa72a9853ee2e47baa8c57e56c2797d98a3[m
+Author: Tatianagh <carol.1701613339@ucaldas.edu.co>
+Date:   Thu Oct 3 19:59:23 2024 -0500
+
+    se agregan literales a opciones
+
+[33mcommit 76ba0d9ce3a178e7d547058888de2014198d3b21[m
+Author: judvalenciasa <judvalenciasa@gmail.com>
+Date:   Wed Oct 2 16:33:53 2024 -0500
+
+    Envío de correos terminado
+
+[33mcommit 9cdf51f872b22b9f65c872bd01d864ecd085c641[m
+Author: Yorman Valencia <yormanvale@outlook.com>
+Date:   Mon Sep 30 19:42:54 2024 -0500
+
+    ver subpreguntas
+
+[33mcommit 570ffffe8a24420515c7adbdabb807345827cf80[m
+Author: Yorman Valencia <yormanvale@outlook.com>
+Date:   Mon Sep 30 19:06:45 2024 -0500
+
+    se guarda las calificaciones de las subpreguntas
+
+[33mcommit 52e25a3d6ecaf58ee9b5fda86a21229a3d5644a3[m
+Author: judvalenciasa <judvalenciasa@gmail.com>
+Date:   Fri Sep 27 12:26:48 2024 -0500
+
+    corrección de un error
+
+[33mcommit ac4578b621e335d6544a53c41e0a06af5cf67381[m
+Author: judvalenciasa <judvalenciasa@gmail.com>
+Date:   Fri Sep 27 12:23:29 2024 -0500
+
+    tabla y modelos listos para las subrespuestas
+
+[33mcommit dfcb45dad32888f2889e5f480e467ebd7b2c40c8[m
+Author: Yorman Valencia <yormanvale@outlook.com>
+Date:   Thu Sep 26 14:41:23 2024 -0500
+
+    boton para descargar el consentimiento informado
+
+[33mcommit 35e4070d73c2f610da10293a8f6f96f9fd6ea5ef[m
+Author: Yorman Valencia <yormanvale@outlook.com>
+Date:   Wed Sep 25 23:56:59 2024 -0500
+
+    cambios
+
+[33mcommit f0cc4df6cd8b152f0d319608005be0675758af6b[m
+Author: Yorman Valencia <yormanvale@outlook.com>
+Date:   Wed Sep 25 18:46:00 2024 -0500
+
+    cambios en register
+
+[33mcommit 602af1a7a0bd13b7600edff27277f55f365ff31d[m
+Author: Yorman Valencia <yormanvale@outlook.com>
+Date:   Wed Sep 25 18:31:43 2024 -0500
+
+    cambio en userController
+
+[33mcommit 084efb0243b1b60cca014eafce1dae56735cfd76[m
+Merge: 041ee81 bf09b5e
+Author: Yorman Valencia <yormanvale@outlook.com>
+Date:   Wed Sep 25 18:31:23 2024 -0500
+
+    Merge branch 'dev' of https://github.com/judvalenciasa/testpsicologico into dev
+
+[33mcommit 041ee81deaa6d499af9d07a4fb8a009722be1507[m
+Author: Yorman Valencia <yormanvale@outlook.com>
+Date:   Wed Sep 25 18:30:50 2024 -0500
+
+    cambio en register
+
+[33mcommit 31f48aa7f94fdb106e653e4ec3350f3cb1167c15[m
+Author: Yorman Valencia <yormanvale@outlook.com>
+Date:   Wed Sep 25 13:48:42 2024 -0500
+
+    modificacion de prueba page sin el boton de pantalla completa
+
+[33mcommit bf09b5e713374ddbf001c9a61da08d33b2ee7dc9[m
+Author: judvalenciasa <judvalenciasa@gmail.com>
+Date:   Tue Sep 24 21:03:09 2024 -0500
+
+    ajustes de indices en contextos
+
+[33mcommit d81992bf519cacfac8e9bcd51d5a3efd5552bc51[m
+Author: judvalenciasa <judvalenciasa@gmail.com>
+Date:   Tue Sep 24 20:25:15 2024 -0500
+
+    ajuste en parte de contexto
+
+[33mcommit cf2544a5585720bef638a9afde6aeaed16f9f3eb[m
+Author: Yorman Valencia <yormanvale@outlook.com>
+Date:   Tue Sep 24 16:38:41 2024 -0500
+
+    motivacion actualizada y cambios aplicados
+
+[33mcommit ac8958f539bff271ba2cfa6863f54f9a8e362d05[m
+Author: Yorman Valencia <yormanvale@outlook.com>
+Date:   Tue Sep 24 01:09:07 2024 -0500
+
+    Cambios aplicados
+
+[33mcommit 033fb37c739742e45eadf6d20b575f4cdbe1a3de[m
+Author: Yorman Valencia <yormanvale@outlook.com>
+Date:   Tue Sep 24 00:36:41 2024 -0500
+
+    .
+
+[33mcommit f358e26bbf17a4dcfb4141ce43d0c521fac8d57e[m
+Merge: 061c4cc 38e681b
+Author: Yorman Valencia <yormanvale@outlook.com>
+Date:   Sun Sep 22 20:03:13 2024 -0500
+
+    Merge branch 'dev' of https://github.com/judvalenciasa/testpsicologico into dev
+
+[33mcommit 061c4cc82e9695f7e71ad6d630c2b2dbf9608344[m
+Author: Yorman Valencia <yormanvale@outlook.com>
+Date:   Sun Sep 22 20:02:58 2024 -0500
+
+    solucion diseños
+
+[33mcommit 38e681b826eba28e0bf5c2f0f6855597a1a7a659[m
+Author: Tatianagh <carol.1701613339@ucaldas.edu.co>
+Date:   Sun Sep 22 18:48:27 2024 -0500
+
+    ajustes 2 entrega 1
+
+[33mcommit 743fbf98e3e84bff505b25fb28a1f0a4d2381e0a[m
+Author: Tatianagh <carol.1701613339@ucaldas.edu.co>
+Date:   Sun Sep 22 18:36:03 2024 -0500
+
+    ajustes de la primera entrega
+
+[33mcommit c50c0e0060bda93bcb1a807397af4841a350afe0[m
+Author: Yorman Valencia <yormanvale@outlook.com>
+Date:   Sun Sep 22 17:33:24 2024 -0500
+
+    cambios aplicados
+
+[33mcommit c76ee7fc321c6161c4ea8883e08a76ce65120fb3[m
+Author: Yorman Valencia <yormanvale@outlook.com>
+Date:   Sat Sep 21 02:40:29 2024 -0500
+
+    informes completos
+
+[33mcommit fa500efe1139825ced518ef41c58e7901254e70d[m
+Author: Yorman Valencia <yormanvale@outlook.com>
+Date:   Sat Sep 21 02:07:25 2024 -0500
+
+    reporte actualizados
+
+[33mcommit 3a021caf7ef64e1d4b7d8908a083c1a30154f762[m[33m ([m[1;32menvio_correo[m[33m, [m[1;32me696732[m[33m)[m
+Merge: b16b81c b81f1dc
+Author: judvalenciasa <judvalenciasa@gmail.com>
+Date:   Wed Sep 18 21:11:48 2024 -0500
+
+    Merge branch 'dev' of https://github.com/judvalenciasa/testpsicologico into dev
+
+[33mcommit b16b81c5002eceb8a6cfe50ec5e3a29427044753[m
+Author: judvalenciasa <judvalenciasa@gmail.com>
+Date:   Wed Sep 18 21:10:04 2024 -0500
+
+    terminado la estructura documento final
+
+[33mcommit b81f1dc4526bd2ea9be0453c86fe4be6ddb034ae[m
+Author: Yorman Valencia <yormanvale@outlook.com>
+Date:   Wed Sep 18 20:07:57 2024 -0500
+
+    Comprobacion carga de consentimiento informado
+
+[33mcommit d0c38af4c5f2406c0cbe20500b674fcb1ec4c767[m
+Author: Yorman Valencia <yormanvale@outlook.com>
+Date:   Wed Sep 18 19:37:38 2024 -0500
+
+    se arregla la calificacion de la pregunta 94
+
+[33mcommit a0c7c56ba64f755d0c4df75992fc678df7186e17[m
+Author: Yorman Valencia <yormanvale@outlook.com>
+Date:   Wed Sep 18 19:31:06 2024 -0500
+
+    encuesta de motivacion completa
+
+[33mcommit 8986e210b7c10d7ddf31bb74f7ce7359106a7103[m
+Author: Yorman Valencia <yormanvale@outlook.com>
+Date:   Wed Sep 18 17:30:16 2024 -0500
+
+    merge
+
+[33mcommit 7cde633eb8797d95de3df824fd51da7e449b5e6d[m
+Author: judvalenciasa <judvalenciasa@gmail.com>
+Date:   Wed Sep 18 16:30:52 2024 -0500
+
+    Listo el objeto con descriptores por contextos
+
+[33mcommit bc91fa7c9daf4998b64fd5eebde8944aed9e0495[m
+Author: judvalenciasa <judvalenciasa@gmail.com>
+Date:   Wed Sep 18 10:57:45 2024 -0500
+
+    logica de backend terminada carga de politicas
+
+[33mcommit 2469138a20a6ab4c723c82dc60bf8e3445ac9673[m
+Author: Yorman Valencia <yormanvale@outlook.com>
+Date:   Mon Sep 16 19:44:37 2024 -0500
+
+    .
+
+[33mcommit 8435265c819c5e6f0f5ca89e190327d599512cb2[m
+Author: Yorman Valencia <yormanvale@outlook.com>
+Date:   Mon Sep 16 19:42:21 2024 -0500
+
+    boton de termianr en el reporte usuario
+
+[33mcommit ea1d47e07fd65dfdaddb1628a194db4b48e4ac77[m
+Author: Yorman Valencia <yormanvale@outlook.com>
+Date:   Mon Sep 16 19:36:46 2024 -0500
+
+    cambios en las vistas de prueba page
+
+[33mcommit 26967d32280624f47abf7ba7995cd323e69b5187[m
+Author: Yorman Valencia <yormanvale@outlook.com>
+Date:   Mon Sep 16 19:23:21 2024 -0500
+
+    Listo para pruebas
+
+[33mcommit 1436b831a8028eacbd6b3ba4a60dc0255148e229[m
+Author: judvalenciasa <judvalenciasa@gmail.com>
+Date:   Mon Sep 16 19:07:53 2024 -0500
+
+    terminados cambios finales
+
+[33mcommit df0ef14252cb27b992e0efa059e442ad8f78f66d[m
+Merge: 47d149b 4015e00
+Author: judvalenciasa <judvalenciasa@gmail.com>
+Date:   Mon Sep 16 14:56:00 2024 -0500
+
+    Merge branch 'dev' of https://github.com/judvalenciasa/testpsicologico into dev
+
+[33mcommit 47d149b629e6561a42881701702f49380d5230ee[m
+Author: judvalenciasa <judvalenciasa@gmail.com>
+Date:   Mon Sep 16 14:55:45 2024 -0500
+
+    terminada la relacion entre reporte y respuestas
+
+[33mcommit 4015e0027ed600a4fcdc78604c1b0c4670e36662[m
+Merge: 7d9181d 3e298de
+Author: Yorman Valencia <yormanvale@outlook.com>
+Date:   Mon Sep 16 12:18:33 2024 -0500
+
+    Merge branch 'dev' of https://github.com/judvalenciasa/testpsicologico into dev
+
+[33mcommit 7d9181d08de371089b60b3a44e15a98e122e73b3[m
+Author: Yorman Valencia <yormanvale@outlook.com>
+Date:   Mon Sep 16 12:18:13 2024 -0500
+
+    .
+
+[33mcommit 3e298dec1f0001ddd6460e8a9e8ea15755cad4c5[m
+Merge: 6e8a075 a4f10c7
+Author: judvalenciasa <judvalenciasa@gmail.com>
+Date:   Mon Sep 16 10:19:44 2024 -0500
+
+    Merge branch 'dev' of https://github.com/judvalenciasa/testpsicologico into dev
+
+[33mcommit 6e8a075b126fd3acee17c9bd97dd39af56673274[m
+Author: judvalenciasa <judvalenciasa@gmail.com>
+Date:   Mon Sep 16 10:18:01 2024 -0500
+
+    informe
+
+[33mcommit a4f10c7450e68d92d7b757a1a3ec355f39822fa8[m
+Author: Yorman Valencia <yormanvale@outlook.com>
+Date:   Sun Sep 15 21:54:35 2024 -0500
+
+    .
+
+[33mcommit 5c564fb5c7c264e6a4a73ac083e05ca1f9df4bd0[m
+Author: Yorman Valencia <yormanvale@outlook.com>
+Date:   Sun Sep 15 21:47:17 2024 -0500
+
+    .
+
+[33mcommit d850ea6719ec18e484c5b0e372ecf199f9c3ae6d[m
+Author: Yorman Valencia <yormanvale@outlook.com>
+Date:   Sun Sep 15 21:36:08 2024 -0500
+
+    Avances en reportes usuario
+
+[33mcommit 5c83f03fc84fa6b6d0eb7282edad7da0ecb719e1[m
+Author: Yorman Valencia <yormanvale@outlook.com>
+Date:   Sun Sep 15 20:16:23 2024 -0500
+
+    .
+
+[33mcommit 38be008c1b0c4b50ed774cead3682bc352ee68fe[m
+Author: Yorman Valencia <yormanvale@outlook.com>
+Date:   Sun Sep 15 16:53:16 2024 -0500
+
+    reporte de respuestas y reporte descriptivo completo
+
+[33mcommit dee04d0e3f91cb1876dbbc2174e54775a4a9b3a0[m
+Merge: d773bb5 7ab7994
+Author: Yorman Valencia <yormanvale@outlook.com>
+Date:   Sun Sep 15 05:06:47 2024 -0500
+
+    Merge branch 'dev' of https://github.com/judvalenciasa/testpsicologico into dev
+
+[33mcommit d773bb5318611af7352618ac376d6165fa2a5b02[m
+Author: Yorman Valencia <yormanvale@outlook.com>
+Date:   Sun Sep 15 05:06:37 2024 -0500
+
+    .
+
+[33mcommit 7ab7994be8dd7b610d1e7e9036956557715ef254[m
+Merge: 6f33238 ebb7513
+Author: Tatianagh <carol.1701613339@ucaldas.edu.co>
+Date:   Sat Sep 14 19:45:35 2024 -0500
+
+    Merge branch 'dev' of https://github.com/judvalenciasa/testpsicologico into dev
+
+[33mcommit 6f332383f994452e16fc355d9aa0a366a6c715c5[m
+Author: Tatianagh <carol.1701613339@ucaldas.edu.co>
+Date:   Sat Sep 14 19:45:22 2024 -0500
+
+    seeders descriptivos completos, item 57, 58, 59, 60 corregidos
+
+[33mcommit ebb7513a4c0f6848dc2316e6de7e150bb146d2a9[m
+Merge: 6d1c386 8b96194
+Author: judvalenciasa <judvalenciasa@gmail.com>
+Date:   Sat Sep 14 11:30:55 2024 -0500
+
+    Merge branch 'dev' of https://github.com/judvalenciasa/testpsicologico into dev
+
+[33mcommit 6d1c386ec7cd9d18ae6eabe2d3e1baec29725395[m
+Author: judvalenciasa <judvalenciasa@gmail.com>
+Date:   Sat Sep 14 11:29:35 2024 -0500
+
+    vista de respuestas administrador terminada
+
+[33mcommit 8b96194d40f45bd367ff9997a83a9d5db59675ef[m
+Author: Yorman Valencia <yormanvale@outlook.com>
+Date:   Sat Sep 14 11:11:35 2024 -0500
+
+    Calificaciones completas
+
+[33mcommit 5dfaf504dd2ef88456e825b59d18352ffab37f3e[m
+Author: judvalenciasa <judvalenciasa@gmail.com>
+Date:   Fri Sep 13 18:35:44 2024 -0500
+
+    decriptores terminados para el informe
+
+[33mcommit 5fb208457756ee164fdadf868359d712bdf8ad5a[m
+Author: judvalenciasa <judvalenciasa@gmail.com>
+Date:   Fri Sep 13 18:28:49 2024 -0500
+
+    finalizado el documento para la vista del informe
+
+[33mcommit 7064a12a45531f2c9d442629074675d94f778bc6[m
+Merge: 87048ed 960fec6
+Author: Yorman Valencia <yormanvale@outlook.com>
+Date:   Fri Sep 13 15:54:31 2024 -0500
+
+    Merge branch 'dev' of https://github.com/judvalenciasa/testpsicologico into dev
+
+[33mcommit 87048edd03fee19a20987a9d5bcd858ebc4d46a7[m
+Author: Yorman Valencia <yormanvale@outlook.com>
+Date:   Fri Sep 13 15:54:02 2024 -0500
+
+    refactorizacion
+
+[33mcommit 9bf20b0917be8ac33dab93cfc2f8eb459e3c6f60[m
+Author: Yorman Valencia <yormanvale@outlook.com>
+Date:   Wed Sep 11 22:46:48 2024 -0500
+
+    avance en calificacion final de preguntas
+
+[33mcommit 55019c89d0da9e416dbf94a0bed627f908943688[m
+Author: Yorman Valencia <yormanvale@outlook.com>
+Date:   Wed Sep 11 18:24:33 2024 -0500
+
+    Arreglos en calificacion de preguntas y subpreguntas
+
+[33mcommit 960fec60466cb0043a6c6a9e5b07a66f47577731[m
+Author: judvalenciasa <judvalenciasa@gmail.com>
+Date:   Wed Sep 11 16:37:39 2024 -0500
+
+    tabla descriptores
+
+[33mcommit 8301e9db0e9d7a0d538e63103e780ba06c939681[m
+Author: judvalenciasa <judvalenciasa@gmail.com>
+Date:   Wed Sep 11 15:37:12 2024 -0500
+
+    consulta del informe terminada
+
+[33mcommit 2fa6495ac215307f76205c5c961d2eb9c4327523[m
+Merge: acf94dc 654e5e5
+Author: judvalenciasa <judvalenciasa@gmail.com>
+Date:   Wed Sep 11 13:43:46 2024 -0500
+
+    Merge branch 'dev' of https://github.com/judvalenciasa/testpsicologico into dev
+
+[33mcommit acf94dc40245ed783325c6381686f55176db6d01[m
+Author: judvalenciasa <judvalenciasa@gmail.com>
+Date:   Wed Sep 11 13:42:43 2024 -0500
+
+    consulta para los descriptivos
+
+[33mcommit 654e5e51da5675d994896510cb26bad3382b70be[m
+Author: Yorman Valencia <yormanvale@outlook.com>
+Date:   Wed Sep 11 13:41:11 2024 -0500
+
+    preguntas arregladas
+
+[33mcommit df218183faa0f641b95d24bda70d11f58b252a7c[m
+Author: Yorman Valencia <yormanvale@outlook.com>
+Date:   Tue Sep 10 20:01:02 2024 -0500
+
+    Se añade el cronometro
+
+[33mcommit cd8cd6cf27e5983e4cbc854d0cd9889efcb412c3[m
+Merge: 524bba9 a1fddab
+Author: judvalenciasa <judvalenciasa@gmail.com>
+Date:   Tue Sep 10 19:37:55 2024 -0500
+
+    Merge branch 'dev' of https://github.com/judvalenciasa/testpsicologico into dev
+
+[33mcommit 524bba9b2d547994703f0c6876acace9e636b33d[m
+Author: judvalenciasa <judvalenciasa@gmail.com>
+Date:   Tue Sep 10 19:36:26 2024 -0500
+
+    cronometro finalizado
+
+[33mcommit a1fddabc009b5b2b3be5876f9ef83afec1372ce0[m
+Author: Yorman Valencia <yormanvale@outlook.com>
+Date:   Tue Sep 10 19:08:32 2024 -0500
+
+    actualizacion en footer
+
+[33mcommit c35f9f790b96c30038f3c17180347fcb83008262[m
+Author: Yorman Valencia <yormanvale@outlook.com>
+Date:   Tue Sep 10 19:04:47 2024 -0500
+
+    commit final
+
+[33mcommit ff2e6b6fec0e675b9e01cd9dcd32240064592078[m
+Merge: 9bed161 01c6988
+Author: Tatianagh <carol.1701613339@ucaldas.edu.co>
+Date:   Tue Sep 10 18:41:26 2024 -0500
+
+    Merge branch 'dev' of https://github.com/judvalenciasa/testpsicologico into dev
+
+[33mcommit 9bed161dee668511421e7530a5bd23e02acb679f[m
+Author: Tatianagh <carol.1701613339@ucaldas.edu.co>
+Date:   Tue Sep 10 18:34:33 2024 -0500
+
+    reestructuración de preguntas de emparejamiento
+
+[33mcommit f819eea8b64d65e1c0d7bb60c8f6bf30c495954e[m
+Merge: 4051296 01c6988
+Author: judvalenciasa <judvalenciasa@gmail.com>
+Date:   Tue Sep 10 18:00:57 2024 -0500
+
+    Merge branch 'dev' of https://github.com/judvalenciasa/testpsicologico into dev
+
+[33mcommit 4051296a74afd2e73e34c919220b11bf198568e6[m
+Author: judvalenciasa <judvalenciasa@gmail.com>
+Date:   Tue Sep 10 17:59:37 2024 -0500
+
+    cronometro
+
+[33mcommit 01c698819d53daf641ca0b9542c027ca0627ba5d[m
+Author: Yorman Valencia <yormanvale@outlook.com>
+Date:   Tue Sep 10 17:55:43 2024 -0500
+
+    calificacion subpreguntas
+
+[33mcommit e2a83de50b274f47e8aa2a9ca2d6b1552e1abce9[m
+Author: Yorman Valencia <yormanvale@outlook.com>
+Date:   Tue Sep 10 02:39:20 2024 -0500
+
+    avances en secciones
+
+[33mcommit c6de3af25408b1d9062481cf86cf2ddf2f6bb4be[m
+Author: Yorman Valencia <yormanvale@outlook.com>
+Date:   Mon Sep 9 23:23:58 2024 -0500
+
+    Calificacion de subpreguntas
+
+[33mcommit f0e49e3e1827d34c6a8dae18f278053f688d422e[m
+Merge: ddd627f 4035e42
+Author: Yorman Valencia <yormanvale@outlook.com>
+Date:   Mon Sep 9 14:58:51 2024 -0500
+
+    Merge branch 'dev' of https://github.com/judvalenciasa/testpsicologico into dev
+
+[33mcommit ddd627f4e89cc7461269fdbb70a89e481bade29e[m
+Author: Yorman Valencia <yormanvale@outlook.com>
+Date:   Mon Sep 9 14:57:58 2024 -0500
+
+    .
+
+[33mcommit 4035e4201785f0a67f7f8283883441f5b9829055[m
+Author: judvalenciasa <judvalenciasa@gmail.com>
+Date:   Sun Sep 8 22:07:19 2024 -0500
+
+    intento de realizar el codigo
+
+[33mcommit fb9ce326160f9149337cc6f6a217cb43f57a6fe1[m
+Author: Yorman Valencia <yormanvale@outlook.com>
+Date:   Sun Sep 8 21:38:40 2024 -0500
+
+    .
+
+[33mcommit c671e7fc6a8ee31be6be4aa0e6fb833cb9864a7a[m
+Author: Yorman Valencia <yormanvale@outlook.com>
+Date:   Sun Sep 8 20:28:23 2024 -0500
+
+    .
+
+[33mcommit 84c1656d6c5693a1f988e97a74f53af0a938873a[m
+Author: Yorman Valencia <yormanvale@outlook.com>
+Date:   Sun Sep 8 17:41:10 2024 -0500
+
+    avances en ver informes
+
+[33mcommit 9e44b0a1b16f0c4fb985f205f008fa764396a76f[m
+Merge: 3a678f5 97c79df
+Author: Tatianagh <carol.1701613339@ucaldas.edu.co>
+Date:   Sun Sep 8 17:19:39 2024 -0500
+
+    Merge branch 'dev' of https://github.com/judvalenciasa/testpsicologico into dev
+
+[33mcommit 97c79df7018676824ad43cb2288a21f096ede2ff[m
+Author: Yorman Valencia <yormanvale@outlook.com>
+Date:   Sun Sep 8 17:18:58 2024 -0500
+
+    .
+
+[33mcommit 3a678f564aed8cff9ddebd18ca6bda182bb9a12c[m
+Author: Tatianagh <carol.1701613339@ucaldas.edu.co>
+Date:   Sun Sep 8 16:58:34 2024 -0500
+
+    inserción de criterios y subcriterios
+
+[33mcommit 2980c5f25499e426675aa6645333100d36ff619c[m
+Author: Yorman Valencia <yormanvale@outlook.com>
+Date:   Sun Sep 8 16:36:45 2024 -0500
+
+    .
+
+[33mcommit a9b1b1fcb99b3b9afc60e0b12a908b98064bd400[m
+Merge: 3e35244 d902df4
+Author: judvalenciasa <judvalenciasa@gmail.com>
+Date:   Sun Sep 8 15:33:27 2024 -0500
+
+    Merge branch 'dev' of https://github.com/judvalenciasa/testpsicologico into dev
+
+[33mcommit 3e3524421ffa847bd41edf7c38a1bab8bd21c5ea[m
+Author: judvalenciasa <judvalenciasa@gmail.com>
+Date:   Sun Sep 8 15:31:09 2024 -0500
+
+    posibles errores
+
+[33mcommit d902df44d762a21adf6f5a7daa15d0502ce0d2a3[m
+Merge: 0b7be8b 2fb2304
+Author: Tatianagh <carol.1701613339@ucaldas.edu.co>
+Date:   Sun Sep 8 15:00:28 2024 -0500
+
+    Merge branch 'dev' of https://github.com/judvalenciasa/testpsicologico into dev
+
+[33mcommit 0b7be8b41f47edc77c22db17f06c1f66f1c2aeea[m
+Author: Tatianagh <carol.1701613339@ucaldas.edu.co>
+Date:   Sun Sep 8 14:59:47 2024 -0500
+
+    preguntas ingresadas
+
+[33mcommit 2fb2304a1d1d91d6de1499fba71c9e267ffb18cb[m
+Author: Yorman Valencia <yormanvale@outlook.com>
+Date:   Sun Sep 8 13:56:03 2024 -0500
+
+    Manejo de subpreguntas
+
+[33mcommit 2da8ca95987a3296b1116bf52e69089881e51ea4[m
+Merge: eae2f30 587c080
+Author: judvalenciasa <judvalenciasa@gmail.com>
+Date:   Sun Sep 8 13:06:51 2024 -0500
+
+    Merge branch 'dev' of https://github.com/judvalenciasa/testpsicologico into dev
+
+[33mcommit eae2f30a061854143dcc907e0d0743bb6f194e81[m
+Author: judvalenciasa <judvalenciasa@gmail.com>
+Date:   Sun Sep 8 13:06:39 2024 -0500
+
+    terminado creacion de reportes
+
+[33mcommit 587c0805e9e9c72a69fab0cdeae35413fe540501[m
+Author: Yorman Valencia <yormanvale@outlook.com>
+Date:   Sun Sep 8 13:05:54 2024 -0500
+
+    Avances en subpreguntas
+
+[33mcommit 017150cb715b30affa9117dffdfeb2eb607e1bb3[m
+Author: judvalenciasa <judvalenciasa@gmail.com>
+Date:   Sun Sep 8 12:45:54 2024 -0500
+
+    Creación del informe
+
+[33mcommit dc2677261db496ed549c1d0b6856091a54be21a8[m
+Merge: 3881cdf d4076d6
+Author: judvalenciasa <judvalenciasa@gmail.com>
+Date:   Sun Sep 8 12:09:05 2024 -0500
+
+    Merge branch 'dev' of https://github.com/judvalenciasa/testpsicologico into dev
+
+[33mcommit 3881cdf501e44423c526f83e6c84c99c2d19057b[m
+Author: judvalenciasa <judvalenciasa@gmail.com>
+Date:   Sun Sep 8 12:06:43 2024 -0500
+
+    adicion de atributos en la tabla reporte
+
+[33mcommit d4076d61903b3230babc1a170e63b49ff1146916[m
+Author: Yorman Valencia <yormanvale@outlook.com>
+Date:   Sun Sep 8 12:05:02 2024 -0500
+
+    Metacognicion completa
+
+[33mcommit 49b0ee8c2f2aa1028757c7233328a7dc901f6230[m
+Author: judvalenciasa <judvalenciasa@gmail.com>
+Date:   Sat Sep 7 15:57:19 2024 -0500
+
+    configuracion de las rutas
+
+[33mcommit 828765cc98de9026a5144077fefb22da197071e3[m
+Merge: d0ad194 5a67ae3
+Author: judvalenciasa <judvalenciasa@gmail.com>
+Date:   Sat Sep 7 15:54:54 2024 -0500
+
+    Merge branch 'dev' of https://github.com/judvalenciasa/testpsicologico into dev
+
+[33mcommit d0ad194be36a845f114be76faed0c6e84efe88e5[m
+Author: judvalenciasa <judvalenciasa@gmail.com>
+Date:   Sat Sep 7 15:54:44 2024 -0500
+
+    terminacion del reporte
+
+[33mcommit 5a67ae36c37d5591359be10b1ff50cfaaa62a490[m
+Merge: 64e1cbb ee31b30
+Author: Yorman Valencia <yormanvale@outlook.com>
+Date:   Sat Sep 7 15:50:29 2024 -0500
+
+    Merge branch 'dev' of https://github.com/judvalenciasa/testpsicologico into dev
+
+[33mcommit 64e1cbbe7207f082537beeca1c526630e3ed3979[m
+Author: Yorman Valencia <yormanvale@outlook.com>
+Date:   Sat Sep 7 15:50:03 2024 -0500
+
+    Manejo de preguntas con subpreguntas
+
+[33mcommit ee31b305ac50a39858e0252ed4e16d477ed1afdf[m
+Merge: 31c97a6 b092763
+Author: Tatianagh <carol.1701613339@ucaldas.edu.co>
+Date:   Sat Sep 7 15:45:27 2024 -0500
+
+    Merge branch 'dev' of https://github.com/judvalenciasa/testpsicologico into dev
+
+[33mcommit 31c97a6ffc57825bf9a87ad7dfc3d1ce12ee5ed2[m
+Author: Tatianagh <carol.1701613339@ucaldas.edu.co>
+Date:   Sat Sep 7 15:45:00 2024 -0500
+
+    Avances en carga de seeders
+
+[33mcommit b092763ff9ed22f60e91ff89e61183b1d274a441[m
+Merge: 9a89b2b 8756d57
+Author: judvalenciasa <judvalenciasa@gmail.com>
+Date:   Sat Sep 7 15:18:09 2024 -0500
+
+    Merge branch 'dev' of https://github.com/judvalenciasa/testpsicologico into dev
+
+[33mcommit 9a89b2b833afae74026361bd427a5b837da76800[m
+Merge: ac66345 636c639
+Author: judvalenciasa <judvalenciasa@gmail.com>
+Date:   Sat Sep 7 15:17:51 2024 -0500
+
+    solución de conflictos
+
+[33mcommit 8756d57b336677c4d23fa7edef6865b3db680d76[m
+Author: Yorman Valencia <yormanvale@outlook.com>
+Date:   Sat Sep 7 15:17:43 2024 -0500
+
+    metacognicion completa
+
+[33mcommit ac6634558ec4c1f3eb13990a7ac02a72dde89087[m
+Author: judvalenciasa <judvalenciasa@gmail.com>
+Date:   Sat Sep 7 15:16:18 2024 -0500
+
+    base para el informe
+
+[33mcommit 636c639131daf30fbba8c55390a6ff36e02a5a0d[m
+Author: Yorman Valencia <yormanvale@outlook.com>
+Date:   Sat Sep 7 13:23:44 2024 -0500
+
+    avances en encuesta de metacognicion
+
+[33mcommit f392b0d2d95740aeb03837c8ac69f2f5e456789f[m
+Author: Yorman Valencia <yormanvale@outlook.com>
+Date:   Sat Sep 7 11:52:25 2024 -0500
+
+    .
+
+[33mcommit b6b0cda1e1a67512dcd4966291dfcd9fc14871c8[m
+Author: Tatianagh <carol.1701613339@ucaldas.edu.co>
+Date:   Sat Sep 7 11:49:44 2024 -0500
+
+    ingreso de 2 respuestas por subhabilidad
+
+[33mcommit 6dc16ee888cde53c2d5a1ae120a4e9ba43c44d8b[m
+Author: judvalenciasa <judvalenciasa@gmail.com>
+Date:   Sat Sep 7 11:20:16 2024 -0500
+
+    Correccion del error
+
+[33mcommit 39a98d483e6652657746acff793806406b383938[m
+Author: judvalenciasa <judvalenciasa@gmail.com>
+Date:   Sat Sep 7 10:59:44 2024 -0500
+
+    terminados los modelos
+
+[33mcommit c82be8f9760dcc66c72564f35ce4718eebcbed1e[m
+Merge: 8cf26d6 d0db795
+Author: judvalenciasa <judvalenciasa@gmail.com>
+Date:   Fri Sep 6 17:50:20 2024 -0500
+
+    Merge branch 'dev' of https://github.com/judvalenciasa/testpsicologico into dev
+
+[33mcommit 8cf26d6d30a6c6e62dc3f63d4f6a065ab41588b1[m
+Author: judvalenciasa <judvalenciasa@gmail.com>
+Date:   Fri Sep 6 17:50:09 2024 -0500
+
+    creación tabla de subpreguntas y opcionessubpreguntas
+
+[33mcommit d0db79556f918b8fe50e1abfdedea7439760fccd[m
+Author: Yorman Valencia <yormanvale@outlook.com>
+Date:   Fri Sep 6 17:44:40 2024 -0500
+
+    .
+
+[33mcommit 9687be13a7b06484c1537e120b5bfabe5e348c07[m
+Author: Yorman Valencia <yormanvale@outlook.com>
+Date:   Fri Sep 6 17:40:14 2024 -0500
+
+    .
+
+[33mcommit dd9a465de67b52925ca021eff44b4f8a36854899[m
+Author: Yorman Valencia <yormanvale@outlook.com>
+Date:   Fri Sep 6 17:39:20 2024 -0500
+
+    .
+
+[33mcommit 57692c6b58324324e95b5a406dca068c2848cfc9[m
+Author: Yorman Valencia <yormanvale@outlook.com>
+Date:   Fri Sep 6 17:38:16 2024 -0500
+
+    .
+
+[33mcommit c3d7e2ada98fbe9611e2221923dd53cbb4a6515e[m
+Author: Yorman Valencia <yormanvale@outlook.com>
+Date:   Fri Sep 6 17:35:42 2024 -0500
+
+    .
+
+[33mcommit 86251ab6a5cd087a101f387819e18de182c51313[m
+Author: Yorman Valencia <yormanvale@outlook.com>
+Date:   Fri Sep 6 17:17:34 2024 -0500
+
+    .
+
+[33mcommit b3b89e8f0a5c6488fe694636e7a987b738dea95d[m
+Merge: 4f2f205 f4cdef2
+Author: judvalenciasa <judvalenciasa@gmail.com>
+Date:   Fri Sep 6 16:38:58 2024 -0500
+
+    Merge branch 'dev' of https://github.com/judvalenciasa/testpsicologico into dev
+
+[33mcommit 4f2f205881f5ab8ad365ecc84cdf8395363b1a8d[m
+Author: judvalenciasa <judvalenciasa@gmail.com>
+Date:   Fri Sep 6 16:37:13 2024 -0500
+
+    nuevo atributo en base de datos
+
+[33mcommit f4cdef2f25cd8cce06b41e8803d88c9b465f1298[m
+Author: Yorman Valencia <yormanvale@outlook.com>
+Date:   Fri Sep 6 12:30:49 2024 -0500
+
+    cambios
+
+[33mcommit 381c9a4dd5dd6fb50f06fbe672b6255de79e479b[m
+Author: Yorman Valencia <yormanvale@outlook.com>
+Date:   Fri Sep 6 10:46:22 2024 -0500
+
+    correccion con rutas
+
+[33mcommit 1e8a1e0c1fd599778517c9ce5eeeabbf28414ec5[m
+Author: Yorman Valencia <yormanvale@outlook.com>
+Date:   Thu Sep 5 12:58:10 2024 -0500
+
+    .
+
+[33mcommit 44b9383018d438ee0e15f56a3cedcef7f4e3577b[m
+Author: Yorman Valencia <yormanvale@outlook.com>
+Date:   Thu Sep 5 03:12:17 2024 -0500
+
+    Version funcional (revisar user seeder)
+
+[33mcommit e02a945d524f6a724b33f0b5e2133d326dbc878a[m
+Author: Yorman Valencia <yormanvale@outlook.com>
+Date:   Thu Sep 5 02:08:59 2024 -0500
+
+    .
+
+[33mcommit d9d0a9c659aa40f905da50e70aa3c3f34e51622e[m
+Author: Yorman Valencia <yormanvale@outlook.com>
+Date:   Thu Sep 5 00:56:08 2024 -0500
+
+    .
+
+[33mcommit c26228801efb033933d4998e303f9e76a023a1e0[m
+Author: Yorman Valencia <yormanvale@outlook.com>
+Date:   Thu Sep 5 00:35:10 2024 -0500
+
+    .
+
+[33mcommit fe098340251c043ef3f8018bf2f63378c75c2b8b[m
+Author: Yorman Valencia <yormanvale@outlook.com>
+Date:   Wed Sep 4 21:32:30 2024 -0500
+
+    cambios en login
+
+[33mcommit 0e4f4b7ad11ab244d6cef369c4e20a5b4d0d3eef[m
+Author: Yorman Valencia <yormanvale@outlook.com>
+Date:   Wed Sep 4 21:26:02 2024 -0500
+
+    .
+
+[33mcommit e2689b3fc8064a5a5a970dd57c84b2634bdde5ca[m
+Author: Yorman Valencia <yormanvale@outlook.com>
+Date:   Wed Sep 4 21:24:26 2024 -0500
+
+    .
+
+[33mcommit 38dcc28180a8cfcba12a1aa28abea3b2444a58c2[m
+Author: Yorman Valencia <yormanvale@outlook.com>
+Date:   Wed Sep 4 21:22:45 2024 -0500
+
+    .
+
+[33mcommit c32883dad67778dba9f730c5b2cbbd61500c27e2[m
+Author: Yorman Valencia <yormanvale@outlook.com>
+Date:   Wed Sep 4 21:20:06 2024 -0500
+
+    .
+
+[33mcommit 2576a75301ca08305ce3b7dd59840190698883c6[m
+Author: Yorman Valencia <yormanvale@outlook.com>
+Date:   Wed Sep 4 18:29:09 2024 -0500
+
+    Modificaciones
+
+[33mcommit 64882c09b921d41f9b584190438ecbcdb8a5c567[m
+Author: Yorman Valencia <yormanvale@outlook.com>
+Date:   Wed Sep 4 15:02:58 2024 -0500
+
+    Se actualiza a la ultima version de chat gpt
+
+[33mcommit da3e4c3e4b6a1dd532e787dc54cd28139fdd7498[m
+Author: Yorman Valencia <yormanvale@outlook.com>
+Date:   Wed Sep 4 14:54:11 2024 -0500
+
+    Cambio en criterios
+
+[33mcommit bbc2507c0cc3948796d8f6d82addfe0308104c5c[m
+Author: judvalenciasa <judvalenciasa@gmail.com>
+Date:   Wed Sep 4 14:51:29 2024 -0500
+
+    consumo del chat gpt con promt
+
+[33mcommit 30d1c5d014257f413c7e8d6264c916379579f90e[m
+Author: Yorman Valencia <yormanvale@outlook.com>
+Date:   Tue Sep 3 00:31:23 2024 -0500
+
+    .
+
+[33mcommit d5187cd6a388da9b972a1ad2308e99c993d729b2[m
+Merge: 701a5bc f9768b7
+Author: judvalenciasa <judvalenciasa@gmail.com>
+Date:   Tue Sep 3 00:10:40 2024 -0500
+
+    Merge branch 'dev' of https://github.com/judvalenciasa/testpsicologico into dev
+
+[33mcommit 701a5bc1578b13f567e514953bb2fa25b9169dcc[m
+Author: judvalenciasa <judvalenciasa@gmail.com>
+Date:   Tue Sep 3 00:09:40 2024 -0500
+
+    errores
+
+[33mcommit f9768b77525ee589d01f878af29da46599ec0300[m
+Author: Yorman Valencia <yormanvale@outlook.com>
+Date:   Tue Sep 3 00:07:50 2024 -0500
+
+    Sedders bien
+
+[33mcommit 55b13a8f977d391bf3dedf64298e565b5cef7c4a[m
+Merge: 7ff6bcd baccea4
+Author: Yorman Valencia <yormanvale@outlook.com>
+Date:   Mon Sep 2 23:46:10 2024 -0500
+
+    Merge branch 'dev' of https://github.com/judvalenciasa/testpsicologico into dev
+
+[33mcommit 7ff6bcda334b0123e83ab0cb7635d65ce42190ae[m
+Author: Yorman Valencia <yormanvale@outlook.com>
+Date:   Mon Sep 2 23:45:45 2024 -0500
+
+    .
+
+[33mcommit baccea4417dbdf62e6c2198cfa1c05ac0ba12464[m
+Merge: 1d42f51 1ed7e8b
+Author: Tatianagh <carol.1701613339@ucaldas.edu.co>
+Date:   Mon Sep 2 23:41:44 2024 -0500
+
+    Merge branch 'devTati' into dev
+
+[33mcommit 1ed7e8b1a334114e865d3817372eac32a05b0908[m[33m ([m[1;31morigin/devTati[m[33m)[m
+Author: unknown <carol.1701613339@ucaldas.edu.co>
+Date:   Mon Sep 2 23:36:33 2024 -0500
+
+    avance en seeders
+
+[33mcommit 902bc9d7875e6903b7c808838efdc093b9485c6b[m
+Merge: 2f2a84f 1d42f51
+Author: Yorman Valencia <yormanvale@outlook.com>
+Date:   Mon Sep 2 19:10:12 2024 -0500
+
+    Merge branch 'dev' of https://github.com/judvalenciasa/testpsicologico into dev
+
+[33mcommit 2f2a84f2d8a01d2b9d33e00f1471206a8df82ff5[m
+Author: Yorman Valencia <yormanvale@outlook.com>
+Date:   Mon Sep 2 19:09:02 2024 -0500
+
+    .
+
+[33mcommit 1d42f51e8bec81fb940155f61093953af57a3e06[m
+Author: judvalenciasa <judvalenciasa@gmail.com>
+Date:   Mon Sep 2 19:06:48 2024 -0500
+
+    cambio en pruebas
+
+[33mcommit 79215f90c5ef59a12d9d000fdadd20880efd3969[m
+Author: Yorman Valencia <yormanvale@outlook.com>
+Date:   Mon Sep 2 15:37:40 2024 -0500
+
+    Funcionalidad para consultar a api chat completa
+
+[33mcommit 1580aee107dccedd552f53337d23274c38a9cde6[m
+Author: Yorman Valencia <yormanvale@outlook.com>
+Date:   Mon Sep 2 14:46:35 2024 -0500
+
+    Cambios en estructura de preguntas
+
+[33mcommit e72bcf69e1a65f77ea5d198ece1f25aa32ce7c8a[m
+Author: Yorman Valencia <yormanvale@outlook.com>
+Date:   Mon Sep 2 13:35:15 2024 -0500
+
+    .
+
+[33mcommit 1bf0f6a9cc71992e6ea3c456a1508994fa5ac0de[m
+Author: Yorman Valencia <yormanvale@outlook.com>
+Date:   Sun Aug 25 22:56:32 2024 -0500
+
+    Nuevas funcionalidades
+
+[33mcommit 6f010f2195064af692fd32f5b13ebff9bb262d25[m
+Author: Yorman Valencia <yormanvale@outlook.com>
+Date:   Thu Aug 22 16:20:22 2024 -0500
+
+    avances
+
+[33mcommit f562507036daecf7ecc470c0eee07922053a8f21[m
+Merge: 4a9dcc7 aac7a83
+Author: Yorman Valencia <yormanvale@outlook.com>
+Date:   Thu Aug 22 13:10:17 2024 -0500
+
+    Merge branch 'dev' of https://github.com/judvalenciasa/testpsicologico into dev
+
+[33mcommit 4a9dcc73b886b6ea0e12e6a2acf1ed5801ed0272[m
+Author: Yorman Valencia <yormanvale@outlook.com>
+Date:   Thu Aug 22 13:09:49 2024 -0500
+
+    .
+
+[33mcommit aac7a83673157d47534df77d5aec21213a3109fe[m
+Merge: 8e6b173 f161700
+Author: judvalenciasa <judvalenciasa@gmail.com>
+Date:   Wed Aug 21 14:27:17 2024 -0500
+
+    Merge branch 'dev' of https://github.com/judvalenciasa/testpsicologico into dev
+
+[33mcommit 8e6b173b1a9fd525ae7af35a845db1e81e87097d[m
+Author: judvalenciasa <judvalenciasa@gmail.com>
+Date:   Wed Aug 21 14:25:24 2024 -0500
+
+    cambio de ruta
+
+[33mcommit f1617002404e3fbb05e51d387cccaab732d8842f[m
+Author: Yorman Valencia <yormanvale@outlook.com>
+Date:   Tue Aug 20 23:29:10 2024 -0500
+
+    login y registro completo
+
+[33mcommit 7b294d8907cb8524bef33955e23e34736eac18b1[m
+Author: judvalenciasa <judvalenciasa@gmail.com>
+Date:   Tue Aug 20 09:08:37 2024 -0500
+
+    llenado de los primeros 5 preguntas
+
+[33mcommit 05369b5edf5b67f5e92c57f26face1cbf4a50ea7[m
+Author: judvalenciasa <judvalenciasa@gmail.com>
+Date:   Thu Aug 15 17:03:46 2024 -0500
+
+    ingresando las nuevas tablas
+
+[33mcommit 96d9822c2f94cb978df58362968011c176f28ee5[m
+Merge: e37ce9d 6b8b124
+Author: judvalenciasa <judvalenciasa@gmail.com>
+Date:   Thu Aug 15 15:42:01 2024 -0500
+
+    Merge branch 'dev' of https://github.com/judvalenciasa/testpsicologico into dev
+
+[33mcommit e37ce9d08e6ad7964feceefafcafb997aed868dd[m
+Author: judvalenciasa <judvalenciasa@gmail.com>
+Date:   Thu Aug 15 15:41:48 2024 -0500
+
+    ultima modificacion
+
+[33mcommit 6b8b124c6caba83a27514397b87418ca7c2878b3[m
+Author: Yorman Valencia <yormanvale@outlook.com>
+Date:   Thu Aug 15 14:34:22 2024 -0500
+
+    Avance en validacion de inicio de sesion y en logout
+
+[33mcommit 551f0efeb6c0097c52d4e173ad9d539c6ea492a9[m
+Merge: acf5f70 21381ad
+Author: Yorman Valencia <yormanvale@outlook.com>
+Date:   Thu Aug 15 11:08:29 2024 -0500
+
+    Merge branch 'dev' of https://github.com/judvalenciasa/testpsicologico into dev
+
+[33mcommit acf5f70fb4112cb1b354b143028606adab669b6e[m
+Author: Yorman Valencia <yormanvale@outlook.com>
+Date:   Tue Aug 13 17:36:51 2024 -0500
+
+    .
+
+[33mcommit 21381ad2fb843f5b353f707b59f4c54e44c3f187[m
+Author: Yorman Valencia <yormanvale@outlook.com>
+Date:   Tue Aug 13 00:49:15 2024 -0500
+
+    .
+
+[33mcommit 2ec94261ea3d7ef619b25ad0db09385629031f0b[m
+Author: Yorman Valencia <yormanvale@outlook.com>
+Date:   Tue Aug 13 00:47:53 2024 -0500
+
+    Encuesta de caracterizacion terminada
+
+[33mcommit a433f4027b6e77dc4c4f28709100ce9265088a09[m
+Author: Yorman Valencia <yormanvale@outlook.com>
+Date:   Mon Aug 12 23:16:19 2024 -0500
+
+    Avances en maquetación del sitio
+
+[33mcommit ffa49e1fea5af3fafcc2ae7cfb23f0cf8d5105e8[m
+Author: Yorman Valencia <yormanvale@outlook.com>
+Date:   Thu Aug 8 23:35:32 2024 -0500
+
+    avances en diseño
+
+[33mcommit e5a37c27f0378c0c2e16fe77c773e9c3e8cf5e5f[m
+Author: Yorman Valencia <yormanvale@outlook.com>
+Date:   Thu Aug 8 22:45:21 2024 -0500
+
+    Login Complete
+
+[33mcommit c60d8d1fb2181cc66dede9327f34fd0753d0485c[m
+Author: Yorman Valencia <yormanvale@outlook.com>
+Date:   Wed Aug 7 22:49:22 2024 -0500
+
+    Se agrega particles al header
+
+[33mcommit 5c27e8925668b5d358697dc4b4613d6bf34e34d1[m
+Author: Yorman Valencia <yormanvale@outlook.com>
+Date:   Wed Aug 7 21:34:06 2024 -0500
+
+    avances en diseño
+
+[33mcommit dda888db26acb2b97f49905a938ba332b095d329[m
+Author: judvalenciasa <judvalenciasa@gmail.com>
+Date:   Mon Aug 5 08:53:04 2024 -0500
+
+    Registro de usuarios, login, logout, registro de datos de usuario
+
+[33mcommit b4e2be3222c14e2303790a38c0acc53b2498ffc9[m
+Author: judvalenciasa <judvalenciasa@gmail.com>
+Date:   Sat Aug 3 11:26:39 2024 -0500
+
+    migracion lista
