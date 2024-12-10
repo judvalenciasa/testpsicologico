@@ -26,7 +26,7 @@
             @endif
 
             <div class="title">
-                <h2>Contexto - {{ $contexto_index + 1 }} </h2>
+                <h2>Contexto - {{ $posicion +1 }} </h2>
             </div>
 
             @if(isset($preguntas) && count($preguntas) > 0)
@@ -93,8 +93,9 @@
 
                 <input type="hidden" name="prueba_id" value="{{ $prueba_id }}">
                 <input type="hidden" name="contexto_index" value="{{ $contexto_index }}">
+                <input type="hidden" name="posicion" value="{{ $posicion }}">
 
-                @if($contexto_index + 1 < $total_contextos)
+                @if($posicion + 1 < $total_contextos)
                     <button type="submit">Siguiente</button>
                     @else
                     <button class="send_btn" type="submit">Continuar con encuesta de metacognición</button>
