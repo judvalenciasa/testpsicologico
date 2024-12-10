@@ -471,7 +471,11 @@ class TestsController extends Controller
                 }
             }
 
-
+        
+            if(count($contextos_ordenados) == 0){
+                dd("Ya existe un reporte");
+                return;
+            }
           
             $contexto_index = 0; 
             $total_contextos = count($contextos_ordenados); 
@@ -536,6 +540,8 @@ class TestsController extends Controller
             return view('private.prueba_page', compact('preguntas', 'contexto_index', 'total_contextos', 'prueba_id', 'posicion'));
         }
 
+
+        //verificarlo posicion
         // Avanzar al siguiente contexto si no hubo errores
         $prueba_id = $request->input('prueba_id');
         $contexto_index = $request->input('contexto_index', 0);
