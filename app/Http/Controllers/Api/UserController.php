@@ -16,7 +16,6 @@ use PHPUnit\Event\Code\Test;
 use App\Models\Pruebas;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Storage;
-use App\Mail\TestEmail;
 use App\Http\Controllers\PinesController;
 
 class UserController extends Controller
@@ -164,6 +163,7 @@ class UserController extends Controller
         // Enviar correo al usuario
         try {
             Mail::to($request->email)->send(new MiMailable($details));
+            Log::info('Correo enviado a: ' . $request->email);
         } catch (\Exception $e) {
             Log::error('Error al enviar el correo: ' . $e->getMessage());
         }
@@ -302,7 +302,7 @@ class UserController extends Controller
         // Validar la información del formulario
         $request->validate([
             'documento_identificacion' => 'required|string',
-            'edad' => 'required|integer|min:15|max:18',
+            'edad' => 'required|integer|min:14|max:18',
             'genero' => 'required|string|max:9',
             'estrato' => 'required|integer|min:1|max:6',
             'nivel_escolaridad' => 'required|string',

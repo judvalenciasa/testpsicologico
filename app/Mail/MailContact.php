@@ -67,7 +67,7 @@ class MailContact extends Mailable
             </html>
         ';
 
-        return $this->from(env('MAIL_FROM_ADDRESS', 'example@example.com'), env('MAIL_FROM_NAME', 'CognitiveSpark'))
+        return $this->from(env('MAIL_FROM_ADDRESS'), env('MAIL_FROM_NAME', 'CognitiveSpark'))
             ->subject('Información CognitiveSpark')
             ->html($htmlContent);  // Usar directamente HTML para enviar el correo
     }
