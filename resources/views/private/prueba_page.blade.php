@@ -95,7 +95,7 @@
                 <input type="hidden" name="contexto_index" value="{{ $contexto_index }}">
                 <input type="hidden" name="posicion" value="{{ $posicion }}">
 
-                @if($posicion >= $total_contextos)
+                @if($posicion = $total_contextos)
                     <button type="submit">Siguiente</button>
                     @else
                     <button class="send_btn" type="submit">Continuar con encuesta de metacognición</button>
