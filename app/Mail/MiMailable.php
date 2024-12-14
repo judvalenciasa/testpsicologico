@@ -22,7 +22,7 @@ class MiMailable extends Mailable
 
     public function build()
     {
-        return $this->from('no-reply@cognitivespark.com')
+        return $this->from('no-reply@cognitivemarista.com')
             ->subject('Credenciales CognitiveSpark')
             ->html('
                 <div style="font-family: Arial, sans-serif; color: #333;">

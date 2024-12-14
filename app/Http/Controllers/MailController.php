@@ -21,7 +21,7 @@ class MailController extends Controller
 
         // Enviar el correo al destinatario
         try {
-            Mail::to('yormanvale@outlook.com')->send(new MailContact($validated));
+            Mail::to('cognitivesparkmarista@gmail.com')->send(new MailContact($validated));
 
             // Retornar respuesta de éxito
             return response()->json(['success' => true, 'message' => 'Correo enviado exitosamente.']);
