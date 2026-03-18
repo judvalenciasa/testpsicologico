@@ -13,8 +13,22 @@
     @include('shared.header')
 
     <section class="report_section">
-        <div class="container">
-            <h1>Reporte Descriptivo</h1>
+        <div class="container report-shell">
+            @php
+            $contextCount = count(array_filter(array_keys($informe_final), function ($key) {
+                return $key !== 'metacognicion_motivacion';
+            }));
+            @endphp
+
+            <div class="report-topbar">
+                <div>
+                    <h1>Reporte Descriptivo</h1>
+                    <p class="report-subtitle">Detalle consolidado del desempeño crítico y variables complementarias del participante.</p>
+                </div>
+                <div class="report-badges">
+                    <span class="report-badge">Contextos: {{ $contextCount }}</span>
+                </div>
+            </div>
 
             <!-- Sección de Metacognición y Motivación -->
             @if(isset($informe_final['metacognicion_motivacion']))
@@ -263,7 +277,7 @@
 
 
 
-        <a href="{{ route('private.usuarios') }}" class="btn">Volver a usuarios</a>
+        <a href="{{ route('private.usuarios') }}" class="btn btn_back_users">Volver a usuarios</a>
 
     </section>
 

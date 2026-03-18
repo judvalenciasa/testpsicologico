@@ -156,6 +156,11 @@ class TestsController extends Controller
 
     public function calificar_pregunta_abierta(Request $request, $pregunta_id, $user)
     {
+        if (!$this->isAiScoringEnabled()) {
+            $this->guardarRespuesta($request, $user, $pregunta_id, '', 0);
+            return;
+        }
+
         $respuestas_abiertas = $request->input('respuestas_abiertas');
         $respuestas_abiertas_texto = reset($respuestas_abiertas);
 
@@ -227,6 +232,18 @@ class TestsController extends Controller
 
     public function calificar_subpreguntas_abiertas(Request $request, $user)
     {
+        if (!$this->isAiScoringEnabled()) {
+            foreach ((array) $request->input('respuestas_abiertas', []) as $subpregunta_id => $respuesta_abierta) {
+                $subpregunta = Subpreguntas::find($subpregunta_id);
+                if (!$subpregunta || $subpregunta->tipo_pregunta !== 'abierta') {
+                    continue;
+                }
+
+                $this->guardarRespuestaSubpregunta($request, $user, $subpregunta->id_subpregunta, '', 0);
+            }
+            return;
+        }
+
 
         $totalCalificacionSubpreguntas = 0;
         $totalSubpreguntas = 0;
@@ -299,6 +316,11 @@ class TestsController extends Controller
 
         $this->calificar_subpreguntas_cerradas($request, $pregunta1Id, $user);
 
+        if (!$this->isAiScoringEnabled()) {
+            $this->guardarRespuesta($request, $user, $pregunta2Id, '', 0);
+            return;
+        }
+
         $respuestas_cerradas = $request->input('respuestas_cerradas');
 
         $respuestas_cerradas_indexadas = array_values($respuestas_cerradas);
@@ -335,6 +357,11 @@ class TestsController extends Controller
         $pregunta2Id = $request->input('pregunta_ids')[1];
 
         $this->calificar_subpreguntas_cerradas($request, $pregunta1Id, $user);
+
+        if (!$this->isAiScoringEnabled()) {
+            $this->guardarRespuesta($request, $user, $pregunta2Id, '', 0);
+            return;
+        }
 
         //se califica la pregunta abierta con chatgpt
 
@@ -573,5 +600,10 @@ class TestsController extends Controller
         $tiempo_prueba = $hora_final_prueba->diffInSeconds($hora_inicio_prueba);
 
         return $tiempo_prueba / 60;
+    }
+
+    private function isAiScoringEnabled(): bool
+    {
+        return (bool) config('features.ai_scoring_enabled', false);
     }
 }

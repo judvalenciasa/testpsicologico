@@ -40,6 +40,9 @@
 
 .btns_ctn {
     display: flex;
-    flex-direction: column;
-    gap: 1vw;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.7rem;
 }

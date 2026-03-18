@@ -39,13 +39,19 @@
                 @csrf
                 @foreach($preguntas as $index => $pregunta_actual)
 
+                @if($pregunta_actual->tipo_pregunta == 'abierta' && !config('features.ai_scoring_enabled'))
+                <input type="hidden" name="respuestas_abiertas[{{ $pregunta_actual->id_pregunta }}]" value="">
+                <input type="hidden" name="pregunta_ids[]" value="{{ $pregunta_actual->id_pregunta }}">
+                @continue
+                @endif
+
                 <p class="pregunta_texto">{!! $pregunta_actual->texto !!}</p>
 
                 @if($pregunta_actual->tipo_pregunta == 'abierta')
                 <div class="opcion">
                     <textarea class="textarea_field" maxlength="650"
                         name="respuestas_abiertas[{{ $pregunta_actual->id_pregunta }}]"
-                        id="respuesta_abierta_{{ $pregunta_actual->id_pregunta }}" required rows="4"
+                        id="respuesta_abierta_{{ $pregunta_actual->id_pregunta }}" rows="4"
                         placeholder="Escribe tu respuesta aquí..."></textarea>
                 </div>
                 @else
@@ -64,11 +70,15 @@
                 @if($pregunta_actual->subpreguntas && $pregunta_actual->subpreguntas->count() > 0)
                 <div class="subpreguntas">
                     @foreach($pregunta_actual->subpreguntas as $subpregunta)
+                    @if($subpregunta->tipo_pregunta == 'abierta' && !config('features.ai_scoring_enabled'))
+                    <input type="hidden" name="respuestas_abiertas[{{ $subpregunta->id_subpregunta }}]" value="">
+                    @continue
+                    @endif
                     <p class="pregunta_texto">{{ $subpregunta->texto }}</p>
 
                     @if($subpregunta->tipo_pregunta == 'abierta')
                     <div class="opcion">
-                        <textarea class="textarea_field" required maxlength="650"
+                        <textarea class="textarea_field" maxlength="650"
                             name="respuestas_abiertas[{{ $subpregunta->id_subpregunta }}]"
                             id="respuesta_abierta_{{ $subpregunta->id_subpregunta }}" rows="4"
                             placeholder="Escribe tu respuesta aquí..."></textarea>

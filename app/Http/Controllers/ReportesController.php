@@ -233,6 +233,7 @@ class ReportesController extends Controller
             $total_Calificacion_induccion_general = 
             Respuestas::join('preguntas', 'respuestas.id_pregunta', '=', 'preguntas.id_pregunta')
                 ->where('preguntas.id_subhabilidad', $id_subhabilidad)
+                ->where('preguntas.tipo_pregunta', '!=', 'abierta')
                 ->where('respuestas.id_reporte', $id_reporte)
                 ->sum('respuestas.calificacion_respuesta');
         } else {
@@ -276,6 +277,7 @@ class ReportesController extends Controller
                         'contexto' => $pregunta->contexto ? $pregunta->contexto->texto : null,
                         'id_contexto' => $pregunta->id_contexto ? $pregunta->contexto->id_contexto : null,
                         'id_pregunta' => $pregunta->id_pregunta,
+                        'tipo_pregunta' => $pregunta->tipo_pregunta,
                         'texto_pregunta' => $pregunta->texto,
                         'respuesta_texto' => $respuesta->respuesta, // Una única respuesta
                         'calificacion' => $respuesta->calificacion_respuesta, // Calificación de la respuesta
@@ -432,6 +434,12 @@ class ReportesController extends Controller
     {
         $respuestas = $this->consultar_informe($request->id_usuario, $request->id_reporte);
         $subrespuestas = $this->consutar_subrespuestas($request->id_usuario, $request->id_reporte);
+        $respuestasCalificables = count(array_filter($respuestas, function ($respuesta) {
+            return ($respuesta['tipo_pregunta'] ?? null) !== 'abierta';
+        }));
+        $subrespuestasCalificables = count(array_filter($subrespuestas, function ($subrespuesta) {
+            return ($subrespuesta['tipo_pregunta'] ?? null) !== 'abierta';
+        }));
 
         $informe = [
             'respuestas' => $respuestas,
@@ -439,7 +447,7 @@ class ReportesController extends Controller
         ];
 
 
-        return view('reporte.reporte_revisor', compact('informe'));
+        return view('reporte.reporte_revisor', compact('informe', 'respuestasCalificables', 'subrespuestasCalificables'));
     }
 
     public function consutar_subrespuestas($id_usuario, $id_reporte)
@@ -454,8 +462,11 @@ class ReportesController extends Controller
 
         //consultar el texto de las subpreguntas asociadas a las subrespuestas
         foreach ($subrespuestas as $key => $subrespuesta) {
-            $subrespuestas[$key]['texto_subpregunta'] = subpreguntas::where('id_subpregunta', $subrespuesta['id_subpregunta'])
-                ->value('texto');
+            $subpregunta = subpreguntas::where('id_subpregunta', $subrespuesta['id_subpregunta'])
+                ->select('texto', 'tipo_pregunta')
+                ->first();
+            $subrespuestas[$key]['texto_subpregunta'] = $subpregunta?->texto;
+            $subrespuestas[$key]['tipo_pregunta'] = $subpregunta?->tipo_pregunta;
         }
 
         return $subrespuestas;
