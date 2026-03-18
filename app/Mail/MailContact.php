@@ -11,6 +11,8 @@ class MailContact extends Mailable
 {
     use Queueable, SerializesModels;
 
+    private const SUBJECT = 'Información CognitiveSpark';
+
     public $details;
 
     /**
@@ -39,8 +41,14 @@ class MailContact extends Mailable
             throw new \Exception('Uno de los valores no es una cadena.');
         }
 
-        // Crear el HTML del correo directamente aquí
-        $htmlContent = '
+        return $this->from(env('MAIL_FROM_ADDRESS'), env('MAIL_FROM_NAME', 'CognitiveSpark'))
+            ->subject(self::SUBJECT)
+            ->html($this->buildHtmlContent());
+    }
+
+    private function buildHtmlContent(): string
+    {
+        return '
             <!DOCTYPE html>
             <html lang="es">
             <head>
@@ -66,9 +74,5 @@ class MailContact extends Mailable
             </body>
             </html>
         ';
-
-        return $this->from(env('MAIL_FROM_ADDRESS'), env('MAIL_FROM_NAME', 'CognitiveSpark'))
-            ->subject('Información CognitiveSpark')
-            ->html($htmlContent);  // Usar directamente HTML para enviar el correo
     }
 }

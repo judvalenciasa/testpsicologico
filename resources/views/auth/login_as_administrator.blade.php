@@ -52,19 +52,7 @@
     </section>
     @include('shared.footer')
 
-    <!-- JavaScript para mostrar/ocultar contraseña -->
-    <script>
-        document.getElementById('show-password').addEventListener('change', function() {
-            var passwordInput = document.getElementById('password');
-            if (this.checked) {
-                // Si el checkbox está marcado, mostrar la contraseña
-                passwordInput.type = 'text';
-            } else {
-                // Si no está marcado, ocultar la contraseña
-                passwordInput.type = 'password';
-            }
-        });
-    </script>
+    <script src="{{ asset('js/pages/login.js') }}"></script>
 
 
 </body>

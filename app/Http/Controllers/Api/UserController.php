@@ -1,38 +1,43 @@
 <?php
 
 namespace App\Http\Controllers\Api;
+
+use App\Application\Mail\MailService;
+use App\Application\Pines\PinService;
+use App\Application\Users\UserService;
 use App\Http\Controllers\Controller;
-use App\Mail\MiMailable;
-use App\Models\Pines;
-use App\Models\User;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 //import el controlador de test
 use App\Http\Controllers\TestsController;
-use Mail;
-use PHPUnit\Event\Code\Test;
 use App\Models\Pruebas;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Storage;
-use App\Http\Controllers\PinesController;
 
 class UserController extends Controller
 {
-    protected $testsController;
-    protected $pinesController;
+    private const ROUTE_LOGIN = 'login';
+    private const ROUTE_HOME = 'home';
+    private const ROUTE_POLITICA_DATOS = 'politica.datos';
+    private const ROUTE_CARACTERIZACION = 'caracterizacion';
+    private const ROUTE_TEST_INICIAR = 'test.iniciar';
 
-    public function __construct(TestsController $testsController, PinesController $pinesController)
-    {
+    protected $testsController;
+
+    public function __construct(
+        TestsController $testsController,
+        private readonly UserService $userService,
+        private readonly PinService $pinService,
+        private readonly MailService $mailService
+    ) {
         $this->testsController = $testsController;
-        $this->pinesController = $pinesController;
     }
 
     //Carga todos los usuarios que no son administradores
     public function index()
     {
-        $users = User::where('es_administrador', 0)->get();
+        $users = $this->userService->nonAdminUsers();
         return view('private.usuarios', compact('users')); // Asegúrate de tener una vista admin/usuarios
     }
 
@@ -62,10 +67,9 @@ class UserController extends Controller
 
             Log::info('Prueba: ' . $prueba);
 
-            return view('private.administrator-page', compact('prueba'));
-            ; // Pasar la variable 'prueba' a la vista
+            return view('private.administrator-page', compact('prueba')); // Pasar la variable 'prueba' a la vista
         } else {
-            return redirect()->route('login');
+            return $this->redirectToLogin();
         }
     }
 
@@ -77,7 +81,7 @@ class UserController extends Controller
         if ($user) {
             return view('private.caracterizacion')->with('user', $user);
         } else {
-            return redirect()->route('login');
+            return $this->redirectToLogin();
         }
     }
 
@@ -89,7 +93,7 @@ class UserController extends Controller
         if ($user) {
             return $this->testsController->mostrarPrueba();
         } else {
-            return redirect()->route('login');
+            return $this->redirectToLogin();
         }
     }
 
@@ -103,7 +107,7 @@ class UserController extends Controller
      */
     public function pin_valido(Request $request)
     {
-        return pines::where('pin', $request->pin)->value('id_pin');
+        return $this->pinService->findPinIdByValue((string) $request->pin);
     }
 
 
@@ -114,7 +118,7 @@ class UserController extends Controller
      */
     public function registro_existente(Request $request)
     {
-        return User::where('email', $request->email)->first();
+        return $this->userService->existingByEmail((string) $request->email);
     }
 
 
@@ -134,35 +138,27 @@ class UserController extends Controller
 
 
         $request->merge(['id_pin' => $id_pin]);
-        $request->validate([
-            'name' => 'required|max:70',
-            'email' => 'required','string','email','max:70',
-            'id_pin' => 'required',
-            'password' => 'required|string|min:6',
+        $request->validate($this->registrationRules());
+
+        $user = $this->userService->newRegisteredUser([
+            'name' => $request->name,
+            'email' => $request->email,
+            'id_pin' => $request->id_pin,
+            'password' => $request->password,
         ]);
 
-        $user = new User();
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->id_pin = $request->id_pin;
-        $user->password = Hash::make($request->password); // Hashear la contraseña
-        $user->es_administrador = 0;
-
         try {
-            $user->save();
+            $this->userService->save($user);
         } catch (\Throwable $th) {
             return response()->json(['success' => false, 'message' => 'Error al registrar el usuario, recargue la página e intente nuevamente']);
         }
 
 
-        $details = [
-            'email' => $request->email,
-            'contrasena' => $request->password
-        ];
+        $details = $this->registrationMailDetails($request);
 
         // Enviar correo al usuario
         try {
-            Mail::to($request->email)->send(new MiMailable($details));
+            $this->mailService->sendCredentials((string) $request->email, $details);
             Log::info('Correo enviado a: ' . $request->email);
         } catch (\Exception $e) {
             Log::error('Error al enviar el correo: ' . $e->getMessage());
@@ -176,9 +172,9 @@ class UserController extends Controller
 
     public function comprobar_cantidad_pines($request)
     {
-        $user = User::where('email', $request->email)->with('pin')->first();
+        $user = $this->userService->userWithPinByEmail((string) $request->email);
         //verificamos la cantidad de intentos del pin
-        $pin = $this->pinesController->cantidad_intentos($user->id_pin);
+        $pin = $this->pinService->findByIdPin($user->id_pin);
         session(['pin' => $pin]);
 
         if ($pin->intentos >= 2) {
@@ -192,8 +188,7 @@ class UserController extends Controller
     {
         // Validar los datos del formulario de login
         $request->validate([
-            'email' => 'required|string|email|max:60',
-            'password' => 'required|string|max:60',
+            ...$this->loginRules(),
         ]);
 
         // Obtener las credenciales (email y password) del request
@@ -226,7 +221,7 @@ class UserController extends Controller
         } else {
             // Verificar si el usuario ya aceptó la política de tratamiento de datos
             if (!$user->ha_aceptado_politica) { // Suponiendo que tienes este campo en tu base de datos
-                return redirect()->route('politica.datos'); // Redirigir a la página de política
+                return redirect()->route(self::ROUTE_POLITICA_DATOS); // Redirigir a la página de política
             }
 
             // Si ya aceptó la política, verificar si debe llenar la caracterización
@@ -247,11 +242,7 @@ class UserController extends Controller
             $user->update(['ha_aceptado_politica' => true]);
         }
 
-        if ($user->documento_identificacion == null) {
-            return redirect()->route('caracterizacion');
-        } else {
-            return redirect()->route('test.iniciar');
-        }
+        return $this->redirectAfterPolicyAcceptance($user);
     }
 
 
@@ -278,7 +269,7 @@ class UserController extends Controller
 
         // Redirigir al usuario a la página principal después de cerrar sesión
         Log::info('Usuario cerró sesión');
-        return redirect()->route('home');
+        return redirect()->route(self::ROUTE_HOME);
     }
 
 
@@ -300,7 +291,50 @@ class UserController extends Controller
         }
 
         // Validar la información del formulario
-        $request->validate([
+        $request->validate($this->characterizationRules());
+
+
+       // try {
+            // Intentar actualizar los datos del usuario
+            $user->update($this->characterizationUpdatePayload($request));
+
+            Log::info('Encuesta de caracterización completada por: ' . $user);
+
+            // Redirigir al usuario a la página del test después de guardar la encuesta
+            return redirect()->route(self::ROUTE_TEST_INICIAR)->with('success', 'Encuesta completada con éxito, ahora puedes iniciar el test.');
+       // } catch (\Exception $e) {
+            // Si ocurre algún error durante la actualización, loguéalo y muestra un mensaje
+     //       Log::error('Error al actualizar la encuesta de caracterización: ' . $e->getMessage());
+      //      return redirect()->back()->withErrors(['msg' => 'Ocurrió un error al guardar la encuesta.']);
+     //   }
+    }
+
+    private function redirectToLogin()
+    {
+        return redirect()->route(self::ROUTE_LOGIN);
+    }
+
+    private function registrationRules(): array
+    {
+        return [
+            'name' => 'required|max:70',
+            'email' => 'required|string|email|max:70',
+            'id_pin' => 'required',
+            'password' => 'required|string|min:6',
+        ];
+    }
+
+    private function loginRules(): array
+    {
+        return [
+            'email' => 'required|string|email|max:60',
+            'password' => 'required|string|max:60',
+        ];
+    }
+
+    private function characterizationRules(): array
+    {
+        return [
             'documento_identificacion' => 'required|string',
             'edad' => 'required|integer|min:14|max:18',
             'genero' => 'required|string|max:9',
@@ -317,38 +351,45 @@ class UserController extends Controller
             'grasas' => 'required|string',
             'alimentos_saludables' => 'required|string',
             'litro_agua' => 'required|string',
-        ]);
+        ];
+    }
 
+    private function registrationMailDetails(Request $request): array
+    {
+        return [
+            'email' => $request->email,
+            'contrasena' => $request->password,
+        ];
+    }
 
-       // try {
-            // Intentar actualizar los datos del usuario
-            $user->update([
-                'documento_identificacion' => $request->documento_identificacion,
-                'edad' => $request->edad,
-                'genero' => $request->genero,
-                'estrato' => $request->estrato,
-                'nivel_escolaridad' => $request->nivel_escolaridad,
-                'nivel_educativo_madre' => $request->nivel_educativo_madre,
-                'nivel_educativo_padre' => $request->nivel_educativo_padre,
-                'horas_lectura' => $request->horas_lectura,
-                'horas_redes_sociales' => $request->horas_redes_sociales,
-                'horas_entretenimiento' => $request->horas_entretenimiento,
-                'promedio_deporte' => $request->promedio_deporte,
-                'promedio_arte' => $request->promedio_arte,
-                'hora_sueno' => $request->hora_sueno,
-                'grasas' => $request->grasas,
-                'alimentos_saludables' => $request->alimentos_saludables,
-                'litro_agua' => $request->litro_agua,
-            ]);
+    private function redirectAfterPolicyAcceptance($user)
+    {
+        if ($user->documento_identificacion == null) {
+            return redirect()->route(self::ROUTE_CARACTERIZACION);
+        }
 
-            Log::info('Encuesta de caracterización completada por: ' . $user);
+        return redirect()->route(self::ROUTE_TEST_INICIAR);
+    }
 
-            // Redirigir al usuario a la página del test después de guardar la encuesta
-            return redirect()->route('test.iniciar')->with('success', 'Encuesta completada con éxito, ahora puedes iniciar el test.');
-       // } catch (\Exception $e) {
-            // Si ocurre algún error durante la actualización, loguéalo y muestra un mensaje
-     //       Log::error('Error al actualizar la encuesta de caracterización: ' . $e->getMessage());
-      //      return redirect()->back()->withErrors(['msg' => 'Ocurrió un error al guardar la encuesta.']);
-     //   }
+    private function characterizationUpdatePayload(Request $request): array
+    {
+        return [
+            'documento_identificacion' => $request->documento_identificacion,
+            'edad' => $request->edad,
+            'genero' => $request->genero,
+            'estrato' => $request->estrato,
+            'nivel_escolaridad' => $request->nivel_escolaridad,
+            'nivel_educativo_madre' => $request->nivel_educativo_madre,
+            'nivel_educativo_padre' => $request->nivel_educativo_padre,
+            'horas_lectura' => $request->horas_lectura,
+            'horas_redes_sociales' => $request->horas_redes_sociales,
+            'horas_entretenimiento' => $request->horas_entretenimiento,
+            'promedio_deporte' => $request->promedio_deporte,
+            'promedio_arte' => $request->promedio_arte,
+            'hora_sueno' => $request->hora_sueno,
+            'grasas' => $request->grasas,
+            'alimentos_saludables' => $request->alimentos_saludables,
+            'litro_agua' => $request->litro_agua,
+        ];
     }
 }

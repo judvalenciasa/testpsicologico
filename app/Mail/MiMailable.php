@@ -2,16 +2,12 @@
 
 namespace App\Mail;
 
-use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
-use Illuminate\Mail\Mailables\Content;
-use Illuminate\Mail\Mailables\Envelope;
-use Illuminate\Queue\SerializesModels;
 
 class MiMailable extends Mailable
 {
-
+    private const FROM_EMAIL = 'no-reply@cognitivemarista.com';
+    private const SUBJECT = 'Credenciales CognitiveSpark';
 
     public $details;
 
@@ -22,9 +18,14 @@ class MiMailable extends Mailable
 
     public function build()
     {
-        return $this->from('no-reply@cognitivemarista.com')
-            ->subject('Credenciales CognitiveSpark')
-            ->html('
+        return $this->from(self::FROM_EMAIL)
+            ->subject(self::SUBJECT)
+            ->html($this->buildBodyHtml());
+    }
+
+    private function buildBodyHtml(): string
+    {
+        return '
                 <div style="font-family: Arial, sans-serif; color: #333;">
                     <h2>Bienvenido a CognitiveSpark</h2>
                     <p>Estas son tus credenciales:</p>
@@ -44,6 +45,6 @@ class MiMailable extends Mailable
                     </table>
                     <p>¡Bienvenido!</p>
                 </div>
-            ');
+            ';
     }
 }

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Application\Tests\AnswerPersistenceService;
+use App\Application\Tests\MotivationCategoryService;
 use App\Models\Contexto;
 use App\Models\Criterios;
 use App\Models\Opciones;
@@ -13,55 +15,41 @@ use App\Models\Respuestas;
 use App\Models\Subcriterios;
 use App\Models\subpreguntas;
 use App\Exceptions\ChatGPTException;
-
-
-//se importa el controlador de respuestas
-use App\Http\Controllers\RespuestasController;
-use App\Models\subrespuestas;
 use App\Services\OpenAIService;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\DB;
 
 
 class TestsController extends Controller
 {
-    protected $openAIService;
+    private const ORDEN_INICIAL_CONTEXTO = [2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25, 27, 29];
+    private const PREGUNTAS_ESPECIALES_93 = [93, 94];
+    private const PREGUNTAS_ESPECIALES_101 = [101, 102];
 
-    public function __construct(OpenAIService $openAIService)
+    protected $openAIService;
+    protected $answerPersistenceService;
+    protected $motivationCategoryService;
+
+    public function __construct(
+        OpenAIService $openAIService,
+        AnswerPersistenceService $answerPersistenceService,
+        MotivationCategoryService $motivationCategoryService
+    )
     {
         $this->openAIService = $openAIService;
+        $this->answerPersistenceService = $answerPersistenceService;
+        $this->motivationCategoryService = $motivationCategoryService;
     }
 
     //funcion para guardar subrespuestas
     public function guardarRespuestaSubpregunta(Request $request, $user, $id_subpregunta, $respuesta, $calificacion)
     {
-
-        $id_reporte = session('id_reporte');
-
-
-        $subrespuestaExistente = subrespuestas::where('id_usuario', $user->id_usuario)
-            ->where('id_subpregunta', $id_subpregunta)
-            ->where('id_reporte', $id_reporte)
-            ->first();
+        $id_reporte = $this->currentReportId();
 
         try {
-            if ($subrespuestaExistente) {
-                $subrespuestaExistente->update([
-                    'respuesta' => $respuesta,
-                    'calificacion_respuesta' => $calificacion
-                ]);
-            } else {
-                subrespuestas::create([
-                    'id_usuario' => $user->id_usuario,
-                    'id_subpregunta' => $id_subpregunta,
-                    'id_reporte' => $id_reporte,
-                    'respuesta' => $respuesta,
-                    'calificacion_respuesta' => $calificacion
-                ]);
-            }
+            $this->answerPersistenceService->saveSubAnswer($user, $id_subpregunta, $id_reporte, $respuesta, $calificacion);
         } catch (\Throwable $th) {
             return redirect()->back()->withErrors(['msg' => 'Ocurrió un error al guardar la pregunta.']);
         }
@@ -70,34 +58,10 @@ class TestsController extends Controller
     //funcion para guardar respuesta
     public function guardarRespuesta(Request $request, $user, $pregunta_id, $respuesta, $calificacion)
     {
-        $id_reporte = session('id_reporte');
-
-
-
-        $respuestaExistente = Respuestas::where('id_usuario', $user->id_usuario)
-            ->where('id_pregunta', $pregunta_id)
-            ->where('id_reporte', $id_reporte)
-            ->first();
-
-        //dd($calificacion);
+        $id_reporte = $this->currentReportId();
 
         try {
-            if ($respuestaExistente) {
-                $respuestaExistente->update([
-                    'respuesta' => $respuesta,
-                    'calificacion_respuesta' => $calificacion
-                ]);
-            } else {
-                Respuestas::create([
-                    'id_usuario' => $user->id_usuario,
-                    'id_pregunta' => $pregunta_id,
-                    'id_reporte' => $id_reporte,
-                    'respuesta' => $respuesta,
-                    'calificacion_respuesta' => $calificacion
-                ]);
-                //$respuestasControler = new RespuestasController();
-                //$respuestasControler->guardarRespuesta($request, $user, $pregunta_id, $respuesta, $calificacion, $id_reporte);
-            }
+            $this->answerPersistenceService->saveAnswer($user, $pregunta_id, $id_reporte, $respuesta, $calificacion);
         } catch (\Throwable $th) {
             return redirect()->back()->withErrors(['msg' => 'Ocurrió un error al guardar la pregunta.']);
         }
@@ -140,32 +104,22 @@ class TestsController extends Controller
      */
     private function sumar_categorias_motivacion(Request $request)
     {
-        $categorias_motivacion = [
-            'motivacion_intrinseca' => 0,
-            'motivacion_extrinseca' => 0,
-
-        ];
-        foreach ($request->all() as $key => $value) {
-            $parts = explode('-', $key);
-
-            if (count($parts) > 1) {
-                $categoria = $parts[0];
-                if (array_key_exists($categoria, $categorias_motivacion)) {
-                    $categorias_motivacion[$categoria] += (int) $value;
-                }
-            }
-        }
-
-        return $categorias_motivacion;
+        return $this->motivationCategoryService->sum($request->all());
     }
 
     // Función para mostrar la página de motivacion
     public function motivacion(Request $request)
     {
         $user = Auth::user();
+        if (!$user) {
+            return redirect()->route('login');
+        }
 
         //Se crea un informe de la hora de inicio de la prueba
         $reporte = $this->crear_reporte($user);
+        if (!$reporte) {
+            return redirect()->back()->with('error', 'No se pudo crear el reporte.');
+        }
         session(['id_reporte' => $reporte->id_reporte]);
 
 
@@ -209,24 +163,23 @@ class TestsController extends Controller
             $respuestas_abiertas = reset($respuestas_abiertas); // Obtén el primer valor del array
         }
 
-        $respuesta_cerrada = $request->input('respuestas_cerradas');
-        $opcion_seleccionada = reset($respuesta_cerrada);
+        $opcion_seleccionada = $this->selectedClosedOptionId($request);
 
         $opcion = Opciones::find($opcion_seleccionada);
+        if (!$opcion) {
+            return redirect()->back()->with('error', 'Opción seleccionada no válida.');
+        }
 
         if ($opcion->valor_opcion == 0) {
             $respuesta_chatgpt = 0;
         } else {
 
-            $id_contexto = Preguntas::where('id_pregunta', $pregunta_id)->pluck('id_contexto')->first();
-            $contexto = Contexto::where('id_contexto', $id_contexto)->pluck('texto')->first();
-            $pregunta = Preguntas::where('id_pregunta', $pregunta_id)->pluck('texto')->first();
+            [$contexto, $pregunta] = $this->obtenerContextoYPregunta($pregunta_id);
             $criterio = Criterios::where('id_pregunta', $pregunta_id)->pluck('texto');
 
-            $respuesta_cerrada = $request->input('respuestas_cerradas');
-            $opcion_seleccionada = reset($respuesta_cerrada);
+            $opcion_seleccionada = $this->selectedClosedOptionId($request);
 
-            $opcion = Opciones::find($opcion_seleccionada)->pluck('texto')->first();
+            $opcion = Opciones::where('id_opcion', $opcion_seleccionada)->pluck('texto')->first();
 
             $prompt = "Contexto: " . $contexto . " fin contexto. Esta es la pregunta : " . $pregunta . " fin pregunta. Esta es la opcion seleccionada en el anterior item" . $opcion . "Estos son los criterios para la calificacion " . $criterio . "Fin criterio. Necesito que lo que valla en la respuesta abierta sea coherente con la pregunta que se hace y si no lo es su calificación debe ser 0. Con lo anterior devuélveme el número de la calificación, sin ninguna otra letra, con la siguiente respuesta: " . $respuestas_abiertas_texto;
 
@@ -281,8 +234,7 @@ class TestsController extends Controller
         $preguntaPrincipalId = $request->input('pregunta_ids')[1];
 
 
-        $id_contexto = Preguntas::where('id_pregunta', $preguntaPrincipalId)->pluck('id_contexto')->first();
-        $contexto = Contexto::where('id_contexto', $id_contexto)->pluck('texto')->first();
+        [$contexto] = $this->obtenerContextoYPregunta($preguntaPrincipalId);
 
         $i = 0;
 
@@ -301,12 +253,12 @@ class TestsController extends Controller
             $opcion_seleccionada = $respuestas_cerradas_indexadas[$i];
 
             $opcion = Opcionessubpreguntas::find($opcion_seleccionada);
+            if (!$opcion) {
+                return redirect()->back()->with('error', 'Opción seleccionada no válida para la subpregunta.');
+            }
 
             if ($opcion->valor_opcion == 0) {
                 $respuesta_chatgpt = 0;
-
-                //guardar respuesta subpregunta en la tabla subrespuestas
-                $this->guardarRespuestaSubpregunta($request, $user, $subpregunta->id_subpregunta, $respuesta_abierta, $respuesta_chatgpt);
             } else {
 
                 $criterio = Subcriterios::where('id_subpregunta', $subpregunta_id)->pluck('texto');
@@ -316,11 +268,10 @@ class TestsController extends Controller
                 if (!is_numeric($respuesta_chatgpt)) {
                     $respuesta_chatgpt = 0;
                 }
-
-
-                //guardar respuesta subpregunta en la tabla subrespuestas
-                $this->guardarRespuestaSubpregunta($request, $user, $subpregunta->id_subpregunta, $respuesta_abierta, $respuesta_chatgpt);
             }
+
+            //guardar respuesta subpregunta en la tabla subrespuestas
+            $this->guardarRespuestaSubpregunta($request, $user, $subpregunta->id_subpregunta, $respuesta_abierta, $respuesta_chatgpt);
 
             $totalCalificacionSubpreguntas += $respuesta_chatgpt;
             $totalSubpreguntas++;
@@ -355,6 +306,9 @@ class TestsController extends Controller
         $respuesta_cerrada = $respuestas_cerradas_indexadas[1];
 
         $subopcion = opcionessubpreguntas::find($respuesta_cerrada);
+        if (!$subopcion) {
+            return redirect()->back()->with('error', 'Opción seleccionada no válida para la subpregunta.');
+        }
 
         if ($subopcion->valor_opcion == 0) {
             $respuesta_chatgpt = 0;
@@ -364,9 +318,7 @@ class TestsController extends Controller
             $respuesta_abierta_texto = reset($respuestas_abiertas);
 
 
-            $id_contexto = Preguntas::where('id_pregunta', $pregunta2Id)->pluck('id_contexto')->first();
-            $contexto = Contexto::where('id_contexto', $id_contexto)->pluck('texto')->first();
-            $pregunta = Preguntas::where('id_pregunta', $pregunta2Id)->pluck('texto')->first();
+            [$contexto, $pregunta] = $this->obtenerContextoYPregunta($pregunta2Id);
             $criterio = Criterios::where('id_pregunta', $pregunta2Id)->pluck('texto')->first();
 
 
@@ -390,9 +342,7 @@ class TestsController extends Controller
         $respuestas_abiertas = reset($respuestas_abiertas);
 
         // Obtener contexto y criterios para la calificación
-        $id_contexto = Preguntas::where('id_pregunta', $pregunta2Id)->pluck('id_contexto')->first();
-        $contexto = Contexto::where('id_contexto', $id_contexto)->pluck('texto')->first();
-        $pregunta = Preguntas::where('id_pregunta', $pregunta2Id)->pluck('texto')->first();
+        [$contexto, $pregunta] = $this->obtenerContextoYPregunta($pregunta2Id);
         $criterio = Criterios::where('id_pregunta', $pregunta2Id)->pluck('texto');
 
 
@@ -425,9 +375,9 @@ class TestsController extends Controller
             ->orderBy('created_at', 'desc') // Asegúrate de tener un campo de timestamps para ordenar
             ->first();
 
-        if($respuesta == null){
+        if ($respuesta == null) {
             return 0;
-        }    
+        }
         return $respuesta->pregunta->id_contexto;
     }
 
@@ -447,14 +397,14 @@ class TestsController extends Controller
             $hora_inicio_prueba = Carbon::now();
             session(['hora_inicio_prueba' => $hora_inicio_prueba]);
             
-            $indices = [2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25, 27, 29];
+            $indices = self::ORDEN_INICIAL_CONTEXTO;
             $id_contexto = $this->verificarSiHayRespondidas();
             $posicion = 0;
 
-            if ($id_contexto != 0) {    
-                $posicion = array_search($id_contexto, $indices)+1;
+            if ($id_contexto != 0) {
+                $posicion = array_search($id_contexto, $indices) + 1;
                 $indices = array_slice($indices, $posicion);
-            } 
+            }
 
             // Cargar preguntas iniciales
             $prueba_id = $request->input('prueba_id');
@@ -465,25 +415,24 @@ class TestsController extends Controller
 
             foreach ($indices as $indice) {
                 $contexto_encontrado = $contextos->firstWhere('id_contexto', $indice);
-                
+
                 if ($contexto_encontrado) {
                     $contextos_ordenados[] = $contexto_encontrado;
                 }
             }
 
-        
-            if(count($contextos_ordenados) == 0){
-                dd("Ya existe un reporte");
-                return;
+            if (count($contextos_ordenados) == 0) {
+                session()->flash('error', 'No hay contextos disponibles para continuar.');
+                return redirect()->back();
             }
-          
-            $contexto_index = 0; 
-            $total_contextos = count($contextos_ordenados); 
+
+            $contexto_index = 0;
+            $total_contextos = count($contextos_ordenados);
             $preguntas = $contextos_ordenados[$contexto_index]->preguntas;
 
             session(['contextos_ordenados' => $contextos_ordenados]);
 
-            return view('private.prueba_page', compact('preguntas', 'contexto_index', 'total_contextos', 'prueba_id' , 'posicion'));
+            return $this->renderPruebaPage($preguntas, $contexto_index, $total_contextos, $prueba_id, $posicion);
         }
 
         // Validar respuestas enviadas
@@ -491,9 +440,9 @@ class TestsController extends Controller
         if (is_array($pregunta_ids)) {
             foreach ($pregunta_ids as $pregunta_id) {
                 try {
-                    if ($pregunta_id == 93 || $pregunta_id == 94) {
+                    if (in_array($pregunta_id, self::PREGUNTAS_ESPECIALES_93)) {
                         $this->calificar_pregunta_93($request, $user);
-                    } elseif ($pregunta_id == 101 || $pregunta_id == 102) {
+                    } elseif (in_array($pregunta_id, self::PREGUNTAS_ESPECIALES_101)) {
                         $this->calificar_pregunta_101($request, $user);
                     } else {
                         $tipo_pregunta = Preguntas::where('id_pregunta', $pregunta_id)->pluck('tipo_pregunta')->first();
@@ -537,7 +486,7 @@ class TestsController extends Controller
             $posicion = $request->input('posicion', 0);
             $total_contextos = count($contextos_ordenados);
 
-            return view('private.prueba_page', compact('preguntas', 'contexto_index', 'total_contextos', 'prueba_id', 'posicion'));
+            return $this->renderPruebaPage($preguntas, $contexto_index, $total_contextos, $prueba_id, $posicion);
         }
 
 
@@ -545,15 +494,12 @@ class TestsController extends Controller
         // Avanzar al siguiente contexto si no hubo errores
         $prueba_id = $request->input('prueba_id');
         $contexto_index = $request->input('contexto_index', 0);
-        $posicion = $request->input('posicion', 0)+1;
+        $posicion = $request->input('posicion', 0) + 1;
         $contexto_index++;
         $total_contextos = Contexto::count();
 
         if ($posicion >= $total_contextos) {
-            $hora_final_prueba = Carbon::now();
-            $hora_inicio_prueba = session('hora_inicio_prueba');
-            $tiempo_prueba = $hora_final_prueba->diffInSeconds($hora_inicio_prueba);
-            $tiempo_en_minutos = $tiempo_prueba / 60;
+            $tiempo_en_minutos = $this->currentTestElapsedMinutes();
 
             return $this->metacognicion($tiempo_en_minutos, session('id_reporte'));
         }
@@ -563,7 +509,7 @@ class TestsController extends Controller
 
         session()->forget('error');
 
-        return view('private.prueba_page', compact('preguntas', 'contexto_index', 'total_contextos', 'prueba_id', 'posicion'));
+        return $this->renderPruebaPage($preguntas, $contexto_index, $total_contextos, $prueba_id, $posicion);
     }
 
 
@@ -593,5 +539,39 @@ class TestsController extends Controller
         session(['id_reporte_actual' => $reporte->id_reporte]);
 
         return $reporte;
+    }
+
+    private function obtenerContextoYPregunta($preguntaId): array
+    {
+        $id_contexto = Preguntas::where('id_pregunta', $preguntaId)->pluck('id_contexto')->first();
+        $contexto = Contexto::where('id_contexto', $id_contexto)->pluck('texto')->first();
+        $pregunta = Preguntas::where('id_pregunta', $preguntaId)->pluck('texto')->first();
+
+        return [$contexto, $pregunta];
+    }
+
+    private function renderPruebaPage($preguntas, $contexto_index, $total_contextos, $prueba_id, $posicion)
+    {
+        return view('private.prueba_page', compact('preguntas', 'contexto_index', 'total_contextos', 'prueba_id', 'posicion'));
+    }
+
+    private function currentReportId()
+    {
+        return session('id_reporte');
+    }
+
+    private function selectedClosedOptionId(Request $request)
+    {
+        $respuesta_cerrada = $request->input('respuestas_cerradas');
+        return reset($respuesta_cerrada);
+    }
+
+    private function currentTestElapsedMinutes()
+    {
+        $hora_final_prueba = Carbon::now();
+        $hora_inicio_prueba = session('hora_inicio_prueba');
+        $tiempo_prueba = $hora_final_prueba->diffInSeconds($hora_inicio_prueba);
+
+        return $tiempo_prueba / 60;
     }
 }

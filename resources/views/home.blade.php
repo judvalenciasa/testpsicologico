@@ -181,7 +181,7 @@
                         <label class="user-label">Mensaje</label>
                         <span class="error-message" id="message-error"></span>
                     </div>
-                    <button class="send_btn" type="submit" id="send-btn">
+                    <button class="send_btn" type="submit" id="send-btn" data-route="{{ route('enviar.correo') }}">
                         <span>Enviar</span>
                     </button>
                 </form>
@@ -195,112 +195,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
-    <script>
-        var swiper = new Swiper(".mySwiper", {
-            navigation: {
-                nextEl: ".swiper-button-next",
-                prevEl: ".swiper-button-prev",
-            },
-            pagination: {
-                el: ".swiper-pagination",
-                clickable: true,
-            },
-            loop: true,
-        });
-    </script>
-    <script>
-        document.getElementById('send-btn').addEventListener('click', function(event) {
-            event.preventDefault(); // Evitar que el formulario se envíe
-
-            // Obtener los campos del formulario
-            const nombre = document.getElementById('nombre').value.trim();
-            const email = document.getElementById('email').value.trim();
-            const message = document.getElementById('message').value.trim();
-
-            // Limpiar mensajes de error previos
-            clearErrors();
-
-            // Validar cada campo
-            var isValid = true;
-
-            if (!validateEmail(email)) {
-                showError(document.getElementById('email'), 'El correo electrónico no es válido.');
-                isValid = false;
-            }
-
-            if (nombre === '') {
-                showError(document.getElementById('nombre'), 'Este campo es obligatorio.');
-                isValid = false;
-            }
-
-            if (message === '') {
-                showError(document.getElementById('message'), 'Este campo es obligatorio.');
-                isValid = false;
-            }
-
-            if (isValid) {
-                // Crear objeto con los datos del formulario
-                const formData = {
-                    nombre: nombre,
-                    email: email,
-                    message: message
-                };
-
-                // Enviar el formulario por fetch
-                fetch("{{ route('enviar.correo') }}", {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content') // Obtener el token CSRF
-                        },
-                        body: JSON.stringify(formData)
-                    })
-                    .then(response => response.json())
-                    .then(data => {
-                        if (data.success) {
-                            alert('Correo enviado exitosamente.');
-                            clearFormFields();
-                        } else {
-                            alert('Error al enviar el correo: ' + data.message);
-                        }
-                    })
-                    .catch(error => {
-                        console.error('Error:', error);
-                        alert('Hubo un error en la solicitud. Inténtalo de nuevo.');
-                    });
-            }
-        });
-
-        function clearFormFields() {
-            document.getElementById('nombre').value = '';
-            document.getElementById('email').value = '';
-            document.getElementById('message').value = '';
-        }
-
-        function showError(input, message) {
-            input.style.borderColor = 'red';
-            var errorElement = document.getElementById(input.id + '-error');
-            errorElement.textContent = message;
-            errorElement.style.color = 'red';
-        }
-
-        function clearErrors() {
-            var inputs = document.querySelectorAll('.input');
-            inputs.forEach(function(input) {
-                input.style.borderColor = ''; // Restablecer el color del borde
-            });
-
-            var errorMessages = document.querySelectorAll('.error-message');
-            errorMessages.forEach(function(error) {
-                error.textContent = ''; // Limpiar mensajes de error
-            });
-        }
-
-        function validateEmail(email) {
-            var re = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-            return re.test(email);
-        }
-    </script>
+    <script src="{{ asset('js/pages/home.js') }}"></script>
 
 
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Application\Reports\ReportComputationService;
 use App\Models\Descriptivos;
 use App\Models\Preguntas;
 use App\Models\Respuestas;
@@ -15,6 +16,9 @@ use Session;
 
 class ReportesController extends Controller
 {
+    public function __construct(private readonly ReportComputationService $reportComputationService)
+    {
+    }
 
 
     /**
@@ -154,26 +158,7 @@ class ReportesController extends Controller
      */
     private function sumar_por_categorias(Request $request)
     {
-        $categorias = [
-            'conocimiento_procedimental' => 0,
-            'planificacion' => 0,
-            'organizacion' => 0,
-            'monitoreo' => 0,
-            'depuracion' => 0,
-            'evaluacion' => 0,
-        ];
-        foreach ($request->all() as $key => $value) {
-            $parts = explode('-', $key);
-
-            if (count($parts) > 1) {
-                $categoria = $parts[0];
-                if (array_key_exists($categoria, $categorias)) {
-                    $categorias[$categoria] += (int) $value;
-                }
-            }
-        }
-
-        return $categorias;
+        return $this->reportComputationService->sumCategories($request->all());
     }
 
 
@@ -189,89 +174,7 @@ class ReportesController extends Controller
 
     private function calcularNivel($puntaje, $tipo_habilidad)
     {
-
-        switch ($tipo_habilidad) {
-            case 'inductivo':
-                switch (true) {
-                    case ($puntaje >= 0 && $puntaje <= 4):
-                        return 'Muy Bajo';
-                    case ($puntaje >= 5 && $puntaje <= 8):
-                        return 'Bajo';
-                    case ($puntaje >= 9 && $puntaje <= 12):
-                        return 'Intermedio';
-                    case ($puntaje >= 13 && $puntaje <= 16):
-                        return 'Alto';
-                    default:
-                        return 'Muy Alto';
-                }
-            case 'abductivo':
-                switch (true) {
-                    case ($puntaje >= 0 && $puntaje <= 3):
-                        return 'Muy Bajo';
-                    case ($puntaje >= 4 && $puntaje <= 6):
-                        return 'Bajo';
-                    case ($puntaje >= 7 && $puntaje <= 9):
-                        return 'Intermedio';
-                    case ($puntaje >= 10 && $puntaje <= 12):
-                        return 'Alto';
-                    default:
-                        return 'Muy Alto';
-                }
-            case 'deductivo':
-                switch (true) {
-                    case ($puntaje >= 0 && $puntaje <= 3):
-                        return 'Muy Bajo';
-                    case ($puntaje >= 4 && $puntaje <= 6):
-                        return 'Bajo';
-                    case ($puntaje >= 7 && $puntaje <= 9):
-                        return 'Intermedio';
-                    case ($puntaje >= 10 && $puntaje <= 12):
-                        return 'Alto';
-                    default:
-                        return 'Muy Alto';
-                }
-            case 'analisis_argumentos':
-                switch (true) {
-                    case ($puntaje >= 0 && $puntaje <= 8):
-                        return 'Muy Bajo';
-                    case ($puntaje >= 9 && $puntaje <= 17):
-                        return 'Bajo';
-                    case ($puntaje >= 18 && $puntaje <= 25):
-                        return 'Intermedio';
-                    case ($puntaje >= 26 && $puntaje <= 34):
-                        return 'Alto';
-                    default:
-                        return 'Muy Alto';
-                }
-            case 'toma_decisiones':
-                switch (true) {
-                    case ($puntaje >= 0 && $puntaje <= 13):
-                        return 'Muy Bajo';
-                    case ($puntaje >= 14 && $puntaje <= 26):
-                        return 'Bajo';
-                    case ($puntaje >= 27 && $puntaje <= 39):
-                        return 'Intermedio';
-                    case ($puntaje >= 40 && $puntaje <= 53):
-                        return 'Alto';
-                    default:
-                        return 'Muy Alto';
-                }
-            case 'total':
-                switch (true) {
-                    case ($puntaje >= 0 && $puntaje <= 32):
-                        return 'Muy Bajo';
-                    case ($puntaje >= 33 && $puntaje <= 64):
-                        return 'Bajo';
-                    case ($puntaje >= 65 && $puntaje <= 96):
-                        return 'Intermedio';
-                    case ($puntaje >= 97 && $puntaje <= 128):
-                        return 'Alto';
-                    default:
-                        return 'Muy Alto';
-                }
-            default:
-                return 'Nivel desconocido';
-        }
+        return $this->reportComputationService->calculateLevel($puntaje, $tipo_habilidad);
     }
 
     /**
@@ -502,97 +405,7 @@ class ReportesController extends Controller
      */
     public function buscar_descriptor_contexto($contexto)
     {
-        if ($contexto == 1) {
-            return "en contextos de entretenimiento y diversión ";
-        }
-        if ($contexto == 2) {
-            return "en contextos culturales, científicos y de percepción del mundo ";
-        }
-        if ($contexto == 3) {
-            return "en contextos culturales ";
-        }
-        if ($contexto == 4) {
-            return "en contextos económico-ambientales ";
-        }
-        if ($contexto == 5) {
-            return "en contextos ambientales y sociales. ";
-        }
-        if ($contexto == 6) {
-            return "en contextos familiares, de salud mental, y tecnológicos. ";
-        }
-        if ($contexto == 7) {
-            return "en contextos políticos y culturales ";
-        }
-        if ($contexto == 8) {
-            return "en contextos de relaciones interpersonales, educativos y del proyecto de vida. ";
-        }
-        if ($contexto == 9) {
-            return "en contextos económicos, educativos y de proyección de vida. ";
-        }
-        if ($contexto == 10) {
-            return "en contextosfuturibles, tecnológicos, laborales y económicos. ";
-        }
-        if ($contexto == 11) {
-            return "en contextos educativos, e institucionales. ";
-        }
-        if ($contexto == 12) {
-            return "en contextos culturales, sociales y de participación comunitaria. ";
-        }
-        if ($contexto == 13) {
-            return "en contextos educativos, institucionales, de participación en los asuntos colectivos y de vínculos emocionales. ";
-        }
-        if ($contexto == 14) {
-            return "en contextos ambientales de riesgos de desastres y de interacción institucional con el ámbito social- comunitario. ";
-        }
-        if ($contexto == 15) {
-            return "en contextos de carácter político, social y de salud reproductiva. ";
-        }
-        if ($contexto == 16) {
-            return "en contextos culturales y sociales que movilizan los sentidos, la imaginación y el pensamiento. ";
-        }
-        if ($contexto == 17) {
-            return "en contextos de política pública sostenible relacionada con la descontaminación de cuerpos de agua. ";
-        }
-        if ($contexto == 18) {
-            return "en contextos de participación social comunitaria, integridad física y seguridad. ";
-        }
-        if ($contexto == 19) {
-            return "en contextos de era digital y tecnológica en los que tienen lugar nuevas interacciones sociales. ";
-        }
-        if ($contexto == 20) {
-            return "en contextos de fenómenos ambientales, culturales y de propuestas de emprendimiento. ";
-        }
-        if ($contexto == 21) {
-            return "de relaciones sociales y vínculos emocionales. ";
-        }
-        if ($contexto == 22) {
-            return "en contextos de participación ambiental y calidad de vida. ";
-        }
-        if ($contexto == 23) {
-            return "en contextos educativos, económicos y de proyección internacional. ";
-        }
-        if ($contexto == 24) {
-            return "en contextos políticos de protección de DD.HH. ";
-        }
-        if ($contexto == 25) {
-            return "en contextos deportivos, de salud y relaciones interpersonales. ";
-        }
-        if ($contexto == 26) {
-            return "En contextos en los que la era tecnológica y digital ofrece facilidades, pero también pone en riesgo la seguridad de las personas ";
-        }
-        if ($contexto == 27) {
-            return "En contextos educativos y de responsabilidades académicas. ";
-        }
-        if ($contexto == 28) {
-            return "En contextos de conservación ecosistémica o vida natural ante amenazas propias de la urbanización. ";
-        }
-        if ($contexto == 29) {
-            return "En contextos culturales de competitividad y situaciones adversas ";
-        }
-        if ($contexto == 30) {
-            return "En contextos sociales y ambientales de búsqueda de calidad de vida alrededor de la salud y el aire. ";
-        }
-        return "no hay descripcion para este contexto";
+        return $this->reportComputationService->contextDescriptor($contexto);
     }
 
 

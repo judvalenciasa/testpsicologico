@@ -2,34 +2,51 @@
 
 namespace App\Http\Controllers;
 
-use App\Mail\MailContact;
-use Illuminate\Support\Facades\Mail;
+use App\Application\Mail\MailService;
 use Illuminate\Http\Request;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Log;
 
 class MailController extends Controller
 {
+    private const CONTACT_EMAIL = 'cognitivesparkmarista@gmail.com';
+    private const SUCCESS_MESSAGE = 'Correo enviado exitosamente.';
+    private const ERROR_MESSAGE = 'Hubo un error al enviar el correo. Inténtalo nuevamente.';
+
+    public function __construct(private readonly MailService $mailService)
+    {
+    }
+
     // Enviar correo de contacto
     public function enviarCorreo(Request $request)
     {
-        // Validar los datos del formulario
-        $validated = $request->validate([
+        $validatedData = $request->validate($this->validationRules());
+
+        try {
+            $this->mailService->sendContact(self::CONTACT_EMAIL, $validatedData);
+            return $this->successResponse();
+        } catch (\Exception $e) {
+            Log::error('Error al enviar el correo: ' . $e->getMessage());
+            return $this->errorResponse();
+        }
+    }
+
+    private function validationRules(): array
+    {
+        return [
             'nombre' => 'required|string|max:255',
             'email' => 'required|email',
             'message' => 'required|string',
-        ]);
+        ];
+    }
 
-        // Enviar el correo al destinatario
-        try {
-            Mail::to('cognitivesparkmarista@gmail.com')->send(new MailContact($validated));
+    private function successResponse(): JsonResponse
+    {
+        return response()->json(['success' => true, 'message' => self::SUCCESS_MESSAGE]);
+    }
 
-            // Retornar respuesta de éxito
-            return response()->json(['success' => true, 'message' => 'Correo enviado exitosamente.']);
-        } catch (\Exception $e) {
-            // Registrar error en el log y retornar error en la respuesta
-            Log::error('Error al enviar el correo: ' . $e->getMessage());
-
-            return response()->json(['success' => false, 'message' => 'Hubo un error al enviar el correo. Inténtalo nuevamente.'], 500);
-        }
+    private function errorResponse(): JsonResponse
+    {
+        return response()->json(['success' => false, 'message' => self::ERROR_MESSAGE], 500);
     }
 }
