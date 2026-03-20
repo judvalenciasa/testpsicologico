@@ -29,6 +29,7 @@ class DatabaseSeeder extends Seeder
             SubpreguntasSeeder::class,
             Opcionessubpreguntas::class,
             subcriteriosSeeders::class,
+            EstudiantesRespuestasSeeder::class,
         ]);
     }
 }

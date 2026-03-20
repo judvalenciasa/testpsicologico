@@ -8,6 +8,7 @@ use App\Http\Controllers\PinesController;
 use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\PruebasController;
+use App\Http\Controllers\StatisticsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,6 +30,11 @@ Route::get('/', function () {
 Route::get('/ingreso', function () {
     return view('auth.login_as_administrator');
 })->name('login')->middleware('guest');
+
+// Alias de login para compatibilidad de acceso directo
+Route::get('/login', function () {
+    return view('auth.login_as_administrator');
+})->middleware('guest');
 
 // Ruta de registro
 Route::get('/register', function () {
@@ -85,6 +91,10 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/admin/usuarios', [UserController::class, 'index'])->name('private.usuarios');
     Route::get('/admin/usuarios/{id}/reportes', [ReportesController::class, 'verReportes'])->name('private.verReportes');
     Route::post('/admin/usuarios/respuesta', [ReportesController::class, 'ver_respuestas_admin'])->name('reporte.verRespuestas');
+
+    // Dashboard de estadísticas
+    Route::get('/estadisticas', [StatisticsController::class, 'index'])->name('stats.dashboard');
+    Route::get('/estadisticas/data', [StatisticsController::class, 'data'])->name('stats.data');
 
 
     // Ruta para mostrar la política de datos

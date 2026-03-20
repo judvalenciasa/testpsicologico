@@ -63,6 +63,14 @@
                         </div>
                     </form>
 
+                    <!-- Botón para ver estadísticas -->
+                    <form action="{{ route('stats.dashboard') }}" method="get">
+                        @csrf
+                        <div class="section">
+                            <button type="submit" class="btn">Ver Estadísticas</button>
+                        </div>
+                    </form>
+
                     <!-- Sección para deshabilitar la prueba -->
                     <div class="section">
                         <h2>Estado de la Prueba</h2>

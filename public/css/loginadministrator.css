@@ -155,3 +155,23 @@ input:valid ~ label {
     display: block;
     color: red;
 }
+
+.btn_stats_link {
+    width: fit-content;
+    margin-top: 0.5vw;
+    padding: 0.8vw 1.4vw;
+    border: 1px solid #183153;
+    border-radius: 5px;
+    background: transparent;
+    color: #183153;
+    text-decoration: none;
+    font-size: 0.95vw;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    transition: all 0.2s ease;
+}
+
+.btn_stats_link:hover {
+    background: #183153;
+    color: #fff;
+}

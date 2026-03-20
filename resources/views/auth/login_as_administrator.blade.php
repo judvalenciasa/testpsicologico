@@ -48,6 +48,9 @@
             <button type="submit" class="btn_login" id="login-btn">
                 <span>Iniciar Sesión</span>
             </button>
+            <a class="btn_stats_link" href="{{ route('stats.dashboard') }}">
+                Ir a estadísticas
+            </a>
         </form>
     </section>
     @include('shared.footer')
