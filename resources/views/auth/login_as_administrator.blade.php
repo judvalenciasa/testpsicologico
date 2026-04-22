@@ -17,13 +17,6 @@
 
 
     <section class="container">
-        @if ($errors->any())
-        <div class="alert alert-danger">
-            @foreach ($errors->all() as $error)
-            <p>{{ $error }}</p>
-            @endforeach
-        </div>
-        @endif
         <div class="text_ctn">
             <h1>Ingreso</h1>
             <div class="underline"></div>
@@ -31,13 +24,20 @@
         <!-- Aquí el formulario no necesita acción porque la manejas con JavaScript -->
         <form class="form_ctn" id="login-form" method="post" action="{{ route('login') }}">
             @csrf
+            @if ($errors->any())
+                <div class="form-feedback form-feedback--error" role="alert" aria-live="polite">
+                    @foreach ($errors->all() as $error)
+                        <p>{{ $error }}</p>
+                    @endforeach
+                </div>
+            @endif
             <div class="input-group">
-                <input required type="text" name="email" id="email" autocomplete="off" class="input">
+                <input required type="text" name="email" id="email" autocomplete="off" class="input" placeholder=" ">
                 <label class="user-label">Correo electrónico</label>
                 <span class="error-message" id="email-error"></span>
             </div>
             <div class="input-group">
-                <input required type="password" name="password" id="password" autocomplete="off" class="input">
+                <input required type="password" name="password" id="password" autocomplete="off" class="input" placeholder=" ">
                 <label class="user-label">Contraseña</label>
                 <span class="error-message" id="password-error"></span>
             </div>
@@ -48,9 +48,6 @@
             <button type="submit" class="btn_login" id="login-btn">
                 <span>Iniciar Sesión</span>
             </button>
-            <a class="btn_stats_link" href="{{ route('stats.dashboard') }}">
-                Ir a estadísticas
-            </a>
         </form>
     </section>
     @include('shared.footer')

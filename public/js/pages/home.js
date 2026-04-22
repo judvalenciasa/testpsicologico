@@ -17,6 +17,7 @@
     }
 
     var formRoute = sendButton.dataset.route;
+    var feedbackBox = document.getElementById('contact-feedback');
     var csrfToken = document
         .querySelector('meta[name="csrf-token"]')
         .getAttribute('content');
@@ -26,6 +27,7 @@
 
         var formData = getFormData();
         clearErrors();
+        clearFeedback();
 
         if (!validateForm(formData)) {
             return;
@@ -86,15 +88,15 @@
             })
             .then(function (data) {
                 if (data.success) {
-                    alert('Correo enviado exitosamente.');
+                    showFeedback('success', 'Correo enviado exitosamente.');
                     clearFormFields();
                 } else {
-                    alert('Error al enviar el correo: ' + data.message);
+                    showFeedback('error', data.message ? data.message : 'No fue posible enviar el correo.');
                 }
             })
             .catch(function (error) {
                 console.error('Error:', error);
-                alert('Hubo un error en la solicitud. Inténtalo de nuevo.');
+                showFeedback('error', 'Hubo un error en la solicitud. Intentalo de nuevo.');
             });
     }
 
@@ -121,6 +123,23 @@
         errorMessages.forEach(function (error) {
             error.textContent = '';
         });
+    }
+
+    function showFeedback(type, message) {
+        if (!feedbackBox) return;
+
+        feedbackBox.textContent = message;
+        feedbackBox.hidden = false;
+        feedbackBox.classList.remove('contact-feedback--success', 'contact-feedback--error');
+        feedbackBox.classList.add(type === 'success' ? 'contact-feedback--success' : 'contact-feedback--error');
+    }
+
+    function clearFeedback() {
+        if (!feedbackBox) return;
+
+        feedbackBox.hidden = true;
+        feedbackBox.textContent = '';
+        feedbackBox.classList.remove('contact-feedback--success', 'contact-feedback--error');
     }
 
     function validateEmail(email) {

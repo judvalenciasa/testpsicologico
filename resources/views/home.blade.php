@@ -166,6 +166,7 @@
             </div>
             <div class="form_ctn">
                 <form class="formulario">
+                    <div id="contact-feedback" class="contact-feedback" role="alert" aria-live="polite" hidden></div>
                     <div class="input-group">
                         <input required="" type="text" name="nombre" id="nombre" autocomplete="off" class="input">
                         <label class="user-label">Nombre</label>

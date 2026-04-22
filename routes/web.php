@@ -61,7 +61,9 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/generar_pin/{cantidad?}', [PinesController::class, 'generar_pines'])->name('pines.aletarios');
 
     // Ruta para cargar preguntas
-    Route::post('/cargar_preguntas', [TestsController::class, 'cargarPreguntas'])->name('cargar.preguntas');
+    Route::post('/cargar_preguntas', [TestsController::class, 'cargarPreguntas'])
+        ->middleware('throttle:test-flow')
+        ->name('cargar.preguntas');
 
     // Ruta para administrator-page
     Route::get('/administrator-page', [UserController::class, 'indexAdministrador'])->name('administrator-page');
@@ -73,7 +75,9 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/pruebas/deshabilitar', [PruebasController::class, 'deshabilitarPrueba'])->name('pruebas.deshabilitar');
 
     // Crear informe
-    Route::post('/informe/crear_reporte', [ReportesController::class, 'ver_reporte_usuario'])->name('ver.reporte.usuario');
+    Route::post('/informe/crear_reporte', [ReportesController::class, 'ver_reporte_usuario'])
+        ->middleware('throttle:test-flow')
+        ->name('ver.reporte.usuario');
     // Ruta para ver el reporte individual
     Route::post('ver/reporte', [ReportesController::class, 'verReporte'])->name('reporte.ver');
 
@@ -85,7 +89,9 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/motivacion', [TestsController::class, 'motivacion'])->name('motivacion.encuesta');
 
     //Ruta para guardar la encuesta de motivacion
-    Route::post('/guardar_motivacion', [TestsController::class, 'guardar_motivacion'])->name('guardar.motivacion');
+    Route::post('/guardar_motivacion', [TestsController::class, 'guardar_motivacion'])
+        ->middleware('throttle:test-flow')
+        ->name('guardar.motivacion');
 
     // Rutas para administradores
     Route::get('/admin/usuarios', [UserController::class, 'index'])->name('private.usuarios');
@@ -95,6 +101,8 @@ Route::group(['middleware' => ['auth']], function () {
     // Dashboard de estadísticas
     Route::get('/estadisticas', [StatisticsController::class, 'index'])->name('stats.dashboard');
     Route::get('/estadisticas/data', [StatisticsController::class, 'data'])->name('stats.data');
+    Route::get('/estadisticas-generales', [StatisticsController::class, 'indexGeneral'])->name('stats.general.dashboard');
+    Route::get('/estadisticas-generales/data', [StatisticsController::class, 'dataGeneral'])->name('stats.general.data');
 
 
     // Ruta para mostrar la política de datos
@@ -114,7 +122,9 @@ Route::group(['middleware' => ['auth']], function () {
 Route::post("registrar", [UserController::class, 'registrar'])->name('registrar');
 
 // Ruta de login
-Route::post("login", [UserController::class, 'login'])->name('login');
+Route::post("login", [UserController::class, 'login'])
+    ->middleware('throttle:auth-flow')
+    ->name('login');
 
 // Ruta para logout
 Route::post("logout", [UserController::class, "logout"])->name('logout');

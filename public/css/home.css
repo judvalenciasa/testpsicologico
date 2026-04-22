@@ -202,6 +202,30 @@
     align-items: center;
 }
 
+.contact-feedback {
+    width: 35vw;
+    border-radius: 10px;
+    border: 1px solid transparent;
+    padding: 0.75rem 0.95rem;
+    font-size: 0.92rem;
+    font-weight: 600;
+    line-height: 1.35;
+    text-align: left;
+    box-sizing: border-box;
+}
+
+.contact-feedback--success {
+    background: #e7f8ee;
+    border-color: #27ae60;
+    color: #1f7a45;
+}
+
+.contact-feedback--error {
+    background: #fdecec;
+    border-color: #eb5757;
+    color: #b42318;
+}
+
 /* From Uiverse.io by alexruix */
 
 .input-group {

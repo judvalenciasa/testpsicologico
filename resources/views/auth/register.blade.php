@@ -23,25 +23,26 @@
 
         <div class="form_ctn">
             @csrf
+            <div id="register-feedback" class="form-feedback" role="alert" aria-live="polite" hidden></div>
 
             <div class="input-group">
-                <input required type="text" name="name" id="name" autocomplete="off" class="input">
+                <input required type="text" name="name" id="name" autocomplete="off" class="input" placeholder=" ">
                 <label class="user-label">Nombre Completo</label>
                 <span class="error-message" id="nombre-error"></span>
             </div>
             <div class="input-group">
-                <input required type="email" name="email" id="email" autocomplete="off" class="input">
+                <input required type="email" name="email" id="email" autocomplete="off" class="input" placeholder=" ">
                 <label class="user-label">Correo Electrónico</label>
                 <span class="error-message" id="email-error"></span>
             </div>
             <div class="input-group">
-                <input required type="password" name="password" id="password" autocomplete="off" class="input">
+                <input required type="password" name="password" id="password" autocomplete="off" class="input" placeholder=" ">
                 <label class="user-label">Contraseña</label>
                 <span class="error-message" id="password-error"></span>
             </div>
 
             <div class="input-group">
-                <input required type="text" name="pin" id="pin" autocomplete="off" class="input">
+                <input required type="text" name="pin" id="pin" autocomplete="off" class="input" placeholder=" ">
                 <label class="user-label">Pin</label>
                 <span class="error-message" id="pin-error"></span>
             </div>

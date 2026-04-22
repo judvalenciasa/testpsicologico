@@ -6,6 +6,7 @@
 
     var submitButton = document.getElementById('submit-btn');
     var registerRoute = submitButton.dataset.route;
+    var feedbackBox = document.getElementById('register-feedback');
     var csrfToken = document
         .querySelector('meta[name="csrf-token"]')
         .getAttribute('content');
@@ -28,6 +29,7 @@
         var password = document.getElementById('password').value.trim();
 
         clearErrors();
+        clearFeedback();
 
         var isValid = true;
 
@@ -76,16 +78,16 @@
             })
             .then(function (data) {
                 if (data.success) {
-                    alert('Registro exitoso. ¡Bienvenido!');
+                    showFeedback('success', 'Registro exitoso. Ya puedes iniciar sesion.');
                     clearFormFields();
                 } else {
-                    alert('Error al registrar: ' + data.message);
+                    showFeedback('error', data.message ? data.message : 'No fue posible registrar el usuario.');
                     formData = {};
                 }
             })
             .catch(function (error) {
                 console.error('Error:', error);
-                alert('Hubo un error en la solicitud. Inténtalo de nuevo.');
+                showFeedback('error', 'Hubo un error en la solicitud. Intentalo de nuevo.');
             });
     });
 
@@ -116,6 +118,23 @@
         errorMessages.forEach(function (error) {
             error.textContent = '';
         });
+    }
+
+    function showFeedback(type, message) {
+        if (!feedbackBox) return;
+
+        feedbackBox.textContent = message;
+        feedbackBox.hidden = false;
+        feedbackBox.classList.remove('form-feedback--success', 'form-feedback--error');
+        feedbackBox.classList.add(type === 'success' ? 'form-feedback--success' : 'form-feedback--error');
+    }
+
+    function clearFeedback() {
+        if (!feedbackBox) return;
+
+        feedbackBox.hidden = true;
+        feedbackBox.textContent = '';
+        feedbackBox.classList.remove('form-feedback--success', 'form-feedback--error');
     }
 
     function validateEmail(email) {

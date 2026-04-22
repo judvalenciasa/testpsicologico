@@ -46,6 +46,354 @@ class StatisticsService
     /**
      * @return array<string,mixed>
      */
+    public function buildGeneralDashboard(array $filters): array
+    {
+        $baseQuery = $this->applyFilters(Reportes::query(), [
+            'year' => $filters['year'] ?? null,
+        ]);
+
+        $pairsData = $this->resolveComparablePairs(
+            (clone $baseQuery),
+            $filters['presentation_1'] ?? null,
+            $filters['presentation_2'] ?? null
+        );
+
+        $pairs = $pairsData['pairs'];
+        $hasData = $pairs->isNotEmpty();
+
+        if (!$hasData) {
+            return [
+                'has_data' => false,
+                'message' => 'No hay datos comparables para las presentaciones seleccionadas.',
+                'filters_meta' => $this->generalFiltersMeta($filters['year'] ?? null),
+                'filters_state' => [
+                    'presentation_1' => $pairsData['presentation_1'],
+                    'presentation_2' => $pairsData['presentation_2'],
+                ],
+                'kpis' => [],
+                'charts' => [],
+            ];
+        }
+
+        $test1Reports = $pairs->pluck('test_1')->filter();
+        $test2Reports = $pairs->pluck('test_2')->filter();
+
+        $avgScore1 = round((float) $test1Reports->avg('calificacion_total'), 2);
+        $avgScore2 = round((float) $test2Reports->avg('calificacion_total'), 2);
+        $avgDuration1 = round((float) $test1Reports->avg('tiempo_prueba'), 2);
+        $avgDuration2 = round((float) $test2Reports->avg('tiempo_prueba'), 2);
+
+        return [
+            'has_data' => true,
+            'message' => null,
+            'filters_meta' => $this->generalFiltersMeta($filters['year'] ?? null),
+            'filters_state' => [
+                'presentation_1' => $pairsData['presentation_1'],
+                'presentation_2' => $pairsData['presentation_2'],
+            ],
+            'kpis' => [
+                'comparable_students' => $pairs->count(),
+                'avg_score_test_1' => $avgScore1,
+                'avg_score_test_2' => $avgScore2,
+                'avg_score_delta' => round($avgScore2 - $avgScore1, 2),
+                'avg_duration_test_1' => $avgDuration1,
+                'avg_duration_test_2' => $avgDuration2,
+            ],
+            'charts' => $this->buildGeneralCharts($pairs),
+        ];
+    }
+
+    /**
+     * @return array{pairs:Collection<int,array{user_id:int,test_1:Reportes,test_2:Reportes}>,presentation_1:?string,presentation_2:?string}
+     */
+    private function resolveComparablePairs(Builder $query, ?string $presentation1, ?string $presentation2): array
+    {
+        $reports = $query
+            ->orderBy('id_usuario')
+            ->orderBy('fecha_calificacion')
+            ->orderBy('id_reporte')
+            ->get();
+
+        $grouped = $reports->groupBy('id_usuario');
+        $pairs = collect();
+        $resolvedPresentation1 = $presentation1;
+        $resolvedPresentation2 = $presentation2;
+
+        foreach ($grouped as $userId => $userRows) {
+            $ordered = $userRows->values();
+
+            if ($presentation1 && $presentation2) {
+                $test1 = $ordered->first(static fn($row) => (string) $row->fecha_calificacion === $presentation1);
+                $test2 = $ordered->first(static fn($row) => (string) $row->fecha_calificacion === $presentation2);
+            } else {
+                $test1 = $ordered->get(0);
+                $test2 = $ordered->get(1);
+            }
+
+            if (!$test1 || !$test2) {
+                continue;
+            }
+
+            if ($resolvedPresentation1 === null) {
+                $resolvedPresentation1 = (string) $test1->fecha_calificacion;
+            }
+            if ($resolvedPresentation2 === null) {
+                $resolvedPresentation2 = (string) $test2->fecha_calificacion;
+            }
+
+            $pairs->push([
+                'user_id' => (int) $userId,
+                'test_1' => $test1,
+                'test_2' => $test2,
+            ]);
+        }
+
+        return [
+            'pairs' => $pairs,
+            'presentation_1' => $resolvedPresentation1,
+            'presentation_2' => $resolvedPresentation2,
+        ];
+    }
+
+    /**
+     * @return array<string,mixed>
+     */
+    private function generalFiltersMeta(?int $selectedYear): array
+    {
+        $years = $this->comparableYears();
+        $eligibleUserIds = $this->eligibleUserIdsForComparison($selectedYear);
+
+        if (count($eligibleUserIds) === 0) {
+            return [
+                'years' => $years,
+                'presentations' => [],
+            ];
+        }
+
+        $presentations = Reportes::query()
+            ->whereIn('id_usuario', $eligibleUserIds)
+            ->whereNotNull('fecha_calificacion')
+            ->whereNotNull('calificacion_total')
+            ->when($selectedYear, static function (Builder $query, int $year) {
+                $query->whereYear('fecha_calificacion', $year);
+            })
+            ->selectRaw("DATE_FORMAT(fecha_calificacion, '%Y-%m-%d') as date")
+            ->groupBy('date')
+            ->orderBy('date')
+            ->pluck('date')
+            ->map(static fn($date) => (string) $date)
+            ->values()
+            ->toArray();
+
+        return [
+            'years' => $years,
+            'presentations' => $presentations,
+        ];
+    }
+
+    /**
+     * @param  Collection<int,array{user_id:int,test_1:Reportes,test_2:Reportes}>  $pairs
+     * @return array<string,mixed>
+     */
+    private function buildGeneralCharts(Collection $pairs): array
+    {
+        $fields = [
+            'Inductivo' => 'total_macrohabilidad_inductiva',
+            'Abductivo' => 'total_macrohabilidad_abductiva',
+            'Deductivo y verbal' => 'total_macrohabilidad_deductivo_y_verbal',
+            'Analisis de argumentos' => 'total_macrohabilidad_analisis_de_argumentos',
+            'Toma de decisiones' => 'macrohabilidad_toma_desiciones_y_resolucion_problemas',
+        ];
+
+        $test1Reports = $pairs->pluck('test_1')->filter();
+        $test2Reports = $pairs->pluck('test_2')->filter();
+
+        $macroTest1 = [];
+        $macroTest2 = [];
+        foreach ($fields as $field) {
+            $macroTest1[] = round((float) $test1Reports->avg($field), 2);
+            $macroTest2[] = round((float) $test2Reports->avg($field), 2);
+        }
+
+        $questionScores1 = $this->averageQuestionScoresForReports(
+            $test1Reports->pluck('id_reporte')->map(static fn($v) => (int) $v)->all()
+        );
+        $questionScores2 = $this->averageQuestionScoresForReports(
+            $test2Reports->pluck('id_reporte')->map(static fn($v) => (int) $v)->all()
+        );
+        $questionIds = array_values(array_unique(array_merge(array_keys($questionScores1), array_keys($questionScores2))));
+        sort($questionIds);
+
+        return [
+            'macro_grouped' => [
+                'labels' => array_keys($fields),
+                'datasets' => [
+                    ['label' => 'Test 1', 'data' => $macroTest1],
+                    ['label' => 'Test 2', 'data' => $macroTest2],
+                ],
+            ],
+            'motivation' => [
+                'labels' => ['Motivación intrínseca', 'Motivación extrínseca', 'Total motivación'],
+                'datasets' => [
+                    [
+                        'label' => 'Test 1',
+                        'data' => [
+                            round((float) $test1Reports->avg('motivacion_intrinseca'), 2),
+                            round((float) $test1Reports->avg('motivacion_extrinseca'), 2),
+                            round((float) ($test1Reports->avg('motivacion_intrinseca') + $test1Reports->avg('motivacion_extrinseca')), 2),
+                        ],
+                    ],
+                    [
+                        'label' => 'Test 2',
+                        'data' => [
+                            round((float) $test2Reports->avg('motivacion_intrinseca'), 2),
+                            round((float) $test2Reports->avg('motivacion_extrinseca'), 2),
+                            round((float) ($test2Reports->avg('motivacion_intrinseca') + $test2Reports->avg('motivacion_extrinseca')), 2),
+                        ],
+                    ],
+                ],
+            ],
+            'difference' => [
+                'labels' => array_keys($fields),
+                'values' => array_map(
+                    static fn($idx) => round($macroTest2[$idx] - $macroTest1[$idx], 2),
+                    array_keys($macroTest1)
+                ),
+            ],
+            'radar' => [
+                'labels' => array_keys($fields),
+                'datasets' => [
+                    ['label' => 'Test 1', 'data' => $macroTest1],
+                    ['label' => 'Test 2', 'data' => $macroTest2],
+                ],
+            ],
+            'questions' => [
+                'labels' => array_map(static fn($_, $idx) => 'Pregunta ' . ($idx + 1), $questionIds, array_keys($questionIds)),
+                'datasets' => [
+                    [
+                        'label' => 'Test 1',
+                        'data' => array_map(static fn($id) => $questionScores1[$id] ?? 0.0, $questionIds),
+                    ],
+                    [
+                        'label' => 'Test 2',
+                        'data' => array_map(static fn($id) => $questionScores2[$id] ?? 0.0, $questionIds),
+                    ],
+                ],
+            ],
+            'scatter' => [
+                'test_1' => $pairs->map(static fn($pair) => [
+                    'x' => (float) ($pair['test_1']->tiempo_prueba ?? 0),
+                    'y' => (float) ($pair['test_1']->calificacion_total ?? 0),
+                    'label' => 'Usuario ' . $pair['user_id'] . ' | Reporte ' . $pair['test_1']->id_reporte,
+                ])->values()->all(),
+                'test_2' => $pairs->map(static fn($pair) => [
+                    'x' => (float) ($pair['test_2']->tiempo_prueba ?? 0),
+                    'y' => (float) ($pair['test_2']->calificacion_total ?? 0),
+                    'label' => 'Usuario ' . $pair['user_id'] . ' | Reporte ' . $pair['test_2']->id_reporte,
+                ])->values()->all(),
+            ],
+            'macro_pies' => $this->buildGeneralMacroPies($test1Reports, $test2Reports),
+        ];
+    }
+
+    /**
+     * @param  array<int,int>  $reportIds
+     * @return array<int,float>
+     */
+    private function averageQuestionScoresForReports(array $reportIds): array
+    {
+        if (count($reportIds) === 0) {
+            return [];
+        }
+
+        $rows = DB::table('respuestas as r')
+            ->join('preguntas as p', 'p.id_pregunta', '=', 'r.id_pregunta')
+            ->whereIn('r.id_reporte', $reportIds)
+            ->where('p.tipo_pregunta', '!=', 'abierta')
+            ->selectRaw('r.id_pregunta as pregunta_id, AVG(r.calificacion_respuesta) as promedio')
+            ->groupBy('r.id_pregunta')
+            ->orderBy('r.id_pregunta')
+            ->get();
+
+        $result = [];
+        foreach ($rows as $row) {
+            $result[(int) $row->pregunta_id] = round((float) $row->promedio, 2);
+        }
+
+        return $result;
+    }
+
+    /**
+     * @param  Collection<int,Reportes>  $test1Reports
+     * @param  Collection<int,Reportes>  $test2Reports
+     * @return array<string,mixed>
+     */
+    private function buildGeneralMacroPies(Collection $test1Reports, Collection $test2Reports): array
+    {
+        $map = [
+            'inductivo' => [
+                'title' => 'Razonamiento inductivo',
+                'fields' => [
+                    'Induccion general' => 'induccion_general',
+                    'Induccion especifica' => 'induccion_especifica',
+                ],
+            ],
+            'abductivo' => [
+                'title' => 'Razonamiento abductivo',
+                'fields' => [
+                    'Comprobacion de hipotesis' => 'comprobacion_hipotesis',
+                    'Uso de probabilidad e incertidumbre' => 'uso_probabilidad_incertidumbre',
+                ],
+            ],
+            'deductivo_verbal' => [
+                'title' => 'Razonamiento deductivo y verbal',
+                'fields' => [
+                    'Identificacion de analogia' => 'identificacion_analogia',
+                    'Identificacion por fallo de vaguedad' => 'identificacion_por_fallo_vaguedad',
+                ],
+            ],
+            'analisis_argumentos' => [
+                'title' => 'Analisis de argumentos',
+                'fields' => [
+                    'Identificacion de estructura argumentativa' => 'identificacion_estructura_argumentativa',
+                    'Identificacion de suposicion' => 'identificacion_de_suposicion',
+                    'Identificacion de falacia' => 'identificacion_de_falacia',
+                ],
+            ],
+            'toma_decisiones' => [
+                'title' => 'Toma de decisiones y resolucion de problemas',
+                'fields' => [
+                    'Toma de decisiones informadas' => 'toma_desiciones_informadas',
+                    'Conciencia situacion acciones razonables' => 'conciencia_situacion_acciones_razonables',
+                    'Pensamiento estrategico' => 'pensamiento_estrategico',
+                    'Pensamiento creativo' => 'pensamiento_creativo',
+                ],
+            ],
+        ];
+
+        $result = [];
+        foreach ($map as $key => $item) {
+            $labels = array_keys($item['fields']);
+            $values1 = [];
+            $values2 = [];
+            foreach ($item['fields'] as $field) {
+                $values1[] = round((float) $test1Reports->avg($field), 2);
+                $values2[] = round((float) $test2Reports->avg($field), 2);
+            }
+
+            $result[$key] = [
+                'title' => $item['title'],
+                'test_1' => ['labels' => $labels, 'values' => $values1],
+                'test_2' => ['labels' => $labels, 'values' => $values2],
+            ];
+        }
+
+        return $result;
+    }
+
+    /**
+     * @return array<string,mixed>
+     */
     private function kpis(Builder $baseQuery): array
     {
         $totalReports = (clone $baseQuery)->count();
@@ -171,23 +519,16 @@ class StatisticsService
      */
     private function filtersMeta(?int $selectedYear = null): array
     {
+        $eligibleUserIds = $this->eligibleUserIdsForComparison($selectedYear);
+
         $usersQuery = User::query()
             ->where('es_administrador', 0)
             ->orderBy('name');
 
-        if ($selectedYear) {
-            $userIdsForYear = Reportes::query()
-                ->whereYear('fecha_calificacion', $selectedYear)
-                ->distinct()
-                ->pluck('id_usuario')
-                ->map(static fn($id) => (int) $id)
-                ->all();
-
-            if (count($userIdsForYear) > 0) {
-                $usersQuery->whereIn('id_usuario', $userIdsForYear);
-            } else {
-                $usersQuery->whereRaw('1 = 0');
-            }
+        if (count($eligibleUserIds) > 0) {
+            $usersQuery->whereIn('id_usuario', $eligibleUserIds);
+        } else {
+            $usersQuery->whereRaw('1 = 0');
         }
 
         $users = $usersQuery
@@ -199,17 +540,12 @@ class StatisticsService
             ->toArray();
 
         $testTypes = array_keys(self::TEST_TYPE_FIELDS);
-        $years = Reportes::query()
-            ->selectRaw('YEAR(fecha_calificacion) as year')
-            ->whereNotNull('fecha_calificacion')
-            ->groupBy('year')
-            ->orderByDesc('year')
-            ->pluck('year')
-            ->map(static fn($year) => (int) $year)
-            ->values()
-            ->toArray();
+        $years = $this->comparableYears();
 
+        $allComparableUserIds = $this->eligibleUserIdsForComparison(null);
         $rowsByYear = Reportes::query()
+            ->whereIn('id_usuario', $allComparableUserIds)
+            ->whereNotNull('calificacion_total')
             ->selectRaw("YEAR(fecha_calificacion) as year, DATE_FORMAT(fecha_calificacion, '%Y-%m-%d') as day")
             ->whereNotNull('fecha_calificacion')
             ->groupBy('year', 'day')
@@ -257,6 +593,44 @@ class StatisticsService
         }
 
         return $query;
+    }
+
+    /**
+     * @return array<int,int>
+     */
+    private function eligibleUserIdsForComparison(?int $year = null): array
+    {
+        return Reportes::query()
+            ->whereNotNull('calificacion_total')
+            ->whereNotNull('fecha_calificacion')
+            ->when($year, static function (Builder $query, int $selectedYear) {
+                $query->whereYear('fecha_calificacion', $selectedYear);
+            })
+            ->groupBy('id_usuario')
+            ->havingRaw('COUNT(*) >= 2')
+            ->pluck('id_usuario')
+            ->map(static fn($id) => (int) $id)
+            ->values()
+            ->toArray();
+    }
+
+    /**
+     * @return array<int,int>
+     */
+    private function comparableYears(): array
+    {
+        return Reportes::query()
+            ->whereNotNull('calificacion_total')
+            ->whereNotNull('fecha_calificacion')
+            ->selectRaw('YEAR(fecha_calificacion) as year, id_usuario')
+            ->groupBy('year', 'id_usuario')
+            ->havingRaw('COUNT(*) >= 2')
+            ->pluck('year')
+            ->map(static fn($year) => (int) $year)
+            ->unique()
+            ->sortDesc()
+            ->values()
+            ->toArray();
     }
 
     /**
