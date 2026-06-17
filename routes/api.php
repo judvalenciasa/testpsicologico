@@ -1,9 +1,6 @@
 <?php
 
 use App\Http\Controllers\Api\UserController;
-use App\Http\Controllers\PinesController;
-use App\Http\Controllers\RespuestasController;
-use App\Http\Controllers\TestsController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 

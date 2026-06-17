@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -294,7 +293,7 @@ class PreguntasSeeder extends Seeder
                 'id_pregunta' => 64,
                 'id_prueba' => 1,
                 'id_contexto' => 13,
-                'id_subhabilidad' => 5,
+                'id_subhabilidad' => 6,
                 'id_categoria' => 2,
                 'texto' => 'Con base en los anteriores acontecimientos, de los siguientes enunciados ¿Cuál de las siguientes propuestas presentadas por los estudiantes de bachillerato respaldarías?',
                 'tipo_pregunta' => 'cerrada'
@@ -305,7 +304,7 @@ class PreguntasSeeder extends Seeder
                 'id_pregunta' => 65,
                 'id_prueba' => 1,
                 'id_contexto' => 13,
-                'id_subhabilidad' => 5,
+                'id_subhabilidad' => 6,
                 'id_categoria' => 2,
                 'texto' => 'En no más de 100 palabras explica por qué seleccionaste esa alternativa como la propuesta que respaldarías.',
                 'tipo_pregunta' => 'abierta'
@@ -635,7 +634,7 @@ Para cada una de las siguientes afirmaciones, indica si se trata de una opinión
                 'id_contexto' => 27,
                 'id_subhabilidad' => 12,
                 'id_categoria' => 2,
-                'texto' => 'A partir del problema en el que te encuentras por haber perdido el manual con el cual realizarás la sustentación de manera detallada, en no más de 100 palabras redacta la mejor ruta de solución tomando como base por lo menos dos palabras de la siguiente lista (algunas palabras pueden cambiar en su forma gramatical): 
+                'texto' => 'A partir del problema en el que te encuentras por haber perdido el manual con el cual realizarás la sustentación de manera detallada, en no más de 100 palabras redacta la mejor ruta de solución utilizando por lo menos dos palabras de la siguiente lista (algunas palabras pueden cambiar en su forma gramatical): 
 
  
                     •	Mochila

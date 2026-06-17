@@ -14,6 +14,8 @@
 <body class="antialiased">
     @include('shared.header')
 
+
+
     <section class="container">
         <div class="text_ctn">
             <h1>Ingreso</h1>
@@ -22,13 +24,20 @@
         <!-- Aquí el formulario no necesita acción porque la manejas con JavaScript -->
         <form class="form_ctn" id="login-form" method="post" action="{{ route('login') }}">
             @csrf
+            @if ($errors->any())
+                <div class="form-feedback form-feedback--error" role="alert" aria-live="polite">
+                    @foreach ($errors->all() as $error)
+                        <p>{{ $error }}</p>
+                    @endforeach
+                </div>
+            @endif
             <div class="input-group">
-                <input required type="text" name="email" id="email" autocomplete="off" class="input">
+                <input required type="text" name="email" id="email" autocomplete="off" class="input" placeholder=" ">
                 <label class="user-label">Correo electrónico</label>
                 <span class="error-message" id="email-error"></span>
             </div>
             <div class="input-group">
-                <input required type="password" name="password" id="password" autocomplete="off" class="input">
+                <input required type="password" name="password" id="password" autocomplete="off" class="input" placeholder=" ">
                 <label class="user-label">Contraseña</label>
                 <span class="error-message" id="password-error"></span>
             </div>
@@ -43,19 +52,9 @@
     </section>
     @include('shared.footer')
 
-        <!-- JavaScript para mostrar/ocultar contraseña -->
-        <script>
-        document.getElementById('show-password').addEventListener('change', function() {
-            var passwordInput = document.getElementById('password');
-            if (this.checked) {
-                // Si el checkbox está marcado, mostrar la contraseña
-                passwordInput.type = 'text';
-            } else {
-                // Si no está marcado, ocultar la contraseña
-                passwordInput.type = 'password';
-            }
-        });
-    </script>
+    <script src="{{ asset('js/pages/login.js') }}"></script>
+
+
 </body>
 
 </html>

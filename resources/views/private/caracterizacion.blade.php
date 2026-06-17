@@ -35,15 +35,15 @@
 
             <!-- Edad -->
             <div class="input-group">
-                <label for="edad">Edad (15 a 18 años):</label>
-                <input type="number" id="edad" name="edad" min="15" max="18" placeholder="Ingrese su edad" required>
+                <label for="edad">Edad (14 a 18 años):</label>
+                <input type="number" id="edad" name="edad" min="14" max="18" placeholder="Ingrese su edad" required>
             </div>
 
             <!-- Género -->
             <div class="input-group">
                 <label for="genero">Sexo:</label>
                 <select id="genero" name="genero" required>
-                    <option value="" disabled selected>Seleccione su género</option>
+                    <option value="" disabled selected>Seleccione su sexo</option>
                     <option value="Masculino">Masculino</option>
                     <option value="Femenino">Femenino</option>
                 </select>

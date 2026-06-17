@@ -28,11 +28,16 @@
                 <tr>
                     <td>{{ $user->name }}</td>
                     <td>{{ $user->email }}</td>
-                    <td>
+                    <td class="btns_ctn">
                         <!-- Botón para ver los reportes del usuario -->
                         <form action="{{ route('private.verReportes', $user->id_usuario) }}" method="get">
                             @csrf
                             <button type="submit" class="btn">Ver Reportes</button>
+                        </form>
+                        <!-- Botón para ver los reportes del usuario -->
+                        <form action="{{ route('archivo.descargar', ['nombre' => $user->name]) }}" method="get">
+                            @csrf
+                            <button type="submit" class="btn">Descargar consentimiento informado</button>
                         </form>
                     </td>
                 </tr>

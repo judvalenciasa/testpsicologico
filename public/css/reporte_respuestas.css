@@ -1,42 +1,286 @@
 .reporte_respuestas_section {
-    background-color: #f4f4f4;
+    background: linear-gradient(180deg, #f8fbff 0%, #f3f5f9 100%);
+    border-radius: 14px;
+    border: 1px solid #d8dfe8;
+    padding: 1.25rem;
+    box-shadow: 0 10px 25px rgba(17, 24, 39, 0.08);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.report-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.subtitle {
+    margin: 0.35rem 0 0;
+    color: #5b6470;
+    font-size: 0.95rem;
+}
+
+.summary-chips {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.chip {
+    background: #e9f2ff;
+    color: #154a8a;
+    border: 1px solid #c7defb;
+    border-radius: 999px;
+    padding: 0.3rem 0.75rem;
+    font-size: 0.82rem;
+    font-weight: 600;
+}
+
+.table-card {
+    background: #ffffff;
+    border: 1px solid #e5eaf0;
+    border-radius: 12px;
+    padding: 0.9rem;
+    box-shadow: 0 6px 14px rgba(15, 23, 42, 0.05);
+}
+
+.table-title {
+    margin: 0 0 0.6rem;
+    font-size: 1.1rem;
+    color: #1f2937;
+}
+
+.table-wrapper {
+    overflow-x: auto;
     border-radius: 10px;
-    border: 1px solid #888787;
-    
 }
 
-table {
-    width: 100%;    
+.reporte_respuestas_section table {
+    width: 100%;
     border-collapse: collapse;
-    margin: 25px 0;
-    font-size: 18px;
+    margin: 0;
+    font-size: 0.95rem;
     text-align: left;
+    background-color: #fff;
+    min-width: 960px;
+    table-layout: auto;
 }
 
-table th,
-table td {
-    padding: 12px 15px;
-    border: 1px solid #6e6e6e;
+.reporte_respuestas_section table th,
+.reporte_respuestas_section table td {
+    padding: 0.75rem 0.85rem;
+    border: 1px solid #e3e8ef;
+    vertical-align: top;
 }
 
-table thead {
-    background-color: #f2f2f2;
+.reporte_respuestas_section table thead {
+    background-color: #eef5ff;
 }
 
-table tr:nth-child(even) {
-    background-color: #f9f9f9;
+.reporte_respuestas_section table tr:nth-child(even) {
+    background-color: #fafcff;
 }
 
-table tr:hover {
-    background-color: #f1f1f1;
+.reporte_respuestas_section table tr:hover {
+    background-color: #f2f7ff;
 }
 
-h1 {
+.text-cell {
+    max-width: 380px;
+    white-space: normal;
+    word-break: break-word;
+}
+
+.col-id-contexto {
+    width: 70px;
+    white-space: normal;
+}
+
+.col-habilidad {
+    width: 130px;
+    max-width: 130px;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+    line-height: 1.2;
+}
+
+.col-subhabilidad {
+    width: 150px;
+    max-width: 150px;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+    line-height: 1.2;
+}
+
+#tabla-respuestas th:nth-child(1),
+#tabla-respuestas td:nth-child(1) {
+    width: 70px;
+    max-width: 70px;
+    white-space: normal;
+}
+
+#tabla-respuestas th:nth-child(2),
+#tabla-respuestas td:nth-child(2) {
+    width: 130px;
+    max-width: 130px;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+    line-height: 1.2;
+}
+
+#tabla-respuestas th:nth-child(3),
+#tabla-respuestas td:nth-child(3) {
+    width: 150px;
+    max-width: 150px;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+    line-height: 1.2;
+}
+
+.context-preview {
+    display: block;
+}
+
+.toggle-context-btn {
+    margin-top: 0.35rem;
+    background: transparent;
+    border: none;
+    color: #0b63ce;
+    cursor: pointer;
+    font-size: 0.82rem;
+    font-weight: 600;
+    padding: 0;
+}
+
+.toggle-context-btn:hover {
+    color: #084b9b;
+    text-decoration: underline;
+}
+
+.score-cell {
     text-align: center;
-    margin-top: 20px;
+    font-weight: 700;
+    color: #0b3f7f;
+}
+
+.actions-row {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 0.25rem;
+}
+
+.table-pagination {
+    margin-top: 0.85rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.pagination-controls {
+    display: flex;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+}
+
+.pagination-btn {
+    border: 1px solid #cbd5e1;
+    background: #ffffff;
+    color: #1f2937;
+    border-radius: 8px;
+    padding: 0.32rem 0.62rem;
+    font-size: 0.82rem;
+    cursor: pointer;
+}
+
+.pagination-btn:hover:not(:disabled) {
+    background: #eef5ff;
+    border-color: #9ec5f8;
+}
+
+.pagination-btn.active {
+    background: #0b63ce;
+    border-color: #0b63ce;
+    color: #ffffff;
+    font-weight: 700;
+}
+
+.pagination-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.pagination-meta {
+    font-size: 0.82rem;
+    color: #64748b;
+    font-weight: 600;
+}
+
+/* Reglas específicas para tabla de subrespuestas */
+.subrespuestas-table .col-subrespuesta-calificacion {
+    width: 10%;
+    min-width: 10%;
+    max-width: 10%;
+    white-space: nowrap;
+    text-align: center;
+    padding-left: 0.6rem;
+    padding-right: 0.6rem;
+}
+
+.subrespuestas-table .col-subrespuesta-respuesta {
+    width: 40%;
+    min-width: 40%;
+    max-width: 40%;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+    line-height: 1.2;
+}
+
+.subrespuestas-table .col-subrespuesta-texto {
+    width: 50%;
+    min-width: 50%;
+    max-width: 50%;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+}
+
+.reporte_respuestas_section table.subrespuestas-table {
+    width: 100%;
+    min-width: 0;
+    table-layout: fixed;
+}
+
+.reporte_respuestas_section h1 {
+    margin: 0;
+    color: #111827;
+    font-size: 1.55rem;
 }
 
 .center {
     margin-left: auto;
     margin-right: auto;
+}
+
+@media (max-width: 768px) {
+    .reporte_respuestas_section {
+        padding: 0.8rem;
+    }
+
+    .reporte_respuestas_section h1 {
+        font-size: 1.25rem;
+    }
+
+    .table-card {
+        padding: 0.65rem;
+    }
 }

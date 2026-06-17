@@ -1,85 +1,140 @@
 .report_section {
-    background-color: white;
+    background: linear-gradient(180deg, #f7f9fd 0%, #eef2f8 100%);
     display: flex;
     flex-direction: column;
-    gap: 2vw;
+    gap: 1rem;
+    padding-bottom: 1rem;
 }
 
-.container {
+.report_section .container.report-shell {
+    width: min(1200px, calc(100% - 2rem));
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
-    gap: 2vw;
+    gap: 1rem;
+}
+
+.report-topbar {
+    display: flex;
+    justify-content: space-between;
     align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    background: #ffffff;
+    border: 1px solid #dfe7f2;
+    border-radius: 14px;
+    padding: 1rem 1.25rem;
+    box-shadow: 0 10px 24px rgba(15, 23, 42, 0.06);
+}
+
+.report_section h1 {
+    margin: 0;
+    color: #0f172a;
+    font-size: clamp(1.35rem, 2vw, 1.8rem);
+}
+
+.report-subtitle {
+    margin: 0.35rem 0 0;
+    color: #5b6470;
+    font-size: 0.95rem;
+}
+
+.report-badges {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.report-badge {
+    background: #e8f1ff;
+    color: #0b4f9f;
+    border: 1px solid #bfd9ff;
+    border-radius: 999px;
+    padding: 0.35rem 0.8rem;
+    font-size: 0.83rem;
+    font-weight: 700;
+}
+
+.metacognicion-motivacion-section,
+.contexto-section,
+.calificacion_ctn,
+.conocimiento_procedimental,
+.regulación_de_la_cognición {
+    width: 100%;
+    background: #ffffff;
+    border: 1px solid #dfe7f2;
+    border-radius: 12px;
+    box-shadow: 0 8px 18px rgba(15, 23, 42, 0.05);
+}
+
+.metacognicion-motivacion-section {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+}
+
+.metacognicion-motivacion-section .title {
+    text-align: left;
 }
 
 .contexto-row {
-    display: flex;
-    flex-direction: column;
-    gap: 2vw;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
 }
 
 .contexto-section {
-    border: 1px solid rgb(179, 177, 177);
-    padding: 1vw;
-    border-radius: 1vw;
+    padding: 1rem;
 }
 
-.card_ctn {
-    display: flex;
-    flex-direction: column;
-    border: 1px solid black;
-    padding: 1vw;
-    border-radius: 1vw;
+.contexto-section > h2 {
+    margin: 0 0 0.7rem;
+    font-size: 1.15rem;
+    color: #0f172a;
 }
 
 .item-card {
     display: flex;
     flex-direction: column;
-    gap: 1vw;
-    background-color: #fff;
-    border: 1px solid #ccc;
-    margin: 15px 0;
-    padding: 10px;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    gap: 0.45rem;
+    background-color: #f9fbff;
+    border: 1px solid #d8e5f7;
+    margin: 0.65rem 0;
+    padding: 0.85rem;
+    border-radius: 10px;
 }
 
-.descriptor p {
-    margin: 5px 0;
+.item-card h3 {
+    margin: 0;
 }
 
-.btn_terminar {
-    text-align: center;
-    margin-top: 30px;
+.report_section .card_box {
+    background-color: #f9fbff;
+    border: 1px solid #d8e5f7;
+    border-radius: 10px;
+    overflow: hidden;
 }
 
-.btn-primary {
-    background-color: #007bff;
-    border: none;
-    padding: 10px 20px;
+.report_section .text_box {
+    padding: 0.85rem 0.9rem;
+}
+
+.report_section h2 {
+    margin: 0;
+    color: #111827;
+}
+
+.report_section h3 {
+    background-color: #0b63ce;
     color: white;
-    text-decoration: none;
-    border-radius: 5px;
+    padding: 0.65rem 0.85rem;
+    border-radius: 10px 10px 0 0;
+    font-size: 1rem;
 }
 
-.btn-primary:hover {
-    background-color: #0056b3;
-}
-
-/** Metacognicion y motivacion */
-
-.metacognicion-motivacion-section {
-    width: 100%;
-    padding: 1vw;
-    border-radius: 1vw;
-    display: flex;
-    flex-direction: column;
-    gap: 1vw;
-    border: 1px solid rgb(179, 177, 177);
-}
-
-.metacognicion-motivacion-section .title {
-    text-align: center;
+.report_section p {
+    margin: 0.35rem 0;
+    color: #1f2937;
 }
 
 .datos-personales,
@@ -87,78 +142,92 @@
 .habitos-personales,
 .habitos-salud,
 .calificacion-metacognicion {
-    margin-bottom: 20px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #f9f9f9;
+    padding: 0.85rem;
+    border: 1px solid #dce4ef;
+    border-radius: 10px;
+    background-color: #f9fbff;
 }
 
 .calificacion_ctn {
     display: flex;
     flex-direction: column;
-    gap: 2vw;
-    border: 1px solid black;
-    padding: 1vw;
-    border-radius: 1vw;
+    gap: 0.9rem;
+    padding: 1rem;
 }
 
-.card_box {
-    background-color: #f9f9f9;
+.conocimiento_procedimental,
+.regulación_de_la_cognición {
+    padding: 1rem;
 }
 
-.text_box {
-    padding: 1vw;
+.regulación_de_la_cognición {
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
 }
 
-h3 {
-    background-color: #007bff;
-    color: white;
-    padding: 10px;
-    border-radius: 5px 5px 0 0;
+.pie_de_pagina_ctn {
+    width: min(1200px, calc(100% - 2rem));
+    margin: 0 auto;
+    font-size: 0.9rem;
+    background: #ffffff;
+    border: 1px solid #dfe7f2;
+    border-radius: 12px;
+    padding: 1rem;
+    box-shadow: 0 8px 18px rgba(15, 23, 42, 0.05);
 }
 
-p {
-    margin: 5px 0;
+.pie_de_pagina_ctn span {
+    font-weight: 700;
+    color: #0f172a;
 }
 
 .btn_terminar {
     text-align: center;
-    margin-top: 30px;
+    margin-top: 1rem;
 }
 
-.btn-primary {
-    background-color: #007bff;
+.btn-primary,
+.btn_back_users {
+    background-color: #0b63ce;
     border: none;
-    padding: 10px 20px;
+    padding: 0.6rem 1rem;
     color: white;
     text-decoration: none;
-    border-radius: 5px;
+    border-radius: 8px;
+    display: inline-block;
+    font-weight: 600;
 }
 
-.btn-primary:hover {
-    background-color: #0056b3;
+.btn-primary:hover,
+.btn_back_users:hover {
+    background-color: #084d9f;
 }
 
-.conocimiento_procedimental {
-    border: 1px solid #ccc;
-    border-radius: 1vw;
-    padding: 1vw;
+.btn_back_users {
+    width: fit-content;
+    margin: 0 auto;
 }
 
-.regulación_de_la_cognición {
-    border: 1px solid #ccc;
-    border-radius: 1vw;
-    padding: 1vw;
-    display: flex;
-    flex-direction: column;
-    gap: 1vw;
-}
+@media (max-width: 768px) {
+    .contexto-row {
+        grid-template-columns: 1fr;
+    }
 
-.pie_de_pagina_ctn{
-    font-size: 1vw;
-}
+    .report_section .container.report-shell {
+        width: calc(100% - 1rem);
+    }
 
-.pie_de_pagina_ctn span{
-    font-weight: bold;
-} 
+    .metacognicion-motivacion-section,
+    .contexto-section,
+    .calificacion_ctn,
+    .conocimiento_procedimental,
+    .regulación_de_la_cognición,
+    .pie_de_pagina_ctn {
+        padding: 0.75rem;
+    }
+
+    .report_section h3 {
+        font-size: 0.93rem;
+    }
+}

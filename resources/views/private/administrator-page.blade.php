@@ -24,6 +24,24 @@
                 <p>Bienvenido, {{ Auth::user()->name }}. Esta es la página de administración.</p>
             </div>
             <div class="ctn_admin">
+                <div class="stats_btns_ctn">
+                    <!-- Botón para ver estadísticas -->
+                    <form action="{{ route('stats.dashboard') }}" method="get">
+                        @csrf
+                        <div class="section">
+                            <button type="submit" class="btn">Ver Estadísticas</button>
+                        </div>
+                    </form>
+
+                    <!-- Botón para ver estadísticas generales -->
+                    <form action="{{ route('stats.general.dashboard') }}" method="get">
+                        @csrf
+                        <div class="section">
+                            <button type="submit" class="btn">Ver Estadísticas Generales</button>
+                        </div>
+                    </form>
+                </div>
+
                 <div class="section">
                     <h2>Generar Pin</h2>
                     <div class="card">

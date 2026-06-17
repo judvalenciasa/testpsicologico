@@ -29,7 +29,7 @@ class ArchivosController extends Controller
         $fileName = $user->name . "_" . Carbon::now()->format('Y-m-d') . ".pdf";
 
         // Almacenar el archivo en el directorio 'storage/app/public/pdfs/{documento_identificacion}' con el nombre especificado
-        $filePath = $request->file('pdf')->storeAs('pdfs/' . $user->documento_identificacion, $fileName, 'public');
+        $filePath = $request->file('pdf')->storeAs('pdfs/' . $user->name, $fileName, 'public');
 
         // Guardar el nombre del archivo en la base de datos
         $pdf = new Archivo();
@@ -41,7 +41,13 @@ class ArchivosController extends Controller
         return back()->with('success', 'Archivo PDF cargado correctamente.');
     }
 
+    // Funcion para descargar consentimiento informado 
+    public function download($file_name)
+    {
 
-    
+        $file = Archivo::where('file_name', 'like', '%' . $file_name . '%')->firstOrFail();
+        $pathToFile = storage_path('app/public/' . $file->file_path);
 
+        return response()->download($pathToFile);
+    }
 }

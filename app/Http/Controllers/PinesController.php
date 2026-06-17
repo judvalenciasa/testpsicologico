@@ -2,33 +2,27 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Administradores;
-use App\Models\Pines;
+use App\Application\Pines\PinService;
 use Illuminate\Http\Request;
-use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Log;
 
 class PinesController extends Controller
 {
+    private const DEFAULT_SORT = 'creacion_fecha';
+    private const DEFAULT_DIRECTION = 'desc';
+    private const SORTABLE_FIELDS = ['pin', 'creacion_fecha', 'usuario'];
+    private const ASSIGNMENT_FILTERS = ['todos', 'asignados', 'libres'];
 
-    private $CANTIDAD_DE_INTENTOS = 2;
+    public function __construct(private readonly PinService $pinService)
+    {
+    }
 
     /**
      * Almacenamos los pines en la base de datos.
      */
     public function almacenar_pines($pin)
     {
-        $creacion_fecha = Carbon::now();
-
-        $product = new Pines;
-        $product->pin = $pin;
-        $product->id_prueba = 1;
-        $product->creacion_fecha = $creacion_fecha;
-        $product->fecha_expiracion = $creacion_fecha;
-        $product->intentos = $this->CANTIDAD_DE_INTENTOS;
-        $product->save();
-
-        return true;
+        return $this->pinService->storePin($pin);
     }
 
     /**
@@ -38,12 +32,7 @@ class PinesController extends Controller
      */
     public function pin_existe($pines)
     {
-        for ($j = 0; $j < count($pines); $j++) {
-            if (Pines::where('pin', $pines[$j])->exists()) {
-                return true;
-            }
-        }
-        return false;
+        return $this->pinService->anyPinExists($pines);
     }
 
     /**
@@ -63,22 +52,10 @@ class PinesController extends Controller
         $usuario = auth()->user();
         if ($usuario) {
             if ($usuario->es_administrador == 1) {
-                $caracteres = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-                $pines_generados = [];
-
-                for ($i = 0; $i < $cantidad; $i++) {
-                    $tamaño_de_codigo = 10; // Longitud de cada código generado
-                    $codigo = '';
-                    for ($j = 0; $j < $tamaño_de_codigo; $j++) {
-                        $codigo .= $caracteres[rand(0, strlen($caracteres) - 1)];
-                    }
-                    $pines_generados[] = $codigo;
-                }
+                $pines_generados = $this->pinService->generatePins($cantidad);
 
                 if (!$this->pin_existe($pines_generados)) {
-                    for ($i = 0; $i < count($pines_generados); $i++) {
-                        $this->almacenar_pines($pines_generados[$i]);
-                    }
+                    $this->pinService->storePins($pines_generados);
 
                     // Respuesta de éxito en JSON
                     return response()->json([
@@ -114,82 +91,44 @@ class PinesController extends Controller
      */
     public function toggleEstado(Request $request)
     {
-        //Log para imprimir el request
+        // Mantiene el comportamiento actual: solo registrar la llamada.
         Log::info($request);
-
-        // 1. Verifica si el método se está llamando y qué datos llegan
-        //$pin = Pines::findOrFail($id_pin);
-
-
-        //$pin->estado = $request->input('estado');
-
-        //$pin->save();
-
-        //return response()->json(['success' => true]);
     }
 
 
-
-
+    public function cantidad_intentos($id_pin)
+    {
+        return $this->pinService->findByIdPin($id_pin);
+    }
 
 
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
         Log::info('PinesController@index');
-        $pines = Pines::with('usuario')->get();
+        $filters = $this->pinFilters($request);
+        $pines = $this->pinService->allWithUsers($filters);
 
-        return view('pines.index', compact('pines'));
+        return view('pines.index', compact('pines', 'filters'));
     }
 
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    private function pinFilters(Request $request): array
     {
-        //
+        $sort = (string) $request->query('sort', self::DEFAULT_SORT);
+        $direction = (string) $request->query('direction', self::DEFAULT_DIRECTION);
+        $asignacion = (string) $request->query('asignacion', 'todos');
+
+        return [
+            'search' => trim((string) $request->query('search', '')),
+            'estado' => 'todos',
+            'asignacion' => in_array($asignacion, self::ASSIGNMENT_FILTERS, true) ? $asignacion : 'todos',
+            'fecha_desde' => null,
+            'fecha_hasta' => null,
+            'sort' => in_array($sort, self::SORTABLE_FIELDS, true) ? $sort : self::DEFAULT_SORT,
+            'direction' => in_array($direction, ['asc', 'desc'], true) ? $direction : self::DEFAULT_DIRECTION,
+        ];
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Pines $pines)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Pines $pines)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Pines $pines)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Pines $pines)
-    {
-        //
-    }
 }

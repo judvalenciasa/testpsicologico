@@ -7,6 +7,11 @@ use Illuminate\Support\Facades\Log;
 
 class OpenAIService
 {
+    private const API_URL = 'https://api.openai.com/v1/chat/completions';
+    private const MODEL = 'gpt-4o';
+    private const TEMPERATURE = 0.2;
+    private const SYSTEM_MESSAGE = 'Eres un evaluador objetivo. Responde solo con el número de la calificación, sin ninguna otra información.';
+
     protected $client;
 
     public function __construct()
@@ -23,26 +28,7 @@ class OpenAIService
         }
 
         try {
-            $response = $this->client->post('https://api.openai.com/v1/chat/completions', [
-                'headers' => [
-                    'Authorization' => 'Bearer ' . env('OPENAI_API_KEY'),
-                    'Content-Type' => 'application/json',
-                ],
-                'json' => [
-                    'model' => 'gpt-4o',
-                    'temperature' => 0.2, // Ajuste para menos creatividad
-                    'messages' => [
-                        [
-                            'role' => 'system',
-                            'content' => 'Eres un evaluador objetivo. Responde solo con el número de la calificación, sin ninguna otra información.',
-                        ],
-                        [
-                            'role' => 'user',
-                            'content' => $prompt,
-                        ],
-                    ],
-                ],
-            ]);
+            $response = $this->client->post(self::API_URL, $this->buildRequestOptions($prompt));
 
             $body = json_decode($response->getBody(), true);
             Log::info('Respuesta de ChatGPT: ' . json_encode($body));
@@ -53,5 +39,29 @@ class OpenAIService
             Log::error("Error al enviar la respuesta a ChatGPT: " . $e->getMessage());
             return null;
         }
+    }
+
+    private function buildRequestOptions(string $prompt): array
+    {
+        return [
+            'headers' => [
+                'Authorization' => 'Bearer ' . env('OPENAI_API_KEY'),
+                'Content-Type' => 'application/json',
+            ],
+            'json' => [
+                'model' => self::MODEL,
+                'temperature' => self::TEMPERATURE,
+                'messages' => [
+                    [
+                        'role' => 'system',
+                        'content' => self::SYSTEM_MESSAGE,
+                    ],
+                    [
+                        'role' => 'user',
+                        'content' => $prompt,
+                    ],
+                ],
+            ],
+        ];
     }
 }

@@ -13,8 +13,22 @@
     @include('shared.header')
 
     <section class="report_section">
-        <div class="container">
-            <h1>Reporte Descriptivo</h1>
+        <div class="container report-shell">
+            @php
+            $contextCount = count(array_filter(array_keys($informe_final), function ($key) {
+                return $key !== 'metacognicion_motivacion';
+            }));
+            @endphp
+
+            <div class="report-topbar">
+                <div>
+                    <h1>Reporte Descriptivo</h1>
+                    <p class="report-subtitle">Detalle consolidado del desempeño crítico y variables complementarias del participante.</p>
+                </div>
+                <div class="report-badges">
+                    <span class="report-badge">Contextos: {{ $contextCount }}</span>
+                </div>
+            </div>
 
             <!-- Sección de Metacognición y Motivación -->
             @if(isset($informe_final['metacognicion_motivacion']))
@@ -23,6 +37,10 @@
             @endphp
 
             <div class="metacognicion-motivacion-section">
+
+                <div class="tiempo_reporte">
+                    <p><strong>Tiempo prueba:</strong> {{ $metacognicion['tiempo_prueba'] }} minutos</p>
+                </div>
 
                 <div class="caracterizacion_ctn">
                     <div class="title">
@@ -40,7 +58,8 @@
                         <h3>Datos sociodemográficos</h3>
                         <p><strong>Estrato socioeconómico en que vive:</strong> {{ $metacognicion['estrato'] }}</p>
                         <p><strong>Nivel de escolaridad en el que se encuentra:</strong> {{ $metacognicion['nivel_escolaridad'] }}</p>
-                        <p><strong>Último nivel de escolaridad alcanzado por alguno de sus padres:</strong> {{ $metacognicion['nivel_educativo_padre'] }}</p>
+                        <p><strong>Último nivel de escolaridad alcanzado por el padre:</strong> {{ $metacognicion['nivel_educativo_padre'] }}</p>
+                        <p><strong>Último nivel de escolaridad alcanzado por la madre:</strong> {{ $metacognicion['nivel_educativo_madre'] }}</p>
                     </div>
 
                     <div class="habitos-personales">
@@ -243,7 +262,7 @@
                         </div>
 
                         <div class="card_box">
-                            <h3>Puntuación total lograda en Regulación de la cognición</h3>
+                            <h3>Puntuación total lograda en Metacognición</h3>
                             <div class="text_box">
                                 <p><strong>Calificación : </strong> {{ $metacognicion['calificacion_metacognicion'] }}</p>
                             </div>
@@ -256,9 +275,9 @@
             @endif
         </div> <!-- Cierra el container -->
 
-       
 
-        <a href="{{ route('private.usuarios') }}" class="btn">Volver a usuarios</a>
+
+        <a href="{{ route('private.usuarios') }}" class="btn btn_back_users">Volver a usuarios</a>
 
     </section>
 

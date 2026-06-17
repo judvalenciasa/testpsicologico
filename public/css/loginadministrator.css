@@ -6,7 +6,7 @@
 }
 
 h1 {
-    font-size: 48px;
+    font-size: 2.5vw;
     margin: 0;
 }
 
@@ -18,7 +18,7 @@ h1 {
 }
 
 p {
-    font-size: 20px;
+    font-size: 1.5vw;
 }
 
 .container {
@@ -45,11 +45,11 @@ p {
 
 .input {
     border: solid 1.5px #9e9e9e;
-    border-radius: 1rem;
+    border-radius: 1vw;
     width: 100%;
     background: none;
-    padding: 1rem;
-    font-size: 1rem;
+    padding: 0.95rem 0.95rem;
+    font-size: clamp(14px, 1vw, 18px);
     font-weight: 500;
     color: black;
     transition: border 150ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -58,29 +58,32 @@ p {
 .user-label {
     position: absolute;
     left: 15px;
+    top: 50%;
+    font-size: clamp(14px, 1.05vw, 18px);
     color: gray;
     pointer-events: none;
-    transform: translateY(1rem);
+    transform: translateY(-50%);
     transition: 150ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.input:focus,
-input:valid {
+.input:focus {
     outline: none;
     border: 1.5px solid #1a73e8;
 }
 
 .input:focus ~ label,
-input:valid ~ label {
+.input:not(:placeholder-shown) ~ label,
+.input:-webkit-autofill ~ label {
     transform: translateY(-50%) scale(0.8);
     background-color: #ebedf0;
     padding: 0 0.2em;
     color: #2196f3;
+    top: 0;
 }
-
 
 .span_mostrar_pin {
     color: black;
+    font-size: 1.2vw;
     font-weight: 500;
 }
 
@@ -120,9 +123,9 @@ input:valid ~ label {
     text-align: center;
     text-decoration: none;
     width: 100%;
-    padding: 18px 25px;
+    padding: 1vw 2vw;
     color: #fff;
-    font-size: 1.125em;
+    font-size: 1vw;
     font-weight: 700;
     letter-spacing: 0.3em;
     z-index: 20;
@@ -148,10 +151,42 @@ input:valid ~ label {
     }
 }
 
-
 .error-message {
     font-size: 0.875em;
     margin-top: 0.25em;
     display: block;
     color: red;
 }
+
+.form-feedback {
+    width: 20vw;
+    border-radius: 10px;
+    border: 1px solid transparent;
+    padding: 0.75rem 0.95rem;
+    font-size: 0.92rem;
+    font-weight: 600;
+    line-height: 1.35;
+    text-align: left;
+    box-sizing: border-box;
+}
+
+.form-feedback p {
+    margin: 0;
+}
+
+.form-feedback p + p {
+    margin-top: 0.35rem;
+}
+
+.form-feedback--success {
+    background: #e7f8ee;
+    border-color: #27ae60;
+    color: #1f7a45;
+}
+
+.form-feedback--error {
+    background: #fdecec;
+    border-color: #eb5757;
+    color: #b42318;
+}
+

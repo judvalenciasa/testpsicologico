@@ -15,31 +15,12 @@ class PinesSeeder extends Seeder
     {
         DB::table('pines')->insert([
             [
-                'id_pin' => 1,
-                'pin' => 'codPr12',
-                'id_prueba' => 1,
-                'creacion_fecha' => Carbon::now(),
-                'fecha_expiracion' => Carbon::now(),
-                'intentos' => 3,
-                'estado' => true,
-            ],
-            [
                 'id_pin' => 2,
                 'pin' => 'codPr13',
                 'id_prueba' => 1,
                 'creacion_fecha' => Carbon::now(),
                 'fecha_expiracion' => Carbon::now(),
-                'intentos' => 3,
-                'estado' => true,
-
-            ],
-            [
-                'id_pin' => 3,
-                'pin' => 'codPr14',
-                'id_prueba' => 1,
-                'creacion_fecha' => Carbon::now(),
-                'fecha_expiracion' => Carbon::now(),
-                'intentos' => 3,
+                'intentos' => 0,
                 'estado' => true,
 
             ]

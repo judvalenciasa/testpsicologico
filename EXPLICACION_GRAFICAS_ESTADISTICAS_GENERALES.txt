@@ -1,0 +1,630 @@
+EXPLICACION DE LAS GRAFICAS DEL DASHBOARD GENERAL COMPARATIVO
+==============================================================
+
+Este archivo explica para que sirve cada grafica del dashboard general comparativo,
+que datos utiliza y que formula se aplica.
+
+El dashboard compara dos presentaciones del test:
+
+- Test 1: primera presentacion del estudiante.
+- Test 2: segunda presentacion del estudiante.
+
+Solo se comparan estudiantes que tienen al menos dos reportes registrados, porque
+si un estudiante solo tiene un test no se puede calcular mejora o diferencia.
+
+
+1. INDICADORES GLOBALES
+=======================
+
+Aunque no son graficas, son tarjetas resumen que ayudan a entender el estado
+general de la cohorte seleccionada.
+
+1.1. Estudiantes comparables
+----------------------------
+
+Sirve para saber cuantos estudiantes tienen Test 1 y Test 2.
+
+Formula:
+
+    Estudiantes comparables = cantidad de estudiantes con al menos 2 reportes
+
+Ejemplo:
+
+    Si hay 50 estudiantes registrados,
+    pero solo 32 tienen dos tests completados,
+    entonces:
+
+    Estudiantes comparables = 32
+
+
+1.2. Promedio Test 1
+--------------------
+
+Sirve para conocer el promedio general de calificacion total en la primera
+presentacion.
+
+Formula:
+
+    Promedio Test 1 = suma(calificacion_total del Test 1) / cantidad de estudiantes comparables
+
+Ejemplo:
+
+    Estudiante A: 20 puntos
+    Estudiante B: 25 puntos
+    Estudiante C: 30 puntos
+
+    Promedio Test 1 = (20 + 25 + 30) / 3 = 25
+
+
+1.3. Promedio Test 2
+--------------------
+
+Sirve para conocer el promedio general de calificacion total en la segunda
+presentacion.
+
+Formula:
+
+    Promedio Test 2 = suma(calificacion_total del Test 2) / cantidad de estudiantes comparables
+
+Ejemplo:
+
+    Estudiante A: 24 puntos
+    Estudiante B: 27 puntos
+    Estudiante C: 33 puntos
+
+    Promedio Test 2 = (24 + 27 + 33) / 3 = 28
+
+
+1.4. Delta promedio
+-------------------
+
+Sirve para saber si el grupo mejoro o disminuyo entre Test 1 y Test 2.
+
+Formula:
+
+    Delta promedio = Promedio Test 2 - Promedio Test 1
+
+Ejemplo:
+
+    Promedio Test 1 = 25
+    Promedio Test 2 = 28
+
+    Delta promedio = 28 - 25 = 3
+
+Interpretacion:
+
+    Si el resultado es positivo, hubo mejora.
+    Si el resultado es negativo, hubo disminucion.
+    Si el resultado es cero, no hubo cambio promedio.
+
+
+1.5. Duracion media Test 1 y Test 2
+-----------------------------------
+
+Sirve para conocer cuanto tiempo tarda el grupo, en promedio, en cada
+presentacion.
+
+Formula:
+
+    Duracion media = suma(tiempo_prueba) / cantidad de reportes
+
+Ejemplo:
+
+    Test 1:
+    Estudiante A: 40 minutos
+    Estudiante B: 50 minutos
+    Estudiante C: 60 minutos
+
+    Duracion media Test 1 = (40 + 50 + 60) / 3 = 50 minutos
+
+
+2. PERFIL COGNITIVO GLOBAL (RADAR)
+==================================
+
+Esta grafica sirve para ver el perfil promedio del grupo en las macrohabilidades
+del test.
+
+Las macrohabilidades que compara son:
+
+- Razonamiento inductivo.
+- Razonamiento abductivo.
+- Razonamiento deductivo y verbal.
+- Analisis de argumentos.
+- Toma de decisiones y resolucion de problemas.
+
+La grafica muestra dos perfiles:
+
+- Test 1.
+- Test 2.
+
+Formula por cada macrohabilidad:
+
+    Promedio de macrohabilidad = suma(valor de la macrohabilidad) / cantidad de estudiantes comparables
+
+Ejemplo:
+
+    Razonamiento inductivo en Test 1:
+
+    Estudiante A: 6 puntos
+    Estudiante B: 8 puntos
+    Estudiante C: 10 puntos
+
+    Promedio inductivo Test 1 = (6 + 8 + 10) / 3 = 8
+
+    Razonamiento inductivo en Test 2:
+
+    Estudiante A: 8 puntos
+    Estudiante B: 9 puntos
+    Estudiante C: 11 puntos
+
+    Promedio inductivo Test 2 = (8 + 9 + 11) / 3 = 9.33
+
+Interpretacion:
+
+    Si el area del Test 2 es mas grande que la del Test 1, el grupo mejoro
+    en varias macrohabilidades.
+
+    Si una punta del radar queda baja, esa macrohabilidad puede ser una
+    debilidad del grupo.
+
+
+3. DIFERENCIA GLOBAL TEST 2 - TEST 1
+====================================
+
+Esta grafica sirve para ver de forma directa cuanto cambio cada macrohabilidad
+entre la primera y la segunda presentacion.
+
+Formula:
+
+    Diferencia = promedio macrohabilidad Test 2 - promedio macrohabilidad Test 1
+
+Ejemplo:
+
+    Promedio inductivo Test 1 = 8
+    Promedio inductivo Test 2 = 9.33
+
+    Diferencia inductivo = 9.33 - 8 = 1.33
+
+Interpretacion:
+
+    Valor positivo:
+        El grupo mejoro en esa macrohabilidad.
+
+    Valor negativo:
+        El grupo bajo su rendimiento en esa macrohabilidad.
+
+    Valor cercano a cero:
+        No hubo un cambio importante.
+
+Ejemplo visual:
+
+    Inductivo: +1.33
+    Abductivo: -0.50
+    Analisis de argumentos: +2.00
+
+    Esto indicaria mejora en inductivo y analisis de argumentos,
+    pero retroceso en abductivo.
+
+
+4. MACROHABILIDAD PROMEDIO GLOBAL
+=================================
+
+Esta grafica muestra, en barras, el promedio de cada macrohabilidad en Test 1
+y Test 2.
+
+Sirve para comparar fortalezas y debilidades del grupo entre ambas
+presentaciones.
+
+Formula:
+
+    Promedio por macrohabilidad = suma(puntajes de esa macrohabilidad) / cantidad de estudiantes comparables
+
+Ejemplo:
+
+    Toma de decisiones en Test 1:
+
+    Estudiante A: 5
+    Estudiante B: 7
+    Estudiante C: 9
+
+    Promedio = (5 + 7 + 9) / 3 = 7
+
+    Toma de decisiones en Test 2:
+
+    Estudiante A: 8
+    Estudiante B: 8
+    Estudiante C: 10
+
+    Promedio = (8 + 8 + 10) / 3 = 8.67
+
+Interpretacion:
+
+    Si la barra del Test 2 es mayor que la del Test 1, hay mejora.
+    Si la barra del Test 2 es menor, hay disminucion.
+    Si ambas barras son parecidas, el resultado se mantuvo estable.
+
+
+5. MOTIVACION PROMEDIO GLOBAL
+=============================
+
+Esta grafica compara la motivacion del grupo entre Test 1 y Test 2.
+
+Muestra tres valores:
+
+- Motivacion intrinseca.
+- Motivacion extrinseca.
+- Total motivacion.
+
+Formula motivacion intrinseca:
+
+    Promedio motivacion intrinseca = suma(motivacion_intrinseca) / cantidad de estudiantes comparables
+
+Formula motivacion extrinseca:
+
+    Promedio motivacion extrinseca = suma(motivacion_extrinseca) / cantidad de estudiantes comparables
+
+Formula total motivacion:
+
+    Total motivacion = promedio motivacion intrinseca + promedio motivacion extrinseca
+
+Ejemplo:
+
+    Motivacion intrinseca Test 1:
+    Estudiante A: 20
+    Estudiante B: 24
+    Estudiante C: 22
+
+    Promedio intrinseca = (20 + 24 + 22) / 3 = 22
+
+    Motivacion extrinseca Test 1:
+    Estudiante A: 18
+    Estudiante B: 21
+    Estudiante C: 15
+
+    Promedio extrinseca = (18 + 21 + 15) / 3 = 18
+
+    Total motivacion Test 1 = 22 + 18 = 40
+
+Interpretacion:
+
+    Si la motivacion sube en Test 2, el grupo llego con mayor disposicion
+    o interes en la segunda presentacion.
+
+    Si baja, puede indicar cansancio, desinteres, ansiedad o menor
+    disposicion para responder.
+
+
+6. PROMEDIO GLOBAL POR PREGUNTA
+===============================
+
+Esta grafica muestra como le fue al grupo, en promedio, en cada pregunta del
+test.
+
+Para cada pregunta, el sistema toma todas las respuestas guardadas de los
+reportes seleccionados y calcula el promedio de calificacion.
+
+Formula:
+
+    Promedio de la pregunta = suma(calificacion_respuesta) / cantidad de respuestas de esa pregunta
+
+Ejemplo:
+
+    Pregunta 5:
+
+    Estudiante A saco 1
+    Estudiante B saco 0
+    Estudiante C saco 1
+
+    Promedio Pregunta 5 = (1 + 0 + 1) / 3 = 0.67
+
+La grafica muestra dos barras por pregunta:
+
+- Test 1: promedio de esa pregunta en la primera presentacion.
+- Test 2: promedio de esa pregunta en la segunda presentacion.
+
+Ejemplo comparativo:
+
+    Pregunta 10 en Test 1:
+
+    Estudiante A: 0
+    Estudiante B: 1
+    Estudiante C: 0
+
+    Promedio Test 1 = (0 + 1 + 0) / 3 = 0.33
+
+    Pregunta 10 en Test 2:
+
+    Estudiante A: 1
+    Estudiante B: 1
+    Estudiante C: 1
+
+    Promedio Test 2 = (1 + 1 + 1) / 3 = 1
+
+Interpretacion:
+
+    Si una pregunta tiene promedio bajo en ambos tests, puede ser una pregunta
+    dificil, confusa o relacionada con una habilidad debil del grupo.
+
+    Si una pregunta sube mucho en Test 2, significa que el grupo mejoro
+    especificamente en ese item.
+
+    Si una pregunta baja en Test 2, conviene revisar si hubo confusion,
+    fatiga o dificultad en esa habilidad.
+
+Importante:
+
+    Esta grafica no incluye preguntas abiertas.
+
+    El sistema excluye las preguntas abiertas porque no siempre tienen una
+    calificacion automatica comparable.
+
+
+7. TORTAS GLOBALES POR MACROHABILIDAD
+=====================================
+
+Estas graficas muestran como se reparte cada macrohabilidad entre sus
+subhabilidades.
+
+No muestran solamente el puntaje total, sino la proporcion interna de cada
+subhabilidad.
+
+Formula para cada porcion:
+
+    Promedio subhabilidad = suma(valor_subhabilidad) / cantidad de reportes
+
+Formula del porcentaje visual de la torta:
+
+    Porcentaje visual = promedio subhabilidad / suma(promedios de subhabilidades de la macrohabilidad) * 100
+
+Ejemplo:
+
+    Razonamiento inductivo tiene dos subhabilidades:
+
+    - Induccion general.
+    - Induccion especifica.
+
+    Supongamos que en Test 1:
+
+    Promedio induccion general = 6
+    Promedio induccion especifica = 4
+
+    Total de la macrohabilidad = 6 + 4 = 10
+
+    Porcentaje induccion general = (6 / 10) * 100 = 60%
+    Porcentaje induccion especifica = (4 / 10) * 100 = 40%
+
+Interpretacion:
+
+    La torta no solo dice si el grupo saco mucho o poco, sino como se reparte
+    el rendimiento dentro de una macrohabilidad.
+
+    Si una porcion es muy pequena, esa subhabilidad puede necesitar refuerzo.
+
+
+7.1. Torta de Razonamiento Inductivo
+------------------------------------
+
+Subhabilidades:
+
+- Induccion general.
+- Induccion especifica.
+
+Sirve para ver si el rendimiento inductivo depende mas de una subhabilidad
+que de la otra.
+
+Ejemplo:
+
+    Induccion general: 70%
+    Induccion especifica: 30%
+
+Interpretacion:
+
+    El grupo esta mas fuerte en induccion general que en induccion especifica.
+
+
+7.2. Torta de Razonamiento Abductivo
+------------------------------------
+
+Subhabilidades:
+
+- Comprobacion de hipotesis.
+- Uso de probabilidad e incertidumbre.
+
+Ejemplo:
+
+    Comprobacion de hipotesis: 45%
+    Uso de probabilidad e incertidumbre: 55%
+
+Interpretacion:
+
+    El grupo esta relativamente equilibrado, aunque tiene un poco mas de peso
+    en uso de probabilidad e incertidumbre.
+
+
+7.3. Torta de Razonamiento Deductivo y Verbal
+---------------------------------------------
+
+Subhabilidades:
+
+- Identificacion de analogia.
+- Identificacion por fallo de vaguedad.
+
+Ejemplo:
+
+    Identificacion de analogia: 80%
+    Identificacion por fallo de vaguedad: 20%
+
+Interpretacion:
+
+    El grupo tiene mejor desempeno en analogias que en deteccion de vaguedad.
+
+
+7.4. Torta de Analisis de Argumentos
+------------------------------------
+
+Subhabilidades:
+
+- Identificacion de estructura argumentativa.
+- Identificacion de suposicion.
+- Identificacion de falacia.
+
+Ejemplo:
+
+    Estructura argumentativa: 40%
+    Suposicion: 35%
+    Falacia: 25%
+
+Interpretacion:
+
+    El grupo esta mas fuerte en estructura argumentativa y mas debil en
+    identificacion de falacias.
+
+
+7.5. Torta de Toma de Decisiones y Resolucion de Problemas
+----------------------------------------------------------
+
+Subhabilidades:
+
+- Toma de decisiones informadas.
+- Conciencia de situacion y acciones razonables.
+- Pensamiento estrategico.
+- Pensamiento creativo.
+
+Ejemplo:
+
+    Toma de decisiones informadas: 30%
+    Conciencia de situacion y acciones razonables: 25%
+    Pensamiento estrategico: 20%
+    Pensamiento creativo: 25%
+
+Interpretacion:
+
+    El desempeno esta relativamente distribuido, pero pensamiento estrategico
+    tiene menor peso que las demas subhabilidades.
+
+
+8. INSIGHTS AUTOMATICOS
+=======================
+
+No son una grafica, pero son mensajes generados automaticamente a partir de
+los datos.
+
+Sirven para resumir rapidamente lo mas importante.
+
+Reglas que usa:
+
+8.1. Mejora o disminucion global
+--------------------------------
+
+Formula:
+
+    Delta promedio = promedio Test 2 - promedio Test 1
+
+Ejemplo:
+
+    Si Delta promedio = +3.5
+
+    Mensaje:
+    "Mejora global promedio de +3.50 puntos entre Test 1 y Test 2."
+
+    Si Delta promedio = -2
+
+    Mensaje:
+    "Disminucion global promedio de -2.00 puntos entre presentaciones."
+
+
+8.2. Cambio fuerte en duracion
+------------------------------
+
+Formula:
+
+    Cambio de duracion = duracion media Test 2 - duracion media Test 1
+
+Regla:
+
+    Si baja mas de 10 minutos, muestra que el tiempo promedio bajo de forma marcada.
+    Si sube mas de 10 minutos, muestra que el tiempo promedio subio de forma marcada.
+
+Ejemplo:
+
+    Duracion Test 1 = 70 minutos
+    Duracion Test 2 = 55 minutos
+
+    Cambio = 55 - 70 = -15 minutos
+
+    Mensaje:
+    "El tiempo promedio baja de forma marcada en la segunda presentacion."
+
+
+8.3. Macrohabilidades con retroceso
+-----------------------------------
+
+Formula:
+
+    Diferencia macrohabilidad = promedio Test 2 - promedio Test 1
+
+Regla:
+
+    Si alguna diferencia es menor que 0, el sistema muestra que existen
+    macrohabilidades con retroceso puntual.
+
+Ejemplo:
+
+    Inductivo: +2
+    Abductivo: -1
+    Analisis de argumentos: +3
+
+    Como abductivo tiene -1, se genera una alerta de retroceso.
+
+
+9. GRAFICA DE DISPERSION
+========================
+
+Esta grafica ya fue retirada de la vista, pero antes servia para relacionar
+duracion del test con calificacion total.
+
+Formula o datos usados:
+
+    Eje X = tiempo_prueba
+    Eje Y = calificacion_total
+
+Ejemplo:
+
+    Estudiante A:
+    tiempo_prueba = 45 minutos
+    calificacion_total = 25
+
+    Punto en la grafica:
+    X = 45
+    Y = 25
+
+Interpretacion:
+
+    Servia para revisar si los estudiantes que tardaban mas obtenian mejor
+    puntaje, peor puntaje o si no habia una relacion clara entre tiempo y
+    rendimiento.
+
+    Actualmente no se muestra en el dashboard.
+
+
+RESUMEN GENERAL
+===============
+
+Las graficas del dashboard general comparativo ayudan a responder preguntas
+como:
+
+- El grupo mejoro entre Test 1 y Test 2?
+- En que macrohabilidades mejoro mas?
+- En que macrohabilidades retrocedio?
+- Que preguntas fueron mas dificiles?
+- La motivacion cambio entre presentaciones?
+- Que subhabilidades pesan mas dentro de cada macrohabilidad?
+
+La mayoria de formulas usan promedios:
+
+    Promedio = suma de valores / cantidad de datos
+
+Y las comparaciones usan diferencias:
+
+    Diferencia = valor Test 2 - valor Test 1
+

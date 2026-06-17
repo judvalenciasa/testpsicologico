@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -104,7 +103,7 @@ class SubpreguntasSeeder extends Seeder
             [
                 'id_subpregunta' => 13,
                 'id_pregunta' => 81,
-                'texto' => 'Enunciado 3. Yo apoyaría esta propuesta es una necesidad urgente para las personas y los ecosistemas.',
+                'texto' => 'Enunciado 3. Yo apoyaría esta propuesta, es una necesidad urgente para las personas y los ecosistemas.',
                 'valor_opcion'=> null,
                 'tipo_pregunta' => 'cerrada'
             ],
@@ -118,7 +117,7 @@ class SubpreguntasSeeder extends Seeder
             [
                 'id_subpregunta' => 15,
                 'id_pregunta' => 81,
-                'texto' => 'Enunciado 5.La descontaminación de ríos puede ser significativa y se puede garantizar la existencia de futuras generaciones.',
+                'texto' => 'Enunciado 5. La descontaminación de ríos puede ser significativa y se puede garantizar la existencia de futuras generaciones.',
                 'valor_opcion'=> null,
                 'tipo_pregunta' => 'cerrada'
             ],
@@ -164,7 +163,7 @@ class SubpreguntasSeeder extends Seeder
             [
                 'id_subpregunta' => 21,
                 'id_pregunta' => 83,
-                'texto' => 'Enunciado 1. Las lideresas informaron a las comunidades sobre las estrategias y acciones que tomarían para atender la situación.',
+                'texto' => 'Enunciado 1. Las lideresas informaron a las comunidades sobre las estrategias y acciones que adelantarían para atender la situación.',
                 'valor_opcion'=> null,
                 'tipo_pregunta' => 'cerrada'
             ],

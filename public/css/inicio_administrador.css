@@ -21,7 +21,7 @@
     justify-content: space-between;
     width: 100%;
     gap: 2vw;
-    align-items: center;
+    align-items: flex-start;
 }
 
 .container .title {
@@ -29,20 +29,40 @@
     text-align: center;
 }
 
+.container .stats_btns_ctn {
+    display: flex;
+    flex-direction: column;
+    gap: 2vw;
+    align-items: flex-start;
+    flex: 1;
+}
+
+.container .stats_btns_ctn .section {
+    width: 100%;
+    text-align: left;
+}
+
 .container .admin_btns_ctn {
     display: flex;
     flex-direction: column;
     gap: 2vw;
-    align-items: center;
+    align-items: flex-end;
+    flex: 1;
 }
 
 .container .admin_btns_ctn .section {
     width: 100%;
+    text-align: right;
 }
 
 .section {
     text-align: center;
     width: 45%;
+}
+
+.container .ctn_admin > .section {
+    flex: 1.4;
+    width: auto;
 }
 
 .section h2 {

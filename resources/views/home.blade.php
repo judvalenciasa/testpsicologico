@@ -5,12 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>CognitiveSparks | Home</title>
+    <title>CognitiveSparks</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+    <!-- Token csrf -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- Swiper -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
@@ -33,7 +36,7 @@
                 <h1>¿Qué es <br> CognitiveSpark?</h1>
             </div>
             <div class="banner_text">
-                <p>Es una prueba de pensamiento crítico diseñada específicamente para adolescentes. Esta herramienta evaluativa se centra en medir el nivel de desempeño del pensamiento crítico. CognitiveSpark busca no solo evaluar, sino también inspirar y activar el potencial mental de los jóvenes, preparando a las próximas generaciones para afrontar los complejos desafíos y aportar a la transformación de realidades complejas.
+                <p>Es una prueba diseñada para evaluar el nivel de desempeño del pensamiento crítico en adolescentes. CognitiveSpark no solo busca evaluar, sino también inspirar y activar el potencial mental de los jóvenes, preparándolos para afrontar desafíos complejos y contribuir a la transformación de su entorno y a su desarrollo humano.
                 </p>
             </div>
         </div>
@@ -58,7 +61,7 @@
                             <p>¿Para quiénes está diseñada la prueba?</p>
                         </div>
                         <div class="respuesta">
-                            <p><span>Respuesta: </span>Para adolescentes que se encuentren entre los 15 y 18 años </p>
+                            <p><span>Respuesta: </span>Para adolescentes que se encuentren entre los 14 y 18 años </p>
                         </div>
                     </div>
                 </div>
@@ -162,7 +165,8 @@
                 <h1>CONTACTO</h1>
             </div>
             <div class="form_ctn">
-                <form class="formulario" action="">
+                <form class="formulario">
+                    <div id="contact-feedback" class="contact-feedback" role="alert" aria-live="polite" hidden></div>
                     <div class="input-group">
                         <input required="" type="text" name="nombre" id="nombre" autocomplete="off" class="input">
                         <label class="user-label">Nombre</label>
@@ -178,7 +182,7 @@
                         <label class="user-label">Mensaje</label>
                         <span class="error-message" id="message-error"></span>
                     </div>
-                    <button class="send_btn" type="submit" id="send-btn">
+                    <button class="send_btn" type="submit" id="send-btn" data-route="{{ route('enviar.correo') }}">
                         <span>Enviar</span>
                     </button>
                 </form>
@@ -192,82 +196,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
-    <script>
-        var swiper = new Swiper(".mySwiper", {
-            navigation: {
-                nextEl: ".swiper-button-next",
-                prevEl: ".swiper-button-prev",
-            },
-            pagination: {
-                el: ".swiper-pagination",
-                clickable: true,
-            },
-            loop: true,
-        });
-    </script>
-    <script>
-        document.getElementById('send-btn').addEventListener('click', function(event) {
-
-
-            event.preventDefault(); // Evitar que el formulario se envíe
-
-            // Obtener los campos del formulario
-            const nombre = document.getElementById('nombre');
-            const email = document.getElementById('email');
-            const message = document.getElementById('message');
-
-            // Limpiar mensajes de error previos
-            clearErrors();
-
-            // Validar cada campo
-            var isValid = true;
-
-            if (!validateEmail(email.value)) {
-                showError(email, 'El correo electrónico no es válido.');
-                isValid = false;
-            }
-
-            if (nombre.value.trim() === '') {
-                showError(nombre, 'este campo es obligatorio.');
-                isValid = false;
-            }
-
-            if (message.value.trim() === '') {
-                showError(message, 'este campo es obligatorio.');
-                isValid = false;
-            }
-
-            if (isValid) {
-                // Si todo es válido, envía el formulario
-                alert('Correo enviado exitosamente');
-                // Aquí puedes enviar el formulario
-            }
-        });
-
-        function showError(input, message) {
-            input.style.borderColor = 'red';
-            var errorElement = document.getElementById(input.id + '-error');
-            errorElement.textContent = message;
-            errorElement.style.color = 'red';
-        }
-
-        function clearErrors() {
-            var inputs = document.querySelectorAll('.input');
-            inputs.forEach(function(input) {
-                input.style.borderColor = ''; // Restablecer el color del borde
-            });
-
-            var errorMessages = document.querySelectorAll('.error-message');
-            errorMessages.forEach(function(error) {
-                error.textContent = ''; // Limpiar mensajes de error
-            });
-        }
-
-        function validateEmail(email) {
-            var re = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-            return re.test(email);
-        }
-    </script>
+    <script src="{{ asset('js/pages/home.js') }}"></script>
 
 
 
