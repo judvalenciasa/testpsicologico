@@ -32,9 +32,64 @@ class EloquentPinRepository implements PinRepositoryInterface
         return Pines::where('id_pin', $idPin)->first();
     }
 
-    public function allWithUsers(): Collection
+    public function allWithUsers(array $filters = []): Collection
     {
-        return Pines::with('usuario')->get();
+        $filters = array_merge([
+            'search' => '',
+            'estado' => 'todos',
+            'asignacion' => 'todos',
+            'fecha_desde' => null,
+            'fecha_hasta' => null,
+            'sort' => 'creacion_fecha',
+            'direction' => 'desc',
+        ], $filters);
+
+        $query = Pines::query()->with('usuario');
+
+        if (!empty($filters['search'])) {
+            $search = $filters['search'];
+            $query->where(function ($subQuery) use ($search) {
+                $subQuery
+                    ->where('pin', 'like', "%{$search}%")
+                    ->orWhereHas('usuario', function ($userQuery) use ($search) {
+                        $userQuery->where('email', 'like', "%{$search}%");
+                    });
+            });
+        }
+
+        if ($filters['estado'] !== 'todos') {
+            $query->where('estado', $filters['estado'] === 'activo');
+        }
+
+        if ($filters['asignacion'] === 'asignados') {
+            $query->whereHas('usuario');
+        }
+
+        if ($filters['asignacion'] === 'libres') {
+            $query->doesntHave('usuario');
+        }
+
+        if (!empty($filters['fecha_desde'])) {
+            $query->whereDate('creacion_fecha', '>=', $filters['fecha_desde']);
+        }
+
+        if (!empty($filters['fecha_hasta'])) {
+            $query->whereDate('creacion_fecha', '<=', $filters['fecha_hasta']);
+        }
+
+        $direction = $filters['direction'] === 'asc' ? 'asc' : 'desc';
+
+        if ($filters['sort'] === 'usuario') {
+            $query
+                ->leftJoin('users', 'pines.id_pin', '=', 'users.id_pin')
+                ->select('pines.*')
+                ->orderByRaw('users.email IS NULL')
+                ->orderBy('users.email', $direction);
+        } else {
+            $query->orderBy($filters['sort'], $direction);
+        }
+
+        return $query->get();
     }
 }
 

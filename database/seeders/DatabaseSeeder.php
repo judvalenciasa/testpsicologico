@@ -29,7 +29,9 @@ class DatabaseSeeder extends Seeder
             SubpreguntasSeeder::class,
             Opcionessubpreguntas::class,
             subcriteriosSeeders::class,
-            EstudiantesRespuestasSeeder::class,
+            // Datos ficticios para desarrollo: crea 100 estudiantes, pines,
+            // reportes, respuestas y subrespuestas. No ejecutar en despliegue.
+            // EstudiantesRespuestasSeeder::class,
         ]);
     }
 }

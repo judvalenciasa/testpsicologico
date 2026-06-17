@@ -15,6 +15,6 @@ interface PinRepositoryInterface
 
     public function findByIdPin($idPin): ?Pines;
 
-    public function allWithUsers(): Collection;
+    public function allWithUsers(array $filters = []): Collection;
 }
 

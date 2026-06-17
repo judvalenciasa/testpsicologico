@@ -72,9 +72,9 @@ class PinService
         return $this->pinRepository->findByIdPin($idPin);
     }
 
-    public function allWithUsers(): Collection
+    public function allWithUsers(array $filters = []): Collection
     {
-        return $this->pinRepository->allWithUsers();
+        return $this->pinRepository->allWithUsers($filters);
     }
 
     private function buildPinCode(): string

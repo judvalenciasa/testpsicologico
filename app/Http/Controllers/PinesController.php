@@ -8,6 +8,11 @@ use Illuminate\Support\Facades\Log;
 
 class PinesController extends Controller
 {
+    private const DEFAULT_SORT = 'creacion_fecha';
+    private const DEFAULT_DIRECTION = 'desc';
+    private const SORTABLE_FIELDS = ['pin', 'creacion_fecha', 'usuario'];
+    private const ASSIGNMENT_FILTERS = ['todos', 'asignados', 'libres'];
+
     public function __construct(private readonly PinService $pinService)
     {
     }
@@ -100,11 +105,30 @@ class PinesController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
         Log::info('PinesController@index');
-        $pines = $this->pinService->allWithUsers();
+        $filters = $this->pinFilters($request);
+        $pines = $this->pinService->allWithUsers($filters);
 
-        return view('pines.index', compact('pines'));
+        return view('pines.index', compact('pines', 'filters'));
     }
+
+    private function pinFilters(Request $request): array
+    {
+        $sort = (string) $request->query('sort', self::DEFAULT_SORT);
+        $direction = (string) $request->query('direction', self::DEFAULT_DIRECTION);
+        $asignacion = (string) $request->query('asignacion', 'todos');
+
+        return [
+            'search' => trim((string) $request->query('search', '')),
+            'estado' => 'todos',
+            'asignacion' => in_array($asignacion, self::ASSIGNMENT_FILTERS, true) ? $asignacion : 'todos',
+            'fecha_desde' => null,
+            'fecha_hasta' => null,
+            'sort' => in_array($sort, self::SORTABLE_FIELDS, true) ? $sort : self::DEFAULT_SORT,
+            'direction' => in_array($direction, ['asc', 'desc'], true) ? $direction : self::DEFAULT_DIRECTION,
+        ];
+    }
+
 }
