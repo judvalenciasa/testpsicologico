@@ -555,6 +555,7 @@
     @include('shared.footer')
 
 
+    @include('shared.session-expiration-warning')
 
 </body>
 

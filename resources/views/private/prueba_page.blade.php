@@ -120,6 +120,8 @@
 
     </section>
 
+    @include('shared.session-expiration-warning')
+
 </body>
 
 </html>

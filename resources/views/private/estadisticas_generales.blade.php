@@ -99,14 +99,6 @@
             </article>
         </section>
 
-        <section id="general-section-scatter" class="single-chart-section">
-            <article class="chart-card">
-                <h3>Dispersión global: duración vs calificación</h3>
-                <canvas id="general-scatter-chart"></canvas>
-                <p class="chart-explainer">Cada punto representa un reporte: eje X duración, eje Y puntaje. Ayuda a detectar patrones de rendimiento por tiempo.</p>
-            </article>
-        </section>
-
         <section id="general-section-questions" class="question-single-row-section">
             <article class="chart-card">
                 <h3>Promedio global por pregunta</h3>
@@ -190,7 +182,6 @@
             advanced: document.getElementById('general-section-advanced'),
             macro: document.getElementById('general-section-macro'),
             motivation: document.getElementById('general-section-motivation'),
-            scatter: document.getElementById('general-section-scatter'),
             questions: document.getElementById('general-section-questions'),
             pies: document.getElementById('general-section-pies')
         };
@@ -440,50 +431,6 @@
             );
         }
 
-        function renderScatter(chartsData) {
-            createOrUpdateChart(
-                'generalScatter',
-                document.getElementById('general-scatter-chart'),
-                'scatter',
-                {
-                    datasets: [
-                        {
-                            label: 'Test 1',
-                            data: (chartsData?.scatter?.test_1 || []).map((p) => ({ x: Number(p.x), y: Number(p.y), label: p.label })),
-                            backgroundColor: colors.test1,
-                            pointRadius: 4,
-                            pointHoverRadius: 6
-                        },
-                        {
-                            label: 'Test 2',
-                            data: (chartsData?.scatter?.test_2 || []).map((p) => ({ x: Number(p.x), y: Number(p.y), label: p.label })),
-                            backgroundColor: colors.test2,
-                            pointRadius: 4,
-                            pointHoverRadius: 6
-                        }
-                    ]
-                },
-                {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: { position: 'top' },
-                        datalabels: { display: false },
-                        tooltip: {
-                            callbacks: {
-                                title: (items) => items[0]?.raw?.label || 'Intento',
-                                label: (ctx) => ` Tiempo: ${ctx.raw.x} min | Puntaje: ${ctx.raw.y}`
-                            }
-                        }
-                    },
-                    scales: {
-                        x: { title: { display: true, text: 'Duración (min)' }, beginAtZero: true },
-                        y: { title: { display: true, text: 'Calificación total' }, beginAtZero: true }
-                    }
-                }
-            );
-        }
-
         function renderPies(chartsData) {
             const map = {
                 inductivo: { t1: 'general-pie-inductivo-test1', t2: 'general-pie-inductivo-test2' },
@@ -530,7 +477,6 @@
             renderDifference(data.charts || {});
             renderMacro(data.charts || {});
             renderMotivation(data.charts || {});
-            renderScatter(data.charts || {});
             renderQuestions(data.charts || {});
             renderPies(data.charts || {});
         }
