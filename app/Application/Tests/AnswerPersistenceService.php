@@ -3,13 +3,13 @@
 namespace App\Application\Tests;
 
 use App\Models\Respuestas;
-use App\Models\subrespuestas;
+use App\Models\Subrespuestas;
 
 class AnswerPersistenceService
 {
     public function saveSubAnswer($user, $idSubpregunta, $idReporte, $respuesta, $calificacion): void
     {
-        $subrespuestaExistente = subrespuestas::where('id_usuario', $user->id_usuario)
+        $subrespuestaExistente = Subrespuestas::where('id_usuario', $user->id_usuario)
             ->where('id_subpregunta', $idSubpregunta)
             ->where('id_reporte', $idReporte)
             ->first();
@@ -22,7 +22,7 @@ class AnswerPersistenceService
             return;
         }
 
-        subrespuestas::create([
+        Subrespuestas::create([
             'id_usuario' => $user->id_usuario,
             'id_subpregunta' => $idSubpregunta,
             'id_reporte' => $idReporte,

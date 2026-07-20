@@ -25,6 +25,6 @@ class Subcriterios extends Model
     // Relación con la tabla Subpregunta
     public function subpregunta()
     {
-        return $this->belongsTo(subpreguntas::class, 'id_subpregunta', 'id_subpregunta');
+        return $this->belongsTo(Subpreguntas::class, 'id_subpregunta', 'id_subpregunta');
     }
 }

@@ -7,13 +7,13 @@ use App\Application\Tests\MotivationCategoryService;
 use App\Models\Contexto;
 use App\Models\Criterios;
 use App\Models\Opciones;
-use App\Models\opcionessubpreguntas;
+use App\Models\OpcionesSubpreguntas;
 use App\Models\Preguntas;
 use App\Models\Pruebas;
 use App\Models\Reportes;
 use App\Models\Respuestas;
 use App\Models\Subcriterios;
-use App\Models\subpreguntas;
+use App\Models\Subpreguntas;
 use App\Exceptions\ChatGPTException;
 use App\Services\OpenAIService;
 use Carbon\Carbon;
@@ -327,7 +327,7 @@ class TestsController extends Controller
 
         $respuesta_cerrada = $respuestas_cerradas_indexadas[1];
 
-        $subopcion = opcionessubpreguntas::find($respuesta_cerrada);
+        $subopcion = OpcionesSubpreguntas::find($respuesta_cerrada);
         if (!$subopcion) {
             return redirect()->back()->with('error', 'Opción seleccionada no válida para la subpregunta.');
         }

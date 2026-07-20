@@ -25,13 +25,15 @@
         <div class="table-card">
             <h2 class="table-title">Respuestas</h2>
             @php
-                $habilidades = collect($informe['respuestas'])
+                $itemsFiltrables = collect($informe['respuestas'])
+                    ->concat($informe['subrespuestas']);
+                $habilidades = $itemsFiltrables
                     ->pluck('habilidad')
                     ->filter()
                     ->unique()
                     ->sort()
                     ->values();
-                $subhabilidades = collect($informe['respuestas'])
+                $subhabilidades = $itemsFiltrables
                     ->pluck('subhabilidad')
                     ->filter()
                     ->unique()
@@ -83,6 +85,7 @@
                     <tbody>
                         @foreach($informe['respuestas'] as $respuesta)
                         <tr
+                            data-pregunta-id="{{ $respuesta['id_pregunta'] }}"
                             data-calificacion="{{ $respuesta['calificacion'] }}"
                             data-habilidad="{{ $respuesta['habilidad'] }}"
                             data-subhabilidad="{{ $respuesta['subhabilidad'] }}"
@@ -165,6 +168,8 @@
                 <table id="tabla-subrespuestas" class="center subrespuestas-table">
                     <thead>
                         <tr>
+                            <th>Habilidad</th>
+                            <th>Subhabilidad</th>
                             <th class="col-subrespuesta-texto">Texto subpregunta</th>
                             <th class="col-subrespuesta-respuesta">Respuesta</th>
                             <th class="col-subrespuesta-calificacion">Calificación</th>
@@ -172,7 +177,14 @@
                     </thead>
                     <tbody>
                         @foreach($informe['subrespuestas'] as $subrespuesta)
-                        <tr>
+                        <tr
+                            data-pregunta-id="{{ $subrespuesta['id_pregunta_principal'] }}"
+                            data-calificacion="{{ $subrespuesta['calificacion_respuesta'] }}"
+                            data-habilidad="{{ $subrespuesta['habilidad'] }}"
+                            data-subhabilidad="{{ $subrespuesta['subhabilidad'] }}"
+                        >
+                            <td class="col-habilidad">{{ $subrespuesta['habilidad'] ?? 'Sin dato' }}</td>
+                            <td class="col-subhabilidad">{{ $subrespuesta['subhabilidad'] ?? 'Sin dato' }}</td>
                             <td class="text-cell col-subrespuesta-texto">
                                 @php
                                     $subpreguntaTexto = (string) ($subrespuesta['texto_subpregunta'] ?? '');
@@ -337,6 +349,21 @@
             const scoreFilter = document.getElementById('filter-calificacion');
             const skillFilter = document.getElementById('filter-habilidad');
             const subskillFilter = document.getElementById('filter-subhabilidad');
+            const answerRows = Array.from(document.querySelectorAll('#tabla-respuestas tbody tr'));
+
+            const matchesSkillFilters = (row) => {
+                const skillMatches = !skillFilter.value || row.dataset.habilidad === skillFilter.value;
+                const subskillMatches = !subskillFilter.value || row.dataset.subhabilidad === subskillFilter.value;
+
+                return skillMatches && subskillMatches;
+            };
+
+            // Una subpregunta hereda habilidad y subhabilidad de su pregunta principal.
+            // Por eso solo se muestra si la pregunta padre también coincide con esos filtros.
+            const parentMatchesSkillFilters = (subanswerRow) => answerRows.some((answerRow) =>
+                answerRow.dataset.preguntaId === subanswerRow.dataset.preguntaId &&
+                matchesSkillFilters(answerRow)
+            );
 
             const answersPager = setupTablePagination(
                 'tabla-respuestas',
@@ -344,16 +371,29 @@
                 PAGE_SIZE,
                 (row) => {
                     const scoreMatches = !scoreFilter.value || String(row.dataset.calificacion) === scoreFilter.value;
-                    const skillMatches = !skillFilter.value || row.dataset.habilidad === skillFilter.value;
-                    const subskillMatches = !subskillFilter.value || row.dataset.subhabilidad === subskillFilter.value;
 
-                    return scoreMatches && skillMatches && subskillMatches;
+                    return scoreMatches && matchesSkillFilters(row);
                 }
             );
-            setupTablePagination('tabla-subrespuestas', 'paginacion-subrespuestas', PAGE_SIZE);
+            const subanswersPager = setupTablePagination(
+                'tabla-subrespuestas',
+                'paginacion-subrespuestas',
+                PAGE_SIZE,
+                (row) => {
+                    // La calificación se evalúa en la subrespuesta, según la regla seleccionada.
+                    const scoreMatches = !scoreFilter.value || String(row.dataset.calificacion) === scoreFilter.value;
+
+                    return scoreMatches &&
+                        matchesSkillFilters(row) &&
+                        parentMatchesSkillFilters(row);
+                }
+            );
 
             [scoreFilter, skillFilter, subskillFilter].forEach((filter) => {
-                filter.addEventListener('change', () => answersPager?.refresh());
+                filter.addEventListener('change', () => {
+                    answersPager?.refresh();
+                    subanswersPager?.refresh();
+                });
             });
 
             document.getElementById('clear-answer-filters').addEventListener('click', () => {
@@ -361,6 +401,7 @@
                 skillFilter.value = '';
                 subskillFilter.value = '';
                 answersPager?.refresh();
+                subanswersPager?.refresh();
             });
         });
 

@@ -10,8 +10,8 @@ use App\Models\Subhabilidad;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\Reportes;
-use App\Models\subpreguntas;
-use App\Models\subrespuestas;
+use App\Models\Subpreguntas;
+use App\Models\Subrespuestas;
 use Session;
 
 class ReportesController extends Controller
@@ -447,11 +447,12 @@ class ReportesController extends Controller
             return ($subrespuesta['tipo_pregunta'] ?? null) !== 'abierta';
         }));
 
-        $respuestasConTexto = $this->excluirRespuestasEnBlanco($respuestas);
+        $respuestasMostrables = $this->excluirPreguntasAbiertas($respuestas);
+        $subrespuestasMostrables = $this->excluirPreguntasAbiertas($subrespuestas);
 
         $informe = [
-            'respuestas' => $respuestasConTexto,
-            'subrespuestas' => $subrespuestas
+            'respuestas' => $respuestasMostrables,
+            'subrespuestas' => $subrespuestasMostrables
         ];
 
 
@@ -460,34 +461,42 @@ class ReportesController extends Controller
 
     public function consutar_subrespuestas($id_usuario, $id_reporte)
     {
-        $subrespuestas = subrespuestas::where('id_usuario', $id_usuario)
+        $subrespuestas = Subrespuestas::where('id_usuario', $id_usuario)
             ->where('id_reporte', $id_reporte)
+            ->with('subpregunta.pregunta.subhabilidad.habilidad')
             ->get()
+            ->map(function (Subrespuestas $subrespuesta) {
+                $subpregunta = $subrespuesta->subpregunta;
+                $preguntaPrincipal = $subpregunta?->pregunta;
+                $subhabilidad = $preguntaPrincipal?->subhabilidad;
+
+                return [
+                    'id_subrespuesta' => $subrespuesta->id_subrespuesta,
+                    'id_usuario' => $subrespuesta->id_usuario,
+                    'id_subpregunta' => $subrespuesta->id_subpregunta,
+                    'id_reporte' => $subrespuesta->id_reporte,
+                    'respuesta' => $subrespuesta->respuesta,
+                    'calificacion_respuesta' => $subrespuesta->calificacion_respuesta,
+                    'texto_subpregunta' => $subpregunta?->texto,
+                    'tipo_pregunta' => $subpregunta?->tipo_pregunta,
+                    'id_pregunta_principal' => $preguntaPrincipal?->id_pregunta,
+                    'habilidad' => $subhabilidad?->habilidad?->nombre,
+                    'subhabilidad' => $subhabilidad?->nombre,
+                ];
+            })
             ->toArray();
-
-
-            
-
-        //consultar el texto de las subpreguntas asociadas a las subrespuestas
-        foreach ($subrespuestas as $key => $subrespuesta) {
-            $subpregunta = subpreguntas::where('id_subpregunta', $subrespuesta['id_subpregunta'])
-                ->select('texto', 'tipo_pregunta')
-                ->first();
-            $subrespuestas[$key]['texto_subpregunta'] = $subpregunta?->texto;
-            $subrespuestas[$key]['tipo_pregunta'] = $subpregunta?->tipo_pregunta;
-        }
 
         return $subrespuestas;
     }
 
     /**
-     * Filtra los items de un informe (preguntas abiertas sin calificación por IA)
-     * cuya respuesta de texto quedó en blanco, para no mostrarlas en los reportes.
+     * Excluye preguntas y subpreguntas abiertas del reporte de respuestas.
+     * Las preguntas cerradas se conservan, incluso si su calificación es cero.
      */
-    private function excluirRespuestasEnBlanco(array $items): array
+    private function excluirPreguntasAbiertas(array $items): array
     {
         return array_values(array_filter($items, function ($item) {
-            return trim((string) ($item['respuesta_texto'] ?? '')) !== '';
+            return ($item['tipo_pregunta'] ?? null) !== 'abierta';
         }));
     }
 }
