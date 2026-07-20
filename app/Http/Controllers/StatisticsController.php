@@ -27,6 +27,13 @@ class StatisticsController extends Controller
         return view('private.estadisticas_generales');
     }
 
+    public function indexCharts1(): View
+    {
+        $this->authorizeAdministrator();
+
+        return view('private.estadisticas_graficas1');
+    }
+
     public function data(Request $request): JsonResponse
     {
         $this->authorizeAdministrator();
@@ -50,6 +57,18 @@ class StatisticsController extends Controller
         ];
 
         return response()->json($this->statisticsService->buildGeneralDashboard($filters));
+    }
+
+    public function dataCharts1(Request $request): JsonResponse
+    {
+        $this->authorizeAdministrator();
+
+        $filters = [
+            'year' => $request->query('year') ? (int) $request->query('year') : null,
+            'user_id' => $request->query('user_id') ? (int) $request->query('user_id') : null,
+        ];
+
+        return response()->json($this->statisticsService->buildCharts1Dashboard($filters));
     }
 
     private function authorizeAdministrator(): void

@@ -19,6 +19,52 @@ class StatisticsService
         'toma_decisiones' => 'macrohabilidad_toma_desiciones_y_resolucion_problemas',
     ];
 
+    /** @var array<string,string> */
+    private const MACRO_LABELS = [
+        'inductivo' => 'Inductivo',
+        'abductivo' => 'Abductivo',
+        'deductivo_verbal' => 'Deductivo y verbal',
+        'analisis_argumentos' => 'Análisis de argumentos',
+        'toma_decisiones' => 'Toma de decisiones',
+    ];
+
+    /** @var array<string,string> */
+    private const LEVEL_FIELDS = [
+        'inductivo' => 'nivel_inductivo',
+        'abductivo' => 'nivel_abductivo',
+        'deductivo_verbal' => 'nivel_deductivo_y_verbal',
+        'analisis_argumentos' => 'nivel_analisis_de_argumentos',
+        'toma_decisiones' => 'nivel_toma_desiciones_y_resolucion_problemas',
+    ];
+
+    /** @var array<string,string> */
+    private const REGULATION_FIELDS = [
+        'Planificación' => 'planificacion',
+        'Organización' => 'organizacion',
+        'Monitoreo' => 'monitoreo',
+        'Depuración' => 'depuracion',
+        'Evaluación' => 'evaluacion',
+    ];
+
+    /** @var array<string,string> Campos de caracterización tomados de "ver/reporte" (datos sociodemográficos, estilos de vida y hábitos saludables) */
+    private const CHARACTERIZATION_FIELDS = [
+        'edad' => 'Edad',
+        'genero' => 'Género',
+        'estrato' => 'Estrato socioeconómico',
+        'nivel_escolaridad' => 'Nivel de escolaridad',
+        'nivel_educativo_padre' => 'Nivel educativo del padre',
+        'nivel_educativo_madre' => 'Nivel educativo de la madre',
+        'horas_lectura' => 'Horas semanales dedicadas a la lectura',
+        'horas_redes_sociales' => 'Horas semanales en redes sociales',
+        'horas_entretenimiento' => 'Horas semanales de entretenimiento (videojuegos)',
+        'hora_sueno' => 'Horas dedicadas a dormir',
+        'promedio_arte' => 'Práctica de arte de manera recurrente',
+        'promedio_deporte' => 'Práctica de deporte de manera recurrente',
+        'grasas' => 'Consumo frecuente de grasas saturadas',
+        'alimentos_saludables' => 'Consumo de alimentos saludables',
+        'litro_agua' => 'Consumo de 1 litro o más de agua al día',
+    ];
+
     /**
      * @return array<string,mixed>
      */
@@ -1249,6 +1295,305 @@ class StatisticsService
                     (float) ($report->pensamiento_creativo ?? 0),
                 ],
             ],
+        ];
+    }
+
+    /**
+     * Dashboard del módulo "Gráficas 1": caracterización con porcentaje frente al grupo
+     * de presentación (misma fecha), motivación, niveles por macrohabilidad, metacognición
+     * y comparación del estudiante frente a su grupo. Soporta 1 o 2 pruebas por estudiante.
+     *
+     * @return array<string,mixed>
+     */
+    public function buildCharts1Dashboard(array $filters): array
+    {
+        $selectedYear = $filters['year'] ?? null;
+        $selectedUserId = $filters['user_id'] ?? null;
+
+        $filtersMeta = $this->charts1FiltersMeta($selectedYear);
+
+        if (!$selectedUserId) {
+            return [
+                'has_data' => false,
+                'message' => 'Selecciona un año y un estudiante para ver las gráficas.',
+                'filters_meta' => $filtersMeta,
+                'tests' => [],
+            ];
+        }
+
+        $reportsQuery = Reportes::query()
+            ->where('id_usuario', $selectedUserId)
+            ->whereNotNull('calificacion_total')
+            ->whereNotNull('fecha_calificacion');
+
+        if ($selectedYear) {
+            $reportsQuery->whereYear('fecha_calificacion', $selectedYear);
+        }
+
+        $reports = $reportsQuery
+            ->orderBy('fecha_calificacion')
+            ->orderBy('id_reporte')
+            ->limit(2)
+            ->get();
+
+        if ($reports->isEmpty()) {
+            return [
+                'has_data' => false,
+                'message' => 'El estudiante no tiene presentaciones registradas para el filtro seleccionado.',
+                'filters_meta' => $filtersMeta,
+                'tests' => [],
+            ];
+        }
+
+        $tests = $reports->values()
+            ->map(fn(Reportes $report, int $index) => $this->buildCharts1TestData($report, $index + 1))
+            ->all();
+
+        return [
+            'has_data' => true,
+            'message' => null,
+            'filters_meta' => $filtersMeta,
+            'tests' => $tests,
+        ];
+    }
+
+    /**
+     * @return array<string,mixed>
+     */
+    private function buildCharts1TestData(Reportes $report, int $testNumber): array
+    {
+        $groupReports = Reportes::query()
+            ->where('fecha_calificacion', $report->fecha_calificacion)
+            ->whereNotNull('calificacion_total')
+            ->get();
+
+        return [
+            'test_number' => $testNumber,
+            'report_id' => $report->id_reporte,
+            'date' => (string) $report->fecha_calificacion,
+            'group_size' => $groupReports->count(),
+            'characterization' => $this->characterizationTable($report, $groupReports),
+            'motivation' => [
+                'labels' => ['Motivación intrínseca', 'Motivación extrínseca', 'Total motivación'],
+                'values' => [
+                    round((float) ($report->motivacion_intrinseca ?? 0), 2),
+                    round((float) ($report->motivacion_extrinseca ?? 0), 2),
+                    round((float) (($report->motivacion_intrinseca ?? 0) + ($report->motivacion_extrinseca ?? 0)), 2),
+                ],
+            ],
+            'macro_levels' => $this->macroLevelsChart($report),
+            'metacognition' => $this->metacognitionChart($report),
+            'group_comparison' => $this->groupComparisonData($report, $groupReports),
+        ];
+    }
+
+    /**
+     * @return array<int,array<string,mixed>>
+     */
+    private function characterizationTable(Reportes $report, Collection $groupReports): array
+    {
+        $rows = [];
+        foreach (self::CHARACTERIZATION_FIELDS as $field => $label) {
+            $studentValue = $report->{$field};
+            $share = $this->groupSharePercentage($groupReports, $field, $studentValue);
+
+            $rows[] = [
+                'field' => $field,
+                'label' => $label,
+                'value' => $studentValue,
+                'percentage' => $share['percentage'],
+                'group_size' => $share['group_size'],
+            ];
+        }
+
+        return $rows;
+    }
+
+    /**
+     * Calcula qué porcentaje del grupo de presentación comparte el mismo valor que el estudiante
+     * para un campo de caracterización determinado.
+     *
+     * @return array{percentage:float|null,group_size:int}
+     */
+    private function groupSharePercentage(Collection $groupReports, string $field, mixed $studentValue): array
+    {
+        $total = $groupReports->count();
+
+        if ($total === 0 || $studentValue === null || $studentValue === '') {
+            return ['percentage' => null, 'group_size' => $total];
+        }
+
+        $normalizedStudent = $this->normalizeCompareValue($studentValue);
+        $matching = $groupReports->filter(
+            fn(Reportes $row) => $this->normalizeCompareValue($row->{$field}) === $normalizedStudent
+        )->count();
+
+        return [
+            'percentage' => round(($matching / $total) * 100, 2),
+            'group_size' => $total,
+        ];
+    }
+
+    private function normalizeCompareValue(mixed $value): string
+    {
+        return mb_strtolower(trim((string) $value));
+    }
+
+    /**
+     * @return array<string,mixed>
+     */
+    private function macroLevelsChart(Reportes $report): array
+    {
+        $labels = [];
+        $values = [];
+        $levels = [];
+
+        foreach (self::TEST_TYPE_FIELDS as $key => $field) {
+            $labels[] = self::MACRO_LABELS[$key];
+            $values[] = round((float) ($report->{$field} ?? 0), 2);
+            $levels[] = (string) ($report->{self::LEVEL_FIELDS[$key]} ?? 'Sin nivel');
+        }
+
+        return [
+            'labels' => $labels,
+            'values' => $values,
+            'levels' => $levels,
+            'total_score' => round((float) ($report->calificacion_total ?? 0), 2),
+            'total_level' => (string) ($report->nivel_total ?? 'Sin nivel'),
+        ];
+    }
+
+    /**
+     * @return array<string,mixed>
+     */
+    private function metacognitionChart(Reportes $report): array
+    {
+        $regulationLabels = array_keys(self::REGULATION_FIELDS);
+        $regulationValues = array_map(
+            fn($field) => round((float) ($report->{$field} ?? 0), 2),
+            array_values(self::REGULATION_FIELDS)
+        );
+
+        return [
+            'overview' => [
+                'labels' => ['Conocimiento procedimental', 'Regulación de la cognición', 'Total metacognición'],
+                'values' => [
+                    round((float) ($report->conocimiento_procedimental ?? 0), 2),
+                    round(array_sum($regulationValues), 2),
+                    round((float) ($report->calificacion_metacognicion ?? 0), 2),
+                ],
+            ],
+            'regulation' => [
+                'labels' => $regulationLabels,
+                'values' => $regulationValues,
+            ],
+        ];
+    }
+
+    /**
+     * Compara al estudiante frente a su grupo de presentación (misma fecha de calificación).
+     *
+     * @return array<string,mixed>
+     */
+    private function groupComparisonData(Reportes $report, Collection $groupReports): array
+    {
+        $groupSize = $groupReports->count();
+
+        if ($groupSize <= 1) {
+            return [
+                'has_group' => false,
+                'group_size' => $groupSize,
+                'message' => 'No hay otros estudiantes registrados en esta misma fecha de presentación.',
+            ];
+        }
+
+        $studentTotal = (float) ($report->calificacion_total ?? 0);
+        $groupAvgTotal = round((float) $groupReports->avg('calificacion_total'), 2);
+
+        $lowerOrEqualCount = $groupReports->filter(
+            fn(Reportes $row) => (float) ($row->calificacion_total ?? 0) <= $studentTotal
+        )->count();
+        $percentile = round(($lowerOrEqualCount / $groupSize) * 100, 2);
+
+        $sorted = $groupReports->sortByDesc(
+            fn(Reportes $row) => (float) ($row->calificacion_total ?? 0)
+        )->values();
+        $rankIndex = $sorted->search(fn(Reportes $row) => $row->id_reporte === $report->id_reporte);
+        $rank = $rankIndex === false ? null : $rankIndex + 1;
+
+        $labels = [];
+        $studentValues = [];
+        $groupAvgValues = [];
+        foreach (self::TEST_TYPE_FIELDS as $key => $field) {
+            $labels[] = self::MACRO_LABELS[$key];
+            $studentValues[] = round((float) ($report->{$field} ?? 0), 2);
+            $groupAvgValues[] = round((float) $groupReports->avg($field), 2);
+        }
+
+        return [
+            'has_group' => true,
+            'group_size' => $groupSize,
+            'rank' => $rank,
+            'percentile' => $percentile,
+            'student_total' => round($studentTotal, 2),
+            'group_avg_total' => $groupAvgTotal,
+            'difference_vs_group' => round($studentTotal - $groupAvgTotal, 2),
+            'macro_comparison' => [
+                'labels' => $labels,
+                'student' => $studentValues,
+                'group_avg' => $groupAvgValues,
+            ],
+        ];
+    }
+
+    /**
+     * @return array<string,mixed>
+     */
+    private function charts1FiltersMeta(?int $selectedYear): array
+    {
+        $years = Reportes::query()
+            ->whereNotNull('calificacion_total')
+            ->whereNotNull('fecha_calificacion')
+            ->selectRaw('DISTINCT YEAR(fecha_calificacion) as year')
+            ->pluck('year')
+            ->map(static fn($year) => (int) $year)
+            ->sortDesc()
+            ->values()
+            ->toArray();
+
+        $userIdsWithReports = Reportes::query()
+            ->whereNotNull('calificacion_total')
+            ->whereNotNull('fecha_calificacion')
+            ->when($selectedYear, static function (Builder $query, int $year) {
+                $query->whereYear('fecha_calificacion', $year);
+            })
+            ->pluck('id_usuario')
+            ->map(static fn($id) => (int) $id)
+            ->unique()
+            ->values()
+            ->toArray();
+
+        $usersQuery = User::query()
+            ->where('es_administrador', 0)
+            ->orderBy('name');
+
+        if (count($userIdsWithReports) > 0) {
+            $usersQuery->whereIn('id_usuario', $userIdsWithReports);
+        } else {
+            $usersQuery->whereRaw('1 = 0');
+        }
+
+        $users = $usersQuery
+            ->get(['id_usuario', 'name'])
+            ->map(static fn(User $user) => [
+                'id' => $user->id_usuario,
+                'name' => $user->name,
+            ])
+            ->toArray();
+
+        return [
+            'years' => $years,
+            'users' => $users,
         ];
     }
 }

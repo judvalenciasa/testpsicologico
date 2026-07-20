@@ -103,6 +103,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/estadisticas/data', [StatisticsController::class, 'data'])->name('stats.data');
     Route::get('/estadisticas-generales', [StatisticsController::class, 'indexGeneral'])->name('stats.general.dashboard');
     Route::get('/estadisticas-generales/data', [StatisticsController::class, 'dataGeneral'])->name('stats.general.data');
+    Route::get('/graficas-1', [StatisticsController::class, 'indexCharts1'])->name('stats.charts1.dashboard');
+    Route::get('/graficas-1/data', [StatisticsController::class, 'dataCharts1'])->name('stats.charts1.data');
 
 
     // Ruta para mostrar la política de datos

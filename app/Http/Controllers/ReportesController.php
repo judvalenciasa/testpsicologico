@@ -201,7 +201,6 @@ class ReportesController extends Controller
 
         $consulta_informe = $this->consultar_informe(id_usuario: $request->id_usuario, id_reporte: $request->id_reporte);
 
-        
         $informe_final = $this->crear_informe_descriptivo($consulta_informe, $request->id_reporte);
 
        
@@ -310,26 +309,33 @@ class ReportesController extends Controller
                 $nombre_item_1 = "Item " . $indice_item;
                 $nombre_item_2 = "Item " . $indice_item + 1;
 
-                $documento = [
-                    $nombre_item_1 => [
+                $documento = [];
+
+                // Las preguntas abiertas no se califican (quedan en 0 y sin texto), por lo que
+                // no se muestran como item dentro del contexto, pero el contexto y su otro item sí.
+                if (($consulta_informe[$i]['tipo_pregunta'] ?? null) !== 'abierta') {
+                    $documento[$nombre_item_1] = [
                         "Contexto y habilidad" => $consulta_informe[$i]['habilidad'],
                         "id_contexto" => $consulta_informe[$i]['id_contexto'],
                         "Ejercicio mental/subhabilidad" => $consulta_informe[$i]['subhabilidad'],
                         "puntuación" => $consulta_informe[$i]['calificacion']
-                    ],
-                    $nombre_item_2 =>
-                    [
+                    ];
+                }
+
+                if (($consulta_informe[$i + 1]['tipo_pregunta'] ?? null) !== 'abierta') {
+                    $documento[$nombre_item_2] = [
                         "Contexto y habilidad" => $consulta_informe[$i + 1]['habilidad'],
                         "id_contexto" => $consulta_informe[$i + 1]['id_contexto'],
                         "Ejercicio mental/subhabilidad" => $consulta_informe[$i + 1]['subhabilidad'],
                         "puntuación" => $consulta_informe[$i + 1]['calificacion']
-                    ],
-                    "descriptor" =>
-                    $this->identificar_descriptor($consulta_informe[$i]['id_pregunta'], $consulta_informe[$i]['calificacion']) . " " . $this->identificar_descriptor($consulta_informe[$i + 1]['id_pregunta'], $consulta_informe[$i + 1]['calificacion']) . $this->buscar_descriptor_contexto($consulta_informe[$i]['id_contexto']),
+                    ];
+                }
+
+                $documento["descriptor"] =
+                    $this->identificar_descriptor($consulta_informe[$i]['id_pregunta'], $consulta_informe[$i]['calificacion']) . " " . $this->identificar_descriptor($consulta_informe[$i + 1]['id_pregunta'], $consulta_informe[$i + 1]['calificacion']) . $this->buscar_descriptor_contexto($consulta_informe[$i]['id_contexto']);
                     // "id_contexto" =>
                     //     $consulta_informe[$i]['id_contexto']
 
-                ];
                 $documentos_totales[$nombre_contexto] = $documento;
                 $indice_contexto++; // Incrementar el índice
             }
@@ -441,8 +447,10 @@ class ReportesController extends Controller
             return ($subrespuesta['tipo_pregunta'] ?? null) !== 'abierta';
         }));
 
+        $respuestasConTexto = $this->excluirRespuestasEnBlanco($respuestas);
+
         $informe = [
-            'respuestas' => $respuestas,
+            'respuestas' => $respuestasConTexto,
             'subrespuestas' => $subrespuestas
         ];
 
@@ -470,5 +478,16 @@ class ReportesController extends Controller
         }
 
         return $subrespuestas;
+    }
+
+    /**
+     * Filtra los items de un informe (preguntas abiertas sin calificación por IA)
+     * cuya respuesta de texto quedó en blanco, para no mostrarlas en los reportes.
+     */
+    private function excluirRespuestasEnBlanco(array $items): array
+    {
+        return array_values(array_filter($items, function ($item) {
+            return trim((string) ($item['respuesta_texto'] ?? '')) !== '';
+        }));
     }
 }

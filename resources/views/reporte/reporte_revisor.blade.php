@@ -24,6 +24,49 @@
 
         <div class="table-card">
             <h2 class="table-title">Respuestas</h2>
+            @php
+                $habilidades = collect($informe['respuestas'])
+                    ->pluck('habilidad')
+                    ->filter()
+                    ->unique()
+                    ->sort()
+                    ->values();
+                $subhabilidades = collect($informe['respuestas'])
+                    ->pluck('subhabilidad')
+                    ->filter()
+                    ->unique()
+                    ->sort()
+                    ->values();
+            @endphp
+            <div class="answers-filters" aria-label="Filtros de respuestas">
+                <label>
+                    <span>Calificación</span>
+                    <select id="filter-calificacion">
+                        <option value="">Todas</option>
+                        <option value="0">Solo calificación 0</option>
+                        <option value="1">Solo calificación 1</option>
+                    </select>
+                </label>
+                <label>
+                    <span>Habilidad</span>
+                    <select id="filter-habilidad">
+                        <option value="">Todas</option>
+                        @foreach($habilidades as $habilidad)
+                            <option value="{{ $habilidad }}">{{ $habilidad }}</option>
+                        @endforeach
+                    </select>
+                </label>
+                <label>
+                    <span>Subhabilidad</span>
+                    <select id="filter-subhabilidad">
+                        <option value="">Todas</option>
+                        @foreach($subhabilidades as $subhabilidad)
+                            <option value="{{ $subhabilidad }}">{{ $subhabilidad }}</option>
+                        @endforeach
+                    </select>
+                </label>
+                <button type="button" id="clear-answer-filters" class="clear-filters-btn">Limpiar filtros</button>
+            </div>
             <div class="table-wrapper">
                 <table id="tabla-respuestas" class="center">
                     <thead>
@@ -39,7 +82,11 @@
                     </thead>
                     <tbody>
                         @foreach($informe['respuestas'] as $respuesta)
-                        <tr>
+                        <tr
+                            data-calificacion="{{ $respuesta['calificacion'] }}"
+                            data-habilidad="{{ $respuesta['habilidad'] }}"
+                            data-subhabilidad="{{ $respuesta['subhabilidad'] }}"
+                        >
                             <td class="col-id-contexto">{{ $respuesta['id_contexto'] }}</td>
                             <td class="col-habilidad">{{ $respuesta['habilidad'] }}</td>
                             <td class="col-subhabilidad">{{ $respuesta['subhabilidad'] }}</td>
@@ -165,30 +212,32 @@
     <script>
         const PAGE_SIZE = 10;
 
-        function setupTablePagination(tableId, paginationId, pageSize) {
+        function setupTablePagination(tableId, paginationId, pageSize, matchesFilter = () => true) {
             const table = document.getElementById(tableId);
             const paginationContainer = document.getElementById(paginationId);
             if (!table || !paginationContainer) {
-                return;
+                return null;
             }
 
             const tbody = table.querySelector('tbody');
             const rows = Array.from(tbody.querySelectorAll('tr'));
-            const totalPages = Math.ceil(rows.length / pageSize);
-
-            if (rows.length === 0) {
-                paginationContainer.innerHTML = '';
-                return;
-            }
-
             let currentPage = 1;
 
             function renderRows() {
+                const filteredRows = rows.filter(matchesFilter);
+                const totalPages = Math.ceil(filteredRows.length / pageSize);
+                const safePage = Math.max(1, Math.min(currentPage, Math.max(totalPages, 1)));
+                currentPage = safePage;
                 const start = (currentPage - 1) * pageSize;
                 const end = start + pageSize;
-                rows.forEach((row, index) => {
+                rows.forEach((row) => {
+                    row.style.display = 'none';
+                });
+                filteredRows.forEach((row, index) => {
                     row.style.display = index >= start && index < end ? '' : 'none';
                 });
+
+                return { filteredRows, totalPages };
             }
 
             function createButton(label, className, onClick, disabled = false, active = false) {
@@ -206,6 +255,12 @@
 
             function renderControls() {
                 paginationContainer.innerHTML = '';
+                const { filteredRows, totalPages } = renderRows();
+
+                if (filteredRows.length === 0) {
+                    paginationContainer.innerHTML = '<span class="pagination-meta">No hay respuestas que coincidan con los filtros.</span>';
+                    return;
+                }
 
                 if (totalPages <= 1) {
                     return;
@@ -268,13 +323,45 @@
                 paginationContainer.appendChild(meta);
             }
 
-            renderRows();
             renderControls();
+
+            return {
+                refresh() {
+                    currentPage = 1;
+                    renderControls();
+                }
+            };
         }
 
         document.addEventListener('DOMContentLoaded', function() {
-            setupTablePagination('tabla-respuestas', 'paginacion-respuestas', PAGE_SIZE);
+            const scoreFilter = document.getElementById('filter-calificacion');
+            const skillFilter = document.getElementById('filter-habilidad');
+            const subskillFilter = document.getElementById('filter-subhabilidad');
+
+            const answersPager = setupTablePagination(
+                'tabla-respuestas',
+                'paginacion-respuestas',
+                PAGE_SIZE,
+                (row) => {
+                    const scoreMatches = !scoreFilter.value || String(row.dataset.calificacion) === scoreFilter.value;
+                    const skillMatches = !skillFilter.value || row.dataset.habilidad === skillFilter.value;
+                    const subskillMatches = !subskillFilter.value || row.dataset.subhabilidad === subskillFilter.value;
+
+                    return scoreMatches && skillMatches && subskillMatches;
+                }
+            );
             setupTablePagination('tabla-subrespuestas', 'paginacion-subrespuestas', PAGE_SIZE);
+
+            [scoreFilter, skillFilter, subskillFilter].forEach((filter) => {
+                filter.addEventListener('change', () => answersPager?.refresh());
+            });
+
+            document.getElementById('clear-answer-filters').addEventListener('click', () => {
+                scoreFilter.value = '';
+                skillFilter.value = '';
+                subskillFilter.value = '';
+                answersPager?.refresh();
+            });
         });
 
         document.addEventListener('click', function(event) {
